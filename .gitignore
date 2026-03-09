@@ -1,0 +1,13 @@
+# entornos
+venv/
+env/
+
+# secretos
+.env
+
+# python
+__pycache__/
+*.pyc
+
+# notebooks
+.ipynb_checkpoints/
