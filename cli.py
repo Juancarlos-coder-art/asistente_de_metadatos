@@ -1,6 +1,7 @@
 import json
 from schema_loader import HealthDCATAPSchema
 from assistant.metadata_state import MetadataState
+from assistant.llm_provider import call_llm, USE_OPENAI
 
 BLOCKS = [
     {
@@ -184,7 +185,23 @@ LIST_FIELDS = [
     "applicable_legislation",
     "has_version"
 ]
+def build_contract(block: dict) -> dict:
+    # Claves esperadas en la respuesta del LLM para este bloque
+    return {name: None for name in block["fields"]}
 
+def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context: str = "") -> str:
+    fields = ", ".join(block["fields"])
+    instrucciones = (
+        "Devuelve SOLO JSON válido. Las listas como arrays JSON. "
+        "El campo 'contact' es una lista de objetos con claves 'name', 'email', 'role'. "
+        "No añadas claves extra ni texto fuera del JSON."
+    )
+    return (
+        f"{block['question']}\n\n"
+        f"Claves esperadas: [{fields}]\n"
+        f"{instrucciones}\n"
+        f"{'Contexto del usuario: ' + user_context if user_context else ''}"
+    )
 
 def parse_input(field_name: str, raw_value: str):
 
@@ -246,16 +263,32 @@ def ask_field(schema: HealthDCATAPSchema, field_name: str):
 
 
 def ask_block(schema: HealthDCATAPSchema, state: MetadataState, block: dict):
-    """
-    Procesa un bloque de preguntas.
-    """
     print(f"\n=== BLOQUE: {block['name']} ===\n")
     print(block["question"])
 
+    # Pregunta si quieres que el LLM lo sugiera todo de una vez
+    use_ai = False
+    if USE_OPENAI:
+        choice = input("Pulsa Enter para contestar tú, o escribe 'ia' para autocompletar con IA: ").strip().lower()
+        use_ai = (choice == "ia")
+
     partial = {}
 
-    for field_name in block["fields"]:
-        partial[field_name] = ask_field(schema, field_name)
+    if use_ai:
+        # Recoge contexto libre del usuario (opcional)
+        user_context = input("Añade contexto opcional para la IA (o Enter para saltar): ").strip()
+        prompt = build_prompt_for_block(schema, block, user_context)
+        contract = build_contract(block)
+        ai_result = call_llm(prompt, contract, user_context)  # dict con las claves del bloque
+
+        # Integra tal cual lo que devuelve el LLM (ya está tipado)
+        for name in block["fields"]:
+            partial[name] = ai_result.get(name, None)
+
+    else:
+        # Camino manual de siempre
+        for field_name in block["fields"]:
+            partial[field_name] = ask_field(schema, field_name)
 
     state.merge_partial(partial)
 
@@ -273,7 +306,6 @@ def ask_block(schema: HealthDCATAPSchema, state: MetadataState, block: dict):
         print("\n⚠️ Campos obligatorios aún pendientes:")
         for m in missing:
             print(f" - {m}")
-
 
 def save_output(state: MetadataState, path="metadata_output.json"):
     with open(path, "w", encoding="utf-8") as f:

@@ -14,6 +14,24 @@ if USE_OPENAI and OPENAI_API_KEY:
     from openai import OpenAI
     client = OpenAI(api_key=OPENAI_API_KEY)
 
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+groq_client = None
+
+if GROQ_API_KEY:
+    from groq import Groq
+    groq_client = Groq(api_key=GROQ_API_KEY)
+
+def groq_llm(prompt: str) -> dict:
+    response = groq_client.chat.completions.create(
+        model="llama3-70b-8192",   # modelo gratis
+        messages=[
+            {"role": "system", "content": "Devuelve SOLO JSON válido."},
+            {"role": "user", "content": prompt}
+        ]
+    )
+    raw = response.choices[0].message.content
+    return extract_json_from_text(raw)
+
 
 def extract_json_from_text(text: str) -> dict:
     try:
@@ -91,5 +109,8 @@ def openai_llm(prompt: str) -> dict:
 def call_llm(prompt: str, contract: dict, user_input: str) -> dict:
     if USE_OPENAI and client is not None:
         return openai_llm(prompt)
+
+    if groq_client is not None:
+        return groq_llm(prompt)
 
     return mock_llm(prompt, contract, user_input)
