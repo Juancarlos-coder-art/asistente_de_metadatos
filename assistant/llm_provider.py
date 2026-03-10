@@ -23,7 +23,7 @@ if GROQ_API_KEY:
 
 def groq_llm(prompt: str) -> dict:
     response = groq_client.chat.completions.create(
-        model="llama3-70b-8192",   # modelo gratis
+        model="llama-3.3-70b-versatile",  # modelo gratis
         messages=[
             {"role": "system", "content": "Devuelve SOLO JSON válido."},
             {"role": "user", "content": prompt}
@@ -114,3 +114,6 @@ def call_llm(prompt: str, contract: dict, user_input: str) -> dict:
         return groq_llm(prompt)
 
     return mock_llm(prompt, contract, user_input)
+
+def llm_available() -> bool:
+    return groq_client is not None or (USE_OPENAI and client is not None)

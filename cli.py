@@ -1,8 +1,7 @@
 import json
 from schema_loader import HealthDCATAPSchema
 from assistant.metadata_state import MetadataState
-from assistant.llm_provider import call_llm, USE_OPENAI
-
+from assistant.llm_provider import call_llm, llm_available
 BLOCKS = [
     {
         "name": "identificacion_basica",
@@ -268,7 +267,7 @@ def ask_block(schema: HealthDCATAPSchema, state: MetadataState, block: dict):
 
     # Pregunta si quieres que el LLM lo sugiera todo de una vez
     use_ai = False
-    if USE_OPENAI:
+    if llm_available():
         choice = input("Pulsa Enter para contestar tú, o escribe 'ia' para autocompletar con IA: ").strip().lower()
         use_ai = (choice == "ia")
 
