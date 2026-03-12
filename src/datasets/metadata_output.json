@@ -1,0 +1,97 @@
+{
+  "title": "s",
+  "name": "s",
+  "notes": "s",
+  "identifier": "s",
+  "uri": "s",
+  "version": "ss",
+  "version_notes": "s",
+  "has_version": [
+    "s"
+  ],
+  "tag_string": [
+    "s"
+  ],
+  "theme": [
+    "s"
+  ],
+  "dcat_type": "s",
+  "health_category": [
+    "s"
+  ],
+  "health_theme": [
+    "s"
+  ],
+  "code_values": [
+    "s"
+  ],
+  "coding_system": [
+    "s"
+  ],
+  "publisher": "s",
+  "creator": null,
+  "contact": [
+    {
+      "name": "ss"
+    }
+  ],
+  "owner_org": "s",
+  "publisher_note": "s",
+  "publisher_type": "s",
+  "trusted_data_holder": null,
+  "hdab": "s",
+  "homepage": "@",
+  "url": null,
+  "documentation": [
+    "s"
+  ],
+  "conforms_to": [
+    "s"
+  ],
+  "is_referenced_by": [
+    "s"
+  ],
+  "analytics": [
+    "s"
+  ],
+  "license_id": "s",
+  "access_rights": "s",
+  "applicable_legislation": [
+    "s"
+  ],
+  "legal_basis": [
+    "s"
+  ],
+  "issued": "s",
+  "modified": "s",
+  "frequency": "s",
+  "provenance": "s",
+  "provenance_activity": "s",
+  "temporal_coverage": "s",
+  "temporal_resolution": "s",
+  "spatial_coverage": "s",
+  "spatial_resolution_in_meters": "s",
+  "language": [
+    "s"
+  ],
+  "alternate_identifier": [
+    "s"
+  ],
+  "purpose": [
+    "s"
+  ],
+  "population_coverage": [
+    "s"
+  ],
+  "personal_data": [
+    "s"
+  ],
+  "min_typical_age": "s",
+  "max_typical_age": "s",
+  "number_of_records": "s",
+  "number_of_unique_individuals": "s",
+  "retention_period": "s",
+  "qualified_relation": "s",
+  "qualified_attribution": "s",
+  "quality_annotation": "ss"
+}
