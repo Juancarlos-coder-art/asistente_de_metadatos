@@ -2,6 +2,8 @@
 # Clase que gestiona el estado completo de los metadatos HealthDCAT-AP
 # y realiza validaciones básicas.
 
+from rdflib import Graph, Namespace, URIRef, Literal
+from rdflib.namespace import RDF, DCTERMS, FOAF, XSD
 import json
 import re
 
@@ -110,3 +112,93 @@ class MetadataState:
                                 )
 
         return errors
+    # -------------------------------------------------------------
+    # VALIDACIÓN SHACL (HealthDCAT-AP)
+    # -------------------------------------------------------------
+    def validar_shacl(self, ttl_path):
+        from assistant.validate import validar_shacl
+        from pathlib import Path
+
+        print("\n🧪 Validando mediante SHACL (API Comisión Europea)...")
+
+        # 1. NO TOCAR la ruta del usuario salvo para convertirla en absoluta
+        ttl_path = Path(ttl_path).expanduser().resolve()
+
+        # 2. Obtener la ruta real del archivo metadata_state.py
+        current_file = Path(__file__).resolve()
+
+        # 3. Subir a la carpeta raíz del proyecto: asistente_de_metadatos/
+        # metadata_state.py → assistant → src → asistente_de_metadatos
+        project_root = current_file.parents[3]
+
+        # 4. Ruta correcta hacia tus SHACL
+        shapes_path = project_root / "asistente_de_metadatos" / "tools" / "shacl" / "shacl_dataset_shape.ttl"
+
+        # Convertir a absoluta
+        shapes_path = shapes_path.resolve()
+
+        print(f"📍 TTL (usuario): {ttl_path}")
+        print(f"📍 SHACL:         {shapes_path}")
+
+        # 5. Validar que los archivos existen
+        if not ttl_path.exists():
+            raise FileNotFoundError(f"❌ EL TTL NO EXISTE: {ttl_path}")
+
+        if not shapes_path.exists():
+            raise FileNotFoundError(f"❌ EL SHACL NO EXISTE: {shapes_path}")
+
+        # 6. Validación con API oficial
+        return validar_shacl(str(ttl_path), str(shapes_path))
+
+
+  # -------------------------------------------------------------
+    # EXPORTAR A RDF (Turtle)
+    # -------------------------------------------------------------
+    
+    def export_to_rdf(self, output_path="dataset.ttl"):
+        """
+        Convierte self.data (JSON del asistente) a RDF DCAT-AP
+        y lo exporta en formato Turtle.
+        """
+        g = Graph()
+
+        # Namespaces
+        DCAT = Namespace("http://www.w3.org/ns/dcat#")
+        DCT = DCTERMS
+        VCARD = Namespace("http://www.w3.org/2006/vcard/ns#")
+
+        g.bind("dcat", DCAT)
+        g.bind("dct", DCT)
+        g.bind("vcard", VCARD)
+
+        # URI del dataset (si no tienes uno, se crea uno genérico)
+        dataset_uri = URIRef(self.data.get("identifier", "http://example.org/dataset/1"))
+
+        g.add((dataset_uri, RDF.type, DCAT.Dataset))
+
+        # Título
+        if "title" in self.data:
+            g.add((dataset_uri, DCT.title, Literal(self.data["title"], lang="es")))
+
+        # Descripción
+        if "description" in self.data:
+            g.add((dataset_uri, DCT.description, Literal(self.data["description"], lang="es")))
+
+        # Palabras clave
+        for kw in self.data.get("tag_string", []):
+            g.add((dataset_uri, DCAT.keyword, Literal(kw, lang="es")))
+
+        # Contacto
+        for c in self.data.get("contact", []):
+            contact_uri = URIRef(dataset_uri + "/contact")
+            g.add((dataset_uri, DCAT.contactPoint, contact_uri))
+
+            if c.get("name"):
+                g.add((contact_uri, VCARD.fn, Literal(c["name"])))
+            if c.get("email"):
+                g.add((contact_uri, VCARD.hasEmail, Literal("mailto:" + c["email"])))
+
+        g.serialize(destination=output_path, format="turtle")
+        print(f"💾 RDF exportado en: {output_path}")
+
+        return output_path
