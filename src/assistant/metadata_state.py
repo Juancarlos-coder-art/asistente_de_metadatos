@@ -6,6 +6,8 @@ from rdflib import Graph, Namespace, URIRef, Literal
 from rdflib.namespace import RDF, DCTERMS, FOAF, XSD
 import json
 import re
+from assistant.validate import ejecutar_validacion_shacl
+
 
 class MetadataState:
     """
@@ -116,41 +118,46 @@ class MetadataState:
     # VALIDACIÓN SHACL (HealthDCAT-AP)
     # -------------------------------------------------------------
     def validar_shacl(self, ttl_path):
-        from assistant.validate import validar_shacl
         from pathlib import Path
+        from assistant.validate import ejecutar_validacion_shacl
 
         print("\n🧪 Validando mediante SHACL (API Comisión Europea)...")
 
-        # 1. NO TOCAR la ruta del usuario salvo para convertirla en absoluta
+        # 1. Convertir la ruta del TTL del usuario a absoluta
         ttl_path = Path(ttl_path).expanduser().resolve()
 
-        # 2. Obtener la ruta real del archivo metadata_state.py
-        current_file = Path(__file__).resolve()
+        # 2. Raíz del proyecto (src → asistente_de_metadatos)
+        project_root = Path(__file__).resolve().parents[2]
 
-        # 3. Subir a la carpeta raíz del proyecto: asistente_de_metadatos/
-        # metadata_state.py → assistant → src → asistente_de_metadatos
-        project_root = current_file.parents[3]
+        # 3. Carpeta con los SHACL
+        shacl_dir = project_root / "tools" / "shacl"
 
-        # 4. Ruta correcta hacia tus SHACL
-        shapes_path = project_root / "asistente_de_metadatos" / "tools" / "shacl" / "shacl_dataset_shape.ttl"
+        if not shacl_dir.exists():
+            raise FileNotFoundError(f"❌ Carpeta de SHACL no encontrada: {shacl_dir}")
 
-        # Convertir a absoluta
-        shapes_path = shapes_path.resolve()
+        # 4. Cargar shapes *.ttl
+        shapes = list(shacl_dir.glob("*.ttl"))
+        if not shapes:
+            raise FileNotFoundError(f"❌ No se encontraron shapes SHACL en: {shacl_dir}")
+
+        # 5. Comprobar que el TTL existe
+        if not ttl_path.exists():
+            raise FileNotFoundError(f"❌ El TTL no existe: {ttl_path}")
 
         print(f"📍 TTL (usuario): {ttl_path}")
-        print(f"📍 SHACL:         {shapes_path}")
+        print(f"📍 SHACL encontrados ({len(shapes)}):")
+        for s in shapes:
+            print(f"   - {s.name}")
 
-        # 5. Validar que los archivos existen
-        if not ttl_path.exists():
-            raise FileNotFoundError(f"❌ EL TTL NO EXISTE: {ttl_path}")
+        resultados = []
 
-        if not shapes_path.exists():
-            raise FileNotFoundError(f"❌ EL SHACL NO EXISTE: {shapes_path}")
+        # 6. Validar cada shape
+        for shape in shapes:
+            print(f"\n🔎 Validando con shape: {shape.name}")
+            resultado = ejecutar_validacion_shacl(str(ttl_path), str(shape.resolve()))
+            resultados.append((shape.name, resultado))
 
-        # 6. Validación con API oficial
-        return validar_shacl(str(ttl_path), str(shapes_path))
-
-
+        return resultados
   # -------------------------------------------------------------
     # EXPORTAR A RDF (Turtle)
     # -------------------------------------------------------------

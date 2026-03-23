@@ -1,34 +1,30 @@
-import requests
+# assistant/validate.py
+from pyshacl import validate
+from rdflib import Graph
 import os
 
-API_URL = "https://www.itb.ec.europa.eu/shacl/api/validation/validate"
+def ejecutar_validacion_shacl(ttl_path, shape_path):
+    """
+    Valida un RDF (TTL) contra un SHACL LOCAL usando pySHACL.
+    """
 
-def validar_shacl(self, ttl_path):
-    from assistant.validate import validar_shacl
-    from pathlib import Path
+    data_graph = Graph()
+    shape_graph = Graph()
 
-    print("\n🧪 Validando mediante SHACL (API Comisión Europea)...")
+    # Cargar RDF y SHACL
+    data_graph.parse(ttl_path, format="turtle")
+    shape_graph.parse(shape_path, format="turtle")
 
-    # Convertir la ruta del TTL REAL introducida por el usuario
-    ttl_path = Path(ttl_path).expanduser().resolve()
+    # Validación SHACL
+    conforms, report_graph, report_text = validate(
+        data_graph,
+        shacl_graph=shape_graph,
+        advanced=True,
+        allow_warnings=True
+    )
 
-    # SUBIR dos niveles /assistant/ → /src/ → /asistente_de_metadatos/
-    base_dir = Path(__file__).resolve().parents[3]
-
-    # Ruta REAL del SHACL
-    shapes_path = base_dir / "tools" / "shacl" / "shacl_dataset_shape.ttl"
-
-    shapes_path = shapes_path.resolve()
-
-    print(f"📍 TTL (usuario):  {ttl_path}")
-    print(f"📍 SHACL:         {shapes_path}")
-
-    # Comprobaciones
-    if not ttl_path.exists():
-        raise FileNotFoundError(f"❌ EL TTL NO EXISTE: {ttl_path}")
-
-    if not shapes_path.exists():
-        raise FileNotFoundError(f"❌ EL SHACL NO EXISTE: {shapes_path}")
-
-    # Llamada al validador oficial
-    return validar_shacl(str(ttl_path), str(shapes_path))
+    return {
+        "shape": os.path.basename(shape_path),
+        "conforms": conforms,
+        "report": report_text
+    }

@@ -1,0 +1,11 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+<s> a dcat:Dataset ;
+    dct:title "s"@es ;
+    dcat:contactPoint <s/contact> ;
+    dcat:keyword "s"@es .
+
+<s/contact> vcard:fn "ss" .
+
