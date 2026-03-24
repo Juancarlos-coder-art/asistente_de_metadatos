@@ -1,0 +1,56 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix hdt: <http://healthdataportal.eu/ns/health#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+hdt:HealthDatasetShape
+    a sh:NodeShape ;
+    sh:targetClass dcat:Dataset ;
+
+    sh:property [
+        sh:path hdt:healthCategory ;
+        sh:minCount 1 ;
+        sh:message "healthdcatap:healthCategory is mandatory";
+    ] ;
+
+    sh:property [
+        sh:path hdt:healthTheme ;
+        sh:minCount 1 ;
+        sh:message "healthdcatap:healthTheme is mandatory";
+    ] ;
+
+    sh:property [
+        sh:path hdt:populationCoverage ;
+        sh:minCount 1 ;
+        sh:message "healthdcatap:populationCoverage is mandatory";
+    ] ;
+
+    sh:property [
+        sh:path hdt:purpose ;
+        sh:minCount 1 ;
+        sh:message "healthdcatap:purpose is recommended";
+    ] ;
+
+    sh:property [
+        sh:path hdt:legalBasis ;
+        sh:minCount 1 ;
+        sh:message "healthdcatap:legalBasis is recommended";
+    ] ;
+
+    sh:property [
+        sh:path hdt:minTypicalAge ;
+        sh:datatype xsd:nonNegativeInteger ;
+        sh:message "healthdcatap:minTypicalAge must be integer";
+    ] ;
+
+    sh:property [
+        sh:path hdt:maxTypicalAge ;
+        sh:datatype xsd:nonNegativeInteger ;
+        sh:message "healthdcatap:maxTypicalAge must be integer";
+    ] ;
+
+    sh:property [
+        sh:path hdt:numberOfUniqueIndividuals ;
+        sh:datatype xsd:nonNegativeInteger ;
+        sh:message "healthdcatap:numberOfUniqueIndividuals must be integer";
+    ] .

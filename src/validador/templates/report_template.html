@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Informe MQA + SHACL</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #005bbb;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #003366;
+            text-align: center;
+        }
+        .section {
+            background: white;
+            margin: 20px auto;
+            padding: 25px;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ddd;
+        }
+        .metric-pass {
+            color: #0a8a2a;
+            font-weight: bold;
+        }
+        .metric-fail {
+            color: #cc0000;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th {
+            background: #003366;
+            color: white;
+            padding: 8px;
+        }
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>Informe de Calidad MQA + Validación SHACL</h1>
+</header>
+
+<!-- ====================== RESUMEN GENERAL ====================== -->
+
+<div class="section">
+    <h2>Resumen General</h2>
+
+    <p><strong>Puntuación total MQA:</strong> {{MQA_total}} / {{MQA_max}}</p>
+    <canvas id="chartTotal" style="max-width: 400px; margin: auto;"></canvas>
+
+</div>
+
+<!-- ====================== DIMENSIONES ====================== -->
+
+<div class="section">
+    <h2>Puntuación por Dimensiones</h2>
+
+    <canvas id="chartDimension" style="max-width: 600px; margin: auto;"></canvas>
+
+</div>
+
+<!-- ====================== MÉTRICAS ====================== -->
+
+<div class="section">
+    <h2>Métricas Aprobadas</h2>
+
+    <ul>
+    {% for m in passed %}
+        <li class="metric-pass">{{m.indicator}} – ({{m.metric}})</li>
+    {% endfor %}
+    </ul>
+</div>
+
+<div class="section">
+    <h2>Métricas Falladas</h2>
+
+    <ul>
+    {% for m in failed %}
+        <li class="metric-fail">{{m.indicator}} – ({{m.metric}})</li>
+    {% endfor %}
+    </ul>
+</div>
+
+<!-- ====================== SHACL ====================== -->
+
+<div class="section">
+    <h2>Resultados SHACL</h2>
+
+    <table>
+        <tr>
+            <th>Shape</th>
+            <th>¿Conforma?</th>
+            <th>Detalle</th>
+        </tr>
+
+        {% for s in shacl %}
+        <tr>
+            <td>{{s.shape}}</td>
+            <td>{% if s.conforms %}✔️ Sí{% else %}❌ No{% endif %}</td>
+            <td><pre>{{s.report}}</pre></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<!-- ====================== SCRIPTS ====================== -->
+
+<script>
+    // Gráfico puntuación total
+    new Chart(document.getElementById("chartTotal"), {
+        type: 'doughnut',
+        data: {
+            labels: ['MQA Score', 'Restante'],
+            datasets: [{
+                data: [{{MQA_total}}, {{MQA_max - MQA_total}}],
+                backgroundColor: ['#28a745', '#cccccc']
+            }]
+        }
+    });
+
+    // Gráfico radar de dimensiones
+    new Chart(document.getElementById("chartDimension"), {
+        type: 'radar',
+        data: {
+            labels: {{dimension_labels}},
+            datasets: [{
+                label: 'Puntuación',
+                data: {{dimension_scores}},
+                backgroundColor: 'rgba(0, 91, 187, 0.3)',
+                borderColor: '#005bbb',
+                borderWidth: 2
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>

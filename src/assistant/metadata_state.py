@@ -6,8 +6,7 @@ from rdflib import Graph, Namespace, URIRef, Literal
 from rdflib.namespace import RDF, DCTERMS, FOAF, XSD
 import json
 import re
-from assistant.validate import ejecutar_validacion_shacl
-
+from validador.quality_validator import QualityValidator
 
 class MetadataState:
     """
@@ -118,46 +117,33 @@ class MetadataState:
     # VALIDACIÓN SHACL (HealthDCAT-AP)
     # -------------------------------------------------------------
     def validar_shacl(self, ttl_path):
+        """
+        Validación híbrida:
+        1) DCAT‑AP oficial vía ITB
+        2) Extensiones Health‑DCAT‑AP vía SHACL local
+        """
+
+        from assistant.itb_validator import validate_via_itb
+        from assistant.health_validator import validate_health_dcat_ap
         from pathlib import Path
-        from assistant.validate import ejecutar_validacion_shacl
 
-        print("\n🧪 Validando mediante SHACL (API Comisión Europea)...")
+        print("\n🧪 Validando con ITB (DCAT‑AP oficial UE)...")
 
-        # 1. Convertir la ruta del TTL del usuario a absoluta
         ttl_path = Path(ttl_path).expanduser().resolve()
-
-        # 2. Raíz del proyecto (src → asistente_de_metadatos)
-        project_root = Path(__file__).resolve().parents[2]
-
-        # 3. Carpeta con los SHACL
-        shacl_dir = project_root / "tools" / "shacl"
-
-        if not shacl_dir.exists():
-            raise FileNotFoundError(f"❌ Carpeta de SHACL no encontrada: {shacl_dir}")
-
-        # 4. Cargar shapes *.ttl
-        shapes = list(shacl_dir.glob("*.ttl"))
-        if not shapes:
-            raise FileNotFoundError(f"❌ No se encontraron shapes SHACL en: {shacl_dir}")
-
-        # 5. Comprobar que el TTL existe
         if not ttl_path.exists():
             raise FileNotFoundError(f"❌ El TTL no existe: {ttl_path}")
 
-        print(f"📍 TTL (usuario): {ttl_path}")
-        print(f"📍 SHACL encontrados ({len(shapes)}):")
-        for s in shapes:
-            print(f"   - {s.name}")
+        # Validación DCAT-AP oficial (Comisión Europea)
+        dcat_report = validate_via_itb(str(ttl_path), validation_type="dcatap.2_1_1_full")
 
-        resultados = []
+        print("\n🧪 Validando extensiones Health‑DCAT‑AP (SHACL local)...")
+        health_report = validate_health_dcat_ap(str(ttl_path))
 
-        # 6. Validar cada shape
-        for shape in shapes:
-            print(f"\n🔎 Validando con shape: {shape.name}")
-            resultado = ejecutar_validacion_shacl(str(ttl_path), str(shape.resolve()))
-            resultados.append((shape.name, resultado))
+        return {
+            "dcat_ap": dcat_report,
+            "health_dcat_ap": health_report
+        }
 
-        return resultados
   # -------------------------------------------------------------
     # EXPORTAR A RDF (Turtle)
     # -------------------------------------------------------------

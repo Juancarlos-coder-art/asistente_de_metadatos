@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Informe MQA + SHACL</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #005bbb;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #003366;
+            text-align: center;
+        }
+        .section {
+            background: white;
+            margin: 20px auto;
+            padding: 25px;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ddd;
+        }
+        .metric-pass {
+            color: #0a8a2a;
+            font-weight: bold;
+        }
+        .metric-fail {
+            color: #cc0000;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th {
+            background: #003366;
+            color: white;
+            padding: 8px;
+        }
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>Informe de Calidad MQA + Validación SHACL</h1>
+</header>
+
+<!-- ====================== RESUMEN GENERAL ====================== -->
+
+<div class="section">
+    <h2>Resumen General</h2>
+
+    <p><strong>Puntuación total MQA:</strong> 210 / 970</p>
+    <canvas id="chartTotal" style="max-width: 400px; margin: auto;"></canvas>
+
+</div>
+
+<!-- ====================== DIMENSIONES ====================== -->
+
+<div class="section">
+    <h2>Puntuación por Dimensiones</h2>
+
+    <canvas id="chartDimension" style="max-width: 600px; margin: auto;"></canvas>
+
+</div>
+
+<!-- ====================== MÉTRICAS ====================== -->
+
+<div class="section">
+    <h2>Métricas Aprobadas</h2>
+
+    <ul>
+    
+        <li class="metric-pass">Dataset has a title – (dct:title)</li>
+    
+        <li class="metric-pass">Dataset has a description – (dct:description)</li>
+    
+        <li class="metric-pass">Landing page available – (dcat:landingPage)</li>
+    
+        <li class="metric-pass">Keywords present – (dcat:keyword)</li>
+    
+        <li class="metric-pass">Theme present – (dcat:theme)</li>
+    
+        <li class="metric-pass">Publisher exists – (dct:publisher)</li>
+    
+        <li class="metric-pass">Creator exists – (dct:creator)</li>
+    
+        <li class="metric-pass">Contact point present – (dcat:contactPoint)</li>
+    
+        <li class="metric-pass">Provenance declared – (dct:provenance)</li>
+    
+        <li class="metric-pass">Spatial coverage – (dct:spatial)</li>
+    
+        <li class="metric-pass">Access rights present – (dct:accessRights)</li>
+    
+    </ul>
+</div>
+
+<div class="section">
+    <h2>Métricas Falladas</h2>
+
+    <ul>
+    
+        <li class="metric-fail">Identifier present – (dct:identifier)</li>
+    
+        <li class="metric-fail">Use of standardized health categories (EHDS Art. 33) – (hcat:healthCategory)</li>
+    
+        <li class="metric-fail">Use of standardized health themes – (hcat:healthTheme)</li>
+    
+        <li class="metric-fail">Clinical code values provided – (hcat:codeValue)</li>
+    
+        <li class="metric-fail">Clinical coding system present – (hcat:codingSystem)</li>
+    
+        <li class="metric-fail">Use of controlled vocabularies (format or mediaType) – (['dct:format', 'dcat:mediaType'])</li>
+    
+        <li class="metric-fail">Trusted Data Holder indicated – (ehds:trustedDataHolder)</li>
+    
+        <li class="metric-fail">Health Data Access Body (HDAB) present – (ehds:healthDataAccessBody)</li>
+    
+        <li class="metric-fail">Issued date present – (dct:issued)</li>
+    
+        <li class="metric-fail">Modified date present – (dct:modified)</li>
+    
+        <li class="metric-fail">Frequency updated – (dct:accrualPeriodicity)</li>
+    
+        <li class="metric-fail">Temporal coverage – (dct:temporal)</li>
+    
+        <li class="metric-fail">Personal data declared – (hcat:personalData)</li>
+    
+        <li class="metric-fail">Population coverage declared – (hcat:populationCoverage)</li>
+    
+        <li class="metric-fail">Purpose for processing personal data declared – (hcat:purpose)</li>
+    
+        <li class="metric-fail">Legal basis declared – (dct:legalBasis)</li>
+    
+        <li class="metric-fail">Rights statement present – (dct:rights)</li>
+    
+        <li class="metric-fail">Applicable legislation declared – (dct:applicableLegislation)</li>
+    
+        <li class="metric-fail">Access URL – (dcat:accessURL)</li>
+    
+        <li class="metric-fail">Download URL – (dcat:downloadURL)</li>
+    
+        <li class="metric-fail">Media type present – (dcat:mediaType)</li>
+    
+        <li class="metric-fail">Format declared – (dct:format)</li>
+    
+        <li class="metric-fail">File size declared – (dcat:byteSize)</li>
+    
+        <li class="metric-fail">Hash present – (spdx:checksum)</li>
+    
+        <li class="metric-fail">Qualified attributions – (prov:qualifiedAttribution)</li>
+    
+        <li class="metric-fail">Qualified relations – (dcat:qualifiedRelation)</li>
+    
+        <li class="metric-fail">Provenance activity declared – (prov:Activity)</li>
+    
+        <li class="metric-fail">Access services present – (dcat:accessService)</li>
+    
+        <li class="metric-fail">Access service endpoint – (dcat:endpointURL)</li>
+    
+        <li class="metric-fail">Quality annotations present – (dqv:QualityAnnotation)</li>
+    
+        <li class="metric-fail">DCAT/HealthDCAT SHACL compliance – (SHACL)</li>
+    
+    </ul>
+</div>
+
+<!-- ====================== SHACL ====================== -->
+
+<div class="section">
+    <h2>Resultados SHACL</h2>
+
+    <table>
+        <tr>
+            <th>Shape</th>
+            <th>¿Conforma?</th>
+            <th>Detalle</th>
+        </tr>
+
+        
+        <tr>
+            <td>shacl_catalog_shape.ttl</td>
+            <td>✔️ Sí</td>
+            <td><pre>Validation Report
+Conforms: True
+</pre></td>
+        </tr>
+        
+        <tr>
+            <td>shacl_common_shapes.ttl</td>
+            <td>✔️ Sí</td>
+            <td><pre>Validation Report
+Conforms: True
+</pre></td>
+        </tr>
+        
+        <tr>
+            <td>shacl_dataservice_shape.ttl</td>
+            <td>✔️ Sí</td>
+            <td><pre>Validation Report
+Conforms: True
+</pre></td>
+        </tr>
+        
+        <tr>
+            <td>shacl_dataset_shape.ttl</td>
+            <td>✔️ Sí</td>
+            <td><pre>Validation Report
+Conforms: True
+</pre></td>
+        </tr>
+        
+        <tr>
+            <td>shacl_distribution_shape.ttl</td>
+            <td>✔️ Sí</td>
+            <td><pre>Validation Report
+Conforms: True
+</pre></td>
+        </tr>
+        
+        <tr>
+            <td>shacl_imports.ttl</td>
+            <td>✔️ Sí</td>
+            <td><pre>Validation Report
+Conforms: True
+</pre></td>
+        </tr>
+        
+        <tr>
+            <td>shacl_mdr-vocabularies.shape.ttl</td>
+            <td>✔️ Sí</td>
+            <td><pre>Validation Report
+Conforms: True
+</pre></td>
+        </tr>
+        
+        <tr>
+            <td>shacl_mdr_imports.ttl</td>
+            <td>✔️ Sí</td>
+            <td><pre>Validation Report
+Conforms: True
+</pre></td>
+        </tr>
+        
+    </table>
+</div>
+
+<!-- ====================== SCRIPTS ====================== -->
+
+<script>
+    // Gráfico puntuación total
+    new Chart(document.getElementById("chartTotal"), {
+        type: 'doughnut',
+        data: {
+            labels: ['MQA Score', 'Restante'],
+            datasets: [{
+                data: [210, 760],
+                backgroundColor: ['#28a745', '#cccccc']
+            }]
+        }
+    });
+
+    // Gráfico radar de dimensiones
+    new Chart(document.getElementById("chartDimension"), {
+        type: 'radar',
+        data: {
+            labels: ["Findability", "Interoperability", "Reusability", "Governance", "Contextuality", "Privacy", "Accessibility", "Security", "Provenance", "Quality"],
+            datasets: [{
+                label: 'Puntuación',
+                data: [100, 0, 70, 0, 40, 0, 0, 0, 0, 0],
+                backgroundColor: 'rgba(0, 91, 187, 0.3)',
+                borderColor: '#005bbb',
+                borderWidth: 2
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>
