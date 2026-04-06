@@ -82,8 +82,8 @@ else:
             help=help_text,
             key=f"{block['name']}_{field_name}"
         )
-        partial[field_name] = parse_input(field_name, raw_value)
-
+        partial[field_name] = parse_input(field_name, raw_value, schema)
+        
     if st.button("Guardar bloque manual"):
         state.merge_partial(partial)
         st.success("Bloque guardado.")

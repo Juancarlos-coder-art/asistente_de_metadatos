@@ -6,14 +6,12 @@ BLOCKS = [
     {
         "name": "identificacion_basica",
         "fields": [
-            "title", "name", "notes", "identifier", "uri",
-            "version", "version_notes", "has_version"
+            "title", "name","identifier","applicable_legislation"
         ],
         "question": (
-            "Indica el título del dataset, el nombre corto para la URL en CKAN, "
-            "una descripción general de qué contiene y para qué sirve, su identificador "
-            "único si existe, la URI del dataset si la tienes, la versión actual, "
-            "las notas de versión y si existe alguna versión relacionada o previa."
+            "Proporciona una descripción general del dataset e incluye el DOI del conjunto "
+            "de datos si está disponible. El campo 'applicable_legislation' será completado "
+            "automáticamente por el asistente, por lo que no es necesario que lo aportes."
         )
     },
     {
@@ -164,26 +162,7 @@ BLOCKS = [
     }
 ]
 
-LIST_FIELDS = [
-    "tag_string",
-    "theme",
-    "language",
-    "documentation",
-    "conforms_to",
-    "is_referenced_by",
-    "analytics",
-    "alternate_identifier",
-    "purpose",
-    "population_coverage",
-    "personal_data",
-    "health_category",
-    "health_theme",
-    "legal_basis",
-    "code_values",
-    "coding_system",
-    "applicable_legislation",
-    "has_version"
-]
+
 def build_contract(block: dict) -> dict:
     # Claves esperadas en la respuesta del LLM para este bloque
     return {name: None for name in block["fields"]}
@@ -202,98 +181,30 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         f"{'Contexto del usuario: ' + user_context if user_context else ''}"
     )
 
-def parse_input(field_name: str, raw_value: str):
 
-    raw_value = raw_value.strip()
 
-    if raw_value == "":
-        return None
-
-    # campos que son listas
-    if field_name in LIST_FIELDS:
-        return [v.strip() for v in raw_value.split(",") if v.strip()]
-
-    # campo contacto estructurado
-    if field_name == "contact":
-
-        contactos = []
-        bloques = [b.strip() for b in raw_value.split(",") if b.strip()]
-
-        for b in bloques:
-
-            partes = [p.strip() for p in b.split("|")]
-
-            contacto = {}
-
-            if len(partes) > 0:
-                contacto["name"] = partes[0]
-
-            if len(partes) > 1:
-                contacto["email"] = partes[1]
-
-            if len(partes) > 2:
-                contacto["role"] = partes[2]
-
-            contactos.append(contacto)
-
-        return contactos if contactos else None
-
-    return raw_value
-
-def ask_field(schema: HealthDCATAPSchema, field_name: str):
-    """
-    Muestra la pregunta para un campo concreto usando el schema.
-    """
-    field = schema.get_field(field_name)
-
-    if field:
-        label = field.get("label", field_name)
-        help_text = field.get("help_text", "")
-        required = field.get("required", False)
-
-        print(f"\n📌 {label}" + (" (obligatorio)" if required else ""))
-        if help_text:
-            print(f"ℹ️ {help_text}")
-    else:
-        print(f"\n📌 {field_name}")
-
-    raw_value = input("Tu respuesta: ")
-    return parse_input(field_name, raw_value)
 
 
 def ask_block(schema: HealthDCATAPSchema, state: MetadataState, block: dict):
     print(f"\n=== BLOQUE: {block['name']} ===\n")
     print(block["question"])
 
-    # Pregunta si quieres que el LLM lo sugiera todo de una vez
-    use_ai = False
-    if llm_available():
-        choice = input("Pulsa Enter para contestar tú, o escribe 'ia' para autocompletar con IA: ").strip().lower()
-        use_ai = (choice == "ia")
+    # El asistente SIEMPRE usa IA
+    user_context = ""  # puedes añadir contexto general si quieres
+    prompt = build_prompt_for_block(schema, block, user_context)
+    contract = build_contract(block)
 
-    partial = {}
+    # Llama al LLM para generar TODO EL BLOQUE
+    ai_result = call_llm(prompt, contract, user_context)
 
-    if use_ai:
-        # Recoge contexto libre del usuario (opcional)
-        user_context = input("Añade contexto opcional para la IA (o Enter para saltar): ").strip()
-        prompt = build_prompt_for_block(schema, block, user_context)
-        contract = build_contract(block)
-        ai_result = call_llm(prompt, contract, user_context)  # dict con las claves del bloque
-
-        # Integra tal cual lo que devuelve el LLM (ya está tipado)
-        for name in block["fields"]:
-            partial[name] = ai_result.get(name, None)
-
-    else:
-        # Camino manual de siempre
-        for field_name in block["fields"]:
-            partial[field_name] = ask_field(schema, field_name)
-
+    # Guarda los datos en el estado
+    partial = { name: ai_result.get(name, None) for name in block["fields"] }
     state.merge_partial(partial)
 
     print("\n✔️ Bloque procesado. Estado parcial actualizado:")
     print(json.dumps(state.data, indent=2, ensure_ascii=False))
 
+    # Validaciones internas
     errors = state.validate_types_basic()
     if errors:
         print("\n⚠️ Validaciones detectadas:")
@@ -319,6 +230,14 @@ if __name__ == "__main__":
 
     for block in BLOCKS:
         ask_block(schema, state, block)
+
+    # ✅ Inserción automática de legislación aplicable
+    state.data["applicable_legislation"] = [
+        {
+            "uri": "http://data.europa.eu/eli/reg/2016/679/oj",
+            "label": "GDPR"
+        }
+    ]
 
     print("\n=== RESULTADO FINAL ===\n")
     print(json.dumps(state.data, indent=2, ensure_ascii=False))
