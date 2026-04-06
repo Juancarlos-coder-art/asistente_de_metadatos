@@ -4,6 +4,7 @@ import json
 import re
 from schema_loader import HealthDCATAPSchema
 import yaml
+ACTIVE_FIELDS = {"title","identifier", "notes", "access_rights", "hdab"}
 class MetadataState:
     """
     Mantiene el estado acumulado de los metadatos HealthDCAT-AP
@@ -38,10 +39,14 @@ class MetadataState:
         return [
             f["field_name"]
             for f in self.schema.get("dataset_fields", [])
-            if f.get("required")
+            if f.get("required") and f["field_name"] in ACTIVE_FIELDS
         ]
 
     def missing_required(self):
+        errors = []
+        for field, value in self.data.items():
+            if field not in ACTIVE_FIELDS:  # ignorar campos fuera del scope
+                continue
         missing = []
         for field_name in self.required_fields():
             val = self.data.get(field_name)

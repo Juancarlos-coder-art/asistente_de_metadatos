@@ -6,7 +6,7 @@ BLOCKS = [
     {
         "name": "identificacion_basica",
         "fields": [
-            "title", "name","identifier","applicable_legislation"
+            "title","identifier", "notes"
         ],
         "question": (
             "Proporciona una descripción general del dataset e incluye el DOI del conjunto "
@@ -15,149 +15,26 @@ BLOCKS = [
         )
     },
     {
-        "name": "palabras_clave_y_clasificacion",
+        "name": "derechos de acceso",
         "fields": [
-            "tag_string", "theme", "dcat_type",
-            "health_category", "health_theme",
-            "code_values", "coding_system"
+            "access_rights"
         ],
         "question": (
-            "Indica las palabras clave del dataset, su temática general, el tipo de dataset, "
-            "la categoría y temática sanitaria a la que pertenece, así como los códigos "
-            "clínicos, clasificaciones o sistemas de codificación utilizados "
-            "(por ejemplo ICD-10, SNOMED CT, etc.)."
+            "¿Quién puede acceder legalmente al dataset que estás subiendo y bajo qué condiciones?"
         )
     },
     {
-        "name": "responsables_del_dataset",
+        "name": "organismo_acceso_datos_sanitarios",
         "fields": [
-            "publisher", "creator", "contact", "owner_org",
-            "publisher_note", "publisher_type",
-            "trusted_data_holder", "hdab"
+            "hdab"
         ],
         "question": (
-            "Indica quién publica el dataset, quién lo creó y cuál es el punto de contacto "
-            "para consultas. Para cada entidad, incluye si es posible nombre, URI, email, "
-            "URL, tipo e identificador. Añade también la organización de CKAN a la que "
-            "pertenecerá, el tipo de publicador, una breve nota sobre el publicador, "
-            "si es un trusted data holder y, en su caso, el Health Data Access Body asociado."
-        )
-    },
-    {
-        "name": "paginas_y_documentacion",
-        "fields": [
-            "homepage", "url", "documentation",
-            "conforms_to", "is_referenced_by", "analytics"
-        ],
-        "question": (
-            "Indica la página principal del dataset, su landing page, la documentación "
-            "disponible, las normas o especificaciones que sigue, las publicaciones o "
-            "recursos que lo referencian y cualquier enlace a servicios analíticos, "
-            "informes técnicos o indicadores de calidad asociados."
-        )
-    },
-    {
-        "name": "licencia_y_acceso",
-        "fields": [
-            "license_id", "access_rights",
-            "applicable_legislation", "legal_basis"
-        ],
-        "question": (
-            "Indica la licencia del dataset, sus condiciones o derechos de acceso, "
-            "la legislación aplicable que obliga a su creación o gestión y la base "
-            "jurídica que justifica el tratamiento de los datos personales, si aplica."
-        )
-    },
-    {
-        "name": "fechas_y_ciclo_de_vida",
-        "fields": [
-            "issued", "modified", "frequency",
-            "provenance", "provenance_activity"
-        ],
-        "question": (
-            "Indica la fecha de publicación del dataset, la última fecha de modificación, "
-            "la frecuencia de actualización, una descripción de su procedencia o linaje y, "
-            "si quieres documentarlo de forma estructurada, la actividad de procedencia "
-            "que lo originó, incluyendo agentes, organización, tipo de actividad y fechas."
-        )
-    },
-    {
-        "name": "cobertura_temporal_y_espacial",
-        "fields": [
-            "temporal_coverage", "temporal_resolution",
-            "spatial_coverage", "spatial_resolution_in_meters"
-        ],
-        "question": (
-            "Indica el periodo temporal cubierto por el dataset, su resolución temporal, "
-            "el ámbito geográfico que cubre y, si la conoces, la resolución espacial en metros. "
-            "Para la cobertura geográfica puedes incluir URI, nombre de la región, geometría, "
-            "bounding box o centroide."
-        )
-    },
-    {
-        "name": "idioma_e_identificadores",
-        "fields": [
-            "language", "alternate_identifier"
-        ],
-        "question": (
-            "Indica el idioma o idiomas del dataset y cualquier identificador alternativo "
-            "o secundario que tenga, como DOI, DataCite, ADS, MAST u otros."
-        )
-    },
-    {
-        "name": "finalidad_y_contexto_sanitario",
-        "fields": [
-            "purpose", "population_coverage",
-            "personal_data", "health_category", "health_theme"
-        ],
-        "question": (
-            "Explica la finalidad del tratamiento o del uso del dataset, qué población cubre, "
-            "qué tipos de datos personales contiene o representa y, si procede, vuelve a indicar "
-            "la categoría y temática sanitaria desde el punto de vista de HealthDCAT-AP."
-        )
-    },
-    {
-        "name": "variables_demograficas_y_tamano",
-        "fields": [
-            "min_typical_age", "max_typical_age",
-            "number_of_records", "number_of_unique_individuals"
-        ],
-        "question": (
-            "Indica la edad mínima y máxima típica de la población del dataset, "
-            "el número total de registros y, si aplica, el número de individuos únicos representados."
-        )
-    },
-    {
-        "name": "conservacion_y_disponibilidad",
-        "fields": [
-            "retention_period"
-        ],
-        "question": (
-            "Indica el periodo durante el cual el dataset está disponible para uso secundario, "
-            "señalando fecha de inicio y de fin si se conocen."
-        )
-    },
-    {
-        "name": "relaciones_y_atribuciones",
-        "fields": [
-            "qualified_relation", "qualified_attribution"
-        ],
-        "question": (
-            "Indica si el dataset mantiene relaciones formales con otros recursos o datasets "
-            "y describe esas relaciones. Añade también, si aplica, atribuciones cualificadas, "
-            "indicando el agente implicado y su rol respecto al dataset."
-        )
-    },
-    {
-        "name": "calidad_del_dataset",
-        "fields": [
-            "quality_annotation"
-        ],
-        "question": (
-            "Indica si existen anotaciones de calidad sobre el dataset, como certificados, "
-            "mediciones, resultados de evaluación o evidencias de calidad. Para cada una, "
-            "incluye el contenido de la anotación, a qué aspecto del dataset se refiere "
-            "y con qué motivación se realizó."
+            "Indica el organismo que gestiona el acceso a los datos sanitarios (HDAB). "
+            "Por favor, proporciona el nombre del organismo y su tipo (por ejemplo: "
+            "Instituto de salud pública, Universidad, Registro de salud pública, "
+            "Autoridad nacional, etc.). "
+            "Si dispones de ellos, incluye también el correo de contacto, "
+            "el teléfono, la página web de contacto y el horario de disponibilidad."
         )
     }
 ]
@@ -171,7 +48,30 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
     fields = ", ".join(block["fields"])
     instrucciones = (
         "Devuelve SOLO JSON válido. Las listas como arrays JSON. "
-        "El campo 'contact' es una lista de objetos con claves 'name', 'email', 'role'. "
+        "Si el usuario NO ha proporcionado información para un campo, devuelve null. "
+        "NUNCA inventes subcampos ni objetos. "
+        
+        # ── access_rights ──
+        "Para el campo 'access_rights', analiza la descripción y devuelve SOLO la URI:\n"
+        "- Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
+        "- Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
+        "- Confidencial → http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL\n"
+        "- No público → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
+        "- Sensible → http://publications.europa.eu/resource/authority/access-right/SENSITIVE\n"
+        "- Normal → http://publications.europa.eu/resource/authority/access-right/NORMAL\n"
+        "- Datos provisionales → http://publications.europa.eu/resource/authority/access-right/OP_DATPRO\n"
+
+        # ── hdab ──
+        "Para el campo 'hdab', devuelve un objeto con EXACTAMENTE estas claves:\n"
+        "  name (string), type (URI del tipo de organismo), email (string o null),\n"
+        "  telephone (string o null), contact_page (URL o null).\n"
+        "Para 'type', usa la URI más adecuada, por ejemplo:\n"
+        "- Instituto de investigación → http://13.81.34.152:1101/resource/authority/publisher-type/research-institute-org\n"
+        "- Universidad → http://13.81.34.152:1101/resource/authority/publisher-type/university\n"
+        "- Instituto de salud pública → http://13.81.34.152:1101/resource/authority/publisher-type/public-health-institute\n"
+        "- Autoridad nacional → http://13.81.34.152:1101/resource/authority/publisher-type/national-authority\n"
+        "No uses claves en español ni inventes URIs.\n"
+
         "No añadas claves extra ni texto fuera del JSON."
     )
     return (
