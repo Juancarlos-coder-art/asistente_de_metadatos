@@ -3,17 +3,17 @@
 import json
 import re
 from schema_loader import HealthDCATAPSchema
-
+import yaml
 class MetadataState:
     """
     Mantiene el estado acumulado de los metadatos HealthDCAT-AP
     durante la conversación por bloques.
     """
 
-    def __init__(self, schema_path="health_dcat_ap.json"):
+    def __init__(self, schema_path="health_dcat_ap.yaml"):
         # Cargar esquema crudo
         with open(schema_path, "r", encoding="utf-8") as f:
-            self.schema = json.load(f)
+            self.schema = yaml.safe_load(f)
 
         # Cargar reglas generadas desde HealthDCATAPSchema
         self.restrictions = HealthDCATAPSchema(schema_path).extract_restrictions()

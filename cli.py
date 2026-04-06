@@ -189,22 +189,32 @@ def ask_block(schema: HealthDCATAPSchema, state: MetadataState, block: dict):
     print(f"\n=== BLOQUE: {block['name']} ===\n")
     print(block["question"])
 
-    # El asistente SIEMPRE usa IA
-    user_context = ""  # puedes añadir contexto general si quieres
+    # ✅ El usuario responde
+    print("\nTu respuesta (pulsa Enter dos veces para terminar):")
+    lines = []
+    while True:
+        line = input()
+        if line == "":
+            break
+        lines.append(line)
+    user_context = "\n".join(lines)
+
+    if not user_context.strip():
+        print("⏭️ Bloque omitido.")
+        return
+
     prompt = build_prompt_for_block(schema, block, user_context)
     contract = build_contract(block)
 
-    # Llama al LLM para generar TODO EL BLOQUE
+    # El LLM interpreta la respuesta del usuario
     ai_result = call_llm(prompt, contract, user_context)
 
-    # Guarda los datos en el estado
     partial = { name: ai_result.get(name, None) for name in block["fields"] }
     state.merge_partial(partial)
 
-    print("\n✔️ Bloque procesado. Estado parcial actualizado:")
+    print("\n✔️ Bloque procesado:")
     print(json.dumps(state.data, indent=2, ensure_ascii=False))
 
-    # Validaciones internas
     errors = state.validate_types_basic()
     if errors:
         print("\n⚠️ Validaciones detectadas:")
@@ -223,8 +233,8 @@ def save_output(state: MetadataState, path="metadata_output.json"):
 
 
 if __name__ == "__main__":
-    schema = HealthDCATAPSchema("health_dcat_ap.json")
-    state = MetadataState("health_dcat_ap.json")
+    schema = HealthDCATAPSchema("health_dcat_ap.yaml")
+    state = MetadataState("health_dcat_ap.yaml")
 
     print("\n=== ASISTENTE MULTICAMPO HealthDCAT-AP ===\n")
 

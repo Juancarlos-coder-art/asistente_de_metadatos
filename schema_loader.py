@@ -7,7 +7,7 @@ class HealthDCATAPSchema:
     las propiedades definidas en el esquema.
     """
 
-    def __init__(self, schema_path="health_dcat_ap.json"):
+    def __init__(self, schema_path="health_dcat_ap.yaml"):
         self.schema = self._load_schema(schema_path)
         self.dataset_fields = self.schema.get("dataset_fields", [])
         self.resource_fields = self.schema.get("resource_fields", [])
@@ -16,8 +16,9 @@ class HealthDCATAPSchema:
     # CARGA DEL ESQUEMA
     # ------------------------------
     def _load_schema(self, path):
+        import yaml
         with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
+            return yaml.safe_load(f)
 
     # ------------------------------
     # OBTENER LISTAS DE CAMPOS
