@@ -1,0 +1,11 @@
+{
+  "title": "Dataset sobre la viruela del mono",
+  "identifier": null,
+  "notes": "El conjunto de datos contiene información sobre la viruela del mono",
+  "applicable_legislation": [
+    {
+      "uri": "http://data.europa.eu/eli/reg/2016/679/oj",
+      "label": "GDPR"
+    }
+  ]
+}

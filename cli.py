@@ -34,7 +34,7 @@ BLOCKS = [
             "Instituto de salud pública, Universidad, Registro de salud pública, "
             "Autoridad nacional, etc.). "
             "Si dispones de ellos, incluye también el correo de contacto, "
-            "el teléfono, la página web de contacto y el horario de disponibilidad."
+            "El teléfono, la página web de contacto y el horario de disponibilidad."
         )
     }
 ]
@@ -47,9 +47,12 @@ def build_contract(block: dict) -> dict:
 def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context: str = "") -> str:
     fields = ", ".join(block["fields"])
     instrucciones = (
-        "Devuelve SOLO JSON válido. Las listas como arrays JSON. "
-        "Si el usuario NO ha proporcionado información para un campo, devuelve null. "
-        "NUNCA inventes subcampos ni objetos. "
+            "Devuelve SOLO JSON válido. Las listas como arrays JSON. "
+            "REGLA MÁS IMPORTANTE: Si el usuario NO menciona explícitamente un campo, "
+            "devuelve null para ese campo. NUNCA deduzcas, infergas ni inventes valores. "
+            "Solo rellena un campo si el usuario ha proporcionado información DIRECTA sobre él. "
+            "Si hay duda, devuelve null. "
+    
         
         # ── access_rights ──
         "Para el campo 'access_rights', analiza la descripción y devuelve SOLO la URI:\n"
