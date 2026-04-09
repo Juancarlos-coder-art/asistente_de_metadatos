@@ -222,10 +222,11 @@ block = BLOCKS[block_idx]
 
 # Campos faltantes del bloque actual
 block_missing = get_block_missing(block, state.data)
+# DESPUÉS — pon esto
 block_missing_info = get_missing_descriptions(
     block_missing,
-    use_llm=llm_available(),
-    call_llm_fn=call_llm if llm_available() else None
+    use_llm=False,
+    call_llm_fn=None
 )
 
 # Campos obligatorios pendientes globales

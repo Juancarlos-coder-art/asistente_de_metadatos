@@ -1,0 +1,30 @@
+steps:
+  # 1. Construir la imagen Docker
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos:$COMMIT_SHA'
+      - '.'
+
+  # 2. Subir la imagen a Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos:$COMMIT_SHA'
+
+  # 3. Desplegar en Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'asistente-metadatos'
+      - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos:$COMMIT_SHA'
+      - '--region=europe-west1'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+      - '--set-secrets=GROQ_API_KEY=GROQ_API_KEY:latest'
+
+images:
+  - 'europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos:$COMMIT_SHA'

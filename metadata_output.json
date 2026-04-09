@@ -1,7 +1,15 @@
 {
   "title": "Dataset sobre la viruela del mono",
   "identifier": null,
-  "notes": "El conjunto de datos contiene información sobre la viruela del mono",
+  "notes": "Describe la viruela del mono",
+  "access_rights": "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+  "hdab": {
+    "name": "CSIC",
+    "type": "http://13.81.34.152:1101/resource/authority/publisher-type/research-institute-org",
+    "email": null,
+    "telephone": null,
+    "contact_page": "https://www.csic.es/es"
+  },
   "applicable_legislation": [
     {
       "uri": "http://data.europa.eu/eli/reg/2016/679/oj",
