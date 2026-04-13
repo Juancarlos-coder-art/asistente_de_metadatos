@@ -1,37 +1,79 @@
 import os
 import json
 import re
-from dotenv import load_dotenv
 
-load_dotenv()
+# =====================================================
+# Helpers para configuración (runtime, no import-time!)
+# =====================================================
 
-USE_OPENAI = os.getenv("USE_OPENAI", "false").lower() == "true"
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+def get_use_openai() -> bool:
+    return os.getenv("USE_OPENAI", "false").lower() == "true"
 
-client = None
 
-if USE_OPENAI and OPENAI_API_KEY:
+def get_openai_client():
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        return None
     from openai import OpenAI
-    client = OpenAI(api_key=OPENAI_API_KEY)
+    return OpenAI(api_key=api_key)
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-groq_client = None
 
-if GROQ_API_KEY:
+def get_groq_client():
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        return None
     from groq import Groq
-    groq_client = Groq(api_key=GROQ_API_KEY)
+    return Groq(api_key=api_key)
+
+
+# =====================================================
+# LLM implementations
+# =====================================================
 
 def groq_llm(prompt: str) -> dict:
-    response = groq_client.chat.completions.create(
-        model="llama-3.3-70b-versatile",  # modelo gratis
+    client = get_groq_client()
+    if not client:
+        raise RuntimeError("GROQ_API_KEY no definida")
+
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
         messages=[
             {"role": "system", "content": "Devuelve SOLO JSON válido."},
             {"role": "user", "content": prompt}
         ]
     )
+
     raw = response.choices[0].message.content
     return extract_json_from_text(raw)
 
+
+def openai_llm(prompt: str) -> dict:
+    client = get_openai_client()
+    if not client:
+        raise RuntimeError("OPENAI_API_KEY no definida")
+
+    response = client.chat.completions.create(
+        model="gpt-4.1-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": "Eres un asistente experto en HealthDCAT-AP. Devuelve siempre JSON válido."
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        temperature=0
+    )
+
+    raw = response.choices[0].message.content
+    return extract_json_from_text(raw)
+
+
+# =====================================================
+# Utils
+# =====================================================
 
 def extract_json_from_text(text: str) -> dict:
     try:
@@ -75,8 +117,7 @@ def parse_simple_field(field_name: str, user_input: str):
 
 def mock_llm(prompt: str, contract: dict, user_input: str) -> dict:
     """
-    Modo local sin OpenAI.
-    Intenta rellenar los campos del contrato con reglas básicas.
+    Modo fallback sin LLM real.
     """
     result = {}
 
@@ -86,34 +127,26 @@ def mock_llm(prompt: str, contract: dict, user_input: str) -> dict:
     return result
 
 
-def openai_llm(prompt: str) -> dict:
-    response = client.chat.completions.create(
-        model="gpt-4.1-mini",
-        messages=[
-            {
-                "role": "system",
-                "content": "Eres un asistente experto en HealthDCAT-AP. Devuelve siempre JSON válido."
-            },
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ],
-        temperature=0
-    )
-
-    raw = response.choices[0].message.content
-    return extract_json_from_text(raw)
-
+# =====================================================
+# Public API usada por Streamlit
+# =====================================================
 
 def call_llm(prompt: str, contract: dict, user_input: str) -> dict:
-    if USE_OPENAI and client is not None:
-        return openai_llm(prompt)
+    if get_use_openai():
+        client = get_openai_client()
+        if client:
+            return openai_llm(prompt)
 
-    if groq_client is not None:
+    client = get_groq_client()
+    if client:
         return groq_llm(prompt)
 
+    # Fallback seguro
     return mock_llm(prompt, contract, user_input)
 
+
 def llm_available() -> bool:
-    return groq_client is not None or (USE_OPENAI and client is not None)
+    return bool(
+        get_groq_client() or
+        (get_use_openai() and get_openai_client())
+    )
