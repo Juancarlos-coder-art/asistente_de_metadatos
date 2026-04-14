@@ -29,6 +29,8 @@ dataset_fields:
   label:
     es: Identificador
     en: Identifier
+  required: true
+
   
 - field_name: theme
   label:
@@ -36,6 +38,7 @@ dataset_fields:
     en: Theme
   form_snippet: theme_repeat_select.html
   preset: multiple_checkbox
+  required: true
   display_snippet: theme_custom.html
   choices:
     - value: http://publications.europa.eu/resource/authority/data-theme/AGRI
@@ -99,6 +102,7 @@ dataset_fields:
   label:
     es: Organismo de acceso a datos de salud
     en: Health Data Access Body
+  required: true
   display_snippet: hdab_custom.html
   repeating_label:
     es: Organismo de acceso a datos de salud
@@ -264,12 +268,14 @@ dataset_fields:
       label:
         es: Página de contacto
         en: Contact page
+      required: true
       display_snippet: link.html
 
     - field_name: email
       label:
         es: Correo
         en: Email
+      required: true
       display_snippet: email.html
 
     - field_name: telephone
@@ -281,7 +287,6 @@ dataset_fields:
       label:
         es: Descripción
         en: Opening hours description
-
     - field_name: opening_hours_frequency
       label:
         es: Frecuencia
@@ -657,6 +662,7 @@ dataset_fields:
     en: Access rights
   display_snippet: choice_link.html
   preset: select
+  required: true
   choices:
   - value: http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL
     label:
@@ -694,6 +700,7 @@ dataset_fields:
   form_snippet: health_category_repeat_select.html
   display_snippet: choice_link.html
   preset: multiple_checkbox
+  required: true
   choices:
     - value: http://13.81.34.152:1101/resource/authority/healthcategories/HRAD
       label:
