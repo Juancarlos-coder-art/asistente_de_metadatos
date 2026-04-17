@@ -14,7 +14,17 @@ st.set_page_config(
     page_title="Asistente HealthDCAT-AP-ES",
     page_icon="🏥",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
+    menu_items = 
+{
+        "About": """
+        ## 🏥 Asistente HealthDCAT-AP-ES
+
+        Asistente conversacional para la creación de metadatos
+        conforme al perfil **HealthDCAT-AP-ES**.
+        """
+    }
+
 )
 
 # ─────────────────────────────────────────────
@@ -136,7 +146,7 @@ section[data-testid="stSidebar"] .stProgress > div > div { background-color: #2e
 .alert-error { background: #fdedec; border: 1px solid #f5b7b1; color: #922b21; border-radius: 8px; padding: 10px 16px; font-size: 0.88rem; }
 
 hr { border-color: #dde3ed; }
-#MainMenu {visibility: hidden;}
+# MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)

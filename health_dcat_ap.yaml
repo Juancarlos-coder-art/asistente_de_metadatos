@@ -3,7 +3,7 @@ dataset_type: dataset
 about: Schema for HealthDCAT-AP Release 6
 about_url: https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-6/
 dataset_fields:
-- field_name: title
+- field_name: Título
   label:
     es: Título
     en: Title
@@ -14,7 +14,7 @@ dataset_fields:
     es: URL
     en: URL
   preset: dataset_slug
-- field_name: notes
+- field_name: Descripción
   label:
     es: Descripción
     en: Description
@@ -25,14 +25,14 @@ dataset_fields:
     es: Palabras clave
     en: Keywords
   preset: tag_string_autocomplete
-- field_name: identifier
+- field_name: Identificador
   label:
     es: Identificador
     en: Identifier
   required: true
 
   
-- field_name: theme
+- field_name: Tema
   label:
     es: Tema
     en: Theme
@@ -98,7 +98,7 @@ dataset_fields:
         es: Transporte
         en: Transport
   
-- field_name: hdab
+- field_name: Organismo_a_los_datos_sanitarios
   label:
     es: Organismo de acceso a datos de salud
     en: Health Data Access Body
@@ -656,7 +656,7 @@ dataset_fields:
         es: Etiqueta
         en: Label
 
-- field_name: access_rights
+- field_name: Derechos_de_Acceso
   label:
     es: Derechos de acceso
     en: Access rights
