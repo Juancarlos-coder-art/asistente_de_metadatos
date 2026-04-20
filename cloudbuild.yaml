@@ -3,28 +3,28 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos:$COMMIT_SHA'
+      - 'europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos-qa:$COMMIT_SHA'
       - '.'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos:$COMMIT_SHA'
+      - 'europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos-qa:$COMMIT_SHA'
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
       - 'run'
       - 'deploy'
-      - 'asistente-metadatos'
-      - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos:$COMMIT_SHA'
+      - 'asistente-metadatos-qa'
+      - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos-qa:$COMMIT_SHA'
       - '--region=europe-west1'
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--set-secrets=GROQ_API_KEY=GROQ_API_KEY:latest'
 
 images:
-  - 'europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos:$COMMIT_SHA'
+  - 'europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos-qa:$COMMIT_SHA'
 
 options:
   logging: CLOUD_LOGGING_ONLY
