@@ -30,7 +30,8 @@ class HealthDCATAPSchema:
                 "label": f.get("label"),
                 "required": f.get("required", False),
                 "preset": f.get("preset"),
-                "help_text": f.get("help_text")
+                "help_text": f.get("help_text"),
+                "validators": f.get("validators")
             }
             for f in self.dataset_fields
         ]
