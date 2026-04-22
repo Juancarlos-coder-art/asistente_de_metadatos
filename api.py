@@ -17,6 +17,10 @@ from assistant.metadata_state import MetadataState
 from assistant.llm_provider import call_llm, llm_available
 from assistant.rag_helper import get_block_missing, get_missing_descriptions
 from cli import BLOCKS, build_prompt_for_block, build_contract
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
+
 
 # ─────────────────────────────────────────────
 # APP
@@ -223,3 +227,11 @@ def llm_status():
         "available": llm_available(),
         "message": "LLM disponible" if llm_available() else "Configura GROQ_API_KEY en el .env"
     }
+
+# Servir el frontend React (después de todos los endpoints)
+if os.path.exists("frontend/dist"):
+    app.mount("/assets", StaticFiles(directory="frontend/dist/assets"), name="assets")
+    
+    @app.get("/{full_path:path}")
+    def serve_react(full_path: str):
+        return FileResponse("frontend/dist/index.html")
