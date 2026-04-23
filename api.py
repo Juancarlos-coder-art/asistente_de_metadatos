@@ -1,9 +1,14 @@
 """
 api.py — Backend FastAPI para el Asistente HealthDCAT-AP-ES
 Expone los endpoints que consume el frontend React.
-Run: uvicorn api:app --reload --port 8000
+Run: uvicorn api:app --reload --port 8080
 """
 from dotenv import load_dotenv
+from cli import BLOCKS, build_prompt_for_block, build_contract
+from schema_loader import HealthDCATAPSchema
+from assistant.metadata_state import MetadataState
+from assistant.llm_provider import call_llm, llm_available
+from assistant.rag_helper import get_block_missing, get_missing_descriptions
 load_dotenv()
 import json
 import os
