@@ -36,7 +36,7 @@ export default function Sidebar({ blocks, currentIdx, blocksDone, metadata, miss
 
       <hr style={styles.hr} />
 
-      <a href="http://localhost:8000/guide" download style={styles.sideBtn}>📄 Guía de campos</a>
+      <a href="http://localhost:8080/guide" download style={styles.sideBtn}>📄 Guía de campos</a>
 
       <button style={{ ...styles.sideBtn, marginTop: "8px", cursor: "pointer", border: "1px solid #1e3a5f", background: "transparent", color: "#c8d8f0", width: "100%", textAlign: "left" }}
         onClick={onReset}>← Volver al inicio</button>

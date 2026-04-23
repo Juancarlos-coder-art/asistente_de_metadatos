@@ -35,7 +35,7 @@ export default function Welcome({ onStart }) {
             para metadatar tu dataset, descarga aquí la guía completa.
           </p>
           <a
-            href="http://localhost:8000/guide"
+            href="http://localhost:8080/guide"
             download="guia_campos_ends.docx"
             style={styles.downloadLink}
           >
