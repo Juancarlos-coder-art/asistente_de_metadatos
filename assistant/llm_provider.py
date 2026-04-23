@@ -6,23 +6,59 @@ import re
 # Helpers para configuración (runtime, no import-time!)
 # =====================================================
 
+
 def get_use_openai() -> bool:
-    return os.getenv("USE_OPENAI", "false").lower() == "true"
+    """
+    Indica si debe usarse OpenAI según la variable de entorno USE_OPENAI.
+
+    Se considera True solo si USE_OPENAI es exactamente "true"
+    (ignorando mayúsculas/minúsculas).
+    """
+
+    use_openai_env = os.getenv("USE_OPENAI", "false")
+    use_openai_env = use_openai_env.lower()
+
+    return use_openai_env == "true"
+
 
 
 def get_openai_client():
+    """
+    Devuelve un cliente de OpenAI si existe la variable de entorno
+    OPENAI_API_KEY. Si no existe, devuelve None.
+    """
+
+    # Leer la API key desde las variables de entorno
     api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
+
+    # Si no hay API key, no se puede crear el cliente
+    if api_key is None or api_key == "":
         return None
+
+    # Importamos aquí para evitar dependencias si no se usa OpenAI
     from openai import OpenAI
+
+    # Creamos y devolvemos el cliente
     return OpenAI(api_key=api_key)
 
 
 def get_groq_client():
+    """
+    Devuelve un cliente de Groq si existe la variable de entorno
+    GROQ_API_KEY. Si no existe, devuelve None.
+    """
+
+    # Leer la API key desde las variables de entorno
     api_key = os.getenv("GROQ_API_KEY")
-    if not api_key:
+
+    # Si no hay API key, no se puede crear el cliente
+    if api_key is None or api_key == "":
         return None
+
+    # Importamos aquí para evitar dependencias si no se usa Groq
     from groq import Groq
+
+    # Creamos y devolvemos el cliente
     return Groq(api_key=api_key)
 
 
@@ -30,21 +66,47 @@ def get_groq_client():
 # LLM implementations
 # =====================================================
 
-def groq_llm(prompt: str) -> dict:
+
+def groq_llm(
+    prompt: str,
+    temperature: float = 0.0,
+    top_p: float = 1.0,
+    top_k: int | None = None,
+    max_tokens: int = 2000
+) -> dict:
+    """
+    Envía un prompt a Groq y devuelve la respuesta en formato JSON.
+
+    Lanza un error si no existe la variable de entorno GROQ_API_KEY.
+    """
+
+    # 1. Obtener el cliente de Groq de la función anterior.
     client = get_groq_client()
-    if not client:
+
+    # 2. Si no hay cliente, no podemos continuar
+    if client is None:
         raise RuntimeError("GROQ_API_KEY no definida")
 
+    # 3. Enviar el prompt al modelo
     response = client.chat.completions.create(
         model="llama-3.3-70b-versatile",
         messages=[
-            {"role": "system", "content": "Devuelve SOLO JSON válido."},
-            {"role": "user", "content": prompt}
+            {
+                "role": "system",
+                "content": "Devuelve SOLO JSON válido."
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
         ]
     )
 
-    raw = response.choices[0].message.content
-    return extract_json_from_text(raw)
+    # 4. Extraer el texto devuelto por el modelo
+    raw_text = response.choices[0].message.content
+
+    # 5. Convertir el texto a JSON y devolverlo
+    return extract_json_from_text(raw_text)
 
 
 def openai_llm(prompt: str) -> dict:
