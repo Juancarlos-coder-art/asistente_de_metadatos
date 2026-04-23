@@ -38,14 +38,23 @@ def groq_llm(prompt: str) -> dict:
     response = client.chat.completions.create(
         model="llama-3.3-70b-versatile",
         messages=[
-            {"role": "system", "content": "Devuelve SOLO JSON válido."},
+            {
+                "role": "system",
+                "content": (
+                    "Eres un experto en metadatos sanitarios HealthDCAT-AP-ES. "
+                    "Extrae campos del texto del usuario y devuelve SOLO un objeto JSON válido, "
+                    "sin explicaciones, sin markdown, sin texto adicional. "
+                    "Si un campo no está en el texto, devuelve null para ese campo."
+                )
+            },
             {"role": "user", "content": prompt}
-        ]
+        ],
+        temperature=0,
+        max_tokens=1024,
     )
 
     raw = response.choices[0].message.content
     return extract_json_from_text(raw)
-
 
 def openai_llm(prompt: str) -> dict:
     client = get_openai_client()
