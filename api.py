@@ -62,7 +62,7 @@ class ResetRequest(BaseModel):
 # ENDPOINTS
 # ─────────────────────────────────────────────
 
-@app.get("/")
+@app.get("/api/health")
 def root():
     return {"status": "ok", "service": "Asistente HealthDCAT-AP-ES"}
 
