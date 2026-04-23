@@ -94,6 +94,13 @@ def get_block(block_id: int):
         "question": b["question"],
         "fields": b["fields"]
     }
+# ── 3. Guía de Usuario ─────────────
+@app.get("/guide")
+def guide():
+    return FileResponse(
+        "static/guia_campos_ends.docx",
+        filename="guia_campos_ends.docx"
+    )
 
 
 # ── 3. Autocompletar bloque con IA ───────────
