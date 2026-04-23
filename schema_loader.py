@@ -31,10 +31,24 @@ class HealthDCATAPSchema:
     # OBTENER LISTAS DE CAMPOS
     # ------------------------------
     def list_dataset_fields(self):
+<<<<<<< HEAD
         """
         Devuelve una lista de diccionarios con la información
         de los campos del dataset.
         """
+=======
+        return [
+            {
+                "name": f.get("field_name"),
+                "label": f.get("label"),
+                "required": f.get("required", False),
+                "preset": f.get("preset"),
+                "help_text": f.get("help_text"),
+                "validators": f.get("validators")
+            }
+            for f in self.dataset_fields
+        ]
+>>>>>>> origin/master
 
         fields = []
 
