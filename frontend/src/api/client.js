@@ -1,10 +1,13 @@
 // src/api/client.js
 import axios from "axios";
 
+const isProduction = window.location.hostname !== "localhost";
+const BASE_URL = isProduction ? "" : "http://localhost:8000";
+
 const API = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: BASE_URL,
   headers: { "Content-Type": "application/json" },
-  withCredentials: true,  // ← envía y recibe cookies de sesión
+  withCredentials: true,
 });
 
 export const getBlocks = () => API.get("/blocks");
