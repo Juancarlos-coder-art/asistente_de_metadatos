@@ -1,16 +1,17 @@
 // src/pages/Welcome.jsx
 import { useState } from "react";
-import { getLlmStatus } from "../api/client";
+import { getLlmStatus, resetMetadata } from "../api/client";
 
 export default function Welcome({ onStart }) {
   const [loading, setLoading] = useState(false);
 
-  const handleStart = async () => {
-    setLoading(true);
-    await getLlmStatus().catch(() => {});
-    setLoading(false);
-    onStart();
-  };
+const handleStart = async () => {
+  setLoading(true);
+  await resetMetadata().catch(() => {});  // ← limpia el estado al empezar
+  await getLlmStatus().catch(() => {});
+  setLoading(false);
+  onStart();
+};
 
   return (
     <div className="welcome-container">
