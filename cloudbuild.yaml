@@ -22,9 +22,11 @@ steps:
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--set-secrets=GROQ_API_KEY=GROQ_API_KEY:latest'
-      - '--timeout=300'        
+      - '--timeout=300'
+      - '--memory=1Gi'
       - '--cpu=1'
-      - '--memory=512Mi'
+      - '--startup-probe-failure-threshold=3'
+      - '--startup-probe-initial-delay=10'
 
 images:
   - 'europe-west1-docker.pkg.dev/$PROJECT_ID/asistente-repo/asistente-metadatos:$COMMIT_SHA'
