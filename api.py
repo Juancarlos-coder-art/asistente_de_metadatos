@@ -154,7 +154,7 @@ def guide():
 def sessions_count():
     return {"active_sessions": len(sessions)}
 
-if os.path.exists("frontend/dist"):
+if os.path.exists("frontend/dist") and os.path.exists("frontend/dist/assets"):
     app.mount("/assets", StaticFiles(directory="frontend/dist/assets"), name="assets")
 
     @app.get("/{full_path:path}")
