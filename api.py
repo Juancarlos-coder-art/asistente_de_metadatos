@@ -57,9 +57,12 @@ class ManualSaveRequest(BaseModel):
 class ResetRequest(BaseModel):
     confirm: bool = True
 
-@app.get("/")
-def root():
-    return {"status": "ok", "service": "Asistente HealthDCAT-AP-ES"}
+@app.get("/health")
+def health():
+    return {
+        "status": "ok",
+        "service": "Asistente HealthDCAT-AP-ES"
+    }
 
 @app.get("/blocks")
 def get_blocks():
