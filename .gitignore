@@ -12,3 +12,4 @@ __pycache__/
 # notebooks
 .ipynb_checkpoints/
 metadata_output.json
+node_modules
