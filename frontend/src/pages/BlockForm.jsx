@@ -121,8 +121,8 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
 
       {/* Tabs */}
       <div className="tabs">
-        <button className={`tab-btn ${tab === "ia" ? "tab-btn--active" : ""}`} onClick={() => setTab("ia")}>🤖 Completar automáticamente</button>
-        <button className={`tab-btn ${tab === "manual" ? "tab-btn--active" : ""}`} onClick={() => setTab("manual")}>✍️ Rellenar manualmente</button>
+        <button className={`tab-btn ${tab === "ia" ? "tab-btn--active" : ""}`} onClick={() => setTab("ia")}>Completar automáticamente</button>
+        <button className={`tab-btn ${tab === "manual" ? "tab-btn--active" : ""}`} onClick={() => setTab("manual")}>Rellenar manualmente</button>
       </div>
 
       {tab === "ia" && (
