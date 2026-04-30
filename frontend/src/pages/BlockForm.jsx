@@ -5,7 +5,14 @@ import {
   completeBlock, saveManual, validateMetadata,
   getMissingFields, finalizeMetadata, getMetadata
 } from "../api/client";
-
+const FIELD_LABELS_ES = {
+  title: "Título",
+  notes: "Descripción",
+  identifier: "Identificador",
+  hdab: "Autoridad de acceso a los datos",
+  access_rights: "Derechos de acceso",
+};
+``
 export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone }) {
   const [tab, setTab] = useState("ia");
   const [userContext, setUserContext] = useState("");
@@ -137,7 +144,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
             />
           </div>
           <button className="btn btn--primary" onClick={handleComplete} disabled={loading || !userContext.trim()}>
-            {loading ? "Analizando..." : "⚡ Completar bloque"}
+            {loading ? "Analizando..." : "Completar bloque"}
           </button>
           {result && <div className="alert alert--ok">✅ Bloque completado correctamente.</div>}
           {error && <div className="alert alert--error">❌ {error}</div>}
@@ -148,12 +155,12 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
         <div className="tab-content">
           <p className="tab-desc">Rellena los campos del bloque uno a uno.</p>
           {block.fields.filter(f => f !== "applicable_legislation").map(field => (
-            <div key={field} className="field-group">
-              <label className="field-label">{field}</label>
+            <div key={field} className="field-group">              
+            <label className="field-label">{FIELD_LABELS_ES[field] ?? field}</label>
               <input
                 className="field-input"
                 type="text"
-                placeholder={`Introduce ${field}...`}
+                placeholder={`Introduce ${FIELD_LABELS_ES[field] ?? field}...`}
                 value={manualFields[field] || ""}
                 onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
               />
@@ -173,7 +180,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       {/* Vista previa + Validación */}
       <div className="bottom-grid">
         <div>
-          <p className="json-viewer-header">📋 Resumen del dataset</p>
+          <p className="json-viewer-header">Resumen del dataset</p>
           <MetadataPreview metadata={metadata} />
         </div>
         <div className="validation-box">
@@ -184,7 +191,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
             <>
               {validation.missing_required.map((m, i) => (
                 <div key={i} className="validation-item">
-                  <span>{m.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())}</span>
+                  <span>{FIELD_LABELS_ES[m] ?? m}</span>
                   <span className="tag">obligatorio</span>
                 </div>
               ))}
