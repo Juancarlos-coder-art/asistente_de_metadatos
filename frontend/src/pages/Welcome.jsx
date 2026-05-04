@@ -16,7 +16,7 @@ const handleStart = async () => {
   return (
     <div className="welcome-container">
       <div className="welcome-card">
-        <span className="welcome-logo">🏥</span>
+        <span className="welcome-logo"></span>
         <h1 className="welcome-title">
           Hola, soy el Asistente conversacional del ENDS.<br />
           Te ayudaré a metadatar tu conjunto de datos.
