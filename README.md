@@ -1,10 +1,10 @@
-# 🏥 Asistente de Metadatos HealthDCAT-AP-ES
+# Asistente de Metadatos HealthDCAT-AP-ES
 
 > Asistente conversacional para la generación de metadatos sanitarios conforme al estándar europeo **HealthDCAT-AP-ES**, desarrollado en el marco de la **Estrategia Nacional de Datos de Salud (ENDS)**.
 
 ---
 
-## 📋 Índice
+## Índice
 
 - [¿Qué hace este proyecto?](#-qué-hace-este-proyecto)
 - [Arquitectura](#-arquitectura)
