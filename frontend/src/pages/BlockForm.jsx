@@ -167,10 +167,10 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
             </div>
           ))}
           {block.fields.includes("applicable_legislation") && (
-            <div className="alert alert--info">📋 <strong>applicable_legislation</strong> se rellena automáticamente al finalizar.</div>
+            <div className="alert alert--info"> <strong>applicable_legislation</strong> se rellena automáticamente al finalizar.</div>
           )}
           <button className="btn btn--primary" style={{ marginTop: "16px" }} onClick={handleManualSave} disabled={loading}>
-            {loading ? "Guardando..." : "💾 Guardar bloque"}
+            {loading ? "Guardando..." : "Guardar bloque"}
           </button>
           {result && <div className="alert alert--ok">✅ Bloque guardado correctamente.</div>}
           {error && <div className="alert alert--error">❌ {error}</div>}

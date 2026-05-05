@@ -184,7 +184,7 @@ El asistente irá preguntando bloque a bloque. Pulsa **Enter dos veces** para co
 
 ---
 
-## 📄 Resultado generado
+## Resultado generado
 
 Al finalizar se crea `metadata_output.json` con esta estructura:
 

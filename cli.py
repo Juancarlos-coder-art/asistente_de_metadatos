@@ -40,6 +40,7 @@ BLOCKS = [
 ]
 
 
+
 def build_contract(block: dict) -> dict:
     # Claves esperadas en la respuesta del LLM para este bloque
     return {name: None for name in block["fields"]}

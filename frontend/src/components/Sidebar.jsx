@@ -4,7 +4,7 @@ export default function Sidebar({ blocks, currentIdx, blocksDone, metadata, miss
 
   return (
     <aside className="sidebar">
-      <p className="sidebar-title">🏥 HealthDCAT-AP-ES</p>
+      <p className="sidebar-title"> HealthDCAT-AP-ES</p>
 
       <div className="metrics-grid">
         <div className="metric-box">
@@ -32,7 +32,7 @@ export default function Sidebar({ blocks, currentIdx, blocksDone, metadata, miss
       })}
 
       <hr className="sidebar-divider" />
-      <a href="http://localhost:8000/guide" download className="sidebar-btn">📄 Guía de campos</a>
+      <a href="http://localhost:8000/guide" download className="sidebar-btn">Guía de campos</a>
       <button className="sidebar-btn" onClick={onReset}>← Volver al inicio</button>
     </aside>
   );

@@ -1,13 +1,13 @@
 // src/components/MetadataPreview.jsx
 
 const FIELD_INFO = {
-  title: { label: "Título", icon: "📋", description: "Nombre del dataset" },
-  notes: { label: "Descripción", icon: "📝", description: "Descripción del contenido" },
-  identifier: { label: "Identificador", icon: "🔗", description: "DOI o identificador único" },
-  name: { label: "URL", icon: "🌐", description: "Dirección en el portal" },
-  access_rights: { label: "Derechos de acceso", icon: "🔒", description: "Quién puede acceder" },
-  hdab: { label: "Organismo de acceso (HDAB)", icon: "🏛️", description: "Entidad gestora del acceso" },
-  applicable_legislation: { label: "Legislación aplicable", icon: "⚖️", description: "Marco legal" },
+  title: { label: "Título",description: "Nombre del dataset" },
+  notes: { label: "Descripción",description: "Descripción del contenido" },
+  identifier: { label: "Identificador",description: "DOI o identificador único" },
+  name: { label: "URL", description: "Dirección en el portal" },
+  access_rights: { label: "Derechos de acceso", description: "Quién puede acceder" },
+  hdab: { label: "Organismo de acceso (HDAB)", description: "Entidad gestora del acceso" },
+  applicable_legislation: { label: "Legislación aplicable", description: "Marco legal" },
 };
 
 function formatValue(key, value) {
@@ -72,7 +72,7 @@ export default function MetadataPreview({ metadata }) {
   return (
     <div style={styles.grid}>
       {entries.map(([key, value]) => {
-        const info = FIELD_INFO[key] || { label: key, icon: "📄", description: "" };
+        const info = FIELD_INFO[key] || { label: key, description: "" };
         const formatted = formatValue(key, value);
         if (!formatted) return null;
 

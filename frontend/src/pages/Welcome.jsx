@@ -30,7 +30,7 @@ const handleStart = async () => {
         <hr className="welcome-divider" />
 
         <div className="guide-box">
-          <p className="guide-box-title">📄 Guía de campos</p>
+          <p className="guide-box-title">Guía de campos</p>
           <p className="guide-box-desc">
             Si quieres información sobre los campos que necesitamos
             para metadatar tu dataset, descarga aquí la guía completa.
@@ -45,7 +45,7 @@ const handleStart = async () => {
           onClick={handleStart}
           disabled={loading}
         >
-          {loading ? "Cargando..." : "🚀 Comenzar a metadatar"}
+          {loading ? "Cargando..." : "Comenzar a metadatar"}
         </button>
       </div>
     </div>
