@@ -19,7 +19,7 @@ BLOCKS = [
             "access_rights"
         ],
         "question": (
-            "¿Quién puede acceder legalmente al dataset que estás subiendo?(por ejemplo: Todo el mundo, sólo gente con determinados permisos, nadie)"
+            "¿Quién puede acceder legalmente al conjunto de datos que vas a publicar?(Por ejemplo: cualquier persona, solo usuarios con permisos específicos, o nadie)"
         )
     },
     {
