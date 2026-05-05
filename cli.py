@@ -4,33 +4,37 @@ from assistant.metadata_state import MetadataState
 from assistant.llm_provider import call_llm, llm_available
 BLOCKS = [
     {
+        "name": "identificacion_basica",
+        "fields": [
+            "title","identifier", "notes"
+        ],
+        "question": (
+            "Proporciona una descripción general del dataset e incluye el DOI del conjunto "
+            "de datos si está disponible. El campo 'applicable_legislation' será completado "
+            "automáticamente por el asistente, por lo que no es necesario que lo aportes."
+        )
+    },
+    {
         "name": "derechos de acceso",
         "fields": [
-            "Derechos de acceso"
+            "access_rights"
         ],
         "question": (
             "¿Quién puede acceder legalmente al dataset que estás subiendo y bajo qué condiciones?"
         )
     },
     {
-        "name": "identificacion_basica",
-        "fields": [
-            "Título","Identificador", "Descripción"
-        ],
-        "question": (
-            "Proporciona una descripción general del dataset e incluye el DOI del conjunto "
-            "de datos si está disponible."
-        )
-    },
-    {
         "name": "organismo_acceso_datos_sanitarios",
         "fields": [
-            "Organismo de Acceso a los Datos Sanitarios"
+            "hdab"
         ],
         "question": (
-            "Indica la entidad u organización que se encarga de gestionar el acceso a los datos sanitarios."
-            "Por favor, escribe el nombre del organismo y qué tipo de entidad es (por ejemplo: instituto de salud pública, universidad, registro de salud, autoridad pública, etc.). "
-            "Si lo conoces, añade también los datos de contacto para que los usuarios puedan comunicarse con la organización: correo electrónico, teléfono, página web y horario de atención."
+            "Indica el organismo que gestiona el acceso a los datos sanitarios (HDAB). "
+            "Por favor, proporciona el nombre del organismo y su tipo (por ejemplo: "
+            "Instituto de salud pública, Universidad, Registro de salud pública, "
+            "Autoridad nacional, etc.). "
+            "Si dispones de ellos, incluye también el correo de contacto, "
+            "El teléfono, la página web de contacto y el horario de disponibilidad."
         )
     }
 ]
