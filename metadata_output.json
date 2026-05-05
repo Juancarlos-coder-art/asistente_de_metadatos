@@ -1,14 +1,12 @@
 {
-  "title": "Dataset sobre la viruela del mono",
-  "identifier": null,
-  "notes": "Describe la viruela del mono",
-  "access_rights": "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+  "title": "Casos de viruela del mono en España 2023",
+  "identifier": "https://doi.org/10.5281/zenodo.123456",
+  "notes": "Dataset con registros de casos confirmados de viruela del mono notificados en España durante 2023.",
+  "access_rights": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
   "hdab": {
     "name": "CSIC",
     "type": "http://13.81.34.152:1101/resource/authority/publisher-type/research-institute-org",
-    "email": null,
-    "telephone": null,
-    "contact_page": "https://www.csic.es/es"
+    "contact_page": "csic.es"
   },
   "applicable_legislation": [
     {

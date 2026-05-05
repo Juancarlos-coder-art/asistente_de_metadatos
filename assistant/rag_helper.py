@@ -36,21 +36,21 @@ FIELD_INDEX = {
     },
     "identifier": {
         "label": "Identificador",
-        "obligatorio": False,
+        "obligatorio": True,
         "descripcion": "Identificador único del dataset, preferiblemente un DOI.",
         "ejemplo": "https://doi.org/10.5281/zenodo.123456",
         "bloque": "identificacion_basica"
     },
     "access_rights": {
         "label": "Derechos de acceso",
-        "obligatorio": False,
+        "obligatorio": True,
         "descripcion": "Nivel de acceso al dataset según vocabulario europeo.",
         "ejemplo": "Restringido (solo investigadores acreditados), Público, Confidencial...",
         "bloque": "acceso_y_derechos"
     },
     "hdab": {
         "label": "Organismo de acceso (HDAB)",
-        "obligatorio": False,
+        "obligatorio": True,
         "descripcion": "Organismo que gestiona el acceso a los datos sanitarios. Incluye nombre, tipo, email, teléfono y página web.",
         "ejemplo": "CSIC · Instituto de investigación · 639 99 15 67",
         "bloque": "organismo_acceso_datos_sanitarios"
@@ -61,6 +61,42 @@ FIELD_INDEX = {
         "descripcion": "Se rellena automáticamente con GDPR al finalizar. No es necesario introducirlo.",
         "ejemplo": "GDPR – http://data.europa.eu/eli/reg/2016/679/oj",
         "bloque": "automatico"
+    },
+    # Aliases en español (field_name del YAML / required_fields)
+    "Título": {
+        "label": "Título",
+        "obligatorio": True,
+        "descripcion": "Nombre descriptivo del dataset.",
+        "ejemplo": "Casos de viruela del mono en España 2023",
+        "bloque": "identificacion_basica"
+    },
+    "Descripción": {
+        "label": "Descripción",
+        "obligatorio": True,
+        "descripcion": "Descripción detallada del contenido, alcance y propósito del dataset.",
+        "ejemplo": "Dataset con registros de casos confirmados notificados en España durante 2023.",
+        "bloque": "identificacion_basica"
+    },
+    "Identificador": {
+        "label": "Identificador",
+        "obligatorio": True,
+        "descripcion": "Identificador único del dataset, preferiblemente un DOI.",
+        "ejemplo": "https://doi.org/10.5281/zenodo.123456",
+        "bloque": "identificacion_basica"
+    },
+    "Derechos_de_Acceso": {
+        "label": "Derechos de acceso",
+        "obligatorio": True,
+        "descripcion": "Nivel de acceso al dataset según vocabulario europeo.",
+        "ejemplo": "Restringido (solo investigadores acreditados), Público, Confidencial...",
+        "bloque": "acceso_y_derechos"
+    },
+    "Organismo_a_los_datos_sanitarios": {
+        "label": "Organismo de acceso (HDAB)",
+        "obligatorio": True,
+        "descripcion": "Organismo que gestiona el acceso a los datos sanitarios.",
+        "ejemplo": "CSIC · Instituto de investigación · 639 99 15 67",
+        "bloque": "organismo_acceso_datos_sanitarios"
     },
 }
 

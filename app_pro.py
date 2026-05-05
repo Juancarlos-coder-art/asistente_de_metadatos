@@ -4,7 +4,7 @@ import streamlit as st
 from schema_loader import HealthDCATAPSchema
 from assistant.metadata_state import MetadataState
 from assistant.llm_provider import call_llm, llm_available
-from assistant.rag_helper import get_missing_descriptions, get_block_missing
+from assistant.rag_helper import get_missing_descriptions, get_block_missing, FIELD_INDEX
 from cli import BLOCKS, build_prompt_for_block, build_contract
 
 # ─────────────────────────────────────────────
@@ -781,7 +781,23 @@ section[data-testid="stSidebar"] [data-testid="baseButton-header"] svg {
     fill: var(--sb-t) !important;
     stroke: var(--sb-t) !important;
 }
+/* Hide the placeholder st.button that follows each .sb-step (clickable HTML) */
+section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] > div:has(.sb-step) + div {
+    display: none !important;
+}
 </style>
+<script>
+window.sidebarNavTo = function(idx) {
+    var step = document.querySelector('.sb-step[data-nav="' + idx + '"]');
+    if (!step) return;
+    var container = step.closest('[data-testid="stVerticalBlock"] > div') || step.parentElement.parentElement;
+    var next = container && container.nextElementSibling;
+    if (next) {
+        var btn = next.querySelector('button');
+        if (btn) btn.click();
+    }
+};
+</script>
 """,
     unsafe_allow_html=True,
 )
@@ -939,14 +955,18 @@ with st.sidebar:
     st.markdown('<div class="sb-label">Bloques</div>', unsafe_allow_html=True)
     for i, b in enumerate(BLOCKS):
         done = i in st.session_state.block_done
-        is_current = i == block_idx
+        is_active = i == block_idx
         label = block_display_name(b['name'])
-        prefix = "\u2713 " if done else ""
-        if st.button(
-            f"{prefix}{label}",
-            key=f"nav_{i}",
-            use_container_width=True,
-        ):
+        num = "&#10003;" if done else str(i + 1)
+        cls = "sb-step" + (" active" if is_active else "") + (" done" if done else "")
+        st.markdown(
+            f'<div class="{cls}" data-nav="{i}" onclick="sidebarNavTo({i})" style="cursor:pointer">'
+            f'<div class="sn">{num}</div>'
+            f'<span>{label}</span>'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
+        if st.button(label, key=f"nav_{i}", use_container_width=True):
             st.session_state.current_block_idx = i
             st.session_state.show_missing_warning = False
             st.rerun()
@@ -1109,14 +1129,86 @@ with tab_manual:
         if field_name == "applicable_legislation":
             st.info("applicable_legislation se rellena automaticamente al finalizar.")
             continue
-        field = schema.get_field(field_name)
-        raw_label = field.get("label", field_name) if field else field_name
-        label = raw_label.get("es", str(raw_label)) if isinstance(raw_label, dict) else str(raw_label)
-        raw_help = field.get("help_text", "") if field else ""
-        help_text = raw_help.get("es", str(raw_help)) if isinstance(raw_help, dict) else str(raw_help)
-        required = field.get("required", False) if field else False
+        field_idx = FIELD_INDEX.get(field_name, {})
+        label = field_idx.get("label", field_name)
+        help_text = field_idx.get("descripcion", "")
+        required = field_idx.get("obligatorio", False)
         display_label = f"{'* ' if required else ''}{label}"
         current_val = state.data.get(field_name)
+
+        # ── access_rights → selectbox con choices del schema ──
+        if field_name == "access_rights":
+            schema_field = schema.get_field("Derechos_de_Acceso") or {}
+            choices = schema_field.get("choices", [])
+            opts = [("", "— Selecciona una opción —")]
+            for ch in choices:
+                ch_lbl = ch.get("label", {})
+                lbl_es = ch_lbl.get("es", ch.get("value", "")) if isinstance(ch_lbl, dict) else str(ch_lbl)
+                opts.append((ch.get("value", ""), lbl_es))
+            values = [o[0] for o in opts]
+            labels = [o[1] for o in opts]
+            try:
+                idx = values.index(current_val) if current_val in values else 0
+            except ValueError:
+                idx = 0
+            chosen_idx = st.selectbox(
+                display_label,
+                options=range(len(opts)),
+                format_func=lambda i: labels[i],
+                index=idx,
+                help=(f"{help_text}\n\nCampo obligatorio" if required else help_text),
+                key=f"manual_{block['name']}_{field_name}",
+            )
+            partial[field_name] = values[chosen_idx] or None
+            continue
+
+        # ── hdab → subcampos en español ──
+        if field_name == "hdab":
+            st.markdown(f"**{display_label}**")
+            schema_hdab = schema.get_field("Organismo_a_los_datos_sanitarios") or {}
+            subfields = schema_hdab.get("repeating_subfields", [])
+            current_hdab = current_val if isinstance(current_val, dict) else {}
+            hdab_values = {}
+            for sf in subfields:
+                sf_name = sf.get("field_name")
+                sf_lbl_raw = sf.get("label", {})
+                sf_lbl = sf_lbl_raw.get("es", sf_name) if isinstance(sf_lbl_raw, dict) else str(sf_lbl_raw)
+                # Disambiguate duplicate labels (opening_hours_* vs special_opening_hours_*)
+                if sf_name.startswith("special_opening_hours"):
+                    sf_lbl = f"Horario especial – {sf_lbl}"
+                elif sf_name.startswith("opening_hours"):
+                    sf_lbl = f"Horario habitual – {sf_lbl}"
+                sf_required = sf.get("required", False)
+                sf_display = f"{'* ' if sf_required else ''}{sf_lbl}"
+                sf_current = current_hdab.get(sf_name, "")
+                sf_choices = sf.get("choices")
+                key = f"manual_{block['name']}_hdab_{sf_name}"
+
+                if sf_choices:
+                    sf_opts = [("", "— Selecciona —")]
+                    for ch in sf_choices:
+                        ch_lbl = ch.get("label", {})
+                        ch_es = ch_lbl.get("es", ch.get("value", "")) if isinstance(ch_lbl, dict) else str(ch_lbl)
+                        sf_opts.append((ch.get("value", ""), ch_es))
+                    sf_vals = [o[0] for o in sf_opts]
+                    sf_labels = [o[1] for o in sf_opts]
+                    sf_idx = sf_vals.index(sf_current) if sf_current in sf_vals else 0
+                    chosen = st.selectbox(
+                        sf_display,
+                        options=range(len(sf_opts)),
+                        format_func=lambda i, lbls=sf_labels: lbls[i],
+                        index=sf_idx,
+                        key=key,
+                    )
+                    val = sf_vals[chosen]
+                else:
+                    val = st.text_input(sf_display, value=str(sf_current or ""), key=key)
+                if val:
+                    hdab_values[sf_name] = val
+            partial[field_name] = hdab_values if hdab_values else None
+            continue
+
+        # ── default: text_input ──
         default_val = ""
         if current_val and isinstance(current_val, str):
             default_val = current_val
@@ -1139,6 +1231,17 @@ with tab_manual:
 
 
 # ─────────────────────────────────────────────
+# LIVE MERGE (validación en tiempo real para selectbox/inputs manuales)
+# ─────────────────────────────────────────────
+_live_merge = {k: v for k, v in partial.items() if v not in (None, "", [], {})}
+if _live_merge:
+    state.merge_partial(_live_merge)
+    # Recalcular missing tras live merge para que el sidebar refleje el cambio
+    all_missing = state.missing_required()
+    all_missing_info = get_missing_descriptions(all_missing, use_llm=False)
+
+
+# ─────────────────────────────────────────────
 # STATUS + VALIDATION
 # ─────────────────────────────────────────────
 st.markdown('<div class="section-label">Estado y validacion</div>', unsafe_allow_html=True)
@@ -1148,9 +1251,7 @@ with col_json:
     rows = []
     for field_name in block["fields"]:
         val = state.data.get(field_name)
-        field_meta = schema.get_field(field_name)
-        raw_lbl = field_meta.get("label", field_name) if field_meta else field_name
-        lbl = raw_lbl.get("es", str(raw_lbl)) if isinstance(raw_lbl, dict) else str(raw_lbl)
+        lbl = FIELD_INDEX.get(field_name, {}).get("label", field_name)
         if val is None or val == "" or val == [] or val == {}:
             rows.append(
                 f'<div class="field-row">'

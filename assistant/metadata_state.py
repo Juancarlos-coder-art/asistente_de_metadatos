@@ -67,12 +67,20 @@ class MetadataState:
 
 
     def missing_required(self):
-        errors = []
-        for field, value in self.data.items():
-            if field not in ACTIVE_FIELDS:  # ignorar campos fuera del scope
-                continue
+        """
+        Devuelve los campos obligatorios (según FIELD_INDEX) que están vacíos
+        en self.data. Usa los nombres de los bloques (los mismos que se guardan
+        al hacer merge_partial).
+        """
+        from assistant.rag_helper import FIELD_INDEX
         missing = []
-        for field_name in self.required_fields():
+        for field_name, info in FIELD_INDEX.items():
+            if not info.get("obligatorio"):
+                continue
+            # Saltar aliases en español (ya cubiertos por el campo en inglés)
+            if field_name in {"Título", "Descripción", "Identificador",
+                              "Derechos_de_Acceso", "Organismo_a_los_datos_sanitarios"}:
+                continue
             val = self.data.get(field_name)
             if val in (None, "", [], {}):
                 missing.append(field_name)
