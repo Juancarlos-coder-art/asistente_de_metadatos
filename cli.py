@@ -9,9 +9,8 @@ BLOCKS = [
             "title","identifier", "notes"
         ],
         "question": (
-            "Proporciona una descripción general del dataset e incluye el DOI del conjunto "
-            "de datos si está disponible. El campo 'applicable_legislation' será completado "
-            "automáticamente por el asistente, por lo que no es necesario que lo aportes."
+            "Proporciona una descripción general del dataset e incluye el identificador del conjunto "
+            "de datos si está disponible."
         )
     },
     {
@@ -20,7 +19,7 @@ BLOCKS = [
             "access_rights"
         ],
         "question": (
-            "¿Quién puede acceder legalmente al dataset que estás subiendo y bajo qué condiciones?"
+            "¿Quién puede acceder legalmente al dataset que estás subiendo?(por ejemplo: Todo el mundo, sólo gente con determinados permisos, nadie)"
         )
     },
     {
