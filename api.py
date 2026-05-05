@@ -46,6 +46,16 @@ def get_session(session_id, response):
     response.set_cookie(key="session_id", value=new_id, httponly=True, samesite="lax", max_age=60*60*8)
     return new_id, sessions[new_id]
 
+ENDS_NON_PUBLIC_URI = "https://catalogo.ends.gob.es/dataset"
+NON_PUBLIC_URI = "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC"
+
+def apply_conditional_logic(state: MetadataState):
+    """Si access_rights es NON_PUBLIC → asignar identifier automáticamente."""
+    ar = state.data.get("access_rights", "")
+    if ar and "NON_PUBLIC" in str(ar).upper():
+        if not state.data.get("identifier"):
+            state.data["identifier"] = ENDS_NON_PUBLIC_URI
+
 class CompleteBlockRequest(BaseModel):
     block_id: int
     user_context: str
@@ -91,6 +101,7 @@ def complete_block(block_id: int, body: CompleteBlockRequest, response: Response
         ai_result = call_llm(prompt, contract, body.user_context)
         partial = {name: ai_result.get(name, None) for name in block["fields"]}
         state.merge_partial(partial)
+        apply_conditional_logic(state)
         return {"success": True, "partial": partial, "metadata": state.data, "session_id": sid}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -102,6 +113,8 @@ def save_manual(body: ManualSaveRequest, response: Response, session_id: str = C
         raise HTTPException(status_code=404, detail="Bloque no encontrado")
     to_merge = {k: v for k, v in body.partial.items() if v is not None and v != ""}
     state.merge_partial(to_merge)
+    apply_conditional_logic(state)
+    
     return {"success": True, "metadata": state.data, "session_id": sid}
 
 @app.get("/metadata")

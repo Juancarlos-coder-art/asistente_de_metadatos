@@ -5,6 +5,7 @@ import {
   completeBlock, saveManual, validateMetadata,
   getMissingFields, finalizeMetadata, getMetadata
 } from "../api/client";
+
 const FIELD_LABELS_ES = {
   title: "Título",
   notes: "Descripción",
@@ -12,7 +13,9 @@ const FIELD_LABELS_ES = {
   hdab: "Autoridad de acceso a los datos",
   access_rights: "Derechos de acceso",
 };
-``
+
+const NON_PUBLIC_URI = "NON_PUBLIC";
+
 export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone }) {
   const [tab, setTab] = useState("ia");
   const [userContext, setUserContext] = useState("");
@@ -26,6 +29,19 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const [missingInfo, setMissingInfo] = useState([]);
 
   const block = blocks[currentIdx];
+
+  // ── Detecta si el acceso es No Público ──
+  const isNonPublic = (meta = metadata) => {
+    const ar = meta.access_rights || "";
+    return ar.includes(NON_PUBLIC_URI);
+  };
+
+  // ── Filtra campos según lógica condicional ──
+  const activeFields = block.fields.filter(f => {
+    if (f === "identifier" && isNonPublic()) return false;
+    if (f === "applicable_legislation") return false;
+    return true;
+  });
 
   useEffect(() => {
     setUserContext("");
@@ -79,7 +95,15 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
 
   const handleNext = async () => {
     const res = await getMissingFields(currentIdx);
-    const missing = res.data.descriptions;
+    const metaRes = await getMetadata();
+    const currentMeta = metaRes.data;
+
+    // Si NON_PUBLIC → filtrar identifier del aviso
+    const nonPublic = isNonPublic(currentMeta);
+    const missing = res.data.descriptions.filter(item =>
+      !(nonPublic && item.field === "identifier")
+    );
+
     if (missing.length > 0 && !showWarning) {
       setMissingInfo(missing);
       setShowWarning(true);
@@ -100,12 +124,17 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     setLoading(false);
   };
 
+  // ── Pregunta adaptada si es No Público y el bloque tiene identifier ──
+  const blockQuestion = isNonPublic() && block.fields.includes("identifier")
+    ? block.question + "\n\n🔒 El identificador se asignará automáticamente por ser un dataset No Público."
+    : block.question;
+
   return (
     <div>
       {/* Tarjeta del bloque */}
       <div className="block-card">
         <p className="block-label">Bloque {currentIdx + 1} · {block.name.replace(/_/g, " ").toUpperCase()}</p>
-        <p className="block-question">{block.question}</p>
+        <p className="block-question" style={{ whiteSpace: "pre-line" }}>{blockQuestion}</p>
       </div>
 
       {/* Aviso campos faltantes */}
@@ -114,7 +143,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
           <p className="missing-warning-title">⚠️ {missingInfo.length} campo(s) sin rellenar — puedes completarlos o continuar</p>
           {missingInfo.map((item, i) => (
             <div key={i} className="missing-field-item">
-              <p className="missing-field-name">{item.field}</p>
+              <p className="missing-field-name">{FIELD_LABELS_ES[item.field] ?? item.field}</p>
               <p className="missing-field-desc"><strong>{item.label}</strong>{item.obligatorio ? " · obligatorio" : ""} — {item.descripcion}</p>
               {item.ejemplo && <p className="missing-field-example">Ej: {item.ejemplo}</p>}
             </div>
@@ -154,9 +183,17 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       {tab === "manual" && (
         <div className="tab-content">
           <p className="tab-desc">Rellena los campos del bloque uno a uno.</p>
-          {block.fields.filter(f => f !== "applicable_legislation").map(field => (
-            <div key={field} className="field-group">              
-            <label className="field-label">{FIELD_LABELS_ES[field] ?? field}</label>
+
+          {/* Aviso identificador automático */}
+          {isNonPublic() && block.fields.includes("identifier") && (
+            <div className="alert alert--info" style={{ marginBottom: "16px" }}>
+              🔒 <strong>Identificador</strong> asignado automáticamente por ser un dataset No Público.
+            </div>
+          )}
+
+          {activeFields.map(field => (
+            <div key={field} className="field-group">
+              <label className="field-label">{FIELD_LABELS_ES[field] ?? field}</label>
               <input
                 className="field-input"
                 type="text"
@@ -166,9 +203,13 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
               />
             </div>
           ))}
+
           {block.fields.includes("applicable_legislation") && (
-            <div className="alert alert--info"> <strong>applicable_legislation</strong> se rellena automáticamente al finalizar.</div>
+            <div className="alert alert--info">
+              <strong>applicable_legislation</strong> se rellena automáticamente al finalizar.
+            </div>
           )}
+
           <button className="btn btn--primary" style={{ marginTop: "16px" }} onClick={handleManualSave} disabled={loading}>
             {loading ? "Guardando..." : "Guardar bloque"}
           </button>
@@ -189,12 +230,14 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
             <div className="alert alert--ok" style={{ marginTop: 0 }}>✅ Todo correcto.</div>
           ) : (
             <>
-              {validation.missing_required.map((m, i) => (
-                <div key={i} className="validation-item">
-                  <span>{FIELD_LABELS_ES[m] ?? m}</span>
-                  <span className="tag">obligatorio</span>
-                </div>
-              ))}
+              {validation.missing_required
+                .filter(m => !(isNonPublic() && m === "identifier"))
+                .map((m, i) => (
+                  <div key={i} className="validation-item">
+                    <span>{FIELD_LABELS_ES[m] ?? m}</span>
+                    <span className="tag">obligatorio</span>
+                  </div>
+                ))}
               {validation.errors.map((e, i) => (
                 <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e}</div>
               ))}

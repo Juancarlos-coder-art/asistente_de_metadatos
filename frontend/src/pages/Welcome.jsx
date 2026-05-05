@@ -30,13 +30,13 @@ const handleStart = async () => {
         <hr className="welcome-divider" />
 
         <div className="guide-box">
-          <p className="guide-box-title">Guía de campos</p>
+          <p className="guide-box-title">Manual de usuario</p>
           <p className="guide-box-desc">
             Si quieres información sobre los campos que necesitamos
             para metadatar tu dataset, descarga aquí la guía completa.
           </p>
           <a href="http://localhost:8000/guide" download className="btn btn--secondary btn--sm">
-            ⬇️ Descargar guía de campos (.docx)
+            ⬇️ Descargar manual de usuario (.docx)
           </a>
         </div>
 

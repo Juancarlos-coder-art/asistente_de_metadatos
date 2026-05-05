@@ -2,58 +2,69 @@ import json
 from schema_loader import HealthDCATAPSchema
 from assistant.metadata_state import MetadataState
 from assistant.llm_provider import call_llm, llm_available
+
+# URI predeterminada para datasets no públicos
+ENDS_NON_PUBLIC_URI = "https://catalogo.ends.gob.es/dataset"
+NON_PUBLIC_URI = "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC"
+
+
 BLOCKS = [
     {
-        "name": "identificacion_basica",
-        "fields": [
-            "title","identifier", "notes"
-        ],
+        "name": "derechos_de_acceso",
+        "fields": ["access_rights"],
         "question": (
-            "Proporciona una descripción general del dataset e incluye el identificador del conjunto "
+            "¿Quién puede acceder a este dataset y bajo qué condiciones?\n\n"
+            "Ejemplos para orientarte:\n"
+            "- 'Cualquiera puede descargarlo' → Público\n"
+            "- 'Solo investigadores acreditados pueden solicitarlo' → Restringido\n"
+            "- 'Es un dataset interno, no sale de nuestra organización' → No público\n"
+            "- 'Contiene datos muy sensibles con protección legal' → Confidencial\n"
+        )
+    },
+    {
+        "name": "identificacion_basica",
+        "fields": ["title", "identifier", "notes"],
+        "question": (
+            "Proporciona una descripción general del dataset e incluye el DOI del conjunto "
             "de datos si está disponible."
         )
     },
     {
-        "name": "derechos de acceso",
-        "fields": [
-            "access_rights"
-        ],
-        "question": (
-            "¿Quién puede acceder legalmente al conjunto de datos que vas a publicar?(Por ejemplo: cualquier persona, solo usuarios con permisos específicos, o nadie)"
-        )
-    },
-    {
         "name": "organismo_acceso_datos_sanitarios",
-        "fields": [
-            "hdab"
-        ],
+        "fields": ["hdab"],
         "question": (
             "Indica el organismo que gestiona el acceso a los datos sanitarios (HDAB). "
             "Por favor, proporciona el nombre del organismo y su tipo (por ejemplo: "
             "Instituto de salud pública, Universidad, Registro de salud pública, "
             "Autoridad nacional, etc.). "
             "Si dispones de ellos, incluye también el correo de contacto, "
-            "El teléfono, la página web de contacto y el horario de disponibilidad."
+            "el teléfono, la página web de contacto y el horario de disponibilidad."
         )
     }
 ]
 
 
+def is_non_public(state_data: dict) -> bool:
+    """Comprueba si el access_rights del estado es NON_PUBLIC."""
+    ar = state_data.get("access_rights", "")
+    if not ar:
+        return False
+    return "No Público" in str(ar).upper()
+
 
 def build_contract(block: dict) -> dict:
-    # Claves esperadas en la respuesta del LLM para este bloque
     return {name: None for name in block["fields"]}
+
 
 def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context: str = "") -> str:
     fields = ", ".join(block["fields"])
     instrucciones = (
-            "Devuelve SOLO JSON válido. Las listas como arrays JSON. "
-            "REGLA MÁS IMPORTANTE: Si el usuario NO menciona explícitamente un campo, "
-            "devuelve null para ese campo. NUNCA deduzcas, infergas ni inventes valores. "
-            "Solo rellena un campo si el usuario ha proporcionado información DIRECTA sobre él. "
-            "Si hay duda, devuelve null. "
-    
-        
+        "Devuelve SOLO JSON válido. Las listas como arrays JSON. "
+        "REGLA MÁS IMPORTANTE: Si el usuario NO menciona explícitamente un campo, "
+        "devuelve null para ese campo. NUNCA deduzcas, infieras ni inventes valores. "
+        "Solo rellena un campo si el usuario ha proporcionado información DIRECTA sobre él. "
+        "Si hay duda, devuelve null. "
+
         # ── access_rights ──
         "Para el campo 'access_rights', analiza la descripción y devuelve SOLO la URI:\n"
         "- Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
@@ -63,6 +74,10 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "- Sensible → http://publications.europa.eu/resource/authority/access-right/SENSITIVE\n"
         "- Normal → http://publications.europa.eu/resource/authority/access-right/NORMAL\n"
         "- Datos provisionales → http://publications.europa.eu/resource/authority/access-right/OP_DATPRO\n"
+        "IMPORTANTE: La diferencia clave entre RESTRINGIDO y NO PÚBLICO es:\n"
+            "  - RESTRINGIDO = se puede acceder bajo ciertas condiciones o solicitud\n"
+            "  - NO PÚBLICO = no está disponible para nadie fuera de la organización propietaria\n"
+
 
         # ── hdab ──
         "Para el campo 'hdab', devuelve un objeto con EXACTAMENTE estas claves:\n"
@@ -85,14 +100,31 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
     )
 
 
-
+def apply_conditional_logic(state: MetadataState):
+    """
+    Lógica condicional post-bloque:
+    Si access_rights es NON_PUBLIC → asignar identifier automáticamente.
+    """
+    if is_non_public(state.data):
+        if not state.data.get("identifier"):
+            state.data["identifier"] = ENDS_NON_PUBLIC_URI
+            print(f"\n🔒 Acceso No Público detectado. Identificador asignado automáticamente:")
+            print(f"   {ENDS_NON_PUBLIC_URI}")
 
 
 def ask_block(schema: HealthDCATAPSchema, state: MetadataState, block: dict):
-    print(f"\n=== BLOQUE: {block['name']} ===\n")
+    print(f"\n=== BLOQUE: {block['name'].replace('_', ' ').upper()} ===\n")
     print(block["question"])
 
-    # ✅ El usuario responde
+    # Si el bloque contiene 'identifier' y el acceso ya es NON_PUBLIC → omitir identifier
+    if "identifier" in block["fields"] and is_non_public(state.data):
+        print(f"\n🔒 El identificador se asignará automáticamente por ser un dataset No Público.")
+        # Preguntar solo por los campos restantes (sin identifier)
+        fields_to_ask = [f for f in block["fields"] if f != "identifier"]
+        block_modified = {**block, "fields": fields_to_ask}
+    else:
+        block_modified = block
+
     print("\nTu respuesta (pulsa Enter dos veces para terminar):")
     lines = []
     while True:
@@ -104,16 +136,20 @@ def ask_block(schema: HealthDCATAPSchema, state: MetadataState, block: dict):
 
     if not user_context.strip():
         print("⏭️ Bloque omitido.")
+        # Aplicar lógica condicional aunque se omita
+        apply_conditional_logic(state)
         return
 
-    prompt = build_prompt_for_block(schema, block, user_context)
-    contract = build_contract(block)
+    prompt = build_prompt_for_block(schema, block_modified, user_context)
+    contract = build_contract(block_modified)
 
-    # El LLM interpreta la respuesta del usuario
     ai_result = call_llm(prompt, contract, user_context)
 
-    partial = { name: ai_result.get(name, None) for name in block["fields"] }
+    partial = {name: ai_result.get(name, None) for name in block_modified["fields"]}
     state.merge_partial(partial)
+
+    # ✅ Aplicar lógica condicional tras procesar el bloque
+    apply_conditional_logic(state)
 
     print("\n✔️ Bloque procesado:")
     print(json.dumps(state.data, indent=2, ensure_ascii=False))
@@ -129,6 +165,7 @@ def ask_block(schema: HealthDCATAPSchema, state: MetadataState, block: dict):
         print("\n⚠️ Campos obligatorios aún pendientes:")
         for m in missing:
             print(f" - {m}")
+
 
 def save_output(state: MetadataState, path="metadata_output.json"):
     with open(path, "w", encoding="utf-8") as f:
