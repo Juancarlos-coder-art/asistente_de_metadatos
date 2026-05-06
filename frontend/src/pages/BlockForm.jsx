@@ -16,6 +16,131 @@ const FIELD_LABELS_ES = {
 
 const NON_PUBLIC_URI = "NON_PUBLIC";
 
+// ── Modal bloqueante ──
+function MissingFieldsModal({ missingInfo, onClose, onContinue }) {
+  return (
+    <div style={modalStyles.overlay}>
+      <div style={modalStyles.modal}>
+        <div style={modalStyles.header}>
+          <span style={modalStyles.icon}>⚠️</span>
+          <h2 style={modalStyles.title}>Campos obligatorios sin rellenar</h2>
+        </div>
+        <p style={modalStyles.subtitle}>
+          Los siguientes campos son obligatorios. Debes rellenarlos antes de continuar.
+        </p>
+        <div style={modalStyles.fieldList}>
+          {missingInfo.map((item, i) => (
+            <div key={i} style={modalStyles.fieldItem}>
+              <div style={modalStyles.fieldName}>
+                🔴 {FIELD_LABELS_ES[item.field] ?? item.field}
+              </div>
+              <div style={modalStyles.fieldDesc}>
+                {item.descripcion}
+              </div>
+              {item.ejemplo && (
+                <div style={modalStyles.fieldExample}>
+                  Ej: {item.ejemplo}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div style={modalStyles.buttons}>
+          <button style={modalStyles.btnClose} onClick={onClose}>
+            ✏️ Volver a rellenar
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const modalStyles = {
+  overlay: {
+    position: "fixed",
+    top: 0, left: 0, right: 0, bottom: 0,
+    background: "rgba(0, 0, 0, 0.6)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 9999,
+  },
+  modal: {
+    background: "white",
+    borderTop: "4px solid #da1e28",
+    padding: "32px",
+    maxWidth: "520px",
+    width: "90%",
+    boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+    maxHeight: "80vh",
+    overflowY: "auto",
+  },
+  header: {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    marginBottom: "12px",
+  },
+  icon: { fontSize: "1.8rem" },
+  title: {
+    fontFamily: "'IBM Plex Mono', monospace",
+    fontSize: "1.1rem",
+    fontWeight: 600,
+    color: "#161616",
+    margin: 0,
+  },
+  subtitle: {
+    fontSize: "0.9rem",
+    color: "#525252",
+    marginBottom: "20px",
+    lineHeight: 1.5,
+  },
+  fieldList: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    marginBottom: "24px",
+  },
+  fieldItem: {
+    background: "#fff1f1",
+    border: "1px solid #ffd7d9",
+    borderLeft: "3px solid #da1e28",
+    padding: "12px 14px",
+  },
+  fieldName: {
+    fontFamily: "'IBM Plex Mono', monospace",
+    fontSize: "0.85rem",
+    fontWeight: 600,
+    color: "#da1e28",
+    marginBottom: "4px",
+  },
+  fieldDesc: {
+    fontSize: "0.88rem",
+    color: "#393939",
+    lineHeight: 1.5,
+  },
+  fieldExample: {
+    fontSize: "0.78rem",
+    color: "#6f6f6f",
+    fontStyle: "italic",
+    marginTop: "4px",
+  },
+  buttons: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  btnClose: {
+    background: "#0f62fe",
+    color: "white",
+    border: "none",
+    padding: "12px 24px",
+    fontSize: "0.9rem",
+    fontFamily: "'IBM Plex Sans', sans-serif",
+    fontWeight: 500,
+    cursor: "pointer",
+  },
+};
+
 export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone }) {
   const [tab, setTab] = useState("ia");
   const [userContext, setUserContext] = useState("");
@@ -25,18 +150,16 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const [error, setError] = useState(null);
   const [validation, setValidation] = useState({ valid: true, errors: [], missing_required: [] });
   const [metadata, setMetadata] = useState({});
-  const [showWarning, setShowWarning] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [missingInfo, setMissingInfo] = useState([]);
 
   const block = blocks[currentIdx];
 
-  // ── Detecta si el acceso es No Público ──
   const isNonPublic = (meta = metadata) => {
     const ar = meta.access_rights || "";
     return ar.includes(NON_PUBLIC_URI);
   };
 
-  // ── Filtra campos según lógica condicional ──
   const activeFields = block.fields.filter(f => {
     if (f === "identifier" && isNonPublic()) return false;
     if (f === "applicable_legislation") return false;
@@ -48,7 +171,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     setManualFields({});
     setResult(null);
     setError(null);
-    setShowWarning(false);
+    setShowModal(false);
     loadMetadata();
   }, [currentIdx]);
 
@@ -97,19 +220,21 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     const res = await getMissingFields(currentIdx);
     const metaRes = await getMetadata();
     const currentMeta = metaRes.data;
-
-    // Si NON_PUBLIC → filtrar identifier del aviso
     const nonPublic = isNonPublic(currentMeta);
-    const missing = res.data.descriptions.filter(item =>
-      !(nonPublic && item.field === "identifier")
+
+    // Filtrar campos obligatorios — excluir identifier si es NON_PUBLIC
+    const obligatoryMissing = res.data.descriptions.filter(item =>
+      item.obligatorio && !(nonPublic && item.field === "identifier")
     );
 
-    if (missing.length > 0 && !showWarning) {
-      setMissingInfo(missing);
-      setShowWarning(true);
+    if (obligatoryMissing.length > 0) {
+      // Campos obligatorios vacíos → mostrar modal BLOQUEANTE
+      setMissingInfo(obligatoryMissing);
+      setShowModal(true);
       return;
     }
-    setShowWarning(false);
+
+    // Sin campos obligatorios vacíos → avanzar
     onNext();
   };
 
@@ -124,36 +249,25 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     setLoading(false);
   };
 
-  // ── Pregunta adaptada si es No Público y el bloque tiene identifier ──
   const blockQuestion = isNonPublic() && block.fields.includes("identifier")
     ? block.question + "\n\n🔒 El identificador se asignará automáticamente por ser un dataset No Público."
     : block.question;
 
   return (
     <div>
+      {/* Modal bloqueante */}
+      {showModal && (
+        <MissingFieldsModal
+          missingInfo={missingInfo}
+          onClose={() => setShowModal(false)}
+        />
+      )}
+
       {/* Tarjeta del bloque */}
       <div className="block-card">
         <p className="block-label">Bloque {currentIdx + 1} · {block.name.replace(/_/g, " ").toUpperCase()}</p>
         <p className="block-question" style={{ whiteSpace: "pre-line" }}>{blockQuestion}</p>
       </div>
-
-      {/* Aviso campos faltantes */}
-      {showWarning && (
-        <div className="missing-warning">
-          <p className="missing-warning-title">⚠️ {missingInfo.length} campo(s) sin rellenar — puedes completarlos o continuar</p>
-          {missingInfo.map((item, i) => (
-            <div key={i} className="missing-field-item">
-              <p className="missing-field-name">{FIELD_LABELS_ES[item.field] ?? item.field}</p>
-              <p className="missing-field-desc"><strong>{item.label}</strong>{item.obligatorio ? " · obligatorio" : ""} — {item.descripcion}</p>
-              {item.ejemplo && <p className="missing-field-example">Ej: {item.ejemplo}</p>}
-            </div>
-          ))}
-          <div style={{ display: "flex", gap: "8px", marginTop: "12px" }}>
-            <button className="btn btn--secondary btn--sm" onClick={() => setShowWarning(false)}>✏️ Volver a rellenar</button>
-            <button className="btn btn--primary btn--sm" onClick={() => { setShowWarning(false); onNext(); }}>➡️ Continuar de todas formas</button>
-          </div>
-        </div>
-      )}
 
       {/* Tabs */}
       <div className="tabs">
@@ -167,7 +281,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
           <div className="field-group">
             <textarea
               className="field-textarea"
-              placeholder="Ej.: El dataset trata sobre casos de viruela del mono en España durante 2023, incluyendo distribución geográfica y datos demográficos..."
+              placeholder="Ej.: El dataset trata sobre casos de viruela del mono en España durante 2023..."
               value={userContext}
               onChange={(e) => setUserContext(e.target.value)}
             />
@@ -183,14 +297,11 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       {tab === "manual" && (
         <div className="tab-content">
           <p className="tab-desc">Rellena los campos del bloque uno a uno.</p>
-
-          {/* Aviso identificador automático */}
           {isNonPublic() && block.fields.includes("identifier") && (
             <div className="alert alert--info" style={{ marginBottom: "16px" }}>
               🔒 <strong>Identificador</strong> asignado automáticamente por ser un dataset No Público.
             </div>
           )}
-
           {activeFields.map(field => (
             <div key={field} className="field-group">
               <label className="field-label">{FIELD_LABELS_ES[field] ?? field}</label>
@@ -203,13 +314,11 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
               />
             </div>
           ))}
-
           {block.fields.includes("applicable_legislation") && (
             <div className="alert alert--info">
               <strong>applicable_legislation</strong> se rellena automáticamente al finalizar.
             </div>
           )}
-
           <button className="btn btn--primary" style={{ marginTop: "16px" }} onClick={handleManualSave} disabled={loading}>
             {loading ? "Guardando..." : "Guardar bloque"}
           </button>

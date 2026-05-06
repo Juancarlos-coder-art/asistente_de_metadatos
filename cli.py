@@ -14,18 +14,17 @@ BLOCKS = [
         "fields": ["access_rights"],
         "question": (
             "¿Quién puede acceder a este dataset y bajo qué condiciones?\n\n"
-            "Ejemplos para orientarte:\n"
+            "Ejemplos:\n"
             "- 'Cualquiera puede descargarlo' → Público\n"
             "- 'Solo investigadores acreditados pueden solicitarlo' → Restringido\n"
             "- 'Es un dataset interno, no sale de nuestra organización' → No público\n"
-            "- 'Contiene datos muy sensibles con protección legal' → Confidencial\n"
         )
     },
     {
         "name": "identificacion_basica",
         "fields": ["title", "identifier", "notes"],
         "question": (
-            "Proporciona una descripción general del dataset e incluye el DOI del conjunto "
+            "Proporciona una descripción general del dataset e incluye el identificador del conjunto "
             "de datos si está disponible."
         )
     },
@@ -69,11 +68,7 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "Para el campo 'access_rights', analiza la descripción y devuelve SOLO la URI:\n"
         "- Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
         "- Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
-        "- Confidencial → http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL\n"
         "- No público → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
-        "- Sensible → http://publications.europa.eu/resource/authority/access-right/SENSITIVE\n"
-        "- Normal → http://publications.europa.eu/resource/authority/access-right/NORMAL\n"
-        "- Datos provisionales → http://publications.europa.eu/resource/authority/access-right/OP_DATPRO\n"
         "IMPORTANTE: La diferencia clave entre RESTRINGIDO y NO PÚBLICO es:\n"
             "  - RESTRINGIDO = se puede acceder bajo ciertas condiciones o solicitud\n"
             "  - NO PÚBLICO = no está disponible para nadie fuera de la organización propietaria\n"

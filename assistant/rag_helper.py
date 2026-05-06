@@ -36,21 +36,21 @@ FIELD_INDEX = {
     },
     "identifier": {
         "label": "Identificador",
-        "obligatorio": False,
+        "obligatorio": True,
         "descripcion": "Identificador único del dataset, preferiblemente un DOI.",
         "ejemplo": "https://doi.org/10.5281/zenodo.123456",
         "bloque": "identificacion_basica"
     },
     "access_rights": {
         "label": "Derechos de acceso",
-        "obligatorio": False,
+        "obligatorio": True,
         "descripcion": "Nivel de acceso al dataset según vocabulario europeo.",
         "ejemplo": "Restringido (solo investigadores acreditados), Público, Confidencial...",
         "bloque": "acceso_y_derechos"
     },
     "hdab": {
         "label": "Organismo de acceso (HDAB)",
-        "obligatorio": False,
+        "obligatorio": True,
         "descripcion": "Organismo que gestiona el acceso a los datos sanitarios. Incluye nombre, tipo, email, teléfono y página web.",
         "ejemplo": "CSIC · Instituto de investigación · 639 99 15 67",
         "bloque": "organismo_acceso_datos_sanitarios"
