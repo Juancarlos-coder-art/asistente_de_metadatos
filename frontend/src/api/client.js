@@ -22,3 +22,4 @@ export const getMissingFields = (blockId) => API.get(`/missing/${blockId}`);
 export const finalizeMetadata = () => API.post("/finalize");
 export const resetMetadata = () => API.post("/reset", { confirm: true });
 export const getLlmStatus = () => API.get("/llm-status");
+export const getSchemaInfo = () => API.get("/schema-info");

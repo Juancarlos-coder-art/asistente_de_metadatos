@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Welcome from "./pages/Welcome";
 import BlockForm from "./pages/BlockForm";
 import Sidebar from "./components/Sidebar";
-import { getBlocks, getMetadata, validateMetadata, resetMetadata } from "./api/client";
+import { getBlocks, getMetadata, validateMetadata, getMissingFields, resetMetadata } from "./api/client";
 
 export default function App() {
   const [started, setStarted] = useState(false);
@@ -12,6 +12,7 @@ export default function App() {
   const [blocksDone, setBlocksDone] = useState([]);
   const [metadata, setMetadata] = useState({});
   const [missingCount, setMissingCount] = useState(0);
+  const [missingDetails, setMissingDetails] = useState([]);
   const [finished, setFinished] = useState(false);
 
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function App() {
     if (started) {
       getMetadata().then(res => setMetadata(res.data)).catch(() => {});
       validateMetadata().then(res => setMissingCount(res.data.missing_required.length)).catch(() => {});
+      getMissingFields(currentIdx).then(res => setMissingDetails(res.data.descriptions || [])).catch(() => setMissingDetails([]));
     }
   }, [started, currentIdx]);
 
@@ -33,6 +35,7 @@ export default function App() {
     if (!blocksDone.includes(idx)) setBlocksDone([...blocksDone, idx]);
     getMetadata().then(res => setMetadata(res.data)).catch(() => {});
     validateMetadata().then(res => setMissingCount(res.data.missing_required.length)).catch(() => {});
+    getMissingFields(currentIdx).then(res => setMissingDetails(res.data.descriptions || [])).catch(() => setMissingDetails([]));
   };
 
   const handleFinish = () => setFinished(true);
@@ -48,6 +51,16 @@ export default function App() {
 
   // Pantalla final
   if (finished) {
+    const handleDownloadJSON = () => {
+      const blob = new Blob([JSON.stringify(metadata, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "metadata_output.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+
     return (
       <div className="finish-container">
         <div className="finish-card">
@@ -55,7 +68,10 @@ export default function App() {
           <h1 className="finish-title">Metadatos completados</h1>
           <p className="finish-desc">El archivo <strong>metadata_output.json</strong> ha sido guardado correctamente.</p>
           <pre className="finish-json">{JSON.stringify(metadata, null, 2)}</pre>
-          <button className="btn btn--primary" onClick={handleReset}>Empezar de nuevo</button>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center" }}>
+            <button className="btn btn--primary" onClick={handleDownloadJSON}>⬇ Descargar JSON</button>
+            <button className="btn btn--secondary" onClick={handleReset}>Empezar de nuevo</button>
+          </div>
         </div>
       </div>
     );
@@ -71,6 +87,7 @@ export default function App() {
         blocksDone={blocksDone}
         metadata={metadata}
         missingCount={missingCount}
+        missingDetails={missingDetails}
         onNavigate={(i) => setCurrentIdx(i)}
         onReset={handleReset}
       />
