@@ -73,7 +73,7 @@ export default function Sidebar({ blocks, currentIdx, blocksDone, metadata, miss
           <p className="sidebar-section-label">Campos pendientes</p>
           {missingDetails.map((item, i) => (
             <div key={i} className="sidebar-missing-card">
-              <div className="sidebar-missing-name">{item.field}</div>
+              <div className="sidebar-missing-name">{item.label}</div>
               <div className="sidebar-missing-desc">
                 <strong>{item.label}</strong> · {item.descripcion}
               </div>
