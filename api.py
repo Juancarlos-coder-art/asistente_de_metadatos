@@ -85,6 +85,73 @@ def get_block(block_id: int):
     b = BLOCKS[block_id]
     return {"id": block_id, "name": b["name"], "question": b["question"], "fields": b["fields"]}
 
+
+def _extract_choices(choices_list):
+    """Extrae value + label (es) de una lista de choices del YAML."""
+    result = []
+    for ch in (choices_list or []):
+        lbl = ch.get("label", {})
+        label_es = lbl.get("es", ch.get("value", "")) if isinstance(lbl, dict) else str(lbl)
+        result.append({"value": ch.get("value", ""), "label": label_es})
+    return result
+
+
+def _extract_subfields(subfields_list):
+    """Extrae info de subcampos (nombre, label, required, choices)."""
+    result = []
+    for sf in (subfields_list or []):
+        sf_name = sf.get("field_name")
+        raw_label = (sf.get("label", {}).get("es", sf_name)
+                     if isinstance(sf.get("label"), dict)
+                     else str(sf.get("label", sf_name)))
+        # Desambiguar subcampos de horario duplicados
+        if sf_name and sf_name.startswith("special_opening_hours"):
+            raw_label = f"Horario especial – {raw_label}"
+        elif sf_name and sf_name.startswith("opening_hours"):
+            raw_label = f"Horario habitual – {raw_label}"
+        entry = {
+            "field_name": sf_name,
+            "label": raw_label,
+            "required": sf.get("required", False),
+        }
+        if sf.get("choices"):
+            entry["choices"] = _extract_choices(sf["choices"])
+        result.append(entry)
+    return result
+
+
+# Valores permitidos de access_rights para el formulario
+_ALLOWED_ACCESS_RIGHTS = {
+    "PUBLIC", "RESTRICTED", "NON_PUBLIC",
+}
+
+
+@app.get("/schema-info")
+def get_schema_info():
+    """Devuelve info del schema para los campos de los bloques (choices, subcampos)."""
+    field_map = {
+        "access_rights": "Derechos de acceso",
+        "hdab": "Organismo de acceso a datos de salud",
+    }
+    info = {}
+    for field_key, yaml_name in field_map.items():
+        schema_field = _schema.get_field(yaml_name)
+        if not schema_field:
+            continue
+        entry = {}
+        if schema_field.get("choices"):
+            choices = _extract_choices(schema_field["choices"])
+            # Filtrar access_rights a solo las opciones permitidas
+            if field_key == "access_rights":
+                choices = [ch for ch in choices
+                           if ch["value"].rsplit("/", 1)[-1] in _ALLOWED_ACCESS_RIGHTS]
+            entry["choices"] = choices
+        if schema_field.get("repeating_subfields"):
+            entry["subfields"] = _extract_subfields(schema_field["repeating_subfields"])
+        if entry:
+            info[field_key] = entry
+    return info
+
 @app.post("/complete/{block_id}")
 def complete_block(block_id: int, body: CompleteBlockRequest, response: Response, session_id: str = Cookie(default=None)):
     sid, state = get_session(session_id, response)
@@ -164,7 +231,11 @@ def llm_status():
 
 @app.get("/guide")
 def guide():
-    return FileResponse("static/Guía de campos – HealthDCAT-AP-ES.pdf", filename="static/Guía de campos – HealthDCAT-AP-ES.pdf")
+    return FileResponse(
+        "static/Guía de campos – HealthDCAT-AP-ES.pdf",
+        filename="Guía de campos – HealthDCAT-AP-ES.pdf",
+        media_type="application/pdf",
+    )
 
 @app.get("/sessions/count")
 def sessions_count():
