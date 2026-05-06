@@ -49,7 +49,7 @@ def groq_llm(prompt: str) -> dict:
             },
             {"role": "user", "content": prompt}
         ],
-        temperature=0.5,
+        temperature=0.4,
         max_tokens=1024,
     )
 
