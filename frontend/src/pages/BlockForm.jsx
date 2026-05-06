@@ -335,23 +335,32 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
         </div>
         <div className="validation-box">
           <p className="validation-header">Estado de validación</p>
-          {validation.valid ? (
-            <div className="alert alert--ok" style={{ marginTop: 0 }}>✅ Todo correcto.</div>
-          ) : (
-            <>
-              {validation.missing_required
-                .filter(m => !(isNonPublic() && m === "identifier"))
-                .map((m, i) => (
+          {(() => {
+            // Solo mostrar campos del bloque actual que están pendientes
+            const blockMissing = validation.missing_required.filter(m =>
+              activeFields.includes(m) &&
+              !(isNonPublic() && m === "identifier")
+            );
+            const blockErrors = validation.errors.filter(e =>
+              activeFields.some(f => e.includes(f))
+            );
+
+            return blockMissing.length === 0 && blockErrors.length === 0 ? (
+              <div className="alert alert--ok" style={{ marginTop: 0 }}>✅ Todo correcto.</div>
+            ) : (
+              <>
+                {blockMissing.map((m, i) => (
                   <div key={i} className="validation-item">
                     <span>{FIELD_LABELS_ES[m] ?? m}</span>
                     <span className="tag">obligatorio</span>
                   </div>
                 ))}
-              {validation.errors.map((e, i) => (
-                <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e}</div>
-              ))}
-            </>
-          )}
+                {blockErrors.map((e, i) => (
+                  <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e}</div>
+                ))}
+              </>
+            );
+          })()}
         </div>
       </div>
 
