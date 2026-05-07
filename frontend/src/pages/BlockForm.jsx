@@ -446,8 +446,9 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
             ) : [];
 
             // Total global de obligatorios pendientes
-            const globalMissingCount = validation ? validation.missing_required.length : 0;
-
+            const globalMissingCount = validation 
+              ? validation.missing_required.filter(m => !activeFields.includes(m)).length 
+              : 0;
             return (
               <>
                 {blockObligatory.length === 0 && blockErrors.length === 0 ? (
@@ -468,11 +469,6 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                 {blockOptional.length > 0 && (
                   <div className="alert alert--warn" style={{ marginTop: "8px" }}>
                     💡 {blockOptional.length} campo(s) opcional(es) sin rellenar en este bloque.
-                  </div>
-                )}
-                {globalMissingCount > 0 && (
-                  <div className="alert alert--warn" style={{ marginTop: "8px" }}>
-                    ⚠️ {globalMissingCount} campo(s) obligatorio(s) pendiente(s) en total.
                   </div>
                 )}
                 {globalMissingCount === 0 && blockObligatory.length === 0 && blockErrors.length === 0 && (
