@@ -76,7 +76,7 @@ def health():
 
 @app.get("/blocks")
 def get_blocks():
-    return [{"id": i, "name": b["name"], "question": b["question"], "fields": b["fields"]} for i, b in enumerate(BLOCKS)]
+    return [{"id": i, "name": b["name"], "question": b["question"], "fields": b["fields"],"hint": b.get("hint", "")} for i, b in enumerate(BLOCKS)]
 
 @app.get("/blocks/{block_id}")
 def get_block(block_id: int):

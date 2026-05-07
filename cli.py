@@ -18,7 +18,9 @@ BLOCKS = [
             "- 'Cualquiera puede descargarlo' → Público\n"
             "- 'Solo investigadores acreditados pueden solicitarlo' → Restringido\n"
             "- 'Es un dataset interno, no sale de nuestra organización' → No público\n"
-        )
+        ),
+        "hint": "Describe con tus palabras quién tiene acceso y bajo qué condiciones."
+
     },
     {
         "name": "identificacion_basica",
@@ -26,7 +28,8 @@ BLOCKS = [
         "question": (
             "Proporciona una descripción general del dataset e incluye el identificador del conjunto "
             "de datos si está disponible."
-        )
+        ),
+        "hint": "Dinos cómo se llama el dataset, de qué trata y si tiene algún identificador como un DOI."
     },
     {
         "name": "organismo_acceso_datos_sanitarios",
@@ -38,7 +41,8 @@ BLOCKS = [
             "Autoridad nacional, etc.). "
             "Si dispones de ellos, incluye también el correo de contacto, "
             "el teléfono, la página web de contacto y el horario de disponibilidad."
-        )
+        ),
+        "hint":"Indícanos qué organismo es el responsable de dar acceso a estos datos y cómo contactarle."
     }
 ]
 

@@ -277,7 +277,11 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
 
       {tab === "ia" && (
         <div className="tab-content">
-          <p className="tab-desc">Describe el dataset con tus propias palabras y el asistente extraerá los campos.</p>
+          <p className="tab-desc">
+            {block.fields.includes("identifier") && isNonPublic()
+              ? "Dinos cómo se llama el dataset y de qué trata. El identificador ya está asignado automáticamente."
+              : block.hint || block.question}
+          </p>
           <div className="field-group">
             <textarea
               className="field-textarea"
