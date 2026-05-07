@@ -45,7 +45,7 @@ FIELD_INDEX = {
         "label": "Derechos de acceso",
         "obligatorio": True,
         "descripcion": "Nivel de acceso al dataset según vocabulario europeo.",
-        "ejemplo": "Restringido (solo investigadores acreditados), Público, Confidencial...",
+        "ejemplo": "Restringido (solo investigadores acreditados), Público, No Público (los datos no salen de la organización)",
         "bloque": "acceso_y_derechos"
     },
     "hdab": {
