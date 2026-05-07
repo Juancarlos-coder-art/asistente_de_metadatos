@@ -62,82 +62,27 @@ export default function MetadataPreview({ metadata }) {
 
   if (entries.length === 0) {
     return (
-      <div style={styles.empty}>
-        <span style={styles.emptyIcon}>📭</span>
-        <p style={styles.emptyText}>Aún no hay datos. Completa el primer bloque.</p>
+      <div className="preview-empty">
+        <span className="preview-empty-icon">📭</span>
+        <p className="preview-empty-text">Aún no hay datos. Completa el primer bloque.</p>
       </div>
     );
   }
 
   return (
-    <div style={styles.grid}>
+    <div className="preview-list">
       {entries.map(([key, value]) => {
         const info = FIELD_INFO[key] || { label: key, description: "" };
         const formatted = formatValue(key, value);
         if (!formatted) return null;
 
         return (
-          <div key={key} style={styles.card}>
-            <div style={styles.cardHeader}>
-              <span style={styles.cardIcon}>{info.icon}</span>
-              <span style={styles.cardLabel}>{info.label}</span>
-            </div>
-            <div style={styles.cardValue}>{formatted}</div>
+          <div key={key} className="field-row">
+            <div className="field-key">{info.label}</div>
+            <div className="field-val">{formatted}</div>
           </div>
         );
       })}
     </div>
   );
 }
-
-const styles = {
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "8px",
-  },
-  card: {
-    background: "white",
-    border: "1px solid var(--color-border)",
-    borderLeft: "3px solid var(--color-interactive)",
-    padding: "12px 14px",
-  },
-  cardHeader: {
-    display: "flex",
-    alignItems: "center",
-    gap: "6px",
-    marginBottom: "6px",
-  },
-  cardIcon: {
-    fontSize: "0.9rem",
-  },
-  cardLabel: {
-    fontFamily: "var(--font-mono)",
-    fontSize: "0.7rem",
-    color: "var(--color-text-secondary)",
-    textTransform: "uppercase",
-    letterSpacing: "0.06em",
-    fontWeight: 600,
-  },
-  cardValue: {
-    fontSize: "0.9rem",
-    color: "var(--color-text-primary)",
-    lineHeight: 1.5,
-    wordBreak: "break-word",
-  },
-  empty: {
-    textAlign: "center",
-    padding: "32px 16px",
-    border: "1px dashed var(--color-border)",
-    background: "white",
-  },
-  emptyIcon: {
-    fontSize: "2rem",
-    display: "block",
-    marginBottom: "8px",
-  },
-  emptyText: {
-    fontSize: "0.875rem",
-    color: "var(--color-text-secondary)",
-  },
-};

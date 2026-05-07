@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import MetadataPreview from "../components/MetadataPreview";
 import {
   completeBlock, saveManual, validateMetadata,
-  getMissingFields, finalizeMetadata, getMetadata
+  getMissingFields, finalizeMetadata, getMetadata, getSchemaInfo
 } from "../api/client";
 
 const FIELD_LABELS_ES = {
@@ -148,12 +148,18 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
-  const [validation, setValidation] = useState({ valid: true, errors: [], missing_required: [] });
+  const [validation, setValidation] = useState(null);
+  const [blockMissingInfo, setBlockMissingInfo] = useState(null);
   const [metadata, setMetadata] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [missingInfo, setMissingInfo] = useState([]);
+  const [schemaInfo, setSchemaInfo] = useState({});
 
   const block = blocks[currentIdx];
+
+  useEffect(() => {
+    getSchemaInfo().then(res => setSchemaInfo(res.data)).catch(() => {});
+  }, []);
 
   const isNonPublic = (meta = metadata) => {
     const ar = meta.access_rights || "";
@@ -172,6 +178,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     setResult(null);
     setError(null);
     setShowModal(false);
+    setBlockMissingInfo(null);
     loadMetadata();
   }, [currentIdx]);
 
@@ -181,6 +188,8 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       setMetadata(res.data);
       const val = await validateMetadata();
       setValidation(val.data);
+      const misRes = await getMissingFields(currentIdx);
+      setBlockMissingInfo(misRes.data.descriptions || []);
     } catch {}
   };
 
@@ -195,6 +204,8 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       onBlockDone(currentIdx);
       const val = await validateMetadata();
       setValidation(val.data);
+      const misRes = await getMissingFields(currentIdx);
+      setBlockMissingInfo(misRes.data.descriptions || []);
     } catch (e) {
       setError(e.response?.data?.detail || "Error al autocompletar");
     }
@@ -209,6 +220,8 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       onBlockDone(currentIdx);
       const val = await validateMetadata();
       setValidation(val.data);
+      const misRes = await getMissingFields(currentIdx);
+      setBlockMissingInfo(misRes.data.descriptions || []);
       setResult(manualFields);
     } catch (e) {
       setError(e.response?.data?.detail || "Error al guardar");
@@ -306,18 +319,93 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
               🔒 <strong>Identificador</strong> asignado automáticamente por ser un dataset No Público.
             </div>
           )}
-          {activeFields.map(field => (
-            <div key={field} className="field-group">
-              <label className="field-label">{FIELD_LABELS_ES[field] ?? field}</label>
-              <input
-                className="field-input"
-                type="text"
-                placeholder={`Introduce ${FIELD_LABELS_ES[field] ?? field}...`}
-                value={manualFields[field] || ""}
-                onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
-              />
-            </div>
-          ))}
+          {activeFields.map(field => {
+            const fieldLabel = FIELD_LABELS_ES[field] ?? field;
+            const fieldSchema = schemaInfo[field] || {};
+
+            // ── access_rights → select con choices ──
+            if (field === "access_rights" && fieldSchema.choices) {
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label">{fieldLabel}</label>
+                  <select
+                    className="field-select"
+                    value={manualFields[field] || ""}
+                    onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
+                  >
+                    <option value="">— Selecciona una opción —</option>
+                    {fieldSchema.choices.map(ch => (
+                      <option key={ch.value} value={ch.value}>{ch.label}</option>
+                    ))}
+                  </select>
+                </div>
+              );
+            }
+
+            // ── hdab → subcampos desglosados ──
+            if (field === "hdab" && fieldSchema.subfields) {
+              const hdabValues = manualFields.hdab || {};
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
+                  <div className="hdab-subfields">
+                    {fieldSchema.subfields.map(sf => {
+                      const sfLabel = `${sf.required ? "* " : ""}${sf.label}`;
+                      if (sf.choices) {
+                        return (
+                          <div key={sf.field_name} className="field-group">
+                            <label className="field-label">{sfLabel}</label>
+                            <select
+                              className="field-select"
+                              value={hdabValues[sf.field_name] || ""}
+                              onChange={(e) => setManualFields({
+                                ...manualFields,
+                                hdab: { ...hdabValues, [sf.field_name]: e.target.value }
+                              })}
+                            >
+                              <option value="">— Selecciona —</option>
+                              {sf.choices.map(ch => (
+                                <option key={ch.value} value={ch.value}>{ch.label}</option>
+                              ))}
+                            </select>
+                          </div>
+                        );
+                      }
+                      return (
+                        <div key={sf.field_name} className="field-group">
+                          <label className="field-label">{sfLabel}</label>
+                          <input
+                            className="field-input"
+                            type="text"
+                            placeholder={`Introduce ${sf.label}...`}
+                            value={hdabValues[sf.field_name] || ""}
+                            onChange={(e) => setManualFields({
+                              ...manualFields,
+                              hdab: { ...hdabValues, [sf.field_name]: e.target.value }
+                            })}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            }
+
+            // ── Campo de texto normal ──
+            return (
+              <div key={field} className="field-group">
+                <label className="field-label">{fieldLabel}</label>
+                <input
+                  className="field-input"
+                  type="text"
+                  placeholder={`Introduce ${fieldLabel}...`}
+                  value={manualFields[field] || ""}
+                  onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
+                />
+              </div>
+            );
+          })}
           {block.fields.includes("applicable_legislation") && (
             <div className="alert alert--info">
               <strong>applicable_legislation</strong> se rellena automáticamente al finalizar.
@@ -340,28 +428,58 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
         <div className="validation-box">
           <p className="validation-header">Estado de validación</p>
           {(() => {
-            // Solo mostrar campos del bloque actual que están pendientes
-            const blockMissing = validation.missing_required.filter(m =>
-              activeFields.includes(m) &&
-              !(isNonPublic() && m === "identifier")
+            if (!blockMissingInfo) {
+              return <div className="alert alert--info" style={{ marginTop: 0 }}>⏳ Pendiente de validación. Completa el bloque para comprobar.</div>;
+            }
+
+            // Campos obligatorios del bloque actual (del endpoint /missing/{blockId})
+            const blockObligatory = blockMissingInfo.filter(item =>
+              item.obligatorio && !(isNonPublic() && item.field === "identifier")
             );
-            const blockErrors = validation.errors.filter(e =>
-              activeFields.some(f => e.includes(f))
+            const blockOptional = blockMissingInfo.filter(item =>
+              !item.obligatorio
             );
 
-            return blockMissing.length === 0 && blockErrors.length === 0 ? (
-              <div className="alert alert--ok" style={{ marginTop: 0 }}>✅ Todo correcto.</div>
-            ) : (
+            // Errores de formato del bloque actual
+            const blockErrors = validation ? validation.errors.filter(e =>
+              activeFields.some(f => e.includes(f))
+            ) : [];
+
+            // Total global de obligatorios pendientes
+            const globalMissingCount = validation ? validation.missing_required.length : 0;
+
+            return (
               <>
-                {blockMissing.map((m, i) => (
-                  <div key={i} className="validation-item">
-                    <span>{FIELD_LABELS_ES[m] ?? m}</span>
-                    <span className="tag">obligatorio</span>
+                {blockObligatory.length === 0 && blockErrors.length === 0 ? (
+                  <div className="alert alert--ok" style={{ marginTop: 0 }}>✅ Bloque actual correcto.</div>
+                ) : (
+                  <>
+                    {blockObligatory.map((item, i) => (
+                      <div key={i} className="validation-item">
+                        <span>{FIELD_LABELS_ES[item.field] ?? item.label ?? item.field}</span>
+                        <span className="tag tag--error">obligatorio</span>
+                      </div>
+                    ))}
+                    {blockErrors.map((e, i) => (
+                      <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e}</div>
+                    ))}
+                  </>
+                )}
+                {blockOptional.length > 0 && (
+                  <div className="alert alert--warn" style={{ marginTop: "8px" }}>
+                    💡 {blockOptional.length} campo(s) opcional(es) sin rellenar en este bloque.
                   </div>
-                ))}
-                {blockErrors.map((e, i) => (
-                  <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e}</div>
-                ))}
+                )}
+                {globalMissingCount > 0 && (
+                  <div className="alert alert--warn" style={{ marginTop: "8px" }}>
+                    ⚠️ {globalMissingCount} campo(s) obligatorio(s) pendiente(s) en total.
+                  </div>
+                )}
+                {globalMissingCount === 0 && blockObligatory.length === 0 && blockErrors.length === 0 && (
+                  <div className="alert alert--ok" style={{ marginTop: "8px" }}>
+                    🎉 Todos los campos obligatorios están completos.
+                  </div>
+                )}
               </>
             );
           })()}

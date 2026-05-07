@@ -4,7 +4,8 @@ import json
 import re
 from schema_loader import HealthDCATAPSchema
 import yaml
-ACTIVE_FIELDS = {"Título","Identificador", "Descripción", "Derechos de Acceso", "Organismo a los datos sanitarios"}
+from assistant.rag_helper import FIELD_INDEX
+
 class MetadataState:
     """
     Mantiene el estado acumulado de los metadatos HealthDCAT-AP
@@ -40,36 +41,15 @@ class MetadataState:
     def required_fields(self):
         """
         Devuelve una lista con los nombres de los campos
-        que son obligatorios y están activos.
+        que son obligatorios, basándose en FIELD_INDEX.
         """
-
-        required = []
-
-        # Recorremos todos los campos definidos en el esquema
-        for field in self.schema.get("dataset_fields", []):
-
-            # Obtenemos el nombre del campo
-            field_name = field.get("field_name")
-
-            # Comprobamos si el campo es obligatorio
-            is_required = field.get("required", False)
-
-            # Comprobamos si el campo está activo
-            is_active = field_name in ACTIVE_FIELDS
-
-            # Solo si cumple ambas condiciones, lo añadimos
-            if is_required and is_active:
-                required.append(field_name)
-
-        # Devolvemos la lista final
-        return required
+        return [
+            key for key, info in FIELD_INDEX.items()
+            if info.get("obligatorio", False)
+        ]
 
 
     def missing_required(self):
-        errors = []
-        for field, value in self.data.items():
-            if field not in ACTIVE_FIELDS:  # ignorar campos fuera del scope
-                continue
         missing = []
         for field_name in self.required_fields():
             val = self.data.get(field_name)
