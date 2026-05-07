@@ -13,56 +13,47 @@ class HealthDCATAPSchema:
         self.resource_fields = self.schema.get("resource_fields", [])
 
     # ------------------------------
-    # CARGA DEL ESQUEMA. Abre el archivo y luego 
+    # CARGA DEL ESQUEMA
     # ------------------------------
-
-    def _load_schema(self, path: str) -> dict:
-        """
-        Carga y devuelve el esquema YAML desde el fichero indicado.
-        :return: Diccionario con el contenido del esquema
-        """
-        with open(path, "r", encoding="utf-8") as file:
-            schema = yaml.safe_load(file)
-
-        return schema
-
+    def _load_schema(self, path):
+        with open(path, "r", encoding="utf-8") as f:
+            return yaml.safe_load(f)
 
     # ------------------------------
     # OBTENER LISTAS DE CAMPOS
     # ------------------------------
     def list_dataset_fields(self):
         """
-        Devuelve una lista de diccionarios con la información
-        de los campos del dataset.
+        Devuelve una lista simplificada y legible con la información
+        relevante de cada campo del dataset.
         """
-
+        
         fields = []
 
         for field in self.dataset_fields:
-            field_info = {
+            fields.append({
                 "name": field.get("field_name"),
                 "label": field.get("label"),
                 "required": field.get("required", False),
                 "preset": field.get("preset"),
                 "help_text": field.get("help_text"),
-            }
-
-            fields.append(field_info)
+                "validators": field.get("validators")
+            })
 
         return fields
 
-    #Obtiene listas de campos del bloque de resources
     def list_resource_fields(self):
-        fields = []
+        fields  = []
         for field in self.resource_fields:
-            field_info = {
-                "name":field.get("field_name"),
+            fields.append({
+                "name": field.get("field_name"),
                 "label": field.get("label"),
-                "preset": field.get ("help_text")
-            }
-            fields.append(field_info)
+                "required": field.get("required", False),
+                "preset": field.get("preset"),
+                "help_text": field.get("help_text"),
+                "validators": field.get("validators")
+            })
         return fields
-       
 
     # ------------------------------
     # GENERAR PREGUNTA PARA EL ASISTENTE
@@ -75,7 +66,7 @@ class HealthDCATAPSchema:
         label = field.get("label")
         required = field.get("required", False)
         help_text = field.get("help_text", "")
-        '''Aquí se ha cargado primero estas variables porque luego serán llamadas a la hora de preguntar.'''
+
         pregunta = f"📌 **{label}**"
         if required:
             pregunta += " *(obligatorio)*"
@@ -88,16 +79,12 @@ class HealthDCATAPSchema:
     # ------------------------------
     # GET DETALLE DEL CAMPO
     # ------------------------------
-    def get_field(self, field_name: str) -> dict | None:
-        """
-        Devuelve el diccionario que describe un campo del dataset
-        dado su nombre. Si no existe, devuelve None.
-        """
-        for field in self.dataset_fields:
-            if field.get("field_name") == field_name:
-                return field
-
+    def get_field(self, field_name):
+        for f in self.dataset_fields:
+            if f.get("field_name") == field_name:
+                return f
         return None
+
     # ------------------------------
     # CREAR PLANTILLA VACÍA DE METADATOS
     # ------------------------------
@@ -105,94 +92,118 @@ class HealthDCATAPSchema:
         """
         Crea una estructura vacía lista para rellenar con valores del usuario.
         """
+        return { f["field_name"]: None for f in self.dataset_fields }
+    
 
-        result = {}
-
-        for field in self.dataset_fields:
-            field_name = field.get("field_name")
-            result[field_name] = None
-
-        return result
-
-
-
-    def _load_healthdcat_yaml(self, path):
-        try:
-            with open(path, "r", encoding="utf-8") as file:
-                return yaml.safe_load(file)
-        except FileNotFoundError:
-            return {}
-        
-    def _apply_yaml_rules(self, rule, yaml_field):
-        """
-        Traduce las reglas del YAML a un formato usable.
-        NO valida valores.
-        """
-
-        if "validators" in yaml_field:
-            rule["validators"] = yaml_field["validators"].split()
-
-        if "choices" in yaml_field:
-
-            values = []
-
-            for choice in yaml_field["choices"]:
-                if "value" in choice:
-                    values.append(choice["value"])
-
-            rule["choices"] = values
-
+    # ------------------------------
+    # EXTRAER RESTRICCIONES DEL ESQUEMA
+    # -----------------------------
 
     # ------------------------------
     # EXTRAER RESTRICCIONES DEL ESQUEMA
     # ------------------------------
     def extract_restrictions(self):
-        """
-        Genera un diccionario de reglas (restrictions) para cada
-        campo del dataset, combinando información del YAML de
-        HealthDCAT-AP y del schema JSON.
-        """
-
+        import yaml
         restrictions = {}
 
-        # -------------------------------------------------
-        # 1. Cargar esquema YAML (HealthDCAT-AP)
-        # -------------------------------------------------
-        # Cargamos el esquema completo desde el YAML
-        yaml_schema = self._load_healthdcat_yaml("health_dcat_ap.yaml")
+        # Intentar cargar el YAML completo de HealthDCAT-AP
 
-        # Obtenemos la lista de campos del dataset definida en el YAML
+        try:
+            with open("health_dcat_ap.yaml", "r", encoding="utf-8") as f:
+                yaml_schema = yaml.safe_load(f)
+                print("DEBUG: YAML cargado correctamente")
+        except FileNotFoundError:
+            print("DEBUG: YAML NO encontrado")
+            yaml_schema = {}
+
         yaml_fields = yaml_schema.get("dataset_fields", [])
+        yaml_by_name = { f["field_name"]: f for f in yaml_fields if "field_name" in f }
 
-        # Creamos un diccionario para acceder a los campos por su nombre
-        yaml_by_name = {}
-
-        for field in yaml_fields:
-            field_name = field.get("field_name")
-
-            if field_name is not None:
-                yaml_by_name[field_name] = field
-
-        # -------------------------------------------------
-        # 2. Generar reglas por cada campo del dataset
-        # -------------------------------------------------
+        # Recorrer los campos del JSON del schema
         for field in self.dataset_fields:
 
-            field_name = field["field_name"]
-
+            fname = field["field_name"]
             rule = {
                 "required": field.get("required", False),
-                "type": "text",
+                "type": "text"
             }
 
-            # -------------------------------------------------
-            # 2.1 Reglas basadas en el YAML
-            # -------------------------------------------------
-            yaml_field = yaml_by_name.get(field_name)
+            # ============================
+            # 1. REGLAS BASADAS EN EL YAML
+            # ============================
+            yaml_field = yaml_by_name.get(fname)
+
             if yaml_field:
-                self._apply_yaml_rules(rule, yaml_field)
-                
-            restrictions[field_name] = rule
+
+                # A. Validators completos (CKAN)
+                if "validators" in yaml_field:
+                    rule["validators"] = yaml_field["validators"]
+
+                # B. Vocabularios / enumeraciones
+                if "choices" in yaml_field:
+                    rule["choices"] = [
+                        choice["value"] for choice in yaml_field["choices"]
+                    ]
+
+                # C. Longitudes
+                if "min_length" in yaml_field:
+                    rule["min_length"] = yaml_field["min_length"]
+
+                if "max_length" in yaml_field:
+                    rule["max_length"] = yaml_field["max_length"]
+
+                # D. Tipos DCAT / DCTerms / schema.org
+                if "type" in yaml_field:
+                    rule["dcat_type"] = yaml_field["type"]
+
+                # E. Cardinalidad
+                if "min_items" in yaml_field:
+                    rule["min_items"] = yaml_field["min_items"]
+
+                if "max_items" in yaml_field:
+                    rule["max_items"] = yaml_field["max_items"]
+
+                # F. Expresiones regulares
+                if "regex" in yaml_field:
+                    rule["regex"] = yaml_field["regex"]
+
+            # ============================
+            # 2. REGLAS DEL JSON
+            # ============================
+
+            preset = field.get("preset")
+            if preset == "dataset_slug":
+                rule["type"] = "slug"
+            elif preset == "tag_string_autocomplete":
+                rule["type"] = "list"
+            elif preset == "title":
+                rule["type"] = "text"
+
+            if field.get("form_snippet") == "markdown.html":
+                rule["type"] = "markdown"
+
+            snippet = field.get("display_snippet")
+            if snippet == "email.html":
+                rule["type"] = "email"
+            if snippet == "link.html":
+                rule["type"] = "url"
+
+            # Campos repetibles del JSON
+            if "repeating_subfields" in field:
+                rule["type"] = "list_object"
+                rule["subfields"] = {
+                    sf["field_name"]: (
+                        "email" if sf.get("display_snippet") == "email.html"
+                        else "url" if sf.get("display_snippet") == "link.html"
+                        else "text"
+                    )
+                    for sf in field["repeating_subfields"]
+                }
+                # Cardinalidad mínima/máxima
+                if field.get("repeating_once"):
+                    rule["min_items"] = 1
+                    rule["max_items"] = 1
+
+            restrictions[fname] = rule
 
         return restrictions
-        

@@ -1,10 +1,10 @@
-# Asistente de Metadatos HealthDCAT-AP-ES
+# 🏥 Asistente de Metadatos HealthDCAT-AP-ES
 
 > Asistente conversacional para la generación de metadatos sanitarios conforme al estándar europeo **HealthDCAT-AP-ES**, desarrollado en el marco de la **Estrategia Nacional de Datos de Salud (ENDS)**.
 
 ---
 
-## Índice
+## 📋 Índice
 
 - [¿Qué hace este proyecto?](#-qué-hace-este-proyecto)
 - [Arquitectura](#-arquitectura)
@@ -94,15 +94,6 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Si no existe `requirements.txt`, instala manualmente:
-
-```bash
-pip install streamlit
-pip install pyyaml
-pip install groq
-pip install python-dotenv
-```
-
 ---
 
 ## 🔑 Configuración de la API de Groq
@@ -184,7 +175,7 @@ El asistente irá preguntando bloque a bloque. Pulsa **Enter dos veces** para co
 
 ---
 
-## Resultado generado
+## 📄 Resultado generado
 
 Al finalizar se crea `metadata_output.json` con esta estructura:
 
@@ -230,7 +221,7 @@ El JSON generado es compatible con el perfil `EuropeanHealthDCATAPProfile` de la
 | Rama | Descripción |
 |------|-------------|
 | `master` | Versión estable con LLM (Groq). Lista para uso en desarrollo |
-| `qa_nlp` | Versión en desarrollo sin IA generativa, usando Google Cloud Natural Language API + spaCy para entornos de producción institucional |
+
 
 ---
 

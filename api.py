@@ -20,6 +20,11 @@ from assistant.metadata_state import MetadataState
 from assistant.llm_provider import call_llm, llm_available
 from assistant.rag_helper import get_block_missing, get_missing_descriptions
 from cli import BLOCKS, build_prompt_for_block, build_contract
+# Añadir estos imports al principio de api.py
+from fastapi import UploadFile, File
+from pypdf import PdfReader
+import io
+
 
 app = FastAPI(
     title="Asistente HealthDCAT-AP-ES",
@@ -247,3 +252,108 @@ if os.path.exists("frontend/dist") and os.path.exists("frontend/dist/assets"):
     @app.get("/{full_path:path}")
     def serve_react(full_path: str):
         return FileResponse("frontend/dist/index.html")
+
+# ── Endpoint: subir documento PDF y extraer metadatos ──
+@app.post("/upload-document")
+async def upload_document(
+    file: UploadFile = File(...),
+    response: Response = None,
+    session_id: str = Cookie(default=None)
+):
+    """
+    Recibe un PDF, extrae el texto y usa el LLM para inferir
+    todos los campos de todos los bloques posibles.
+    Devuelve un diccionario con los campos inferidos por bloque.
+    """
+    sid, state = get_session(session_id, response)
+ 
+    # ── 1. Extraer texto del PDF ──
+    try:
+        contents = await file.read()
+        pdf = PdfReader(io.BytesIO(contents))
+        text = "\n".join(page.extract_text() or "" for page in pdf.pages)
+        text = text[:8000]  # limitar a 8000 chars para no exceder tokens
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error al leer el PDF: {str(e)}")
+ 
+    if not text.strip():
+        raise HTTPException(status_code=400, detail="El PDF no contiene texto extraíble.")
+ 
+    if not llm_available():
+        raise HTTPException(status_code=503, detail="LLM no disponible.")
+ 
+    # ── 2. Inferir todos los campos de todos los bloques ──
+    all_fields = []
+    for block in BLOCKS:
+        all_fields.extend(block["fields"])
+    all_fields = list(dict.fromkeys(all_fields))  # deduplicar
+ 
+    fields_str = ", ".join(all_fields)
+ 
+    prompt = (
+        f"El usuario ha subido un documento sobre un dataset sanitario.\n"
+        f"Extrae ÚNICAMENTE la información que aparezca explícitamente en el texto.\n"
+        f"Claves esperadas: [{fields_str}]\n\n"
+        f"REGLAS:\n"
+        f"- Devuelve SOLO JSON válido\n"
+        f"- Si un campo no aparece en el texto, devuelve null\n"
+        f"- NUNCA inventes ni deduzcas información\n"
+        f"- El campo 'notes' corresponde a la descripción general del dataset. "
+        f"Copia el texto de descripción del documento aunque sea largo.\n"  # ← mejora 1
+        f"- Para 'access_rights' usa la URI correspondiente:\n"
+        f"  Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
+        f"  Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
+        f"  No público → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
+        f"- Para 'hdab' devuelve objeto con: name, type, email, telephone, contact_page\n"
+        f"\nTexto del documento:\n{text[:6000]}" 
+        f"MAPEO DE CAMPOS (clave JSON → qué buscar en el documento):\n"
+        f"- 'title' → título o nombre del dataset\n"
+        f"- 'notes' → descripción, resumen o abstract del dataset\n"
+        f"- 'identifier' → DOI, identificador único o URI del dataset\n"
+        f"- 'access_rights' → nivel de acceso, condiciones de uso, quién puede acceder\n"
+        f"- 'hdab' → organismo de acceso, entidad gestora, HDAB\n"
+        f"  Subcampos: name (nombre), email (correo), telephone (teléfono), contact_page (web)\n"# ← mejora 2: reducido de 8000 a 6000
+    )
+    
+    contract = {f: None for f in all_fields}
+ 
+    try:
+        ai_result = call_llm(prompt, contract, text)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error en el LLM: {str(e)}")
+ 
+    # ── 3. Organizar resultados por bloque ──
+    results_by_block = {}
+    filled_fields = {}
+ 
+    for block in BLOCKS:
+        block_result = {}
+        block_filled = 0
+        block_total = len(block["fields"])
+ 
+        for field in block["fields"]:
+            value = ai_result.get(field)
+            block_result[field] = value
+            if value is not None and value != "" and value != []:
+                block_filled += 1
+                filled_fields[field] = value
+ 
+        results_by_block[block["name"]] = {
+            "fields": block_result,
+            "filled": block_filled,
+            "total": block_total,
+            "complete": block_filled == block_total
+        }
+ 
+    # ── 4. Guardar en el estado de sesión ──
+    state.merge_partial(filled_fields)
+    apply_conditional_logic(state)
+ 
+    return {
+        "success": True,
+        "text_extracted": len(text),
+        "results_by_block": results_by_block,
+        "metadata": state.data,
+        "session_id": sid
+    }
+ 

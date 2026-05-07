@@ -4,6 +4,7 @@ import Welcome from "./pages/Welcome";
 import BlockForm from "./pages/BlockForm";
 import Sidebar from "./components/Sidebar";
 import { getBlocks, getMetadata, validateMetadata, getMissingFields, resetMetadata } from "./api/client";
+import DocumentUploadModal from "./components/DocumentUploadModal";
 
 export default function App() {
   const [started, setStarted] = useState(false);
@@ -14,6 +15,8 @@ export default function App() {
   const [missingCount, setMissingCount] = useState(0);
   const [missingDetails, setMissingDetails] = useState([]);
   const [finished, setFinished] = useState(false);
+  const [showDocumentModal, setShowDocumentModal] = useState(false);
+  const [documentResults, setDocumentResults] = useState(null);
 
   useEffect(() => {
     getBlocks().then(res => setBlocks(res.data)).catch(() => {});
@@ -28,7 +31,14 @@ export default function App() {
   }, [started, currentIdx]);
 
   const handleStart = () => setStarted(true);
-  const handleNext = () => { if (currentIdx < blocks.length - 1) setCurrentIdx(currentIdx + 1); };
+  const handleNext = () => {
+    // Mostrar popup de documento después del bloque 1 (derechos de acceso)
+    if (currentIdx === 0 && !documentResults) {
+      setShowDocumentModal(true);
+      return;
+    }
+    if (currentIdx < blocks.length - 1) setCurrentIdx(currentIdx + 1);
+  };
   const handlePrev = () => { if (currentIdx > 0) setCurrentIdx(currentIdx - 1); };
 
   const handleBlockDone = (idx) => {
@@ -47,6 +57,20 @@ export default function App() {
     setBlocksDone([]);
     setMetadata({});
     setFinished(false);
+  };
+
+  const handleDocumentSuccess = (data) => {
+  setDocumentResults(data.results_by_block);
+  setMetadata(data.metadata);
+  setShowDocumentModal(false);
+  // Marcar como completados los bloques que se rellenaron
+  const done = [];
+  blocks.forEach((b, i) => {
+    const result = data.results_by_block[b.name];
+    if (result && result.filled > 0) done.push(i);
+  });
+  setBlocksDone(prev => [...new Set([...prev, ...done])]);
+  setCurrentIdx(1); // avanzar al siguiente bloque
   };
 
   // Pantalla final
@@ -79,8 +103,22 @@ export default function App() {
 
   if (!started) return <Welcome onStart={handleStart} />;
 
+if (!started) return <Welcome onStart={handleStart} />;
+
   return (
     <div className="app-layout">
+      {/* Modal de subida de documento */}
+      {showDocumentModal && (
+        <DocumentUploadModal
+          onClose={() => setShowDocumentModal(false)}
+          onSkip={() => {
+            setShowDocumentModal(false);
+            setCurrentIdx(1);
+          }}
+          onSuccess={handleDocumentSuccess}
+        />
+      )}
+
       <Sidebar
         blocks={blocks}
         currentIdx={currentIdx}
