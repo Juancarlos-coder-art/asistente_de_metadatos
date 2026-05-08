@@ -1,0 +1,15 @@
+# entornos
+venv/
+env/
+
+# secretos
+.env
+env
+# python
+__pycache__/
+*.pyc
+
+# notebooks
+.ipynb_checkpoints/
+metadata_output*.json
+node_modules
