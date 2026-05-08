@@ -19,7 +19,9 @@ BLOCKS = [
             "- 'Solo investigadores acreditados pueden solicitarlo' → Restringido\n"
             "- 'Es un dataset interno, no sale de nuestra organización' → No público\n"
         ),
-        "hint": "Describe con tus palabras quién tiene acceso y bajo qué condiciones."
+        "hint": "Describe con tus palabras quién tiene acceso y bajo qué condiciones.",
+        "placeholder": "Ej.: Solo pueden acceder investigadores acreditados por la organización del CSIC"
+
 
     },
     {
@@ -29,7 +31,9 @@ BLOCKS = [
             "Proporciona una descripción general del dataset e incluye el identificador del conjunto "
             "de datos si está disponible."
         ),
-        "hint": "Dinos cómo se llama el dataset, de qué trata y si tiene algún identificador como un DOI."
+        "hint": "Dinos cómo se llama el dataset, de qué trata y si tiene algún identificador como un DOI.",
+        "placeholder": "Ej.: Dataset sobre casos de Mpox en España 2023, publicado por el Ministerio de Sanidad, con DOI https://doi.org/10.5281/zenodo.123456..."
+
     },
     {
         "name": "organismo_acceso_datos_sanitarios",
@@ -42,7 +46,8 @@ BLOCKS = [
             "Si dispones de ellos, incluye también el correo de contacto, "
             "el teléfono, la página web de contacto y el horario de disponibilidad."
         ),
-        "hint":"Indícanos qué organismo es el responsable de dar acceso a estos datos y cómo contactarle."
+        "hint":"Indícanos qué organismo es el responsable de dar acceso a estos datos y cómo contactarle.",
+        "placeholder": "Ej.: El organismo es el ISCIII, su correo es datos.salud@isciii.es y su teléfono es +34 918 222 000..."
     }
 ]
 

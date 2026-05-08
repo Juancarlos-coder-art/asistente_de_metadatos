@@ -81,8 +81,17 @@ def health():
 
 @app.get("/blocks")
 def get_blocks():
-    return [{"id": i, "name": b["name"], "question": b["question"], "fields": b["fields"],"hint": b.get("hint", "")} for i, b in enumerate(BLOCKS)]
-
+    return [
+        {
+            "id": i,
+            "name": b["name"],
+            "question": b["question"],
+            "fields": b["fields"],
+            "hint": b.get("hint", ""),
+            "placeholder": b.get("placeholder", "")  # ← añade esto
+        }
+        for i, b in enumerate(BLOCKS)
+    ]
 @app.get("/blocks/{block_id}")
 def get_block(block_id: int):
     if block_id < 0 or block_id >= len(BLOCKS):

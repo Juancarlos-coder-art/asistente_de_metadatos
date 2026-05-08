@@ -298,9 +298,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
           <div className="field-group">
             <textarea
               className="field-textarea"
-              placeholder="Ej.: El dataset trata sobre casos de viruela del mono en España durante 2023..."
-              value={userContext}
-              onChange={(e) => setUserContext(e.target.value)}
+              placeholder={block.placeholder || "Describe el bloque con tus propias palabras..."}
             />
           </div>
           <button className="btn btn--primary" onClick={handleComplete} disabled={loading || !userContext.trim()}>
