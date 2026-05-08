@@ -365,4 +365,95 @@ async def upload_document(
         "metadata": state.data,
         "session_id": sid
     }
- 
+
+# ── Endpoint: validar con SHACL contra el validador ITB ──
+@app.post("/validate-shacl")
+async def validate_shacl(
+    response: Response,
+    session_id: str = Cookie(default=None)
+):
+    """
+    Convierte el metadata_output.json a JSON-LD y lo envía
+    al validador ITB local (http://localhost:8085).
+    Elige el tipo de validación según access_rights.
+    """
+    sid, state = get_session(session_id, response)
+
+    if not state.data:
+        raise HTTPException(status_code=400, detail="No hay metadatos para validar.")
+
+    # ── 1. Determinar tipo de validación según access_rights ──
+    access_rights = state.data.get("access_rights", "")
+    if "NON_PUBLIC" in str(access_rights).upper():
+        validation_type = "nonpublic"
+    elif "RESTRICTED" in str(access_rights).upper():
+        validation_type = "restricted"
+    else:
+        validation_type = "public"
+
+    # ── 2. Preparar el JSON-LD ──
+    json_ld_content = json.dumps(state.data, indent=2, ensure_ascii=False)
+
+    # ── 3. Llamar a la API REST del validador ITB ──
+    validator_url = "https://www.itb.ec.europa.eu/shacl/any/api/validate"
+    try:
+        import httpx
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            resp = await client.post(
+                validator_url,
+                json={
+                    "contentToValidate": json_ld_content,
+                    "contentSyntax": "application/ld+json",
+                    "validationType": validation_type
+                },
+                headers={"Content-Type": "application/json"}
+            )
+
+        if resp.status_code != 200:
+            raise HTTPException(
+                status_code=502,
+                detail=f"El validador devolvió error {resp.status_code}"
+            )
+
+        result = resp.json()
+
+        # ── 4. Parsear resultado ──
+        reports = result.get("reports", [])
+        errors = []
+        warnings = []
+        messages = []
+
+        for report in reports:
+            for item in report.get("items", []):
+                severity = item.get("level", "").upper()
+                description = item.get("description", "")
+                path = item.get("path", "")
+                entry = {"description": description, "path": path}
+
+                if severity == "ERROR" or severity == "VIOLATION":
+                    errors.append(entry)
+                elif severity == "WARNING":
+                    warnings.append(entry)
+                else:
+                    messages.append(entry)
+
+        success = len(errors) == 0
+
+        return {
+            "success": success,
+            "validation_type": validation_type,
+            "errors": errors,
+            "warnings": warnings,
+            "messages": messages,
+            "total_errors": len(errors),
+            "total_warnings": len(warnings),
+            "raw": result
+        }
+
+    except httpx.ConnectError:
+        raise HTTPException(
+            status_code=503,
+            detail="No se puede conectar con el validador SHACL. Asegúrate de que está corriendo en http://localhost:8085"
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al validar: {str(e)}")

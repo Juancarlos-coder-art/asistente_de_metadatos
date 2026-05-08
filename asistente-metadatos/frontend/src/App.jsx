@@ -5,6 +5,7 @@ import BlockForm from "./pages/BlockForm";
 import Sidebar from "./components/Sidebar";
 import { getBlocks, getMetadata, validateMetadata, getMissingFields, resetMetadata } from "./api/client";
 import DocumentUploadModal from "./components/DocumentUploadModal";
+import ValidationResult from "./components/ValidationResult";
 
 export default function App() {
   const [started, setStarted] = useState(false);
@@ -92,6 +93,12 @@ export default function App() {
           <h1 className="finish-title">Metadatos completados</h1>
           <p className="finish-desc">El archivo <strong>metadata_output.json</strong> ha sido guardado correctamente.</p>
           <pre className="finish-json">{JSON.stringify(metadata, null, 2)}</pre>
+          <pre className="finish-json">{JSON.stringify(metadata, null, 2)}</pre>
+          <ValidationResult />   
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center" }}>
+            <button className="btn btn--primary" onClick={handleDownloadJSON}>⬇ Descargar JSON</button>
+            <button className="btn btn--secondary" onClick={handleReset}>Empezar de nuevo</button>
+          </div>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center" }}>
             <button className="btn btn--primary" onClick={handleDownloadJSON}>⬇ Descargar JSON</button>
             <button className="btn btn--secondary" onClick={handleReset}>Empezar de nuevo</button>
