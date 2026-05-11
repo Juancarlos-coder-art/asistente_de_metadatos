@@ -20,7 +20,7 @@ dataset_fields:
     en: Description
   required: true
   form_snippet: markdown.html
-- field_name: tag_string
+- field_name: Palabras clave
   label:
     es: Palabras clave
     en: Keywords
@@ -32,7 +32,7 @@ dataset_fields:
   required: true
 
   
-- field_name: theme
+- field_name: Tema
   label:
     es: Tema
     en: Theme
@@ -264,7 +264,7 @@ dataset_fields:
             es: Universidad
             en: University
 
-    - field_name: contact_page
+    - field_name: Puntos de contacto
       label:
         es: Página de contacto
         en: Contact page
@@ -693,7 +693,7 @@ dataset_fields:
       es: Sensible
       en: Sensitive
   
-- field_name: health_category
+- field_name: Categoría sanitaria
   label:
     es: Categoría sanitaria
     en: Health category
@@ -2357,7 +2357,7 @@ dataset_fields:
         es: Motivación
         en: Motivation
 
-- field_name: provenance
+- field_name: Procedencia
   label:
     es: Procedencia de los datos
     en: Provenance
@@ -4715,7 +4715,7 @@ dataset_fields:
     en: Modification date
   preset: dcat_date
 
-- field_name: dcat_type
+- field_name: Tipo de dataset
   label:
     es: Tipo de dataset
     en: Dataset type
