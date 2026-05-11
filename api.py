@@ -319,126 +319,373 @@ if os.path.exists("frontend/dist") and os.path.exists("frontend/dist/assets"):
     def serve_react(full_path: str):
         return FileResponse("frontend/dist/index.html")
 
-# ── Endpoint: subir documento PDF y extraer metadatos ──
-@app.post("/upload-document")
-async def upload_document(
-    file: UploadFile = File(...),
-    response: Response = None,
-    session_id: str = Cookie(default=None)
-):
-    sid, state = get_session(session_id, response)
 
-    # ── 1. Extraer texto del PDF ──
+
+# ── Vocabularios completos para mapeo dirigido ──
+PUBLISHER_TYPES = {
+    "instituto de salud pública": "http://13.81.34.152:1101/resource/authority/publisher-type/public-health-institute",
+    "instituto de investigación": "http://13.81.34.152:1101/resource/authority/publisher-type/research-institute-org",
+    "autoridad nacional": "http://13.81.34.152:1101/resource/authority/publisher-type/national-authority",
+    "autoridad regional": "http://13.81.34.152:1101/resource/authority/publisher-type/regional-authority",
+    "universidad": "http://13.81.34.152:1101/resource/authority/publisher-type/university",
+    "registro de salud pública": "http://13.81.34.152:1101/resource/authority/publisher-type/public-health-registry",
+    "organización de salud pública": "http://13.81.34.152:1101/resource/authority/publisher-type/public-health-org",
+    "agencia de estadísticas": "http://13.81.34.152:1101/resource/authority/publisher-type/stat-agency",
+    "biobanco": "http://13.81.34.152:1101/resource/authority/publisher-type/biobank",
+    "hospital": "http://13.81.34.152:1101/resource/authority/publisher-type/inpatient-institute",
+    "laboratorio": "http://13.81.34.152:1101/resource/authority/publisher-type/laboratory",
+    "empresa privada": "http://13.81.34.152:1101/resource/authority/publisher-type/private-company",
+    "organización no gubernamental": "http://13.81.34.152:1101/resource/authority/publisher-type/non-gov-org",
+    "organización gubernamental": "http://13.81.34.152:1101/resource/authority/publisher-type/gov-public-sector-org",
+    "registro de calidad": "http://13.81.34.152:1101/resource/authority/publisher-type/quality-registry",
+    "registro médico": "http://13.81.34.152:1101/resource/authority/publisher-type/pathology-registry",
+    "proveedor de atención médica": "http://13.81.34.152:1101/resource/authority/publisher-type/healthcare-providers",
+    "infraestructura de investigación": "http://13.81.34.152:1101/resource/authority/publisher-type/research-infra",
+}
+
+HEALTH_CATEGORIES = {
+    "registros electrónicos de salud": "http://13.81.34.152:1101/resource/authority/healthcategories/EHRS",
+    "datos administrativos sanitarios": "http://13.81.34.152:1101/resource/authority/healthcategories/HRAD",
+    "registros médicos y mortalidad": "http://13.81.34.152:1101/resource/authority/healthcategories/MRMR",
+    "datos de patógenos": "http://13.81.34.152:1101/resource/authority/healthcategories/RPDG",
+    "cohortes e investigación": "http://13.81.34.152:1101/resource/authority/healthcategories/RQSH",
+    "registros de salud pública": "http://13.81.34.152:1101/resource/authority/healthcategories/PHDR",
+    "ensayos clínicos": "http://13.81.34.152:1101/resource/authority/healthcategories/EHCT",
+    "datos genómicos": "http://13.81.34.152:1101/resource/authority/healthcategories/HGPD",
+    "biobancos": "http://13.81.34.152:1101/resource/authority/healthcategories/EINS",
+    "dispositivos médicos": "http://13.81.34.152:1101/resource/authority/healthcategories/EMRD",
+    "datos moleculares": "http://13.81.34.152:1101/resource/authority/healthcategories/HPML",
+    "aplicaciones de bienestar": "http://13.81.34.152:1101/resource/authority/healthcategories/WELA",
+    "datos de medicamentos": "http://13.81.34.152:1101/resource/authority/healthcategories/RMMD",
+    "datos agregados sanitarios": "http://13.81.34.152:1101/resource/authority/healthcategories/NRPE",
+    "datos de vigilancia epidemiológica": "http://13.81.34.152:1101/resource/authority/healthcategories/PHDR",
+}
+
+THEMES = {
+    "salud": "http://publications.europa.eu/resource/authority/data-theme/HEAL",
+    "ciencia": "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "tecnología": "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "población": "http://publications.europa.eu/resource/authority/data-theme/SOCI",
+    "sociedad": "http://publications.europa.eu/resource/authority/data-theme/SOCI",
+    "gobierno": "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+    "educación": "http://publications.europa.eu/resource/authority/data-theme/EDUC",
+    "economía": "http://publications.europa.eu/resource/authority/data-theme/ECON",
+    "medio ambiente": "http://publications.europa.eu/resource/authority/data-theme/ENVI",
+}
+
+DATASET_TYPES = {
+    "estadístico": "http://publications.europa.eu/resource/authority/dataset-type/STATISTICAL",
+    "geoespacial": "http://publications.europa.eu/resource/authority/dataset-type/GEOSPATIAL",
+    "alto valor": "http://publications.europa.eu/resource/authority/dataset-type/HVD",
+    "datos sintéticos": "http://publications.europa.eu/resource/authority/dataset-type/SYNTHETIC_DATA",
+    "datos de prueba": "http://publications.europa.eu/resource/authority/dataset-type/TEST_DATA",
+    "ontología": "http://publications.europa.eu/resource/authority/dataset-type/ONTOLOGY",
+    "esquema": "http://publications.europa.eu/resource/authority/dataset-type/SCHEMA",
+}
+
+
+def _classify_document(text: str) -> dict:
+    """
+    PASO 1: Clasificación rápida del documento.
+    El LLM responde con etiquetas simples en texto libre.
+    Muy barato en tokens.
+    """
+    prompt = (
+        f"Analiza este documento sanitario y responde SOLO con un JSON con estas claves:\n"
+        f"- 'tipo_organismo': tipo de organismo mencionado (ej: 'instituto de salud pública')\n"
+        f"- 'categorias_salud': lista de categorías sanitarias mencionadas (ej: ['registros médicos', 'epidemiología'])\n"
+        f"- 'temas': lista de temas principales (ej: ['salud', 'población'])\n"
+        f"- 'tipo_dataset': tipo de dataset (ej: 'estadístico')\n"
+        f"Usa SOLO etiquetas simples en español, sin URIs.\n"
+        f"Documento:\n{text[:2000]}"
+    )
     try:
-        contents = await file.read()
-        pdf = PdfReader(io.BytesIO(contents))
-        text = "\n".join(page.extract_text() or "" for page in pdf.pages)
-        text = text[:8000]
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Error al leer el PDF: {str(e)}")
+        result = call_llm(prompt, {
+            "tipo_organismo": None,
+            "categorias_salud": None,
+            "temas": None,
+            "tipo_dataset": None
+        }, text[:2000])
+        return result
+    except Exception:
+        return {}
 
-    if not text.strip():
-        raise HTTPException(status_code=400, detail="El PDF no contiene texto extraíble.")
 
-    if not llm_available():
-        raise HTTPException(status_code=503, detail="LLM no disponible.")
+def _build_relevant_vocab(classification: dict) -> dict:
+    """
+    PASO 1.5: Filtra los vocabularios según la clasificación.
+    Devuelve solo las URIs relevantes para el PASO 2.
+    """
+    relevant = {
+        "publisher_types": {},
+        "health_categories": {},
+        "themes": {},
+        "dataset_types": {}
+    }
 
-    # ── 2. Guardar access_rights del usuario ANTES de inferir ──
-    # Si el usuario ya eligió access_rights en el bloque 1, lo respetamos siempre
-    existing_access_rights = state.data.get("access_rights")
+    # Filtrar tipos de organismo relevantes (top 5 más parecidos)
+    tipo_org = str(classification.get("tipo_organismo", "")).lower()
+    for label, uri in PUBLISHER_TYPES.items():
+        if any(word in tipo_org for word in label.split()):
+            relevant["publisher_types"][label] = uri
+    # Si no hay match, poner los 5 más comunes
+    if not relevant["publisher_types"]:
+        common = list(PUBLISHER_TYPES.items())[:5]
+        relevant["publisher_types"] = dict(common)
 
-    # ── 3. Inferir todos los campos de todos los bloques ──
-    all_fields = []
-    for block in BLOCKS:
-        all_fields.extend(block["fields"])
-    all_fields = list(dict.fromkeys(all_fields))
+    # Filtrar categorías sanitarias relevantes
+    cats = [str(c).lower() for c in (classification.get("categorias_salud") or [])]
+    for label, uri in HEALTH_CATEGORIES.items():
+        if any(word in " ".join(cats) for word in label.split()[:2]):
+            relevant["health_categories"][label] = uri
+    if not relevant["health_categories"]:
+        common = list(HEALTH_CATEGORIES.items())[:5]
+        relevant["health_categories"] = dict(common)
 
+    # Filtrar temas relevantes
+    temas = [str(t).lower() for t in (classification.get("temas") or [])]
+    for label, uri in THEMES.items():
+        if label in " ".join(temas):
+            relevant["themes"][label] = uri
+    if not relevant["themes"]:
+        relevant["themes"] = {"salud": THEMES["salud"]}
+
+    # Tipo de dataset
+    tipo_ds = str(classification.get("tipo_dataset", "")).lower()
+    for label, uri in DATASET_TYPES.items():
+        if label in tipo_ds:
+            relevant["dataset_types"][label] = uri
+    if not relevant["dataset_types"]:
+        relevant["dataset_types"] = {"estadístico": DATASET_TYPES["estadístico"]}
+
+    return relevant
+
+
+def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, existing_access_rights: str = None) -> dict:
+    """
+    PASO 2: Extracción dirigida con solo el vocabulario relevante.
+    """
     fields_str = ", ".join(all_fields)
 
-    prompt = (
-        f"El usuario ha subido un documento sobre un dataset sanitario.\n"
-        f"Extrae ÚNICAMENTE la información que aparezca explícitamente en el texto.\n"
-        f"Claves esperadas: [{fields_str}]\n\n"
-        f"REGLAS ESTRICTAS:\n"
-        f"- Devuelve SOLO JSON válido\n"
-        f"- Si un campo no aparece en el texto, devuelve null\n"
-        f"- NUNCA inventes ni deduzcas información que no esté en el documento\n"
-        f"- Para campos de tipo array, devuelve siempre un array JSON\n\n"
-        f"MAPEO DE CAMPOS (clave JSON → qué buscar en el documento):\n"
-        f"- 'title' → título o nombre del dataset\n"
-        f"- 'notes' → descripción, resumen o abstract del dataset. Cópialo literalmente aunque sea largo.\n"
-        f"- 'identifier' → DOI, identificador único o URI del dataset\n"
-        f"- 'access_rights' → nivel de acceso, condiciones de uso, quién puede acceder. Devuelve la URI:\n"
+    # Construir secciones de vocabulario solo con opciones relevantes
+    pub_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["publisher_types"].items())
+    health_cats_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["health_categories"].items())
+    themes_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["themes"].items())
+    dataset_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["dataset_types"].items())
+
+    access_rights_section = (
+        f"- 'access_rights' → YA DEFINIDO POR EL USUARIO: '{existing_access_rights}'. Devuelve exactamente este valor.\n"
+        if existing_access_rights else
+        f"- 'access_rights' → nivel de acceso. URI:\n"
         f"    Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
         f"    Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
         f"    No público → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
-        f"- 'hdab' → organismo de acceso a datos sanitarios. Objeto con: name, type, email, telephone, contact_page\n"
-        f"- 'health_category' → categoría sanitaria. Array de URIs del vocabulario EHDS:\n"
-        f"    Registros EHR → http://13.81.34.152:1101/resource/authority/healthcategories/EHRS\n"
-        f"    Datos admin sanitarios → http://13.81.34.152:1101/resource/authority/healthcategories/HRAD\n"
-        f"    Registros médicos/mortalidad → http://13.81.34.152:1101/resource/authority/healthcategories/MRMR\n"
-        f"    Datos de patógenos → http://13.81.34.152:1101/resource/authority/healthcategories/RPDG\n"
-        f"    Cohortes e investigación → http://13.81.34.152:1101/resource/authority/healthcategories/RQSH\n"
-        f"    Registros de salud pública → http://13.81.34.152:1101/resource/authority/healthcategories/PHDR\n"
-        f"    Ensayos clínicos → http://13.81.34.152:1101/resource/authority/healthcategories/EHCT\n"
-        f"    Datos genómicos → http://13.81.34.152:1101/resource/authority/healthcategories/HGPD\n"
-        f"- 'theme' → tema principal. Array de URIs del vocabulario europeo de temas:\n"
-        f"    Salud → http://publications.europa.eu/resource/authority/data-theme/HEAL\n"
-        f"    Ciencia y tecnología → http://publications.europa.eu/resource/authority/data-theme/TECH\n"
-        f"    Población y sociedad → http://publications.europa.eu/resource/authority/data-theme/SOCI\n"
-        f"    Gobierno → http://publications.europa.eu/resource/authority/data-theme/GOVE\n"
-        f"- 'dcat_type' → tipo de dataset. URI del vocabulario Publications Office:\n"
-        f"    Datos estadísticos → http://publications.europa.eu/resource/authority/dataset-type/STATISTICAL\n"
-        f"    Datos geoespaciales → http://publications.europa.eu/resource/authority/dataset-type/GEOSPATIAL\n"
-        f"    Alto valor → http://publications.europa.eu/resource/authority/dataset-type/HVD\n"
-        f"- 'provenance' → origen o procedencia de los datos. Texto libre.\n"
+    )
+
+    prompt = (
+        f"Extrae campos de metadatos de este documento sanitario.\n"
+        f"Claves esperadas: [{fields_str}]\n\n"
+        f"REGLAS: Devuelve SOLO JSON válido. null si no aparece en el texto.\n\n"
+        f"MAPEO:\n"
+        f"- 'title' → título del dataset\n"
+        f"- 'notes' → descripción completa. Cópiala literalmente.\n"
+        f"- 'identifier' → DOI o identificador único\n"
+        f"{access_rights_section}"
+        f"- 'hdab' → organismo gestor del acceso. Objeto con: name, email, telephone, contact_page, type.\n"
+        f"  Tipos posibles:\n{pub_types_str}\n"
+        f"- 'health_category' → array de URIs:\n{health_cats_str}\n"
+        f"- 'theme' → array de URIs:\n{themes_str}\n"
+        f"- 'dcat_type' → URI:\n{dataset_types_str}\n"
+        f"- 'provenance' → origen de los datos. Texto libre.\n"
         f"- 'keyword' → palabras clave. Array de strings.\n"
-        f"- 'contact' → punto de contacto. Objeto con: email (string o null), url (string o null)\n"
-        f"\nTexto del documento:\n{text[:6000]}"
+        f"- 'contact' → objeto con: email, url\n"
+        f"\nDocumento:\n{text[:5000]}"
     )
 
     contract = {f: None for f in all_fields}
+    return call_llm(prompt, contract, text[:5000])
+# Añadir en api.py — antes del endpoint /upload-document
 
+# ── Vocabularios completos para mapeo dirigido ──
+PUBLISHER_TYPES = {
+    "instituto de salud pública": "http://13.81.34.152:1101/resource/authority/publisher-type/public-health-institute",
+    "instituto de investigación": "http://13.81.34.152:1101/resource/authority/publisher-type/research-institute-org",
+    "autoridad nacional": "http://13.81.34.152:1101/resource/authority/publisher-type/national-authority",
+    "autoridad regional": "http://13.81.34.152:1101/resource/authority/publisher-type/regional-authority",
+    "universidad": "http://13.81.34.152:1101/resource/authority/publisher-type/university",
+    "registro de salud pública": "http://13.81.34.152:1101/resource/authority/publisher-type/public-health-registry",
+    "organización de salud pública": "http://13.81.34.152:1101/resource/authority/publisher-type/public-health-org",
+    "agencia de estadísticas": "http://13.81.34.152:1101/resource/authority/publisher-type/stat-agency",
+    "biobanco": "http://13.81.34.152:1101/resource/authority/publisher-type/biobank",
+    "hospital": "http://13.81.34.152:1101/resource/authority/publisher-type/inpatient-institute",
+    "laboratorio": "http://13.81.34.152:1101/resource/authority/publisher-type/laboratory",
+    "empresa privada": "http://13.81.34.152:1101/resource/authority/publisher-type/private-company",
+    "organización no gubernamental": "http://13.81.34.152:1101/resource/authority/publisher-type/non-gov-org",
+    "organización gubernamental": "http://13.81.34.152:1101/resource/authority/publisher-type/gov-public-sector-org",
+    "registro de calidad": "http://13.81.34.152:1101/resource/authority/publisher-type/quality-registry",
+    "registro médico": "http://13.81.34.152:1101/resource/authority/publisher-type/pathology-registry",
+    "proveedor de atención médica": "http://13.81.34.152:1101/resource/authority/publisher-type/healthcare-providers",
+    "infraestructura de investigación": "http://13.81.34.152:1101/resource/authority/publisher-type/research-infra",
+}
+
+HEALTH_CATEGORIES = {
+    "registros electrónicos de salud": "http://13.81.34.152:1101/resource/authority/healthcategories/EHRS",
+    "datos administrativos sanitarios": "http://13.81.34.152:1101/resource/authority/healthcategories/HRAD",
+    "registros médicos y mortalidad": "http://13.81.34.152:1101/resource/authority/healthcategories/MRMR",
+    "datos de patógenos": "http://13.81.34.152:1101/resource/authority/healthcategories/RPDG",
+    "cohortes e investigación": "http://13.81.34.152:1101/resource/authority/healthcategories/RQSH",
+    "registros de salud pública": "http://13.81.34.152:1101/resource/authority/healthcategories/PHDR",
+    "ensayos clínicos": "http://13.81.34.152:1101/resource/authority/healthcategories/EHCT",
+    "datos genómicos": "http://13.81.34.152:1101/resource/authority/healthcategories/HGPD",
+    "biobancos": "http://13.81.34.152:1101/resource/authority/healthcategories/EINS",
+    "dispositivos médicos": "http://13.81.34.152:1101/resource/authority/healthcategories/EMRD",
+    "datos moleculares": "http://13.81.34.152:1101/resource/authority/healthcategories/HPML",
+    "aplicaciones de bienestar": "http://13.81.34.152:1101/resource/authority/healthcategories/WELA",
+    "datos de medicamentos": "http://13.81.34.152:1101/resource/authority/healthcategories/RMMD",
+    "datos agregados sanitarios": "http://13.81.34.152:1101/resource/authority/healthcategories/NRPE",
+    "datos de vigilancia epidemiológica": "http://13.81.34.152:1101/resource/authority/healthcategories/PHDR",
+}
+
+THEMES = {
+    "salud": "http://publications.europa.eu/resource/authority/data-theme/HEAL",
+    "ciencia": "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "tecnología": "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "población": "http://publications.europa.eu/resource/authority/data-theme/SOCI",
+    "sociedad": "http://publications.europa.eu/resource/authority/data-theme/SOCI",
+    "gobierno": "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+    "educación": "http://publications.europa.eu/resource/authority/data-theme/EDUC",
+    "economía": "http://publications.europa.eu/resource/authority/data-theme/ECON",
+    "medio ambiente": "http://publications.europa.eu/resource/authority/data-theme/ENVI",
+}
+
+DATASET_TYPES = {
+    "estadístico": "http://publications.europa.eu/resource/authority/dataset-type/STATISTICAL",
+    "geoespacial": "http://publications.europa.eu/resource/authority/dataset-type/GEOSPATIAL",
+    "alto valor": "http://publications.europa.eu/resource/authority/dataset-type/HVD",
+    "datos sintéticos": "http://publications.europa.eu/resource/authority/dataset-type/SYNTHETIC_DATA",
+    "datos de prueba": "http://publications.europa.eu/resource/authority/dataset-type/TEST_DATA",
+    "ontología": "http://publications.europa.eu/resource/authority/dataset-type/ONTOLOGY",
+    "esquema": "http://publications.europa.eu/resource/authority/dataset-type/SCHEMA",
+}
+
+
+def _classify_document(text: str) -> dict:
+    """
+    PASO 1: Clasificación rápida del documento.
+    El LLM responde con etiquetas simples en texto libre.
+    Muy barato en tokens.
+    """
+    prompt = (
+        f"Analiza este documento sanitario y responde SOLO con un JSON con estas claves:\n"
+        f"- 'tipo_organismo': tipo de organismo mencionado (ej: 'instituto de salud pública')\n"
+        f"- 'categorias_salud': lista de categorías sanitarias mencionadas (ej: ['registros médicos', 'epidemiología'])\n"
+        f"- 'temas': lista de temas principales (ej: ['salud', 'población'])\n"
+        f"- 'tipo_dataset': tipo de dataset (ej: 'estadístico')\n"
+        f"Usa SOLO etiquetas simples en español, sin URIs.\n"
+        f"Documento:\n{text[:2000]}"
+    )
     try:
-        ai_result = call_llm(prompt, contract, text)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error en el LLM: {str(e)}")
+        result = call_llm(prompt, {
+            "tipo_organismo": None,
+            "categorias_salud": None,
+            "temas": None,
+            "tipo_dataset": None
+        }, text[:2000])
+        return result
+    except Exception:
+        return {}
 
-    # ── 4. Respetar access_rights del usuario — NUNCA sobreescribir ──
-    if existing_access_rights:
-        ai_result["access_rights"] = existing_access_rights
 
-    # ── 5. Organizar resultados por bloque ──
-    results_by_block = {}
-    filled_fields = {}
-
-    for block in BLOCKS:
-        block_result = {}
-        block_filled = 0
-        block_total = len(block["fields"])
-
-        for field in block["fields"]:
-            value = ai_result.get(field)
-            block_result[field] = value
-            if value is not None and value != "" and value != []:
-                block_filled += 1
-                filled_fields[field] = value
-
-        results_by_block[block["name"]] = {
-            "fields": block_result,
-            "filled": block_filled,
-            "total": block_total,
-            "complete": block_filled == block_total
-        }
-
-    # ── 6. Guardar en el estado de sesión ──
-    state.merge_partial(filled_fields)
-    apply_conditional_logic(state)
-
-    return {
-        "success": True,
-        "text_extracted": len(text),
-        "results_by_block": results_by_block,
-        "metadata": state.data,
-        "session_id": sid
+def _build_relevant_vocab(classification: dict) -> dict:
+    """
+    PASO 1.5: Filtra los vocabularios según la clasificación.
+    Devuelve solo las URIs relevantes para el PASO 2.
+    """
+    relevant = {
+        "publisher_types": {},
+        "health_categories": {},
+        "themes": {},
+        "dataset_types": {}
     }
+
+    # Filtrar tipos de organismo relevantes (top 5 más parecidos)
+    tipo_org = str(classification.get("tipo_organismo", "")).lower()
+    for label, uri in PUBLISHER_TYPES.items():
+        if any(word in tipo_org for word in label.split()):
+            relevant["publisher_types"][label] = uri
+    # Si no hay match, poner los 5 más comunes
+    if not relevant["publisher_types"]:
+        common = list(PUBLISHER_TYPES.items())[:5]
+        relevant["publisher_types"] = dict(common)
+
+    # Filtrar categorías sanitarias relevantes
+    cats = [str(c).lower() for c in (classification.get("categorias_salud") or [])]
+    for label, uri in HEALTH_CATEGORIES.items():
+        if any(word in " ".join(cats) for word in label.split()[:2]):
+            relevant["health_categories"][label] = uri
+    if not relevant["health_categories"]:
+        common = list(HEALTH_CATEGORIES.items())[:5]
+        relevant["health_categories"] = dict(common)
+
+    # Filtrar temas relevantes
+    temas = [str(t).lower() for t in (classification.get("temas") or [])]
+    for label, uri in THEMES.items():
+        if label in " ".join(temas):
+            relevant["themes"][label] = uri
+    if not relevant["themes"]:
+        relevant["themes"] = {"salud": THEMES["salud"]}
+
+    # Tipo de dataset
+    tipo_ds = str(classification.get("tipo_dataset", "")).lower()
+    for label, uri in DATASET_TYPES.items():
+        if label in tipo_ds:
+            relevant["dataset_types"][label] = uri
+    if not relevant["dataset_types"]:
+        relevant["dataset_types"] = {"estadístico": DATASET_TYPES["estadístico"]}
+
+    return relevant
+
+
+def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, existing_access_rights: str = None) -> dict:
+    """
+    PASO 2: Extracción dirigida con solo el vocabulario relevante.
+    """
+    fields_str = ", ".join(all_fields)
+
+    # Construir secciones de vocabulario solo con opciones relevantes
+    pub_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["publisher_types"].items())
+    health_cats_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["health_categories"].items())
+    themes_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["themes"].items())
+    dataset_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["dataset_types"].items())
+
+    access_rights_section = (
+        f"- 'access_rights' → YA DEFINIDO POR EL USUARIO: '{existing_access_rights}'. Devuelve exactamente este valor.\n"
+        if existing_access_rights else
+        f"- 'access_rights' → nivel de acceso. URI:\n"
+        f"    Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
+        f"    Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
+        f"    No público → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
+    )
+
+    prompt = (
+        f"Extrae campos de metadatos de este documento sanitario.\n"
+        f"Claves esperadas: [{fields_str}]\n\n"
+        f"REGLAS: Devuelve SOLO JSON válido. null si no aparece en el texto.\n\n"
+        f"MAPEO:\n"
+        f"- 'title' → título del dataset\n"
+        f"- 'notes' → descripción completa. Cópiala literalmente.\n"
+        f"- 'identifier' → DOI o identificador único\n"
+        f"{access_rights_section}"
+        f"- 'hdab' → organismo gestor del acceso. Objeto con: name, email, telephone, contact_page, type.\n"
+        f"  Tipos posibles:\n{pub_types_str}\n"
+        f"- 'health_category' → array de URIs:\n{health_cats_str}\n"
+        f"- 'theme' → array de URIs:\n{themes_str}\n"
+        f"- 'dcat_type' → URI:\n{dataset_types_str}\n"
+        f"- 'provenance' → origen de los datos. Texto libre.\n"
+        f"- 'keyword' → palabras clave. Array de strings.\n"
+        f"- 'contact' → objeto con: email, url\n"
+        f"\nDocumento:\n{text[:5000]}"
+    )
+
+    contract = {f: None for f in all_fields}
+    return call_llm(prompt, contract, text[:5000])

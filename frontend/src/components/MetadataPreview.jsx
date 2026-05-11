@@ -1,13 +1,19 @@
 // src/components/MetadataPreview.jsx
 
 const FIELD_INFO = {
-  title: { label: "Título",description: "Nombre del dataset" },
-  notes: { label: "Descripción",description: "Descripción del contenido" },
-  identifier: { label: "Identificador",description: "DOI o identificador único" },
+  title: { label: "Título", description: "Nombre del dataset" },
+  notes: { label: "Descripción", description: "Descripción del contenido" },
+  identifier: { label: "Identificador", description: "DOI o identificador único" },
   name: { label: "URL", description: "Dirección en el portal" },
   access_rights: { label: "Derechos de acceso", description: "Quién puede acceder" },
   hdab: { label: "Organismo de acceso (HDAB)", description: "Entidad gestora del acceso" },
   applicable_legislation: { label: "Legislación aplicable", description: "Marco legal" },
+  health_category: { label: "Categoría sanitaria", description: "Categoría EHDS" },
+  theme: { label: "Tema", description: "Tema principal del dataset" },
+  dcat_type: { label: "Tipo de dataset", description: "Tipo según Publications Office" },
+  provenance: { label: "Procedencia", description: "Origen de los datos" },
+  keyword: { label: "Palabras clave", description: "Etiquetas descriptivas" },
+  contact: { label: "Punto de contacto", description: "Contacto para consultas" },
 };
 
 function formatValue(key, value) {
@@ -41,7 +47,25 @@ function formatValue(key, value) {
       </div>
     );
   }
+  // contact — objeto con email y url
+  if (key === "contact" && typeof value === "object") {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        {value.email && <span><strong>Email:</strong> {value.email}</span>}
+        {value.url && <span><strong>Web:</strong> <a href={value.url} target="_blank" rel="noreferrer">{value.url}</a></span>}
+      </div>
+    );
+  }
 
+  // health_category y theme — array de URIs, mostrar solo el código final
+  if ((key === "health_category" || key === "theme") && Array.isArray(value)) {
+    return value.map(uri => uri.split("/").pop()).join(", ");
+  }
+
+  // dcat_type — URI, mostrar solo el código final
+  if (key === "dcat_type" && typeof value === "string") {
+    return value.split("/").pop();
+  }
   // applicable_legislation — array
   if (key === "applicable_legislation" && Array.isArray(value)) {
     return value.map((v, i) => (
