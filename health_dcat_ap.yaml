@@ -24,7 +24,6 @@ dataset_fields:
   label:
     es: Palabras clave
     en: Keywords
-  preset: tag_string_autocomplete
 - field_name: identificador
   label:
     es: Identificador
