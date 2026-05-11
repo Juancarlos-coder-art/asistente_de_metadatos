@@ -618,8 +618,8 @@ async def upload_document(
         "text_extracted": len(text),
         "classification": classification,
         "results_by_block": results_by_block,
-        "metadata": state.data,
-        "display_metadata": display_metadata,
+        "metadata": display_metadata,
+        "raw_metadata": state.data,
         "session_id": sid
     }
     
