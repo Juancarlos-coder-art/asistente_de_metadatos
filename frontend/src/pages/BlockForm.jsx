@@ -306,7 +306,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
           <div className="field-group">
             <textarea
               className="field-textarea"
-              placeholder={getPlaceholder()}
+              placeholder={placeholder}
               value={userContext}
               onChange={(e) => setUserContext(e.target.value)}
             />
