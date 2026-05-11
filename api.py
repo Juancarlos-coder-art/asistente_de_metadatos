@@ -133,11 +133,12 @@ _ALLOWED_ACCESS_RIGHTS = {
 @app.get("/schema-info")
 def get_schema_info():
     field_map = {
-        "access_rights": "Derechos de acceso",
-        "hdab": "Organismo de acceso a datos de salud",
-        "health_category": "Categoría sanitaria",
-        "theme": "Tema",
-        "dcat_type": "Tipo de dataset",
+        "access_rights": "Derechos de acceso",      # este sí funciona porque el label coincide
+        "hdab": "Organismo de acceso a datos de salud",  # este también
+        "health_category": "health_category",        # usar field_name directamente
+        "theme": "theme",                            # usar field_name directamente
+        "dcat_type": "dcat_type",                    # usar field_name directamente
+        "contact": "contact",                        # usar field_name directamente
     }
     info = {}
     for field_key, yaml_name in field_map.items():

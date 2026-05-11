@@ -32,7 +32,7 @@ dataset_fields:
   required: true
 
   
-- field_name: Tema
+- field_name: Theme
   label:
     es: Tema
     en: Theme
@@ -693,7 +693,7 @@ dataset_fields:
       es: Sensible
       en: Sensitive
   
-- field_name: Categoría sanitaria
+- field_name: health_category
   label:
     es: Categoría sanitaria
     en: Health category
@@ -4715,7 +4715,7 @@ dataset_fields:
     en: Modification date
   preset: dcat_date
 
-- field_name: Tipo de dataset
+- field_name: dcat_type
   label:
     es: Tipo de dataset
     en: Dataset type
