@@ -181,13 +181,65 @@ def complete_block(block_id: int, body: CompleteBlockRequest, response: Response
 @app.post("/save-manual")
 def save_manual(body: ManualSaveRequest, response: Response, session_id: str = Cookie(default=None)):
     sid, state = get_session(session_id, response)
+
     if body.block_id < 0 or body.block_id >= len(BLOCKS):
         raise HTTPException(status_code=404, detail="Bloque no encontrado")
-    to_merge = {k: v for k, v in body.partial.items() if v is not None and v != ""}
+
+    block = BLOCKS[body.block_id]
+
+    # ── 1. Guardar lo que introduce el usuario ──
+    to_merge = {k: v for k, v in body.partial.items() if v not in (None, "", [])}
     state.merge_partial(to_merge)
+
+    # ── 2. Detectar qué falta ──
+    missing_fields = [f for f in block["fields"] if not state.data.get(f)]
+
+    ai_partial = {}
+
+    # ── 3. Llamar a IA SOLO si faltan campos ──
+    if missing_fields and llm_available():
+        try:
+            # 🔥 Contexto rico (clave)
+            user_context = f"""
+Datos actuales del dataset:
+{json.dumps(state.data, ensure_ascii=False)}
+
+Nuevos datos introducidos por el usuario:
+{json.dumps(to_merge, ensure_ascii=False)}
+
+IMPORTANTE:
+- Completa SOLO los campos que falten en este bloque
+- No sobrescribas campos ya existentes
+"""
+
+            prompt = build_prompt_for_block(_schema, block, user_context)
+
+            # 🔒 solo pedimos los campos que faltan
+            contract = {f: None for f in missing_fields}
+
+            ai_result = call_llm(prompt, contract, user_context)
+
+            ai_partial = {
+                k: v for k, v in ai_result.items()
+                if v not in (None, "", [])
+            }
+
+            state.merge_partial(ai_partial)
+
+        except Exception as e:
+            print(f"[WARN] LLM error en save-manual: {e}")
+
+    # ── 4. lógica adicional ──
     apply_conditional_logic(state)
-    
-    return {"success": True, "metadata": state.data, "session_id": sid}
+
+    return {
+        "success": True,
+        "metadata": state.data,
+        "ai_completed": ai_partial,
+        "missing_fields": missing_fields,
+        "session_id": sid
+    }
+
 
 @app.get("/metadata")
 def get_metadata(response: Response, session_id: str = Cookie(default=None)):
