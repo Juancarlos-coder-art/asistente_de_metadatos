@@ -100,15 +100,9 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
 
 
 def apply_conditional_logic(state: MetadataState):
-    """
-    Lógica condicional post-bloque:
-    Si access_rights es NON_PUBLIC → asignar identifier automáticamente.
-    """
     if is_non_public(state.data):
-        if not state.data.get("identifier"):
-            state.data["identifier"] = ENDS_NON_PUBLIC_URI
-            print(f"\n🔒 Acceso No Público detectado. Identificador asignado automáticamente:")
-            print(f"   {ENDS_NON_PUBLIC_URI}")
+        state.data["identifier"] = ENDS_NON_PUBLIC_URI  # ← siempre, no solo si está vacío
+        print(f"\n🔒 Acceso No Público. Identificador asignado: {ENDS_NON_PUBLIC_URI}")
 
 
 def ask_block(schema: HealthDCATAPSchema, state: MetadataState, block: dict):

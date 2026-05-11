@@ -5,6 +5,8 @@ import BlockForm from "./pages/BlockForm";
 import Sidebar from "./components/Sidebar";
 import { getBlocks, getMetadata, validateMetadata, getMissingFields, resetMetadata } from "./api/client";
 import DocumentUploadModal from "./components/DocumentUploadModal";
+import LegislationSelector from "./components/LegislationSelector";
+
 
 export default function App() {
   const [started, setStarted] = useState(false);
@@ -72,7 +74,7 @@ export default function App() {
   setBlocksDone(prev => [...new Set([...prev, ...done])]);
   setCurrentIdx(1); // avanzar al siguiente bloque
   };
-
+  <LegislationSelector onSave={(leg) => setMetadata(prev => ({...prev, applicable_legislation: leg}))} />
   // Pantalla final
   if (finished) {
     const handleDownloadJSON = () => {

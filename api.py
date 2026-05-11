@@ -55,11 +55,10 @@ ENDS_NON_PUBLIC_URI = "https://catalogo.ends.gob.es/dataset"
 NON_PUBLIC_URI = "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC"
 
 def apply_conditional_logic(state: MetadataState):
-    """Si access_rights es NON_PUBLIC → asignar identifier automáticamente."""
+    """Si access_rights es NON_PUBLIC → asignar identifier predeterminado SIEMPRE."""
     ar = state.data.get("access_rights", "")
     if ar and "NON_PUBLIC" in str(ar).upper():
-        if not state.data.get("identifier"):
-            state.data["identifier"] = ENDS_NON_PUBLIC_URI
+        state.data["identifier"] = ENDS_NON_PUBLIC_URI  # ← sin comprobar si está vacío
 
 class CompleteBlockRequest(BaseModel):
     block_id: int
@@ -239,7 +238,14 @@ IMPORTANTE:
         "missing_fields": missing_fields,
         "session_id": sid
     }
+class LegislationRequest(BaseModel):
+    legislation: list
 
+@app.post("/save-legislation")
+def save_legislation(body: LegislationRequest, response: Response, session_id: str = Cookie(default=None)):
+    sid, state = get_session(session_id, response)
+    state.data["applicable_legislation"] = body.legislation
+    return {"success": True, "metadata": state.data}
 
 @app.get("/metadata")
 def get_metadata(response: Response, session_id: str = Cookie(default=None)):
