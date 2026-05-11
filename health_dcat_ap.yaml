@@ -20,11 +20,10 @@ dataset_fields:
     en: Description
   required: true
   form_snippet: markdown.html
-- field_name: tag_string
+- field_name: keyword
   label:
     es: Palabras clave
     en: Keywords
-  preset: tag_string_autocomplete
 - field_name: identificador
   label:
     es: Identificador
@@ -264,7 +263,7 @@ dataset_fields:
             es: Universidad
             en: University
 
-    - field_name: contact_page
+    - field_name: contact
       label:
         es: Página de contacto
         en: Contact page

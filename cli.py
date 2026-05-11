@@ -7,7 +7,6 @@ from assistant.llm_provider import call_llm, llm_available
 ENDS_NON_PUBLIC_URI = "https://catalogo.ends.gob.es/dataset"
 NON_PUBLIC_URI = "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC"
 
-
 BLOCKS = [
     {
         "name": "derechos_de_acceso",
@@ -20,20 +19,17 @@ BLOCKS = [
             "- 'Es un dataset interno, no sale de nuestra organización' → No público\n"
         ),
         "hint": "Describe con tus palabras quién tiene acceso y bajo qué condiciones.",
-        "placeholder": "Ej.: Solo pueden acceder investigadores acreditados por la organización del CSIC"
-
-
+        "placeholder": "Ej.: El acceso está restringido a investigadores acreditados por organismos públicos de salud..."
     },
     {
         "name": "identificacion_basica",
-        "fields": ["title", "identifier", "notes"],
+        "fields": ["title", "identifier", "notes", "health_category", "theme", "dcat_type", "provenance", "keyword"],
         "question": (
-            "Proporciona una descripción general del dataset e incluye el identificador del conjunto "
-            "de datos si está disponible."
+            "Proporciona una descripción general del dataset. Incluye el identificador si está disponible, "
+            "la categoría sanitaria, el tema, el tipo de dataset, la procedencia de los datos y las palabras clave."
         ),
-        "hint": "Dinos cómo se llama el dataset, de qué trata y si tiene algún identificador como un DOI.",
-        "placeholder": "Ej.: Dataset sobre casos de Mpox en España 2023, publicado por el Ministerio de Sanidad, con DOI https://doi.org/10.5281/zenodo.123456..."
-
+        "hint": "Dinos el nombre del dataset, de qué trata, su categoría sanitaria, tema, tipo y origen.",
+        "placeholder": "Ej.: Dataset sobre casos de Mpox en España 2023. Es un registro epidemiológico del ISCIII, de acceso restringido, con datos de vigilancia de enfermedades infecciosas..."
     },
     {
         "name": "organismo_acceso_datos_sanitarios",
@@ -46,8 +42,18 @@ BLOCKS = [
             "Si dispones de ellos, incluye también el correo de contacto, "
             "el teléfono, la página web de contacto y el horario de disponibilidad."
         ),
-        "hint":"Indícanos qué organismo es el responsable de dar acceso a estos datos y cómo contactarle.",
+        "hint": "Indícanos qué organismo es el responsable de dar acceso a estos datos y cómo contactarle.",
         "placeholder": "Ej.: El organismo es el ISCIII, su correo es datos.salud@isciii.es y su teléfono es +34 918 222 000..."
+    },
+    {
+        "name": "punto_de_contacto",
+        "fields": ["contact"],
+        "question": (
+            "¿Cuál es el punto de contacto para este dataset?\n\n"
+            "Proporciona el correo electrónico y/o la URL de contacto para consultas sobre el dataset."
+        ),
+        "hint": "Indica el correo o web de contacto para consultas sobre este dataset.",
+        "placeholder": "Ej.: Para consultas sobre este dataset contacta en info@ministeriodesanidad.es o visita https://www.sanidad.gob.es/contacto"
     }
 ]
 
@@ -57,7 +63,7 @@ def is_non_public(state_data: dict) -> bool:
     ar = state_data.get("access_rights", "")
     if not ar:
         return False
-    return "No Público" in str(ar).upper()
+    return "NON_PUBLIC" in str(ar).upper()
 
 
 def build_contract(block: dict) -> dict:
@@ -79,9 +85,43 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "- Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
         "- No público → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
         "IMPORTANTE: La diferencia clave entre RESTRINGIDO y NO PÚBLICO es:\n"
-            "  - RESTRINGIDO = se puede acceder bajo ciertas condiciones o solicitud\n"
-            "  - NO PÚBLICO = no está disponible para nadie fuera de la organización propietaria\n"
+        "  - RESTRINGIDO = se puede acceder bajo ciertas condiciones o solicitud\n"
+        "  - NO PÚBLICO = no está disponible para nadie fuera de la organización propietaria\n"
 
+        # ── health_category ──
+        "Para el campo 'health_category', devuelve un ARRAY con las URIs correspondientes:\n"
+        "- Registros Electrónicos de Salud → http://13.81.34.152:1101/resource/authority/healthcategories/EHRS\n"
+        "- Datos administrativos relacionados con la salud → http://13.81.34.152:1101/resource/authority/healthcategories/HRAD\n"
+        "- Datos de registros médicos y de mortalidad → http://13.81.34.152:1101/resource/authority/healthcategories/MRMR\n"
+        "- Datos de ensayos clínicos → http://13.81.34.152:1101/resource/authority/healthcategories/EHCT\n"
+        "- Datos genómicos → http://13.81.34.152:1101/resource/authority/healthcategories/HGPD\n"
+        "- Datos de registros de salud pública → http://13.81.34.152:1101/resource/authority/healthcategories/PHDR\n"
+        "- Datos de cohortes e investigación → http://13.81.34.152:1101/resource/authority/healthcategories/RQSH\n"
+        "- Datos de patógenos → http://13.81.34.152:1101/resource/authority/healthcategories/RPDG\n"
+
+        # ── theme ──
+        "Para el campo 'theme', devuelve un ARRAY con las URIs del vocabulario europeo de temas:\n"
+        "- Salud → http://publications.europa.eu/resource/authority/data-theme/HEAL\n"
+        "- Ciencia y tecnología → http://publications.europa.eu/resource/authority/data-theme/TECH\n"
+        "- Población y sociedad → http://publications.europa.eu/resource/authority/data-theme/SOCI\n"
+        "- Gobierno y sector público → http://publications.europa.eu/resource/authority/data-theme/GOVE\n"
+
+        # ── dcat_type ──
+        "Para el campo 'dcat_type', devuelve la URI más adecuada:\n"
+        "- Datos estadísticos → http://publications.europa.eu/resource/authority/dataset-type/STATISTICAL\n"
+        "- Datos geoespaciales → http://publications.europa.eu/resource/authority/dataset-type/GEOSPATIAL\n"
+        "- Datos sintéticos → http://publications.europa.eu/resource/authority/dataset-type/SYNTHETIC_DATA\n"
+        "- Conjunto de datos de alto valor → http://publications.europa.eu/resource/authority/dataset-type/HVD\n"
+
+        # ── keyword ──
+        "Para el campo 'keyword', devuelve un ARRAY de strings con las palabras clave del dataset.\n"
+
+        # ── provenance ──
+        "Para el campo 'provenance', devuelve un string describiendo el origen de los datos.\n"
+
+        # ── contact ──
+        "Para el campo 'contact', devuelve un objeto con:\n"
+        "  email (string o null), url (URL o null)\n"
 
         # ── hdab ──
         "Para el campo 'hdab', devuelve un objeto con EXACTAMENTE estas claves:\n"
@@ -105,25 +145,18 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
 
 
 def apply_conditional_logic(state: MetadataState):
-    """
-    Lógica condicional post-bloque:
-    Si access_rights es NON_PUBLIC → asignar identifier automáticamente.
-    """
-    if is_non_public(state.data):
-        if not state.data.get("identifier"):
-            state.data["identifier"] = ENDS_NON_PUBLIC_URI
-            print(f"\n🔒 Acceso No Público detectado. Identificador asignado automáticamente:")
-            print(f"   {ENDS_NON_PUBLIC_URI}")
+    """Si access_rights es NON_PUBLIC → asignar identifier predeterminado SIEMPRE."""
+    ar = state.data.get("access_rights", "")
+    if ar and "NON_PUBLIC" in str(ar).upper():
+        state.data["identifier"] = ENDS_NON_PUBLIC_URI
 
 
 def ask_block(schema: HealthDCATAPSchema, state: MetadataState, block: dict):
     print(f"\n=== BLOQUE: {block['name'].replace('_', ' ').upper()} ===\n")
     print(block["question"])
 
-    # Si el bloque contiene 'identifier' y el acceso ya es NON_PUBLIC → omitir identifier
     if "identifier" in block["fields"] and is_non_public(state.data):
         print(f"\n🔒 El identificador se asignará automáticamente por ser un dataset No Público.")
-        # Preguntar solo por los campos restantes (sin identifier)
         fields_to_ask = [f for f in block["fields"] if f != "identifier"]
         block_modified = {**block, "fields": fields_to_ask}
     else:
@@ -140,19 +173,14 @@ def ask_block(schema: HealthDCATAPSchema, state: MetadataState, block: dict):
 
     if not user_context.strip():
         print("⏭️ Bloque omitido.")
-        # Aplicar lógica condicional aunque se omita
         apply_conditional_logic(state)
         return
 
     prompt = build_prompt_for_block(schema, block_modified, user_context)
     contract = build_contract(block_modified)
-
     ai_result = call_llm(prompt, contract, user_context)
-
     partial = {name: ai_result.get(name, None) for name in block_modified["fields"]}
     state.merge_partial(partial)
-
-    # ✅ Aplicar lógica condicional tras procesar el bloque
     apply_conditional_logic(state)
 
     print("\n✔️ Bloque procesado:")
@@ -185,12 +213,8 @@ if __name__ == "__main__":
     for block in BLOCKS:
         ask_block(schema, state, block)
 
-    # ✅ Inserción automática de legislación aplicable
     state.data["applicable_legislation"] = [
-        {
-            "uri": "http://data.europa.eu/eli/reg/2016/679/oj",
-            "label": "GDPR"
-        }
+        {"uri": "http://data.europa.eu/eli/reg/2016/679/oj", "label": "GDPR"}
     ]
 
     print("\n=== RESULTADO FINAL ===\n")

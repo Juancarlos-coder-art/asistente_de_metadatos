@@ -5,6 +5,7 @@ import BlockForm from "./pages/BlockForm";
 import Sidebar from "./components/Sidebar";
 import { getBlocks, getMetadata, validateMetadata, getMissingFields, resetMetadata } from "./api/client";
 import DocumentUploadModal from "./components/DocumentUploadModal";
+import LegislationSelector from "./components/LegislationSelector";
 
 export default function App() {
   const [started, setStarted] = useState(false);
@@ -31,14 +32,15 @@ export default function App() {
   }, [started, currentIdx]);
 
   const handleStart = () => setStarted(true);
+
   const handleNext = () => {
-    // Mostrar popup de documento después del bloque 1 (derechos de acceso)
     if (currentIdx === 0 && !documentResults) {
       setShowDocumentModal(true);
       return;
     }
     if (currentIdx < blocks.length - 1) setCurrentIdx(currentIdx + 1);
   };
+
   const handlePrev = () => { if (currentIdx > 0) setCurrentIdx(currentIdx - 1); };
 
   const handleBlockDone = (idx) => {
@@ -57,23 +59,23 @@ export default function App() {
     setBlocksDone([]);
     setMetadata({});
     setFinished(false);
+    setDocumentResults(null);
   };
 
   const handleDocumentSuccess = (data) => {
-  setDocumentResults(data.results_by_block);
-  setMetadata(data.metadata);
-  setShowDocumentModal(false);
-  // Marcar como completados los bloques que se rellenaron
-  const done = [];
-  blocks.forEach((b, i) => {
-    const result = data.results_by_block[b.name];
-    if (result && result.filled > 0) done.push(i);
-  });
-  setBlocksDone(prev => [...new Set([...prev, ...done])]);
-  setCurrentIdx(1); // avanzar al siguiente bloque
+    setDocumentResults(data.results_by_block);
+    setMetadata(data.metadata);
+    setShowDocumentModal(false);
+    const done = [];
+    blocks.forEach((b, i) => {
+      const result = data.results_by_block[b.name];
+      if (result && result.filled > 0) done.push(i);
+    });
+    setBlocksDone(prev => [...new Set([...prev, ...done])]);
+    setCurrentIdx(1);
   };
 
-  // Pantalla final
+  // ── Pantalla final ──
   if (finished) {
     const handleDownloadJSON = () => {
       const blob = new Blob([JSON.stringify(metadata, null, 2)], { type: "application/json" });
@@ -90,9 +92,21 @@ export default function App() {
         <div className="finish-card">
           <div style={{ fontSize: "3rem" }}>✅</div>
           <h1 className="finish-title">Metadatos completados</h1>
-          <p className="finish-desc">El archivo <strong>metadata_output.json</strong> ha sido guardado correctamente.</p>
-          <pre className="finish-json">{JSON.stringify(metadata, null, 2)}</pre>
-          <div style={{ display: "flex", gap: "12px", justifyContent: "center" }}>
+          <p className="finish-desc">
+            Revisa la legislación aplicable y descarga el JSON final.
+          </p>
+
+          {/* ── Selector de legislación ── */}
+          <LegislationSelector
+            onSave={(leg) => setMetadata(prev => ({ ...prev, applicable_legislation: leg }))}
+          />
+
+          {/* ── JSON preview ── */}
+          <pre className="finish-json" style={{ marginTop: "24px" }}>
+            {JSON.stringify(metadata, null, 2)}
+          </pre>
+
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", marginTop: "16px" }}>
             <button className="btn btn--primary" onClick={handleDownloadJSON}>⬇ Descargar JSON</button>
             <button className="btn btn--secondary" onClick={handleReset}>Empezar de nuevo</button>
           </div>
@@ -102,8 +116,6 @@ export default function App() {
   }
 
   if (!started) return <Welcome onStart={handleStart} />;
-
-if (!started) return <Welcome onStart={handleStart} />;
 
   return (
     <div className="app-layout">

@@ -12,17 +12,13 @@ const FIELD_LABELS_ES = {
   identifier: "Identificador",
   hdab: "Autoridad de acceso a los datos",
   access_rights: "Derechos de acceso",
-  health_category: "Categoría sanitaria",
-  theme: "Tema",
-  dcat_type: "Tipo de dataset",
-  provenance: "Procedencia",
-  keyword: "Palabras clave",
-  contact: "Punto de contacto",
+  applicable_legislation: "Legislación Aplicable"
 };
 
 const NON_PUBLIC_URI = "NON_PUBLIC";
 
-function MissingFieldsModal({ missingInfo, onClose }) {
+// ── Modal bloqueante ──
+function MissingFieldsModal({ missingInfo, onClose, onContinue }) {
   return (
     <div style={modalStyles.overlay}>
       <div style={modalStyles.modal}>
@@ -39,9 +35,13 @@ function MissingFieldsModal({ missingInfo, onClose }) {
               <div style={modalStyles.fieldName}>
                 🔴 {FIELD_LABELS_ES[item.field] ?? item.field}
               </div>
-              <div style={modalStyles.fieldDesc}>{item.descripcion}</div>
+              <div style={modalStyles.fieldDesc}>
+                {item.descripcion}
+              </div>
               {item.ejemplo && (
-                <div style={modalStyles.fieldExample}>Ej: {item.ejemplo}</div>
+                <div style={modalStyles.fieldExample}>
+                  Ej: {item.ejemplo}
+                </div>
               )}
             </div>
           ))}
@@ -56,28 +56,90 @@ function MissingFieldsModal({ missingInfo, onClose }) {
   );
 }
 
-const placeholdersPorBloque = {
-  derechos_de_acceso: "Ej.: El acceso está restringido a personal sanitario autorizado...",
-  identificacion_basica: "Ej.: Dataset sobre casos de viruela del mono en España en 2023...",
-  organismo_acceso_datos_sanitarios: "Ej.: Datos recopilados por el Ministerio de Sanidad...",
-  punto_de_contacto: "Ej.: Contacta en info@ministeriodesanidad.es o visita https://www.sanidad.gob.es/contacto",
-  default: "Describe el contenido del dataset..."
-};
-
 const modalStyles = {
-  overlay: { position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.6)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999 },
-  modal: { background: "white", borderTop: "4px solid #da1e28", padding: "32px", maxWidth: "520px", width: "90%", boxShadow: "0 8px 32px rgba(0,0,0,0.3)", maxHeight: "80vh", overflowY: "auto" },
-  header: { display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" },
+  overlay: {
+    position: "fixed",
+    top: 0, left: 0, right: 0, bottom: 0,
+    background: "rgba(0, 0, 0, 0.6)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 9999,
+  },
+  modal: {
+    background: "white",
+    borderTop: "4px solid #da1e28",
+    padding: "32px",
+    maxWidth: "520px",
+    width: "90%",
+    boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+    maxHeight: "80vh",
+    overflowY: "auto",
+  },
+  header: {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    marginBottom: "12px",
+  },
   icon: { fontSize: "1.8rem" },
-  title: { fontFamily: "'IBM Plex Mono', monospace", fontSize: "1.1rem", fontWeight: 600, color: "#161616", margin: 0 },
-  subtitle: { fontSize: "0.9rem", color: "#525252", marginBottom: "20px", lineHeight: 1.5 },
-  fieldList: { display: "flex", flexDirection: "column", gap: "10px", marginBottom: "24px" },
-  fieldItem: { background: "#fff1f1", border: "1px solid #ffd7d9", borderLeft: "3px solid #da1e28", padding: "12px 14px" },
-  fieldName: { fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.85rem", fontWeight: 600, color: "#da1e28", marginBottom: "4px" },
-  fieldDesc: { fontSize: "0.88rem", color: "#393939", lineHeight: 1.5 },
-  fieldExample: { fontSize: "0.78rem", color: "#6f6f6f", fontStyle: "italic", marginTop: "4px" },
-  buttons: { display: "flex", justifyContent: "flex-end" },
-  btnClose: { background: "#0f62fe", color: "white", border: "none", padding: "12px 24px", fontSize: "0.9rem", fontFamily: "'IBM Plex Sans', sans-serif", fontWeight: 500, cursor: "pointer" },
+  title: {
+    fontFamily: "'IBM Plex Mono', monospace",
+    fontSize: "1.1rem",
+    fontWeight: 600,
+    color: "#161616",
+    margin: 0,
+  },
+  subtitle: {
+    fontSize: "0.9rem",
+    color: "#525252",
+    marginBottom: "20px",
+    lineHeight: 1.5,
+  },
+  fieldList: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    marginBottom: "24px",
+  },
+  fieldItem: {
+    background: "#fff1f1",
+    border: "1px solid #ffd7d9",
+    borderLeft: "3px solid #da1e28",
+    padding: "12px 14px",
+  },
+  fieldName: {
+    fontFamily: "'IBM Plex Mono', monospace",
+    fontSize: "0.85rem",
+    fontWeight: 600,
+    color: "#da1e28",
+    marginBottom: "4px",
+  },
+  fieldDesc: {
+    fontSize: "0.88rem",
+    color: "#393939",
+    lineHeight: 1.5,
+  },
+  fieldExample: {
+    fontSize: "0.78rem",
+    color: "#6f6f6f",
+    fontStyle: "italic",
+    marginTop: "4px",
+  },
+  buttons: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  btnClose: {
+    background: "#0f62fe",
+    color: "white",
+    border: "none",
+    padding: "12px 24px",
+    fontSize: "0.9rem",
+    fontFamily: "'IBM Plex Sans', sans-serif",
+    fontWeight: 500,
+    cursor: "pointer",
+  },
 };
 
 export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone }) {
@@ -174,15 +236,19 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     const currentMeta = metaRes.data;
     const nonPublic = isNonPublic(currentMeta);
 
+    // Filtrar campos obligatorios — excluir identifier si es NON_PUBLIC
     const obligatoryMissing = res.data.descriptions.filter(item =>
       item.obligatorio && !(nonPublic && item.field === "identifier")
     );
 
     if (obligatoryMissing.length > 0) {
+      // Campos obligatorios vacíos → mostrar modal BLOQUEANTE
       setMissingInfo(obligatoryMissing);
       setShowModal(true);
       return;
     }
+
+    // Sin campos obligatorios vacíos → avanzar
     onNext();
   };
 
@@ -197,23 +263,27 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     setLoading(false);
   };
 
-  const placeholder = placeholdersPorBloque[block.name] || block.hint || block.question || placeholdersPorBloque.default;
-
   const blockQuestion = isNonPublic() && block.fields.includes("identifier")
     ? block.question + "\n\n🔒 El identificador se asignará automáticamente por ser un dataset No Público."
     : block.question;
 
   return (
     <div>
+      {/* Modal bloqueante */}
       {showModal && (
-        <MissingFieldsModal missingInfo={missingInfo} onClose={() => setShowModal(false)} />
+        <MissingFieldsModal
+          missingInfo={missingInfo}
+          onClose={() => setShowModal(false)}
+        />
       )}
 
+      {/* Tarjeta del bloque */}
       <div className="block-card">
         <p className="block-label">Bloque {currentIdx + 1} · {block.name.replace(/_/g, " ").toUpperCase()}</p>
         <p className="block-question" style={{ whiteSpace: "pre-line" }}>{blockQuestion}</p>
       </div>
 
+      {/* Tabs */}
       <div className="tabs">
         <button className={`tab-btn ${tab === "ia" ? "tab-btn--active" : ""}`} onClick={() => setTab("ia")}>Completar automáticamente</button>
         <button className={`tab-btn ${tab === "manual" ? "tab-btn--active" : ""}`} onClick={() => setTab("manual")}>Rellenar manualmente</button>
@@ -221,13 +291,15 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
 
       {tab === "ia" && (
         <div className="tab-content">
-          <p className="tab-desc">{block.hint || "Describe este bloque con tus propias palabras."}</p>
+          <p className="tab-desc">
+            {block.fields.includes("identifier") && isNonPublic()
+              ? "Dinos cómo se llama el dataset y de qué trata. El identificador ya está asignado automáticamente."
+              : block.hint || block.question}
+          </p>
           <div className="field-group">
             <textarea
               className="field-textarea"
-              placeholder={placeholder}
-              value={userContext}
-              onChange={(e) => setUserContext(e.target.value)}
+              placeholder={block.placeholder || "Describe el bloque con tus propias palabras..."}
             />
           </div>
           <button className="btn btn--primary" onClick={handleComplete} disabled={loading || !userContext.trim()}>
@@ -250,59 +322,26 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
             const fieldLabel = FIELD_LABELS_ES[field] ?? field;
             const fieldSchema = schemaInfo[field] || {};
 
-            // ── access_rights → select ──
+            // ── access_rights → select con choices ──
             if (field === "access_rights" && fieldSchema.choices) {
               return (
                 <div key={field} className="field-group">
                   <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
+                  <select
+                    className="field-select"
+                    value={manualFields[field] || ""}
+                    onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
+                  >
                     <option value="">— Selecciona una opción —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                    {fieldSchema.choices.map(ch => (
+                      <option key={ch.value} value={ch.value}>{ch.label}</option>
+                    ))}
                   </select>
                 </div>
               );
             }
 
-            // ── health_category → select ──
-            if (field === "health_category" && fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">— Selecciona una categoría sanitaria —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                  </select>
-                </div>
-              );
-            }
-
-            // ── theme → select ──
-            if (field === "theme" && fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">— Selecciona un tema —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                  </select>
-                </div>
-              );
-            }
-
-            // ── dcat_type → select ──
-            if (field === "dcat_type" && fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">— Selecciona un tipo de dataset —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                  </select>
-                </div>
-              );
-            }
-
-            // ── hdab → subcampos ──
+            // ── hdab → subcampos desglosados ──
             if (field === "hdab" && fieldSchema.subfields) {
               const hdabValues = manualFields.hdab || {};
               return (
@@ -315,9 +354,18 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                         return (
                           <div key={sf.field_name} className="field-group">
                             <label className="field-label">{sfLabel}</label>
-                            <select className="field-select" value={hdabValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, hdab: { ...hdabValues, [sf.field_name]: e.target.value } })}>
+                            <select
+                              className="field-select"
+                              value={hdabValues[sf.field_name] || ""}
+                              onChange={(e) => setManualFields({
+                                ...manualFields,
+                                hdab: { ...hdabValues, [sf.field_name]: e.target.value }
+                              })}
+                            >
                               <option value="">— Selecciona —</option>
-                              {sf.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                              {sf.choices.map(ch => (
+                                <option key={ch.value} value={ch.value}>{ch.label}</option>
+                              ))}
                             </select>
                           </div>
                         );
@@ -325,28 +373,19 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                       return (
                         <div key={sf.field_name} className="field-group">
                           <label className="field-label">{sfLabel}</label>
-                          <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={hdabValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, hdab: { ...hdabValues, [sf.field_name]: e.target.value } })} />
+                          <input
+                            className="field-input"
+                            type="text"
+                            placeholder={`Introduce ${sf.label}...`}
+                            value={hdabValues[sf.field_name] || ""}
+                            onChange={(e) => setManualFields({
+                              ...manualFields,
+                              hdab: { ...hdabValues, [sf.field_name]: e.target.value }
+                            })}
+                          />
                         </div>
                       );
                     })}
-                  </div>
-                </div>
-              );
-            }
-
-            // ── contact → subcampos email y url ──
-            if (field === "contact" && fieldSchema.subfields) {
-              const contactValues = manualFields.contact || {};
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
-                  <div className="hdab-subfields">
-                    {fieldSchema.subfields.map(sf => (
-                      <div key={sf.field_name} className="field-group">
-                        <label className="field-label">{sf.label}</label>
-                        <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={contactValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, contact: { ...contactValues, [sf.field_name]: e.target.value } })} />
-                      </div>
-                    ))}
                   </div>
                 </div>
               );
@@ -356,11 +395,16 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
             return (
               <div key={field} className="field-group">
                 <label className="field-label">{fieldLabel}</label>
-                <input className="field-input" type="text" placeholder={`Introduce ${fieldLabel}...`} value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })} />
+                <input
+                  className="field-input"
+                  type="text"
+                  placeholder={`Introduce ${fieldLabel}...`}
+                  value={manualFields[field] || ""}
+                  onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
+                />
               </div>
             );
           })}
-
           {block.fields.includes("applicable_legislation") && (
             <div className="alert alert--info">
               <strong>applicable_legislation</strong> se rellena automáticamente al finalizar.
@@ -387,15 +431,23 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
               return <div className="alert alert--info" style={{ marginTop: 0 }}>⏳ Pendiente de validación. Completa el bloque para comprobar.</div>;
             }
 
+            // Campos obligatorios del bloque actual (del endpoint /missing/{blockId})
             const blockObligatory = blockMissingInfo.filter(item =>
               item.obligatorio && !(isNonPublic() && item.field === "identifier")
             );
-            const blockOptional = blockMissingInfo.filter(item => !item.obligatorio);
-            const blockErrors = validation ? validation.errors.filter(e => activeFields.some(f => e.includes(f))) : [];
-            const globalMissingCount = validation
-              ? validation.missing_required.filter(m => !activeFields.includes(m)).length
-              : 0;
+            const blockOptional = blockMissingInfo.filter(item =>
+              !item.obligatorio
+            );
 
+            // Errores de formato del bloque actual
+            const blockErrors = validation ? validation.errors.filter(e =>
+              activeFields.some(f => e.includes(f))
+            ) : [];
+
+            // Total global de obligatorios pendientes
+            const globalMissingCount = validation 
+              ? validation.missing_required.filter(m => !activeFields.includes(m)).length 
+              : 0;
             return (
               <>
                 {blockObligatory.length === 0 && blockErrors.length === 0 ? (
@@ -414,13 +466,8 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                   </>
                 )}
                 {blockOptional.length > 0 && (
-                  <div style={{ marginTop: "8px" }}>
-                    {blockOptional.map((item, i) => (
-                      <div key={i} className="validation-item" style={{ borderLeft: "3px solid #f1c21b" }}>
-                        <span>{FIELD_LABELS_ES[item.field] ?? item.label ?? item.field}</span>
-                        <span className="tag">opcional</span>
-                      </div>
-                    ))}
+                  <div className="alert alert--warn" style={{ marginTop: "8px" }}>
+                    💡 {blockOptional.length} campo(s) opcional(es) sin rellenar en este bloque.
                   </div>
                 )}
                 {globalMissingCount === 0 && blockObligatory.length === 0 && blockErrors.length === 0 && (
