@@ -20,7 +20,7 @@ dataset_fields:
     en: Description
   required: true
   form_snippet: markdown.html
-- field_name: Palabras clave
+- field_name: keyword
   label:
     es: Palabras clave
     en: Keywords
@@ -32,7 +32,7 @@ dataset_fields:
   required: true
 
   
-- field_name: Theme
+- field_name: theme
   label:
     es: Tema
     en: Theme
@@ -264,7 +264,7 @@ dataset_fields:
             es: Universidad
             en: University
 
-    - field_name: Puntos de contacto
+    - field_name: contact
       label:
         es: Página de contacto
         en: Contact page
@@ -2357,7 +2357,7 @@ dataset_fields:
         es: Motivación
         en: Motivation
 
-- field_name: Procedencia
+- field_name: provenance
   label:
     es: Procedencia de los datos
     en: Provenance

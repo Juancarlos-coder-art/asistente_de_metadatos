@@ -138,6 +138,8 @@ def get_schema_info():
         "theme": "theme",
         "dcat_type": "dcat_type",
         "contact": "contact",
+        "provenance": "provenance",
+        "keyword": "keyword"
     }
     info = {}
     for field_key, yaml_field_name in field_map.items():
@@ -262,11 +264,14 @@ def validate(response: Response, session_id: str = Cookie(default=None)):
 @app.get("/missing/{block_id}")
 def get_missing_fields(block_id: int, response: Response, session_id: str = Cookie(default=None)):
     sid, state = get_session(session_id, response)
-    if block_id < 0 or block_id >= len(BLOCKS):
-        raise HTTPException(status_code=404, detail="Bloque no encontrado")
     block = BLOCKS[block_id]
     missing = get_block_missing(block, state.data)
-    descriptions = get_missing_descriptions(missing, use_llm=False)
+    
+    # Detectar si es NON_PUBLIC
+    ar = state.data.get("access_rights", "")
+    non_public = "NON_PUBLIC" in str(ar).upper()
+    
+    descriptions = get_missing_descriptions(missing, use_llm=False, is_non_public=non_public)
     return {"block_id": block_id, "missing_fields": missing, "descriptions": descriptions}
 
 @app.post("/finalize")

@@ -62,21 +62,63 @@ FIELD_INDEX = {
         "ejemplo": "GDPR – http://data.europa.eu/eli/reg/2016/679/oj",
         "bloque": "automatico"
     },
+    "health_category": {
+    "label": "Categoría sanitaria",
+    "obligatorio": False,
+    "descripcion": "Categoría sanitaria del dataset según el vocabulario EHDS.",
+    "ejemplo": "Registros Electrónicos de Salud, Datos de ensayos clínicos...",
+    "bloque": "identificacion_basica"
+    },
+    "theme": {
+        "label": "Tema",
+        "obligatorio": False,
+        "descripcion": "Tema principal del dataset según el vocabulario europeo de temas.",
+        "ejemplo": "Salud, Ciencia y tecnología...",
+        "bloque": "identificacion_basica"
+    },
+    "dcat_type": {
+        "label": "Tipo de dataset",
+        "obligatorio": False,
+        "descripcion": "Tipo del dataset según la lista controlada de la Publications Office.",
+        "ejemplo": "Datos estadísticos, Datos geoespaciales...",
+        "bloque": "identificacion_basica"
+    },
+    "provenance": {
+        "label": "Procedencia",
+        "obligatorio": False,
+        "descripcion": "Origen o procedencia de los datos del dataset.",
+        "ejemplo": "Datos recogidos por el ISCIII mediante vigilancia epidemiológica activa.",
+        "bloque": "identificacion_basica"
+    },
+    "keyword": {
+        "label": "Palabras clave",
+        "obligatorio": False,
+        "descripcion": "Palabras clave que describen el contenido del dataset.",
+        "ejemplo": "Mpox, epidemiología, España, 2023",
+        "bloque": "identificacion_basica"
+    },
+    "contact": {
+        "label": "Punto de contacto",
+        "obligatorio": False,
+        "descripcion": "Correo electrónico o URL de contacto para consultas sobre el dataset.",
+        "ejemplo": "info@ministeriodesanidad.es",
+        "bloque": "punto_de_contacto"
+    }
 }
 
 # ─────────────────────────────────────────────────────────────
 # FUNCIÓN PRINCIPAL: descripción rápida de un campo faltante
 # ─────────────────────────────────────────────────────────────
 
-def describe_missing_field(field_name: str, use_llm: bool = False, call_llm_fn=None) -> dict:
+NON_PUBLIC_REQUIRED = {"health_category", "theme", "dcat_type", "contact","provenance","keyword"}
+
+def describe_missing_field(field_name: str, use_llm: bool = False, call_llm_fn=None, is_non_public: bool = False) -> dict:
     """
     Devuelve descripción corta, ejemplo y si es obligatorio para un campo.
     Si use_llm=True y call_llm_fn está disponible, enriquece la descripción con IA.
     """
-    # Buscar en el índice (búsqueda exacta primero, luego parcial)
     entry = FIELD_INDEX.get(field_name)
 
-    # Búsqueda parcial si no hay match exacto (ej: "hdab.name" → "hdab")
     if not entry:
         for key in FIELD_INDEX:
             if field_name.startswith(key) or key.startswith(field_name):
@@ -92,15 +134,17 @@ def describe_missing_field(field_name: str, use_llm: bool = False, call_llm_fn=N
             "sugerencia": ""
         }
 
+    # Si es NON_PUBLIC, algunos campos opcionales se vuelven obligatorios
+    es_obligatorio = entry["obligatorio"] or (is_non_public and field_name in NON_PUBLIC_REQUIRED)
+
     result = {
         "label": entry["label"],
-        "obligatorio": entry["obligatorio"],
+        "obligatorio": es_obligatorio,  # ← cambiado
         "descripcion": entry["descripcion"],
         "ejemplo": entry["ejemplo"],
         "sugerencia": ""
     }
 
-    # Enriquecer con LLM si está disponible
     if use_llm and call_llm_fn:
         context = (
             f"Campo: {field_name}\n"
@@ -128,17 +172,12 @@ def describe_missing_field(field_name: str, use_llm: bool = False, call_llm_fn=N
 
     return result
 
-
-def get_missing_descriptions(missing_fields: list, use_llm: bool = False, call_llm_fn=None) -> list:
-    """
-    Dado una lista de field_names faltantes, devuelve lista de dicts con descripción.
-    """
+def get_missing_descriptions(missing_fields: list, use_llm: bool = False, call_llm_fn=None, is_non_public: bool = False) -> list:
     return [
-        {"field": f, **describe_missing_field(f, use_llm=use_llm, call_llm_fn=call_llm_fn)}
+        {"field": f, **describe_missing_field(f, use_llm=use_llm, call_llm_fn=call_llm_fn, is_non_public=is_non_public)}
         for f in missing_fields
-        if f != "applicable_legislation"  # este es automático, no avisar
+        if f != "applicable_legislation"
     ]
-
 
 def get_block_missing(block: dict, state_data: dict) -> list:
     """
