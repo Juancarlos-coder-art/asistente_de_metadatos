@@ -72,34 +72,6 @@ class ManualSaveRequest(BaseModel):
 class ResetRequest(BaseModel):
     confirm: bool = True
 
-@app.get("/health")
-def health():
-    return {
-        "status": "ok",
-        "service": "Asistente HealthDCAT-AP-ES"
-    }
-
-@app.get("/blocks")
-def get_blocks():
-    return [
-        {
-            "id": i,
-            "name": b["name"],
-            "question": b["question"],
-            "fields": b["fields"],
-            "hint": b.get("hint", ""),
-            "placeholder": b.get("placeholder", "")  # ← añade esto
-        }
-        for i, b in enumerate(BLOCKS)
-    ]
-@app.get("/blocks/{block_id}")
-def get_block(block_id: int):
-    if block_id < 0 or block_id >= len(BLOCKS):
-        raise HTTPException(status_code=404, detail="Bloque no encontrado")
-    b = BLOCKS[block_id]
-    return {"id": block_id, "name": b["name"], "question": b["question"], "fields": b["fields"]}
-
-
 def _extract_choices(choices_list):
     """Extrae value + label (es) de una lista de choices del YAML."""
     result = []
@@ -132,20 +104,6 @@ def _extract_subfields(subfields_list):
             entry["choices"] = _extract_choices(sf["choices"])
         result.append(entry)
     return result
-
-class CompleteBlockRequest(BaseModel):
-    block_id: int
-    user_context: str
-
-class ManualSaveRequest(BaseModel):
-    block_id: int
-    partial: dict
-
-class ResetRequest(BaseModel):
-    confirm: bool = True
-
-class LegislationRequest(BaseModel):
-    legislation: list
 
 # Añadir en api.py — antes del endpoint /upload-document
 
@@ -340,8 +298,18 @@ def health():
 
 @app.get("/blocks")
 def get_blocks():
-    return [{"id": i, "name": b["name"], "question": b["question"], "fields": b["fields"],"hint": b.get("hint", "")} for i, b in enumerate(BLOCKS)]
-
+    return [
+        {
+            "id": i,
+            "name": b["name"],
+            "question": b["question"],
+            "fields": b["fields"],
+            "hint": b.get("hint", ""),
+            "placeholder": b.get("placeholder", "")
+        }
+        for i, b in enumerate(BLOCKS)
+    ]
+    
 @app.get("/blocks/{block_id}")
 def get_block(block_id: int):
     if block_id < 0 or block_id >= len(BLOCKS):
@@ -539,7 +507,6 @@ def guide():
 def sessions_count():
     return {"active_sessions": len(sessions)}
 
-# ── Endpoint: subir documento PDF y extraer metadatos ──
 @app.post("/upload-document")
 async def upload_document(
     file: UploadFile = File(...),
@@ -547,6 +514,71 @@ async def upload_document(
     session_id: str = Cookie(default=None)
 ):
     sid, state = get_session(session_id, response)
+
+    if not file.filename.lower().endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="Solo se admiten archivos PDF.")
+
+    try:
+        contents = await file.read()
+        pdf = PdfReader(io.BytesIO(contents))
+        text = "\n".join(page.extract_text() or "" for page in pdf.pages)
+        text = text[:8000]
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error al leer el PDF: {str(e)}")
+
+    if not text.strip():
+        raise HTTPException(status_code=400, detail="El PDF no contiene texto extraíble.")
+
+    if not llm_available():
+        raise HTTPException(status_code=503, detail="LLM no disponible. Configura GROQ_API_KEY.")
+
+    all_fields = [
+        "title",
+        "notes",
+        "identifier",
+        "access_rights",
+        "hdab",
+        "health_category",
+        "theme",
+        "dcat_type",
+        "provenance",
+        "keyword",
+        "contact",
+    ]
+
+    try:
+        existing_access_rights = state.data.get("access_rights")
+
+        classification = _classify_document(text)
+        relevant_vocab = _build_relevant_vocab(classification)
+
+        extracted = _extract_fields_smart(
+            text=text,
+            all_fields=all_fields,
+            relevant_vocab=relevant_vocab,
+            existing_access_rights=existing_access_rights
+        )
+
+        clean_extracted = {
+            k: v for k, v in extracted.items()
+            if v not in (None, "", [])
+        }
+
+        state.merge_partial(clean_extracted)
+        apply_conditional_logic(state)
+
+        return {
+            "success": True,
+            "filename": file.filename,
+            "chars_extracted": len(text),
+            "classification": classification,
+            "extracted": clean_extracted,
+            "metadata": state.data,
+            "session_id": sid
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al extraer metadatos: {str(e)}")
     
 if os.path.exists("frontend/dist") and os.path.exists("frontend/dist/assets"):
     app.mount("/assets", StaticFiles(directory="frontend/dist/assets"), name="assets")
