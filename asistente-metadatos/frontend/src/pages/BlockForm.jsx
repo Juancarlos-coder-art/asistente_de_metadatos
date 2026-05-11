@@ -11,7 +11,9 @@ const FIELD_LABELS_ES = {
   notes: "Descripción",
   identifier: "Identificador",
   hdab: "Autoridad de acceso a los datos",
-  access_rights: "Derechos de acceso",};
+  access_rights: "Derechos de acceso",
+  applicable_legislation: "Legislación Aplicable"
+};
 
 const NON_PUBLIC_URI = "NON_PUBLIC";
 
@@ -54,12 +56,6 @@ function MissingFieldsModal({ missingInfo, onClose, onContinue }) {
   );
 }
 
-const placeholdersPorBloque = {
-  derechos_de_acceso: "Ej.: El acceso está restringido a personal sanitario autorizado...",
-  identificacion_basica: "Ej.: Dataset sobre casos de viruela del mono en España en 2023...",
-  organismo_acceso_datos_sanitarios: "Ej.: Datos recopilados por el Ministerio de Sanidad...",
-  default: "Describe el contenido del dataset..."
-};
 const modalStyles = {
   overlay: {
     position: "fixed",
@@ -266,11 +262,6 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     }
     setLoading(false);
   };
-  const placeholder =
-    placeholdersPorBloque[block.name] ||
-    block.hint ||
-    block.question ||
-    placeholdersPorBloque.default;
 
   const blockQuestion = isNonPublic() && block.fields.includes("identifier")
     ? block.question + "\n\n🔒 El identificador se asignará automáticamente por ser un dataset No Público."
@@ -301,16 +292,15 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       {tab === "ia" && (
         <div className="tab-content">
           <p className="tab-desc">
-            {block.hint || "Describe este bloque con tus propias palabras."}
+            {block.fields.includes("identifier") && isNonPublic()
+              ? "Dinos cómo se llama el dataset y de qué trata. El identificador ya está asignado automáticamente."
+              : block.hint || block.question}
           </p>
           <div className="field-group">
             <textarea
               className="field-textarea"
               placeholder={block.placeholder || "Describe el bloque con tus propias palabras..."}
-              value={userContext}
-              onChange={(e) => setUserContext(e.target.value)}
             />
-
           </div>
           <button className="btn btn--primary" onClick={handleComplete} disabled={loading || !userContext.trim()}>
             {loading ? "Analizando..." : "Completar bloque"}
