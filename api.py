@@ -514,13 +514,11 @@ def reset(body: ResetRequest, response: Response, session_id: str = Cookie(defau
 def llm_status():
     return {"available": llm_available(), "message": "LLM disponible" if llm_available() else "Configura GROQ_API_KEY en el .env"}
 
+
 @app.get("/guide")
 def guide():
-    return FileResponse(
-        "static/Guía de campos – HealthDCAT-AP-ES.pdf",
-        filename="Guía de campos – HealthDCAT-AP-ES.pdf",
-        media_type="application/pdf",
-    )
+    return FileResponse("static/Guía de campos – HealthDCAT-AP-ES.pdf",
+        filename="static/Guía de campos – HealthDCAT-AP-ES.pdf")
 
 @app.get("/sessions/count")
 def sessions_count():
