@@ -72,6 +72,9 @@ class ManualSaveRequest(BaseModel):
 class ResetRequest(BaseModel):
     confirm: bool = True
 
+class LegislationRequest(BaseModel):
+    legislation: list
+
 def _extract_choices(choices_list):
     """Extrae value + label (es) de una lista de choices del YAML."""
     result = []
@@ -105,7 +108,6 @@ def _extract_subfields(subfields_list):
         result.append(entry)
     return result
 
-# Añadir en api.py — antes del endpoint /upload-document
 
 # ── Vocabularios completos para mapeo dirigido ──
 PUBLISHER_TYPES = {
@@ -459,6 +461,8 @@ def validate(response: Response, session_id: str = Cookie(default=None)):
 @app.get("/missing/{block_id}")
 def get_missing_fields(block_id: int, response: Response, session_id: str = Cookie(default=None)):
     sid, state = get_session(session_id, response)
+    if block_id < 0 or block_id >= len(BLOCKS):
+        raise HTTPException(status_code=404, detail="Bloque no encontrado")
     block = BLOCKS[block_id]
     missing = get_block_missing(block, state.data)
     
@@ -507,7 +511,6 @@ def guide():
 def sessions_count():
     return {"active_sessions": len(sessions)}
 
-# ── Endpoint: subir documento PDF y extraer metadatos ──
 @app.post("/upload-document")
 async def upload_document(
     file: UploadFile = File(...),
@@ -531,71 +534,36 @@ async def upload_document(
     if not llm_available():
         raise HTTPException(status_code=503, detail="LLM no disponible.")
 
-    # ── 2. Guardar access_rights del usuario ANTES de inferir ──
+    # ── 2. Guardar access_rights del usuario ──
     existing_access_rights = state.data.get("access_rights")
 
-    # ── 3. Inferir todos los campos de todos los bloques ──
-    all_fields = []
-    for block in BLOCKS:
-        all_fields.extend(block["fields"])
-    all_fields = list(dict.fromkeys(all_fields))
+    # ── 3. Todos los campos a extraer ──
+    all_fields = list(dict.fromkeys(
+        f for block in BLOCKS for f in block["fields"]
+    ))
 
-    fields_str = ", ".join(all_fields)
+    # ── 4. Clasificación rápida ──
+    classification = _classify_document(text)
 
-    prompt = (
-        f"El usuario ha subido un documento sobre un dataset sanitario.\n"
-        f"Extrae ÚNICAMENTE la información que aparezca explícitamente en el texto.\n"
-        f"Claves esperadas: [{fields_str}]\n\n"
-        f"REGLAS ESTRICTAS:\n"
-        f"- Devuelve SOLO JSON válido\n"
-        f"- Si un campo no aparece en el texto, devuelve null\n"
-        f"- NUNCA inventes ni deduzcas información que no esté en el documento\n"
-        f"- Para campos de tipo array, devuelve siempre un array JSON\n\n"
-        f"MAPEO DE CAMPOS (clave JSON → qué buscar en el documento):\n"
-        f"- 'title' → título o nombre del dataset\n"
-        f"- 'notes' → descripción, resumen o abstract del dataset. Cópialo literalmente aunque sea largo.\n"
-        f"- 'identifier' → DOI, identificador único o URI del dataset\n"
-        f"- 'access_rights' → nivel de acceso, condiciones de uso, quién puede acceder. Devuelve la URI:\n"
-        f"    Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
-        f"    Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
-        f"    No público → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
-        f"- 'hdab' → organismo de acceso a datos sanitarios. Objeto con: name, type, email, telephone, contact_page\n"
-        f"- 'health_category' → categoría sanitaria. Array de URIs del vocabulario EHDS:\n"
-        f"    Registros EHR → http://13.81.34.152:1101/resource/authority/healthcategories/EHRS\n"
-        f"    Datos admin sanitarios → http://13.81.34.152:1101/resource/authority/healthcategories/HRAD\n"
-        f"    Registros médicos/mortalidad → http://13.81.34.152:1101/resource/authority/healthcategories/MRMR\n"
-        f"    Datos de patógenos → http://13.81.34.152:1101/resource/authority/healthcategories/RPDG\n"
-        f"    Cohortes e investigación → http://13.81.34.152:1101/resource/authority/healthcategories/RQSH\n"
-        f"    Registros de salud pública → http://13.81.34.152:1101/resource/authority/healthcategories/PHDR\n"
-        f"    Ensayos clínicos → http://13.81.34.152:1101/resource/authority/healthcategories/EHCT\n"
-        f"    Datos genómicos → http://13.81.34.152:1101/resource/authority/healthcategories/HGPD\n"
-        f"- 'theme' → tema principal. Array de URIs del vocabulario europeo de temas:\n"
-        f"    Salud → http://publications.europa.eu/resource/authority/data-theme/HEAL\n"
-        f"    Ciencia y tecnología → http://publications.europa.eu/resource/authority/data-theme/TECH\n"
-        f"    Población y sociedad → http://publications.europa.eu/resource/authority/data-theme/SOCI\n"
-        f"    Gobierno → http://publications.europa.eu/resource/authority/data-theme/GOVE\n"
-        f"- 'dcat_type' → tipo de dataset. URI del vocabulario Publications Office:\n"
-        f"    Datos estadísticos → http://publications.europa.eu/resource/authority/dataset-type/STATISTICAL\n"
-        f"    Datos geoespaciales → http://publications.europa.eu/resource/authority/dataset-type/GEOSPATIAL\n"
-        f"    Alto valor → http://publications.europa.eu/resource/authority/dataset-type/HVD\n"
-        f"- 'provenance' → origen o procedencia de los datos. Texto libre.\n"
-        f"- 'keyword' → palabras clave. Array de strings.\n"
-        f"- 'contact' → punto de contacto. Objeto con: email (string o null), url (string o null)\n"
-        f"\nTexto del documento:\n{text[:6000]}"
-    )
+    # ── 5. Filtrar vocabulario relevante ──
+    relevant_vocab = _build_relevant_vocab(classification)
 
-    contract = {f: None for f in all_fields}
-
+    # ── 6. Extracción dirigida ──
     try:
-        ai_result = call_llm(prompt, contract, text)
+        ai_result = _extract_fields_smart(
+            text,
+            all_fields,
+            relevant_vocab,
+            existing_access_rights
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error en el LLM: {str(e)}")
 
-    # ── 4. Respetar access_rights del usuario — NUNCA sobreescribir ──
+    # ── 7. Garantizar access_rights del usuario ──
     if existing_access_rights:
         ai_result["access_rights"] = existing_access_rights
 
-    # ── 5. Organizar resultados por bloque ──
+    # ── 8. Organizar resultados por bloque ──
     results_by_block = {}
     filled_fields = {}
 
@@ -619,13 +587,14 @@ async def upload_document(
             "complete": block_filled == block_total
         }
 
-    # ── 6. Guardar en el estado de sesión ──
+    # ── 9. Guardar en sesión ──
     state.merge_partial(filled_fields)
     apply_conditional_logic(state)
 
     return {
         "success": True,
         "text_extracted": len(text),
+        "classification": classification,
         "results_by_block": results_by_block,
         "metadata": state.data,
         "session_id": sid
