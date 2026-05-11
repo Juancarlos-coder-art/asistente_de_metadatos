@@ -11,7 +11,14 @@ const FIELD_LABELS_ES = {
   notes: "Descripción",
   identifier: "Identificador",
   hdab: "Autoridad de acceso a los datos",
-  access_rights: "Derechos de acceso",};
+  access_rights: "Derechos de acceso",
+  health_category: "Categoría sanitaria",
+  theme: "Tema",
+  dcat_type: "Tipo de dataset",
+  provenance: "Procedencia",
+  keyword: "Palabras clave",
+  contact: "Punto de contacto",
+};
 
 const NON_PUBLIC_URI = "NON_PUBLIC";
 

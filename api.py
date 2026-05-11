@@ -132,10 +132,12 @@ _ALLOWED_ACCESS_RIGHTS = {
 
 @app.get("/schema-info")
 def get_schema_info():
-    """Devuelve info del schema para los campos de los bloques (choices, subcampos)."""
     field_map = {
         "access_rights": "Derechos de acceso",
         "hdab": "Organismo de acceso a datos de salud",
+        "health_category": "Categoría sanitaria",
+        "theme": "Tema",
+        "dcat_type": "Tipo de dataset",
     }
     info = {}
     for field_key, yaml_name in field_map.items():
@@ -145,7 +147,6 @@ def get_schema_info():
         entry = {}
         if schema_field.get("choices"):
             choices = _extract_choices(schema_field["choices"])
-            # Filtrar access_rights a solo las opciones permitidas
             if field_key == "access_rights":
                 choices = [ch for ch in choices
                            if ch["value"].rsplit("/", 1)[-1] in _ALLOWED_ACCESS_RIGHTS]
@@ -198,7 +199,6 @@ def save_manual(body: ManualSaveRequest, response: Response, session_id: str = C
     # ── 3. Llamar a IA SOLO si faltan campos ──
     if missing_fields and llm_available():
         try:
-            # 🔥 Contexto rico (clave)
             user_context = f"""
 Datos actuales del dataset:
 {json.dumps(state.data, ensure_ascii=False)}
@@ -272,7 +272,10 @@ def get_missing_fields(block_id: int, response: Response, session_id: str = Cook
 @app.post("/finalize")
 def finalize(response: Response, session_id: str = Cookie(default=None)):
     sid, state = get_session(session_id, response)
-    state.data["applicable_legislation"] = [{"uri": "http://data.europa.eu/eli/reg/2016/679/oj", "label": "GDPR"}]
+    if not state.data.get("applicable_legislation"):
+        state.data["applicable_legislation"] = [
+            {"uri": "http://data.europa.eu/eli/reg/2016/679/oj", "label": "GDPR"}
+        ]
     filename = f"metadata_output_{sid[:8]}.json"
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(state.data, f, indent=2, ensure_ascii=False)
