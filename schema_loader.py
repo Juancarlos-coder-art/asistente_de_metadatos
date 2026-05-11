@@ -195,6 +195,7 @@ class HealthDCATAPSchema:
                     sf["field_name"]: (
                         "email" if sf.get("display_snippet") == "email.html"
                         else "url" if sf.get("display_snippet") == "link.html"
+                        else "telephone" if sf.get("field_name") == "telephone"
                         else "text"
                     )
                     for sf in field["repeating_subfields"]
@@ -205,5 +206,9 @@ class HealthDCATAPSchema:
                     rule["max_items"] = 1
 
             restrictions[fname] = rule
+        
+        # ── Alias: mapear clave interna "hdab" a la clave del YAML ──
+        if "Organismo de acceso a datos de salud" in restrictions:
+            restrictions["hdab"] = restrictions["Organismo de acceso a datos de salud"]
 
         return restrictions

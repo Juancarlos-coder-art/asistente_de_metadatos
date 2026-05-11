@@ -51,9 +51,16 @@ class MetadataState:
 
     def missing_required(self):
         missing = []
+        format_errors = self.validate_types_basic()
+
         for field_name in self.required_fields():
             val = self.data.get(field_name)
+            # si es vacío:
             if val in (None, "", [], {}):
+                missing.append(field_name)
+                continue
+            # error de formato:
+            if any(f"[{field_name}]" in err for err in format_errors):
                 missing.append(field_name)
         return missing
 
@@ -98,11 +105,12 @@ class MetadataState:
 
             # Lista de objetos
             if field_type == "list_object" and value:
-                if not isinstance(value, list):
+                if not isinstance(value, (list, dict)):
                     errors.append(f"{field} debe tener completados todos los campos.")
                     continue
 
-                for i, obj in enumerate(value):
+                items = value if isinstance(value, list) else [value]
+                for i, obj in enumerate(items):
                     if not isinstance(obj, dict):
                         errors.append(f"{field}[{i}] debe tener completados todos los campos.")
                         continue
@@ -113,10 +121,27 @@ class MetadataState:
                         if not subvalue:
                             continue
 
-                        if subtype == "email" and not re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", subvalue):
-                            errors.append(f"{field}[{i}].{subfield} debe ser email válido.")
+                        sf_label = rule.get("subfield_labels", {}).get(subfield, subfield)
 
-                        if subtype == "url" and not subvalue.startswith(("http://", "https://")):
-                            errors.append(f"{field}[{i}].{subfield} debe ser URL válida.")
+                        if subtype == "email" and not re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", subvalue):
+                            errors.append(f"[{field}] {sf_label} debe ser un email válido.")
+
+                        if subtype == "url" and not re.match(r"^https?://[^\s/]+\.[^\s/]+", subvalue):
+                            errors.append(f"[{field}] {sf_label} debe ser una URL válida.")
+                        
+                        if subtype == "telephone" and subvalue:
+                            digits_only = re.sub(r"[^\d]", "", subvalue)
+                            if not re.match(r"^[\d\s\+\-\(\)]+$", subvalue) or len(digits_only) < 9:
+                                errors.append(f"[{field}] {sf_label} debe ser un teléfono válido.")
+
+        # ── Validación de identifier (DOI) según access_rights ──
+        identifier_val = self.data.get("identifier", "")
+        access_rights_val = self.data.get("access_rights", "")
+        is_non_public = access_rights_val and access_rights_val.rsplit("/", 1)[-1] == "NON_PUBLIC"
+
+        if identifier_val and not is_non_public:
+            if not re.match(r'^[^\s"<>]+$', identifier_val):
+                label = FIELD_INDEX.get("identifier", {}).get("label", "identifier")
+                errors.append(f"[{field}] {label} debe ser un DOI válido (ej: 10.1234/dataset-salud).")
 
         return errors

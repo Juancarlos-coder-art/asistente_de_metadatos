@@ -22,27 +22,35 @@ const FIELD_LABELS_ES = {
 
 const NON_PUBLIC_URI = "NON_PUBLIC";
 
-function MissingFieldsModal({ missingInfo, onClose }) {
+// ── Modal bloqueante ──
+function MissingFieldsModal({ missingInfo, formatErrors = [], onClose, onContinue }) {
   return (
     <div style={modalStyles.overlay}>
       <div style={modalStyles.modal}>
         <div style={modalStyles.header}>
           <span style={modalStyles.icon}>⚠️</span>
-          <h2 style={modalStyles.title}>Campos obligatorios sin rellenar</h2>
+          <h2 style={modalStyles.title}>Campos con errores</h2>
         </div>
         <p style={modalStyles.subtitle}>
-          Los siguientes campos son obligatorios. Debes rellenarlos antes de continuar.
+          Corrige los siguientes campos antes de continuar.
         </p>
         <div style={modalStyles.fieldList}>
           {missingInfo.map((item, i) => (
             <div key={i} style={modalStyles.fieldItem}>
               <div style={modalStyles.fieldName}>
-                🔴 {FIELD_LABELS_ES[item.field] ?? item.field}
+                🔴 {FIELD_LABELS_ES[item.field] ?? item.field} — obligatorio
               </div>
               <div style={modalStyles.fieldDesc}>{item.descripcion}</div>
               {item.ejemplo && (
                 <div style={modalStyles.fieldExample}>Ej: {item.ejemplo}</div>
               )}
+            </div>
+          ))}
+          {formatErrors.map((err, i) => (
+            <div key={`fmt-${i}`} style={modalStyles.fieldItem}>
+              <div style={modalStyles.fieldName}>
+                🟠 {err.replace(/^\[[^\]]+\]\s*/, '')}
+              </div>
             </div>
           ))}
         </div>
@@ -178,8 +186,16 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       item.obligatorio && !(nonPublic && item.field === "identifier")
     );
 
-    if (obligatoryMissing.length > 0) {
+    // Comprobar errores de formato en el bloque actual
+    const val = await validateMetadata();
+    const blockFormatErrors = val.data.errors.filter(e =>
+      activeFields.some(f => e.includes(f))
+    );
+
+    if (obligatoryMissing.length > 0 || blockFormatErrors.length > 0) {
+      // Campos obligatorios vacíos o con error de formato → mostrar modal BLOQUEANTE
       setMissingInfo(obligatoryMissing);
+      setValidation(val.data);
       setShowModal(true);
       return;
     }
@@ -206,7 +222,11 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   return (
     <div>
       {showModal && (
-        <MissingFieldsModal missingInfo={missingInfo} onClose={() => setShowModal(false)} />
+        <MissingFieldsModal
+          missingInfo={missingInfo}
+          formatErrors={validation ? validation.errors.filter(e => activeFields.some(f => e.includes(f))) : []}
+          onClose={() => setShowModal(false)}
+        />
       )}
 
       <div className="block-card">
@@ -409,7 +429,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                       </div>
                     ))}
                     {blockErrors.map((e, i) => (
-                      <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e}</div>
+                      <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e.replace(/^\[[^\]]+\]\s*/, '')}</div>
                     ))}
                   </>
                 )}
