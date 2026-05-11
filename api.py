@@ -170,6 +170,21 @@ DATASET_TYPES = {
     "ontología": "http://publications.europa.eu/resource/authority/dataset-type/ONTOLOGY",
     "esquema": "http://publications.europa.eu/resource/authority/dataset-type/SCHEMA",
 }
+def _label_from_vocab(value):
+    """Convierte URI(s) de vocabulario a etiqueta(s) legibles."""
+    reverse_map = {}
+
+    for vocab in (PUBLISHER_TYPES, HEALTH_CATEGORIES, THEMES, DATASET_TYPES):
+        for label, uri in vocab.items():
+            reverse_map[uri] = label
+
+    if isinstance(value, list):
+        return [reverse_map.get(v, v.rsplit("/", 1)[-1] if isinstance(v, str) else v) for v in value]
+
+    if isinstance(value, str):
+        return reverse_map.get(value, value.rsplit("/", 1)[-1])
+
+    return value
 def _classify_document(text: str) -> dict:
     """
     PASO 1: Clasificación rápida del documento.
@@ -590,13 +605,21 @@ async def upload_document(
     # ── 9. Guardar en sesión ──
     state.merge_partial(filled_fields)
     apply_conditional_logic(state)
+    display_metadata = state.data.copy()
 
+    for field in ["health_category", "theme", "dcat_type"]:
+        if field in display_metadata:
+            display_metadata[field] = _label_from_vocab(display_metadata[field])
+
+    if isinstance(display_metadata.get("hdab"), dict) and display_metadata["hdab"].get("type"):
+        display_metadata["hdab"]["type"] = _label_from_vocab(display_metadata["hdab"]["type"])
     return {
         "success": True,
         "text_extracted": len(text),
         "classification": classification,
         "results_by_block": results_by_block,
         "metadata": state.data,
+        "display_metadata": display_metadata,
         "session_id": sid
     }
     
