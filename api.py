@@ -24,7 +24,7 @@ from cli import BLOCKS, build_prompt_for_block, build_contract
 from fastapi import UploadFile, File
 from pypdf import PdfReader
 import io
-
+import copy
 
 app = FastAPI(
     title="Asistente HealthDCAT-AP-ES",
@@ -605,7 +605,8 @@ async def upload_document(
     # ── 9. Guardar en sesión ──
     state.merge_partial(filled_fields)
     apply_conditional_logic(state)
-    display_metadata = state.data.copy()
+
+    display_metadata = copy.deepcopy(state.data)
 
     for field in ["health_category", "theme", "dcat_type"]:
         if field in display_metadata:
@@ -613,6 +614,7 @@ async def upload_document(
 
     if isinstance(display_metadata.get("hdab"), dict) and display_metadata["hdab"].get("type"):
         display_metadata["hdab"]["type"] = _label_from_vocab(display_metadata["hdab"]["type"])
+
     return {
         "success": True,
         "text_extracted": len(text),
