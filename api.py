@@ -326,95 +326,115 @@ async def upload_document(
     response: Response = None,
     session_id: str = Cookie(default=None)
 ):
-    """
-    Recibe un PDF, extrae el texto y usa el LLM para inferir
-    todos los campos de todos los bloques posibles.
-    Devuelve un diccionario con los campos inferidos por bloque.
-    """
     sid, state = get_session(session_id, response)
- 
+
     # ── 1. Extraer texto del PDF ──
     try:
         contents = await file.read()
         pdf = PdfReader(io.BytesIO(contents))
         text = "\n".join(page.extract_text() or "" for page in pdf.pages)
-        text = text[:8000]  # limitar a 8000 chars para no exceder tokens
+        text = text[:8000]
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error al leer el PDF: {str(e)}")
- 
+
     if not text.strip():
         raise HTTPException(status_code=400, detail="El PDF no contiene texto extraíble.")
- 
+
     if not llm_available():
         raise HTTPException(status_code=503, detail="LLM no disponible.")
- 
-    # ── 2. Inferir todos los campos de todos los bloques ──
+
+    # ── 2. Guardar access_rights del usuario ANTES de inferir ──
+    # Si el usuario ya eligió access_rights en el bloque 1, lo respetamos siempre
+    existing_access_rights = state.data.get("access_rights")
+
+    # ── 3. Inferir todos los campos de todos los bloques ──
     all_fields = []
     for block in BLOCKS:
         all_fields.extend(block["fields"])
-    all_fields = list(dict.fromkeys(all_fields))  # deduplicar
- 
+    all_fields = list(dict.fromkeys(all_fields))
+
     fields_str = ", ".join(all_fields)
- 
+
     prompt = (
         f"El usuario ha subido un documento sobre un dataset sanitario.\n"
         f"Extrae ÚNICAMENTE la información que aparezca explícitamente en el texto.\n"
         f"Claves esperadas: [{fields_str}]\n\n"
-        f"REGLAS:\n"
+        f"REGLAS ESTRICTAS:\n"
         f"- Devuelve SOLO JSON válido\n"
         f"- Si un campo no aparece en el texto, devuelve null\n"
-        f"- NUNCA inventes ni deduzcas información\n"
-        f"- El campo 'notes' corresponde a la descripción general del dataset. "
-        f"Copia el texto de descripción del documento aunque sea largo.\n"  # ← mejora 1
-        f"- Para 'access_rights' usa la URI correspondiente:\n"
-        f"  Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
-        f"  Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
-        f"  No público → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
-        f"- Para 'hdab' devuelve objeto con: name, type, email, telephone, contact_page\n"
-        f"\nTexto del documento:\n{text[:6000]}" 
+        f"- NUNCA inventes ni deduzcas información que no esté en el documento\n"
+        f"- Para campos de tipo array, devuelve siempre un array JSON\n\n"
         f"MAPEO DE CAMPOS (clave JSON → qué buscar en el documento):\n"
         f"- 'title' → título o nombre del dataset\n"
-        f"- 'notes' → descripción, resumen o abstract del dataset\n"
+        f"- 'notes' → descripción, resumen o abstract del dataset. Cópialo literalmente aunque sea largo.\n"
         f"- 'identifier' → DOI, identificador único o URI del dataset\n"
-        f"- 'access_rights' → nivel de acceso, condiciones de uso, quién puede acceder\n"
-        f"- 'hdab' → organismo de acceso, entidad gestora, HDAB\n"
-        f"  Subcampos: name (nombre), email (correo), telephone (teléfono), contact_page (web)\n"# ← mejora 2: reducido de 8000 a 6000
+        f"- 'access_rights' → nivel de acceso, condiciones de uso, quién puede acceder. Devuelve la URI:\n"
+        f"    Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
+        f"    Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
+        f"    No público → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
+        f"- 'hdab' → organismo de acceso a datos sanitarios. Objeto con: name, type, email, telephone, contact_page\n"
+        f"- 'health_category' → categoría sanitaria. Array de URIs del vocabulario EHDS:\n"
+        f"    Registros EHR → http://13.81.34.152:1101/resource/authority/healthcategories/EHRS\n"
+        f"    Datos admin sanitarios → http://13.81.34.152:1101/resource/authority/healthcategories/HRAD\n"
+        f"    Registros médicos/mortalidad → http://13.81.34.152:1101/resource/authority/healthcategories/MRMR\n"
+        f"    Datos de patógenos → http://13.81.34.152:1101/resource/authority/healthcategories/RPDG\n"
+        f"    Cohortes e investigación → http://13.81.34.152:1101/resource/authority/healthcategories/RQSH\n"
+        f"    Registros de salud pública → http://13.81.34.152:1101/resource/authority/healthcategories/PHDR\n"
+        f"    Ensayos clínicos → http://13.81.34.152:1101/resource/authority/healthcategories/EHCT\n"
+        f"    Datos genómicos → http://13.81.34.152:1101/resource/authority/healthcategories/HGPD\n"
+        f"- 'theme' → tema principal. Array de URIs del vocabulario europeo de temas:\n"
+        f"    Salud → http://publications.europa.eu/resource/authority/data-theme/HEAL\n"
+        f"    Ciencia y tecnología → http://publications.europa.eu/resource/authority/data-theme/TECH\n"
+        f"    Población y sociedad → http://publications.europa.eu/resource/authority/data-theme/SOCI\n"
+        f"    Gobierno → http://publications.europa.eu/resource/authority/data-theme/GOVE\n"
+        f"- 'dcat_type' → tipo de dataset. URI del vocabulario Publications Office:\n"
+        f"    Datos estadísticos → http://publications.europa.eu/resource/authority/dataset-type/STATISTICAL\n"
+        f"    Datos geoespaciales → http://publications.europa.eu/resource/authority/dataset-type/GEOSPATIAL\n"
+        f"    Alto valor → http://publications.europa.eu/resource/authority/dataset-type/HVD\n"
+        f"- 'provenance' → origen o procedencia de los datos. Texto libre.\n"
+        f"- 'keyword' → palabras clave. Array de strings.\n"
+        f"- 'contact' → punto de contacto. Objeto con: email (string o null), url (string o null)\n"
+        f"\nTexto del documento:\n{text[:6000]}"
     )
-    
+
     contract = {f: None for f in all_fields}
- 
+
     try:
         ai_result = call_llm(prompt, contract, text)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error en el LLM: {str(e)}")
- 
-    # ── 3. Organizar resultados por bloque ──
+
+    # ── 4. Respetar access_rights del usuario — NUNCA sobreescribir ──
+    if existing_access_rights:
+        ai_result["access_rights"] = existing_access_rights
+
+    # ── 5. Organizar resultados por bloque ──
     results_by_block = {}
     filled_fields = {}
- 
+
     for block in BLOCKS:
         block_result = {}
         block_filled = 0
         block_total = len(block["fields"])
- 
+
         for field in block["fields"]:
             value = ai_result.get(field)
             block_result[field] = value
             if value is not None and value != "" and value != []:
                 block_filled += 1
                 filled_fields[field] = value
- 
+
         results_by_block[block["name"]] = {
             "fields": block_result,
             "filled": block_filled,
             "total": block_total,
             "complete": block_filled == block_total
         }
- 
-    # ── 4. Guardar en el estado de sesión ──
+
+    # ── 6. Guardar en el estado de sesión ──
     state.merge_partial(filled_fields)
     apply_conditional_logic(state)
- 
+
     return {
         "success": True,
         "text_extracted": len(text),
@@ -422,4 +442,3 @@ async def upload_document(
         "metadata": state.data,
         "session_id": sid
     }
- 
