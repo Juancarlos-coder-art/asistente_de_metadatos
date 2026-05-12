@@ -393,7 +393,11 @@ def llm_status():
 
 @app.get("/guide")
 def guide():
-    return FileResponse("static/Guía de campos – HealthDCAT-AP-ES.pdf", filename="Guía de campos – HealthDCAT-AP-ES.pdf", media_type="application/pdf")
+    return FileResponse(
+        "../static/Guía de campos – HealthDCAT-AP-ES.pdf",
+        filename="Guía de campos – HealthDCAT-AP-ES.pdf",
+        media_type="application/pdf"
+    )
 
 @app.get("/sessions/count")
 def sessions_count():

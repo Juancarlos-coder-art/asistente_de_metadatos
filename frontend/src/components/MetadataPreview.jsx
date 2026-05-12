@@ -16,13 +16,90 @@ const FIELD_INFO = {
   contact: { label: "Punto de contacto", description: "Contacto para consultas" },
 };
 
+const HEALTH_CATEGORY_LABELS = {
+  "EHRS": "Registros Electrónicos de Salud",
+  "HRAD": "Datos administrativos sanitarios",
+  "MRMR": "Datos de registros médicos y mortalidad",
+  "RPDG": "Datos de patógenos",
+  "RQSH": "Datos de cohortes e investigación",
+  "PHDR": "Registros de salud pública",
+  "EHCT": "Datos de ensayos clínicos",
+  "HGPD": "Datos genéticos y genómicos",
+  "EINS": "Datos de biobancos",
+  "EMRD": "Datos de dispositivos médicos",
+  "HPML": "Datos moleculares",
+  "WELA": "Datos de aplicaciones de bienestar",
+  "RMMD": "Datos de medicamentos",
+  "NRPE": "Datos agregados sanitarios",
+  "PGEH": "Datos electrónicos personales",
+  "IDHP": "Datos de profesionales de la salud",
+  "DIOH": "Datos sobre factores de salud",
+};
+
+const THEME_LABELS = {
+  "HEAL": "Salud",
+  "TECH": "Ciencia y tecnología",
+  "SOCI": "Población y sociedad",
+  "GOVE": "Gobierno y sector público",
+  "EDUC": "Educación, cultura y deportes",
+  "ECON": "Economía y finanzas",
+  "ENVI": "Medio ambiente",
+  "AGRI": "Agricultura, pesca y alimentación",
+  "TRAN": "Transporte",
+  "JUST": "Justicia y seguridad pública",
+  "REGI": "Regiones y ciudades",
+  "INTR": "Asuntos internacionales",
+};
+
+const DCAT_TYPE_LABELS = {
+  "STATISTICAL": "Datos estadísticos",
+  "GEOSPATIAL": "Datos geoespaciales",
+  "HVD": "Conjunto de datos de alto valor",
+  "SYNTHETIC_DATA": "Datos sintéticos",
+  "ONTOLOGY": "Ontología",
+  "SCHEMA": "Esquema",
+  "CODE_LIST": "Lista de códigos",
+  "APROF": "Perfil de aplicación",
+  "TEST_DATA": "Datos de prueba",
+  "CORE_COMP": "Componente básico",
+  "MAPPING": "Correspondencia",
+  "DIRECTORY": "Directorio",
+  "GLOSSARY": "Glosario",
+  "THESAURUS": "Tesauro",
+  "TAXONOMY": "Taxonomía",
+  "DOMAIN_MODEL": "Modelo de dominio",
+  "RELEASE": "Publicación",
+};
+
+const PUBLISHER_TYPE_LABELS = {
+  "public-health-institute": "Instituto de salud pública",
+  "research-institute-org": "Instituto/organización de investigación",
+  "national-authority": "Autoridad nacional",
+  "regional-authority": "Autoridad regional",
+  "university": "Universidad",
+  "public-health-registry": "Registro de salud pública",
+  "public-health-org": "Organización de salud pública",
+  "stat-agency": "Agencia de estadísticas",
+  "biobank": "Biobanco",
+  "inpatient-institute": "Hospital",
+  "laboratory": "Laboratorio",
+  "private-company": "Empresa privada",
+  "gov-public-sector-org": "Organización gubernamental",
+  "healthcare-providers": "Proveedores de atención médica",
+  "research-infra": "Infraestructura de investigación",
+  "non-gov-org": "Organización no gubernamental",
+  "mental-health-org": "Organización de salud mental",
+  "primary-care-org": "Organización de atención primaria",
+  "quality-registry": "Registro de calidad",
+  "pathology-registry": "Registro de patología",
+};
+
 function formatValue(key, value) {
   if (value === null || value === undefined || value === "") return null;
 
-  // access_rights — extraer la parte final de la URI
+  // access_rights
   if (key === "access_rights" && typeof value === "string") {
-    const parts = value.split("/");
-    const code = parts[parts.length - 1];
+    const code = value.split("/").pop();
     const map = {
       PUBLIC: "Público",
       RESTRICTED: "Restringido",
@@ -37,17 +114,20 @@ function formatValue(key, value) {
 
   // hdab — objeto con subcampos
   if (key === "hdab" && typeof value === "object") {
+    const typeCode = value.type ? value.type.split("/").pop() : null;
+    const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
         {value.name && <span><strong>Nombre:</strong> {value.name}</span>}
         {value.email && <span><strong>Email:</strong> {value.email}</span>}
         {value.telephone && <span><strong>Teléfono:</strong> {value.telephone}</span>}
         {value.contact_page && <span><strong>Web:</strong> <a href={value.contact_page} target="_blank" rel="noreferrer">{value.contact_page}</a></span>}
-        {value.type && <span><strong>Tipo:</strong> {value.type.split("/").pop()}</span>}
+        {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
       </div>
     );
   }
-  // contact — objeto con email y url
+
+  // contact
   if (key === "contact" && typeof value === "object") {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
@@ -57,16 +137,29 @@ function formatValue(key, value) {
     );
   }
 
-  // health_category y theme — array de URIs, mostrar solo el código final
-  if ((key === "health_category" || key === "theme") && Array.isArray(value)) {
-    return value.map(uri => uri.split("/").pop()).join(", ");
+  // health_category → etiqueta en español
+  if (key === "health_category" && Array.isArray(value)) {
+    return value.map(uri => {
+      const code = uri.split("/").pop();
+      return HEALTH_CATEGORY_LABELS[code] || code;
+    }).join(", ");
   }
 
-  // dcat_type — URI, mostrar solo el código final
-  if (key === "dcat_type" && typeof value === "string") {
-    return value.split("/").pop();
+  // theme → etiqueta en español
+  if (key === "theme" && Array.isArray(value)) {
+    return value.map(uri => {
+      const code = uri.split("/").pop();
+      return THEME_LABELS[code] || code;
+    }).join(", ");
   }
-  // applicable_legislation — array
+
+  // dcat_type → etiqueta en español
+  if (key === "dcat_type" && typeof value === "string") {
+    const code = value.split("/").pop();
+    return DCAT_TYPE_LABELS[code] || code;
+  }
+
+  // applicable_legislation
   if (key === "applicable_legislation" && Array.isArray(value)) {
     return value.map((v, i) => (
       <span key={i}>{v.label || v.uri}</span>
@@ -82,7 +175,9 @@ function formatValue(key, value) {
 }
 
 export default function MetadataPreview({ metadata }) {
-  const entries = Object.entries(metadata).filter(([, v]) => v !== null && v !== "" && !(Array.isArray(v) && v.length === 0));
+  const entries = Object.entries(metadata).filter(
+    ([, v]) => v !== null && v !== "" && !(Array.isArray(v) && v.length === 0)
+  );
 
   if (entries.length === 0) {
     return (
