@@ -452,7 +452,9 @@ def llm_status():
 
 @app.get("/guide")
 def guide():
-    pdf_path = r"C:\Users\juanc_chswm14\Desktop\asistente-metadato\static\Guía de campos – HealthDCAT-AP-ES.pdf"
+    pdf_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "Guía de campos – HealthDCAT-AP-ES.pdf")
+    if not os.path.exists(pdf_path):
+        raise HTTPException(status_code=404, detail="Guía no encontrada")
     return FileResponse(
         pdf_path,
         filename="Guía de campos – HealthDCAT-AP-ES.pdf",
