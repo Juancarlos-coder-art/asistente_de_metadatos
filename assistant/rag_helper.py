@@ -103,7 +103,14 @@ FIELD_INDEX = {
         "descripcion": "Correo electrónico o URL de contacto para consultas sobre el dataset.",
         "ejemplo": "info@ministeriodesanidad.es",
         "bloque": "punto_de_contacto"
-    }
+    },
+    "access_url": {
+    "label": "URL de acceso a la distribución",
+    "obligatorio": True,
+    "descripcion": "URL donde se puede acceder o descargar el dataset.",
+    "ejemplo": "https://datos.gob.es/dataset/xyz",
+    "bloque": "distribucion"
+    },
 }
 
 # ─────────────────────────────────────────────────────────────

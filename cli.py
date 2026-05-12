@@ -54,6 +54,16 @@ BLOCKS = [
         ),
         "hint": "Indica el correo o web de contacto para consultas sobre este dataset.",
         "placeholder": "Ej.: Para consultas sobre este dataset contacta en info@ministeriodesanidad.es o visita https://www.sanidad.gob.es/contacto"
+    },
+    {
+        "name": "Acceso_a_Distribucion",
+        "fields": ["access_url"],
+        "question": (
+            "¿Dónde se puede acceder al dataset?\n\n"
+            "Indica la URL de acceso a la distribución del dataset."
+        ),
+        "hint": "Introduce la URL donde está disponible el dataset.",
+        "placeholder": "Ej.: https://datos.gob.es/dataset/xyz"
     }
 ]
 

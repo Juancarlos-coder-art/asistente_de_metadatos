@@ -14,6 +14,7 @@ const FIELD_INFO = {
   provenance: { label: "Procedencia", description: "Origen de los datos" },
   keyword: { label: "Palabras clave", description: "Etiquetas descriptivas" },
   contact: { label: "Punto de contacto", description: "Contacto para consultas" },
+  distribution: { label: "Distribución", description: "URL de acceso al dataset" },
 };
 
 const HEALTH_CATEGORY_LABELS = {
@@ -191,6 +192,27 @@ function formatValue(key, value) {
       <span key={i}>{v.label || v.uri}</span>
     ));
   }
+// applicable_legislation
+if (key === "applicable_legislation" && Array.isArray(value)) {
+  return value.map((v, i) => (
+    <span key={i}>{v.label || v.uri}</span>
+  ));
+}
+
+// distribution — array con access_url
+if (key === "distribution" && Array.isArray(value)) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+      {value.map((dist, i) => (
+        <div key={i}>
+          {dist.access_url && (
+            <span><strong>URL:</strong> <a href={dist.access_url} target="_blank" rel="noreferrer">{dist.access_url}</a></span>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
   // Arrays genéricos
   if (Array.isArray(value)) {

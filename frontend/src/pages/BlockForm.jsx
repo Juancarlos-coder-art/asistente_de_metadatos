@@ -69,7 +69,8 @@ const placeholdersPorBloque = {
   identificacion_basica: "Ej.: Dataset sobre casos de viruela del mono en España en 2023...",
   organismo_acceso_datos_sanitarios: "Ej.: Datos recopilados por el Ministerio de Sanidad...",
   punto_de_contacto: "Ej.: Contacta en info@ministeriodesanidad.es o visita https://www.sanidad.gob.es/contacto",
-  default: "Describe el contenido del dataset..."
+  default: "Describe el contenido del dataset...",
+  distribucion: "Ej.: https://datos.gob.es/dataset/xyz o https://zenodo.org/record/123456"
 };
 
 const modalStyles = {

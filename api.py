@@ -419,7 +419,17 @@ def get_missing_fields(block_id: int, response: Response, session_id: str = Cook
 def finalize(response: Response, session_id: str = Cookie(default=None)):
     sid, state = get_session(session_id, response)
     if not state.data.get("applicable_legislation"):
-        state.data["applicable_legislation"] = [{"uri": "http://data.europa.eu/eli/reg/2016/679/oj", "label": "GDPR"}]
+        state.data["applicable_legislation"] = [
+            {"uri": "http://data.europa.eu/eli/reg/2016/679/oj", "label": "GDPR"}
+        ]
+    access_url = state.data.pop("access_url", None)
+    if access_url:
+        state.data["distribution"] = [{
+            "access_url": access_url,
+            "applicable_legislation": state.data.get("applicable_legislation", [
+                {"uri": "http://data.europa.eu/eli/reg/2016/679/oj", "label": "GDPR"}
+            ])
+        }]
     filename = f"metadata_output_{sid[:8]}.json"
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(state.data, f, indent=2, ensure_ascii=False)
