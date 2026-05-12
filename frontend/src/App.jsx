@@ -64,7 +64,7 @@ export default function App() {
 
   const handleDocumentSuccess = (data) => {
     setDocumentResults(data.results_by_block);
-    setMetadata(data.display_metadata || data.metadata)
+    setMetadata(data.metadata)
     setShowDocumentModal(false);
     const done = [];
     blocks.forEach((b, i) => {
