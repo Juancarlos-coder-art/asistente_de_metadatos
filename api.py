@@ -148,7 +148,12 @@ def _classify_document(text: str) -> dict:
         f"Documento:\n{text[:2000]}"
     )
     try:
-        return call_llm(prompt, {"tipo_organismo": None, "categorias_salud": None, "temas": None, "tipo_dataset": None}, text[:2000])
+        return call_llm(prompt, {
+            "tipo_organismo": None,
+            "categorias_salud": None,
+            "temas": None,
+            "tipo_dataset": None
+        }, text[:2000])
     except Exception:
         return {}
 
