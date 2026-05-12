@@ -391,14 +391,16 @@ def reset(body: ResetRequest, response: Response, session_id: str = Cookie(defau
 def llm_status():
     return {"available": llm_available()}
 
+
 @app.get("/guide")
 def guide():
+    pdf_path = r"C:\Users\juanc_chswm14\Desktop\asistente-metadato\static\Guía de campos – HealthDCAT-AP-ES.pdf"
     return FileResponse(
-        "../static/Guía de campos – HealthDCAT-AP-ES.pdf",
+        pdf_path,
         filename="Guía de campos – HealthDCAT-AP-ES.pdf",
         media_type="application/pdf"
     )
-
+    
 @app.get("/sessions/count")
 def sessions_count():
     return {"active_sessions": len(sessions)}

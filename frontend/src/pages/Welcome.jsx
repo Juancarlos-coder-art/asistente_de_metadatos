@@ -36,7 +36,7 @@ const handleStart = async () => {
             para metadatar tu dataset, descarga aquí la guía completa.
           </p>
           <a href="http://localhost:8000/guide" download className="btn btn--secondary btn--sm">
-            ⬇️ Descargar manual de usuario (.docx)
+            ⬇️ Descargar manual de usuario (.pdf)
           </a>
         </div>
 
