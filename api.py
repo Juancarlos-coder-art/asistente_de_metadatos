@@ -236,7 +236,7 @@ def _build_relevant_vocab(classification: dict) -> dict:
         if label in tipo_ds:
             relevant["dataset_types"][label] = uri
     if not relevant["dataset_types"]:
-        relevant["dataset_types"] = {"estadístico": DATASET_TYPES["estadístico"]}
+        relevant["dataset_types"] = {"datos estadísticos": DATASET_TYPES["datos estadísticos"]}
 
     return relevant
 
