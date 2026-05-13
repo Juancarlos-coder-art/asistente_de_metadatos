@@ -556,8 +556,34 @@ async def upload_document(
     try:
         contents = await file.read()
         pdf = PdfReader(io.BytesIO(contents))
-        text = "\n".join(page.extract_text() or "" for page in pdf.pages)
-        text = text[:8000]
+        pages = pdf.pages
+        total = len(pages)
+
+        METADATA_KEYWORDS = [
+            "abstract", "resumen", "keywords", "palabras clave",
+            "doi", "author", "autor", "institution", "institución",
+            "dataset", "data", "datos", "methodology", "metodología"
+        ]
+
+        selected_text = []
+        chars_used = 0
+        MAX_CHARS = 12000
+
+        for i in range(min(2, total)):
+            t = pages[i].extract_text() or ""
+            selected_text.append(t)
+            chars_used += len(t)
+
+        for i in range(2, total):
+            if chars_used >= MAX_CHARS:
+                break
+            t = pages[i].extract_text() or ""
+            t_lower = t.lower()
+            if any(kw in t_lower for kw in METADATA_KEYWORDS):
+                selected_text.append(t)
+                chars_used += len(t)
+
+        text = "\n".join(selected_text)[:MAX_CHARS]
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error al leer el PDF: {str(e)}")
 
