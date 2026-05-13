@@ -19,6 +19,14 @@ const FIELD_LABELS_ES = {
   keyword: "Palabras clave",
   contact: "Punto de contacto",
   distribution_access_url: "URL de acceso",
+  purpose: "Finalidad",
+  language: "Idioma",
+  population_coverage: "Cobertura poblacional",
+  number_of_unique_individuals: "Número de personas individuales",
+  number_of_records: "Número de registros",
+  min_typical_age: "Edad mínima típica",
+  max_typical_age: "Edad máxima típica",
+  personal_data: "Datos personales",
 };
 
 const NON_PUBLIC_URI = "NON_PUBLIC";
@@ -183,7 +191,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       activeFields.some(f => e.includes(f))
     );
     const blockingFormatErrors = blockFormatErrors.filter(e => e.startsWith("[OBLIG]"));
-    if (obligatoryMissing.length > 0 || blockFormatErrors.length > 0) {
+    if (obligatoryMissing.length > 0 || blockingFormatErrors.length > 0) {
       setMissingInfo(obligatoryMissing);
       setValidation(val.data);
       setShowModal(true);
@@ -193,6 +201,28 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   };
 
   const handleFinalize = async () => {
+    const res = await getMissingFields(currentIdx);
+    const metaRes = await getMetadata();
+    const currentMeta = metaRes.data;
+    const nonPublic = isNonPublic(currentMeta);
+
+    const obligatoryMissing = res.data.descriptions.filter(item =>
+      item.obligatorio && !(nonPublic && item.field === "identifier")
+    );
+
+    const val = await validateMetadata();
+    const blockFormatErrors = val.data.errors.filter(e =>
+      activeFields.some(f => e.includes(f))
+    );
+    const blockingFormatErrors = blockFormatErrors.filter(e => e.startsWith("[OBLIG]"));
+
+    if (obligatoryMissing.length > 0 || blockingFormatErrors.length > 0) {
+      setMissingInfo(obligatoryMissing);
+      setValidation(val.data);
+      setShowModal(true);
+      return;
+    }
+
     setLoading(true);
     try {
       await finalizeMetadata();
@@ -206,7 +236,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const placeholder = placeholdersPorBloque[block.name] || block.hint || block.question || placeholdersPorBloque.default;
 
   const blockQuestion = isNonPublic() && block.fields.includes("identifier")
-    ? block.question + "\n\n🔒 El identificador se asignará automáticamente por ser un dataset No Público."
+    ? block.question + "\n\n\ud83d\udd12 El identificador se asignará automáticamente por ser un dataset No Público."
     : block.question;
 
   return (
@@ -351,6 +381,39 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
               );
             }
 
+            if (field === "language" && fieldSchema.choices) {
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label">{fieldLabel}</label>
+                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
+                    <option value="">— Selecciona un idioma —</option>
+                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                  </select>
+                </div>
+              );
+            }
+
+            if (field === "personal_data" && fieldSchema.choices) {
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label">{fieldLabel}</label>
+                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
+                    <option value="">— Selecciona tipo de dato personal —</option>
+                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                  </select>
+                </div>
+              );
+            }
+
+            if (["number_of_unique_individuals", "number_of_records", "min_typical_age", "max_typical_age"].includes(field)) {
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label">{fieldLabel}</label>
+                  <input className="field-input" type="number" min="0" placeholder={`Introduce ${fieldLabel}...`} value={manualFields[field] ?? ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value ? parseInt(e.target.value, 10) : "" })} />
+                </div>
+              );
+            }
+
             return (
               <div key={field} className="field-group">
                 <label className="field-label">{fieldLabel}</label>
@@ -375,7 +438,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       <div className="bottom-grid">
         <div>
           <p className="json-viewer-header">Resumen del dataset</p>
-          <MetadataPreview metadata={metadata} />
+          <MetadataPreview metadata={metadata} schemaInfo={schemaInfo} />
         </div>
         <div className="validation-box">
           <p className="validation-header">Estado de validación</p>

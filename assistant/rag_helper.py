@@ -104,6 +104,62 @@ FIELD_INDEX = {
     "ejemplo": "https://datos.gob.es/dataset/xyz",
     "bloque": "distribucion"
     },
+    "purpose": {
+        "label": "Finalidad",
+        "obligatorio": False,
+        "descripcion": "Finalidad o propósito del dataset.",
+        "ejemplo": "Monitorear la evolución de la viruela del mono en España para informar políticas de salud pública.",
+        "bloque": "informacion_adicional"
+    },
+    "language": {
+        "label": "Idioma",
+        "obligatorio": False,
+        "descripcion": "Idioma en el que están disponibles los datos del dataset.",
+        "ejemplo": "Español",
+        "bloque": "informacion_adicional"
+    },
+    "population_coverage": {
+        "label": "Cobertura poblacional",
+        "obligatorio": False,
+        "descripcion": "Descripción de la población cubierta por el dataset.",
+        "ejemplo": "Población mayor de 18 años en España",
+        "bloque": "informacion_adicional"
+    },
+    "number_of_unique_individuals": {
+        "label": "Número de personas individuales",
+        "obligatorio": False,
+        "descripcion": "Número de individuos únicos representados en el dataset.",
+        "ejemplo": "1500",
+        "bloque": "informacion_adicional"
+    },
+    "number_of_records": {
+        "label": "Número de registros",
+        "obligatorio": False,
+        "descripcion": "Número total de registros o filas en el dataset.",
+        "ejemplo": "4500",
+        "bloque": "informacion_adicional"
+    },
+    "min_typical_age": {
+        "label": "Edad mínima típica",
+        "obligatorio": False,
+        "descripcion": "Edad mínima típica de los individuos representados en el dataset.",
+        "ejemplo": "0",
+        "bloque": "informacion_adicional"
+    },
+    "max_typical_age": {
+        "label": "Edad máxima típica",
+        "obligatorio": False,
+        "descripcion": "Edad máxima típica de los individuos representados en el dataset.",
+        "ejemplo": "99",
+        "bloque": "informacion_adicional"
+    },
+    "personal_data": {
+        "label": "Datos personales",
+        "obligatorio": False,
+        "descripcion": "Indica si el dataset contiene datos personales o información identificable.",
+        "ejemplo": "Sí, el dataset incluye datos personales como edad, sexo y ubicación geográfica.",
+        "bloque": "informacion_adicional"
+    },
 }
 
 # ─────────────────────────────────────────────────────────────

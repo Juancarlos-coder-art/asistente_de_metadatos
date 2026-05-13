@@ -403,6 +403,8 @@ def get_schema_info(lang: str = "es"):
         "theme": "theme",
         "dcat_type": "dcat_type",
         "contact": "contact",
+        "language": "language",
+        "personal_data": "personal_data",
     }
     info = {}
     for field_key, yaml_field_name in field_map.items():

@@ -215,4 +215,8 @@ class HealthDCATAPSchema:
         if "Organismo de acceso a datos de salud" in restrictions:
             restrictions["hdab"] = restrictions["Organismo de acceso a datos de salud"]
 
+        # ── Campo de resource_fields que no se procesa arriba ──
+        restrictions["distribution_access_url"] = {"required": False, "type": "url"}
+        restrictions["access_url"] = {"required": False, "type": "url"}
+
         return restrictions

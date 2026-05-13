@@ -15,6 +15,14 @@ const FIELD_INFO = {
   keyword: { label: "Palabras clave", description: "Etiquetas descriptivas" },
   contact: { label: "Punto de contacto", description: "Contacto para consultas" },
   distribution: { label: "Distribución", description: "URL de acceso al dataset" },
+  purpose: { label: "Finalidad", description: "Propósito del dataset" },
+  language: { label: "Idioma", description: "Idioma en el que están disponibles los datos" },
+  population_coverage: { label: "Cobertura poblacional", description: "Población cubierta por el dataset" },
+  number_of_unique_individuals: { label: "Número de personas individuales", description: "Número de personas únicas representadas en el dataset" },
+  number_of_records: { label: "Número de registros", description: "Número total de registros en el dataset" },
+  min_typical_age: { label: "Edad mínima típica", description: "Edad mínima típica de los individuos representados en el dataset" },
+  max_typical_age: { label: "Edad máxima típica", description: "Edad máxima típica de los individuos representados en el dataset" },
+  personal_data: { label: "Datos personales", description: "Indica si el dataset contiene datos personales" },
 };
 
 const HEALTH_CATEGORY_LABELS = {
@@ -91,7 +99,18 @@ const PUBLISHER_TYPE_LABELS = {
   "private-health-insurance": "Seguro de salud privado",
 };
 
-function formatValue(key, value) {
+const LANGUAGE_LABELS = {
+  "DEU": "Alemán", "NOB": "Bokmål", "BUL": "Búlgaro", "CES": "Checo",
+  "HRV": "Croata", "DAN": "Danés", "SLK": "Eslovaco", "SLV": "Esloveno",
+  "SPA": "Español", "EST": "Estonio", "FIN": "Finés", "FRA": "Francés",
+  "ELL": "Griego", "HUN": "Húngaro", "ENG": "Inglés", "GLE": "Irlandés",
+  "ISL": "Islandés", "ITA": "Italiano", "LAV": "Letón", "LIT": "Lituano",
+  "MLT": "Maltés", "NLD": "Neerlandés", "NNO": "Nynorsk", "POL": "Polaco",
+  "POR": "Portugués", "RON": "Rumano", "SWE": "Sueco",
+  "CAT": "Catalán", "GLG": "Gallego", "EUS": "Euskera",
+};
+
+function formatValue(key, value, schemaInfo = {}) {
   if (value === null || value === undefined || value === "") return null;
 
   if (key === "access_rights" && typeof value === "string") {
@@ -146,6 +165,19 @@ function formatValue(key, value) {
     return DCAT_TYPE_LABELS[code] || code;
   }
 
+  if (key === "language" && Array.isArray(value)) {
+    return value.map(uri => {
+      const code = uri.split("/").pop();
+      return LANGUAGE_LABELS[code] || code;
+    }).join(", ");
+  }
+
+  if (key === "personal_data" && Array.isArray(value)) {
+    const choices = schemaInfo?.personal_data?.choices || [];
+    const labelMap = Object.fromEntries(choices.map(c => [c.value, c.label]));
+    return value.map(uri => labelMap[uri] || uri.split("#").pop().replace(/([a-z])([A-Z])/g, "$1 $2")).join(", ");
+  }
+
   if (key === "applicable_legislation" && Array.isArray(value)) {
     return value.map((v, i) => <span key={i}>{v.label || v.uri}</span>);
   }
@@ -168,7 +200,7 @@ function formatValue(key, value) {
   return String(value);
 }
 
-export default function MetadataPreview({ metadata }) {
+export default function MetadataPreview({ metadata, schemaInfo = {} }) {
   const entries = Object.entries(metadata).filter(
     ([, v]) => v !== null && v !== "" && !(Array.isArray(v) && v.length === 0)
   );
@@ -186,7 +218,7 @@ export default function MetadataPreview({ metadata }) {
     <div className="preview-list">
       {entries.map(([key, value]) => {
         const info = FIELD_INFO[key] || { label: key, description: "" };
-        const formatted = formatValue(key, value);
+        const formatted = formatValue(key, value, schemaInfo);
         if (!formatted) return null;
         return (
           <div key={key} className="field-row">

@@ -50,6 +50,23 @@ BLOCKS = [
         "placeholder_en": "E.g.: Dataset on Mpox cases in Spain 2023. It is an epidemiological registry from ISCIII...",
     },
     {
+        "name": "informacion_adicional",
+        "name_en": "Additional Information",
+        "fields": ["purpose", "language", "population_coverage", "number_of_unique_individuals","number_of_records","min_typical_age","max_typical_age","personal_data"],
+        "question": (
+            "Proporciona información adicional sobre el dataset."
+            "Indica la finalidad de los datos, el idioma en el que están disponibles y la cobertura poblacional si están disponibles."
+        ),
+        "question_en": (
+            "Provide additional information about the dataset. "
+            "Indicate the purpose of the data, the language in which it is available, and the population coverage if available."
+        ),
+        "hint": "Describe la finalidad del dataset, el idioma en el que está disponible y a qué población cubre.",
+        "hint_en": "Describe the purpose of the dataset, the language in which it is available, and which population it covers.",
+        "placeholder": "Ej.: La finalidad es investigación epidemiológica. Está disponible en español. Cubre población mayor de 18 años...",
+        "placeholder_en": "E.g.: The purpose is epidemiological research. It is available in Spanish. It covers population over 18 years...",
+    },
+    {
         "name": "organismo_acceso_datos_sanitarios",
         "name_en": "Health Data Access Body",
         "fields": ["hdab"],
@@ -185,6 +202,37 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "- Instituto de salud pública → http://13.81.34.152:1101/resource/authority/publisher-type/public-health-institute\n"
         "- Autoridad nacional → http://13.81.34.152:1101/resource/authority/publisher-type/national-authority\n"
         "No uses claves en español ni inventes URIs.\n"
+
+        # ── purpose ──
+        "Para el campo 'purpose', devuelve un string con la finalidad del dataset.\n"
+
+        # ── language ──
+        "Para el campo 'language', devuelve un ARRAY con DOLO las URIs de idiomas:\n"
+        "- Español → http://publications.europa.eu/resource/authority/language/SPA\n"
+        "- Inglés → http://publications.europa.eu/resource/authority/language/ENG\n"
+        "- Francés → http://publications.europa.eu/resource/authority/language/FRA\n"
+        "- Alemán → http://publications.europa.eu/resource/authority/language/DEU\n"
+        "- Portugués → http://publications.europa.eu/resource/authority/language/POR\n"
+        "- Italiano → http://publications.europa.eu/resource/authority/language/ITA\n"
+        "- Catalán → http://publications.europa.eu/resource/authority/language/CAT\n"
+        "- Gallego → http://publications.europa.eu/resource/authority/language/GLG\n"
+        "- Euskera → http://publications.europa.eu/resource/authority/language/EUS\n"
+
+        # ── population_coverage ──
+        "Para el campo 'population_coverage', devuelve un string describiendo la cobertura poblacional.\n"
+
+        # ── campos numéricos ──
+        "Para los campos 'number_of_unique_individuals', 'number_of_records', 'min_typical_age' y 'max_typical_age', "
+        "devuelve un número entero o null si no se menciona.\n"
+
+        # ── personal_data ──
+        "Para el campo 'personal_data', devuelve un ARRAY con DOLO las URIs DPV-PD correspondientes:\n"
+        "- Datos de salud → https://w3id.org/dpv/pd#HealthData\n"
+        "- Datos genéticos → https://w3id.org/dpv/pd#Genetic\n"
+        "- Datos biométricos → https://w3id.org/dpv/pd#Biometric\n"
+        "- Acento → https://w3id.org/dpv/pd#Accent\n"
+        "- Identificador de cuenta → https://w3id.org/dpv/pd#AccountIdentifier\n"
+        "Si el usuario no lo menciona, devuelve null.\n"
 
         "No añadas claves extra ni texto fuera del JSON."
     )
