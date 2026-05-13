@@ -571,12 +571,15 @@ async def upload_document(
 
     # PASO 1: Clasificación rápida
     classification = _classify_document(text)
+    print(f"[DEBUG] Classification: {classification}")  # ← añade esto
 
     # PASO 1.5: Filtrar vocabulario relevante
     relevant_vocab = _build_relevant_vocab(classification)
+    print(f"[DEBUG] Relevant vocab: {relevant_vocab}")  # ← y esto
 
     # ← AÑADE ESTO
     doc_lang = classification.get("idioma", "es")
+    print(f"[DEBUG] doc_lang: {doc_lang}")  # ← y esto
     if doc_lang not in ("es", "en"):
         doc_lang = "es"
 
