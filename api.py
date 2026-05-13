@@ -595,7 +595,27 @@ async def upload_document(
 
     if existing_access_rights:
         ai_result["access_rights"] = existing_access_rights
-
+    if doc_lang == "en":
+        fields_to_translate = {}
+        if ai_result.get("title"):
+            fields_to_translate["title"] = ai_result["title"]
+        if ai_result.get("notes"):
+            fields_to_translate["notes"] = ai_result["notes"]
+        
+        if fields_to_translate:
+            try:
+                translate_prompt = (
+                    f"Translate the following fields to Spanish. "
+                    f"Return ONLY valid JSON with the same keys.\n"
+                    f"{json.dumps(fields_to_translate, ensure_ascii=False)}"
+                )
+                translated = call_llm(translate_prompt, fields_to_translate, "")
+                if translated.get("title"):
+                    ai_result["title"] = translated["title"]
+                if translated.get("notes"):
+                    ai_result["notes"] = translated["notes"]
+            except Exception:
+                pass  
     results_by_block = {}
     filled_fields = {}
     for block in BLOCKS:
