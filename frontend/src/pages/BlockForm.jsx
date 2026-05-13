@@ -99,8 +99,8 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const block = blocks[currentIdx];
 
   useEffect(() => {
-    getSchemaInfo().then(res => setSchemaInfo(res.data)).catch(() => {});
-  }, []);
+    getSchemaInfo(lang).then(res => setSchemaInfo(res.data)).catch(() => {});
+  }, [lang]); 
 
   const isNonPublic = (meta = metadata) => {
     const ar = meta.access_rights || "";
@@ -228,7 +228,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       )}
 
       <div className="block-card">
-        <p className="block-label">{tr.blockLabel} {currentIdx + 1} · {block.name.replace(/_/g, " ").toUpperCase()}</p>
+        <p className="block-label">{tr.blockLabel} {currentIdx + 1} · {(lang === "en" && block.name_en ? block.name_en : block.name.replace(/_/g, " ")).toUpperCase()}</p>
         <p className="block-question" style={{ whiteSpace: "pre-line" }}>{blockQuestionFinal}</p>
       </div>
 
@@ -438,7 +438,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
         <button className="btn btn--secondary" onClick={onPrev} style={{ visibility: currentIdx === 0 ? "hidden" : "visible" }}>
           {tr.btnPrev}
         </button>
-        <span className="nav-info">{tr.navInfo} {currentIdx + 1} {tr.of} {blocks.length} · {block.name.replace(/_/g, " ")}</span>
+        <span className="nav-info">{tr.navInfo} {currentIdx + 1} {tr.of} {blocks.length} · {(lang === "en" && block.name_en ? block.name_en : block.name.replace(/_/g, " "))}</span>
         {currentIdx < blocks.length - 1 ? (
           <button className="btn btn--primary" onClick={handleNext}>{tr.btnNext}</button>
         ) : (

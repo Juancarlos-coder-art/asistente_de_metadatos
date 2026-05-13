@@ -10,6 +10,10 @@ export const t = {
     welcomeStartBtn: "Comenzar a metadatar",
     welcomeLoading: "Cargando...",
 
+    // App header
+    pageTitle: "Asistente de Metadatos HealthDCAT-AP",
+    pageSubtitle: (cur, total) => `Esquema sanitario europeo · Bloque ${cur} de ${total}`,
+
     // Sidebar
     sidebarTitle: "HealthDCAT-AP-ES",
     sidebarFilledFields: "campos rellenos",
@@ -107,6 +111,10 @@ export const t = {
     welcomeManualBtn: "⬇️ Download user manual (.pdf)",
     welcomeStartBtn: "Start metadata entry",
     welcomeLoading: "Loading...",
+
+    // App header
+    pageTitle: "HealthDCAT-AP Metadata Assistant",
+    pageSubtitle: (cur, total) => `European health schema · Block ${cur} of ${total}`,
 
     // Sidebar
     sidebarTitle: "HealthDCAT-AP-ES",

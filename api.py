@@ -157,12 +157,15 @@ def apply_conditional_logic(state: MetadataState):
         state.data["identifier"] = ENDS_NON_PUBLIC_URI
 
 
-def _extract_choices(choices_list):
+def _extract_choices(choices_list, lang="es"):
     result = []
     for ch in (choices_list or []):
         lbl = ch.get("label", {})
-        label_es = lbl.get("es", ch.get("value", "")) if isinstance(lbl, dict) else str(lbl)
-        result.append({"value": ch.get("value", ""), "label": label_es})
+        if isinstance(lbl, dict):
+            label_val = lbl.get(lang, lbl.get("es", ch.get("value", "")))
+        else:
+            label_val = str(lbl)
+        result.append({"value": ch.get("value", ""), "label": label_val})
     return result
 
 
@@ -185,18 +188,19 @@ def _extract_subfields(subfields_list):
 
 
 def _classify_document(text: str) -> dict:
-    """PASO 1: Clasificación rápida (~200 tokens)"""
     prompt = (
         f"Analiza este documento sanitario y responde SOLO con un JSON con estas claves:\n"
-        f"- 'tipo_organismo': tipo de organismo mencionado (ej: 'instituto de salud pública')\n"
-        f"- 'categorias_salud': lista de categorías sanitarias (ej: ['registros médicos', 'epidemiología'])\n"
-        f"- 'temas': lista de temas principales (ej: ['salud', 'población'])\n"
-        f"- 'tipo_dataset': tipo de dataset (ej: 'estadístico')\n"
-        f"Usa SOLO etiquetas simples en español, sin URIs.\n"
+        f"- 'idioma': idioma del documento ('es' o 'en')\n"
+        f"- 'tipo_organismo': tipo de organismo mencionado\n"
+        f"- 'categorias_salud': lista de categorías sanitarias\n"
+        f"- 'temas': lista de temas principales\n"
+        f"- 'tipo_dataset': tipo de dataset\n"
+        f"Usa SOLO etiquetas simples, sin URIs.\n"
         f"Documento:\n{text[:2000]}"
     )
     try:
         return call_llm(prompt, {
+            "idioma": None,
             "tipo_organismo": None,
             "categorias_salud": None,
             "temas": None,
@@ -241,42 +245,70 @@ def _build_relevant_vocab(classification: dict) -> dict:
     return relevant
 
 
-def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, existing_access_rights: str = None) -> dict:
-    """PASO 2: Extracción dirigida (~800 tokens)"""
+def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, existing_access_rights: str = None, doc_lang: str = "es") -> dict:
     fields_str = ", ".join(all_fields)
     pub_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["publisher_types"].items())
     health_cats_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["health_categories"].items())
     themes_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["themes"].items())
     dataset_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["dataset_types"].items())
 
-    access_rights_section = (
-        f"- 'access_rights' → YA DEFINIDO POR EL USUARIO: '{existing_access_rights}'. Devuelve exactamente este valor.\n"
-        if existing_access_rights else
-        f"- 'access_rights' → nivel de acceso URI:\n"
-        f"    Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
-        f"    Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
-        f"    No público → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
-    )
+    if doc_lang == "en":
+        access_rights_section = (
+            f"- 'access_rights' → ALREADY SET BY USER: '{existing_access_rights}'. Return exactly this value.\n"
+            if existing_access_rights else
+            f"- 'access_rights' → access level URI:\n"
+            f"    Public → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
+            f"    Restricted → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
+            f"    Non-public → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
+        )
+        prompt = (
+            f"Extract metadata fields from this health document.\n"
+            f"Expected keys: [{fields_str}]\n\n"
+            f"RULES: Return ONLY valid JSON. null if not found in the text.\n\n"
+            f"MAPPING:\n"
+            f"- 'title' → dataset title\n"
+            f"- 'notes' → full description. Copy it literally.\n"
+            f"- 'identifier' → DOI or unique identifier\n"
+            f"{access_rights_section}"
+            f"- 'hdab' → body managing data access. Object with: name, email, telephone, contact_page, type.\n"
+            f"  Possible types:\n{pub_types_str}\n"
+            f"- 'health_category' → array of URIs:\n{health_cats_str}\n"
+            f"- 'theme' → array of URIs:\n{themes_str}\n"
+            f"- 'dcat_type' → URI:\n{dataset_types_str}\n"
+            f"- 'provenance' → data origin. Free text.\n"
+            f"- 'keyword' → keywords. Array of strings.\n"
+            f"- 'contact' → object with: email, url\n"
+            f"\nDocument:\n{text[:5000]}"
+        )
+    else:
+        access_rights_section = (
+            f"- 'access_rights' → YA DEFINIDO POR EL USUARIO: '{existing_access_rights}'. Devuelve exactamente este valor.\n"
+            if existing_access_rights else
+            f"- 'access_rights' → nivel de acceso URI:\n"
+            f"    Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
+            f"    Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
+            f"    No público → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
+        )
+        prompt = (
+            f"Extrae campos de metadatos de este documento sanitario.\n"
+            f"Claves esperadas: [{fields_str}]\n\n"
+            f"REGLAS: Devuelve SOLO JSON válido. null si no aparece en el texto.\n\n"
+            f"MAPEO:\n"
+            f"- 'title' → título del dataset\n"
+            f"- 'notes' → descripción completa. Cópiala literalmente.\n"
+            f"- 'identifier' → DOI o identificador único\n"
+            f"{access_rights_section}"
+            f"- 'hdab' → organismo gestor del acceso. Objeto con: name, email, telephone, contact_page, type.\n"
+            f"  Tipos posibles:\n{pub_types_str}\n"
+            f"- 'health_category' → array de URIs:\n{health_cats_str}\n"
+            f"- 'theme' → array de URIs:\n{themes_str}\n"
+            f"- 'dcat_type' → URI:\n{dataset_types_str}\n"
+            f"- 'provenance' → origen de los datos. Texto libre.\n"
+            f"- 'keyword' → palabras clave. Array de strings.\n"
+            f"- 'contact' → objeto con: email, url\n"
+            f"\nDocumento:\n{text[:5000]}"
+        )
 
-    prompt = (
-        f"Extrae campos de metadatos de este documento sanitario.\n"
-        f"Claves esperadas: [{fields_str}]\n\n"
-        f"REGLAS: Devuelve SOLO JSON válido. null si no aparece en el texto.\n\n"
-        f"MAPEO:\n"
-        f"- 'title' → título del dataset\n"
-        f"- 'notes' → descripción completa. Cópiala literalmente.\n"
-        f"- 'identifier' → DOI o identificador único\n"
-        f"{access_rights_section}"
-        f"- 'hdab' → organismo gestor del acceso. Objeto con: name, email, telephone, contact_page, type.\n"
-        f"  Tipos posibles:\n{pub_types_str}\n"
-        f"- 'health_category' → array de URIs:\n{health_cats_str}\n"
-        f"- 'theme' → array de URIs:\n{themes_str}\n"
-        f"- 'dcat_type' → URI:\n{dataset_types_str}\n"
-        f"- 'provenance' → origen de los datos. Texto libre.\n"
-        f"- 'keyword' → palabras clave. Array de strings.\n"
-        f"- 'contact' → objeto con: email, url\n"
-        f"\nDocumento:\n{text[:5000]}"
-    )
     return call_llm(prompt, {f: None for f in all_fields}, text[:5000])
 
 
@@ -329,7 +361,7 @@ def get_block(block_id: int):
     return {"id": block_id, "name": b["name"], "question": b["question"], "fields": b["fields"]}
 
 @app.get("/schema-info")
-def get_schema_info():
+def get_schema_info(lang: str = "es"):
     field_map = {
         "access_rights": "Derechos de acceso",
         "hdab": "Organismo de acceso a datos de salud",
@@ -345,7 +377,7 @@ def get_schema_info():
             continue
         entry = {}
         if schema_field.get("choices"):
-            choices = _extract_choices(schema_field["choices"])
+            choices = _extract_choices(schema_field["choices"],lang=lang)
             if field_key == "access_rights":
                 choices = [ch for ch in choices if ch["value"].rsplit("/", 1)[-1] in _ALLOWED_ACCESS_RIGHTS]
             entry["choices"] = choices
@@ -509,9 +541,18 @@ async def upload_document(
     # PASO 1.5: Filtrar vocabulario relevante
     relevant_vocab = _build_relevant_vocab(classification)
 
+    # ← AÑADE ESTO
+    doc_lang = classification.get("idioma", "es")
+    if doc_lang not in ("es", "en"):
+        doc_lang = "es"
+
     # PASO 2: Extracción dirigida
     try:
-        ai_result = _extract_fields_smart(text, all_fields, relevant_vocab, existing_access_rights)
+        ai_result = _extract_fields_smart(
+            text, all_fields, relevant_vocab,
+            existing_access_rights,
+            doc_lang=doc_lang          # ← pasa el idioma
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error en el LLM: {str(e)}")
 
