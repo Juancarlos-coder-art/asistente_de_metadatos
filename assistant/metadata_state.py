@@ -69,6 +69,10 @@ class MetadataState:
     # -------------------------------------------------------------
     def validate_types_basic(self):
         errors = []
+        obligatorios = set(self.required_fields())
+
+        def _tag(f):
+            return "[OBLIG]" if f in obligatorios else "[OPT]"
 
         for field, value in self.data.items():
 
@@ -77,42 +81,43 @@ class MetadataState:
                 continue
 
             field_type = rule["type"]
+            tag = _tag(field)
 
             # Obligatorio
             if rule.get("required") and value in (None, "", [], {}):
-                errors.append(f"{field} es obligatorio.")
+                errors.append(f"{tag} {field} es obligatorio.")
                 continue
 
             # Lista
             if field_type == "list":
                 if value is not None and not isinstance(value, list):
-                    errors.append(f"{field} debe ser una lista.")
+                    errors.append(f"{tag} {field} debe ser una lista.")
 
             # Email
             if field_type == "email" and value:
                 if not re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", value):
-                    errors.append(f"{field} debe ser un email válido.")
+                    errors.append(f"{tag} {field} debe ser un email válido.")
 
             # URL
             if field_type == "url" and value:
                 if not value.startswith(("http://", "https://")):
-                    errors.append(f"{field} debe ser una URL válida.")
+                    errors.append(f"{tag} {field} debe ser una URL válida.")
 
             # Slug
             if field_type == "slug" and value:
                 if not re.match(r"^[a-z0-9\-]+$", value):
-                    errors.append(f"{field} debe ser un slug válido.")
+                    errors.append(f"{tag} {field} debe ser un slug válido.")
 
             # Lista de objetos
             if field_type == "list_object" and value:
                 if not isinstance(value, (list, dict)):
-                    errors.append(f"{field} debe tener completados todos los campos.")
+                    errors.append(f"{tag} {field} debe tener completados todos los campos.")
                     continue
 
                 items = value if isinstance(value, list) else [value]
                 for i, obj in enumerate(items):
                     if not isinstance(obj, dict):
-                        errors.append(f"{field}[{i}] debe tener completados todos los campos.")
+                        errors.append(f"{tag} {field}[{i}] debe tener completados todos los campos.")
                         continue
 
                     for subfield, subtype in rule["subfields"].items():
@@ -122,17 +127,19 @@ class MetadataState:
                             continue
 
                         sf_label = rule.get("subfield_labels", {}).get(subfield, subfield)
+                        sf_required = rule.get("subfield_required", {}).get(subfield, False)
+                        sf_tag = "[OBLIG]" if sf_required else "[OPT]"
 
                         if subtype == "email" and not re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", subvalue):
-                            errors.append(f"[{field}] {sf_label} debe ser un email válido.")
+                            errors.append(f"{sf_tag} [{field}] {sf_label} debe ser un email válido.")
 
                         if subtype == "url" and not re.match(r"^https?://[^\s/]+\.[^\s/]+", subvalue):
-                            errors.append(f"[{field}] {sf_label} debe ser una URL válida.")
+                            errors.append(f"{sf_tag} [{field}] {sf_label} debe ser una URL válida.")
                         
                         if subtype == "telephone" and subvalue:
                             digits_only = re.sub(r"[^\d]", "", subvalue)
                             if not re.match(r"^[\d\s\+\-\(\)]+$", subvalue) or len(digits_only) < 9:
-                                errors.append(f"[{field}] {sf_label} debe ser un teléfono válido.")
+                                errors.append(f"{sf_tag} [{field}] {sf_label} debe ser un teléfono válido.")
 
         # ── Validación de identifier (DOI) según access_rights ──
         identifier_val = self.data.get("identifier", "")
@@ -142,6 +149,6 @@ class MetadataState:
         if identifier_val and not is_non_public:
             if not re.match(r'^[^\s"<>]+$', identifier_val):
                 label = FIELD_INDEX.get("identifier", {}).get("label", "identifier")
-                errors.append(f"[{field}] {label} debe ser un DOI válido (ej: 10.1234/dataset-salud).")
+                errors.append(f"{_tag('identifier')} [identifier] {label} debe ser un DOI válido (ej: 10.1234/dataset-salud).")
 
         return errors

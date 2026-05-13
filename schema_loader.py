@@ -200,6 +200,10 @@ class HealthDCATAPSchema:
                     )
                     for sf in field["repeating_subfields"]
                 }
+                rule["subfield_required"] = {
+                    sf["field_name"]: sf.get("required", False)
+                    for sf in field["repeating_subfields"]
+                }
                 # Cardinalidad mínima/máxima
                 if field.get("repeating_once"):
                     rule["min_items"] = 1
