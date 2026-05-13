@@ -556,52 +556,10 @@ async def upload_document(
     try:
         contents = await file.read()
         pdf = PdfReader(io.BytesIO(contents))
-        pages = pdf.pages
-        total = len(pages)
-
-        METADATA_KEYWORDS = [
-            "abstract", "resumen", "keywords", "palabras clave",
-            "doi", "author", "autor", "institution", "institución",
-            "dataset", "data", "datos", "methodology", "metodología",
-            "health", "salud", "epidemiology", "epidemiología",
-            "clinical", "clínico", "registry", "registro"
-        ]
-
-        MAX_CHARS = 12000
-
-        # Extraer texto de todas las páginas con su longitud
-        page_texts = []
-        for i in range(total):
-            t = pages[i].extract_text() or ""
-            page_texts.append((len(t), i, t))
-
-        selected_text = []
-        chars_used = 0
-
-        # Primero: páginas con keywords relevantes ordenadas por longitud
-        pages_with_keywords = [
-            (length, i, t) for length, i, t in sorted(page_texts, reverse=True)
-            if any(kw in t.lower() for kw in METADATA_KEYWORDS)
-        ]
-
-        for length, i, t in pages_with_keywords:
-            if chars_used >= MAX_CHARS:
-                break
-            selected_text.append(t)
-            chars_used += len(t)
-
-        # Si no encontró nada con keywords, coger las 5 páginas más largas
-        if not selected_text:
-            for length, i, t in sorted(page_texts, reverse=True)[:5]:
-                if chars_used >= MAX_CHARS:
-                    break
-                selected_text.append(t)
-                chars_used += len(t)
-
-        text = "\n".join(selected_text)[:MAX_CHARS]
-
+        text = "\n".join(page.extract_text() or "" for page in pdf.pages)
+        text = text[:8000]
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Error al leer el PDF: {str(e)}")
+        raise HTTPException(status_code=400, detail=f"Error al leer el PDF: {str(e)}"
 
     if not text.strip():
         raise HTTPException(status_code=400, detail="El PDF no contiene texto extraíble.")
