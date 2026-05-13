@@ -209,7 +209,6 @@ def _classify_document(text: str) -> dict:
     except Exception:
         return {}
 
-
 def _build_relevant_vocab(classification: dict) -> dict:
     """PASO 1.5: Filtrar vocabulario relevante (Python puro, sin LLM)"""
     relevant = {"publisher_types": {}, "health_categories": {}, "themes": {}, "dataset_types": {}}
@@ -310,7 +309,6 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
         )
 
     return call_llm(prompt, {f: None for f in all_fields}, text[:5000])
-
 
 # ── Modelos ──
 class CompleteBlockRequest(BaseModel):
@@ -551,7 +549,7 @@ async def upload_document(
         ai_result = _extract_fields_smart(
             text, all_fields, relevant_vocab,
             existing_access_rights,
-            doc_lang=doc_lang          # ← pasa el idioma
+            doc_lang=doc_lang
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error en el LLM: {str(e)}")

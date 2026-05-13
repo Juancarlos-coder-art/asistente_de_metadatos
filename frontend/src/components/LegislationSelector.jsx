@@ -1,8 +1,6 @@
 // src/components/LegislationSelector.jsx
 import { useState } from "react";
 import axios from "axios";
-import { useLang } from "../context/LanguageContext";
-import { t } from "../i18n/translations";
 
 const isProduction = window.location.hostname !== "localhost";
 const BASE_URL = isProduction ? "" : (import.meta.env.VITE_API_URL || "http://localhost:8000");
@@ -10,40 +8,32 @@ const BASE_URL = isProduction ? "" : (import.meta.env.VITE_API_URL || "http://lo
 const LEGISLATION_OPTIONS = [
   {
     uri: "http://data.europa.eu/eli/reg/2016/679/oj",
-    label_es: "GDPR — Reglamento General de Protección de Datos (UE) 2016/679",
-    label_en: "GDPR — General Data Protection Regulation (EU) 2016/679",
+    label: "GDPR — Reglamento General de Protección de Datos (UE) 2016/679",
     required: true,
   },
   {
     uri: "http://data.europa.eu/eli/reg/2025/327/oj",
-    label_es: "Reglamento EHDS — Espacio Europeo de Datos de Salud (UE) 2025/327",
-    label_en: "EHDS Regulation — European Health Data Space (EU) 2025/327",
+    label: "Reglamento EHDS — Espacio Europeo de Datos de Salud (UE) 2025/327",
     required: false,
   },
   {
     uri: "http://data.europa.eu/eli/dir/2019/1024/oj",
-    label_es: "Directiva de Datos Abiertos (UE) 2019/1024",
-    label_en: "Open Data Directive (EU) 2019/1024",
+    label: "Directiva de Datos Abiertos (UE) 2019/1024",
     required: false,
   },
   {
     uri: "http://data.europa.eu/eli/reg/2022/868/oj",
-    label_es: "Reglamento de Gobernanza de Datos (UE) 2022/868",
-    label_en: "Data Governance Act (EU) 2022/868",
+    label: "Reglamento de Gobernanza de Datos (UE) 2022/868",
     required: false,
   },
   {
     uri: "https://www.boe.es/eli/es/lo/2018/12/05/3",
-    label_es: "LOPDGDD — Ley Orgánica de Protección de Datos (España) 3/2018",
-    label_en: "LOPDGDD — Organic Law on Data Protection (Spain) 3/2018",
+    label: "LOPDGDD — Ley Orgánica de Protección de Datos (España) 3/2018",
     required: false,
   },
 ];
 
 export default function LegislationSelector({ onSave }) {
-  const { lang } = useLang();
-  const tr = t[lang];
-
   const [selected, setSelected] = useState(
     LEGISLATION_OPTIONS.filter(o => o.required).map(o => o.uri)
   );
@@ -60,13 +50,10 @@ export default function LegislationSelector({ onSave }) {
 
   const handleSave = async () => {
     setLoading(true);
-    const legislation = selected.map(uri => {
-      const opt = LEGISLATION_OPTIONS.find(o => o.uri === uri);
-      return {
-        uri,
-        label: opt ? opt.label_es.split(" — ")[0] : uri,
-      };
-    });
+    const legislation = selected.map(uri => ({
+      uri,
+      label: LEGISLATION_OPTIONS.find(o => o.uri === uri)?.label.split(" — ")[0] || uri,
+    }));
     try {
       await axios.post(`${BASE_URL}/save-legislation`, { legislation }, { withCredentials: true });
       setSaved(true);
@@ -82,8 +69,10 @@ export default function LegislationSelector({ onSave }) {
       <div style={styles.header}>
         <span style={styles.icon}>⚖️</span>
         <div>
-          <h3 style={styles.title}>{tr.legislationTitle}</h3>
-          <p style={styles.subtitle}>{tr.legislationSubtitle}</p>
+          <h3 style={styles.title}>Legislación aplicable</h3>
+          <p style={styles.subtitle}>
+            El GDPR es obligatorio. Selecciona cualquier otra normativa que aplique a este dataset.
+          </p>
         </div>
       </div>
 
@@ -98,27 +87,17 @@ export default function LegislationSelector({ onSave }) {
             }}
             onClick={() => toggle(opt.uri)}
           >
-            <div style={styles.checkbox}>
-              {selected.includes(opt.uri) ? "☑" : "☐"}
-            </div>
+            <div style={styles.checkbox}>{selected.includes(opt.uri) ? "☑" : "☐"}</div>
             <div style={styles.itemContent}>
-              <span style={styles.itemLabel}>
-                {lang === "en" ? opt.label_en : opt.label_es}
-              </span>
-              {opt.required && (
-                <span style={styles.requiredTag}>{tr.legislationRequired}</span>
-              )}
+              <span style={styles.itemLabel}>{opt.label}</span>
+              {opt.required && <span style={styles.requiredTag}>obligatorio</span>}
             </div>
           </div>
         ))}
       </div>
 
-      <button
-        style={{ ...styles.btn, opacity: loading ? 0.7 : 1 }}
-        onClick={handleSave}
-        disabled={loading}
-      >
-        {loading ? tr.legislationSaving : saved ? tr.legislationSaved : tr.legislationSave}
+      <button style={{ ...styles.btn, opacity: loading ? 0.7 : 1 }} onClick={handleSave} disabled={loading}>
+        {loading ? "Guardando..." : saved ? "✅ Guardado" : "💾 Confirmar legislación"}
       </button>
     </div>
   );

@@ -1,53 +1,20 @@
 // src/components/MetadataPreview.jsx
-import { useLang } from "../context/LanguageContext";
 
-// ── Labels bilingues ──
 const FIELD_INFO = {
-  es: {
-    title: { label: "Título" },
-    notes: { label: "Descripción" },
-    identifier: { label: "Identificador" },
-    access_rights: { label: "Derechos de acceso" },
-    hdab: { label: "Organismo de acceso (HDAB)" },
-    applicable_legislation: { label: "Legislación aplicable" },
-    health_category: { label: "Categoría sanitaria" },
-    theme: { label: "Tema" },
-    dcat_type: { label: "Tipo de dataset" },
-    provenance: { label: "Procedencia" },
-    keyword: { label: "Palabras clave" },
-    contact: { label: "Punto de contacto" },
-    distribution: { label: "Distribución" },
-  },
-  en: {
-    title: { label: "Title" },
-    notes: { label: "Description" },
-    identifier: { label: "Identifier" },
-    access_rights: { label: "Access rights" },
-    hdab: { label: "Health Data Access Body" },
-    applicable_legislation: { label: "Applicable legislation" },
-    health_category: { label: "Health category" },
-    theme: { label: "Theme" },
-    dcat_type: { label: "Dataset type" },
-    provenance: { label: "Provenance" },
-    keyword: { label: "Keywords" },
-    contact: { label: "Contact point" },
-    distribution: { label: "Distribution" },
-  },
-};
-
-const ACCESS_RIGHTS_LABELS = {
-  es: { PUBLIC: "Público", RESTRICTED: "Restringido", CONFIDENTIAL: "Confidencial", NON_PUBLIC: "No público", SENSITIVE: "Sensible", NORMAL: "Normal", OP_DATPRO: "Datos provisionales" },
-  en: { PUBLIC: "Public", RESTRICTED: "Restricted", CONFIDENTIAL: "Confidential", NON_PUBLIC: "Non-public", SENSITIVE: "Sensitive", NORMAL: "Normal", OP_DATPRO: "Provisional data" },
-};
-
-const HDAB_LABELS = {
-  es: { nombre: "Nombre", email: "Email", telefono: "Teléfono", web: "Web", tipo: "Tipo" },
-  en: { nombre: "Name", email: "Email", telefono: "Phone", web: "Web", tipo: "Type" },
-};
-
-const PREVIEW_LABELS = {
-  es: { empty: "Aún no hay datos. Completa el primer bloque." },
-  en: { empty: "No data yet. Complete the first block." },
+  title: { label: "Título", description: "Nombre del dataset" },
+  notes: { label: "Descripción", description: "Descripción del contenido" },
+  identifier: { label: "Identificador", description: "DOI o identificador único" },
+  name: { label: "URL", description: "Dirección en el portal" },
+  access_rights: { label: "Derechos de acceso", description: "Quién puede acceder" },
+  hdab: { label: "Organismo de acceso (HDAB)", description: "Entidad gestora del acceso" },
+  applicable_legislation: { label: "Legislación aplicable", description: "Marco legal" },
+  health_category: { label: "Categoría sanitaria", description: "Categoría EHDS" },
+  theme: { label: "Tema", description: "Tema principal del dataset" },
+  dcat_type: { label: "Tipo de dataset", description: "Tipo según Publications Office" },
+  provenance: { label: "Procedencia", description: "Origen de los datos" },
+  keyword: { label: "Palabras clave", description: "Etiquetas descriptivas" },
+  contact: { label: "Punto de contacto", description: "Contacto para consultas" },
+  distribution: { label: "Distribución", description: "URL de acceso al dataset" },
 };
 
 const HEALTH_CATEGORY_LABELS = {
@@ -124,15 +91,17 @@ const PUBLISHER_TYPE_LABELS = {
   "private-health-insurance": "Seguro de salud privado",
 };
 
-function formatValue(key, value, lang) {
+function formatValue(key, value) {
   if (value === null || value === undefined || value === "") return null;
-
-  const hdabL = HDAB_LABELS[lang] || HDAB_LABELS.es;
-  const arMap = ACCESS_RIGHTS_LABELS[lang] || ACCESS_RIGHTS_LABELS.es;
 
   if (key === "access_rights" && typeof value === "string") {
     const code = value.split("/").pop();
-    return arMap[code] || code;
+    const map = {
+      PUBLIC: "Público", RESTRICTED: "Restringido", CONFIDENTIAL: "Confidencial",
+      NON_PUBLIC: "No público", SENSITIVE: "Sensible", NORMAL: "Normal",
+      OP_DATPRO: "Datos provisionales",
+    };
+    return map[code] || code;
   }
 
   if (key === "hdab" && typeof value === "object") {
@@ -140,11 +109,11 @@ function formatValue(key, value, lang) {
     const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-        {value.name && <span><strong>{hdabL.nombre}:</strong> {value.name}</span>}
-        {value.email && <span><strong>{hdabL.email}:</strong> {value.email}</span>}
-        {value.telephone && <span><strong>{hdabL.telefono}:</strong> {value.telephone}</span>}
-        {value.contact_page && <span><strong>{hdabL.web}:</strong> <a href={value.contact_page} target="_blank" rel="noreferrer">{value.contact_page}</a></span>}
-        {typeLabel && <span><strong>{hdabL.tipo}:</strong> {typeLabel}</span>}
+        {value.name && <span><strong>Nombre:</strong> {value.name}</span>}
+        {value.email && <span><strong>Email:</strong> {value.email}</span>}
+        {value.telephone && <span><strong>Teléfono:</strong> {value.telephone}</span>}
+        {(value.contact_page || value.contact) && <span><strong>Web:</strong> <a href={value.contact_page || value.contact} target="_blank" rel="noreferrer">{value.contact_page || value.contact}</a></span>}
+        {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
       </div>
     );
   }
@@ -200,10 +169,6 @@ function formatValue(key, value, lang) {
 }
 
 export default function MetadataPreview({ metadata }) {
-  const { lang } = useLang();
-  const fieldInfo = FIELD_INFO[lang] || FIELD_INFO.es;
-  const previewL = PREVIEW_LABELS[lang] || PREVIEW_LABELS.es;
-
   const entries = Object.entries(metadata).filter(
     ([, v]) => v !== null && v !== "" && !(Array.isArray(v) && v.length === 0)
   );
@@ -212,7 +177,7 @@ export default function MetadataPreview({ metadata }) {
     return (
       <div className="preview-empty">
         <span className="preview-empty-icon">📭</span>
-        <p className="preview-empty-text">{previewL.empty}</p>
+        <p className="preview-empty-text">Aún no hay datos. Completa el primer bloque.</p>
       </div>
     );
   }
@@ -220,8 +185,8 @@ export default function MetadataPreview({ metadata }) {
   return (
     <div className="preview-list">
       {entries.map(([key, value]) => {
-        const info = fieldInfo[key] || { label: key };
-        const formatted = formatValue(key, value, lang);
+        const info = FIELD_INFO[key] || { label: key, description: "" };
+        const formatted = formatValue(key, value);
         if (!formatted) return null;
         return (
           <div key={key} className="field-row">

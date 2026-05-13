@@ -1,29 +1,42 @@
 // src/pages/BlockForm.jsx
 import { useState, useEffect } from "react";
 import MetadataPreview from "../components/MetadataPreview";
-import { useLang } from "../context/LanguageContext";
-import { t } from "../i18n/translations";
 import {
   completeBlock, saveManual, validateMetadata,
   getMissingFields, finalizeMetadata, getMetadata, getSchemaInfo
 } from "../api/client";
 
+const FIELD_LABELS_ES = {
+  title: "Título",
+  notes: "Descripción",
+  identifier: "Identificador",
+  hdab: "Autoridad de acceso a los datos",
+  access_rights: "Derechos de acceso",
+  health_category: "Categoría sanitaria",
+  theme: "Tema",
+  dcat_type: "Tipo de dataset",
+  provenance: "Procedencia",
+  keyword: "Palabras clave",
+  contact: "Punto de contacto",
+  distribution_access_url: "URL de acceso",
+};
+
 const NON_PUBLIC_URI = "NON_PUBLIC";
 
-function MissingFieldsModal({ missingInfo, formatErrors = [], onClose, tr, fieldLabels }) {
+function MissingFieldsModal({ missingInfo, formatErrors = [], onClose }) {
   return (
     <div style={modalStyles.overlay}>
       <div style={modalStyles.modal}>
         <div style={modalStyles.header}>
           <span style={modalStyles.icon}>⚠️</span>
-          <h2 style={modalStyles.title}>{tr.modalTitle}</h2>
+          <h2 style={modalStyles.title}>Campos con errores</h2>
         </div>
-        <p style={modalStyles.subtitle}>{tr.modalSubtitle}</p>
+        <p style={modalStyles.subtitle}>Corrige los siguientes campos antes de continuar.</p>
         <div style={modalStyles.fieldList}>
           {missingInfo.map((item, i) => (
             <div key={i} style={modalStyles.fieldItem}>
               <div style={modalStyles.fieldName}>
-                🔴 {fieldLabels[item.field] ?? item.field} — {tr.modalRequired}
+                🔴 {FIELD_LABELS_ES[item.field] ?? item.field} — obligatorio
               </div>
               <div style={modalStyles.fieldDesc}>{item.descripcion}</div>
               {item.ejemplo && <div style={modalStyles.fieldExample}>Ej: {item.ejemplo}</div>}
@@ -31,12 +44,12 @@ function MissingFieldsModal({ missingInfo, formatErrors = [], onClose, tr, field
           ))}
           {formatErrors.map((err, i) => (
             <div key={`fmt-${i}`} style={modalStyles.fieldItem}>
-              <div style={modalStyles.fieldName}>🟠 {err.replace(/^\[(OBLIG|OPT)\]\s*/, '').replace(/^\[[^\]]+\]\s*/, '')}</div>
+              🟠 {err.replace(/^\[(OBLIG|OPT)\]\s*/, '').replace(/^\[[^\]]+\]\s*/, '')}
             </div>
           ))}
         </div>
         <div style={modalStyles.buttons}>
-          <button style={modalStyles.btnClose} onClick={onClose}>{tr.modalBtnClose}</button>
+          <button style={modalStyles.btnClose} onClick={onClose}>✏️ Volver a rellenar</button>
         </div>
       </div>
     </div>
@@ -60,29 +73,15 @@ const modalStyles = {
 };
 
 const placeholdersPorBloque = {
-  es: {
-    derechos_de_acceso: "Ej.: El acceso está restringido a personal sanitario autorizado...",
-    identificacion_basica: "Ej.: Dataset sobre casos de viruela del mono en España en 2023...",
-    organismo_acceso_datos_sanitarios: "Ej.: Datos recopilados por el Ministerio de Sanidad...",
-    punto_de_contacto: "Ej.: Contacta en info@ministeriodesanidad.es o visita https://www.sanidad.gob.es/contacto",
-    Acceso_a_Distribucion: "Ej.: https://datos.gob.es/dataset/xyz",
-    default: "Describe el contenido del dataset...",
-  },
-  en: {
-    derechos_de_acceso: "E.g.: Access is restricted to authorized healthcare professionals...",
-    identificacion_basica: "E.g.: Dataset on monkeypox cases in Spain in 2023...",
-    organismo_acceso_datos_sanitarios: "E.g.: Data collected by the Ministry of Health...",
-    punto_de_contacto: "E.g.: Contact at info@health.gov or visit https://www.health.gov/contact",
-    Acceso_a_Distribucion: "E.g.: https://data.europa.eu/dataset/xyz",
-    default: "Describe the dataset content...",
-  }
+  derechos_de_acceso: "Ej.: El acceso está restringido a personal sanitario autorizado...",
+  identificacion_basica: "Ej.: Dataset sobre casos de viruela del mono en España en 2023...",
+  organismo_acceso_datos_sanitarios: "Ej.: Datos recopilados por el Ministerio de Sanidad...",
+  punto_de_contacto: "Ej.: Contacta en info@ministeriodesanidad.es o visita https://www.sanidad.gob.es/contacto",
+  Acceso_a_Distribucion: "Ej.: https://datos.gob.es/dataset/xyz",
+  default: "Describe el contenido del dataset...",
 };
 
 export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone }) {
-  const { lang } = useLang();
-  const tr = t[lang];
-  const fieldLabels = tr.fields;
-
   const [tab, setTab] = useState("ia");
   const [userContext, setUserContext] = useState("");
   const [manualFields, setManualFields] = useState({});
@@ -99,8 +98,8 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const block = blocks[currentIdx];
 
   useEffect(() => {
-    getSchemaInfo(lang).then(res => setSchemaInfo(res.data)).catch(() => {});
-  }, [lang]); 
+    getSchemaInfo().then(res => setSchemaInfo(res.data)).catch(() => {});
+  }, []);
 
   const isNonPublic = (meta = metadata) => {
     const ar = meta.access_rights || "";
@@ -204,16 +203,11 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     setLoading(false);
   };
 
-  // Pregunta e hint según idioma
-  const blockQuestion = lang === "en" && block.question_en ? block.question_en : block.question;
-  const blockHint = lang === "en" && block.hint_en ? block.hint_en : block.hint;
-  const blockPlaceholder = (placeholdersPorBloque[lang] || placeholdersPorBloque.es)[block.name]
-    || (lang === "en" && block.placeholder_en ? block.placeholder_en : block.placeholder)
-    || (placeholdersPorBloque[lang] || placeholdersPorBloque.es).default;
+  const placeholder = placeholdersPorBloque[block.name] || block.hint || block.question || placeholdersPorBloque.default;
 
-  const blockQuestionFinal = isNonPublic() && block.fields.includes("identifier")
-    ? blockQuestion + tr.nonPublicNote
-    : blockQuestion;
+  const blockQuestion = isNonPublic() && block.fields.includes("identifier")
+    ? block.question + "\n\n🔒 El identificador se asignará automáticamente por ser un dataset No Público."
+    : block.question;
 
   return (
     <div>
@@ -222,45 +216,43 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
           missingInfo={missingInfo}
           formatErrors={validation ? validation.errors.filter(e => activeFields.some(f => e.includes(f))) : []}
           onClose={() => setShowModal(false)}
-          tr={tr}
-          fieldLabels={fieldLabels}
         />
       )}
 
       <div className="block-card">
-        <p className="block-label">{tr.blockLabel} {currentIdx + 1} · {(lang === "en" && block.name_en ? block.name_en : block.name.replace(/_/g, " ")).toUpperCase()}</p>
-        <p className="block-question" style={{ whiteSpace: "pre-line" }}>{blockQuestionFinal}</p>
+        <p className="block-label">Bloque {currentIdx + 1} · {block.name.replace(/_/g, " ").toUpperCase()}</p>
+        <p className="block-question" style={{ whiteSpace: "pre-line" }}>{blockQuestion}</p>
       </div>
 
       <div className="tabs">
-        <button className={`tab-btn ${tab === "ia" ? "tab-btn--active" : ""}`} onClick={() => setTab("ia")}>{tr.tabAuto}</button>
-        <button className={`tab-btn ${tab === "manual" ? "tab-btn--active" : ""}`} onClick={() => setTab("manual")}>{tr.tabManual}</button>
+        <button className={`tab-btn ${tab === "ia" ? "tab-btn--active" : ""}`} onClick={() => setTab("ia")}>Completar automáticamente</button>
+        <button className={`tab-btn ${tab === "manual" ? "tab-btn--active" : ""}`} onClick={() => setTab("manual")}>Rellenar manualmente</button>
       </div>
 
       {tab === "ia" && (
         <div className="tab-content">
-          <p className="tab-desc">{blockHint || tr.tabAutoDesc}</p>
+          <p className="tab-desc">{block.hint || "Describe este bloque con tus propias palabras."}</p>
           <div className="field-group">
-            <textarea className="field-textarea" placeholder={blockPlaceholder} value={userContext} onChange={(e) => setUserContext(e.target.value)} />
+            <textarea className="field-textarea" placeholder={placeholder} value={userContext} onChange={(e) => setUserContext(e.target.value)} />
           </div>
           <button className="btn btn--primary" onClick={handleComplete} disabled={loading || !userContext.trim()}>
-            {loading ? tr.btnAnalyzing : tr.btnComplete}
+            {loading ? "Analizando..." : "Completar bloque"}
           </button>
-          {result && <div className="alert alert--ok">{tr.alertOk}</div>}
+          {result && <div className="alert alert--ok">✅ Bloque completado correctamente.</div>}
           {error && <div className="alert alert--error">❌ {error}</div>}
         </div>
       )}
 
       {tab === "manual" && (
         <div className="tab-content">
-          <p className="tab-desc">{tr.tabManualDesc}</p>
+          <p className="tab-desc">Rellena los campos del bloque uno a uno.</p>
           {isNonPublic() && block.fields.includes("identifier") && (
             <div className="alert alert--info" style={{ marginBottom: "16px" }}>
-              {tr.alertNonPublicId}
+              🔒 <strong>Identificador</strong> asignado automáticamente por ser un dataset No Público.
             </div>
           )}
           {activeFields.map(field => {
-            const fieldLabel = fieldLabels[field] ?? field;
+            const fieldLabel = FIELD_LABELS_ES[field] ?? field;
             const fieldSchema = schemaInfo[field] || {};
 
             if (field === "access_rights" && fieldSchema.choices) {
@@ -268,7 +260,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                 <div key={field} className="field-group">
                   <label className="field-label">{fieldLabel}</label>
                   <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">{tr.selectOption}</option>
+                    <option value="">— Selecciona una opción —</option>
                     {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
                   </select>
                 </div>
@@ -280,7 +272,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                 <div key={field} className="field-group">
                   <label className="field-label">{fieldLabel}</label>
                   <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">{tr.selectCategory}</option>
+                    <option value="">— Selecciona una categoría sanitaria —</option>
                     {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
                   </select>
                 </div>
@@ -292,7 +284,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                 <div key={field} className="field-group">
                   <label className="field-label">{fieldLabel}</label>
                   <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">{tr.selectTheme}</option>
+                    <option value="">— Selecciona un tema —</option>
                     {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
                   </select>
                 </div>
@@ -304,7 +296,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                 <div key={field} className="field-group">
                   <label className="field-label">{fieldLabel}</label>
                   <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">{tr.selectType}</option>
+                    <option value="">— Selecciona un tipo de dataset —</option>
                     {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
                   </select>
                 </div>
@@ -324,7 +316,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                           <div key={sf.field_name} className="field-group">
                             <label className="field-label">{sfLabel}</label>
                             <select className="field-select" value={hdabValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, hdab: { ...hdabValues, [sf.field_name]: e.target.value } })}>
-                              <option value="">{tr.selectSelect}</option>
+                              <option value="">— Selecciona —</option>
                               {sf.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
                             </select>
                           </div>
@@ -333,7 +325,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                       return (
                         <div key={sf.field_name} className="field-group">
                           <label className="field-label">{sfLabel}</label>
-                          <input className="field-input" type="text" placeholder={`${fieldLabel}...`} value={hdabValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, hdab: { ...hdabValues, [sf.field_name]: e.target.value } })} />
+                          <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={hdabValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, hdab: { ...hdabValues, [sf.field_name]: e.target.value } })} />
                         </div>
                       );
                     })}
@@ -351,7 +343,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                     {fieldSchema.subfields.map(sf => (
                       <div key={sf.field_name} className="field-group">
                         <label className="field-label">{sf.label}</label>
-                        <input className="field-input" type="text" placeholder={`${sf.label}...`} value={contactValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, contact: { ...contactValues, [sf.field_name]: e.target.value } })} />
+                        <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={contactValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, contact: { ...contactValues, [sf.field_name]: e.target.value } })} />
                       </div>
                     ))}
                   </div>
@@ -362,32 +354,34 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
             return (
               <div key={field} className="field-group">
                 <label className="field-label">{fieldLabel}</label>
-                <input className="field-input" type="text" placeholder={`${fieldLabel}...`} value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })} />
+                <input className="field-input" type="text" placeholder={`Introduce ${fieldLabel}...`} value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })} />
               </div>
             );
           })}
 
           {block.fields.includes("applicable_legislation") && (
-            <div className="alert alert--info">{tr.alertLegislationAuto}</div>
+            <div className="alert alert--info">
+              <strong>applicable_legislation</strong> se rellena automáticamente al finalizar.
+            </div>
           )}
           <button className="btn btn--primary" style={{ marginTop: "16px" }} onClick={handleManualSave} disabled={loading}>
-            {loading ? tr.btnSaving : tr.btnSave}
+            {loading ? "Guardando..." : "Guardar bloque"}
           </button>
-          {result && <div className="alert alert--ok">{tr.alertSaved}</div>}
+          {result && <div className="alert alert--ok">✅ Bloque guardado correctamente.</div>}
           {error && <div className="alert alert--error">❌ {error}</div>}
         </div>
       )}
 
       <div className="bottom-grid">
         <div>
-          <p className="json-viewer-header">{tr.summaryTitle}</p>
+          <p className="json-viewer-header">Resumen del dataset</p>
           <MetadataPreview metadata={metadata} />
         </div>
         <div className="validation-box">
-          <p className="validation-header">{tr.validationTitle}</p>
+          <p className="validation-header">Estado de validación</p>
           {(() => {
             if (!blockMissingInfo) {
-              return <div className="alert alert--info" style={{ marginTop: 0 }}>{tr.validationPending}</div>;
+              return <div className="alert alert--info" style={{ marginTop: 0 }}>⏳ Pendiente de validación. Completa el bloque para comprobar.</div>;
             }
             const blockObligatory = blockMissingInfo.filter(item =>
               item.obligatorio && !(isNonPublic() && item.field === "identifier")
@@ -401,13 +395,13 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
             return (
               <>
                 {blockObligatory.length === 0 && blockErrors.length === 0 ? (
-                  <div className="alert alert--ok" style={{ marginTop: 0 }}>{tr.validationOk}</div>
+                  <div className="alert alert--ok" style={{ marginTop: 0 }}>✅ Bloque actual correcto.</div>
                 ) : (
                   <>
                     {blockObligatory.map((item, i) => (
                       <div key={i} className="validation-item">
-                        <span>{fieldLabels[item.field] ?? item.label ?? item.field}</span>
-                        <span className="tag tag--error">{tr.tagRequired}</span>
+                        <span>{FIELD_LABELS_ES[item.field] ?? item.label ?? item.field}</span>
+                        <span className="tag tag--error">obligatorio</span>
                       </div>
                     ))}
                     {blockErrors.map((e, i) => (
@@ -419,14 +413,16 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                   <div style={{ marginTop: "8px" }}>
                     {blockOptional.map((item, i) => (
                       <div key={i} className="validation-item" style={{ borderLeft: "3px solid #f1c21b" }}>
-                        <span>{fieldLabels[item.field] ?? item.label ?? item.field}</span>
-                        <span className="tag">{tr.tagOptional}</span>
+                        <span>{FIELD_LABELS_ES[item.field] ?? item.label ?? item.field}</span>
+                        <span className="tag">opcional</span>
                       </div>
                     ))}
                   </div>
                 )}
                 {globalMissingCount === 0 && blockObligatory.length === 0 && blockErrors.length === 0 && (
-                  <div className="alert alert--ok" style={{ marginTop: "8px" }}>{tr.validationAllOk}</div>
+                  <div className="alert alert--ok" style={{ marginTop: "8px" }}>
+                    🎉 Todos los campos obligatorios están completos.
+                  </div>
                 )}
               </>
             );
@@ -436,13 +432,15 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
 
       <div className="nav-bar">
         <button className="btn btn--secondary" onClick={onPrev} style={{ visibility: currentIdx === 0 ? "hidden" : "visible" }}>
-          {tr.btnPrev}
+          ⬅️ Anterior
         </button>
-        <span className="nav-info">{tr.navInfo} {currentIdx + 1} {tr.of} {blocks.length} · {(lang === "en" && block.name_en ? block.name_en : block.name.replace(/_/g, " "))}</span>
+        <span className="nav-info">Bloque {currentIdx + 1} / {blocks.length} · {block.name.replace(/_/g, " ")}</span>
         {currentIdx < blocks.length - 1 ? (
-          <button className="btn btn--primary" onClick={handleNext}>{tr.btnNext}</button>
+          <button className="btn btn--primary" onClick={handleNext}>➡️ Siguiente bloque</button>
         ) : (
-          <button className="btn btn--success" onClick={handleFinalize} disabled={loading}>{tr.btnFinish}</button>
+          <button className="btn btn--success" onClick={handleFinalize} disabled={loading}>
+            🏁 Finalizar y guardar
+          </button>
         )}
       </div>
     </div>

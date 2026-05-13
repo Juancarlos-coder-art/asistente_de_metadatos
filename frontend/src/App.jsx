@@ -6,10 +6,6 @@ import Sidebar from "./components/Sidebar";
 import { getBlocks, getMetadata, validateMetadata, getMissingFields, resetMetadata } from "./api/client";
 import DocumentUploadModal from "./components/DocumentUploadModal";
 import LegislationSelector from "./components/LegislationSelector";
-import { useLang } from "./context/LanguageContext";
-import { t } from "./i18n/translations";
-
-
 
 export default function App() {
   const [started, setStarted] = useState(false);
@@ -22,8 +18,6 @@ export default function App() {
   const [finished, setFinished] = useState(false);
   const [showDocumentModal, setShowDocumentModal] = useState(false);
   const [documentResults, setDocumentResults] = useState(null);
-  const { lang, toggle } = useLang();
-  const tr = t[lang];
 
   useEffect(() => {
     getBlocks().then(res => setBlocks(res.data)).catch(() => {});
@@ -70,7 +64,7 @@ export default function App() {
 
   const handleDocumentSuccess = (data) => {
     setDocumentResults(data.results_by_block);
-    setMetadata(data.metadata)
+    setMetadata(data.metadata);
     setShowDocumentModal(false);
     const done = [];
     blocks.forEach((b, i) => {
@@ -96,43 +90,20 @@ export default function App() {
     return (
       <div className="finish-container">
         <div className="finish-card">
-          
-          {}
-          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "8px" }}>
-            <button
-              onClick={toggle}
-              style={{
-                background: "none",
-                border: "1px solid #c6c6c6",
-                color: "#525252",
-                padding: "3px 10px",
-                fontSize: "0.75rem",
-                fontFamily: "'IBM Plex Mono', monospace",
-                cursor: "pointer",
-                borderRadius: "2px",
-              }}
-            >
-              {lang === "es" ? "EN" : "ES"}
-            </button>
-          </div>
-
           <div style={{ fontSize: "3rem" }}>✅</div>
-          <h1 className="finish-title">{tr.finishTitle}</h1>
-
-
-          {/* ── Selector de legislación ── */}
+          <h1 className="finish-title">Metadatos completados</h1>
+          <p className="finish-desc">
+            Revisa la legislación aplicable y descarga el JSON final.
+          </p>
           <LegislationSelector
             onSave={(leg) => setMetadata(prev => ({ ...prev, applicable_legislation: leg }))}
           />
-
-          {/* ── JSON preview ── */}
           <pre className="finish-json" style={{ marginTop: "24px" }}>
             {JSON.stringify(metadata, null, 2)}
           </pre>
-
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", marginTop: "16px" }}>
-            <button className="btn btn--primary" onClick={handleDownloadJSON}>{tr.finishDownload}</button>
-            <button className="btn btn--secondary" onClick={handleReset}>{tr.finishRestart}</button>
+            <button className="btn btn--primary" onClick={handleDownloadJSON}>⬇ Descargar JSON</button>
+            <button className="btn btn--secondary" onClick={handleReset}>Empezar de nuevo</button>
           </div>
         </div>
       </div>
@@ -143,7 +114,6 @@ export default function App() {
 
   return (
     <div className="app-layout">
-      {/* Modal de subida de documento */}
       {showDocumentModal && (
         <DocumentUploadModal
           onClose={() => setShowDocumentModal(false)}
@@ -154,7 +124,6 @@ export default function App() {
           onSuccess={handleDocumentSuccess}
         />
       )}
-
       <Sidebar
         blocks={blocks}
         currentIdx={currentIdx}
@@ -167,8 +136,8 @@ export default function App() {
       />
       <main className="main-content">
         <div className="page-header">
-          <h1 className="page-title">{tr.pageTitle}</h1>
-          <p className="page-subtitle">{tr.pageSubtitle(currentIdx + 1, blocks.length)}</p>
+          <h1 className="page-title">Asistente de Metadatos HealthDCAT-AP</h1>
+          <p className="page-subtitle">Esquema sanitario europeo · Bloque {currentIdx + 1} de {blocks.length}</p>
         </div>
         <div className="progress-bar">
           <div className="progress-fill" style={{ width: `${((currentIdx + 1) / blocks.length) * 100}%` }} />
