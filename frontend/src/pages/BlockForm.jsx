@@ -49,7 +49,7 @@ function MissingFieldsModal({ missingInfo, formatErrors = [], onClose, onContinu
           {formatErrors.map((err, i) => (
             <div key={`fmt-${i}`} style={modalStyles.fieldItem}>
               <div style={modalStyles.fieldName}>
-                🟠 {err.replace(/^\[[^\]]+\]\s*/, '')}
+                🟠 {err.replace(/^\[(OBLIG|OPT)\]\s*/, '').replace(/^\[[^\]]+\]\s*/, '')}
               </div>
             </div>
           ))}
@@ -69,8 +69,7 @@ const placeholdersPorBloque = {
   identificacion_basica: "Ej.: Dataset sobre casos de viruela del mono en España en 2023...",
   organismo_acceso_datos_sanitarios: "Ej.: Datos recopilados por el Ministerio de Sanidad...",
   punto_de_contacto: "Ej.: Contacta en info@ministeriodesanidad.es o visita https://www.sanidad.gob.es/contacto",
-  default: "Describe el contenido del dataset...",
-  distribucion: "Ej.: https://datos.gob.es/dataset/xyz o https://zenodo.org/record/123456"
+  default: "Describe el contenido del dataset..."
 };
 
 const modalStyles = {
@@ -193,7 +192,10 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       activeFields.some(f => e.includes(f))
     );
 
-    if (obligatoryMissing.length > 0 || blockFormatErrors.length > 0) {
+    // Solo bloquear por errores de formato en campos obligatorios
+    const blockingFormatErrors = blockFormatErrors.filter(e => e.startsWith("[OBLIG]"));
+
+    if (obligatoryMissing.length > 0 || blockingFormatErrors.length > 0) {
       // Campos obligatorios vacíos o con error de formato → mostrar modal BLOQUEANTE
       setMissingInfo(obligatoryMissing);
       setValidation(val.data);
@@ -430,7 +432,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                       </div>
                     ))}
                     {blockErrors.map((e, i) => (
-                      <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e.replace(/^\[[^\]]+\]\s*/, '')}</div>
+                      <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e.replace(/^\[(OBLIG|OPT)\]\s*/, '').replace(/^\[[^\]]+\]\s*/, '')}</div>
                     ))}
                   </>
                 )}

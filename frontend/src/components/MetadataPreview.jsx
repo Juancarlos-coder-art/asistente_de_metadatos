@@ -14,7 +14,6 @@ const FIELD_INFO = {
   provenance: { label: "Procedencia", description: "Origen de los datos" },
   keyword: { label: "Palabras clave", description: "Etiquetas descriptivas" },
   contact: { label: "Punto de contacto", description: "Contacto para consultas" },
-  distribution: { label: "Distribución", description: "URL de acceso al dataset" },
 };
 
 const HEALTH_CATEGORY_LABELS = {
@@ -148,7 +147,7 @@ function formatValue(key, value) {
         {value.name && <span><strong>Nombre:</strong> {value.name}</span>}
         {value.email && <span><strong>Email:</strong> {value.email}</span>}
         {value.telephone && <span><strong>Teléfono:</strong> {value.telephone}</span>}
-        {value.contact_page && <span><strong>Web:</strong> <a href={value.contact_page} target="_blank" rel="noreferrer">{value.contact_page}</a></span>}
+        {(value.contact_page || value.contact) && <span><strong>Web:</strong> <a href={value.contact_page || value.contact} target="_blank" rel="noreferrer">{value.contact_page || value.contact}</a></span>}
         {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
       </div>
     );
@@ -192,27 +191,6 @@ function formatValue(key, value) {
       <span key={i}>{v.label || v.uri}</span>
     ));
   }
-// applicable_legislation
-if (key === "applicable_legislation" && Array.isArray(value)) {
-  return value.map((v, i) => (
-    <span key={i}>{v.label || v.uri}</span>
-  ));
-}
-
-// distribution — array con access_url
-if (key === "distribution" && Array.isArray(value)) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-      {value.map((dist, i) => (
-        <div key={i}>
-          {dist.access_url && (
-            <span><strong>URL:</strong> <a href={dist.access_url} target="_blank" rel="noreferrer">{dist.access_url}</a></span>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
 
   // Arrays genéricos
   if (Array.isArray(value)) {
