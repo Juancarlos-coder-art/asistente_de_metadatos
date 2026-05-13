@@ -302,7 +302,7 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"RULES: Return ONLY valid JSON. null if not found in the text.\n\n"
             f"MAPPING:\n"
             f"- 'title' → dataset title\n"
-            f"- 'notes' → full description. Copy it literally.\n"
+            f"- 'notes' → full description. Copy it literally and completely, do not summarize.\n"
             f"- 'identifier' → DOI or unique identifier\n"
             f"{access_rights_section}"
             f"- 'hdab' → body managing data access. Object with: name, email, telephone, contact_page, type.\n"
@@ -330,7 +330,7 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"REGLAS: Devuelve SOLO JSON válido. null si no aparece en el texto.\n\n"
             f"MAPEO:\n"
             f"- 'title' → título del dataset\n"
-            f"- 'notes' → descripción completa. Cópiala literalmente.\n"
+            f"- 'notes' → descripción completa. Cópiala literalmente y de forma íntegra, no la resumas.\n"
             f"- 'identifier' → DOI o identificador único\n"
             f"{access_rights_section}"
             f"- 'hdab' → organismo gestor del acceso. Objeto con: name, email, telephone, contact_page, type.\n"
@@ -344,7 +344,7 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"\nDocumento:\n{text[:5000]}"
         )
 
-    return call_llm(prompt, {f: None for f in all_fields}, text[:5000])
+    return call_llm(prompt, {f: None for f in all_fields}, text[:10000])
 
 # ── Modelos ──
 class CompleteBlockRequest(BaseModel):
