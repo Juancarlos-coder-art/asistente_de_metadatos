@@ -1,20 +1,53 @@
 // src/components/MetadataPreview.jsx
+import { useLang } from "../context/LanguageContext";
 
+// ── Labels bilingues ──
 const FIELD_INFO = {
-  title: { label: "Título", description: "Nombre del dataset" },
-  notes: { label: "Descripción", description: "Descripción del contenido" },
-  identifier: { label: "Identificador", description: "DOI o identificador único" },
-  name: { label: "URL", description: "Dirección en el portal" },
-  access_rights: { label: "Derechos de acceso", description: "Quién puede acceder" },
-  hdab: { label: "Organismo de acceso (HDAB)", description: "Entidad gestora del acceso" },
-  applicable_legislation: { label: "Legislación aplicable", description: "Marco legal" },
-  health_category: { label: "Categoría sanitaria", description: "Categoría EHDS" },
-  theme: { label: "Tema", description: "Tema principal del dataset" },
-  dcat_type: { label: "Tipo de dataset", description: "Tipo según Publications Office" },
-  provenance: { label: "Procedencia", description: "Origen de los datos" },
-  keyword: { label: "Palabras clave", description: "Etiquetas descriptivas" },
-  contact: { label: "Punto de contacto", description: "Contacto para consultas" },
-  distribution: { label: "Distribución", description: "URL de acceso al dataset" },
+  es: {
+    title: { label: "Título" },
+    notes: { label: "Descripción" },
+    identifier: { label: "Identificador" },
+    access_rights: { label: "Derechos de acceso" },
+    hdab: { label: "Organismo de acceso (HDAB)" },
+    applicable_legislation: { label: "Legislación aplicable" },
+    health_category: { label: "Categoría sanitaria" },
+    theme: { label: "Tema" },
+    dcat_type: { label: "Tipo de dataset" },
+    provenance: { label: "Procedencia" },
+    keyword: { label: "Palabras clave" },
+    contact: { label: "Punto de contacto" },
+    distribution: { label: "Distribución" },
+  },
+  en: {
+    title: { label: "Title" },
+    notes: { label: "Description" },
+    identifier: { label: "Identifier" },
+    access_rights: { label: "Access rights" },
+    hdab: { label: "Health Data Access Body" },
+    applicable_legislation: { label: "Applicable legislation" },
+    health_category: { label: "Health category" },
+    theme: { label: "Theme" },
+    dcat_type: { label: "Dataset type" },
+    provenance: { label: "Provenance" },
+    keyword: { label: "Keywords" },
+    contact: { label: "Contact point" },
+    distribution: { label: "Distribution" },
+  },
+};
+
+const ACCESS_RIGHTS_LABELS = {
+  es: { PUBLIC: "Público", RESTRICTED: "Restringido", CONFIDENTIAL: "Confidencial", NON_PUBLIC: "No público", SENSITIVE: "Sensible", NORMAL: "Normal", OP_DATPRO: "Datos provisionales" },
+  en: { PUBLIC: "Public", RESTRICTED: "Restricted", CONFIDENTIAL: "Confidential", NON_PUBLIC: "Non-public", SENSITIVE: "Sensitive", NORMAL: "Normal", OP_DATPRO: "Provisional data" },
+};
+
+const HDAB_LABELS = {
+  es: { nombre: "Nombre", email: "Email", telefono: "Teléfono", web: "Web", tipo: "Tipo" },
+  en: { nombre: "Name", email: "Email", telefono: "Phone", web: "Web", tipo: "Type" },
+};
+
+const PREVIEW_LABELS = {
+  es: { empty: "Aún no hay datos. Completa el primer bloque." },
+  en: { empty: "No data yet. Complete the first block." },
 };
 
 const HEALTH_CATEGORY_LABELS = {
@@ -38,71 +71,42 @@ const HEALTH_CATEGORY_LABELS = {
 };
 
 const THEME_LABELS = {
-  "HEAL": "Salud",
-  "TECH": "Ciencia y Tecnología",
-  "SOCI": "Población y sociedad",
-  "GOVE": "Gobierno y sector público",
-  "EDUC": "Educación, cultura y deportes",
-  "ECON": "Economía y finanzas",
-  "ENVI": "Medio ambiente",
-  "AGRI": "Agricultura, pesca, silvicultura y alimentación",
-  "TRAN": "Transporte",
-  "JUST": "Justicia, sistema judicial y seguridad pública",
-  "REGI": "Regiones y ciudades",
-  "INTR": "Asuntos Internacionales",
-  "ENER": "Energía",
-  "OP_DATPRO": "Datos provisionales",
+  "HEAL": "Salud", "TECH": "Ciencia y Tecnología", "SOCI": "Población y sociedad",
+  "GOVE": "Gobierno y sector público", "EDUC": "Educación, cultura y deportes",
+  "ECON": "Economía y finanzas", "ENVI": "Medio ambiente",
+  "AGRI": "Agricultura, pesca, silvicultura y alimentación", "TRAN": "Transporte",
+  "JUST": "Justicia, sistema judicial y seguridad pública", "REGI": "Regiones y ciudades",
+  "INTR": "Asuntos Internacionales", "ENER": "Energía", "OP_DATPRO": "Datos provisionales",
 };
 
 const DCAT_TYPE_LABELS = {
-  "STATISTICAL": "Datos Estadísticos",
-  "GEOSPATIAL": "Datos Geoespaciales",
-  "HVD": "Conjunto de datos de alto valor",
-  "SYNTHETIC_DATA": "Datos Sintéticos",
-  "ONTOLOGY": "Ontología",
-  "SCHEMA": "Esquema",
-  "CODE_LIST": "Lista de Códigos",
-  "APROF": "Perfil de Aplicación",
-  "TEST_DATA": "Datos de Prueba",
-  "CORE_COMP": "Componente básico",
-  "MAPPING": "Correspondencia",
-  "DIRECTORY": "Directorio",
-  "GLOSSARY": "Glosario",
-  "THESAURUS": "Tesauro",
-  "TAXONOMY": "Taxonomía",
-  "DOMAIN_MODEL": "Modelo de Dominio",
-  "RELEASE": "Publicación",
-  "ATTO_LEX": "Cuadro ATTO – dominio EUR-Lex",
-  "ATTO_PUB": "Cuadro ATTO – dominio Publicaciones",
-  "OP_DATPRO": "Datos Provisionales",
-  "IEPD": "Descripción de un paquete de intercambio de información",
-  "DSCRP_SERV": "Descripción del Servicio",
-  "STYLES": "Hojas de Estilo",
-  "NAL": "Lista Autorizada de Nombres",
-  "SYNTAX_ECD_SCHEME": "Esquema de codificación sintáctica",
+  "STATISTICAL": "Datos Estadísticos", "GEOSPATIAL": "Datos Geoespaciales",
+  "HVD": "Conjunto de datos de alto valor", "SYNTHETIC_DATA": "Datos Sintéticos",
+  "ONTOLOGY": "Ontología", "SCHEMA": "Esquema", "CODE_LIST": "Lista de Códigos",
+  "APROF": "Perfil de Aplicación", "TEST_DATA": "Datos de Prueba",
+  "CORE_COMP": "Componente básico", "MAPPING": "Correspondencia",
+  "DIRECTORY": "Directorio", "GLOSSARY": "Glosario", "THESAURUS": "Tesauro",
+  "TAXONOMY": "Taxonomía", "DOMAIN_MODEL": "Modelo de Dominio", "RELEASE": "Publicación",
+  "ATTO_LEX": "Cuadro ATTO – dominio EUR-Lex", "ATTO_PUB": "Cuadro ATTO – dominio Publicaciones",
+  "OP_DATPRO": "Datos Provisionales", "IEPD": "Descripción de un paquete de intercambio de información",
+  "DSCRP_SERV": "Descripción del Servicio", "STYLES": "Hojas de Estilo",
+  "NAL": "Lista Autorizada de Nombres", "SYNTAX_ECD_SCHEME": "Esquema de codificación sintáctica",
 };
 
 const PUBLISHER_TYPE_LABELS = {
   "public-health-institute": "Instituto de Salud Pública",
   "research-institute-org": "Instituto/organización de investigación",
-  "national-authority": "Autoridad Nacional",
-  "regional-authority": "Autoridad Regional",
-  "university": "Universidad",
-  "public-health-registry": "Registro de Salud Pública",
-  "public-health-org": "Organización de Salud Pública",
-  "stat-agency": "Agencia de estadísticas",
-  "biobank": "Biobanco",
-  "inpatient-institute": "Institución de hospitalización/Hospital",
-  "laboratory": "Laboratorio",
-  "private-company": "Empresa Privada",
+  "national-authority": "Autoridad Nacional", "regional-authority": "Autoridad Regional",
+  "university": "Universidad", "public-health-registry": "Registro de Salud Pública",
+  "public-health-org": "Organización de Salud Pública", "stat-agency": "Agencia de estadísticas",
+  "biobank": "Biobanco", "inpatient-institute": "Institución de hospitalización/Hospital",
+  "laboratory": "Laboratorio", "private-company": "Empresa Privada",
   "gov-public-sector-org": "Organizaciones gubernamentales y del sector público",
   "healthcare-providers": "Proveedor de Atención Médica",
   "health-insurance-company-org": "Compañía/organización de seguros de salud",
-  "pharma-company": "Empresas Farmacéuticas",
-  "private-sector-entities": "Entidades del sector privado",
+  "pharma-company": "Empresas Farmacéuticas", "private-sector-entities": "Entidades del sector privado",
   "health-technology-manufacturer": "Fabricante de aplicaciones/tecnología de salud",
-  "software-manufacturer": "Fabricante de software",
-  "pharmacy": "Farmacia",
+  "software-manufacturer": "Fabricante de software", "pharmacy": "Farmacia",
   "research-infra": "Infraestructuras de Investigación",
   "administrative-institution": "Institución administrativa",
   "outpatient-institution": "Institución ambulatoria",
@@ -116,45 +120,35 @@ const PUBLISHER_TYPE_LABELS = {
   "other-government-agency": "Otra agencia gubernamental",
   "other-company": "Otro tipo de empresa que de alguna manera recopila datos de salud",
   "other-public-institute": "Otros institutos públicos que recogen datos de salud",
-  "quality-registry": "Registro de Calidad",
-  "pathology-registry": "Registro de Patología",
+  "quality-registry": "Registro de Calidad", "pathology-registry": "Registro de Patología",
   "private-health-insurance": "Seguro de salud privado",
 };
 
-function formatValue(key, value) {
+function formatValue(key, value, lang) {
   if (value === null || value === undefined || value === "") return null;
 
-  // access_rights
+  const hdabL = HDAB_LABELS[lang] || HDAB_LABELS.es;
+  const arMap = ACCESS_RIGHTS_LABELS[lang] || ACCESS_RIGHTS_LABELS.es;
+
   if (key === "access_rights" && typeof value === "string") {
     const code = value.split("/").pop();
-    const map = {
-      PUBLIC: "Público",
-      RESTRICTED: "Restringido",
-      CONFIDENTIAL: "Confidencial",
-      NON_PUBLIC: "No público",
-      SENSITIVE: "Sensible",
-      NORMAL: "Normal",
-      OP_DATPRO: "Datos provisionales",
-    };
-    return map[code] || code;
+    return arMap[code] || code;
   }
 
-  // hdab — objeto con subcampos
   if (key === "hdab" && typeof value === "object") {
     const typeCode = value.type ? value.type.split("/").pop() : null;
     const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-        {value.name && <span><strong>Nombre:</strong> {value.name}</span>}
-        {value.email && <span><strong>Email:</strong> {value.email}</span>}
-        {value.telephone && <span><strong>Teléfono:</strong> {value.telephone}</span>}
-        {value.contact_page && <span><strong>Web:</strong> <a href={value.contact_page} target="_blank" rel="noreferrer">{value.contact_page}</a></span>}
-        {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
+        {value.name && <span><strong>{hdabL.nombre}:</strong> {value.name}</span>}
+        {value.email && <span><strong>{hdabL.email}:</strong> {value.email}</span>}
+        {value.telephone && <span><strong>{hdabL.telefono}:</strong> {value.telephone}</span>}
+        {value.contact_page && <span><strong>{hdabL.web}:</strong> <a href={value.contact_page} target="_blank" rel="noreferrer">{value.contact_page}</a></span>}
+        {typeLabel && <span><strong>{hdabL.tipo}:</strong> {typeLabel}</span>}
       </div>
     );
   }
 
-  // contact
   if (key === "contact" && typeof value === "object") {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
@@ -164,7 +158,6 @@ function formatValue(key, value) {
     );
   }
 
-  // health_category → etiqueta en español
   if (key === "health_category" && Array.isArray(value)) {
     return value.map(uri => {
       const code = uri.split("/").pop();
@@ -172,7 +165,6 @@ function formatValue(key, value) {
     }).join(", ");
   }
 
-  // theme → etiqueta en español
   if (key === "theme" && Array.isArray(value)) {
     return value.map(uri => {
       const code = uri.split("/").pop();
@@ -180,49 +172,38 @@ function formatValue(key, value) {
     }).join(", ");
   }
 
-  // dcat_type → etiqueta en español
   if (key === "dcat_type" && typeof value === "string") {
     const code = value.split("/").pop();
     return DCAT_TYPE_LABELS[code] || code;
   }
 
-  // applicable_legislation
   if (key === "applicable_legislation" && Array.isArray(value)) {
-    return value.map((v, i) => (
-      <span key={i}>{v.label || v.uri}</span>
-    ));
-  }
-// applicable_legislation
-if (key === "applicable_legislation" && Array.isArray(value)) {
-  return value.map((v, i) => (
-    <span key={i}>{v.label || v.uri}</span>
-  ));
-}
-
-// distribution — array con access_url
-if (key === "distribution" && Array.isArray(value)) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-      {value.map((dist, i) => (
-        <div key={i}>
-          {dist.access_url && (
-            <span><strong>URL:</strong> <a href={dist.access_url} target="_blank" rel="noreferrer">{dist.access_url}</a></span>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-  // Arrays genéricos
-  if (Array.isArray(value)) {
-    return value.join(", ");
+    return value.map((v, i) => <span key={i}>{v.label || v.uri}</span>);
   }
 
+  if (key === "distribution" && Array.isArray(value)) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        {value.map((dist, i) => (
+          <div key={i}>
+            {dist.access_url && (
+              <span><strong>URL:</strong> <a href={dist.access_url} target="_blank" rel="noreferrer">{dist.access_url}</a></span>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (Array.isArray(value)) return value.join(", ");
   return String(value);
 }
 
 export default function MetadataPreview({ metadata }) {
+  const { lang } = useLang();
+  const fieldInfo = FIELD_INFO[lang] || FIELD_INFO.es;
+  const previewL = PREVIEW_LABELS[lang] || PREVIEW_LABELS.es;
+
   const entries = Object.entries(metadata).filter(
     ([, v]) => v !== null && v !== "" && !(Array.isArray(v) && v.length === 0)
   );
@@ -231,7 +212,7 @@ export default function MetadataPreview({ metadata }) {
     return (
       <div className="preview-empty">
         <span className="preview-empty-icon">📭</span>
-        <p className="preview-empty-text">Aún no hay datos. Completa el primer bloque.</p>
+        <p className="preview-empty-text">{previewL.empty}</p>
       </div>
     );
   }
@@ -239,10 +220,9 @@ export default function MetadataPreview({ metadata }) {
   return (
     <div className="preview-list">
       {entries.map(([key, value]) => {
-        const info = FIELD_INFO[key] || { label: key, description: "" };
-        const formatted = formatValue(key, value);
+        const info = fieldInfo[key] || { label: key };
+        const formatted = formatValue(key, value, lang);
         if (!formatted) return null;
-
         return (
           <div key={key} className="field-row">
             <div className="field-key">{info.label}</div>
