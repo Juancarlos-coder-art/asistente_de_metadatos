@@ -7,9 +7,11 @@ from assistant.llm_provider import call_llm, llm_available
 ENDS_NON_PUBLIC_URI = "https://catalogo.ends.gob.es/dataset"
 NON_PUBLIC_URI = "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC"
 
+
 BLOCKS = [
     {
         "name": "derechos_de_acceso",
+        "name_en": "Access Rights",
         "fields": ["access_rights"],
         "question": (
             "¿Quién puede acceder a este dataset y bajo qué condiciones?\n\n"
@@ -18,21 +20,38 @@ BLOCKS = [
             "- 'Solo investigadores acreditados pueden solicitarlo' → Restringido\n"
             "- 'Es un dataset interno, no sale de nuestra organización' → No público\n"
         ),
+        "question_en": (
+            "Who can access this dataset and under what conditions?\n\n"
+            "Examples:\n"
+            "- 'Anyone can download it' → Public\n"
+            "- 'Only accredited researchers can request it' → Restricted\n"
+            "- 'It is internal, it does not leave our organisation' → Non-public\n"
+        ),
         "hint": "Describe con tus palabras quién tiene acceso y bajo qué condiciones.",
-        "placeholder": "Ej.: El acceso está restringido a investigadores acreditados por organismos públicos de salud..."
+        "hint_en": "Describe in your own words who has access and under what conditions.",
+        "placeholder": "Ej.: El acceso está restringido a investigadores acreditados por organismos públicos de salud...",
+        "placeholder_en": "E.g.: Access is restricted to researchers accredited by public health bodies...",
     },
     {
         "name": "identificacion_basica",
+        "name_en": "Basic Identification",
         "fields": ["title", "identifier", "notes", "health_category", "theme", "dcat_type", "provenance", "keyword"],
         "question": (
             "Proporciona una descripción general del dataset. Incluye el identificador si está disponible, "
             "la categoría sanitaria, el tema, el tipo de dataset, la procedencia de los datos y las palabras clave."
         ),
+        "question_en": (
+            "Provide a general description of the dataset. Include the identifier if available, "
+            "the health category, the theme, the dataset type, the data provenance and keywords."
+        ),
         "hint": "Dinos el nombre del dataset, de qué trata, su categoría sanitaria, tema, tipo y origen.",
-        "placeholder": "Ej.: Dataset sobre casos de Mpox en España 2023. Es un registro epidemiológico del ISCIII, de acceso restringido, con datos de vigilancia de enfermedades infecciosas..."
+        "hint_en": "Tell us the dataset name, what it is about, its health category, theme, type and origin.",
+        "placeholder": "Ej.: Dataset sobre casos de Mpox en España 2023. Es un registro epidemiológico del ISCIII...",
+        "placeholder_en": "E.g.: Dataset on Mpox cases in Spain 2023. It is an epidemiological registry from ISCIII...",
     },
     {
         "name": "organismo_acceso_datos_sanitarios",
+        "name_en": "Health Data Access Body",
         "fields": ["hdab"],
         "question": (
             "Indica el organismo que gestiona el acceso a los datos sanitarios (HDAB). "
@@ -42,31 +61,54 @@ BLOCKS = [
             "Si dispones de ellos, incluye también el correo de contacto, "
             "el teléfono, la página web de contacto y el horario de disponibilidad."
         ),
+        "question_en": (
+            "Indicate the body that manages access to health data (HDAB). "
+            "Please provide the name of the body and its type (e.g. "
+            "Public health institute, University, Public health registry, "
+            "National authority, etc.). "
+            "If available, also include the contact email, "
+            "phone number, contact page and opening hours."
+        ),
         "hint": "Indícanos qué organismo es el responsable de dar acceso a estos datos y cómo contactarle.",
-        "placeholder": "Ej.: El organismo es el ISCIII, su correo es datos.salud@isciii.es y su teléfono es +34 918 222 000..."
+        "hint_en": "Tell us which body is responsible for providing access to this data and how to contact them.",
+        "placeholder": "Ej.: El organismo es el ISCIII, su correo es datos.salud@isciii.es...",
+        "placeholder_en": "E.g.: The body is ISCIII, email is datos.salud@isciii.es...",
     },
     {
         "name": "punto_de_contacto",
+        "name_en": "Contact Point",
         "fields": ["contact"],
         "question": (
             "¿Cuál es el punto de contacto para este dataset?\n\n"
             "Proporciona el correo electrónico y/o la URL de contacto para consultas sobre el dataset."
         ),
+        "question_en": (
+            "What is the contact point for this dataset?\n\n"
+            "Provide the email address and/or contact URL for enquiries about the dataset."
+        ),
         "hint": "Indica el correo o web de contacto para consultas sobre este dataset.",
-        "placeholder": "Ej.: Para consultas sobre este dataset contacta en info@ministeriodesanidad.es o visita https://www.sanidad.gob.es/contacto"
+        "hint_en": "Provide the contact email or website for enquiries about this dataset.",
+        "placeholder": "Ej.: Para consultas contacta en info@ministeriodesanidad.es o visita https://www.sanidad.gob.es/contacto",
+        "placeholder_en": "E.g.: For enquiries contact info@health.gov or visit https://www.health.gov/contact",
     },
     {
         "name": "Acceso_a_Distribucion",
-        "fields": ["access_url"],
+        "name_en": "Distribution Access",
+        "fields": ["distribution_access_url"],
         "question": (
             "¿Dónde se puede acceder al dataset?\n\n"
             "Indica la URL de acceso a la distribución del dataset."
         ),
+        "question_en": (
+            "Where can the dataset be accessed?\n\n"
+            "Provide the URL to access the dataset distribution."
+        ),
         "hint": "Introduce la URL donde está disponible el dataset.",
-        "placeholder": "Ej.: https://datos.gob.es/dataset/xyz"
-    }
+        "hint_en": "Enter the URL where the dataset is available.",
+        "placeholder": "Ej.: https://datos.gob.es/dataset/xyz",
+        "placeholder_en": "E.g.: https://data.europa.eu/dataset/xyz",
+    },
 ]
-
 
 def is_non_public(state_data: dict) -> bool:
     """Comprueba si el access_rights del estado es NON_PUBLIC."""
