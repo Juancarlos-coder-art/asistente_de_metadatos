@@ -31,7 +31,7 @@ function MissingFieldsModal({ missingInfo, formatErrors = [], onClose, tr, field
           ))}
           {formatErrors.map((err, i) => (
             <div key={`fmt-${i}`} style={modalStyles.fieldItem}>
-              <div style={modalStyles.fieldName}>🟠 {err.replace(/^\[[^\]]+\]\s*/, '')}</div>
+              <div style={modalStyles.fieldName}>🟠 {err.replace(/^\[(OBLIG|OPT)\]\s*/, '').replace(/^\[[^\]]+\]\s*/, '')}</div>
             </div>
           ))}
         </div>
@@ -183,7 +183,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     const blockFormatErrors = val.data.errors.filter(e =>
       activeFields.some(f => e.includes(f))
     );
-
+    const blockingFormatErrors = blockFormatErrors.filter(e => e.startsWith("[OBLIG]"));
     if (obligatoryMissing.length > 0 || blockFormatErrors.length > 0) {
       setMissingInfo(obligatoryMissing);
       setValidation(val.data);
