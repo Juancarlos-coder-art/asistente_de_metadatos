@@ -20,13 +20,6 @@ FIELD_INDEX = {
         "ejemplo": "Casos de viruela del mono en España 2023",
         "bloque": "identificacion_basica"
     },
-    "name": {
-        "label": "URL",
-        "obligatorio": False,
-        "descripcion": "Identificador URL del dataset. Se genera automáticamente a partir del título.",
-        "ejemplo": "casos-viruela-mono-espana-2023",
-        "bloque": "identificacion_basica"
-    },
     "notes": {
         "label": "Descripción",
         "obligatorio": True,
@@ -57,21 +50,21 @@ FIELD_INDEX = {
     },
     "applicable_legislation": {
         "label": "Legislación aplicable",
-        "obligatorio": False,
+        "obligatorio": True,
         "descripcion": "Se rellena automáticamente con GDPR al finalizar. No es necesario introducirlo.",
         "ejemplo": "GDPR – http://data.europa.eu/eli/reg/2016/679/oj",
         "bloque": "automatico"
     },
     "health_category": {
     "label": "Categoría sanitaria",
-    "obligatorio": False,
+    "obligatorio": True,
     "descripcion": "Categoría sanitaria del dataset según el vocabulario EHDS.",
     "ejemplo": "Registros Electrónicos de Salud, Datos de ensayos clínicos...",
     "bloque": "identificacion_basica"
     },
     "theme": {
         "label": "Tema",
-        "obligatorio": False,
+        "obligatorio": True,
         "descripcion": "Tema principal del dataset según el vocabulario europeo de temas.",
         "ejemplo": "Salud, Ciencia y tecnología...",
         "bloque": "identificacion_basica"
@@ -117,7 +110,7 @@ FIELD_INDEX = {
 # FUNCIÓN PRINCIPAL: descripción rápida de un campo faltante
 # ─────────────────────────────────────────────────────────────
 
-NON_PUBLIC_REQUIRED = {"health_category", "theme", "dcat_type", "contact","provenance","keyword"}
+NON_PUBLIC_REQUIRED = {"dcat_type", "contact","provenance","keyword"}
 
 def describe_missing_field(field_name: str, use_llm: bool = False, call_llm_fn=None, is_non_public: bool = False) -> dict:
     """
