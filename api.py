@@ -559,7 +559,7 @@ async def upload_document(
         text = "\n".join(page.extract_text() or "" for page in pdf.pages)
         text = text[:8000]
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Error al leer el PDF: {str(e)}"
+        raise HTTPException(status_code=400, detail=f"Error al leer el PDF: {str(e)}")
 
     if not text.strip():
         raise HTTPException(status_code=400, detail="El PDF no contiene texto extraíble.")
