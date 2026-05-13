@@ -210,33 +210,69 @@ def _classify_document(text: str) -> dict:
         return {}
 
 def _build_relevant_vocab(classification: dict) -> dict:
-    """PASO 1.5: Filtrar vocabulario relevante (Python puro, sin LLM)"""
     relevant = {"publisher_types": {}, "health_categories": {}, "themes": {}, "dataset_types": {}}
 
+    # Traducción simple EN→ES para clasificación
     tipo_org = str(classification.get("tipo_organismo", "")).lower()
+    
+    cats_raw = classification.get("categorias_salud") or []
+    cats = [str(c).lower() for c in cats_raw]
+
+    temas_raw = classification.get("temas") or []
+    temas = [str(t).lower() for t in temas_raw]
+
+    tipo_ds = str(classification.get("tipo_dataset", "")).lower()
+
+    # Mapeo EN→ES para temas frecuentes
+    EN_TO_ES_THEMES = {
+        "health": "salud", "science": "ciencia", "technology": "ciencia",
+        "population": "población", "society": "sociedad",
+        "government": "gobierno", "education": "educación",
+        "economy": "economía", "environment": "medio ambiente",
+        "agriculture": "agricultura", "transport": "transporte",
+        "justice": "justicia", "regions": "regiones",
+        "international": "asuntos internacionales", "energy": "energía",
+    }
+    temas_es = []
+    for t in temas:
+        temas_es.append(t)
+        for en, es in EN_TO_ES_THEMES.items():
+            if en in t:
+                temas_es.append(es)
+
+    # Mapeo EN→ES para tipos de dataset
+    EN_TO_ES_DATASET = {
+        "statistical": "datos estadísticos", "geospatial": "datos geoespaciales",
+        "synthetic": "datos sintéticos", "ontology": "ontología",
+        "schema": "esquema", "glossary": "glosario", "thesaurus": "tesauro",
+        "taxonomy": "taxonomía", "directory": "directorio",
+    }
+    tipo_ds_es = tipo_ds
+    for en, es in EN_TO_ES_DATASET.items():
+        if en in tipo_ds:
+            tipo_ds_es = es
+            break
+
     for label, uri in PUBLISHER_TYPES.items():
         if any(word in tipo_org for word in label.split()):
             relevant["publisher_types"][label] = uri
     if not relevant["publisher_types"]:
         relevant["publisher_types"] = dict(list(PUBLISHER_TYPES.items())[:5])
 
-    cats = [str(c).lower() for c in (classification.get("categorias_salud") or [])]
     for label, uri in HEALTH_CATEGORIES.items():
         if any(word in " ".join(cats) for word in label.split()[:2]):
             relevant["health_categories"][label] = uri
     if not relevant["health_categories"]:
         relevant["health_categories"] = dict(list(HEALTH_CATEGORIES.items())[:5])
 
-    temas = [str(t).lower() for t in (classification.get("temas") or [])]
     for label, uri in THEMES.items():
-        if label in " ".join(temas):
+        if label in " ".join(temas_es):
             relevant["themes"][label] = uri
     if not relevant["themes"]:
         relevant["themes"] = {"salud": THEMES["salud"]}
 
-    tipo_ds = str(classification.get("tipo_dataset", "")).lower()
     for label, uri in DATASET_TYPES.items():
-        if label in tipo_ds:
+        if label in tipo_ds_es:
             relevant["dataset_types"][label] = uri
     if not relevant["dataset_types"]:
         relevant["dataset_types"] = {"datos estadísticos": DATASET_TYPES["datos estadísticos"]}
