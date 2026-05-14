@@ -38,6 +38,62 @@ ENDS_NON_PUBLIC_URI = "https://catalogo.ends.gob.es/dataset"
 NON_PUBLIC_URI = "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC"
 
 # ── Vocabularios para mapeo dirigido ──
+LANGUAGES = {
+    "alemán": "http://publications.europa.eu/resource/authority/language/DEU",
+    "bokmål": "http://publications.europa.eu/resource/authority/language/NOB",
+    "búlgaro": "http://publications.europa.eu/resource/authority/language/BUL",
+    "checo": "http://publications.europa.eu/resource/authority/language/CES",
+    "croata": "http://publications.europa.eu/resource/authority/language/HRV",
+    "danés": "http://publications.europa.eu/resource/authority/language/DAN",
+    "eslovaco": "http://publications.europa.eu/resource/authority/language/SLK",
+    "esloveno": "http://publications.europa.eu/resource/authority/language/SLV",
+    "español": "http://publications.europa.eu/resource/authority/language/SPA",
+    "estonio": "http://publications.europa.eu/resource/authority/language/EST",
+    "finés": "http://publications.europa.eu/resource/authority/language/FIN",
+    "francés": "http://publications.europa.eu/resource/authority/language/FRA",
+    "griego": "http://publications.europa.eu/resource/authority/language/ELL",
+    "húngaro": "http://publications.europa.eu/resource/authority/language/HUN",
+    "inglés": "http://publications.europa.eu/resource/authority/language/ENG",
+    "irlandés": "http://publications.europa.eu/resource/authority/language/GLE",
+    "islandés": "http://publications.europa.eu/resource/authority/language/ISL",
+    "italiano": "http://publications.europa.eu/resource/authority/language/ITA",
+    "letón": "http://publications.europa.eu/resource/authority/language/LAV",
+    "lituano": "http://publications.europa.eu/resource/authority/language/LIT",
+    "maltés": "http://publications.europa.eu/resource/authority/language/MLT",
+    "neerlandés": "http://publications.europa.eu/resource/authority/language/NLD",
+    "nynorsk": "http://publications.europa.eu/resource/authority/language/NNO",
+    "polaco": "http://publications.europa.eu/resource/authority/language/POL",
+    "portugués": "http://publications.europa.eu/resource/authority/language/POR",
+    "rumano": "http://publications.europa.eu/resource/authority/language/RON",
+    "sueco": "http://publications.europa.eu/resource/authority/language/SWE",
+}
+
+PERSONAL_DATA_TYPES = {
+    "edad": "https://w3id.org/dpv/pd#Age",
+    "rango de edad": "https://w3id.org/dpv/pd#AgeRange",
+    "datos biométricos": "https://w3id.org/dpv/pd#Biometric",
+    "tipo de sangre": "https://w3id.org/dpv/pd#BloodType",
+    "fecha de nacimiento": "https://w3id.org/dpv/pd#BirthDate",
+    "país de nacimiento": "https://w3id.org/dpv/pd#BirthCountry",
+    "discapacidad": "https://w3id.org/dpv/pd#Disability",
+    "adn": "https://w3id.org/dpv/pd#DNACode",
+    "origen étnico": "https://w3id.org/dpv/pd#Ethnicity",
+    "género": "https://w3id.org/dpv/pd#Gender",
+    "datos genéticos": "https://w3id.org/dpv/pd#Genetic",
+    "datos de salud": "https://w3id.org/dpv/pd#HealthData",
+    "historial de salud": "https://w3id.org/dpv/pd#HealthHistory",
+    "registro de salud": "https://w3id.org/dpv/pd#HealthRecord",
+    "altura": "https://w3id.org/dpv/pd#Height",
+    "vida sexual": "https://w3id.org/dpv/pd#LifeSexual",
+    "historial médico": "https://w3id.org/dpv/pd#MedicalHealth",
+    "salud mental": "https://w3id.org/dpv/pd#MentalHealth",
+    "salud física": "https://w3id.org/dpv/pd#PhysicalHealth",
+    "receta médica": "https://w3id.org/dpv/pd#Prescription",
+    "origen racial": "https://w3id.org/dpv/pd#Race",
+    "datos de salud sexual": "https://w3id.org/dpv/pd#SexualHistory",
+    "peso": "https://w3id.org/dpv/pd#Weight",
+}
+
 PUBLISHER_TYPES = {
     "instituto de salud pública": "http://13.81.34.152:1101/resource/authority/publisher-type/public-health-institute",
     "instituto/organización de investigación": "http://13.81.34.152:1101/resource/authority/publisher-type/research-institute-org",
@@ -286,6 +342,8 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
     health_cats_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["health_categories"].items())
     themes_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["themes"].items())
     dataset_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["dataset_types"].items())
+    languages_str = "\n".join(f"    {l} → {u}" for l, u in LANGUAGES.items())
+    personal_data_str = "\n".join(f"    {l} → {u}" for l, u in PERSONAL_DATA_TYPES.items())
 
     if doc_lang == "en":
         access_rights_section = (
@@ -313,6 +371,14 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'provenance' → data origin. Free text.\n"
             f"- 'keyword' → keywords. Array of strings.\n"
             f"- 'contact' → object with: email, url\n"
+            f"- 'purpose' → purpose of the dataset. Array of strings.\n"
+            f"- 'language' → array of language URIs:\n{languages_str}\n"
+            f"- 'population_coverage' → population coverage. Array of strings.\n"
+            f"- 'number_of_unique_individuals' → integer or null\n"
+            f"- 'number_of_records' → integer or null\n"
+            f"- 'min_typical_age' → integer or null\n"
+            f"- 'max_typical_age' → integer or null\n"
+            f"- 'personal_data' → array of DPV-PD URIs:\n{personal_data_str}\n"
             f"\nDocument:\n{text[:5000]}"
         )
     else:
@@ -341,6 +407,14 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'provenance' → origen de los datos. Texto libre.\n"
             f"- 'keyword' → palabras clave. Array de strings.\n"
             f"- 'contact' → objeto con: email, url\n"
+            f"- 'purpose' → finalidad del dataset. Array de strings.\n"
+            f"- 'language' → array de URIs de idiomas:\n{languages_str}\n"
+            f"- 'population_coverage' → cobertura poblacional. Array de strings.\n"
+            f"- 'number_of_unique_individuals' → número entero o null\n"
+            f"- 'number_of_records' → número entero o null\n"
+            f"- 'min_typical_age' → número entero o null\n"
+            f"- 'max_typical_age' → número entero o null\n"
+            f"- 'personal_data' → array de URIs DPV-PD:\n{personal_data_str}\n"
             f"\nDocumento:\n{text[:5000]}"
         )
 

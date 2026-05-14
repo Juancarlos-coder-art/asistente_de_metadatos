@@ -204,10 +204,10 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "No uses claves en español ni inventes URIs.\n"
 
         # ── purpose ──
-        "Para el campo 'purpose', devuelve un string con la finalidad del dataset.\n"
+        "Para el campo 'purpose', devuelve un ARRAY de strings con la finalidad del dataset.\n"
 
         # ── language ──
-        "Para el campo 'language', devuelve un ARRAY con DOLO las URIs de idiomas:\n"
+        "Para el campo 'language', devuelve un ARRAY con SOLO las URIs de idiomas:\n"
         "- Español → http://publications.europa.eu/resource/authority/language/SPA\n"
         "- Inglés → http://publications.europa.eu/resource/authority/language/ENG\n"
         "- Francés → http://publications.europa.eu/resource/authority/language/FRA\n"
@@ -219,14 +219,14 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "- Euskera → http://publications.europa.eu/resource/authority/language/EUS\n"
 
         # ── population_coverage ──
-        "Para el campo 'population_coverage', devuelve un string describiendo la cobertura poblacional.\n"
+        "Para el campo 'population_coverage', devuelve un ARRAY de strings describiendo la cobertura poblacional.\n"
 
         # ── campos numéricos ──
         "Para los campos 'number_of_unique_individuals', 'number_of_records', 'min_typical_age' y 'max_typical_age', "
         "devuelve un número entero o null si no se menciona.\n"
 
         # ── personal_data ──
-        "Para el campo 'personal_data', devuelve un ARRAY con DOLO las URIs DPV-PD correspondientes:\n"
+        "Para el campo 'personal_data', devuelve un ARRAY con SOLO las URIs DPV-PD correspondientes:\n"
         "- Datos de salud → https://w3id.org/dpv/pd#HealthData\n"
         "- Datos genéticos → https://w3id.org/dpv/pd#Genetic\n"
         "- Datos biométricos → https://w3id.org/dpv/pd#Biometric\n"
