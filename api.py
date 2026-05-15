@@ -377,7 +377,8 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'provenance' → origen de los datos. Texto libre.\n"
             f"- 'keyword' → palabras clave. Array de strings.\n"
             f"- 'contact' → objeto con: email, url\n"
-            f"- 'personal_data' → array de URIs para tipos de datos personales:\n{personal_data_str}\n"
+            f"- 'personal_data' → lista de tipos de datos personales mencionados "
+            f"(ej: ['Health', 'Age', 'Gender']). Usa nombres de clase DPV-PD en inglés. null si no se menciona.\n"
             f"- 'number_of_unique_individuals' → entero, número de individuos únicos en el dataset. null si no se menciona.\n"
             f"- 'number_of_records' → entero, número total de registros. null si no se menciona.\n"
             f"- 'min_typical_age' → entero, edad mínima típica. null si no se menciona.\n"
@@ -644,6 +645,23 @@ async def upload_document(
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error en el LLM: {str(e)}")
+
+    # ← CORRIGE LA INDENTACIÓN AQUÍ
+    if ai_result.get("personal_data") and isinstance(ai_result["personal_data"], list):
+        mapped = []
+        for item in ai_result["personal_data"]:
+            item_lower = str(item).lower().strip()
+            uri_found = None
+            for label, uri in PERSONAL_DATA_TYPES.items():
+                if item_lower in label.lower() or label.lower() in item_lower:
+                    uri_found = uri
+                    break
+            if uri_found:
+                mapped.append(uri_found)
+            else:
+                item_clean = str(item).replace(" ", "")
+                mapped.append(f"https://w3id.org/dpv/pd#{item_clean}")
+        ai_result["personal_data"] = mapped if mapped else None
 
     if existing_access_rights:
         ai_result["access_rights"] = existing_access_rights
