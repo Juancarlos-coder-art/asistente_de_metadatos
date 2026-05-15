@@ -38,62 +38,6 @@ ENDS_NON_PUBLIC_URI = "https://catalogo.ends.gob.es/dataset"
 NON_PUBLIC_URI = "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC"
 
 # ── Vocabularios para mapeo dirigido ──
-LANGUAGES = {
-    "alemán": "http://publications.europa.eu/resource/authority/language/DEU",
-    "bokmål": "http://publications.europa.eu/resource/authority/language/NOB",
-    "búlgaro": "http://publications.europa.eu/resource/authority/language/BUL",
-    "checo": "http://publications.europa.eu/resource/authority/language/CES",
-    "croata": "http://publications.europa.eu/resource/authority/language/HRV",
-    "danés": "http://publications.europa.eu/resource/authority/language/DAN",
-    "eslovaco": "http://publications.europa.eu/resource/authority/language/SLK",
-    "esloveno": "http://publications.europa.eu/resource/authority/language/SLV",
-    "español": "http://publications.europa.eu/resource/authority/language/SPA",
-    "estonio": "http://publications.europa.eu/resource/authority/language/EST",
-    "finés": "http://publications.europa.eu/resource/authority/language/FIN",
-    "francés": "http://publications.europa.eu/resource/authority/language/FRA",
-    "griego": "http://publications.europa.eu/resource/authority/language/ELL",
-    "húngaro": "http://publications.europa.eu/resource/authority/language/HUN",
-    "inglés": "http://publications.europa.eu/resource/authority/language/ENG",
-    "irlandés": "http://publications.europa.eu/resource/authority/language/GLE",
-    "islandés": "http://publications.europa.eu/resource/authority/language/ISL",
-    "italiano": "http://publications.europa.eu/resource/authority/language/ITA",
-    "letón": "http://publications.europa.eu/resource/authority/language/LAV",
-    "lituano": "http://publications.europa.eu/resource/authority/language/LIT",
-    "maltés": "http://publications.europa.eu/resource/authority/language/MLT",
-    "neerlandés": "http://publications.europa.eu/resource/authority/language/NLD",
-    "nynorsk": "http://publications.europa.eu/resource/authority/language/NNO",
-    "polaco": "http://publications.europa.eu/resource/authority/language/POL",
-    "portugués": "http://publications.europa.eu/resource/authority/language/POR",
-    "rumano": "http://publications.europa.eu/resource/authority/language/RON",
-    "sueco": "http://publications.europa.eu/resource/authority/language/SWE",
-}
-
-PERSONAL_DATA_TYPES = {
-    "edad": "https://w3id.org/dpv/pd#Age",
-    "rango de edad": "https://w3id.org/dpv/pd#AgeRange",
-    "datos biométricos": "https://w3id.org/dpv/pd#Biometric",
-    "tipo de sangre": "https://w3id.org/dpv/pd#BloodType",
-    "fecha de nacimiento": "https://w3id.org/dpv/pd#BirthDate",
-    "país de nacimiento": "https://w3id.org/dpv/pd#BirthCountry",
-    "discapacidad": "https://w3id.org/dpv/pd#Disability",
-    "adn": "https://w3id.org/dpv/pd#DNACode",
-    "origen étnico": "https://w3id.org/dpv/pd#Ethnicity",
-    "género": "https://w3id.org/dpv/pd#Gender",
-    "datos genéticos": "https://w3id.org/dpv/pd#Genetic",
-    "datos de salud": "https://w3id.org/dpv/pd#HealthData",
-    "historial de salud": "https://w3id.org/dpv/pd#HealthHistory",
-    "registro de salud": "https://w3id.org/dpv/pd#HealthRecord",
-    "altura": "https://w3id.org/dpv/pd#Height",
-    "vida sexual": "https://w3id.org/dpv/pd#LifeSexual",
-    "historial médico": "https://w3id.org/dpv/pd#MedicalHealth",
-    "salud mental": "https://w3id.org/dpv/pd#MentalHealth",
-    "salud física": "https://w3id.org/dpv/pd#PhysicalHealth",
-    "receta médica": "https://w3id.org/dpv/pd#Prescription",
-    "origen racial": "https://w3id.org/dpv/pd#Race",
-    "datos de salud sexual": "https://w3id.org/dpv/pd#SexualHistory",
-    "peso": "https://w3id.org/dpv/pd#Weight",
-}
-
 PUBLISHER_TYPES = {
     "instituto de salud pública": "http://13.81.34.152:1101/resource/authority/publisher-type/public-health-institute",
     "instituto/organización de investigación": "http://13.81.34.152:1101/resource/authority/publisher-type/research-institute-org",
@@ -198,6 +142,34 @@ DATASET_TYPES = {
     "tesauro": "http://publications.europa.eu/resource/authority/dataset-type/THESAURUS",
 }
 
+PERSONAL_DATA_TYPES = {
+    "salud": "https://w3id.org/dpv/pd#Health",
+    "historial médico": "https://w3id.org/dpv/pd#HealthRecord",
+    "historial de salud": "https://w3id.org/dpv/pd#HealthHistory",
+    "salud médica": "https://w3id.org/dpv/pd#MedicalHealth",
+    "salud física": "https://w3id.org/dpv/pd#PhysicalHealth",
+    "salud mental": "https://w3id.org/dpv/pd#MentalHealth",
+    "historial de salud individual": "https://w3id.org/dpv/pd#IndividualHealthHistory",
+    "historial de salud familiar": "https://w3id.org/dpv/pd#FamilyHealthHistory",
+    "genética": "https://w3id.org/dpv/pd#Genetic",
+    "código adn": "https://w3id.org/dpv/pd#DNACode",
+    "datos biométricos": "https://w3id.org/dpv/pd#Biometric",
+    "edad": "https://w3id.org/dpv/pd#Age",
+    "rango de edad": "https://w3id.org/dpv/pd#AgeRange",
+    "género": "https://w3id.org/dpv/pd#Gender",
+    "nacionalidad": "https://w3id.org/dpv/pd#Nationality",
+    "localización": "https://w3id.org/dpv/pd#Location",
+    "prescripción": "https://w3id.org/dpv/pd#Prescription",
+    "resultado de la prueba de fármacos": "https://w3id.org/dpv/pd#DrugTestResult",
+    "discapacidad": "https://w3id.org/dpv/pd#Disability",
+    "tipo de sangre": "https://w3id.org/dpv/pd#BloodType",
+    "origen étnico": "https://w3id.org/dpv/pd#EthnicOrigin",
+    "nombre": "https://w3id.org/dpv/pd#Name",
+    "identificador": "https://w3id.org/dpv/pd#Identifier",
+    "identificador oficial": "https://w3id.org/dpv/pd#OfficialID",
+    "profesional": "https://w3id.org/dpv/pd#Professional",
+}
+
 def get_session(session_id, response):
     if session_id and session_id in sessions:
         return session_id, sessions[session_id]
@@ -252,7 +224,7 @@ def _classify_document(text: str) -> dict:
         f"- 'temas': lista de temas principales\n"
         f"- 'tipo_dataset': tipo de dataset\n"
         f"Usa SOLO etiquetas simples, sin URIs.\n"
-        f"Documento:\n{text[:2000]}"
+        f"Documento:\n{text[:1000]}"
     )
     try:
         return call_llm(prompt, {
@@ -261,7 +233,7 @@ def _classify_document(text: str) -> dict:
             "categorias_salud": None,
             "temas": None,
             "tipo_dataset": None
-        }, text[:2000])
+        }, text[:1000])
     except Exception:
         return {}
 
@@ -332,7 +304,6 @@ def _build_relevant_vocab(classification: dict) -> dict:
             relevant["dataset_types"][label] = uri
     if not relevant["dataset_types"]:
         relevant["dataset_types"] = {"datos estadísticos": DATASET_TYPES["datos estadísticos"]}
-
     return relevant
 
 
@@ -342,8 +313,7 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
     health_cats_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["health_categories"].items())
     themes_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["themes"].items())
     dataset_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["dataset_types"].items())
-    languages_str = "\n".join(f"    {l} → {u}" for l, u in LANGUAGES.items())
-    personal_data_str = "\n".join(f"    {l} → {u}" for l, u in PERSONAL_DATA_TYPES.items())
+    personal_data_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab.get("personal_data", {}).items())
 
     if doc_lang == "en":
         access_rights_section = (
@@ -371,15 +341,15 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'provenance' → data origin. Free text.\n"
             f"- 'keyword' → keywords. Array of strings.\n"
             f"- 'contact' → object with: email, url\n"
-            f"- 'purpose' → purpose of the dataset. Array of strings.\n"
-            f"- 'language' → array of language URIs:\n{languages_str}\n"
-            f"- 'population_coverage' → population coverage. Array of strings.\n"
-            f"- 'number_of_unique_individuals' → integer or null\n"
-            f"- 'number_of_records' → integer or null\n"
-            f"- 'min_typical_age' → integer or null\n"
-            f"- 'max_typical_age' → integer or null\n"
-            f"- 'personal_data' → array of DPV-PD URIs:\n{personal_data_str}\n"
-            f"\nDocument:\n{text[:5000]}"
+            f"- 'personal_data' → list of personal data type names mentioned in the document "
+            f"(e.g. ['Health', 'Age', 'Gender', 'Location']). Use English DPV-PD class names. null if not mentioned.\n"
+            f"- 'number_of_unique_individuals' → integer, number of unique individuals in the dataset. null if not mentioned.\n"
+            f"- 'number_of_records' → integer, total number of records. null if not mentioned.\n"
+            f"- 'min_typical_age' → integer, minimum typical age. null if not mentioned.\n"
+            f"- 'max_typical_age' → integer, maximum typical age. null if not mentioned.\n"
+            f"- 'purpose' → array of strings describing the purpose of the dataset. null if not mentioned.\n"
+            f"- 'population_coverage' → array of strings describing population covered. null if not mentioned.\n"
+            f"\nDocument:\n{text[:4000]}"
         )
     else:
         access_rights_section = (
@@ -407,18 +377,17 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'provenance' → origen de los datos. Texto libre.\n"
             f"- 'keyword' → palabras clave. Array de strings.\n"
             f"- 'contact' → objeto con: email, url\n"
-            f"- 'purpose' → finalidad del dataset. Array de strings.\n"
-            f"- 'language' → array de URIs de idiomas:\n{languages_str}\n"
-            f"- 'population_coverage' → cobertura poblacional. Array de strings.\n"
-            f"- 'number_of_unique_individuals' → número entero o null\n"
-            f"- 'number_of_records' → número entero o null\n"
-            f"- 'min_typical_age' → número entero o null\n"
-            f"- 'max_typical_age' → número entero o null\n"
-            f"- 'personal_data' → array de URIs DPV-PD:\n{personal_data_str}\n"
-            f"\nDocumento:\n{text[:5000]}"
+            f"- 'personal_data' → array de URIs para tipos de datos personales:\n{personal_data_str}\n"
+            f"- 'number_of_unique_individuals' → entero, número de individuos únicos en el dataset. null si no se menciona.\n"
+            f"- 'number_of_records' → entero, número total de registros. null si no se menciona.\n"
+            f"- 'min_typical_age' → entero, edad mínima típica. null si no se menciona.\n"
+            f"- 'max_typical_age' → entero, edad máxima típica. null si no se menciona.\n"
+            f"- 'purpose' → array de strings describiendo la finalidad del dataset. null si no se menciona.\n"
+            f"- 'population_coverage' → array de strings describiendo la población cubierta. null si no se menciona.\n"
+            f"\nDocumento:\n{text[:4000]}"
         )
 
-    return call_llm(prompt, {f: None for f in all_fields}, text[:10000])
+    return call_llm(prompt, {f: None for f in all_fields}, "")
 
 # ── Modelos ──
 class CompleteBlockRequest(BaseModel):
@@ -479,6 +448,13 @@ def get_schema_info(lang: str = "es"):
         "contact": "contact",
         "language": "language",
         "personal_data": "personal_data",
+        "purpose": "purpose",
+        "language": "language",
+        "population_coverage": "population_coverage",
+        "number_of_unique_individuals":"number_of_unique_individuals",
+        "number_of_records": "number_of_records",
+        "min_typical_age": "min_typical_age",
+        "max_typical_age": "max_typical_age"
     }
     info = {}
     for field_key, yaml_field_name in field_map.items():
@@ -633,7 +609,7 @@ async def upload_document(
         contents = await file.read()
         pdf = PdfReader(io.BytesIO(contents))
         text = "\n".join(page.extract_text() or "" for page in pdf.pages)
-        text = text[:8000]
+        text = text[:4000]
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error al leer el PDF: {str(e)}")
 
