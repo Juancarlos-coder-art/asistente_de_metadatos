@@ -327,7 +327,9 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
         prompt = (
             f"Extract metadata fields from this health document.\n"
             f"Expected keys: [{fields_str}]\n\n"
-            f"RULES: Return ONLY valid JSON. null if not found in the text.\n\n"
+            f"RULES: Return ONLY valid JSON.\n"
+            f"- For 'title', 'notes', 'keyword': ALWAYS extract from the document, even if not a health document.\n"
+            f"- For health-specific fields (health_category, theme, dcat_type, personal_data, etc.): null if not found.\n\n"
             f"MAPPING:\n"
             f"- 'title' → dataset title\n"
             f"- 'notes' → full description. Copy it literally and completely, do not summarize.\n"
@@ -363,7 +365,9 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
         prompt = (
             f"Extrae campos de metadatos de este documento sanitario.\n"
             f"Claves esperadas: [{fields_str}]\n\n"
-            f"REGLAS: Devuelve SOLO JSON válido. null si no aparece en el texto.\n\n"
+            f"REGLAS: Devuelve SOLO JSON válido.\n"
+            f"- Para 'title', 'notes', 'keyword': EXTRAE SIEMPRE del documento aunque no sea sanitario.\n"
+            f"- Para campos específicos de salud (health_category, theme, dcat_type, personal_data, etc.): null si no aparece.\n\n"
             f"MAPEO:\n"
             f"- 'title' → título del dataset\n"
             f"- 'notes' → descripción completa. Cópiala literalmente y de forma íntegra, no la resumas.\n"
