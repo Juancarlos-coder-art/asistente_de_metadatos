@@ -818,7 +818,17 @@ async def upload_document(
 
     state.merge_partial(filled_fields)
     apply_conditional_logic(state)
-
+    state.merge_partial(filled_fields)
+    apply_conditional_logic(state)
+    return {
+        "success": True,
+        "text_extracted": len(text),
+        "classification": classification,
+        "results_by_block": results_by_block,
+        "metadata": state.data,
+        "session_id": sid,
+        "es_sanitario": es_sanitario
+    }
 
 # ── Servir React (SIEMPRE AL FINAL) ──
 if os.path.exists("frontend/dist") and os.path.exists("frontend/dist/assets"):
