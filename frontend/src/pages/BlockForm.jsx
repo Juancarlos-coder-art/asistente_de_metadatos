@@ -100,6 +100,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const [blockMissingInfo, setBlockMissingInfo] = useState(null);
   const [metadata, setMetadata] = useState({});
   const textareaRef = useRef(null);
+  const manualRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
   const [missingInfo, setMissingInfo] = useState([]);
   const [schemaInfo, setSchemaInfo] = useState({});
@@ -249,8 +250,14 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
           onClose={() => {
             setShowModal(false);
             setTimeout(() => {
-              textareaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-              textareaRef.current?.focus();
+              if (tab === "ia") {
+                textareaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+                textareaRef.current?.focus();
+              } else {
+                manualRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                const firstInput = manualRef.current?.querySelector("input, select, textarea");
+                firstInput?.focus();
+              }
             }, 100);
           }}
         />
@@ -281,7 +288,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       )}
 
       {tab === "manual" && (
-        <div className="tab-content">
+        <div className="tab-content" ref={manualRef}>
           <p className="tab-desc">Rellena los campos del bloque uno a uno.</p>
           {isNonPublic() && block.fields.includes("identifier") && (
             <div className="alert alert--info" style={{ marginBottom: "16px" }}>
