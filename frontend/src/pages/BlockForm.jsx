@@ -1,5 +1,5 @@
 // src/pages/BlockForm.jsx
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import MetadataPreview from "../components/MetadataPreview";
 import {
   completeBlock, saveManual, validateMetadata,
@@ -27,6 +27,11 @@ const FIELD_LABELS_ES = {
   min_typical_age: "Edad mínima típica",
   max_typical_age: "Edad máxima típica",
   personal_data: "Datos personales",
+  legal_basis: "Base jurídica",
+  retention_period: "Periodo de conservación",
+  coding_system: "Sistema de codificación",
+  health_theme: "Tema de salud",
+  code_values: "Valores codificados",
 };
 
 const NON_PUBLIC_URI = "NON_PUBLIC";
@@ -99,8 +104,6 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const [validation, setValidation] = useState(null);
   const [blockMissingInfo, setBlockMissingInfo] = useState(null);
   const [metadata, setMetadata] = useState({});
-  const textareaRef = useRef(null);
-  const manualRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
   const [missingInfo, setMissingInfo] = useState([]);
   const [schemaInfo, setSchemaInfo] = useState({});
@@ -247,19 +250,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
         <MissingFieldsModal
           missingInfo={missingInfo}
           formatErrors={validation ? validation.errors.filter(e => activeFields.some(f => e.includes(f))) : []}
-          onClose={() => {
-            setShowModal(false);
-            setTimeout(() => {
-              if (tab === "ia") {
-                textareaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-                textareaRef.current?.focus();
-              } else {
-                manualRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-                const firstInput = manualRef.current?.querySelector("input, select, textarea");
-                firstInput?.focus();
-              }
-            }, 100);
-          }}
+          onClose={() => setShowModal(false)}
         />
       )}
 
@@ -277,7 +268,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
         <div className="tab-content">
           <p className="tab-desc">{block.hint || "Describe este bloque con tus propias palabras."}</p>
           <div className="field-group">
-            <textarea ref={textareaRef} className="field-textarea" placeholder={placeholder} value={userContext} onChange={(e) => setUserContext(e.target.value)} />
+            <textarea className="field-textarea" placeholder={placeholder} value={userContext} onChange={(e) => setUserContext(e.target.value)} />
           </div>
           <button className="btn btn--primary" onClick={handleComplete} disabled={loading || !userContext.trim()}>
             {loading ? "Analizando..." : "Completar bloque"}
@@ -288,7 +279,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       )}
 
       {tab === "manual" && (
-        <div className="tab-content" ref={manualRef}>
+        <div className="tab-content">
           <p className="tab-desc">Rellena los campos del bloque uno a uno.</p>
           {isNonPublic() && block.fields.includes("identifier") && (
             <div className="alert alert--info" style={{ marginBottom: "16px" }}>
@@ -424,6 +415,69 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                 <div key={field} className="field-group">
                   <label className="field-label">{fieldLabel}</label>
                   <input className="field-input" type="number" min="0" placeholder={`Introduce ${fieldLabel}...`} value={manualFields[field] ?? ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value ? parseInt(e.target.value, 10) : "" })} />
+                </div>
+              );
+            }
+
+            if (field === "health_theme" && fieldSchema.choices) {
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label">{fieldLabel}</label>
+                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
+                    <option value="">— Selecciona un tema de salud —</option>
+                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                  </select>
+                </div>
+              );
+            }
+
+            if (field === "legal_basis" && fieldSchema.subfields) {
+              const legalValues = manualFields.legal_basis || {};
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
+                  <div className="hdab-subfields">
+                    {fieldSchema.subfields.map(sf => (
+                      <div key={sf.field_name} className="field-group">
+                        <label className="field-label">{sf.label}</label>
+                        <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={legalValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, legal_basis: { ...legalValues, [sf.field_name]: e.target.value } })} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            if (field === "retention_period" && fieldSchema.subfields) {
+              const retentionValues = manualFields.retention_period || {};
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
+                  <div className="hdab-subfields">
+                    {fieldSchema.subfields.map(sf => (
+                      <div key={sf.field_name} className="field-group">
+                        <label className="field-label">{sf.label}</label>
+                        <input className="field-input" type="date" value={retentionValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, retention_period: { ...retentionValues, [sf.field_name]: e.target.value } })} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            if (field === "coding_system" && fieldSchema.subfields) {
+              const codingValues = manualFields.coding_system || {};
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
+                  <div className="hdab-subfields">
+                    {fieldSchema.subfields.map(sf => (
+                      <div key={sf.field_name} className="field-group">
+                        <label className="field-label">{sf.label}</label>
+                        <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={codingValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, coding_system: { ...codingValues, [sf.field_name]: e.target.value } })} />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               );
             }

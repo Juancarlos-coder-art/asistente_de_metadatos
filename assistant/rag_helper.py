@@ -160,6 +160,41 @@ FIELD_INDEX = {
         "ejemplo": "Sí, el dataset incluye datos personales como edad, sexo y ubicación geográfica.",
         "bloque": "informacion_adicional"
     },
+    "legal_basis": {
+        "label": "Base jurídica",
+        "obligatorio": False,
+        "descripcion": "Base jurídica que ampara el tratamiento de los datos.",
+        "ejemplo": "Reglamento General de Protección de Datos (RGPD)",
+        "bloque": "informacion_adicional"
+    },
+    "retention_period": {
+        "label": "Periodo de conservación",
+        "obligatorio": False,
+        "descripcion": "Periodo durante el cual se conservarán los datos.",
+        "ejemplo": "2020-01-01 a 2030-12-31",
+        "bloque": "informacion_adicional"
+    },
+    "coding_system": {
+        "label": "Sistema de codificación",
+        "obligatorio": False,
+        "descripcion": "Sistema de codificación utilizado en el dataset.",
+        "ejemplo": "ICD-10, SNOMED CT",
+        "bloque": "informacion_adicional"
+    },
+    "health_theme": {
+        "label": "Tema de salud",
+        "obligatorio": False,
+        "descripcion": "Tema de salud específico del dataset.",
+        "ejemplo": "Cáncer, Salud mental",
+        "bloque": "informacion_adicional"
+    },
+    "code_values": {
+        "label": "Valores codificados",
+        "obligatorio": False,
+        "descripcion": "Valores codificados utilizados en el dataset.",
+        "ejemplo": "A00-B99, C00-D48",
+        "bloque": "informacion_adicional"
+    },
 }
 
 # ─────────────────────────────────────────────────────────────

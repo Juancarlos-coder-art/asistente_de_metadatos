@@ -52,7 +52,7 @@ BLOCKS = [
     {
         "name": "informacion_adicional",
         "name_en": "Additional Information",
-        "fields": ["purpose", "language", "population_coverage", "number_of_unique_individuals","number_of_records","min_typical_age","max_typical_age","personal_data"],
+        "fields": ["purpose", "language", "population_coverage", "number_of_unique_individuals","number_of_records","min_typical_age","max_typical_age","personal_data","legal_basis","retention_period","coding_system","health_theme","code_values"],
         "question": (
             "Proporciona información adicional sobre el dataset."
             "Indica la finalidad de los datos, el idioma en el que están disponibles y la cobertura poblacional si están disponibles."
@@ -233,6 +233,21 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "- Acento → https://w3id.org/dpv/pd#Accent\n"
         "- Identificador de cuenta → https://w3id.org/dpv/pd#AccountIdentifier\n"
         "Si el usuario no lo menciona, devuelve null.\n"
+
+        # ── legal_basis ──
+        "Para el campo 'legal_basis', devuelve un objeto con 'description' (texto) y 'source' (texto). null si no se menciona.\n"
+
+        # ── retention_period ──
+        "Para el campo 'retention_period', devuelve un objeto con 'start' (fecha YYYY-MM-DD o null) y 'end' (fecha YYYY-MM-DD o null). null si no se menciona.\n"
+
+        # ── coding_system ──
+        "Para el campo 'coding_system', devuelve un objeto con 'uri' (URI del sistema) y 'label' (nombre). Ej: ICD-10, SNOMED CT. null si no se menciona.\n"
+
+        # ── health_theme ──
+        "Para el campo 'health_theme', devuelve un ARRAY con las URIs de temas de salud. null si no se menciona.\n"
+
+        # ── code_values ──
+        "Para el campo 'code_values', devuelve un ARRAY de strings con los valores codificados. null si no se menciona.\n"
 
         "No añadas claves extra ni texto fuera del JSON."
     )

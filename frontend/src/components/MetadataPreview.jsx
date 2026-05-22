@@ -23,6 +23,11 @@ const FIELD_INFO = {
   min_typical_age: { label: "Edad mínima típica", description: "Edad mínima típica de los individuos representados en el dataset" },
   max_typical_age: { label: "Edad máxima típica", description: "Edad máxima típica de los individuos representados en el dataset" },
   personal_data: { label: "Datos personales", description: "Indica si el dataset contiene datos personales" },
+  legal_basis: { label: "Base jurídica", description: "Base jurídica del tratamiento" },
+  retention_period: { label: "Periodo de conservación", description: "Periodo de conservación de los datos" },
+  coding_system: { label: "Sistema de codificación", description: "Sistema de codificación utilizado" },
+  health_theme: { label: "Tema de salud", description: "Tema de salud específico" },
+  code_values: { label: "Valores codificados", description: "Valores codificados del dataset" },
 };
 
 const HEALTH_CATEGORY_LABELS = {
@@ -192,6 +197,39 @@ function formatValue(key, value, schemaInfo = {}) {
             )}
           </div>
         ))}
+      </div>
+    );
+  }
+
+  if (key === "health_theme" && Array.isArray(value)) {
+    const choices = schemaInfo?.health_theme?.choices || [];
+    const labelMap = Object.fromEntries(choices.map(c => [c.value, c.label]));
+    return value.map(uri => labelMap[uri] || uri.split("/").pop()).join(", ");
+  }
+
+  if (key === "legal_basis" && typeof value === "object" && !Array.isArray(value)) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        {value.description && <span><strong>Descripción:</strong> {value.description}</span>}
+        {value.source && <span><strong>Fuente:</strong> {value.source}</span>}
+      </div>
+    );
+  }
+
+  if (key === "retention_period" && typeof value === "object" && !Array.isArray(value)) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        {value.start && <span><strong>Inicio:</strong> {value.start}</span>}
+        {value.end && <span><strong>Fin:</strong> {value.end}</span>}
+      </div>
+    );
+  }
+
+  if (key === "coding_system" && typeof value === "object" && !Array.isArray(value)) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        {value.uri && <span><strong>URI:</strong> {value.uri}</span>}
+        {value.label && <span><strong>Nombre:</strong> {value.label}</span>}
       </div>
     );
   }
