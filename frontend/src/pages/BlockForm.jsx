@@ -1,5 +1,5 @@
 // src/pages/BlockForm.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import MetadataPreview from "../components/MetadataPreview";
 import {
   completeBlock, saveManual, validateMetadata,
@@ -99,6 +99,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const [validation, setValidation] = useState(null);
   const [blockMissingInfo, setBlockMissingInfo] = useState(null);
   const [metadata, setMetadata] = useState({});
+  const textareaRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
   const [missingInfo, setMissingInfo] = useState([]);
   const [schemaInfo, setSchemaInfo] = useState({});
@@ -245,7 +246,13 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
         <MissingFieldsModal
           missingInfo={missingInfo}
           formatErrors={validation ? validation.errors.filter(e => activeFields.some(f => e.includes(f))) : []}
-          onClose={() => setShowModal(false)}
+          onClose={() => {
+            setShowModal(false);
+            setTimeout(() => {
+              textareaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+              textareaRef.current?.focus();
+            }, 100);
+          }}
         />
       )}
 
@@ -263,7 +270,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
         <div className="tab-content">
           <p className="tab-desc">{block.hint || "Describe este bloque con tus propias palabras."}</p>
           <div className="field-group">
-            <textarea className="field-textarea" placeholder={placeholder} value={userContext} onChange={(e) => setUserContext(e.target.value)} />
+            <textarea ref={textareaRef} className="field-textarea" placeholder={placeholder} value={userContext} onChange={(e) => setUserContext(e.target.value)} />
           </div>
           <button className="btn btn--primary" onClick={handleComplete} disabled={loading || !userContext.trim()}>
             {loading ? "Analizando..." : "Completar bloque"}
