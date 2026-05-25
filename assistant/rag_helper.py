@@ -195,6 +195,153 @@ FIELD_INDEX = {
         "ejemplo": "A00-B99, C00-D48",
         "bloque": "informacion_adicional"
     },
+    "publisher": {
+        "label": "Editor",
+        "obligatorio": False,
+        "descripcion": "Organización que publica el dataset, incluyendo tipo, contacto y horario.",
+        "ejemplo": "Universidad de Valencia, tipo universidad, correo datos@uv.es",
+        "bloque": "responsables_dataset"
+    },
+    "publisher_note": {
+        "label": "Nota del editor",
+        "obligatorio": False,
+        "descripcion": "Notas adicionales del editor sobre el dataset.",
+        "ejemplo": "Datos actualizados trimestralmente. Contactar para acceso especial.",
+        "bloque": "responsables_dataset"
+    },
+    "creator": {
+        "label": "Creador",
+        "obligatorio": False,
+        "descripcion": "Organización o persona que creó el dataset.",
+        "ejemplo": "ISCIII, tipo autoridad nacional, correo isciii@gob.es",
+        "bloque": "responsables_dataset"
+    },
+    "qualified_attribution": {
+        "label": "Atribución cualificada",
+        "obligatorio": False,
+        "descripcion": "Agente con un rol específico respecto al dataset (autor, custodio, financiador, etc.).",
+        "ejemplo": "Autor: Dr. García, Universidad de Valencia",
+        "bloque": "responsables_dataset"
+    },
+    "was_generated_by": {
+        "label": "Se generó por",
+        "obligatorio": False,
+        "descripcion": "Actividad sanitaria que generó los datos.",
+        "ejemplo": "Ensayo clínico, registros hospitalarios",
+        "bloque": "cobertura_temporalidad"
+    },
+    "spatial": {
+        "label": "Cobertura geográfica",
+        "obligatorio": False,
+        "descripcion": "Países o territorios que cubre el dataset.",
+        "ejemplo": "España, Francia",
+        "bloque": "cobertura_temporalidad"
+    },
+    "temporal_coverage": {
+        "label": "Cobertura temporal",
+        "obligatorio": False,
+        "descripcion": "Periodo temporal cubierto por el dataset.",
+        "ejemplo": "2020-01-01 a 2023-12-31",
+        "bloque": "cobertura_temporalidad"
+    },
+    "temporal_resolution": {
+        "label": "Resolución temporal",
+        "obligatorio": False,
+        "descripcion": "Mínima resolución temporal de los datos.",
+        "ejemplo": "P1D (diaria), PT1H (horaria)",
+        "bloque": "cobertura_temporalidad"
+    },
+    "spatial_resolution_in_meters": {
+        "label": "Resolución espacial (metros)",
+        "obligatorio": False,
+        "descripcion": "Resolución espacial del dataset en metros.",
+        "ejemplo": "100",
+        "bloque": "cobertura_temporalidad"
+    },
+    "frequency": {
+        "label": "Frecuencia",
+        "obligatorio": False,
+        "descripcion": "Frecuencia de actualización del dataset.",
+        "ejemplo": "Mensual, Anual",
+        "bloque": "cobertura_temporalidad"
+    },
+    "issued": {
+        "label": "Fecha de publicación",
+        "obligatorio": False,
+        "descripcion": "Fecha de publicación original del dataset.",
+        "ejemplo": "2023-01-15",
+        "bloque": "cobertura_temporalidad"
+    },
+    "modified": {
+        "label": "Fecha de modificación",
+        "obligatorio": False,
+        "descripcion": "Fecha de última modificación del dataset.",
+        "ejemplo": "2024-06-30",
+        "bloque": "cobertura_temporalidad"
+    },
+    "alternate_identifier": {
+        "label": "Identificador alternativo",
+        "obligatorio": False,
+        "descripcion": "Identificadores alternativos del dataset (DOI, URN, etc.).",
+        "ejemplo": "DOI:10.1234/xyz",
+        "bloque": "relaciones_versionado"
+    },
+    "conforms_to": {
+        "label": "Se ajusta a",
+        "obligatorio": False,
+        "descripcion": "Estándar o especificación al que se ajusta el dataset.",
+        "ejemplo": "DCAT-AP 2.1",
+        "bloque": "relaciones_versionado"
+    },
+    "related_resource": {
+        "label": "Recurso relacionado",
+        "obligatorio": False,
+        "descripcion": "Recurso relacionado con el dataset.",
+        "ejemplo": "https://example.org/related-dataset",
+        "bloque": "relaciones_versionado"
+    },
+    "is_referenced_by": {
+        "label": "Está referenciado por",
+        "obligatorio": False,
+        "descripcion": "Recursos que referencian este dataset.",
+        "ejemplo": "https://doi.org/10.1234/paper",
+        "bloque": "relaciones_versionado"
+    },
+    "url": {
+        "label": "Página de entrada",
+        "obligatorio": False,
+        "descripcion": "URL de la página de entrada (landing page) del dataset.",
+        "ejemplo": "https://datos.gob.es/dataset/xyz",
+        "bloque": "relaciones_versionado"
+    },
+    "documentation": {
+        "label": "Documentación",
+        "obligatorio": False,
+        "descripcion": "Documentación asociada al dataset.",
+        "ejemplo": "https://example.org/docs",
+        "bloque": "relaciones_versionado"
+    },
+    "version": {
+        "label": "Versión",
+        "obligatorio": False,
+        "descripcion": "Versión actual del dataset.",
+        "ejemplo": "2.0",
+        "bloque": "relaciones_versionado"
+    },
+    "has_version": {
+        "label": "Tiene versión",
+        "obligatorio": False,
+        "descripcion": "Versiones disponibles del dataset.",
+        "ejemplo": "1.0, 1.1, 2.0",
+        "bloque": "relaciones_versionado"
+    },
+    "version_notes": {
+        "label": "Notas de versión",
+        "obligatorio": False,
+        "descripcion": "Notas sobre la versión actual.",
+        "ejemplo": "Corregidos errores de codificación en variables clínicas.",
+        "bloque": "relaciones_versionado"
+    },
 }
 
 # ─────────────────────────────────────────────────────────────

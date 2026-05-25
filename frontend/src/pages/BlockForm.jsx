@@ -32,6 +32,27 @@ const FIELD_LABELS_ES = {
   coding_system: "Sistema de codificación",
   health_theme: "Tema de salud",
   code_values: "Valores codificados",
+  publisher: "Editor",
+  publisher_note: "Nota del editor",
+  creator: "Creador",
+  qualified_attribution: "Atribución cualificada",
+  was_generated_by: "Se generó por",
+  spatial: "Cobertura geográfica",
+  temporal_coverage: "Cobertura temporal",
+  temporal_resolution: "Resolución temporal",
+  spatial_resolution_in_meters: "Resolución espacial (metros)",
+  frequency: "Frecuencia",
+  issued: "Fecha de publicación",
+  modified: "Fecha de modificación",
+  alternate_identifier: "Identificador alternativo",
+  conforms_to: "Se ajusta a",
+  related_resource: "Recurso relacionado",
+  is_referenced_by: "Está referenciado por",
+  url: "Página de entrada",
+  documentation: "Documentación",
+  version: "Versión",
+  has_version: "Tiene versión",
+  version_notes: "Notas de versión",
 };
 
 const NON_PUBLIC_URI = "NON_PUBLIC";
@@ -475,6 +496,175 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                       <div key={sf.field_name} className="field-group">
                         <label className="field-label">{sf.label}</label>
                         <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={codingValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, coding_system: { ...codingValues, [sf.field_name]: e.target.value } })} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            if (field === "publisher" && fieldSchema.subfields) {
+              const pubValues = manualFields.publisher || {};
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
+                  <div className="hdab-subfields">
+                    {fieldSchema.subfields.map(sf => {
+                      if (sf.choices) {
+                        return (
+                          <div key={sf.field_name} className="field-group">
+                            <label className="field-label">{sf.label}</label>
+                            <select className="field-select" value={pubValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, publisher: { ...pubValues, [sf.field_name]: e.target.value } })}>
+                              <option value="">— Selecciona —</option>
+                              {sf.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                            </select>
+                          </div>
+                        );
+                      }
+                      return (
+                        <div key={sf.field_name} className="field-group">
+                          <label className="field-label">{sf.label}</label>
+                          <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={pubValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, publisher: { ...pubValues, [sf.field_name]: e.target.value } })} />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            }
+
+            if (field === "creator" && fieldSchema.subfields) {
+              const creatorValues = manualFields.creator || {};
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
+                  <div className="hdab-subfields">
+                    {fieldSchema.subfields.map(sf => {
+                      if (sf.choices) {
+                        return (
+                          <div key={sf.field_name} className="field-group">
+                            <label className="field-label">{sf.label}</label>
+                            <select className="field-select" value={creatorValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, creator: { ...creatorValues, [sf.field_name]: e.target.value } })}>
+                              <option value="">— Selecciona —</option>
+                              {sf.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                            </select>
+                          </div>
+                        );
+                      }
+                      return (
+                        <div key={sf.field_name} className="field-group">
+                          <label className="field-label">{sf.label}</label>
+                          <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={creatorValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, creator: { ...creatorValues, [sf.field_name]: e.target.value } })} />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            }
+
+            if (field === "qualified_attribution" && fieldSchema.subfields) {
+              const qaValues = manualFields.qualified_attribution || {};
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
+                  <div className="hdab-subfields">
+                    {fieldSchema.subfields.map(sf => {
+                      if (sf.choices) {
+                        return (
+                          <div key={sf.field_name} className="field-group">
+                            <label className="field-label">{sf.label}</label>
+                            <select className="field-select" value={qaValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, qualified_attribution: { ...qaValues, [sf.field_name]: e.target.value } })}>
+                              <option value="">— Selecciona —</option>
+                              {sf.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                            </select>
+                          </div>
+                        );
+                      }
+                      return (
+                        <div key={sf.field_name} className="field-group">
+                          <label className="field-label">{sf.label}</label>
+                          <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={qaValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, qualified_attribution: { ...qaValues, [sf.field_name]: e.target.value } })} />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            }
+
+            if (field === "was_generated_by" && fieldSchema.choices) {
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label">{fieldLabel}</label>
+                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
+                    <option value="">— Selecciona una actividad —</option>
+                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                  </select>
+                </div>
+              );
+            }
+
+            if (field === "spatial" && fieldSchema.choices) {
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label">{fieldLabel}</label>
+                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
+                    <option value="">— Selecciona un país —</option>
+                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                  </select>
+                </div>
+              );
+            }
+
+            if (field === "temporal_coverage" && fieldSchema.subfields) {
+              const tcValues = manualFields.temporal_coverage || {};
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
+                  <div className="hdab-subfields">
+                    {fieldSchema.subfields.map(sf => (
+                      <div key={sf.field_name} className="field-group">
+                        <label className="field-label">{sf.label}</label>
+                        <input className="field-input" type="date" value={tcValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, temporal_coverage: { ...tcValues, [sf.field_name]: e.target.value } })} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            if (field === "frequency" && fieldSchema.choices) {
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label">{fieldLabel}</label>
+                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
+                    <option value="">— Selecciona frecuencia —</option>
+                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                  </select>
+                </div>
+              );
+            }
+
+            if ((field === "issued" || field === "modified") && !fieldSchema.choices) {
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label">{fieldLabel}</label>
+                  <input className="field-input" type="date" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })} />
+                </div>
+              );
+            }
+
+            if ((field === "conforms_to" || field === "related_resource" || field === "documentation") && fieldSchema.subfields) {
+              const objValues = manualFields[field] || {};
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
+                  <div className="hdab-subfields">
+                    {fieldSchema.subfields.map(sf => (
+                      <div key={sf.field_name} className="field-group">
+                        <label className="field-label">{sf.label}</label>
+                        <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={objValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: { ...objValues, [sf.field_name]: e.target.value } })} />
                       </div>
                     ))}
                   </div>

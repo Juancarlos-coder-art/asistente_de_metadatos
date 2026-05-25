@@ -483,6 +483,12 @@ def get_schema_info(lang: str = "es"):
         "legal_basis": "legal_basis",
         "retention_period": "retention_period",
         "coding_system": "coding_system",
+        "publisher": "publisher",
+        "creator": "creator",
+        "qualified_attribution": "qualified_attribution",
+        "was_generated_by": "was_generated_by",
+        "spatial": "spatial",
+        "frequency": "frequency",
     }
     info = {}
     for field_key, yaml_field_name in field_map.items():

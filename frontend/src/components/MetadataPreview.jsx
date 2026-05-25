@@ -28,6 +28,27 @@ const FIELD_INFO = {
   coding_system: { label: "Sistema de codificación", description: "Sistema de codificación utilizado" },
   health_theme: { label: "Tema de salud", description: "Tema de salud específico" },
   code_values: { label: "Valores codificados", description: "Valores codificados del dataset" },
+  publisher: { label: "Editor", description: "Organización que publica el dataset" },
+  publisher_note: { label: "Nota del editor", description: "Notas adicionales del editor" },
+  creator: { label: "Creador", description: "Organización o persona que creó el dataset" },
+  qualified_attribution: { label: "Atribución cualificada", description: "Agente con rol específico" },
+  was_generated_by: { label: "Se generó por", description: "Actividad sanitaria que generó los datos" },
+  spatial: { label: "Cobertura geográfica", description: "Países o territorios cubiertos" },
+  temporal_coverage: { label: "Cobertura temporal", description: "Periodo temporal cubierto" },
+  temporal_resolution: { label: "Resolución temporal", description: "Mínima resolución temporal" },
+  spatial_resolution_in_meters: { label: "Resolución espacial (m)", description: "Resolución espacial en metros" },
+  frequency: { label: "Frecuencia", description: "Frecuencia de actualización" },
+  issued: { label: "Fecha de publicación", description: "Fecha de publicación original" },
+  modified: { label: "Fecha de modificación", description: "Última modificación" },
+  alternate_identifier: { label: "Identificador alternativo", description: "DOI, URN u otros identificadores" },
+  conforms_to: { label: "Se ajusta a", description: "Estándar al que se ajusta" },
+  related_resource: { label: "Recurso relacionado", description: "Recurso relacionado" },
+  is_referenced_by: { label: "Referenciado por", description: "Recursos que referencian este dataset" },
+  url: { label: "Página de entrada", description: "Landing page del dataset" },
+  documentation: { label: "Documentación", description: "Documentación asociada" },
+  version: { label: "Versión", description: "Versión actual" },
+  has_version: { label: "Tiene versión", description: "Versiones disponibles" },
+  version_notes: { label: "Notas de versión", description: "Notas sobre la versión" },
 };
 
 const HEALTH_CATEGORY_LABELS = {
@@ -230,6 +251,88 @@ function formatValue(key, value, schemaInfo = {}) {
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
         {value.uri && <span><strong>URI:</strong> {value.uri}</span>}
         {value.label && <span><strong>Nombre:</strong> {value.label}</span>}
+      </div>
+    );
+  }
+
+  if (key === "publisher" && typeof value === "object" && !Array.isArray(value)) {
+    const typeCode = value.type ? value.type.split("/").pop() : null;
+    const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        {value.name && <span><strong>Nombre:</strong> {value.name}</span>}
+        {value.email && <span><strong>Email:</strong> {value.email}</span>}
+        {value.telephone && <span><strong>Teléfono:</strong> {value.telephone}</span>}
+        {value.contact_page && <span><strong>Web:</strong> <a href={value.contact_page} target="_blank" rel="noreferrer">{value.contact_page}</a></span>}
+        {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
+        {value.opening_hours_description && <span><strong>Horario:</strong> {value.opening_hours_description}</span>}
+        {value.opening_hours_frequency && <span><strong>Frecuencia horario:</strong> {value.opening_hours_frequency.split("/").pop()}</span>}
+        {value.special_opening_hours_description && <span><strong>Horario especial:</strong> {value.special_opening_hours_description}</span>}
+        {value.special_opening_hours_frequency && <span><strong>Frecuencia horario especial:</strong> {value.special_opening_hours_frequency.split("/").pop()}</span>}
+      </div>
+    );
+  }
+
+  if (key === "creator" && typeof value === "object" && !Array.isArray(value)) {
+    const typeCode = value.type ? value.type.split("/").pop() : null;
+    const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        {value.name && <span><strong>Nombre:</strong> {value.name}</span>}
+        {value.email && <span><strong>Email:</strong> {value.email}</span>}
+        {value.url && <span><strong>URL:</strong> <a href={value.url} target="_blank" rel="noreferrer">{value.url}</a></span>}
+        {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
+      </div>
+    );
+  }
+
+  if (key === "qualified_attribution" && typeof value === "object" && !Array.isArray(value)) {
+    const typeCode = value.qualified_attribution_agent_type ? value.qualified_attribution_agent_type.split("/").pop() : null;
+    const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
+    const roleCode = value.qualified_attribution_role ? value.qualified_attribution_role.split("#").pop() : null;
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        {value.qualified_attribution_agent_name && <span><strong>Nombre:</strong> {value.qualified_attribution_agent_name}</span>}
+        {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
+        {value.qualified_attribution_agent_email && <span><strong>Email:</strong> {value.qualified_attribution_agent_email}</span>}
+        {value.qualified_attribution_agent_contact_page && <span><strong>Web:</strong> <a href={value.qualified_attribution_agent_contact_page} target="_blank" rel="noreferrer">{value.qualified_attribution_agent_contact_page}</a></span>}
+        {roleCode && <span><strong>Rol:</strong> {roleCode}</span>}
+      </div>
+    );
+  }
+
+  if (key === "was_generated_by" && Array.isArray(value)) {
+    const choices = schemaInfo?.was_generated_by?.choices || [];
+    const labelMap = Object.fromEntries(choices.map(c => [c.value, c.label]));
+    return value.map(uri => labelMap[uri] || uri.split("/").pop()).join(", ");
+  }
+
+  if (key === "spatial" && Array.isArray(value)) {
+    const choices = schemaInfo?.spatial?.choices || [];
+    const labelMap = Object.fromEntries(choices.map(c => [c.value, c.label]));
+    return value.map(uri => labelMap[uri] || uri.split("/").pop()).join(", ");
+  }
+
+  if (key === "temporal_coverage" && typeof value === "object" && !Array.isArray(value)) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        {value.start && <span><strong>Inicio:</strong> {value.start}</span>}
+        {value.end && <span><strong>Fin:</strong> {value.end}</span>}
+      </div>
+    );
+  }
+
+  if (key === "frequency" && typeof value === "string") {
+    const choices = schemaInfo?.frequency?.choices || [];
+    const match = choices.find(c => c.value === value);
+    return match ? match.label : value.split("/").pop();
+  }
+
+  if ((key === "conforms_to" || key === "related_resource" || key === "documentation") && typeof value === "object" && !Array.isArray(value)) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        {value.uri && <span><strong>URI:</strong> <a href={value.uri} target="_blank" rel="noreferrer">{value.uri}</a></span>}
+        {value.label && <span><strong>Etiqueta:</strong> {value.label}</span>}
       </div>
     );
   }

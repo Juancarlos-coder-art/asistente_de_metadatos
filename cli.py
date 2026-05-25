@@ -125,6 +125,77 @@ BLOCKS = [
         "placeholder": "Ej.: https://datos.gob.es/dataset/xyz",
         "placeholder_en": "E.g.: https://data.europa.eu/dataset/xyz",
     },
+    {
+        "name": "responsables_dataset",
+        "name_en": "Dataset Responsible Parties",
+        "fields": ["publisher", "publisher_note", "creator", "qualified_attribution"],
+        "question": (
+            "Indica quién es el editor (publicador) y el creador de este dataset.\n\n"
+            "Para el editor, proporciona el nombre de la organización, su tipo (universidad, autoridad nacional, etc.), "
+            "el correo electrónico, teléfono, página de contacto y, si lo conoces, "
+            "la descripción y frecuencia del horario de atención.\n\n"
+            "Para el creador, proporciona el nombre, correo, URL y tipo de organización.\n\n"
+            "Si hay alguna atribución cualificada (agentes con un rol específico como autor, custodio, financiador, etc.), "
+            "indícalo también con su nombre, tipo, contacto y rol."
+        ),
+        "question_en": (
+            "Indicate who is the publisher and creator of this dataset.\n\n"
+            "For the publisher, provide the organisation name, its type (university, national authority, etc.), "
+            "the email, phone, contact page and, if known, "
+            "the description and frequency of opening hours.\n\n"
+            "For the creator, provide the name, email, URL and organisation type.\n\n"
+            "If there is any qualified attribution (agents with a specific role such as author, custodian, funder, etc.), "
+            "include their name, type, contact and role."
+        ),
+        "hint": "Indica el editor, creador y atribuciones cualificadas del dataset.",
+        "hint_en": "Provide the publisher, creator and qualified attributions of the dataset.",
+        "placeholder": "Ej.: El editor es la Universidad de Valencia, correo datos@uv.es. El creador es el ISCIII, correo isciii@gob.es...",
+        "placeholder_en": "E.g.: The publisher is the University of Valencia, email datos@uv.es. The creator is ISCIII, email isciii@gob.es...",
+    },
+    {
+        "name": "cobertura_temporalidad",
+        "name_en": "Coverage and Temporality",
+        "fields": ["was_generated_by", "spatial", "temporal_coverage", "temporal_resolution", "spatial_resolution_in_meters", "frequency", "issued", "modified"],
+        "question": (
+            "Proporciona información sobre la cobertura y temporalidad del dataset.\n\n"
+            "Indica cómo se generaron los datos (ensayo clínico, encuesta, registros hospitalarios, etc.), "
+            "la cobertura geográfica (países), el periodo temporal cubierto, "
+            "la resolución temporal y espacial, la frecuencia de actualización, "
+            "y las fechas de publicación y última modificación."
+        ),
+        "question_en": (
+            "Provide information about the dataset's coverage and temporality.\n\n"
+            "Indicate how the data was generated (clinical trial, survey, hospital records, etc.), "
+            "the geographical coverage (countries), the temporal period covered, "
+            "the temporal and spatial resolution, the update frequency, "
+            "and the publication and last modification dates."
+        ),
+        "hint": "Describe cómo se generaron los datos, su cobertura geográfica y temporal, frecuencia y fechas.",
+        "hint_en": "Describe how the data was generated, its geographic and temporal coverage, frequency and dates.",
+        "placeholder": "Ej.: Datos generados por registros hospitalarios, cobertura en España, periodo 2020-2023, actualización mensual...",
+        "placeholder_en": "E.g.: Data generated from hospital records, coverage in Spain, period 2020-2023, monthly update...",
+    },
+    {
+        "name": "relaciones_versionado",
+        "name_en": "Relationships and Versioning",
+        "fields": ["alternate_identifier", "conforms_to", "related_resource", "is_referenced_by", "url", "documentation", "version", "has_version", "version_notes"],
+        "question": (
+            "Proporciona información sobre identificadores alternativos, estándares, "
+            "recursos relacionados, documentación y versionado del dataset.\n\n"
+            "Incluye la página de entrada (landing page), documentación asociada, "
+            "la versión actual y sus notas si están disponibles."
+        ),
+        "question_en": (
+            "Provide information about alternate identifiers, standards, "
+            "related resources, documentation and versioning of the dataset.\n\n"
+            "Include the landing page, associated documentation, "
+            "the current version and its notes if available."
+        ),
+        "hint": "Indica identificadores alternativos, estándares, recursos relacionados, documentación y versión.",
+        "hint_en": "Provide alternate identifiers, standards, related resources, documentation and version.",
+        "placeholder": "Ej.: Identificador alternativo DOI:10.1234/xyz. Se ajusta a DCAT-AP. Versión 2.0...",
+        "placeholder_en": "E.g.: Alternate identifier DOI:10.1234/xyz. Conforms to DCAT-AP. Version 2.0...",
+    },
 ]
 
 def is_non_public(state_data: dict) -> bool:
@@ -248,6 +319,111 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
 
         # ── code_values ──
         "Para el campo 'code_values', devuelve un ARRAY de strings con los valores codificados. null si no se menciona.\n"
+
+        # ── publisher ──
+        "Para el campo 'publisher', devuelve un objeto con EXACTAMENTE estas claves:\n"
+        "  name (string), type (URI del tipo de organismo), email (string o null),\n"
+        "  telephone (string o null), contact_page (URL o null),\n"
+        "  opening_hours_description (string o null), opening_hours_frequency (URI de frecuencia o null),\n"
+        "  special_opening_hours_description (string o null), special_opening_hours_frequency (URI de frecuencia o null).\n"
+        "Para 'type', usa la URI más adecuada, por ejemplo:\n"
+        "- Universidad → http://13.81.34.152:1101/resource/authority/publisher-type/university\n"
+        "- Autoridad nacional → http://13.81.34.152:1101/resource/authority/publisher-type/national-authority\n"
+        "- Autoridad regional → http://13.81.34.152:1101/resource/authority/publisher-type/regional-authority\n"
+        "- Agencia de estadísticas → http://13.81.34.152:1101/resource/authority/publisher-type/stat-agency\n"
+        "- Biobanco → http://13.81.34.152:1101/resource/authority/publisher-type/biobank\n"
+        "No uses claves en español ni inventes URIs.\n"
+
+        # ── publisher_note ──
+        "Para el campo 'publisher_note', devuelve un ARRAY de strings con las notas del editor. null si no se menciona.\n"
+
+        # ── creator ──
+        "Para el campo 'creator', devuelve un objeto con EXACTAMENTE estas claves:\n"
+        "  name (string), email (string o null), url (URL o null), type (URI del tipo de organismo).\n"
+        "Para 'type', usa las mismas URIs que para publisher, por ejemplo:\n"
+        "- Universidad → http://13.81.34.152:1101/resource/authority/publisher-type/university\n"
+        "- Autoridad nacional → http://13.81.34.152:1101/resource/authority/publisher-type/national-authority\n"
+        "No uses claves en español ni inventes URIs.\n"
+
+        # ── qualified_attribution ──
+        "Para el campo 'qualified_attribution', devuelve un objeto con EXACTAMENTE estas claves:\n"
+        "  qualified_attribution_agent_name (string), qualified_attribution_agent_type (URI del tipo),\n"
+        "  qualified_attribution_agent_contact_page (URL o null), qualified_attribution_agent_email (string o null),\n"
+        "  qualified_attribution_role (URI del rol ISO 19115).\n"
+        "Para 'qualified_attribution_agent_type', usa las mismas URIs de publisher-type.\n"
+        "Para 'qualified_attribution_role', usa URIs como:\n"
+        "- Autor → https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#author\n"
+        "- Custodio → https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#custodian\n"
+        "- Financiador → https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#funder\n"
+        "- Propietario → https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#owner\n"
+        "null si no se menciona.\n"
+
+        # ── was_generated_by ──
+        "Para el campo 'was_generated_by', devuelve un ARRAY con las URIs de actividad sanitaria. Ejemplos:\n"
+        "- Ensayo clínico → http://13.81.34.152:1101/resource/authority/health-activity/CLINICAL_TRIAL\n"
+        "- Registros hospitalarios → http://13.81.34.152:1101/resource/authority/health-activity/HOSPITAL_RECORDS\n"
+        "- Encuesta de salud → http://13.81.34.152:1101/resource/authority/health-activity/HEALTH_SURVEY\n"
+        "- Proyecto de investigación → http://13.81.34.152:1101/resource/authority/health-activity/RESEARCH_PROJECT\n"
+        "null si no se menciona.\n"
+
+        # ── spatial ──
+        "Para el campo 'spatial', devuelve un ARRAY con las URIs de país. Ejemplos:\n"
+        "- España → http://publications.europa.eu/resource/authority/country/ESP\n"
+        "- Francia → http://publications.europa.eu/resource/authority/country/FRA\n"
+        "- Alemania → http://publications.europa.eu/resource/authority/country/DEU\n"
+        "- Italia → http://publications.europa.eu/resource/authority/country/ITA\n"
+        "null si no se menciona.\n"
+
+        # ── temporal_coverage ──
+        "Para el campo 'temporal_coverage', devuelve un objeto con 'start' (fecha YYYY-MM-DD o null) y 'end' (fecha YYYY-MM-DD o null). null si no se menciona.\n"
+
+        # ── temporal_resolution ──
+        "Para el campo 'temporal_resolution', devuelve un string con la resolución temporal (ej: 'P1D' para diaria, 'PT1H' para horaria, 'P1M' para mensual). null si no se menciona.\n"
+
+        # ── spatial_resolution_in_meters ──
+        "Para el campo 'spatial_resolution_in_meters', devuelve un string con la resolución espacial en metros. null si no se menciona.\n"
+
+        # ── frequency ──
+        "Para el campo 'frequency', devuelve la URI de frecuencia. Ejemplos:\n"
+        "- Diario → http://publications.europa.eu/resource/authority/frequency/DAILY\n"
+        "- Semanal → http://publications.europa.eu/resource/authority/frequency/WEEKLY\n"
+        "- Mensual → http://publications.europa.eu/resource/authority/frequency/MONTHLY\n"
+        "- Anual → http://publications.europa.eu/resource/authority/frequency/ANNUAL\n"
+        "- Trimestral → http://publications.europa.eu/resource/authority/frequency/QUARTERLY\n"
+        "null si no se menciona.\n"
+
+        # ── issued ──
+        "Para el campo 'issued', devuelve la fecha de publicación en formato YYYY-MM-DD. null si no se menciona.\n"
+
+        # ── modified ──
+        "Para el campo 'modified', devuelve la fecha de última modificación en formato YYYY-MM-DD. null si no se menciona.\n"
+
+        # ── alternate_identifier ──
+        "Para el campo 'alternate_identifier', devuelve un ARRAY de strings con identificadores alternativos (DOI, URN, etc.). null si no se menciona.\n"
+
+        # ── conforms_to ──
+        "Para el campo 'conforms_to', devuelve un objeto con 'uri' (URI del estándar) y 'label' (nombre). null si no se menciona.\n"
+
+        # ── related_resource ──
+        "Para el campo 'related_resource', devuelve un objeto con 'uri' (URI del recurso) y 'label' (nombre). null si no se menciona.\n"
+
+        # ── is_referenced_by ──
+        "Para el campo 'is_referenced_by', devuelve un ARRAY de strings con URIs de recursos que referencian al dataset. null si no se menciona.\n"
+
+        # ── url (landing page) ──
+        "Para el campo 'url', devuelve la URL de la página de entrada del dataset. null si no se menciona.\n"
+
+        # ── documentation ──
+        "Para el campo 'documentation', devuelve un objeto con 'uri' (URI) y 'label' (nombre). null si no se menciona.\n"
+
+        # ── version ──
+        "Para el campo 'version', devuelve un string con la versión (ej: '1.0', '2.3.1'). null si no se menciona.\n"
+
+        # ── has_version ──
+        "Para el campo 'has_version', devuelve un ARRAY de strings con versiones disponibles. null si no se menciona.\n"
+
+        # ── version_notes ──
+        "Para el campo 'version_notes', devuelve un string con las notas de versión. null si no se menciona.\n"
 
         "No añadas claves extra ni texto fuera del JSON."
     )
