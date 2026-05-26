@@ -50,7 +50,7 @@ def groq_llm(prompt: str) -> dict:
             {"role": "user", "content": prompt}
         ],
         temperature=0.4,
-        max_tokens=1024,
+        max_tokens=4096,
     )
 
     raw = response.choices[0].message.content
