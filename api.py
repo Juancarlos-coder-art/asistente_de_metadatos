@@ -197,6 +197,134 @@ DATASET_TYPES = {
     "taxonomía": "http://publications.europa.eu/resource/authority/dataset-type/TAXONOMY",
     "tesauro": "http://publications.europa.eu/resource/authority/dataset-type/THESAURUS",
 }
+HEALTH_ACTIVITIES = {
+    "aplicación de sanidad electrónica": "http://13.81.34.152:1101/resource/authority/health-activity/EHEALTH_APPLICATION",
+    "aplicación no médica": "http://13.81.34.152:1101/resource/authority/health-activity/NONMEDICAL_APPLICATION",
+    "base de datos de historiales hospitalarios": "http://13.81.34.152:1101/resource/authority/health-activity/HOSPITAL_RECORDS",
+    "base de datos de investigación específica": "http://13.81.34.152:1101/resource/authority/health-activity/RESEARCH_DATABASE",
+    "biobanco/recogida de muestras": "http://13.81.34.152:1101/resource/authority/health-activity/BIOBANK_COLLECTION",
+    "cohorte": "http://13.81.34.152:1101/resource/authority/health-activity/COHORT",
+    "colecciones de muestras": "http://13.81.34.152:1101/resource/authority/health-activity/SAMPLE_COLLECTIONS",
+    "datos de observación": "http://13.81.34.152:1101/resource/authority/health-activity/OBSERVATIONAL_DATA",
+    "datos del censo": "http://13.81.34.152:1101/resource/authority/health-activity/CENSUS_DATA",
+    "encuesta de probabilidad": "http://13.81.34.152:1101/resource/authority/health-activity/PROBABILITY_SURVEY",
+    "encuesta de salud": "http://13.81.34.152:1101/resource/authority/health-activity/HEALTH_SURVEY",
+    "ensayo clínico": "http://13.81.34.152:1101/resource/authority/health-activity/CLINICAL_TRIAL",
+    "generado automáticamente": "http://13.81.34.152:1101/resource/authority/health-activity/AUTOMATIC_GENERATION",
+    "ingreso, atención y alta del paciente": "http://13.81.34.152:1101/resource/authority/health-activity/ADMISSION_DISCHARGE",
+    "mediciones": "http://13.81.34.152:1101/resource/authority/health-activity/MEASUREMENTS",
+    "modelos y simulaciones": "http://13.81.34.152:1101/resource/authority/health-activity/MODELS_SIMULATIONS",
+    "prescripción o dispensación de medicamentos": "http://13.81.34.152:1101/resource/authority/health-activity/PRESCRIBING_DISPENSING",
+    "procesos administrativos": "http://13.81.34.152:1101/resource/authority/health-activity/ADMINISTRATIVE_PROCESSES",
+    "prom (medidas de resultados comunicados por los pacientes)": "http://13.81.34.152:1101/resource/authority/health-activity/PATIENT_OUTCOMES",
+    "proyecto de investigación": "http://13.81.34.152:1101/resource/authority/health-activity/RESEARCH_PROJECT",
+    "pruebas de laboratorio": "http://13.81.34.152:1101/resource/authority/health-activity/LABORATORY_TESTS",
+    "reclamaciones, seguros y reembolsos": "http://13.81.34.152:1101/resource/authority/health-activity/INSURANCE_CLAIMS",
+    "registro de calidad": "http://13.81.34.152:1101/resource/authority/health-activity/QUALITY_REGISTRY",
+    "registro médico": "http://13.81.34.152:1101/resource/authority/health-activity/MEDICAL_REGISTRY",
+    "registros de rutina (no sanitarios)": "http://13.81.34.152:1101/resource/authority/health-activity/ROUTINE_RECORDS",
+    "registros nacionales de calidad médica": "http://13.81.34.152:1101/resource/authority/health-activity/QUALITY_REGISTRIES",
+    "registros nacionales de salud": "http://13.81.34.152:1101/resource/authority/health-activity/HEALTH_REGISTRIES",
+    "repositorio municipal de datos sanitarios": "http://13.81.34.152:1101/resource/authority/health-activity/MUNICIPAL_REPOSITORY",
+    "seguimiento geoespacial": "http://13.81.34.152:1101/resource/authority/health-activity/GEOSPATIAL_MONITORING",
+    "uso de productos sanitarios": "http://13.81.34.152:1101/resource/authority/health-activity/MEDICAL_DEVICES",
+    "vigilancia": "http://13.81.34.152:1101/resource/authority/health-activity/SURVEILLANCE",
+    "vigilancia de enfermedades infecciosas": "http://13.81.34.152:1101/resource/authority/health-activity/DISEASE_MONITORING",
+    "vigilancia de la salud pública": "http://13.81.34.152:1101/resource/authority/health-activity/HEALTH_SURVEILLANCE",
+    "visita sanitaria": "http://13.81.34.152:1101/resource/authority/health-activity/HEALTHCARE_VISIT",
+}
+
+HEALTH_THEMES = {
+    "clima y salud planetaria": "http://13.81.34.152:1101/resource/authority/health-theme/CLIMATE_HEALTH",
+    "cáncer": "http://13.81.34.152:1101/resource/authority/health-theme/CANCER_DISEASE",
+    "emergencias, catástrofes, viajes y entornos humanitarios": "http://13.81.34.152:1101/resource/authority/health-theme/EMERGENCY_SETTINGS",
+    "enfermedades cutáneas tropicales, parasitarias y fúngicas desatendidas": "http://13.81.34.152:1101/resource/authority/health-theme/TROPICAL_DISEASES",
+    "enfermedades infecciosas respiratorias": "http://13.81.34.152:1101/resource/authority/health-theme/RESPIRATORY_DISEASES",
+    "enfermedades no transmisibles: metabólicas y cardiopulmonares": "http://13.81.34.152:1101/resource/authority/health-theme/NONCOMMUNICABLE_DISEASES",
+    "enfermedades víricas de transmisión vectorial y zoonóticas": "http://13.81.34.152:1101/resource/authority/health-theme/VECTOR_DISEASES",
+    "infecciones de transmisión sanguínea y de transmisión sexual": "http://13.81.34.152:1101/resource/authority/health-theme/BLOOD_INFECTIONS",
+    "infecciones entéricas, transmitidas por el agua y los alimentos": "http://13.81.34.152:1101/resource/authority/health-theme/ENTERIC_INFECTIONS",
+    "inmunización y enfermedades prevenibles mediante vacunación": "http://13.81.34.152:1101/resource/authority/health-theme/IMMUNIZATION_DISEASES",
+    "lesiones, envenenamiento y ahogamiento": "http://13.81.34.152:1101/resource/authority/health-theme/INJURY_PREVENTION",
+    "nutrición y seguridad alimentaria": "http://13.81.34.152:1101/resource/authority/health-theme/NUTRITION_SECURITY",
+    "productos sanitarios, tecnologías, datos e investigación": "http://13.81.34.152:1101/resource/authority/health-theme/HEALTH_PRODUCTS",
+    "resistencia a los antimicrobianos y control de las infecciones": "http://13.81.34.152:1101/resource/authority/health-theme/ANTIMICROBIAL_CONTROL",
+    "salud a lo largo de la vida: materna, neonatal, infantil, adolescente y envejecimiento": "http://13.81.34.152:1101/resource/authority/health-theme/LIFECOURSE_HEALTH",
+    "salud ambiental, laboral y radiológica (incl. wash y urbana)": "http://13.81.34.152:1101/resource/authority/health-theme/ENVIRONMENTAL_HEALTH",
+    "salud bucal, ocular y sensorial": "http://13.81.34.152:1101/resource/authority/health-theme/SENSORY_HEALTH",
+    "salud y derechos sexuales y reproductivos": "http://13.81.34.152:1101/resource/authority/health-theme/REPRODUCTIVE_HEALTH",
+    "sistemas de salud, calidad, modelos de atención y determinantes": "http://13.81.34.152:1101/resource/authority/health-theme/HEALTH_SYSTEMS",
+    "uso de sustancias mentales, neurológicas y": "http://13.81.34.152:1101/resource/authority/health-theme/MENTAL_HEALTH",
+}
+
+FREQUENCIES = {
+    "anual": "http://publications.europa.eu/resource/authority/frequency/ANNUAL",
+    "bienal": "http://publications.europa.eu/resource/authority/frequency/BIENNIAL",
+    "bimensual": "http://publications.europa.eu/resource/authority/frequency/MONTHLY_2",
+    "bimestral": "http://publications.europa.eu/resource/authority/frequency/BIMONTHLY",
+    "bisemanal": "http://publications.europa.eu/resource/authority/frequency/WEEKLY_2",
+    "continuo": "http://publications.europa.eu/resource/authority/frequency/CONT",
+    "continuamente actualizado": "http://publications.europa.eu/resource/authority/frequency/UPDATE_CONT",
+    "cuatrimestral": "http://publications.europa.eu/resource/authority/frequency/ANNUAL_3",
+    "diario": "http://publications.europa.eu/resource/authority/frequency/DAILY",
+    "dos veces al día": "http://publications.europa.eu/resource/authority/frequency/DAILY_2",
+    "en función de las necesidades": "http://publications.europa.eu/resource/authority/frequency/AS_NEEDED",
+    "irregular": "http://publications.europa.eu/resource/authority/frequency/IRREG",
+    "mensual": "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
+    "no previsto": "http://publications.europa.eu/resource/authority/frequency/NOT_PLANNED",
+    "nunca": "http://publications.europa.eu/resource/authority/frequency/NEVER",
+    "otro": "http://publications.europa.eu/resource/authority/frequency/OTHER",
+    "quincenal": "http://publications.europa.eu/resource/authority/frequency/BIWEEKLY",
+    "semanal": "http://publications.europa.eu/resource/authority/frequency/WEEKLY",
+    "semestral": "http://publications.europa.eu/resource/authority/frequency/ANNUAL_2",
+    "trimestral": "http://publications.europa.eu/resource/authority/frequency/QUARTERLY",
+    "trienal": "http://publications.europa.eu/resource/authority/frequency/TRIENNIAL",
+    "desconocido": "http://publications.europa.eu/resource/authority/frequency/UNKNOWN",
+}
+
+ATTRIBUTION_ROLES = {
+    "autor": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#author",
+    "co autor": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#coAuthor",
+    "colaborador": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#collaborator",
+    "contribuyente": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#contributor",
+    "custodio": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#custodian",
+    "distribuidor": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#distributor",
+    "editor": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#publisher",
+    "financiador": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#funder",
+    "investigador principal": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#principalInvestigator",
+    "originador": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#originator",
+    "propietario": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#owner",
+    "punto de contacto": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#pointOfContact",
+    "titular de los derechos": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#rightsHolder",
+    "usuario": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#user",
+}
+
+# Solo países más relevantes para datasets sanitarios europeos
+SPATIAL_COUNTRIES = {
+    "españa": "http://publications.europa.eu/resource/authority/country/ESP",
+    "alemania": "http://publications.europa.eu/resource/authority/country/DEU",
+    "francia": "http://publications.europa.eu/resource/authority/country/FRA",
+    "italia": "http://publications.europa.eu/resource/authority/country/ITA",
+    "portugal": "http://publications.europa.eu/resource/authority/country/PRT",
+    "países bajos": "http://publications.europa.eu/resource/authority/country/NLD",
+    "bélgica": "http://publications.europa.eu/resource/authority/country/BEL",
+    "suecia": "http://publications.europa.eu/resource/authority/country/SWE",
+    "finlandia": "http://publications.europa.eu/resource/authority/country/FIN",
+    "dinamarca": "http://publications.europa.eu/resource/authority/country/DNK",
+    "noruega": "http://publications.europa.eu/resource/authority/country/NOR",
+    "austria": "http://publications.europa.eu/resource/authority/country/AUT",
+    "suiza": "http://publications.europa.eu/resource/authority/country/CHE",
+    "polonia": "http://publications.europa.eu/resource/authority/country/POL",
+    "irlanda": "http://publications.europa.eu/resource/authority/country/IRL",
+    "grecia": "http://publications.europa.eu/resource/authority/country/GRC",
+    "república checa": "http://publications.europa.eu/resource/authority/country/CZE",
+    "rumanía": "http://publications.europa.eu/resource/authority/country/ROU",
+    "hungría": "http://publications.europa.eu/resource/authority/country/HUN",
+    "unión europea": "http://publications.europa.eu/resource/authority/country/EUR",
+    "reino unido": "http://publications.europa.eu/resource/authority/country/GBR",
+    "estados unidos": "http://publications.europa.eu/resource/authority/country/USA",
+    "canada": "http://publications.europa.eu/resource/authority/country/CAN",
+}
 
 def get_session(session_id, response):
     if session_id and session_id in sessions:
@@ -344,7 +472,11 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
     dataset_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["dataset_types"].items())
     languages_str = "\n".join(f"    {l} → {u}" for l, u in LANGUAGES.items())
     personal_data_str = "\n".join(f"    {l} → {u}" for l, u in PERSONAL_DATA_TYPES.items())
-
+    health_activities_str = "\n".join(f"    {l} → {u}" for l, u in HEALTH_ACTIVITIES.items())
+    health_themes_str = "\n".join(f"    {l} → {u}" for l, u in HEALTH_THEMES.items())
+    frequencies_str = "\n".join(f"    {l} → {u}" for l, u in FREQUENCIES.items())
+    attribution_roles_str = "\n".join(f"    {l} → {u}" for l, u in ATTRIBUTION_ROLES.items())
+    spatial_str = "\n".join(f"    {l} → {u}" for l, u in SPATIAL_COUNTRIES.items())
     if doc_lang == "en":
         access_rights_section = (
             f"- 'access_rights' → ALREADY SET BY USER: '{existing_access_rights}'. Return exactly this value.\n"
@@ -379,6 +511,32 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'min_typical_age' → integer or null\n"
             f"- 'max_typical_age' → integer or null\n"
             f"- 'personal_data' → array of DPV-PD URIs:\n{personal_data_str}\n"
+            f"- 'code_values' → coded values used (e.g. A00-B99). Array of strings. null if not mentioned.\n"
+            f"- 'publisher_note' → additional notes from publisher. Free text. null if not mentioned.\n"
+            f"- 'qualified_attribution' → object with: name, type (URI from publisher types), email, contact_page, role (URI):\n  Roles:\n{attribution_roles_str}\n"
+            f"- 'was_generated_by' → array of URIs of activities that generated the data:\n{health_activities_str}\n"
+            f"- 'temporal_resolution' → minimum temporal resolution (P1D, PT1H). String. null if not mentioned.\n"
+            f"- 'spatial_resolution_in_meters' → spatial resolution in meters. Integer. null if not mentioned.\n"
+            f"- 'issued' → original publication date (YYYY-MM-DD). null if not mentioned.\n"
+            f"- 'modified' → last modification date (YYYY-MM-DD). null if not mentioned.\n"
+            f"- 'alternate_identifier' → alternative identifiers (DOI, URN). Array of strings. null if not mentioned.\n"
+            f"- 'conforms_to' → standard this dataset conforms to (DCAT-AP 2.1). Array of strings. null if not mentioned.\n"
+            f"- 'related_resource' → related resources URLs. Array of strings. null if not mentioned.\n"
+            f"- 'is_referenced_by' → resources that reference this dataset. Array of strings. null if not mentioned.\n"
+            f"- 'url' → landing page URL. String. null if not mentioned.\n"
+            f"- 'documentation' → documentation URL. String. null if not mentioned.\n"
+            f"- 'has_version' → available versions. Array of strings. null if not mentioned.\n"
+            f"- 'version_notes' → notes about current version. Free text. null if not mentioned.\n"
+            f"- 'legal_basis' → legal basis for data processing. Free text or URI. null if not mentioned.\n"
+            f"- 'retention_period' → data retention period. Free text. null if not mentioned.\n"
+            f"- 'coding_system' → coding systems used (ICD-10, SNOMED CT, etc.). Array of strings. null if not mentioned.\n"
+            f"- 'health_theme' → array of URIs of specific health themes:\n{health_themes_str}\n"
+            f"- 'publisher' → object with: name, type (URI), email, telephone, contact_page. null if not mentioned.\n"
+            f"- 'creator' → object with: name, type (URI), email. null if not mentioned.\n"
+            f"- 'spatial' → array of country URIs:\n{spatial_str}\n"
+            f"- 'frequency' → URI of update frequency:\n{frequencies_str}\n"
+            f"- 'temporal_coverage' → object with: start (YYYY-MM-DD), end (YYYY-MM-DD). null if not mentioned.\n"
+            f"- 'version' → dataset version. String. null if not mentioned.\n"
             f"\nDocument:\n{text[:5000]}"
         )
     else:
@@ -415,6 +573,32 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'min_typical_age' → número entero o null\n"
             f"- 'max_typical_age' → número entero o null\n"
             f"- 'personal_data' → array de URIs DPV-PD:\n{personal_data_str}\n"
+            f"- 'code_values' → valores codificados usados (ej: A00-B99). Array de strings. null si no se menciona.\n"
+            f"- 'publisher_note' → notas adicionales del editor. Texto libre. null si no se menciona.\n"
+            f"- 'qualified_attribution' → objeto con: name, type (URI de tipos de organismo), email, contact_page, role (URI):\n  Roles:\n{attribution_roles_str}\n"
+            f"- 'was_generated_by' → array de URIs de actividades que generaron los datos:\n{health_activities_str}\n"
+            f"- 'temporal_resolution' → resolución temporal mínima (P1D, PT1H). String. null si no se menciona.\n"
+            f"- 'spatial_resolution_in_meters' → resolución espacial en metros. Entero. null si no se menciona.\n"
+            f"- 'issued' → fecha de publicación original (YYYY-MM-DD). null si no se menciona.\n"
+            f"- 'modified' → fecha de última modificación (YYYY-MM-DD). null si no se menciona.\n"
+            f"- 'alternate_identifier' → identificadores alternativos (DOI, URN). Array de strings. null si no se menciona.\n"
+            f"- 'conforms_to' → estándar al que se ajusta (DCAT-AP 2.1). Array de strings. null si no se menciona.\n"
+            f"- 'related_resource' → URLs de recursos relacionados. Array de strings. null si no se menciona.\n"
+            f"- 'is_referenced_by' → recursos que referencian este dataset. Array de strings. null si no se menciona.\n"
+            f"- 'url' → URL de la página de entrada. String. null si no se menciona.\n"
+            f"- 'documentation' → URL de la documentación. String. null si no se menciona.\n"
+            f"- 'has_version' → versiones disponibles. Array de strings. null si no se menciona.\n"
+            f"- 'version_notes' → notas sobre la versión actual. Texto libre. null si no se menciona.\n"
+            f"- 'legal_basis' → base jurídica del tratamiento. Texto libre o URI. null si no se menciona.\n"
+            f"- 'retention_period' → período de conservación de datos. Texto libre. null si no se menciona.\n"
+            f"- 'coding_system' → sistemas de codificación usados (ICD-10, SNOMED CT, etc.). Array de strings. null si no se menciona.\n"
+            f"- 'health_theme' → array de URIs de temas de salud específicos:\n{health_themes_str}\n"
+            f"- 'publisher' → objeto con: name, type (URI), email, telephone, contact_page. null si no se menciona.\n"
+            f"- 'creator' → objeto con: name, type (URI), email. null si no se menciona.\n"
+            f"- 'spatial' → array de URIs de países:\n{spatial_str}\n"
+            f"- 'frequency' → URI de la frecuencia de actualización:\n{frequencies_str}\n"
+            f"- 'temporal_coverage' → objeto con: start (YYYY-MM-DD), end (YYYY-MM-DD). null si no se menciona.\n"
+            f"- 'version' → versión del dataset. String. null si no se menciona.\n"
             f"\nDocumento:\n{text[:5000]}"
         )
 
