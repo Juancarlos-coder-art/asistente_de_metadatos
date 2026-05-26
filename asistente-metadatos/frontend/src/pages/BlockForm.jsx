@@ -141,8 +141,7 @@ const modalStyles = {
     cursor: "pointer",
   },
 };
-
-export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone, initialMetadata }) {
+  export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone, initialMetadata, onMetadataChange }) {
   const [tab, setTab] = useState("ia");
   const [userContext, setUserContext] = useState("");
   const [manualFields, setManualFields] = useState({});
@@ -161,6 +160,11 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   useEffect(() => {
     getSchemaInfo().then(res => setSchemaInfo(res.data)).catch(() => {});
   }, []);
+  useEffect(() => {
+    if (initialMetadata && Object.keys(initialMetadata).length > 0) {
+      setMetadata(initialMetadata);
+    }
+  }, [initialMetadata]);
 
   const isNonPublic = (meta = metadata) => {
     const ar = meta.access_rights || "";
@@ -186,7 +190,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const loadMetadata = async () => {
     try {
       const res = await getMetadata();
-      if (Object.keys(res.data).length > 0) {
+      if (res.data && Object.keys(res.data).length > 5) {
         setMetadata(res.data);
       }
       const val = await validateMetadata();
