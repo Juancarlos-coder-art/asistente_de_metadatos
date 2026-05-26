@@ -18,6 +18,7 @@ export default function App() {
   const [finished, setFinished] = useState(false);
   const [showDocumentModal, setShowDocumentModal] = useState(false);
   const [documentResults, setDocumentResults] = useState(null);
+  const [skipNextMetadataFetch, setSkipNextMetadataFetch] = useState(false);
 
   useEffect(() => {
     getBlocks().then(res => setBlocks(res.data)).catch(() => {});
@@ -25,7 +26,11 @@ export default function App() {
 
   useEffect(() => {
     if (started) {
-      getMetadata().then(res => setMetadata(res.data)).catch(() => {});
+      if (skipNextMetadataFetch) {
+        setSkipNextMetadataFetch(false);
+      } else {
+        getMetadata().then(res => setMetadata(res.data)).catch(() => {});
+      }
       validateMetadata().then(res => setMissingCount(res.data.missing_required.length)).catch(() => {});
       getMissingFields(currentIdx).then(res => setMissingDetails(res.data.descriptions || [])).catch(() => setMissingDetails([]));
     }
@@ -66,6 +71,7 @@ export default function App() {
     setDocumentResults(data.results_by_block);
     setMetadata(data.metadata);
     setShowDocumentModal(false);
+    setSkipNextMetadataFetch(true);
     const done = [];
     blocks.forEach((b, i) => {
       const result = data.results_by_block[b.name];
@@ -74,7 +80,6 @@ export default function App() {
     setBlocksDone(prev => [...new Set([...prev, ...done])]);
     setCurrentIdx(1);
   };
-
   // ── Pantalla final ──
   if (finished) {
     const handleDownloadJSON = () => {
