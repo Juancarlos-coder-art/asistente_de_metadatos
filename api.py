@@ -331,7 +331,7 @@ def get_session(session_id, response):
         return session_id, sessions[session_id]
     new_id = str(uuid.uuid4())
     sessions[new_id] = MetadataState("health_dcat_ap.yaml")
-    response.set_cookie(key="session_id", value=new_id, httponly=True, samesite="lax", max_age=60*60*8)
+    response.set_cookie(key="session_id", value=new_id, httponly=True, samesite="none", secure=True, max_age=60*60*8)
     return new_id, sessions[new_id]
 
 
