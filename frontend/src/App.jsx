@@ -155,6 +155,7 @@ export default function App() {
             onPrev={handlePrev}
             onFinish={handleFinish}
             onBlockDone={handleBlockDone}
+            initialMetadata={metadata}  // ← añade esto
           />
         )}
       </main>

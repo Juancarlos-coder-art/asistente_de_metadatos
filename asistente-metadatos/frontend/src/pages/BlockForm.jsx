@@ -142,7 +142,7 @@ const modalStyles = {
   },
 };
 
-export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone }) {
+export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone, initialMetadata }) {
   const [tab, setTab] = useState("ia");
   const [userContext, setUserContext] = useState("");
   const [manualFields, setManualFields] = useState({});
@@ -151,7 +151,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const [error, setError] = useState(null);
   const [validation, setValidation] = useState(null);
   const [blockMissingInfo, setBlockMissingInfo] = useState(null);
-  const [metadata, setMetadata] = useState({});
+  const [metadata, setMetadata] = useState(initialMetadata || {});
   const [showModal, setShowModal] = useState(false);
   const [missingInfo, setMissingInfo] = useState([]);
   const [schemaInfo, setSchemaInfo] = useState({});
@@ -186,7 +186,9 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const loadMetadata = async () => {
     try {
       const res = await getMetadata();
-      setMetadata(res.data);
+      if (Object.keys(res.data).length > 0) {
+        setMetadata(res.data);
+      }
       const val = await validateMetadata();
       setValidation(val.data);
       const misRes = await getMissingFields(currentIdx);
