@@ -906,7 +906,8 @@ async def upload_document(
 
     state.merge_partial(filled_fields)
     apply_conditional_logic(state)
-
+    print(f"[DEBUG] filled_fields: {filled_fields}")
+    print(f"[DEBUG] state.data after merge: {state.data}")
     return {
         "success": True,
         "text_extracted": len(text),
