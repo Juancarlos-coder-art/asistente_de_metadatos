@@ -601,7 +601,6 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'version' → versión del dataset. String. null si no se menciona.\n"
             f"\nDocumento:\n{text[:5000]}"
         )
-
     return call_llm(prompt, {f: None for f in all_fields}, text[:10000])
 
 # ── Modelos ──
@@ -860,6 +859,7 @@ async def upload_document(
             existing_access_rights,
             doc_lang=doc_lang
         )
+        print(f"[DEBUG] ai_result: {json.dumps(ai_result, ensure_ascii=False)[:500]}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error en el LLM: {str(e)}")
 
