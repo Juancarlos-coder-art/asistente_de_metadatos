@@ -671,7 +671,11 @@ def get_schema_info(lang: str = "es"):
         "qualified_attribution": "qualified_attribution",
         "was_generated_by": "was_generated_by",
         "spatial": "spatial",
+        "temporal_coverage": "temporal_coverage",
         "frequency": "frequency",
+        "conforms_to": "conforms_to",
+        "related_resource": "related_resource",
+        "documentation": "documentation",
     }
     info = {}
     for field_key, yaml_field_name in field_map.items():
