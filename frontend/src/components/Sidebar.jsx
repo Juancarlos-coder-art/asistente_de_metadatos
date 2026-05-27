@@ -1,12 +1,37 @@
-// src/components/Sidebar.jsx
+import { useState } from "react";
+
 const isProduction = window.location.hostname !== "localhost";
 const guideUrl = isProduction ? "/guide" : "http://localhost:8000/guide";
 
-export default function Sidebar({ blocks, currentIdx, blocksDone, metadata, missingCount, onNavigate, onReset }) {
-  const filled = Object.values(metadata).filter(v => v !== null && v !== "" && !(Array.isArray(v) && v.length === 0)).length;
+export default function Sidebar({
+  blocks,
+  currentIdx,
+  blocksDone,
+  metadata,
+  missingCount,
+  onNavigate,
+  onReset
+}) {
+
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+  const filled = Object.values(metadata).filter(
+    v =>
+      v !== null &&
+      v !== "" &&
+      !(Array.isArray(v) && v.length === 0)
+  ).length;
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${sidebarCollapsed ? "sidebar--collapsed" : ""}`}>
+
+      <button
+        className="sidebar-toggle"
+        onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+        title={sidebarCollapsed ? "Expandir menú" : "Contraer menú"}
+      >
+        {sidebarCollapsed ? "›" : "‹"}
+      </button>
       <p className="sidebar-title">HealthDCAT-AP</p>
 
       <div className="metrics-grid">
@@ -29,7 +54,10 @@ export default function Sidebar({ blocks, currentIdx, blocksDone, metadata, miss
         const icon = done ? "✅" : active ? "▶" : "○";
         return (
           <button key={i} className={`nav-btn ${active ? "nav-btn--active" : ""}`} onClick={() => onNavigate(i)}>
-            {icon} {b.name.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
+            <span className="nav-icon">{icon}</span>
+            <span className="nav-text">
+              {b.name.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
+            </span>
           </button>
         );
       })}

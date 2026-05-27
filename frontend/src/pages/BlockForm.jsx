@@ -1,5 +1,6 @@
 // src/pages/BlockForm.jsx
 import { useState, useEffect } from "react";
+import { FIELD_INFO } from "../constants/fieldInfo";
 import MetadataPreview from "../components/MetadataPreview";
 import {
   completeBlock, saveManual, validateMetadata,
@@ -120,6 +121,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const [userContext, setUserContext] = useState("");
   const [manualFields, setManualFields] = useState({});
   const [editingField, setEditingField] = useState(null);
+  const [expandedInfoField, setExpandedInfoField] = useState(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
@@ -733,8 +735,22 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
 
               return (
                 <div key={field} className="metadata-row">
+
                   <div className="metadata-label">
-                    {fieldLabel}
+                    <span>{fieldLabel}</span>
+
+                    {FIELD_INFO[field] && (
+                      <button
+                        className="info-btn"
+                        onClick={() =>
+                          setExpandedInfoField(
+                            expandedInfoField === field ? null : field
+                          )
+                        }
+                      >
+                        i
+                      </button>
+                    )}
                   </div>
 
                   <div className="metadata-value">
@@ -828,8 +844,24 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                       </button>
                     )}
                   </div>
-                </div>
-              );
+
+                  {expandedInfoField === field && FIELD_INFO[field] && (
+                    <div className="field-info-box">
+                      <p className="field-info-description">
+                        {FIELD_INFO[field].descripcion}
+                      </p>
+
+                      {FIELD_INFO[field].ejemplo && (
+                        <p className="field-info-example">
+                          <strong>Ejemplo:</strong>{" "}
+                          {FIELD_INFO[field].ejemplo}
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  </div>
+                                );
             })}
           </div>          
         </div>
