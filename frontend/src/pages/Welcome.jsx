@@ -27,7 +27,7 @@ export default function Welcome({ onStart }) {
         <p className="welcome-subtitle">
           El proceso está dividido en bloques de preguntas.
           Puedes responder con tus propias palabras y la IA estructurará
-          la información conforme al esquema <strong>HealthDCAT-AP-ES</strong>.
+          la información conforme al esquema <strong>HealthDCAT-AP</strong>.
         </p>
 
         <hr className="welcome-divider" />

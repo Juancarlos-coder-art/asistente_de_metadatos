@@ -41,7 +41,7 @@ def groq_llm(prompt: str) -> dict:
             {
                 "role": "system",
                 "content": (
-                    "Eres un experto en metadatos sanitarios HealthDCAT-AP-ES. "
+                    "Eres un experto en metadatos sanitarios HealthDCAT-AP. "
                     "Extrae campos del texto del usuario y devuelve SOLO un objeto JSON válido, "
                     "sin explicaciones, sin markdown, sin texto adicional. "
                     "Si un campo no está en el texto, devuelve null para ese campo."

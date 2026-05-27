@@ -7,7 +7,7 @@ export default function Sidebar({ blocks, currentIdx, blocksDone, metadata, miss
 
   return (
     <aside className="sidebar">
-      <p className="sidebar-title">HealthDCAT-AP-ES</p>
+      <p className="sidebar-title">HealthDCAT-AP</p>
 
       <div className="metrics-grid">
         <div className="metric-box">

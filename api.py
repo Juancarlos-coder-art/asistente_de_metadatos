@@ -1,5 +1,5 @@
 """
-api.py — Backend FastAPI para el Asistente HealthDCAT-AP-ES
+api.py — Backend FastAPI para el Asistente HealthDCAT-AP
 """
 from dotenv import load_dotenv
 load_dotenv()
@@ -21,7 +21,7 @@ from assistant.llm_provider import call_llm, llm_available
 from assistant.rag_helper import get_block_missing, get_missing_descriptions
 from cli import BLOCKS, build_prompt_for_block, build_contract
 
-app = FastAPI(title="Asistente HealthDCAT-AP-ES", version="1.0.0")
+app = FastAPI(title="Asistente HealthDCAT-AP", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -666,7 +666,7 @@ _ALLOWED_ACCESS_RIGHTS = {"PUBLIC", "RESTRICTED", "NON_PUBLIC"}
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "service": "Asistente HealthDCAT-AP-ES"}
+    return {"status": "ok", "service": "Asistente HealthDCAT-AP"}
 
 
 @app.get("/blocks")
@@ -848,12 +848,12 @@ def llm_status():
 
 @app.get("/guide")
 def guide():
-    pdf_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "Guía de campos – HealthDCAT-AP-ES.pdf")
+    pdf_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "Guía de campos – HealthDCAT-AP.pdf")
     if not os.path.exists(pdf_path):
         raise HTTPException(status_code=404, detail="Guía no encontrada")
     return FileResponse(
         pdf_path,
-        filename="Guía de campos – HealthDCAT-AP-ES.pdf",
+        filename="Guía de campos – HealthDCAT-AP.pdf",
         media_type="application/pdf"
     )
     

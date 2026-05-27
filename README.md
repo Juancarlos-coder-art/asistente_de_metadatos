@@ -1,6 +1,6 @@
-# 🏥 Asistente de Metadatos HealthDCAT-AP-ES
+# 🏥 Asistente de Metadatos HealthDCAT-AP
 
-> Asistente conversacional para la generación de metadatos sanitarios conforme al estándar europeo **HealthDCAT-AP-ES**, desarrollado en el marco de la **Estrategia Nacional de Datos de Salud (ENDS)**.
+> Asistente conversacional para la generación de metadatos sanitarios conforme al estándar europeo **HealthDCAT-AP**, desarrollado en el marco de la **Estrategia Nacional de Datos de Salud (ENDS)**.
 
 ---
 
@@ -21,7 +21,7 @@
 
 ## ¿Qué hace este proyecto?
 
-Este asistente guía al usuario a través de una serie de preguntas por bloques para recopilar la información necesaria y generar automáticamente un archivo **`metadata_output.json`** conforme al esquema HealthDCAT-AP-ES.
+Este asistente guía al usuario a través de una serie de preguntas por bloques para recopilar la información necesaria y generar automáticamente un archivo **`metadata_output.json`** conforme al esquema HealthDCAT-AP.
 
 El usuario responde en lenguaje natural y la IA interpreta, estructura y valida los datos según el esquema oficial.
 
@@ -44,7 +44,7 @@ asistente-metadato/
 ├── app.py                  # Interfaz web (Streamlit)
 ├── cli.py                  # Interfaz de línea de comandos
 ├── schema_loader.py        # Carga y gestiona el esquema YAML
-├── health_dcat_ap.yaml     # Esquema HealthDCAT-AP-ES
+├── health_dcat_ap.yaml     # Esquema HealthDCAT-AP
 ├── assistant/
 │   ├── llm_provider.py     # Conexión con la API de Groq
 │   ├── metadata_state.py   # Estado y validación de metadatos
@@ -140,7 +140,7 @@ El modelo se configura en `assistant/llm_provider.py`.
 | `app.py` | Interfaz web con Streamlit. Incluye pantalla de bienvenida, navegación por bloques, modo IA y modo manual |
 | `cli.py` | Versión de terminal. El usuario responde preguntas una a una |
 | `schema_loader.py` | Lee el `health_dcat_ap.yaml` y expone los campos, restricciones y vocabularios controlados |
-| `health_dcat_ap.yaml` | Esquema completo HealthDCAT-AP-ES con todos los campos, etiquetas, validaciones y vocabularios |
+| `health_dcat_ap.yaml` | Esquema completo HealthDCAT-AP con todos los campos, etiquetas, validaciones y vocabularios |
 | `assistant/llm_provider.py` | Llama a la API de Groq y parsea la respuesta JSON |
 | `assistant/metadata_state.py` | Mantiene el estado acumulado de los metadatos y valida tipos y campos obligatorios |
 | `assistant/rag_helper.py` | Índice en memoria de los campos del esquema. Genera descripciones de ayuda cuando un campo queda vacío |
@@ -240,7 +240,7 @@ python-dotenv      # Carga de variables de entorno desde .env
 
 - El campo `applicable_legislation` (GDPR) se inserta **automáticamente** al finalizar. No es necesario introducirlo.
 - El campo `name` (URL del dataset en CKAN) se genera automáticamente a partir del título.
-- Los campos marcados con 🔴 en la interfaz son **obligatorios** según el esquema HealthDCAT-AP-ES.
+- Los campos marcados con 🔴 en la interfaz son **obligatorios** según el esquema HealthDCAT-AP.
 - Para uso en **producción institucional**, consultar la rama `qa_nlp` que no depende de IA generativa.
 
 ---

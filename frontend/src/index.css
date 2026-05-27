@@ -883,36 +883,42 @@ html, body {
   color: var(--color-text-secondary);
 }
 
-
 .metadata-row {
   display: grid;
-  grid-template-columns: 220px 1fr 70px;
-  gap: 12px;
-  align-items: center;
-  border-bottom: 1px solid #e5e5e5;
-  padding: 12px 0;
+  grid-template-columns: 220px 1fr 44px;
+  gap: 16px;
+  align-items: flex-start;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 14px 0;
 }
 
 .metadata-label {
   color: #0f62fe;
   font-weight: 600;
   font-size: 0.9rem;
+  padding-top: 2px;
 }
 
 .metadata-value {
+  font-size: 0.95rem;
+  line-height: 1.5;
   word-break: break-word;
-  font-size: 0.9rem;
 }
 
 .metadata-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 6px;
 }
 
 .icon-btn {
-  border: none;
+  border: 1px solid transparent;
   background: transparent;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
+  padding: 6px;
+}
+
+.icon-btn:hover {
+  background: #edf5ff;
+  border-color: #0f62fe;
 }

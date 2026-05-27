@@ -272,17 +272,36 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
 
     if (!value) return "—";
 
-    if (fieldSchema?.choices) {
-      const choice = fieldSchema.choices.find(ch => ch.value === value);
+    const formatSingleValue = (singleValue) => {
+      if (fieldSchema?.choices) {
+        const choice = fieldSchema.choices.find(
+          ch => ch.value === singleValue
+        );
 
-      if (choice) return choice.label;
+        if (choice) return choice.label;
+      }
+
+      if (
+        typeof singleValue === "string" &&
+        singleValue.includes("/")
+      ) {
+        return singleValue.split("/").pop();
+      }
+
+      return singleValue;
+    };
+
+    if (Array.isArray(value)) {
+      return value
+        .map(formatSingleValue)
+        .join(", ");
     }
 
     if (typeof value === "object") {
       return JSON.stringify(value);
     }
 
-    return value;
+    return formatSingleValue(value);
   };
   return (
     <div>

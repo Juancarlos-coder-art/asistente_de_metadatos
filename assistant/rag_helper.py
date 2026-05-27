@@ -391,7 +391,7 @@ def describe_missing_field(field_name: str, use_llm: bool = False, call_llm_fn=N
             f"Ejemplo: {entry['ejemplo']}\n"
         )
         prompt = (
-            f"Eres un asistente de metadatos sanitarios HealthDCAT-AP-ES.\n"
+            f"Eres un asistente de metadatos sanitarios HealthDCAT-AP.\n"
             f"El usuario no ha rellenado el campo '{entry['label']}'.\n"
             f"Con esta información del campo:\n{context}\n"
             f"Escribe UNA sola frase corta (máx 25 palabras) en español que ayude "
