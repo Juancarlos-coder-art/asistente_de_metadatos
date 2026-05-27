@@ -883,6 +883,12 @@ html, body {
   color: var(--color-text-secondary);
 }
 
+.metadata-preview {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0 var(--space-4);
+}
+
 .metadata-row {
   display: grid;
   grid-template-columns: 220px 1fr 44px;

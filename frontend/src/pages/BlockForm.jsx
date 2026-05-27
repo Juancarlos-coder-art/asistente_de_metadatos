@@ -83,7 +83,7 @@ function MissingFieldsModal({ missingInfo, formatErrors = [], onClose }) {
           ))}
         </div>
         <div style={modalStyles.buttons}>
-          <button style={modalStyles.btnClose} onClick={onClose}>✏️ Volver a rellenar</button>
+          <button style={modalStyles.btnClose} onClick={onClose}> Volver a rellenar</button>
         </div>
       </div>
     </div>
@@ -281,20 +281,11 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
         if (choice) return choice.label;
       }
 
-      if (
-        typeof singleValue === "string" &&
-        singleValue.includes("/")
-      ) {
-        return singleValue.split("/").pop();
-      }
-
       return singleValue;
     };
 
     if (Array.isArray(value)) {
-      return value
-        .map(formatSingleValue)
-        .join(", ");
+      return value.map(formatSingleValue).join(", ");
     }
 
     if (typeof value === "object") {
@@ -833,7 +824,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                           setEditingField(field);
                         }}
                       >
-                        ✏️
+                        Editar
                       </button>
                     )}
                   </div>
