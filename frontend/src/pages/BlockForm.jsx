@@ -119,6 +119,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const [tab, setTab] = useState("ia");
   const [userContext, setUserContext] = useState("");
   const [manualFields, setManualFields] = useState({});
+  const [editingField, setEditingField] = useState(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
@@ -149,6 +150,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   useEffect(() => {
     setUserContext("");
     setManualFields({});
+    setEditingField(null);
     setResult(null);
     setError(null);
     setShowModal(false);
@@ -264,7 +266,24 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const blockQuestion = isNonPublic() && block.fields.includes("identifier")
     ? block.question + "\n\n\ud83d\udd12 El identificador se asignará automáticamente por ser un dataset No Público."
     : block.question;
+    
+  const getDisplayValue = (field, value) => {
+    const fieldSchema = schemaInfo[field];
 
+    if (!value) return "—";
+
+    if (fieldSchema?.choices) {
+      const choice = fieldSchema.choices.find(ch => ch.value === value);
+
+      if (choice) return choice.label;
+    }
+
+    if (typeof value === "object") {
+      return JSON.stringify(value);
+    }
+
+    return value;
+  };
   return (
     <div>
       {showModal && (
@@ -696,7 +715,113 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       <div className="bottom-grid">
         <div>
           <p className="json-viewer-header">Resumen del dataset</p>
-          <MetadataPreview metadata={metadata} schemaInfo={schemaInfo} />
+
+          <div className="metadata-preview">
+            {Object.keys(metadata).map(field => {
+              const fieldLabel = FIELD_LABELS_ES[field] ?? field;
+              const isEditing = editingField === field;
+
+              return (
+                <div key={field} className="metadata-row">
+                  <div className="metadata-label">
+                    {fieldLabel}
+                  </div>
+
+                  <div className="metadata-value">
+                    {isEditing ? (
+                      (() => {
+                        const fieldSchema = schemaInfo[field] || {};
+
+                        return fieldSchema.choices ? (
+                          <select
+                            className="field-select"
+                            value={manualFields[field] ?? metadata[field] ?? ""}
+                            onChange={(e) =>
+                              setManualFields({
+                                ...manualFields,
+                                [field]: e.target.value
+                              })
+                            }
+                          >
+                            <option value="">— Selecciona una opción —</option>
+                            {fieldSchema.choices.map(ch => (
+                              <option key={ch.value} value={ch.value}>
+                                {ch.label}
+                              </option>
+                            ))}
+                          </select>
+                        ) : (
+                          <input
+                            className="field-input"
+                            type="text"
+                            value={manualFields[field] ?? metadata[field] ?? ""}
+                            onChange={(e) =>
+                              setManualFields({
+                                ...manualFields,
+                                [field]: e.target.value
+                              })
+                            }
+                          />
+                        );
+                      })()
+                    ) : (
+                      getDisplayValue(field, metadata[field])
+                    )}
+                  </div>
+
+                  <div className="metadata-actions">
+                    {isEditing ? (
+                      <>
+                        <button
+                          className="icon-btn"
+                          onClick={async () => {
+                            const updatedFields = {
+                              ...manualFields,
+                            };
+
+                            if (
+                              field === "access_rights" &&
+                              String(manualFields.access_rights || "").includes("NON_PUBLIC")
+                            ) {
+                              updatedFields.identifier = "";
+                            }
+
+                            await saveManual(currentIdx, updatedFields);
+                            await loadMetadata();
+                            setManualFields({});
+                            setEditingField(null);
+                          }}
+                        >
+                          ✅
+                        </button>
+
+                        <button
+                          className="icon-btn"
+                          onClick={() => setEditingField(null)}
+                        >
+                          ❌
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        className="icon-btn"
+                        onClick={() => {
+                          setManualFields({
+                            ...manualFields,
+                            [field]: metadata[field] ?? ""
+                          });
+
+                          setEditingField(field);
+                        }}
+                      >
+                        ✏️
+                      </button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>          
         </div>
         <div className="validation-box">
           <p className="validation-header">Estado de validación</p>

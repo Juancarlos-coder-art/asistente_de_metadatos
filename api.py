@@ -668,6 +668,7 @@ _ALLOWED_ACCESS_RIGHTS = {"PUBLIC", "RESTRICTED", "NON_PUBLIC"}
 def health():
     return {"status": "ok", "service": "Asistente HealthDCAT-AP-ES"}
 
+
 @app.get("/blocks")
 def get_blocks():
     return [
