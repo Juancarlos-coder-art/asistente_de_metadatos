@@ -463,20 +463,23 @@ def _build_relevant_vocab(classification: dict) -> dict:
 
     return relevant
 
-
 def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, existing_access_rights: str = None, doc_lang: str = "es") -> dict:
-    fields_str = ", ".join(all_fields)
+    
+    # ── Vocabularios relevantes (completos con URI) ──
     pub_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["publisher_types"].items())
     health_cats_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["health_categories"].items())
     themes_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["themes"].items())
     dataset_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["dataset_types"].items())
     languages_str = "\n".join(f"    {l} → {u}" for l, u in LANGUAGES.items())
-    personal_data_str = "\n".join(f"    {l} → {u}" for l, u in PERSONAL_DATA_TYPES.items())
-    health_activities_str = "\n".join(f"    {l} → {u}" for l, u in HEALTH_ACTIVITIES.items())
-    health_themes_str = "\n".join(f"    {l} → {u}" for l, u in HEALTH_THEMES.items())
-    frequencies_str = "\n".join(f"    {l} → {u}" for l, u in FREQUENCIES.items())
-    attribution_roles_str = "\n".join(f"    {l} → {u}" for l, u in ATTRIBUTION_ROLES.items())
-    spatial_str = "\n".join(f"    {l} → {u}" for l, u in SPATIAL_COUNTRIES.items())
+
+    # ── Vocabularios compactos (solo códigos) ──
+    personal_data_compact = " | ".join(uri.split("#")[-1] for uri in PERSONAL_DATA_TYPES.values())
+    health_activities_compact = " | ".join(uri.split("/")[-1] for uri in HEALTH_ACTIVITIES.values())
+    health_themes_compact = " | ".join(uri.split("/")[-1] for uri in HEALTH_THEMES.values())
+    frequencies_compact = " | ".join(uri.split("/")[-1] for uri in FREQUENCIES.values())
+    attribution_roles_compact = " | ".join(uri.split("#")[-1] for uri in ATTRIBUTION_ROLES.values())
+    spatial_compact = " | ".join(uri.split("/")[-1] for uri in SPATIAL_COUNTRIES.values())
+
     if doc_lang == "en":
         access_rights_section = (
             f"- 'access_rights' → ALREADY SET BY USER: '{existing_access_rights}'. Return exactly this value.\n"
@@ -488,60 +491,65 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
         )
         prompt = (
             f"Extract metadata fields from this health document.\n"
-            f"Expected keys: [{fields_str}]\n\n"
             f"RULES: Return ONLY valid JSON. null if not found in the text.\n\n"
             f"MAPPING:\n"
             f"- 'title' → dataset title\n"
-            f"- 'notes' → full description. Copy it literally and completely, do not summarize.\n"
+            f"- 'notes' → full description. Copy literally, do not summarize. Max 300 chars.\n"
             f"- 'identifier' → DOI or unique identifier\n"
             f"{access_rights_section}"
-            f"- 'hdab' → body managing data access. Object with: name, email, telephone, contact_page, type.\n"
-            f"  Possible types:\n{pub_types_str}\n"
+            f"- 'hdab' → body managing data access. Object: name, email, telephone, contact_page, type (URI).\n"
+            f"  Types:\n{pub_types_str}\n"
             f"- 'health_category' → array of URIs:\n{health_cats_str}\n"
             f"- 'theme' → array of URIs:\n{themes_str}\n"
             f"- 'dcat_type' → URI:\n{dataset_types_str}\n"
             f"- 'provenance' → data origin. Free text.\n"
             f"- 'keyword' → keywords. Array of strings.\n"
-            f"- 'contact' → object with: email, url\n"
-            f"- 'purpose' → purpose of the dataset. Array of strings.\n"
+            f"- 'contact' → object: email, url\n"
+            f"- 'purpose' → purpose. Array of strings.\n"
             f"- 'language' → array of language URIs:\n{languages_str}\n"
             f"- 'population_coverage' → population coverage. Array of strings.\n"
             f"- 'number_of_unique_individuals' → integer or null\n"
             f"- 'number_of_records' → integer or null\n"
             f"- 'min_typical_age' → integer or null\n"
             f"- 'max_typical_age' → integer or null\n"
-            f"- 'personal_data' → array of DPV-PD URIs:\n{personal_data_str}\n"
-            f"- 'code_values' → coded values used (e.g. A00-B99). Array of strings. null if not mentioned.\n"
-            f"- 'publisher_note' → additional notes from publisher. Free text. null if not mentioned.\n"
-            f"- 'qualified_attribution' → object with: name, type (URI from publisher types), email, contact_page, role (URI):\n  Roles:\n{attribution_roles_str}\n"
-            f"- 'was_generated_by' → array of URIs of activities that generated the data:\n{health_activities_str}\n"
-            f"- 'temporal_resolution' → minimum temporal resolution (P1D, PT1H). String. null if not mentioned.\n"
-            f"- 'spatial_resolution_in_meters' → spatial resolution in meters. Integer. null if not mentioned.\n"
-            f"- 'issued' → original publication date (YYYY-MM-DD). null if not mentioned.\n"
+            f"- 'personal_data' → array of codes. Choose from: {personal_data_compact}\n"
+            f"  URI: https://w3id.org/dpv/pd#{{CODE}}\n"
+            f"- 'code_values' → coded values (e.g. A00-B99). Array of strings. null if not mentioned.\n"
+            f"- 'publisher_note' → publisher notes. Free text. null if not mentioned.\n"
+            f"- 'qualified_attribution' → object: name, email, contact_page, role code. Choose role from: {attribution_roles_compact}\n"
+            f"  Role URI: https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#{{CODE}}\n"
+            f"- 'was_generated_by' → array of activity codes. Choose from: {health_activities_compact}\n"
+            f"  URI: http://13.81.34.152:1101/resource/authority/health-activity/{{CODE}}\n"
+            f"- 'temporal_resolution' → min temporal resolution (P1D, PT1H). String. null if not mentioned.\n"
+            f"- 'spatial_resolution_in_meters' → integer. null if not mentioned.\n"
+            f"- 'issued' → publication date (YYYY-MM-DD). null if not mentioned.\n"
             f"- 'modified' → last modification date (YYYY-MM-DD). null if not mentioned.\n"
-            f"- 'alternate_identifier' → alternative identifiers (DOI, URN). Array of strings. null if not mentioned.\n"
-            f"- 'conforms_to' → standard this dataset conforms to (DCAT-AP 2.1). Array of strings. null if not mentioned.\n"
-            f"- 'related_resource' → related resources URLs. Array of strings. null if not mentioned.\n"
-            f"- 'is_referenced_by' → resources that reference this dataset. Array of strings. null if not mentioned.\n"
+            f"- 'alternate_identifier' → alternative identifiers. Array of strings. null if not mentioned.\n"
+            f"- 'conforms_to' → standard (DCAT-AP 2.1). Array of strings. null if not mentioned.\n"
+            f"- 'related_resource' → related URLs. Array of strings. null if not mentioned.\n"
+            f"- 'is_referenced_by' → referencing resources. Array of strings. null if not mentioned.\n"
             f"- 'url' → landing page URL. String. null if not mentioned.\n"
             f"- 'documentation' → documentation URL. String. null if not mentioned.\n"
             f"- 'has_version' → available versions. Array of strings. null if not mentioned.\n"
-            f"- 'version_notes' → notes about current version. Free text. null if not mentioned.\n"
-            f"- 'legal_basis' → legal basis for data processing. Free text or URI. null if not mentioned.\n"
-            f"- 'retention_period' → data retention period. Free text. null if not mentioned.\n"
-            f"- 'coding_system' → coding systems used (ICD-10, SNOMED CT, etc.). Array of strings. null if not mentioned.\n"
-            f"- 'health_theme' → array of URIs of specific health themes:\n{health_themes_str}\n"
-            f"- 'publisher' → object with: name, type (URI), email, telephone, contact_page. null if not mentioned.\n"
-            f"- 'creator' → object with: name, type (URI), email. null if not mentioned.\n"
-            f"- 'spatial' → array of country URIs:\n{spatial_str}\n"
-            f"- 'frequency' → URI of update frequency:\n{frequencies_str}\n"
-            f"- 'temporal_coverage' → object with: start (YYYY-MM-DD), end (YYYY-MM-DD). null if not mentioned.\n"
+            f"- 'version_notes' → version notes. Free text. null if not mentioned.\n"
+            f"- 'legal_basis' → legal basis. Free text. null if not mentioned.\n"
+            f"- 'retention_period' → retention period. Free text. null if not mentioned.\n"
+            f"- 'coding_system' → coding systems (ICD-10, SNOMED CT...). Array of strings. null if not mentioned.\n"
+            f"- 'health_theme' → array of health theme codes. Choose from: {health_themes_compact}\n"
+            f"  URI: http://13.81.34.152:1101/resource/authority/health-theme/{{CODE}}\n"
+            f"- 'publisher' → object: name, type (URI), email, telephone, contact_page. null if not mentioned.\n"
+            f"- 'creator' → object: name, type (URI), email. null if not mentioned.\n"
+            f"- 'spatial' → array of country codes. Choose from: {spatial_compact}\n"
+            f"  URI: http://publications.europa.eu/resource/authority/country/{{CODE}}\n"
+            f"- 'frequency' → frequency code. Choose from: {frequencies_compact}\n"
+            f"  URI: http://publications.europa.eu/resource/authority/frequency/{{CODE}}\n"
+            f"- 'temporal_coverage' → object: start (YYYY-MM-DD), end (YYYY-MM-DD). null if not mentioned.\n"
             f"- 'version' → dataset version. String. null if not mentioned.\n"
             f"\nDocument:\n{text[:5000]}"
         )
     else:
         access_rights_section = (
-            f"- 'access_rights' → YA DEFINIDO POR EL USUARIO: '{existing_access_rights}'. Devuelve exactamente este valor.\n"
+            f"- 'access_rights' → YA DEFINIDO: '{existing_access_rights}'. Devuelve exactamente este valor.\n"
             if existing_access_rights else
             f"- 'access_rights' → nivel de acceso URI:\n"
             f"    Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
@@ -550,59 +558,93 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
         )
         prompt = (
             f"Extrae campos de metadatos de este documento sanitario.\n"
-            f"Claves esperadas: [{fields_str}]\n\n"
             f"REGLAS: Devuelve SOLO JSON válido. null si no aparece en el texto.\n\n"
             f"MAPEO:\n"
             f"- 'title' → título del dataset\n"
-            f"- 'notes' → descripción completa. Cópiala literalmente y de forma íntegra, no la resumas.\n"
+            f"- 'notes' → descripción completa. Cópiala literalmente. Máx 300 caracteres.\n"
             f"- 'identifier' → DOI o identificador único\n"
             f"{access_rights_section}"
-            f"- 'hdab' → organismo gestor del acceso. Objeto con: name, email, telephone, contact_page, type.\n"
-            f"  Tipos posibles:\n{pub_types_str}\n"
+            f"- 'hdab' → organismo gestor del acceso. Objeto: name, email, telephone, contact_page, type (URI).\n"
+            f"  Tipos:\n{pub_types_str}\n"
             f"- 'health_category' → array de URIs:\n{health_cats_str}\n"
             f"- 'theme' → array de URIs:\n{themes_str}\n"
             f"- 'dcat_type' → URI:\n{dataset_types_str}\n"
             f"- 'provenance' → origen de los datos. Texto libre.\n"
             f"- 'keyword' → palabras clave. Array de strings.\n"
-            f"- 'contact' → objeto con: email, url\n"
-            f"- 'purpose' → finalidad del dataset. Array de strings.\n"
+            f"- 'contact' → objeto: email, url\n"
+            f"- 'purpose' → finalidad. Array de strings.\n"
             f"- 'language' → array de URIs de idiomas:\n{languages_str}\n"
             f"- 'population_coverage' → cobertura poblacional. Array de strings.\n"
             f"- 'number_of_unique_individuals' → número entero o null\n"
             f"- 'number_of_records' → número entero o null\n"
             f"- 'min_typical_age' → número entero o null\n"
             f"- 'max_typical_age' → número entero o null\n"
-            f"- 'personal_data' → array de URIs DPV-PD:\n{personal_data_str}\n"
-            f"- 'code_values' → valores codificados usados (ej: A00-B99). Array de strings. null si no se menciona.\n"
-            f"- 'publisher_note' → notas adicionales del editor. Texto libre. null si no se menciona.\n"
-            f"- 'qualified_attribution' → objeto con: name, type (URI de tipos de organismo), email, contact_page, role (URI):\n  Roles:\n{attribution_roles_str}\n"
-            f"- 'was_generated_by' → array de URIs de actividades que generaron los datos:\n{health_activities_str}\n"
+            f"- 'personal_data' → array de códigos. Elige entre: {personal_data_compact}\n"
+            f"  URI: https://w3id.org/dpv/pd#{{CÓDIGO}}\n"
+            f"- 'code_values' → valores codificados (ej: A00-B99). Array de strings. null si no se menciona.\n"
+            f"- 'publisher_note' → notas del editor. Texto libre. null si no se menciona.\n"
+            f"- 'qualified_attribution' → objeto: name, email, contact_page, role (código). Elige role entre: {attribution_roles_compact}\n"
+            f"  URI rol: https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#{{CÓDIGO}}\n"
+            f"- 'was_generated_by' → array de códigos de actividad. Elige entre: {health_activities_compact}\n"
+            f"  URI: http://13.81.34.152:1101/resource/authority/health-activity/{{CÓDIGO}}\n"
             f"- 'temporal_resolution' → resolución temporal mínima (P1D, PT1H). String. null si no se menciona.\n"
-            f"- 'spatial_resolution_in_meters' → resolución espacial en metros. Entero. null si no se menciona.\n"
-            f"- 'issued' → fecha de publicación original (YYYY-MM-DD). null si no se menciona.\n"
-            f"- 'modified' → fecha de última modificación (YYYY-MM-DD). null si no se menciona.\n"
-            f"- 'alternate_identifier' → identificadores alternativos (DOI, URN). Array de strings. null si no se menciona.\n"
-            f"- 'conforms_to' → estándar al que se ajusta (DCAT-AP 2.1). Array de strings. null si no se menciona.\n"
-            f"- 'related_resource' → URLs de recursos relacionados. Array de strings. null si no se menciona.\n"
-            f"- 'is_referenced_by' → recursos que referencian este dataset. Array de strings. null si no se menciona.\n"
-            f"- 'url' → URL de la página de entrada. String. null si no se menciona.\n"
-            f"- 'documentation' → URL de la documentación. String. null si no se menciona.\n"
+            f"- 'spatial_resolution_in_meters' → entero. null si no se menciona.\n"
+            f"- 'issued' → fecha publicación (YYYY-MM-DD). null si no se menciona.\n"
+            f"- 'modified' → fecha modificación (YYYY-MM-DD). null si no se menciona.\n"
+            f"- 'alternate_identifier' → identificadores alternativos. Array de strings. null si no se menciona.\n"
+            f"- 'conforms_to' → estándar (DCAT-AP 2.1). Array de strings. null si no se menciona.\n"
+            f"- 'related_resource' → URLs relacionadas. Array de strings. null si no se menciona.\n"
+            f"- 'is_referenced_by' → recursos que referencian. Array de strings. null si no se menciona.\n"
+            f"- 'url' → URL de entrada. String. null si no se menciona.\n"
+            f"- 'documentation' → URL documentación. String. null si no se menciona.\n"
             f"- 'has_version' → versiones disponibles. Array de strings. null si no se menciona.\n"
-            f"- 'version_notes' → notas sobre la versión actual. Texto libre. null si no se menciona.\n"
-            f"- 'legal_basis' → base jurídica del tratamiento. Texto libre o URI. null si no se menciona.\n"
-            f"- 'retention_period' → período de conservación de datos. Texto libre. null si no se menciona.\n"
-            f"- 'coding_system' → sistemas de codificación usados (ICD-10, SNOMED CT, etc.). Array de strings. null si no se menciona.\n"
-            f"- 'health_theme' → array de URIs de temas de salud específicos:\n{health_themes_str}\n"
-            f"- 'publisher' → objeto con: name, type (URI), email, telephone, contact_page. null si no se menciona.\n"
-            f"- 'creator' → objeto con: name, type (URI), email. null si no se menciona.\n"
-            f"- 'spatial' → array de URIs de países:\n{spatial_str}\n"
-            f"- 'frequency' → URI de la frecuencia de actualización:\n{frequencies_str}\n"
-            f"- 'temporal_coverage' → objeto con: start (YYYY-MM-DD), end (YYYY-MM-DD). null si no se menciona.\n"
+            f"- 'version_notes' → notas de versión. Texto libre. null si no se menciona.\n"
+            f"- 'legal_basis' → base jurídica. Texto libre. null si no se menciona.\n"
+            f"- 'retention_period' → período conservación. Texto libre. null si no se menciona.\n"
+            f"- 'coding_system' → sistemas codificación (ICD-10, SNOMED CT...). Array de strings. null si no se menciona.\n"
+            f"- 'health_theme' → array de códigos de tema de salud. Elige entre: {health_themes_compact}\n"
+            f"  URI: http://13.81.34.152:1101/resource/authority/health-theme/{{CÓDIGO}}\n"
+            f"- 'publisher' → objeto: name, type (URI), email, telephone, contact_page. null si no se menciona.\n"
+            f"- 'creator' → objeto: name, type (URI), email. null si no se menciona.\n"
+            f"- 'spatial' → array de códigos de país. Elige entre: {spatial_compact}\n"
+            f"  URI: http://publications.europa.eu/resource/authority/country/{{CÓDIGO}}\n"
+            f"- 'frequency' → código de frecuencia. Elige entre: {frequencies_compact}\n"
+            f"  URI: http://publications.europa.eu/resource/authority/frequency/{{CÓDIGO}}\n"
+            f"- 'temporal_coverage' → objeto: start (YYYY-MM-DD), end (YYYY-MM-DD). null si no se menciona.\n"
             f"- 'version' → versión del dataset. String. null si no se menciona.\n"
             f"\nDocumento:\n{text[:5000]}"
         )
-    return call_llm(prompt, {f: None for f in all_fields}, text[:10000])
 
+    # ── Llamada al LLM ──
+    result = call_llm(prompt, {f: None for f in all_fields}, "")
+
+    # ── Convertir códigos cortos a URIs completas ──
+    BASE_ACTIVITY = "http://13.81.34.152:1101/resource/authority/health-activity/"
+    BASE_HEALTH_THEME = "http://13.81.34.152:1101/resource/authority/health-theme/"
+    BASE_FREQUENCY = "http://publications.europa.eu/resource/authority/frequency/"
+    BASE_COUNTRY = "http://publications.europa.eu/resource/authority/country/"
+    BASE_DPV = "https://w3id.org/dpv/pd#"
+    BASE_ROLE = "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#"
+
+    def expand_uris(value, base):
+        if not value or not isinstance(value, list):
+            return value
+        return [item if str(item).startswith("http") else f"{base}{item}" for item in value if item]
+
+    result["was_generated_by"] = expand_uris(result.get("was_generated_by"), BASE_ACTIVITY)
+    result["health_theme"] = expand_uris(result.get("health_theme"), BASE_HEALTH_THEME)
+    result["personal_data"] = expand_uris(result.get("personal_data"), BASE_DPV)
+    result["spatial"] = expand_uris(result.get("spatial"), BASE_COUNTRY)
+
+    if result.get("frequency") and not str(result["frequency"]).startswith("http"):
+        result["frequency"] = f"{BASE_FREQUENCY}{result['frequency']}"
+
+    if result.get("qualified_attribution") and isinstance(result["qualified_attribution"], dict):
+        role = result["qualified_attribution"].get("role", "")
+        if role and not str(role).startswith("http"):
+            result["qualified_attribution"]["role"] = f"{BASE_ROLE}{role}"
+
+    return result
 # ── Modelos ──
 class CompleteBlockRequest(BaseModel):
     block_id: int

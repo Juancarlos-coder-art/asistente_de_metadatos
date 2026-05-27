@@ -135,6 +135,98 @@ const LANGUAGE_LABELS = {
   "POR": "Portugués", "RON": "Rumano", "SWE": "Sueco",
   "CAT": "Catalán", "GLG": "Gallego", "EUS": "Euskera",
 };
+const HEALTH_ACTIVITY_LABELS = {
+  "EHEALTH_APPLICATION": "Aplicación de sanidad electrónica",
+  "NONMEDICAL_APPLICATION": "Aplicación no médica",
+  "HOSPITAL_RECORDS": "Base de datos de historiales hospitalarios",
+  "RESEARCH_DATABASE": "Base de datos de investigación específica",
+  "BIOBANK_COLLECTION": "Biobanco/recogida de muestras",
+  "COHORT": "Cohorte",
+  "SAMPLE_COLLECTIONS": "Colecciones de muestras",
+  "OBSERVATIONAL_DATA": "Datos de observación",
+  "CENSUS_DATA": "Datos del censo",
+  "PROBABILITY_SURVEY": "Encuesta de probabilidad",
+  "HEALTH_SURVEY": "Encuesta de salud",
+  "CLINICAL_TRIAL": "Ensayo clínico",
+  "AUTOMATIC_GENERATION": "Generado automáticamente",
+  "ADMISSION_DISCHARGE": "Ingreso, atención y alta del paciente",
+  "MEASUREMENTS": "Mediciones",
+  "MODELS_SIMULATIONS": "Modelos y simulaciones",
+  "PRESCRIBING_DISPENSING": "Prescripción o dispensación de medicamentos",
+  "ADMINISTRATIVE_PROCESSES": "Procesos administrativos",
+  "PATIENT_OUTCOMES": "PROM (Medidas de resultados comunicados por los pacientes)",
+  "RESEARCH_PROJECT": "Proyecto de investigación",
+  "LABORATORY_TESTS": "Pruebas de laboratorio",
+  "INSURANCE_CLAIMS": "Reclamaciones, seguros y reembolsos",
+  "QUALITY_REGISTRY": "Registro de Calidad",
+  "MEDICAL_REGISTRY": "Registro médico",
+  "ROUTINE_RECORDS": "Registros de rutina (no sanitarios)",
+  "QUALITY_REGISTRIES": "Registros Nacionales de Calidad Médica",
+  "HEALTH_REGISTRIES": "Registros Nacionales de Salud",
+  "MUNICIPAL_REPOSITORY": "Repositorio municipal de datos sanitarios",
+  "GEOSPATIAL_MONITORING": "Seguimiento geoespacial",
+  "MEDICAL_DEVICES": "Uso de productos sanitarios",
+  "SURVEILLANCE": "Vigilancia",
+  "DISEASE_MONITORING": "Vigilancia de enfermedades infecciosas",
+  "HEALTH_SURVEILLANCE": "Vigilancia de la salud pública",
+  "HEALTHCARE_VISIT": "Visita sanitaria",
+};
+
+const HEALTH_THEME_LABELS = {
+  "CLIMATE_HEALTH": "Clima y salud planetaria",
+  "CANCER_DISEASE": "Cáncer",
+  "EMERGENCY_SETTINGS": "Emergencias, catástrofes, viajes y entornos humanitarios",
+  "TROPICAL_DISEASES": "Enfermedades cutáneas tropicales, parasitarias y fúngicas desatendidas",
+  "RESPIRATORY_DISEASES": "Enfermedades infecciosas respiratorias",
+  "NONCOMMUNICABLE_DISEASES": "Enfermedades no transmisibles: metabólicas y cardiopulmonares",
+  "VECTOR_DISEASES": "Enfermedades víricas de transmisión vectorial y zoonóticas",
+  "BLOOD_INFECTIONS": "Infecciones de transmisión sanguínea y de transmisión sexual",
+  "ENTERIC_INFECTIONS": "Infecciones entéricas, transmitidas por el agua y los alimentos",
+  "IMMUNIZATION_DISEASES": "Inmunización y enfermedades prevenibles mediante vacunación",
+  "INJURY_PREVENTION": "Lesiones, envenenamiento y ahogamiento",
+  "NUTRITION_SECURITY": "Nutrición y seguridad alimentaria",
+  "HEALTH_PRODUCTS": "Productos sanitarios, tecnologías, datos e investigación",
+  "ANTIMICROBIAL_CONTROL": "Resistencia a los antimicrobianos y control de las infecciones",
+  "LIFECOURSE_HEALTH": "Salud a lo largo de la vida: materna, neonatal, infantil, adolescente y envejecimiento",
+  "ENVIRONMENTAL_HEALTH": "Salud ambiental, laboral y radiológica",
+  "SENSORY_HEALTH": "Salud bucal, ocular y sensorial",
+  "REPRODUCTIVE_HEALTH": "Salud y derechos sexuales y reproductivos",
+  "HEALTH_SYSTEMS": "Sistemas de salud, calidad, modelos de atención y determinantes",
+  "MENTAL_HEALTH": "Salud mental, neurológica y uso de sustancias",
+};
+
+const FREQUENCY_LABELS = {
+  "ANNUAL": "Anual", "BIENNIAL": "Bienal", "MONTHLY_2": "Bimensual",
+  "BIMONTHLY": "Bimestral", "WEEKLY_2": "Bisemanal", "CONT": "Continuo",
+  "UPDATE_CONT": "Continuamente actualizado", "ANNUAL_3": "Cuatrimestral",
+  "DAILY": "Diario", "DAILY_2": "Dos veces al día", "AS_NEEDED": "En función de las necesidades",
+  "IRREG": "Irregular", "MONTHLY": "Mensual", "NOT_PLANNED": "No previsto",
+  "NEVER": "Nunca", "OTHER": "Otro", "BIWEEKLY": "Quincenal",
+  "WEEKLY": "Semanal", "ANNUAL_2": "Semestral", "QUARTERLY": "Trimestral",
+  "TRIENNIAL": "Trienal", "UNKNOWN": "Desconocido",
+};
+
+const PERSONAL_DATA_LABELS = {
+  "Age": "Edad", "AgeRange": "Rango de edad", "Biometric": "Datos biométricos",
+  "BloodType": "Tipo de sangre", "BirthDate": "Fecha de nacimiento",
+  "BirthCountry": "País de nacimiento", "Disability": "Discapacidad",
+  "DNACode": "ADN", "Ethnicity": "Origen étnico", "Gender": "Género",
+  "Genetic": "Datos genéticos", "HealthData": "Datos de salud",
+  "HealthHistory": "Historial de salud", "HealthRecord": "Registro de salud",
+  "Height": "Altura", "LifeSexual": "Vida sexual", "MedicalHealth": "Historial médico",
+  "MentalHealth": "Salud mental", "PhysicalHealth": "Salud física",
+  "Prescription": "Receta médica", "Race": "Origen racial",
+  "SexualHistory": "Datos de salud sexual", "Weight": "Peso",
+};
+
+const COUNTRY_LABELS = {
+  "ESP": "España", "DEU": "Alemania", "FRA": "Francia", "ITA": "Italia",
+  "PRT": "Portugal", "NLD": "Países Bajos", "BEL": "Bélgica", "SWE": "Suecia",
+  "FIN": "Finlandia", "DNK": "Dinamarca", "NOR": "Noruega", "AUT": "Austria",
+  "CHE": "Suiza", "POL": "Polonia", "IRL": "Irlanda", "GRC": "Grecia",
+  "CZE": "República Checa", "ROU": "Rumanía", "HUN": "Hungría",
+  "EUR": "Unión Europea", "GBR": "Reino Unido", "USA": "Estados Unidos", "CAN": "Canadá",
+};
 
 function formatValue(key, value, schemaInfo = {}) {
   if (value === null || value === undefined || value === "") return null;
