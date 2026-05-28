@@ -244,24 +244,43 @@ function formatValue(key, value, schemaInfo = {}) {
   if (key === "hdab" && typeof value === "object") {
     const typeCode = value.type ? value.type.split("/").pop() : null;
     const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
+    const freqCode = value.opening_hours_frequency ? value.opening_hours_frequency.split("/").pop() : null;
+    const freqLabel = freqCode ? (FREQUENCY_LABELS[freqCode] || freqCode) : null;
+    const sfreqCode = value.special_opening_hours_frequency ? value.special_opening_hours_frequency.split("/").pop() : null;
+    const sfreqLabel = sfreqCode ? (FREQUENCY_LABELS[sfreqCode] || sfreqCode) : null;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
         {value.name && <span><strong>Nombre:</strong> {value.name}</span>}
-        {value.email && <span><strong>Email:</strong> {value.email}</span>}
-        {value.telephone && <span><strong>Teléfono:</strong> {value.telephone}</span>}
-        {(value.contact_page || value.contact) && <span><strong>Web:</strong> <a href={value.contact_page || value.contact} target="_blank" rel="noreferrer">{value.contact_page || value.contact}</a></span>}
         {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
+        {value.contact && <span><strong>Página de contacto:</strong> <a href={value.contact} target="_blank" rel="noreferrer">{value.contact}</a></span>}
+        {value.contact_page && <span><strong>Página de contacto:</strong> <a href={value.contact_page} target="_blank" rel="noreferrer">{value.contact_page}</a></span>}
+        {value.email && <span><strong>Correo:</strong> {value.email}</span>}
+        {value.telephone && <span><strong>Teléfono:</strong> {value.telephone}</span>}
+        {value.opening_hours_description && <span><strong>Horario habitual:</strong> {value.opening_hours_description}</span>}
+        {freqLabel && <span><strong>Frecuencia horario habitual:</strong> {freqLabel}</span>}
+        {value.special_opening_hours_description && <span><strong>Horario especial:</strong> {value.special_opening_hours_description}</span>}
+        {sfreqLabel && <span><strong>Frecuencia horario especial:</strong> {sfreqLabel}</span>}
       </div>
     );
   }
 
-  if (key === "contact" && typeof value === "object") {
-    return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-        {value.email && <span><strong>Email:</strong> {value.email}</span>}
-        {value.url && <span><strong>Web:</strong> <a href={value.url} target="_blank" rel="noreferrer">{value.url}</a></span>}
-      </div>
-    );
+  if (key === "contact") {
+    if (Array.isArray(value)) {
+      return value.map((v, i) => (
+        <div key={i} style={{ marginBottom: "4px" }}>
+          {v.email && <span><strong>Correo:</strong> {v.email}</span>}
+          {v.url && <span> · <strong>Web:</strong> <a href={v.url} target="_blank" rel="noreferrer">{v.url}</a></span>}
+        </div>
+      ));
+    }
+    if (typeof value === "object") {
+      return (
+        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          {value.email && <span><strong>Correo:</strong> {value.email}</span>}
+          {value.url && <span><strong>Web:</strong> <a href={value.url} target="_blank" rel="noreferrer">{value.url}</a></span>}
+        </div>
+      );
+    }
   }
 
   if (key === "health_category" && Array.isArray(value)) {
@@ -320,77 +339,118 @@ function formatValue(key, value, schemaInfo = {}) {
     return value.map(uri => labelMap[uri] || uri.split("/").pop()).join(", ");
   }
 
-  if (key === "legal_basis" && typeof value === "object" && !Array.isArray(value)) {
-    return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-        {value.description && <span><strong>Descripción:</strong> {value.description}</span>}
-        {value.source && <span><strong>Fuente:</strong> {value.source}</span>}
-      </div>
-    );
+  if (key === "legal_basis") {
+    if (Array.isArray(value)) {
+      return value.map((v, i) => (
+        <div key={i} style={{ marginBottom: "6px", paddingLeft: "8px", borderLeft: "2px solid #e0e0e0" }}>
+          {v.description && <span><strong>Descripción:</strong> {v.description}</span>}<br/>
+          {v.source && <span><strong>Fuente:</strong> {v.source}</span>}
+        </div>
+      ));
+    }
+    if (typeof value === "object") {
+      return (
+        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          {value.description && <span><strong>Descripción:</strong> {value.description}</span>}
+          {value.source && <span><strong>Fuente:</strong> {value.source}</span>}
+        </div>
+      );
+    }
   }
 
-  if (key === "retention_period" && typeof value === "object" && !Array.isArray(value)) {
-    return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-        {value.start && <span><strong>Inicio:</strong> {value.start}</span>}
-        {value.end && <span><strong>Fin:</strong> {value.end}</span>}
-      </div>
-    );
+  if (key === "retention_period") {
+    const v = Array.isArray(value) ? value[0] : value;
+    if (typeof v === "object") {
+      return (
+        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          {v.start && <span><strong>Inicio:</strong> {v.start}</span>}
+          {v.end && <span><strong>Fin:</strong> {v.end}</span>}
+        </div>
+      );
+    }
   }
 
-  if (key === "coding_system" && typeof value === "object" && !Array.isArray(value)) {
-    return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-        {value.uri && <span><strong>URI:</strong> {value.uri}</span>}
-        {value.label && <span><strong>Nombre:</strong> {value.label}</span>}
-      </div>
-    );
+  if (key === "coding_system") {
+    if (Array.isArray(value)) {
+      return value.map((v, i) => (
+        <div key={i} style={{ marginBottom: "4px" }}>
+          {typeof v === "object"
+            ? <span>{v.label || v.uri || JSON.stringify(v)}</span>
+            : <span>{v}</span>
+          }
+        </div>
+      ));
+    }
+    if (typeof value === "object") {
+      return <span>{value.label || value.uri || JSON.stringify(value)}</span>;
+    }
   }
 
-  if (key === "publisher" && typeof value === "object" && !Array.isArray(value)) {
+  if (key === "publisher" && typeof value === "object") {
     const typeCode = value.type ? value.type.split("/").pop() : null;
     const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
+    const freqCode = value.opening_hours_frequency ? value.opening_hours_frequency.split("/").pop() : null;
+    const freqLabel = freqCode ? (FREQUENCY_LABELS[freqCode] || freqCode) : null;
+    const sfreqCode = value.special_opening_hours_frequency ? value.special_opening_hours_frequency.split("/").pop() : null;
+    const sfreqLabel = sfreqCode ? (FREQUENCY_LABELS[sfreqCode] || sfreqCode) : null;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
         {value.name && <span><strong>Nombre:</strong> {value.name}</span>}
-        {value.email && <span><strong>Email:</strong> {value.email}</span>}
+        {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
+        {value.contact_page && <span><strong>Página de contacto:</strong> <a href={value.contact_page} target="_blank" rel="noreferrer">{value.contact_page}</a></span>}
+        {value.email && <span><strong>Correo:</strong> {value.email}</span>}
         {value.telephone && <span><strong>Teléfono:</strong> {value.telephone}</span>}
-        {value.contact_page && <span><strong>Web:</strong> <a href={value.contact_page} target="_blank" rel="noreferrer">{value.contact_page}</a></span>}
-        {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
-        {value.opening_hours_description && <span><strong>Horario:</strong> {value.opening_hours_description}</span>}
-        {value.opening_hours_frequency && <span><strong>Frecuencia horario:</strong> {value.opening_hours_frequency.split("/").pop()}</span>}
+        {value.opening_hours_description && <span><strong>Horario habitual:</strong> {value.opening_hours_description}</span>}
+        {freqLabel && <span><strong>Frecuencia horario habitual:</strong> {freqLabel}</span>}
         {value.special_opening_hours_description && <span><strong>Horario especial:</strong> {value.special_opening_hours_description}</span>}
-        {value.special_opening_hours_frequency && <span><strong>Frecuencia horario especial:</strong> {value.special_opening_hours_frequency.split("/").pop()}</span>}
+        {sfreqLabel && <span><strong>Frecuencia horario especial:</strong> {sfreqLabel}</span>}
       </div>
     );
   }
 
-  if (key === "creator" && typeof value === "object" && !Array.isArray(value)) {
-    const typeCode = value.type ? value.type.split("/").pop() : null;
-    const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
-    return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-        {value.name && <span><strong>Nombre:</strong> {value.name}</span>}
-        {value.email && <span><strong>Email:</strong> {value.email}</span>}
-        {value.url && <span><strong>URL:</strong> <a href={value.url} target="_blank" rel="noreferrer">{value.url}</a></span>}
-        {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
-      </div>
-    );
+  if (key === "creator") {
+    const renderCreator = (v) => {
+      const typeCode = v.type ? v.type.split("/").pop() : null;
+      const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
+      return (
+        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          {v.name && <span><strong>Nombre:</strong> {v.name}</span>}
+          {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
+          {v.email && <span><strong>Correo:</strong> {v.email}</span>}
+          {v.url && <span><strong>URL:</strong> <a href={v.url} target="_blank" rel="noreferrer">{v.url}</a></span>}
+        </div>
+      );
+    };
+    if (Array.isArray(value)) return value.map((v, i) => <div key={i}>{renderCreator(v)}</div>);
+    if (typeof value === "object") return renderCreator(value);
   }
 
-  if (key === "qualified_attribution" && typeof value === "object" && !Array.isArray(value)) {
-    const typeCode = value.qualified_attribution_agent_type ? value.qualified_attribution_agent_type.split("/").pop() : null;
-    const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
-    const roleCode = value.qualified_attribution_role ? value.qualified_attribution_role.split("#").pop() : null;
-    return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-        {value.qualified_attribution_agent_name && <span><strong>Nombre:</strong> {value.qualified_attribution_agent_name}</span>}
-        {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
-        {value.qualified_attribution_agent_email && <span><strong>Email:</strong> {value.qualified_attribution_agent_email}</span>}
-        {value.qualified_attribution_agent_contact_page && <span><strong>Web:</strong> <a href={value.qualified_attribution_agent_contact_page} target="_blank" rel="noreferrer">{value.qualified_attribution_agent_contact_page}</a></span>}
-        {roleCode && <span><strong>Rol:</strong> {roleCode}</span>}
-      </div>
-    );
+  if (key === "qualified_attribution") {
+    const renderAttribution = (v) => {
+      const typeCode = v.qualified_attribution_agent_type ? v.qualified_attribution_agent_type.split("/").pop() : null;
+      const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
+      const roleCode = v.qualified_attribution_role ? v.qualified_attribution_role.split("#").pop() : 
+                      v.role ? v.role.split("#").pop() : null;
+      const ROLE_LABELS = {
+        "author": "Autor", "coAuthor": "Co autor", "collaborator": "Colaborador",
+        "contributor": "Contribuyente", "custodian": "Custodio", "distributor": "Distribuidor",
+        "publisher": "Editor", "funder": "Financiador", "principalInvestigator": "Investigador principal",
+        "originator": "Originador", "owner": "Propietario", "pointOfContact": "Punto de contacto",
+        "rightsHolder": "Titular de los derechos", "user": "Usuario",
+      };
+      const roleLabel = roleCode ? (ROLE_LABELS[roleCode] || roleCode) : null;
+      return (
+        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          {(v.qualified_attribution_agent_name || v.name) && <span><strong>Nombre:</strong> {v.qualified_attribution_agent_name || v.name}</span>}
+          {typeLabel && <span><strong>Tipo:</strong> {typeLabel}</span>}
+          {(v.qualified_attribution_agent_email || v.email) && <span><strong>Correo:</strong> {v.qualified_attribution_agent_email || v.email}</span>}
+          {(v.qualified_attribution_agent_contact_page || v.contact_page) && <span><strong>Página de contacto:</strong> <a href={v.qualified_attribution_agent_contact_page || v.contact_page} target="_blank" rel="noreferrer">{v.qualified_attribution_agent_contact_page || v.contact_page}</a></span>}
+          {roleLabel && <span><strong>Rol:</strong> {roleLabel}</span>}
+        </div>
+      );
+    };
+    if (Array.isArray(value)) return value.map((v, i) => <div key={i} style={{ marginBottom: "6px" }}>{renderAttribution(v)}</div>);
+    if (typeof value === "object") return renderAttribution(value);
   }
 
   if (key === "was_generated_by" && Array.isArray(value)) {
