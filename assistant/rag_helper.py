@@ -344,6 +344,28 @@ FIELD_INDEX = {
     },
 }
 
+FIELD_INDEX["hdab.name"] = {
+    "label": "Nombre del organismo (HDAB)",
+    "obligatorio": True,
+    "descripcion": "Nombre del organismo que gestiona el acceso a los datos.",
+    "ejemplo": "Ministerio de Sanidad",
+    "bloque": "organismo_acceso_datos_sanitarios"
+}
+FIELD_INDEX["hdab.contact"] = {
+    "label": "Página de contacto (HDAB)",
+    "obligatorio": True,
+    "descripcion": "URL de la página de contacto del organismo.",
+    "ejemplo": "https://www.sanidad.gob.es/contacto",
+    "bloque": "organismo_acceso_datos_sanitarios"
+}
+FIELD_INDEX["hdab.email"] = {
+    "label": "Correo electrónico (HDAB)",
+    "obligatorio": True,
+    "descripcion": "Correo electrónico de contacto del organismo.",
+    "ejemplo": "hdab@ministerio.es",
+    "bloque": "organismo_acceso_datos_sanitarios"
+}
+
 # ─────────────────────────────────────────────────────────────
 # FUNCIÓN PRINCIPAL: descripción rápida de un campo faltante
 # ─────────────────────────────────────────────────────────────
@@ -418,14 +440,20 @@ def get_missing_descriptions(missing_fields: list, use_llm: bool = False, call_l
     ]
 
 def get_block_missing(block: dict, state_data: dict) -> list:
-    """
-    Devuelve los campos del bloque actual que están vacíos.
-    """
     missing = []
     for field_name in block.get("fields", []):
         if field_name == "applicable_legislation":
             continue
         val = state_data.get(field_name)
+        
+        # Para campos con subcampos obligatorios, verifica subcampos específicos
+        if field_name == "hdab" and isinstance(val, dict):
+            # name, contact y email son obligatorios según el YAML
+            for subfield in ["name", "contact", "email"]:
+                if not val.get(subfield):
+                    missing.append(f"hdab.{subfield}")
+            continue
+            
         if val in (None, "", [], {}):
             missing.append(field_name)
     return missing
