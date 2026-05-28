@@ -16,6 +16,13 @@ export const completeBlock = (blockId, userContext) =>
   API.post(`/complete/${blockId}`, { block_id: blockId, user_context: userContext });
 export const saveManual = (blockId, partial) =>
   API.post("/save-manual", { block_id: blockId, partial });
+export const importSessionMetadata = (file) => {
+  const formData = new FormData();
+  formData.append("file", file);
+  return API.post("/import-session", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+};
 export const getMetadata = () => API.get("/metadata");
 export const validateMetadata = () => API.get("/validate");
 export const getMissingFields = (blockId) => API.get(`/missing/${blockId}`);

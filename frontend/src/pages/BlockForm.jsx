@@ -274,7 +274,22 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
 
     if (!value) return "—";
 
+    if (field === "applicable_legislation" && Array.isArray(value)) {
+      return value
+        .map((item) => {
+          if (typeof item === "string") return item;
+          if (!item || typeof item !== "object") return "";
+          return item.label || item.uri || JSON.stringify(item);
+        })
+        .filter(Boolean)
+        .join(", ");
+    }
+
     const formatSingleValue = (singleValue) => {
+      if (singleValue && typeof singleValue === "object") {
+        return singleValue.label || singleValue.uri || JSON.stringify(singleValue);
+      }
+
       if (fieldSchema?.choices) {
         const choice = fieldSchema.choices.find(
           ch => ch.value === singleValue

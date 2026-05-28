@@ -335,6 +335,36 @@ def get_session(session_id, response):
     return new_id, sessions[new_id]
 
 
+def _summarize_blocks(metadata: dict):
+    results_by_block = {}
+    for block in BLOCKS:
+        block_result = {}
+        block_filled = 0
+        for field in block["fields"]:
+            value = metadata.get(field)
+            block_result[field] = value
+            if value is not None and value != "" and value != []:
+                block_filled += 1
+
+        results_by_block[block["name"]] = {
+            "fields": block_result,
+            "filled": block_filled,
+            "total": len(block["fields"]),
+            "complete": block_filled == len(block["fields"]),
+        }
+
+    return results_by_block
+
+
+def _extract_metadata_payload(payload):
+    if isinstance(payload, dict):
+        if isinstance(payload.get("metadata"), dict):
+            return payload["metadata"]
+        if isinstance(payload.get("data"), dict):
+            return payload["data"]
+    return payload
+
+
 def apply_conditional_logic(state: MetadataState):
     ar = state.data.get("access_rights", "")
     if ar and "NON_PUBLIC" in str(ar).upper():
@@ -860,6 +890,44 @@ def guide():
 @app.get("/sessions/count")
 def sessions_count():
     return {"active_sessions": len(sessions)}
+
+
+@app.post("/import-session")
+async def import_session(
+    file: UploadFile = File(...),
+    response: Response = None,
+    session_id: str = Cookie(default=None)
+):
+    sid, _ = get_session(session_id, response)
+
+    filename = (file.filename or "").lower()
+    if not filename.endswith(".json") and file.content_type not in ("application/json", "text/json"):
+        raise HTTPException(status_code=400, detail="Por ahora solo se admite JSON para retomar una sesión.")
+
+    try:
+        contents = await file.read()
+        payload = json.loads(contents.decode("utf-8-sig"))
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error al leer el JSON: {str(e)}")
+
+    metadata_payload = _extract_metadata_payload(payload)
+    if not isinstance(metadata_payload, dict):
+        raise HTTPException(status_code=400, detail="El archivo JSON debe contener un objeto de metadatos.")
+
+    sessions[sid] = MetadataState("health_dcat_ap.yaml")
+    state = sessions[sid]
+
+    cleaned_data = {k: v for k, v in metadata_payload.items() if v not in (None, "", [])}
+    state.merge_partial(cleaned_data)
+    apply_conditional_logic(state)
+
+    return {
+        "success": True,
+        "metadata": state.data,
+        "results_by_block": _summarize_blocks(state.data),
+        "session_id": sid,
+        "source_type": "json",
+    }
 
 @app.post("/upload-document")
 async def upload_document(

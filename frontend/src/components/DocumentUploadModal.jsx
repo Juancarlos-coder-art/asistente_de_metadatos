@@ -1,11 +1,13 @@
 // src/components/DocumentUploadModal.jsx
 import { useState, useRef } from "react";
 import axios from "axios";
+import { importSessionMetadata } from "../api/client";
 
 const isProduction = window.location.hostname !== "localhost";
 const BASE_URL = isProduction ? "" : (import.meta.env.VITE_API_URL || "http://localhost:8000");
 
-export default function DocumentUploadModal({ onClose, onSkip, onSuccess }) {
+export default function DocumentUploadModal({ onClose, onSkip, onSuccess, mode = "document" }) {
+  const isSessionImport = mode === "session";
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -13,11 +15,19 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess }) {
   const inputRef = useRef();
 
   const handleFile = (f) => {
-    if (f && f.type === "application/pdf") {
+    if (!f) return;
+
+    if (!isSessionImport && f.type === "application/pdf") {
+      setFile(f);
+      setError(null);
+      return;
+    }
+
+    if (isSessionImport && (f.type === "application/json" || f.name.toLowerCase().endsWith(".json"))) {
       setFile(f);
       setError(null);
     } else {
-      setError("Solo se aceptan archivos PDF.");
+      setError(isSessionImport ? "Solo se aceptan archivos JSON por ahora." : "Solo se aceptan archivos PDF.");
     }
   };
 
@@ -25,16 +35,20 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess }) {
     if (!file) return;
     setLoading(true);
     setError(null);
-    const formData = new FormData();
-    formData.append("file", file);
     try {
-      const res = await axios.post(`${BASE_URL}/upload-document`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-        withCredentials: true,
-      });
+      const res = isSessionImport
+        ? await importSessionMetadata(file)
+        : await axios.post(`${BASE_URL}/upload-document`, (() => {
+          const formData = new FormData();
+          formData.append("file", file);
+          return formData;
+        })(), {
+          headers: { "Content-Type": "multipart/form-data" },
+          withCredentials: true,
+        });
       onSuccess(res.data);
     } catch (e) {
-      setError(e.response?.data?.detail || "Error al procesar el documento.");
+      setError(e.response?.data?.detail || (isSessionImport ? "Error al importar la sesión." : "Error al procesar el documento."));
     }
     setLoading(false);
   };
@@ -45,10 +59,13 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess }) {
         <div style={styles.header}>
           <span style={styles.icon}>📄</span>
           <div>
-            <h2 style={styles.title}>¿Tienes documentación del dataset?</h2>
+            <h2 style={styles.title}>
+              {isSessionImport ? "¿Quieres retomar una sesión guardada?" : "¿Tienes documentación del dataset?"}
+            </h2>
             <p style={styles.subtitle}>
-              Sube un PDF y el asistente intentará rellenar automáticamente
-              todos los campos posibles.
+              {isSessionImport
+                ? "Sube un JSON parcial y el asistente recuperará los campos ya completados para seguir desde ahí."
+                : "Sube un PDF y el asistente intentará rellenar automáticamente todos los campos posibles."}
             </p>
           </div>
         </div>
@@ -67,7 +84,7 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess }) {
           <input
             ref={inputRef}
             type="file"
-            accept="application/pdf"
+            accept={isSessionImport ? "application/json,.json" : "application/pdf"}
             style={{ display: "none" }}
             onChange={(e) => handleFile(e.target.files[0])}
           />
@@ -80,8 +97,12 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess }) {
           ) : (
             <div style={styles.dropHint}>
               <span style={styles.dropIcon}>⬆️</span>
-              <p style={styles.dropText}>Arrastra tu PDF aquí o haz clic para seleccionarlo</p>
-              <p style={styles.dropSubtext}>Solo archivos PDF · Máx. 10MB</p>
+              <p style={styles.dropText}>
+                {isSessionImport ? "Arrastra tu JSON aquí o haz clic para seleccionarlo" : "Arrastra tu PDF aquí o haz clic para seleccionarlo"}
+              </p>
+              <p style={styles.dropSubtext}>
+                {isSessionImport ? "Solo archivos JSON · Máx. 10MB" : "Solo archivos PDF · Máx. 10MB"}
+              </p>
             </div>
           )}
         </div>
@@ -91,15 +112,21 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess }) {
         )}
 
         <div style={styles.buttons}>
-          <button style={styles.btnSkip} onClick={onSkip} disabled={loading}>
-            Omitir y continuar manualmente
-          </button>
+          {isSessionImport ? (
+            <button style={styles.btnSkip} onClick={onClose} disabled={loading}>
+              Cancelar
+            </button>
+          ) : (
+            <button style={styles.btnSkip} onClick={onSkip} disabled={loading}>
+              Omitir y continuar manualmente
+            </button>
+          )}
           <button
             style={{ ...styles.btnUpload, opacity: (!file || loading) ? 0.6 : 1 }}
             onClick={handleUpload}
             disabled={!file || loading}
           >
-            {loading ? "Procesando..." : "⚡ Analizar documento"}
+            {loading ? "Procesando..." : (isSessionImport ? "↩ Reanudar sesión" : "⚡ Analizar documento")}
           </button>
         </div>
       </div>

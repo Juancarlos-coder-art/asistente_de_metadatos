@@ -10,7 +10,8 @@ export default function Sidebar({
   metadata,
   missingCount,
   onNavigate,
-  onReset
+  onReset,
+  onSaveProgress
 }) {
 
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -64,6 +65,7 @@ export default function Sidebar({
 
       <hr className="sidebar-divider" />
       <a href={guideUrl} download className="sidebar-btn">Manual de usuario</a>
+      <button className="sidebar-btn" onClick={onSaveProgress}>Guardar progreso</button>
       <button className="sidebar-btn" onClick={onReset}>← Volver al inicio</button>
     </aside>
   );

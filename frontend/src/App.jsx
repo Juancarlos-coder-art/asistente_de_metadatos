@@ -17,6 +17,7 @@ export default function App() {
   const [missingDetails, setMissingDetails] = useState([]);
   const [finished, setFinished] = useState(false);
   const [showDocumentModal, setShowDocumentModal] = useState(false);
+  const [showSessionImportModal, setShowSessionImportModal] = useState(false);
   const [documentResults, setDocumentResults] = useState(null);
   const [skipNextMetadataFetch, setSkipNextMetadataFetch] = useState(false);
 
@@ -36,7 +37,10 @@ export default function App() {
     }
   }, [started, currentIdx]);
 
-  const handleStart = () => setStarted(true);
+  const handleStart = () => {
+    setStarted(true);
+    setShowSessionImportModal(true);
+  };
 
   const handleNext = () => {
     if (currentIdx === 0 && !documentResults) {
@@ -56,6 +60,16 @@ export default function App() {
   };
 
   const handleFinish = () => setFinished(true);
+
+  const handleSaveProgress = () => {
+    const blob = new Blob([JSON.stringify(metadata, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "metadata_progress.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   const handleReset = async () => {
     await resetMetadata().catch(() => {});
@@ -79,6 +93,28 @@ export default function App() {
     });
     setBlocksDone(prev => [...new Set([...prev, ...done])]);
     setCurrentIdx(1);
+  };
+
+  const handleSessionImportSuccess = (data) => {
+    setDocumentResults(data.results_by_block || {});
+    setMetadata(data.metadata || {});
+    setShowSessionImportModal(false);
+    setSkipNextMetadataFetch(true);
+
+    const done = [];
+    blocks.forEach((b, i) => {
+      const result = data.results_by_block?.[b.name];
+      if (result?.complete) done.push(i);
+    });
+    setBlocksDone(done);
+
+    const nextIdx = blocks.findIndex((b) => {
+      const result = data.results_by_block?.[b.name];
+      return !result || !result.complete;
+    });
+
+    setCurrentIdx(nextIdx >= 0 ? nextIdx : 0);
+    setStarted(true);
   };
   // ── Pantalla final ──
   if (finished) {
@@ -127,6 +163,14 @@ export default function App() {
             setCurrentIdx(1);
           }}
           onSuccess={handleDocumentSuccess}
+          mode="document"
+        />
+      )}
+      {showSessionImportModal && (
+        <DocumentUploadModal
+          onClose={() => setShowSessionImportModal(false)}
+          onSuccess={handleSessionImportSuccess}
+          mode="session"
         />
       )}
       <Sidebar
@@ -137,6 +181,7 @@ export default function App() {
         missingCount={missingCount}
         missingDetails={missingDetails}
         onNavigate={(i) => setCurrentIdx(i)}
+        onSaveProgress={handleSaveProgress}
         onReset={handleReset}
       />
       <main className="main-content">
