@@ -16,13 +16,16 @@ export const completeBlock = (blockId, userContext) =>
   API.post(`/complete/${blockId}`, { block_id: blockId, user_context: userContext });
 export const saveManual = (blockId, partial) =>
   API.post("/save-manual", { block_id: blockId, partial });
-export const importSessionMetadata = (file) => {
+// api/client.js
+export async function importSessionMetadata(file, format = "json") {
   const formData = new FormData();
   formData.append("file", file);
-  return API.post("/import-session", formData, {
+  formData.append("format", format);   // ← añadir esto
+  return axios.post(`${BASE_URL}/import-session`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
+    withCredentials: true,
   });
-};
+}
 export const getMetadata = () => API.get("/metadata");
 export const validateMetadata = () => API.get("/validate");
 export const getMissingFields = (blockId) => API.get(`/missing/${blockId}`);
