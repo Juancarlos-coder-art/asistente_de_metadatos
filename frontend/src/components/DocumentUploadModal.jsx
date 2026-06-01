@@ -6,9 +6,21 @@ import { importSessionMetadata } from "../api/client";
 const isProduction = window.location.hostname !== "localhost";
 const BASE_URL = isProduction ? "" : (import.meta.env.VITE_API_URL || "http://localhost:8000");
 
+// Detecta el formato por extensión o MIME
+function getFileFormat(file) {
+  const ext = file.name.split(".").pop().toLowerCase();
+  if (ext === "json" || file.type === "application/json") return "json";
+  if (ext === "rdf"  || file.type === "application/rdf+xml") return "rdf";
+  if (ext === "ttl"  || file.type === "text/turtle" || file.type === "application/x-turtle") return "ttl";
+  return null;
+}
+
+const FORMAT_LABEL = { json: "JSON", rdf: "RDF/XML", ttl: "Turtle" };
+
 export default function DocumentUploadModal({ onClose, onSkip, onSuccess, mode = "document" }) {
   const isSessionImport = mode === "session";
   const [file, setFile] = useState(null);
+  const [fileFormat, setFileFormat] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [dragOver, setDragOver] = useState(false);
@@ -17,17 +29,22 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess, mode =
   const handleFile = (f) => {
     if (!f) return;
 
-    if (!isSessionImport && f.type === "application/pdf") {
-      setFile(f);
-      setError(null);
+    if (!isSessionImport) {
+      if (f.type === "application/pdf") {
+        setFile(f); setError(null);
+      } else {
+        setError("Solo se aceptan archivos PDF.");
+      }
       return;
     }
 
-    if (isSessionImport && (f.type === "application/json" || f.name.toLowerCase().endsWith(".json"))) {
-      setFile(f);
-      setError(null);
+    // Modo sesión: JSON, RDF/XML o Turtle
+    const fmt = getFileFormat(f);
+    if (fmt) {
+      setFile(f); setFileFormat(fmt); setError(null);
     } else {
-      setError(isSessionImport ? "Solo se aceptan archivos JSON por ahora." : "Solo se aceptan archivos PDF.");
+      setFile(null); setFileFormat(null);
+      setError("Formato no soportado. Usa JSON (.json), RDF/XML (.rdf) o Turtle (.ttl).");
     }
   };
 
@@ -37,15 +54,12 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess, mode =
     setError(null);
     try {
       const res = isSessionImport
-        ? await importSessionMetadata(file)
+        ? await importSessionMetadata(file, fileFormat)
         : await axios.post(`${BASE_URL}/upload-document`, (() => {
-          const formData = new FormData();
-          formData.append("file", file);
-          return formData;
-        })(), {
-          headers: { "Content-Type": "multipart/form-data" },
-          withCredentials: true,
-        });
+            const formData = new FormData();
+            formData.append("file", file);
+            return formData;
+          })(), { headers: { "Content-Type": "multipart/form-data" }, withCredentials: true });
       onSuccess(res.data);
     } catch (e) {
       setError(e.response?.data?.detail || (isSessionImport ? "Error al importar la sesión." : "Error al procesar el documento."));
@@ -64,7 +78,7 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess, mode =
             </h2>
             <p style={styles.subtitle}>
               {isSessionImport
-                ? "Sube un JSON parcial y el asistente recuperará los campos ya completados para seguir desde ahí."
+                ? "Sube un JSON, RDF/XML o Turtle y el asistente recuperará los campos ya completados para seguir desde ahí."
                 : "Sube un PDF y el asistente intentará rellenar automáticamente todos los campos posibles."}
             </p>
           </div>
@@ -84,7 +98,11 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess, mode =
           <input
             ref={inputRef}
             type="file"
-            accept={isSessionImport ? "application/json,.json" : "application/pdf"}
+            accept={
+              isSessionImport
+                ? "application/json,.json,application/rdf+xml,.rdf,text/turtle,.ttl"
+                : "application/pdf"
+            }
             style={{ display: "none" }}
             onChange={(e) => handleFile(e.target.files[0])}
           />
@@ -92,34 +110,40 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess, mode =
             <div style={styles.fileSelected}>
               <span style={styles.fileIcon}>✅</span>
               <span style={styles.fileName}>{file.name}</span>
+              {fileFormat && (
+                <span style={styles.formatBadge}>{FORMAT_LABEL[fileFormat]}</span>
+              )}
               <span style={styles.fileSize}>({(file.size / 1024).toFixed(0)} KB)</span>
             </div>
           ) : (
             <div style={styles.dropHint}>
               <span style={styles.dropIcon}>⬆️</span>
               <p style={styles.dropText}>
-                {isSessionImport ? "Arrastra tu JSON aquí o haz clic para seleccionarlo" : "Arrastra tu PDF aquí o haz clic para seleccionarlo"}
+                {isSessionImport
+                  ? "Arrastra tu archivo aquí o haz clic para seleccionarlo"
+                  : "Arrastra tu PDF aquí o haz clic para seleccionarlo"}
               </p>
               <p style={styles.dropSubtext}>
-                {isSessionImport ? "Solo archivos JSON · Máx. 10MB" : "Solo archivos PDF · Máx. 10MB"}
+                {isSessionImport ? "JSON · RDF/XML · Turtle  ·  Máx. 10MB" : "Solo archivos PDF · Máx. 10MB"}
               </p>
+              {isSessionImport && (
+                <div style={styles.formatTags}>
+                  <span style={styles.formatTag}>.json</span>
+                  <span style={styles.formatTag}>.rdf</span>
+                  <span style={styles.formatTag}>.ttl</span>
+                </div>
+              )}
             </div>
           )}
         </div>
 
-        {error && (
-          <div style={styles.error}>❌ {error}</div>
-        )}
+        {error && <div style={styles.error}>❌ {error}</div>}
 
         <div style={styles.buttons}>
           {isSessionImport ? (
-            <button style={styles.btnSkip} onClick={onClose} disabled={loading}>
-              Cancelar
-            </button>
+            <button style={styles.btnSkip} onClick={onClose} disabled={loading}>Cancelar</button>
           ) : (
-            <button style={styles.btnSkip} onClick={onSkip} disabled={loading}>
-              Omitir y continuar manualmente
-            </button>
+            <button style={styles.btnSkip} onClick={onSkip} disabled={loading}>Omitir y continuar manualmente</button>
           )}
           <button
             style={{ ...styles.btnUpload, opacity: (!file || loading) ? 0.6 : 1 }}
@@ -161,10 +185,19 @@ const styles = {
   dropHint: {},
   dropIcon: { fontSize: "2rem", display: "block", marginBottom: "8px" },
   dropText: { fontSize: "0.9rem", color: "#161616", margin: "0 0 4px 0", fontWeight: 500 },
-  dropSubtext: { fontSize: "0.78rem", color: "#6f6f6f", margin: 0 },
-  fileSelected: { display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" },
+  dropSubtext: { fontSize: "0.78rem", color: "#6f6f6f", margin: "0 0 10px 0" },
+  formatTags: { display: "flex", justifyContent: "center", gap: "6px" },
+  formatTag: {
+    fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.72rem",
+    background: "#e0e0e0", color: "#393939", padding: "2px 8px",
+  },
+  fileSelected: { display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", flexWrap: "wrap" },
   fileIcon: { fontSize: "1.4rem" },
   fileName: { fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.85rem", color: "#161616", fontWeight: 600 },
+  formatBadge: {
+    fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.72rem",
+    background: "#0f62fe", color: "white", padding: "2px 8px",
+  },
   fileSize: { fontSize: "0.78rem", color: "#6f6f6f" },
   error: {
     background: "#fff1f1", border: "1px solid #ffd7d9",

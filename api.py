@@ -14,12 +14,15 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from pypdf import PdfReader
 import io
-
+# AÑADIR junto a los otros imports
+from rdflib import Graph
 from schema_loader import HealthDCATAPSchema
 from assistant.metadata_state import MetadataState
 from assistant.llm_provider import call_llm, llm_available
 from assistant.rag_helper import get_block_missing, get_missing_descriptions
 from cli import BLOCKS, build_prompt_for_block, build_contract
+from rdflib import Graph, URIRef, Literal, Namespace, RDF, XSD
+from fastapi.responses import Response as FastAPIResponse
 
 app = FastAPI(title="Asistente HealthDCAT-AP", version="1.0.0")
 
@@ -861,6 +864,193 @@ def finalize(response: Response, session_id: str = Cookie(default=None)):
         json.dump(state.data, f, indent=2, ensure_ascii=False)
     return {"success": True, "metadata": state.data, "file": filename}
 
+@app.get("/export-rdf")
+async def export_rdf(
+    fmt: str = "turtle",   # "turtle" o "xml"
+    response: FastAPIResponse = None,
+    session_id: str = Cookie(default=None)
+):
+    if fmt not in ("turtle", "xml"):
+        raise HTTPException(status_code=400, detail="fmt debe ser 'turtle' o 'xml'")
+
+    # Recuperar sesión sin crear una nueva
+    if not session_id or session_id not in sessions:
+        raise HTTPException(status_code=404, detail="Sesión no encontrada.")
+    state = sessions[session_id]
+
+    d = state.data
+    if not d.get("title"):
+        raise HTTPException(status_code=400, detail="No hay metadatos que exportar.")
+
+    # ── Namespaces ──────────────────────────────────────────────────────────
+    DCAT    = Namespace("http://www.w3.org/ns/dcat#")
+    DCT     = Namespace("http://purl.org/dc/terms/")
+    HEALTH  = Namespace("https://healthdcat-ap.eu/ns#")
+    VCARD   = Namespace("http://www.w3.org/2006/vcard/ns#")
+    PROV    = Namespace("http://www.w3.org/ns/prov#")
+
+    g = Graph()
+    g.bind("dcat",   DCAT)
+    g.bind("dct",    DCT)
+    g.bind("health", HEALTH)
+    g.bind("vcard",  VCARD)
+    g.bind("prov",   PROV)
+
+    # URI del dataset
+    dataset_uri = URIRef(
+        d.get("identifier") or
+        d.get("url") or
+        f"https://catalogo.ends.gob.es/dataset/{session_id[:8]}"
+    )
+    g.add((dataset_uri, RDF.type, DCAT.Dataset))
+
+    # ── Campos escalares simples ────────────────────────────────────────────
+    SCALAR_MAP = {
+        "title":                    (DCT.title,                  "es"),
+        "notes":                    (DCT.description,            "es"),
+        "identifier":               (DCT.identifier,             None),
+        "provenance":               (DCT.provenance,             "es"),
+        "version":                  (DCAT.version,               None),
+        "version_notes":            (DCAT.versionNotes,          "es"),
+        "legal_basis":              (DCT.license,                None),
+        "retention_period":         (HEALTH.retentionPeriod,     "es"),
+        "publisher_note":           (HEALTH.publisherNote,       "es"),
+        "temporal_resolution":      (DCAT.temporalResolution,    None),
+        "spatial_resolution_in_meters": (DCAT.spatialResolutionInMeters, None),
+        "number_of_records":        (HEALTH.numberOfRecords,     None),
+        "number_of_unique_individuals": (HEALTH.numberOfUniqueIndividuals, None),
+        "min_typical_age":          (HEALTH.minTypicalAge,       None),
+        "max_typical_age":          (HEALTH.maxTypicalAge,       None),
+        "issued":                   (DCT.issued,                 None),
+        "modified":                 (DCT.modified,               None),
+        "url":                      (DCAT.landingPage,           None),
+        "documentation":            (DCAT.qualifiedRelation,     None),
+        "frequency":                (DCT.accrualPeriodicity,     None),
+        "dcat_type":                (DCT.type,                   None),
+        "access_rights":            (DCT.rights,                 None),
+    }
+
+    for field, (pred, lang) in SCALAR_MAP.items():
+        val = d.get(field)
+        if not val and val != 0:
+            continue
+        if str(val).startswith("http"):
+            g.add((dataset_uri, pred, URIRef(str(val))))
+        elif lang:
+            g.add((dataset_uri, pred, Literal(str(val), lang=lang)))
+        else:
+            g.add((dataset_uri, pred, Literal(str(val))))
+
+    # ── Campos lista de URIs ────────────────────────────────────────────────
+    URI_LIST_MAP = {
+        "theme":            DCAT.theme,
+        "health_category":  HEALTH.healthCategory,
+        "health_theme":     HEALTH.healthTheme,
+        "personal_data":    HEALTH.personalData,
+        "language":         DCT.language,
+        "spatial":          DCT.spatial,
+        "conforms_to":      DCT.conformsTo,
+        "related_resource": DCT.relation,
+        "is_referenced_by": DCT.isReferencedBy,
+        "has_version":      DCT.hasVersion,
+        "was_generated_by": HEALTH.wasGeneratedBy,
+    }
+
+    for field, pred in URI_LIST_MAP.items():
+        values = d.get(field) or []
+        if isinstance(values, str):
+            values = [values]
+        for v in values:
+            if v:
+                node = URIRef(v) if str(v).startswith("http") else Literal(str(v))
+                g.add((dataset_uri, pred, node))
+
+    # ── Campos lista de literales ───────────────────────────────────────────
+    LITERAL_LIST_MAP = {
+        "keyword":             (DCAT.keyword,          "es"),
+        "purpose":             (HEALTH.purpose,        "es"),
+        "population_coverage": (HEALTH.populationCoverage, "es"),
+        "coding_system":       (HEALTH.codingSystem,   None),
+        "code_values":         (HEALTH.codeValues,     None),
+        "alternate_identifier":(DCT.identifier,        None),
+    }
+
+    for field, (pred, lang) in LITERAL_LIST_MAP.items():
+        values = d.get(field) or []
+        if isinstance(values, str):
+            values = [values]
+        for v in values:
+            if v:
+                g.add((dataset_uri, pred, Literal(str(v), lang=lang) if lang else Literal(str(v))))
+
+    # ── Cobertura temporal ──────────────────────────────────────────────────
+    tc = d.get("temporal_coverage")
+    if isinstance(tc, dict):
+        from rdflib import BNode
+        period = BNode()
+        g.add((dataset_uri, DCT.temporal, period))
+        if tc.get("start"):
+            g.add((period, Literal("startDate"), Literal(tc["start"], datatype=XSD.date)))
+        if tc.get("end"):
+            g.add((period, Literal("endDate"),   Literal(tc["end"],   datatype=XSD.date)))
+
+    # ── Contacto ───────────────────────────────────────────────────────────
+    contact = d.get("contact")
+    if isinstance(contact, dict):
+        from rdflib import BNode
+        cp = BNode()
+        g.add((dataset_uri, DCAT.contactPoint, cp))
+        g.add((cp, RDF.type, VCARD.Kind))
+        if contact.get("email"):
+            g.add((cp, VCARD.hasEmail, URIRef(f"mailto:{contact['email']}")))
+        if contact.get("url"):
+            g.add((cp, VCARD.hasURL, URIRef(contact["url"])))
+
+    # ── Publisher ──────────────────────────────────────────────────────────
+    for field, pred in [("publisher", DCT.publisher), ("creator", DCT.creator)]:
+        org = d.get(field)
+        if isinstance(org, dict) and org.get("name"):
+            from rdflib import BNode
+            org_node = BNode()
+            g.add((dataset_uri, pred, org_node))
+            g.add((org_node, Literal("name"), Literal(org["name"])))
+            if org.get("type") and str(org["type"]).startswith("http"):
+                g.add((org_node, DCT.type, URIRef(org["type"])))
+            if org.get("email"):
+                g.add((org_node, VCARD.hasEmail, URIRef(f"mailto:{org['email']}")))
+
+    # ── Legislación aplicable ──────────────────────────────────────────────
+    for leg in (d.get("applicable_legislation") or []):
+        if isinstance(leg, dict) and leg.get("uri"):
+            g.add((dataset_uri, DCT.isPartOf, URIRef(leg["uri"])))
+        elif isinstance(leg, str) and leg.startswith("http"):
+            g.add((dataset_uri, DCT.isPartOf, URIRef(leg)))
+
+    # ── Distribución ──────────────────────────────────────────────────────
+    for dist in (d.get("distribution") or []):
+        if isinstance(dist, dict) and dist.get("access_url"):
+            from rdflib import BNode
+            dist_node = BNode()
+            g.add((dataset_uri, DCAT.distribution, dist_node))
+            g.add((dist_node, RDF.type, DCAT.Distribution))
+            g.add((dist_node, DCAT.accessURL, URIRef(dist["access_url"])))
+
+    # ── Serializar ────────────────────────────────────────────────────────
+    if fmt == "turtle":
+        rdf_bytes = g.serialize(format="turtle").encode("utf-8")
+        media_type  = "text/turtle"
+        filename    = f"metadata_{session_id[:8]}.ttl"
+    else:
+        rdf_bytes = g.serialize(format="xml").encode("utf-8")
+        media_type  = "application/rdf+xml"
+        filename    = f"metadata_{session_id[:8]}.rdf"
+
+    return FastAPIResponse(
+        content=rdf_bytes,
+        media_type=media_type,
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'}
+    )
+
 @app.post("/reset")
 def reset(body: ResetRequest, response: Response, session_id: str = Cookie(default=None)):
     if body.confirm:
@@ -891,7 +1081,84 @@ def guide():
 def sessions_count():
     return {"active_sessions": len(sessions)}
 
+# ── Conversor RDF → dict de metadatos ──────────────────────────────────────
+def _rdf_graph_to_metadata(g: Graph) -> dict:
+    """
+    Extrae predicados del grafo RDF y los mapea a los campos internos del asistente.
+    Soporta tanto RDF/XML como Turtle.
+    """
+    # Prefijos HealthDCAT-AP / DCAT / DCT que usamos
+    PRED_MAP = {
+        "http://purl.org/dc/terms/title":                   "title",
+        "http://purl.org/dc/terms/description":             "notes",
+        "http://purl.org/dc/terms/identifier":              "identifier",
+        "http://purl.org/dc/terms/publisher":               "publisher",
+        "http://purl.org/dc/terms/creator":                 "creator",
+        "http://purl.org/dc/terms/language":                "language",
+        "http://purl.org/dc/terms/issued":                  "issued",
+        "http://purl.org/dc/terms/modified":                "modified",
+        "http://purl.org/dc/terms/accrualPeriodicity":      "frequency",
+        "http://purl.org/dc/terms/spatial":                 "spatial",
+        "http://purl.org/dc/terms/temporal":                "temporal_coverage",
+        "http://purl.org/dc/terms/conformsTo":              "conforms_to",
+        "http://purl.org/dc/terms/provenance":              "provenance",
+        "http://purl.org/dc/terms/relation":                "related_resource",
+        "http://purl.org/dc/terms/isReferencedBy":          "is_referenced_by",
+        "http://purl.org/dc/terms/hasVersion":              "has_version",
+        "http://purl.org/dc/terms/type":                    "dcat_type",
+        "http://purl.org/dc/terms/license":                 "legal_basis",
+        "http://purl.org/dc/terms/rights":                  "access_rights",
+        "http://www.w3.org/ns/dcat#keyword":                "keyword",
+        "http://www.w3.org/ns/dcat#theme":                  "theme",
+        "http://www.w3.org/ns/dcat#contactPoint":           "contact",
+        "http://www.w3.org/ns/dcat#landingPage":            "url",
+        "http://www.w3.org/ns/dcat#version":                "version",
+        "http://www.w3.org/ns/dcat#spatialResolutionInMeters": "spatial_resolution_in_meters",
+        "http://www.w3.org/ns/dcat#temporalResolution":     "temporal_resolution",
+        "https://healthdcat-ap.eu/ns#healthCategory":       "health_category",
+        "https://healthdcat-ap.eu/ns#healthTheme":          "health_theme",
+        "https://healthdcat-ap.eu/ns#hdab":                 "hdab",
+        "https://healthdcat-ap.eu/ns#personalData":         "personal_data",
+        "https://healthdcat-ap.eu/ns#populationCoverage":   "population_coverage",
+        "https://healthdcat-ap.eu/ns#purpose":              "purpose",
+        "https://healthdcat-ap.eu/ns#codingSystem":         "coding_system",
+        "https://healthdcat-ap.eu/ns#numberOfRecords":      "number_of_records",
+        "https://healthdcat-ap.eu/ns#numberOfUniqueIndividuals": "number_of_unique_individuals",
+        "https://healthdcat-ap.eu/ns#minTypicalAge":        "min_typical_age",
+        "https://healthdcat-ap.eu/ns#maxTypicalAge":        "max_typical_age",
+        "https://healthdcat-ap.eu/ns#wasGeneratedBy":       "was_generated_by",
+        "https://healthdcat-ap.eu/ns#retentionPeriod":      "retention_period",
+        "https://healthdcat-ap.eu/ns#codeValues":           "code_values",
+        "https://healthdcat-ap.eu/ns#publisherNote":        "publisher_note",
+        "https://healthdcat-ap.eu/ns#qualifiedAttribution": "qualified_attribution",
+    }
 
+    # Campos que acumulan múltiples valores en lista
+    LIST_FIELDS = {
+        "language", "theme", "health_category", "health_theme",
+        "personal_data", "keyword", "spatial", "conforms_to",
+        "related_resource", "is_referenced_by", "has_version",
+        "purpose", "population_coverage", "coding_system",
+        "code_values", "was_generated_by",
+    }
+
+    result = {}
+    for subj, pred, obj in g:
+        field = PRED_MAP.get(str(pred))
+        if not field:
+            continue
+        value = str(obj)
+        if field in LIST_FIELDS:
+            if field not in result:
+                result[field] = []
+            if value not in result[field]:
+                result[field].append(value)
+        else:
+            # Para campos escalares, el primero gana (salvo que esté vacío)
+            if field not in result or not result[field]:
+                result[field] = value
+
+    return result
 @app.post("/import-session")
 async def import_session(
     file: UploadFile = File(...),
@@ -901,22 +1168,45 @@ async def import_session(
     sid, _ = get_session(session_id, response)
 
     filename = (file.filename or "").lower()
-    if not filename.endswith(".json") and file.content_type not in ("application/json", "text/json"):
-        raise HTTPException(status_code=400, detail="Por ahora solo se admite JSON para retomar una sesión.")
+    is_json  = filename.endswith(".json") or file.content_type in ("application/json", "text/json")
+    is_rdf   = filename.endswith(".rdf")  or file.content_type == "application/rdf+xml"
+    is_ttl   = filename.endswith(".ttl")  or file.content_type in ("text/turtle", "application/x-turtle")
+
+    if not (is_json or is_rdf or is_ttl):
+        raise HTTPException(
+            status_code=400,
+            detail="Formato no soportado. Usa JSON (.json), RDF/XML (.rdf) o Turtle (.ttl)."
+        )
+
+    contents = await file.read()
+    source_type = "json"
 
     try:
-        contents = await file.read()
-        payload = json.loads(contents.decode("utf-8-sig"))
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Error al leer el JSON: {str(e)}")
+        if is_json:
+            payload = json.loads(contents.decode("utf-8-sig"))
+            metadata_payload = _extract_metadata_payload(payload)
+            if not isinstance(metadata_payload, dict):
+                raise HTTPException(status_code=400, detail="El JSON debe contener un objeto de metadatos.")
 
-    metadata_payload = _extract_metadata_payload(payload)
-    if not isinstance(metadata_payload, dict):
-        raise HTTPException(status_code=400, detail="El archivo JSON debe contener un objeto de metadatos.")
+        elif is_rdf:
+            source_type = "rdf"
+            g = Graph()
+            g.parse(data=contents, format="xml")
+            metadata_payload = _rdf_graph_to_metadata(g)
+
+        elif is_ttl:
+            source_type = "ttl"
+            g = Graph()
+            g.parse(data=contents, format="turtle")
+            metadata_payload = _rdf_graph_to_metadata(g)
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error al parsear el archivo ({source_type}): {str(e)}")
 
     sessions[sid] = MetadataState("health_dcat_ap.yaml")
     state = sessions[sid]
-
     cleaned_data = {k: v for k, v in metadata_payload.items() if v not in (None, "", [])}
     state.merge_partial(cleaned_data)
     apply_conditional_logic(state)
@@ -926,7 +1216,7 @@ async def import_session(
         "metadata": state.data,
         "results_by_block": _summarize_blocks(state.data),
         "session_id": sid,
-        "source_type": "json",
+        "source_type": source_type,
     }
 
 @app.post("/upload-document")

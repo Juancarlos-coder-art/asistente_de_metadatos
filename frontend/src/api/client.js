@@ -33,3 +33,18 @@ export const finalizeMetadata = () => API.post("/finalize");
 export const resetMetadata = () => API.post("/reset", { confirm: true });
 export const getLlmStatus = () => API.get("/llm-status");
 export const getSchemaInfo = () => API.get("/schema-info");
+// Exportar metadatos como RDF (fmt: "turtle" | "xml")
+export async function exportRdf(fmt = "turtle") {
+  const res = await fetch(`${BASE_URL}/export-rdf?fmt=${fmt}`, {
+    credentials: "include",
+  });
+  if (!res.ok) throw new Error((await res.json()).detail || "Error al exportar RDF");
+  const blob = await res.blob();
+  const ext  = fmt === "xml" ? "rdf" : "ttl";
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href     = url;
+  a.download = `metadata.${ext}`;
+  a.click();
+  URL.revokeObjectURL(url);
+}

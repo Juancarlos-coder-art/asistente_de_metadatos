@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Welcome from "./pages/Welcome";
 import BlockForm from "./pages/BlockForm";
 import Sidebar from "./components/Sidebar";
-import { getBlocks, getMetadata, validateMetadata, getMissingFields, resetMetadata } from "./api/client";
+import { getBlocks, getMetadata, validateMetadata, getMissingFields, resetMetadata, exportRdf } from "./api/client";
 import DocumentUploadModal from "./components/DocumentUploadModal";
 import LegislationSelector from "./components/LegislationSelector";
 
@@ -20,6 +20,7 @@ export default function App() {
   const [showSessionImportModal, setShowSessionImportModal] = useState(false);
   const [documentResults, setDocumentResults] = useState(null);
   const [skipNextMetadataFetch, setSkipNextMetadataFetch] = useState(false);
+  const [exportingRdf, setExportingRdf] = useState(false);
 
   useEffect(() => {
     getBlocks().then(res => setBlocks(res.data)).catch(() => {});
@@ -116,6 +117,18 @@ export default function App() {
     setCurrentIdx(nextIdx >= 0 ? nextIdx : 0);
     setStarted(true);
   };
+
+  const handleExportRdf = async (fmt) => {
+    setExportingRdf(true);
+    try {
+      await exportRdf(fmt);
+    } catch (e) {
+      alert("Error al exportar RDF: " + e.message);
+    } finally {
+      setExportingRdf(false);
+    }
+  };
+
   // ── Pantalla final ──
   if (finished) {
     const handleDownloadJSON = () => {
@@ -142,9 +155,29 @@ export default function App() {
           <pre className="finish-json" style={{ marginTop: "24px" }}>
             {JSON.stringify(metadata, null, 2)}
           </pre>
-          <div style={{ display: "flex", gap: "12px", justifyContent: "center", marginTop: "16px" }}>
-            <button className="btn btn--primary" onClick={handleDownloadJSON}>⬇ Descargar JSON</button>
-            <button className="btn btn--secondary" onClick={handleReset}>Empezar de nuevo</button>
+
+          {/* ── Botones de descarga ── */}
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", marginTop: "16px", flexWrap: "wrap" }}>
+            <button className="btn btn--primary" onClick={handleDownloadJSON}>
+              ⬇ Descargar JSON
+            </button>
+            <button
+              className="btn btn--secondary"
+              onClick={() => handleExportRdf("turtle")}
+              disabled={exportingRdf}
+            >
+              {exportingRdf ? "Exportando..." : "⬇ Descargar Turtle (.ttl)"}
+            </button>
+            <button
+              className="btn btn--secondary"
+              onClick={() => handleExportRdf("xml")}
+              disabled={exportingRdf}
+            >
+              {exportingRdf ? "Exportando..." : "⬇ Descargar RDF/XML (.rdf)"}
+            </button>
+            <button className="btn btn--secondary" onClick={handleReset}>
+              Empezar de nuevo
+            </button>
           </div>
         </div>
       </div>
