@@ -19,6 +19,8 @@ const NON_PUBLIC_URI = "NON_PUBLIC";
 
 // ── Modal bloqueante con edición inline ──
 function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInfo }) {
+  console.log("MODAL CARGADO - schemaInfo:", JSON.stringify(schemaInfo));
+  console.log("MODAL CARGADO - missingInfo:", JSON.stringify(missingInfo));
   const [fields, setFields] = useState({});
 
   const handleChange = (fieldName, value) => {
@@ -162,21 +164,21 @@ const modalStyles = {
   modal: {
     background: "white",
     borderTop: "4px solid #da1e28",
-    padding: "32px",
     maxWidth: "520px",
     width: "90%",
     boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
     maxHeight: "85vh",
-    overflowY: "auto",
+    display: "flex",
+    flexDirection: "column",
   },
-  header: { display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" },
+  header: { display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px", padding: "32px 32px 0 32px" },
   icon: { fontSize: "1.8rem" },
   title: {
     fontFamily: "'IBM Plex Mono', monospace",
     fontSize: "1.1rem", fontWeight: 600, color: "#161616", margin: 0,
   },
-  subtitle: { fontSize: "0.9rem", color: "#525252", marginBottom: "20px", lineHeight: 1.5 },
-  fieldList: { display: "flex", flexDirection: "column", gap: "10px", marginBottom: "24px" },
+  subtitle: { fontSize: "0.9rem", color: "#525252", marginBottom: "20px", lineHeight: 1.5, padding: "0 32px" },
+  fieldList: { display: "flex", flexDirection: "column", gap: "10px", marginBottom: "0", padding: "0 32px", overflowY: "auto", flex: 1 },
   fieldItem: {
     background: "#fff1f1", border: "1px solid #ffd7d9",
     borderLeft: "3px solid #da1e28", padding: "12px 14px",
@@ -198,7 +200,13 @@ const modalStyles = {
     fontSize: "0.78rem", color: "#525252",
     fontFamily: "'IBM Plex Sans', sans-serif", display: "block", marginBottom: "2px",
   },
-  buttons: { display: "flex", justifyContent: "space-between", gap: "12px" },
+  buttons: {
+    display: "flex", justifyContent: "space-between", gap: "12px",
+    padding: "16px 32px 32px 32px",
+    borderTop: "1px solid #e0e0e0",
+    background: "white",
+    flexShrink: 0,
+  },
   btnBack: {
     background: "transparent", border: "1px solid #c6c6c6", color: "#525252",
     padding: "10px 20px", fontSize: "0.88rem",
@@ -369,7 +377,6 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const blockQuestion = isNonPublic() && block.fields.includes("identifier")
     ? block.question + "\n\n🔒 El identificador se asignará automáticamente por ser un dataset No Público."
     : block.question;
-
   return (
     <div>
       {showModal && (

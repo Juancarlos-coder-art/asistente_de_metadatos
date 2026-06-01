@@ -768,6 +768,30 @@ def get_schema_info(lang: str = "es"):
             entry["subfields"] = _extract_subfields(schema_field["repeating_subfields"])
         if entry:
             info[field_key] = entry
+    info["health_category"] = {
+        "choices": [{"value": uri, "label": label} for label, uri in HEALTH_CATEGORIES.items()]
+    }
+    info["theme"] = {
+        "choices": [{"value": uri, "label": label} for label, uri in THEMES.items()]
+    }
+    info["dcat_type"] = {
+        "choices": [{"value": uri, "label": label} for label, uri in DATASET_TYPES.items()]
+    }
+    info["health_theme"] = {
+        "choices": [{"value": uri, "label": label} for label, uri in HEALTH_THEMES.items()]
+    }
+    info["was_generated_by"] = {
+        "choices": [{"value": uri, "label": label} for label, uri in HEALTH_ACTIVITIES.items()]
+    }
+    info["language"] = {
+        "choices": [{"value": uri, "label": label} for label, uri in LANGUAGES.items()]
+    }
+    info["spatial"] = {
+        "choices": [{"value": uri, "label": label} for label, uri in SPATIAL_COUNTRIES.items()]
+    }
+    info["frequency"] = {
+        "choices": [{"value": uri, "label": label} for label, uri in FREQUENCIES.items()]
+    }
     return info
 
 @app.post("/complete/{block_id}")
