@@ -17,38 +17,133 @@ const FIELD_LABELS_ES = {
 
 const NON_PUBLIC_URI = "NON_PUBLIC";
 
-// ── Modal bloqueante ──
-function MissingFieldsModal({ missingInfo, onClose, onContinue }) {
+// ── Modal bloqueante con edición inline ──
+function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInfo }) {
+  const [fields, setFields] = useState({});
+
+  const handleChange = (fieldName, value) => {
+    setFields(prev => ({ ...prev, [fieldName]: value }));
+  };
+
+  const handleHdabChange = (subfield, value) => {
+    setFields(prev => ({
+      ...prev,
+      hdab: { ...(prev.hdab || {}), [subfield]: value }
+    }));
+  };
+
+  const handleSave = () => {
+    // Solo enviar campos que tengan valor
+    const filled = Object.fromEntries(
+      Object.entries(fields).filter(([, v]) => v !== "" && v !== null && v !== undefined)
+    );
+    onSaveAndContinue(filled);
+  };
+
+  const anyFilled = Object.values(fields).some(v =>
+    v !== "" && v !== null && v !== undefined &&
+    (typeof v !== "object" || Object.values(v).some(sv => sv !== "" && sv !== null))
+  );
+
   return (
     <div style={modalStyles.overlay}>
       <div style={modalStyles.modal}>
         <div style={modalStyles.header}>
           <span style={modalStyles.icon}>⚠️</span>
-          <h2 style={modalStyles.title}>Campos obligatorios sin rellenar</h2>
+          <h2 style={modalStyles.title}>Campos con errores</h2>
         </div>
         <p style={modalStyles.subtitle}>
-          Los siguientes campos son obligatorios. Debes rellenarlos antes de continuar.
+          Corrige los siguientes campos antes de continuar.
         </p>
         <div style={modalStyles.fieldList}>
-          {missingInfo.map((item, i) => (
-            <div key={i} style={modalStyles.fieldItem}>
-              <div style={modalStyles.fieldName}>
-                🔴 {FIELD_LABELS_ES[item.field] ?? item.field}
-              </div>
-              <div style={modalStyles.fieldDesc}>
-                {item.descripcion}
-              </div>
-              {item.ejemplo && (
-                <div style={modalStyles.fieldExample}>
-                  Ej: {item.ejemplo}
+          {missingInfo.map((item, i) => {
+            const fieldName = item.field;
+            const label = FIELD_LABELS_ES[fieldName] ?? item.label ?? fieldName;
+            const fieldSchema = schemaInfo[fieldName] || {};
+
+            return (
+              <div key={i} style={modalStyles.fieldItem}>
+                <div style={modalStyles.fieldName}>
+                  🔴 {label} — <span style={{ color: "#da1e28" }}>obligatorio</span>
                 </div>
-              )}
-            </div>
-          ))}
+                <div style={modalStyles.fieldDesc}>{item.descripcion}</div>
+                {item.ejemplo && (
+                  <div style={modalStyles.fieldExample}>Ej: {item.ejemplo}</div>
+                )}
+
+                {/* ── Editor inline ── */}
+                <div style={{ marginTop: "10px" }}>
+                  {/* access_rights → select */}
+                  {fieldName === "access_rights" && fieldSchema.choices ? (
+                    <select
+                      style={modalStyles.input}
+                      value={fields[fieldName] || ""}
+                      onChange={e => handleChange(fieldName, e.target.value)}
+                    >
+                      <option value="">— Selecciona una opción —</option>
+                      {fieldSchema.choices.map(ch => (
+                        <option key={ch.value} value={ch.value}>{ch.label}</option>
+                      ))}
+                    </select>
+
+                  /* hdab → subcampos */
+                  ) : fieldName === "hdab" && fieldSchema.subfields ? (
+                    <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                      {fieldSchema.subfields.map(sf => (
+                        <div key={sf.field_name}>
+                          <label style={modalStyles.subLabel}>
+                            {sf.required ? "* " : ""}{sf.label}
+                          </label>
+                          {sf.choices ? (
+                            <select
+                              style={modalStyles.input}
+                              value={(fields.hdab || {})[sf.field_name] || ""}
+                              onChange={e => handleHdabChange(sf.field_name, e.target.value)}
+                            >
+                              <option value="">— Selecciona —</option>
+                              {sf.choices.map(ch => (
+                                <option key={ch.value} value={ch.value}>{ch.label}</option>
+                              ))}
+                            </select>
+                          ) : (
+                            <input
+                              style={modalStyles.input}
+                              type="text"
+                              placeholder={`Introduce ${sf.label}...`}
+                              value={(fields.hdab || {})[sf.field_name] || ""}
+                              onChange={e => handleHdabChange(sf.field_name, e.target.value)}
+                            />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+
+                  /* campo de texto normal */
+                  ) : (
+                    <input
+                      style={modalStyles.input}
+                      type="text"
+                      placeholder={`Introduce ${label}...`}
+                      value={fields[fieldName] || ""}
+                      onChange={e => handleChange(fieldName, e.target.value)}
+                    />
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
+
         <div style={modalStyles.buttons}>
-          <button style={modalStyles.btnClose} onClick={onClose}>
+          <button style={modalStyles.btnBack} onClick={onClose}>
             ✏️ Volver a rellenar
+          </button>
+          <button
+            style={{ ...modalStyles.btnSave, opacity: anyFilled ? 1 : 0.5 }}
+            onClick={handleSave}
+            disabled={!anyFilled}
+          >
+            💾 Guardar y continuar
           </button>
         </div>
       </div>
@@ -61,9 +156,7 @@ const modalStyles = {
     position: "fixed",
     top: 0, left: 0, right: 0, bottom: 0,
     background: "rgba(0, 0, 0, 0.6)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: "flex", alignItems: "center", justifyContent: "center",
     zIndex: 9999,
   },
   modal: {
@@ -73,75 +166,52 @@ const modalStyles = {
     maxWidth: "520px",
     width: "90%",
     boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
-    maxHeight: "80vh",
+    maxHeight: "85vh",
     overflowY: "auto",
   },
-  header: {
-    display: "flex",
-    alignItems: "center",
-    gap: "12px",
-    marginBottom: "12px",
-  },
+  header: { display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" },
   icon: { fontSize: "1.8rem" },
   title: {
     fontFamily: "'IBM Plex Mono', monospace",
-    fontSize: "1.1rem",
-    fontWeight: 600,
-    color: "#161616",
-    margin: 0,
+    fontSize: "1.1rem", fontWeight: 600, color: "#161616", margin: 0,
   },
-  subtitle: {
-    fontSize: "0.9rem",
-    color: "#525252",
-    marginBottom: "20px",
-    lineHeight: 1.5,
-  },
-  fieldList: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-    marginBottom: "24px",
-  },
+  subtitle: { fontSize: "0.9rem", color: "#525252", marginBottom: "20px", lineHeight: 1.5 },
+  fieldList: { display: "flex", flexDirection: "column", gap: "10px", marginBottom: "24px" },
   fieldItem: {
-    background: "#fff1f1",
-    border: "1px solid #ffd7d9",
-    borderLeft: "3px solid #da1e28",
-    padding: "12px 14px",
+    background: "#fff1f1", border: "1px solid #ffd7d9",
+    borderLeft: "3px solid #da1e28", padding: "12px 14px",
   },
   fieldName: {
     fontFamily: "'IBM Plex Mono', monospace",
-    fontSize: "0.85rem",
-    fontWeight: 600,
-    color: "#da1e28",
-    marginBottom: "4px",
+    fontSize: "0.85rem", fontWeight: 600, color: "#da1e28", marginBottom: "4px",
   },
-  fieldDesc: {
-    fontSize: "0.88rem",
-    color: "#393939",
-    lineHeight: 1.5,
+  fieldDesc: { fontSize: "0.88rem", color: "#393939", lineHeight: 1.5 },
+  fieldExample: { fontSize: "0.78rem", color: "#6f6f6f", fontStyle: "italic", marginTop: "4px" },
+  input: {
+    width: "100%", boxSizing: "border-box",
+    border: "1px solid #da1e28", padding: "8px 10px",
+    fontSize: "0.88rem", fontFamily: "'IBM Plex Sans', sans-serif",
+    background: "white", marginTop: "4px",
+    outline: "none",
   },
-  fieldExample: {
-    fontSize: "0.78rem",
-    color: "#6f6f6f",
-    fontStyle: "italic",
-    marginTop: "4px",
+  subLabel: {
+    fontSize: "0.78rem", color: "#525252",
+    fontFamily: "'IBM Plex Sans', sans-serif", display: "block", marginBottom: "2px",
   },
-  buttons: {
-    display: "flex",
-    justifyContent: "flex-end",
+  buttons: { display: "flex", justifyContent: "space-between", gap: "12px" },
+  btnBack: {
+    background: "transparent", border: "1px solid #c6c6c6", color: "#525252",
+    padding: "10px 20px", fontSize: "0.88rem",
+    fontFamily: "'IBM Plex Sans', sans-serif", cursor: "pointer",
   },
-  btnClose: {
-    background: "#0f62fe",
-    color: "white",
-    border: "none",
-    padding: "12px 24px",
-    fontSize: "0.9rem",
-    fontFamily: "'IBM Plex Sans', sans-serif",
-    fontWeight: 500,
-    cursor: "pointer",
+  btnSave: {
+    background: "#0f62fe", color: "white", border: "none",
+    padding: "10px 24px", fontSize: "0.9rem",
+    fontFamily: "'IBM Plex Sans', sans-serif", fontWeight: 600, cursor: "pointer",
   },
 };
-  export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone, initialMetadata, onMetadataChange }) {
+
+export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone, initialMetadata, onMetadataChange }) {
   const [tab, setTab] = useState("ia");
   const [userContext, setUserContext] = useState("");
   const [manualFields, setManualFields] = useState({});
@@ -160,6 +230,7 @@ const modalStyles = {
   useEffect(() => {
     getSchemaInfo().then(res => setSchemaInfo(res.data)).catch(() => {});
   }, []);
+
   useEffect(() => {
     if (initialMetadata && Object.keys(initialMetadata).length > 0) {
       setMetadata(initialMetadata);
@@ -190,9 +261,7 @@ const modalStyles = {
   const loadMetadata = async () => {
     try {
       const res = await getMetadata();
-      if (res.data && Object.keys(res.data).length > 5) {
-        setMetadata(res.data);
-      }
+      if (res.data && Object.keys(res.data).length > 5) setMetadata(res.data);
       const val = await validateMetadata();
       setValidation(val.data);
       const misRes = await getMissingFields(currentIdx);
@@ -242,20 +311,48 @@ const modalStyles = {
     const currentMeta = metaRes.data;
     const nonPublic = isNonPublic(currentMeta);
 
-    // Filtrar campos obligatorios — excluir identifier si es NON_PUBLIC
     const obligatoryMissing = res.data.descriptions.filter(item =>
       item.obligatorio && !(nonPublic && item.field === "identifier")
     );
 
     if (obligatoryMissing.length > 0) {
-      // Campos obligatorios vacíos → mostrar modal BLOQUEANTE
       setMissingInfo(obligatoryMissing);
       setShowModal(true);
       return;
     }
-
-    // Sin campos obligatorios vacíos → avanzar
     onNext();
+  };
+
+  // Guardar desde el modal y continuar si ya no hay campos vacíos
+  const handleModalSave = async (filledFields) => {
+    setLoading(true);
+    try {
+      const res = await saveManual(currentIdx, filledFields);
+      setMetadata(res.data.metadata);
+      onBlockDone(currentIdx);
+
+      // Re-chequear si quedan obligatorios
+      const metaRes = await getMetadata();
+      const nonPublic = isNonPublic(metaRes.data);
+      const misRes = await getMissingFields(currentIdx);
+      setBlockMissingInfo(misRes.data.descriptions || []);
+
+      const stillMissing = misRes.data.descriptions.filter(item =>
+        item.obligatorio && !(nonPublic && item.field === "identifier")
+      );
+
+      if (stillMissing.length > 0) {
+        // Aún faltan campos — actualizar modal con los restantes
+        setMissingInfo(stillMissing);
+      } else {
+        // Todo correcto → cerrar y avanzar
+        setShowModal(false);
+        onNext();
+      }
+    } catch (e) {
+      setError(e.response?.data?.detail || "Error al guardar desde el modal");
+    }
+    setLoading(false);
   };
 
   const handleFinalize = async () => {
@@ -275,21 +372,20 @@ const modalStyles = {
 
   return (
     <div>
-      {/* Modal bloqueante */}
       {showModal && (
         <MissingFieldsModal
           missingInfo={missingInfo}
+          schemaInfo={schemaInfo}
           onClose={() => setShowModal(false)}
+          onSaveAndContinue={handleModalSave}
         />
       )}
 
-      {/* Tarjeta del bloque */}
       <div className="block-card">
         <p className="block-label">Bloque {currentIdx + 1} · {block.name.replace(/_/g, " ").toUpperCase()}</p>
         <p className="block-question" style={{ whiteSpace: "pre-line" }}>{blockQuestion}</p>
       </div>
 
-      {/* Tabs */}
       <div className="tabs">
         <button className={`tab-btn ${tab === "ia" ? "tab-btn--active" : ""}`} onClick={() => setTab("ia")}>Completar automáticamente</button>
         <button className={`tab-btn ${tab === "manual" ? "tab-btn--active" : ""}`} onClick={() => setTab("manual")}>Rellenar manualmente</button>
@@ -328,7 +424,6 @@ const modalStyles = {
             const fieldLabel = FIELD_LABELS_ES[field] ?? field;
             const fieldSchema = schemaInfo[field] || {};
 
-            // ── access_rights → select con choices ──
             if (field === "access_rights" && fieldSchema.choices) {
               return (
                 <div key={field} className="field-group">
@@ -347,7 +442,6 @@ const modalStyles = {
               );
             }
 
-            // ── hdab → subcampos desglosados ──
             if (field === "hdab" && fieldSchema.subfields) {
               const hdabValues = manualFields.hdab || {};
               return (
@@ -397,7 +491,6 @@ const modalStyles = {
               );
             }
 
-            // ── Campo de texto normal ──
             return (
               <div key={field} className="field-group">
                 <label className="field-label">{fieldLabel}</label>
@@ -424,7 +517,6 @@ const modalStyles = {
         </div>
       )}
 
-      {/* Vista previa + Validación */}
       <div className="bottom-grid">
         <div>
           <p className="json-viewer-header">Resumen del dataset</p>
@@ -436,23 +528,15 @@ const modalStyles = {
             if (!blockMissingInfo) {
               return <div className="alert alert--info" style={{ marginTop: 0 }}>⏳ Pendiente de validación. Completa el bloque para comprobar.</div>;
             }
-
-            // Campos obligatorios del bloque actual (del endpoint /missing/{blockId})
             const blockObligatory = blockMissingInfo.filter(item =>
               item.obligatorio && !(isNonPublic() && item.field === "identifier")
             );
-            const blockOptional = blockMissingInfo.filter(item =>
-              !item.obligatorio
-            );
-
-            // Errores de formato del bloque actual
+            const blockOptional = blockMissingInfo.filter(item => !item.obligatorio);
             const blockErrors = validation ? validation.errors.filter(e =>
               activeFields.some(f => e.includes(f))
             ) : [];
-
-            // Total global de obligatorios pendientes
-            const globalMissingCount = validation 
-              ? validation.missing_required.filter(m => !activeFields.includes(m)).length 
+            const globalMissingCount = validation
+              ? validation.missing_required.filter(m => !activeFields.includes(m)).length
               : 0;
             return (
               <>
@@ -487,7 +571,6 @@ const modalStyles = {
         </div>
       </div>
 
-      {/* Navegación */}
       <div className="nav-bar">
         <button className="btn btn--secondary" onClick={onPrev} style={{ visibility: currentIdx === 0 ? "hidden" : "visible" }}>
           ⬅️ Anterior
