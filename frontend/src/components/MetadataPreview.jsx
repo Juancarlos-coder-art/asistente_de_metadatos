@@ -2,55 +2,68 @@
 import { useState } from "react";
 
 const FIELD_INFO = {
-  title: { label: "Título", description: "Nombre del dataset" },
-  notes: { label: "Descripción", description: "Descripción del contenido" },
-  identifier: { label: "Identificador", description: "DOI o identificador único" },
-  name: { label: "URL", description: "Dirección en el portal" },
-  access_rights: { label: "Derechos de acceso", description: "Quién puede acceder" },
-  hdab: { label: "Organismo de acceso (HDAB)", description: "Entidad gestora del acceso" },
-  applicable_legislation: { label: "Legislación aplicable", description: "Marco legal" },
-  health_category: { label: "Categoría sanitaria", description: "Categoría EHDS" },
-  theme: { label: "Tema", description: "Tema principal del dataset" },
-  dcat_type: { label: "Tipo de dataset", description: "Tipo según Publications Office" },
-  provenance: { label: "Procedencia", description: "Origen de los datos" },
-  keyword: { label: "Palabras clave", description: "Etiquetas descriptivas" },
-  contact: { label: "Punto de contacto", description: "Contacto para consultas" },
-  access_url: { label: "URL de Acceso", description: "URL de acceso al dataset" },
-  distribution: { label: "Distribución", description: "URL de acceso al dataset" },
-  purpose: { label: "Finalidad", description: "Propósito del dataset" },
-  language: { label: "Idioma", description: "Idioma en el que están disponibles los datos" },
-  population_coverage: { label: "Cobertura poblacional", description: "Población cubierta por el dataset" },
-  number_of_unique_individuals: { label: "Número de personas individuales", description: "Número de personas únicas representadas en el dataset" },
-  number_of_records: { label: "Número de registros", description: "Número total de registros en el dataset" },
-  min_typical_age: { label: "Edad mínima típica", description: "Edad mínima típica de los individuos representados en el dataset" },
-  max_typical_age: { label: "Edad máxima típica", description: "Edad máxima típica de los individuos representados en el dataset" },
-  personal_data: { label: "Datos personales", description: "Indica si el dataset contiene datos personales" },
-  legal_basis: { label: "Base jurídica", description: "Base jurídica del tratamiento" },
-  retention_period: { label: "Periodo de conservación", description: "Periodo de conservación de los datos" },
-  coding_system: { label: "Sistema de codificación", description: "Sistema de codificación utilizado" },
-  health_theme: { label: "Tema de salud", description: "Tema de salud específico" },
-  code_values: { label: "Valores codificados", description: "Valores codificados del dataset" },
-  publisher: { label: "Editor", description: "Organización que publica el dataset" },
-  publisher_note: { label: "Nota del editor", description: "Notas adicionales del editor" },
-  creator: { label: "Creador", description: "Organización o persona que creó el dataset" },
-  qualified_attribution: { label: "Atribución cualificada", description: "Agente con rol específico" },
-  was_generated_by: { label: "Se generó por", description: "Actividad sanitaria que generó los datos" },
-  spatial: { label: "Cobertura geográfica", description: "Países o territorios cubiertos" },
-  temporal_coverage: { label: "Cobertura temporal", description: "Periodo temporal cubierto" },
-  temporal_resolution: { label: "Resolución temporal", description: "Mínima resolución temporal" },
-  spatial_resolution_in_meters: { label: "Resolución espacial (m)", description: "Resolución espacial en metros" },
-  frequency: { label: "Frecuencia", description: "Frecuencia de actualización" },
-  issued: { label: "Fecha de publicación", description: "Fecha de publicación original" },
-  modified: { label: "Fecha de modificación", description: "Última modificación" },
-  alternate_identifier: { label: "Identificador alternativo", description: "DOI, URN u otros identificadores" },
-  conforms_to: { label: "Se ajusta a", description: "Estándar al que se ajusta" },
-  related_resource: { label: "Recurso relacionado", description: "Recurso relacionado" },
-  is_referenced_by: { label: "Referenciado por", description: "Recursos que referencian este dataset" },
-  url: { label: "Página de entrada", description: "Landing page del dataset" },
-  documentation: { label: "Documentación", description: "Documentación asociada" },
-  version: { label: "Versión", description: "Versión actual" },
-  has_version: { label: "Tiene versión", description: "Versiones disponibles" },
-  version_notes: { label: "Notas de versión", description: "Notas sobre la versión" },
+  title: { label: "Título", tooltip: "Nombre oficial del dataset. Debe ser claro, descriptivo y único. Ejemplo: 'Casos de Mpox en España 2023'." },
+  notes: { label: "Descripción", tooltip: "Descripción completa del contenido, alcance, metodología y propósito del dataset. Cuanta más información, mejor para que otros usuarios entiendan de qué tratan los datos." },
+  identifier: { label: "Identificador", tooltip: "Identificador único y persistente del dataset, preferiblemente un DOI (Digital Object Identifier). Ejemplo: https://doi.org/10.5281/zenodo.123456. Para datasets no públicos se asigna automáticamente." },
+  name: { label: "URL", tooltip: "Dirección URL del dataset en el portal de datos. Se genera automáticamente a partir del título." },
+  access_rights: { label: "Derechos de acceso", tooltip: "Indica quién puede acceder al dataset según el vocabulario europeo: Público (cualquiera puede acceder), Restringido (acceso bajo condiciones o solicitud), No público (solo uso interno de la organización), Sensible (datos especialmente protegidos) o Datos provisionales." },
+  hdab: { label: "Organismo de acceso (HDAB)", tooltip: "Health Data Access Body (HDAB): organismo responsable de gestionar y autorizar el acceso a los datos sanitarios según el Reglamento EHDS. Incluye nombre, tipo de organismo, correo, teléfono y página web de contacto." },
+  applicable_legislation: { label: "Legislación aplicable", tooltip: "Marco legal bajo el que se tratan los datos. El GDPR (Reglamento UE 2016/679) es obligatorio para datasets con datos personales. Puede incluir también el EHDS (Reglamento UE 2025/327), la LOPDGDD española u otras normativas aplicables." },
+  health_category: { label: "Categoría sanitaria", tooltip: "Categoría del dato sanitario según el Artículo 33 del Reglamento EHDS. Ejemplos: Registros Electrónicos de Salud (EHRS), Datos de ensayos clínicos (EHCT), Datos genómicos (HGPD), Registros de salud pública (PHDR). Puede seleccionarse más de una categoría." },
+  theme: { label: "Tema", tooltip: "Tema principal del dataset según el vocabulario europeo de temas (EuroVoc/DCAT-AP). El tema 'Salud' (HEAL) es el más habitual para datasets sanitarios, pero puede combinarse con otros como Ciencia y Tecnología o Población y Sociedad." },
+  dcat_type: { label: "Tipo de dataset", tooltip: "Tipo de dataset según el vocabulario de la Publications Office de la UE. Ejemplos: Datos Estadísticos (agregados y anonimizados), Datos Sintéticos (generados artificialmente), Datos de Alto Valor (HVD), Geoespaciales. Orienta sobre la naturaleza técnica de los datos." },
+  provenance: { label: "Procedencia", tooltip: "Descripción del origen de los datos: cómo se recogieron, de qué fuentes provienen y qué transformaciones han sufrido. Ejemplo: 'Datos extraídos del Sistema de Información de Enfermedades de Declaración Obligatoria (EDO) del ISCIII'." },
+  keyword: { label: "Palabras clave", tooltip: "Etiquetas descriptivas que facilitan la búsqueda y descubrimiento del dataset. Deben ser términos relevantes relacionados con el contenido, la enfermedad, la población, la metodología o la geografía. Ejemplo: 'mpox, viruela del mono, epidemiología, España, 2023'." },
+  contact: { label: "Punto de contacto", tooltip: "Persona u organismo al que dirigirse para consultas sobre el dataset. Incluye correo electrónico y/o URL de la página de contacto. Es distinto del HDAB: el contacto responde preguntas sobre los datos, el HDAB gestiona el acceso." },
+  access_url: { label: "URL de Acceso", tooltip: "URL donde se puede acceder o solicitar acceso al dataset. Puede ser una página web, un portal de datos o un formulario de solicitud. Es obligatoria según DCAT-AP y HealthDCAT-AP." },
+  download_url: { label: "URL de descarga", tooltip: "URL de descarga directa del fichero de datos. A diferencia de la URL de acceso (que puede ser una página), esta URL apunta directamente al fichero descargable (ej: un .csv, .json o .zip). Opcional pero muy recomendable." },
+  description: { label: "Descripción de la distribución", tooltip: "Descripción específica de esta distribución del dataset: qué contiene el fichero, qué variables incluye, cómo está estructurado. Puede diferir de la descripción general del dataset si hay varias distribuciones." },
+  license: { label: "Licencia", tooltip: "Licencia bajo la que se publican los datos. Determina cómo pueden usarse, compartirse o modificarse. Ejemplos: CC BY 4.0 (libre con atribución), CC BY-NC (no comercial), CC0 (dominio público), licencia propietaria (uso restringido)." },
+  format: { label: "Formato", tooltip: "Formato técnico del fichero de distribución. Ejemplos: CSV (texto separado por comas), JSON (JavaScript Object Notation), XML, XLSX (Excel), Parquet (columnar para big data), RDF (datos enlazados), GeoJSON (datos geoespaciales)." },
+  mimetype: { label: "Tipo de medio", tooltip: "Tipo MIME (Media Type) del fichero, que identifica el formato de forma estándar para sistemas informáticos. Ejemplos: text/csv, application/json, application/xml, application/vnd.ms-excel, application/parquet." },
+  compress_format: { label: "Formato de compresión", tooltip: "Formato de compresión aplicado al fichero para reducir su tamaño. Ejemplos: zip, gzip, bzip2, xz. Indica este campo si el fichero descargable está comprimido." },
+  package_format: { label: "Formato de empaquetado", tooltip: "Formato de empaquetado cuando la distribución agrupa varios ficheros. Ejemplos: zip (varios ficheros en un zip), tar, tar.gz. Distinto del formato de compresión: el empaquetado agrupa ficheros, la compresión reduce el tamaño." },
+  size: { label: "Tamaño (bytes)", tooltip: "Tamaño del fichero de distribución en bytes. Permite a los usuarios saber cuánto espacio ocupará antes de descargarlo. Ejemplo: 15728640 equivale a 15 MB." },
+  hash: { label: "Hash", tooltip: "Valor hash o suma de comprobación del fichero, usado para verificar su integridad. Permite comprobar que el fichero descargado no ha sido alterado. Ejemplo: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'." },
+  hash_algorithm: { label: "Algoritmo hash", tooltip: "Algoritmo criptográfico usado para calcular el hash del fichero. Los más habituales son MD5 (rápido pero menos seguro), SHA-256 y SHA-512 (más seguros y recomendados). Necesario para interpretar el valor del hash." },
+  rights: { label: "Derechos", tooltip: "Declaración de derechos de uso del recurso de distribución, que puede complementar o especificar la licencia. Puede incluir restricciones de uso, condiciones de atribución o limitaciones geográficas. Formato libre." },
+  availability: { label: "Disponibilidad", tooltip: "Indica durante cuánto tiempo estará disponible esta distribución. Valores recomendados según DCAT-AP: 'disponible', 'disponible temporalmente', 'experimental', 'estable'. Informa a los usuarios sobre la continuidad del recurso." },
+  status: { label: "Estado", tooltip: "Estado actual del recurso de distribución según el vocabulario ADMS: Completado (datos finales y validados), En desarrollo (aún en elaboración), Obsoleto (reemplazado por una versión más reciente) o Retirado (ya no está disponible)." },
+  distribution: { label: "Distribución", tooltip: "Representación física o accesible del dataset. Un dataset puede tener varias distribuciones en distintos formatos (CSV, JSON, API…). Cada distribución tiene su propia URL de acceso, formato y licencia." },
+  purpose: { label: "Finalidad", tooltip: "Propósito o finalidades para las que se recogieron y pueden usarse los datos. Importante para cumplimiento del GDPR: los datos solo pueden usarse para los fines declarados. Ejemplo: 'vigilancia epidemiológica', 'investigación biomédica', 'gestión sanitaria'." },
+  language: { label: "Idioma", tooltip: "Idioma o idiomas en los que están disponibles los datos y la documentación del dataset. Se expresa mediante códigos de idioma de la Publications Office de la UE (ej: SPA para español, ENG para inglés, CAT para catalán)." },
+  population_coverage: { label: "Cobertura poblacional", tooltip: "Descripción de la población representada en el dataset: características demográficas, criterios de inclusión/exclusión, tamaño de la muestra. Ejemplo: 'Pacientes mayores de 18 años diagnosticados de COVID-19 en hospitales públicos españoles entre 2020 y 2023'." },
+  number_of_unique_individuals: { label: "Número de personas individuales", tooltip: "Número de personas únicas e identificables (aunque sea de forma pseudónima) representadas en el dataset. Distinto del número de registros: una misma persona puede tener varios registros. Dato clave para evaluar el riesgo de reidentificación." },
+  number_of_records: { label: "Número de registros", tooltip: "Número total de filas, observaciones o entradas en el dataset. Junto con el número de individuos, da una idea de la granularidad de los datos." },
+  min_typical_age: { label: "Edad mínima típica", tooltip: "Edad mínima típica de los individuos representados en el dataset. 'Típica' significa que puede haber casos excepcionales fuera de este rango. Ayuda a entender el perfil de la población estudiada." },
+  max_typical_age: { label: "Edad máxima típica", tooltip: "Edad máxima típica de los individuos representados en el dataset. Junto con la edad mínima, define el rango de edad habitual de la población del dataset." },
+  personal_data: { label: "Datos personales", tooltip: "Categorías de datos personales presentes en el dataset según el vocabulario DPV-PD. Incluye categorías especiales del Art. 9 GDPR: datos de salud, genéticos, biométricos, origen étnico, etc. Fundamental para la evaluación de impacto de privacidad." },
+  legal_basis: { label: "Base jurídica", tooltip: "Base jurídica del tratamiento de datos personales según el Art. 6 del GDPR. Ejemplos: consentimiento del interesado, interés público, investigación científica (Art. 9.2.j), obligación legal. Imprescindible para la conformidad legal del dataset." },
+  retention_period: { label: "Periodo de conservación", tooltip: "Periodo durante el cual se conservarán los datos, con fechas de inicio y fin. El GDPR exige que los datos no se conserven más tiempo del necesario para la finalidad declarada. Ejemplo: datos conservados desde enero 2020 hasta diciembre 2030." },
+  coding_system: { label: "Sistema de codificación", tooltip: "Sistema de codificación médica o científica utilizado en el dataset. Ejemplos: ICD-10 (Clasificación Internacional de Enfermedades), SNOMED CT (terminología clínica), LOINC (pruebas de laboratorio), ATC (medicamentos), MeSH (términos médicos)." },
+  health_theme: { label: "Tema de salud", tooltip: "Tema de salud específico del dataset según la taxonomía de la OMS/EHDS. Permite clasificar el dataset dentro de áreas como enfermedades infecciosas, salud mental, oncología, salud materno-infantil, etc." },
+  code_values: { label: "Valores codificados", tooltip: "Lista de valores o códigos utilizados en el dataset para representar categorías o variables. Ayuda a interpretar los datos sin necesidad de documentación externa. Ejemplo: '1=Masculino, 2=Femenino, 3=No especificado'." },
+  publisher: { label: "Editor", tooltip: "Organización responsable de publicar y hacer disponible el dataset. Incluye nombre, tipo de organismo, correo, teléfono, página web y horario de atención. El editor es quien asume la responsabilidad pública de la publicación." },
+  publisher_note: { label: "Nota del editor", tooltip: "Notas adicionales del editor sobre el dataset: advertencias de uso, limitaciones conocidas, contexto de publicación o cualquier información relevante que el editor quiera comunicar a los usuarios." },
+  creator: { label: "Creador", tooltip: "Persona u organización que creó o generó los datos originales. Puede diferir del editor (quien publica). En investigación biomédica suele ser el equipo investigador o el hospital que recogió los datos." },
+  qualified_attribution: { label: "Atribución cualificada", tooltip: "Agente que ha tenido un rol específico en la creación, gestión o publicación del dataset. Roles posibles: autor, custodio, financiador, propietario, distribuidor, punto de contacto, titular de derechos, etc. Sigue el estándar ISO 19115." },
+  was_generated_by: { label: "Se generó por", tooltip: "Actividad o proceso sanitario que generó los datos. Ejemplos: ensayo clínico, encuesta de salud, registros hospitalarios, registros de dispensación, biobanco, vigilancia epidemiológica. Permite entender el contexto de recogida." },
+  spatial: { label: "Cobertura geográfica", tooltip: "Países o territorios cubiertos por el dataset, expresados mediante códigos ISO 3166-1 alpha-3 (ej: ESP para España, FRA para Francia). Indica el ámbito geográfico de la población o los datos recogidos." },
+  temporal_coverage: { label: "Cobertura temporal", tooltip: "Periodo temporal cubierto por los datos, con fecha de inicio y fin. Distinto de las fechas de publicación o modificación del dataset: indica el intervalo de tiempo al que pertenecen los datos recogidos." },
+  temporal_resolution: { label: "Resolución temporal", tooltip: "Mínima granularidad temporal de los datos, expresada en formato ISO 8601. Ejemplos: P1D (diaria), PT1H (horaria), P1M (mensual), P1Y (anual). Indica la frecuencia con la que se recogieron o actualizaron los datos." },
+  spatial_resolution_in_meters: { label: "Resolución espacial (m)", tooltip: "Resolución espacial mínima de los datos en metros. Relevante para datasets geoespaciales o con componente geográfico. Indica la precisión geográfica de los datos: a menor número, mayor precisión." },
+  frequency: { label: "Frecuencia", tooltip: "Frecuencia con la que se actualiza el dataset. Ejemplos: Diario, Semanal, Mensual, Trimestral, Anual, Continuo, Irregular, No previsto. Informa a los usuarios sobre la actualidad de los datos." },
+  issued: { label: "Fecha de publicación", tooltip: "Fecha en que el dataset fue publicado o puesto a disposición por primera vez, en formato YYYY-MM-DD. Distinta de la fecha de modificación: la fecha de publicación no cambia aunque el dataset se actualice." },
+  modified: { label: "Fecha de modificación", tooltip: "Fecha de la última modificación del dataset, en formato YYYY-MM-DD. Se actualiza cada vez que se realizan cambios en los datos o en los metadatos. Permite saber cuán reciente es la última versión." },
+  alternate_identifier: { label: "Identificador alternativo", tooltip: "Identificadores adicionales del dataset en otros sistemas: DOI de publicaciones relacionadas, URN, handle, ISBN, etc. Facilita encontrar el dataset desde diferentes catálogos o sistemas de referencia." },
+  conforms_to: { label: "Se ajusta a", tooltip: "Estándar, especificación o esquema al que se ajusta el dataset. Ejemplos: HealthDCAT-AP, DCAT-AP 3.0, ISO 27001, HL7 FHIR. Indica conformidad con estándares de interoperabilidad o calidad." },
+  related_resource: { label: "Recurso relacionado", tooltip: "Recursos externos relacionados con el dataset: publicaciones científicas, informes, otros datasets complementarios, herramientas de análisis. Enriquece el contexto y facilita la investigación." },
+  is_referenced_by: { label: "Referenciado por", tooltip: "Recursos que citan o referencian este dataset: artículos científicos que lo han utilizado, informes que lo mencionan, otros datasets que lo incluyen. Permite conocer el impacto y uso del dataset." },
+  url: { label: "Página de entrada", tooltip: "URL de la página web principal (landing page) del dataset en el portal de datos. Es la página donde el usuario accede a toda la información del dataset, distinta de la URL de descarga directa del fichero." },
+  documentation: { label: "Documentación", tooltip: "Documentación técnica o descriptiva asociada al dataset: diccionario de variables, manual de usuario, protocolo de recogida de datos, informe metodológico. Esencial para que los usuarios entiendan y usen correctamente los datos." },
+  version: { label: "Versión", tooltip: "Número o código de la versión actual del dataset. Se recomienda seguir el versionado semántico (ej: 1.0, 2.1.3). Permite distinguir entre distintas versiones del mismo dataset." },
+  has_version: { label: "Tiene versión", tooltip: "Lista de versiones disponibles del dataset. Permite a los usuarios acceder a versiones anteriores o alternativas. Útil para reproducibilidad científica: garantiza que los análisis puedan repetirse con la misma versión de los datos." },
+  version_notes: { label: "Notas de versión", tooltip: "Descripción de los cambios introducidos en esta versión respecto a la anterior: correcciones, nuevas variables, ampliación del periodo temporal, etc. Ayuda a los usuarios a decidir si deben actualizar a la nueva versión." },
 };
 
 // Campos que se pueden editar inline (tipos simples de texto)
@@ -60,7 +73,9 @@ const EDITABLE_FIELDS = new Set([
   "number_of_records", "min_typical_age", "max_typical_age",
   "publisher_note", "temporal_resolution", "spatial_resolution_in_meters",
   "issued", "modified", "alternate_identifier", "version",
-  "has_version", "version_notes", "access_url",
+  "has_version", "version_notes", "access_url", "download_url", "description",
+  "license", "format", "mimetype", "compress_format", "package_format",
+  "size", "hash", "hash_algorithm", "rights", "availability",
 ]);
 
 const HEALTH_CATEGORY_LABELS = {
@@ -336,6 +351,20 @@ function formatValue(key, value, schemaInfo = {}) {
     return <a href={value} target="_blank" rel="noreferrer">{value}</a>;
   }
 
+  if (key === "download_url" && typeof value === "string") {
+    return <a href={value} target="_blank" rel="noreferrer">{value}</a>;
+  }
+
+  if (key === "status" && typeof value === "string") {
+    const map = {
+      "http://purl.org/adms/status/Completed": "Completado",
+      "http://purl.org/adms/status/UnderDevelopment": "En desarrollo",
+      "http://purl.org/adms/status/Deprecated": "Obsoleto",
+      "http://purl.org/adms/status/Withdrawn": "Retirado",
+    };
+    return map[value] || value.split("/").pop();
+  }
+
   if (key === "distribution" && Array.isArray(value)) {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
@@ -511,9 +540,10 @@ function formatValue(key, value, schemaInfo = {}) {
 }
 
 // ── Fila editable inline ──
-function EditableFieldRow({ fieldKey, value, label, schemaInfo, onSave }) {
+function EditableFieldRow({ fieldKey, value, label, tooltip, schemaInfo, onSave }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(typeof value === "string" ? value : "");
+  const [tooltipPos, setTooltipPos] = useState(null);
   const isEditable = EDITABLE_FIELDS.has(fieldKey) && typeof value === "string";
 
   const handleSave = () => {
@@ -526,28 +556,76 @@ function EditableFieldRow({ fieldKey, value, label, schemaInfo, onSave }) {
     if (e.key === "Escape") setEditing(false);
   };
 
+  const handleInfoClick = (e) => {
+    if (tooltipPos) { setTooltipPos(null); return; }
+    const rect = e.currentTarget.getBoundingClientRect();
+    const top = rect.bottom + 6;
+    const left = Math.min(rect.left, window.innerWidth - 360);
+    setTooltipPos({ top, left });
+  };
+
   const formatted = formatValue(fieldKey, value, schemaInfo);
   if (!formatted) return null;
 
   return (
-    <div
-      className="field-row"
-      style={{ position: "relative" }}
-    >
-      <div className="field-key">{label}</div>
+    <div className="field-row" style={{ position: "relative", alignItems: "flex-start" }}>
+      {tooltipPos && (
+        <>
+          <div
+            onClick={() => setTooltipPos(null)}
+            style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 999 }}
+          />
+          <div style={{
+            position: "fixed",
+            top: tooltipPos.top,
+            left: tooltipPos.left,
+            zIndex: 1000,
+            background: "#1c1c1c",
+            color: "#f4f4f4",
+            fontSize: "0.82rem",
+            lineHeight: 1.6,
+            padding: "14px 16px",
+            width: "340px",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.45)",
+            fontFamily: "'IBM Plex Sans', sans-serif",
+            borderLeft: "3px solid #0f62fe",
+            borderRadius: "2px",
+          }}>
+            <div style={{
+              fontWeight: 600, marginBottom: "6px",
+              color: "#78a9ff", fontSize: "0.85rem",
+              fontFamily: "'IBM Plex Mono', monospace",
+            }}>{label}</div>
+            {tooltip}
+          </div>
+        </>
+      )}
+      <div className="field-key" style={{ display: "flex", alignItems: "center", gap: "5px", paddingTop: "2px" }}>
+        <span>{label}</span>
+        {tooltip && (
+          <button
+            onClick={handleInfoClick}
+            title="Más información"
+            style={{
+              background: "none", border: "1.5px solid #0f62fe", cursor: "pointer",
+              color: "#0f62fe", fontSize: "0.68rem", padding: "0",
+              fontWeight: 700, fontFamily: "serif",
+              width: "14px", height: "14px", minWidth: "14px",
+              display: "inline-flex", alignItems: "center", justifyContent: "center",
+              borderRadius: "50%", flexShrink: 0, lineHeight: 1,
+            }}
+          >i</button>
+        )}
+      </div>
       <div className="field-val" style={{ flex: 1 }}>
         {editing ? (
           <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
             <input
               autoFocus
               style={{
-                flex: 1,
-                border: "1px solid #0f62fe",
-                padding: "4px 8px",
-                fontSize: "0.85rem",
-                fontFamily: "'IBM Plex Sans', sans-serif",
-                outline: "none",
-                background: "white",
+                flex: 1, border: "1px solid #0f62fe", padding: "4px 8px",
+                fontSize: "0.85rem", fontFamily: "'IBM Plex Sans', sans-serif",
+                outline: "none", background: "white",
               }}
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
@@ -624,6 +702,7 @@ export default function MetadataPreview({ metadata, schemaInfo = {}, onFieldSave
             fieldKey={key}
             value={value}
             label={info.label}
+            tooltip={info.tooltip}
             schemaInfo={schemaInfo}
             onSave={handleSave}
           />

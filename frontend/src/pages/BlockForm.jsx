@@ -28,6 +28,20 @@ const FIELD_LABELS_ES = {
   purpose: "Finalidad",
   contact: "Punto de contacto",
   access_url: "URL de Acceso",
+  download_url: "URL de descarga",
+  description: "Descripción de la distribución",
+  license: "Licencia",
+  format: "Formato",
+  mimetype: "Tipo de medio",
+  compress_format: "Formato de compresión",
+  package_format: "Formato de empaquetado",
+  size: "Tamaño (bytes)",
+  hash: "Hash",
+  hash_algorithm: "Algoritmo hash",
+  rights: "Derechos",
+  availability: "Disponibilidad",
+  status: "Estado",
+  name: "Nombre del Dataset",
   spatial: "Cobertura geográfica",
   temporal_coverage: "Cobertura temporal",
   frequency: "Frecuencia",
@@ -286,7 +300,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
 
   const activeFields = block.fields.filter(f => {
     if (f === "identifier" && isNonPublic()) return false;
-    if (f === "access_url" && isNonPublic()) return false; 
+    if (f === "access_url" && isNonPublic()) return false;
     if (f === "applicable_legislation") return false;
     return true;
   });
@@ -407,6 +421,13 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     setLoading(false);
   };
 
+  const handleFieldSave = async (field, value) => {
+    try {
+      const res = await saveManual(currentIdx, { [field]: value });
+      setMetadata(res.data.metadata);
+    } catch {}
+  };
+
   const blockQuestion = isNonPublic() && block.fields.includes("identifier")
     ? block.question + "\n\n🔒 El identificador se asignará automáticamente por ser un dataset No Público."
     : block.question;
@@ -443,6 +464,8 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
             <textarea
               className="field-textarea"
               placeholder={block.placeholder || "Describe el bloque con tus propias palabras..."}
+              value={userContext}
+              onChange={(e) => setUserContext(e.target.value)}
             />
           </div>
           <button className="btn btn--primary" onClick={handleComplete} disabled={loading || !userContext.trim()}>
@@ -467,11 +490,26 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
             </div>
           )}
           {activeFields.map(field => {
-            const fieldLabel = FIELD_LABELS_ES[field] ?? field;
+            // En el bloque de distribución, 'name' se muestra como "Nombre del recurso"
+            const isDistribBlock = block.fields.includes("access_url");
+            const fieldLabel = field === "name" && isDistribBlock
+              ? "Nombre del recurso"
+              : (FIELD_LABELS_ES[field] ?? field);
             const fieldSchema = schemaInfo[field] || {};
 
-            // Cualquier campo con choices → select
-            if (fieldSchema.choices) {
+            // Campos con choices → select
+            // Para 'status' usamos choices hardcoded si el schema no las devuelve
+            const STATUS_CHOICES = [
+              { value: "http://purl.org/adms/status/Completed", label: "Completado" },
+              { value: "http://purl.org/adms/status/UnderDevelopment", label: "En desarrollo" },
+              { value: "http://purl.org/adms/status/Deprecated", label: "Obsoleto" },
+              { value: "http://purl.org/adms/status/Withdrawn", label: "Retirado" },
+            ];
+            const effectiveChoices = field === "status" && (!fieldSchema.choices || fieldSchema.choices.length === 0)
+              ? STATUS_CHOICES
+              : fieldSchema.choices;
+
+            if (effectiveChoices) {
               return (
                 <div key={field} className="field-group">
                   <label className="field-label">{fieldLabel}</label>
@@ -481,10 +519,64 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                     onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
                   >
                     <option value="">— Selecciona una opción —</option>
-                    {fieldSchema.choices.map(ch => (
+                    {effectiveChoices.map(ch => (
                       <option key={ch.value} value={ch.value}>{ch.label}</option>
                     ))}
                   </select>
+                </div>
+              );
+            }
+
+            // retention_period → subcampos start/end
+            if (field === "retention_period") {
+              const rpValues = manualFields.retention_period || {};
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>
+                    {fieldLabel}
+                  </label>
+                  <div style={{ display: "flex", gap: "12px", marginTop: "6px" }}>
+                    <div style={{ flex: 1 }}>
+                      <label className="field-label" style={{ fontSize: "0.78rem", color: "#525252" }}>Inicio</label>
+                      <input
+                        className="field-input"
+                        type="date"
+                        value={rpValues.start || ""}
+                        onChange={(e) => setManualFields({
+                          ...manualFields,
+                          retention_period: { ...rpValues, start: e.target.value }
+                        })}
+                      />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <label className="field-label" style={{ fontSize: "0.78rem", color: "#525252" }}>Fin</label>
+                      <input
+                        className="field-input"
+                        type="date"
+                        value={rpValues.end || ""}
+                        onChange={(e) => setManualFields({
+                          ...manualFields,
+                          retention_period: { ...rpValues, end: e.target.value }
+                        })}
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
+            // description → textarea
+            if (field === "description") {
+              return (
+                <div key={field} className="field-group">
+                  <label className="field-label">{fieldLabel}</label>
+                  <textarea
+                    className="field-textarea"
+                    placeholder={`Introduce ${fieldLabel}...`}
+                    value={manualFields[field] || ""}
+                    rows={3}
+                    onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
+                  />
                 </div>
               );
             }
@@ -569,7 +661,11 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       <div className="bottom-grid">
         <div>
           <p className="json-viewer-header">Resumen del dataset</p>
-          <MetadataPreview metadata={metadata} />
+          <MetadataPreview
+            metadata={metadata}
+            schemaInfo={schemaInfo}
+            onFieldSave={handleFieldSave}
+          />
         </div>
         <div className="validation-box">
           <p className="validation-header">Estado de validación</p>
