@@ -12,15 +12,53 @@ const FIELD_LABELS_ES = {
   identifier: "Identificador",
   hdab: "Autoridad de acceso a los datos",
   access_rights: "Derechos de acceso",
-  applicable_legislation: "Legislación Aplicable"
+  applicable_legislation: "Legislación Aplicable",
+  health_category: "Categoría sanitaria",
+  theme: "Tema",
+  dcat_type: "Tipo de dataset",
+  provenance: "Procedencia",
+  keyword: "Palabras clave",
+  language: "Idioma",
+  population_coverage: "Cobertura poblacional",
+  number_of_records: "Número de registros",
+  number_of_unique_individuals: "Número de individuos únicos",
+  min_typical_age: "Edad mínima típica",
+  max_typical_age: "Edad máxima típica",
+  personal_data: "Datos personales",
+  purpose: "Finalidad",
+  contact: "Punto de contacto",
+  spatial: "Cobertura geográfica",
+  temporal_coverage: "Cobertura temporal",
+  frequency: "Frecuencia",
+  was_generated_by: "Generado por",
+  health_theme: "Tema de salud",
+  code_values: "Valores codificados",
+  coding_system: "Sistema de codificación",
+  publisher: "Editor",
+  creator: "Creador",
+  qualified_attribution: "Atribución cualificada",
+  legal_basis: "Base jurídica",
+  retention_period: "Período de conservación",
+  publisher_note: "Nota del editor",
+  temporal_resolution: "Resolución temporal",
+  spatial_resolution_in_meters: "Resolución espacial (m)",
+  issued: "Fecha de publicación",
+  modified: "Fecha de modificación",
+  alternate_identifier: "Identificador alternativo",
+  conforms_to: "Se ajusta a",
+  related_resource: "Recurso relacionado",
+  is_referenced_by: "Referenciado por",
+  url: "Página de entrada",
+  documentation: "Documentación",
+  version: "Versión",
+  has_version: "Tiene versión",
+  version_notes: "Notas de versión",
 };
 
 const NON_PUBLIC_URI = "NON_PUBLIC";
 
 // ── Modal bloqueante con edición inline ──
 function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInfo }) {
-  console.log("MODAL CARGADO - schemaInfo:", JSON.stringify(schemaInfo));
-  console.log("MODAL CARGADO - missingInfo:", JSON.stringify(missingInfo));
   const [fields, setFields] = useState({});
 
   const handleChange = (fieldName, value) => {
@@ -35,7 +73,6 @@ function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInf
   };
 
   const handleSave = () => {
-    // Solo enviar campos que tengan valor
     const filled = Object.fromEntries(
       Object.entries(fields).filter(([, v]) => v !== "" && v !== null && v !== undefined)
     );
@@ -72,10 +109,7 @@ function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInf
                 {item.ejemplo && (
                   <div style={modalStyles.fieldExample}>Ej: {item.ejemplo}</div>
                 )}
-
-                {/* ── Editor inline ── */}
                 <div style={{ marginTop: "10px" }}>
-                  {/* access_rights → select */}
                   {fieldSchema.choices ? (
                     <select
                       style={modalStyles.input}
@@ -87,8 +121,6 @@ function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInf
                         <option key={ch.value} value={ch.value}>{ch.label}</option>
                       ))}
                     </select>
-
-                  /* hdab → subcampos */
                   ) : fieldName === "hdab" && fieldSchema.subfields ? (
                     <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                       {fieldSchema.subfields.map(sf => (
@@ -119,8 +151,6 @@ function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInf
                         </div>
                       ))}
                     </div>
-
-                  /* campo de texto normal */
                   ) : (
                     <input
                       style={modalStyles.input}
@@ -135,7 +165,6 @@ function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInf
             );
           })}
         </div>
-
         <div style={modalStyles.buttons}>
           <button style={modalStyles.btnBack} onClick={onClose}>
             ✏️ Volver a rellenar
@@ -232,10 +261,9 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const [showModal, setShowModal] = useState(false);
   const [missingInfo, setMissingInfo] = useState([]);
   const [schemaInfo, setSchemaInfo] = useState({});
+  const [schemaLoaded, setSchemaLoaded] = useState(false);
 
   const block = blocks[currentIdx];
-
-const [schemaLoaded, setSchemaLoaded] = useState(false);
 
   useEffect(() => {
     getSchemaInfo().then(res => {
@@ -328,19 +356,16 @@ const [schemaLoaded, setSchemaLoaded] = useState(false);
       item.obligatorio && !(nonPublic && item.field === "identifier")
     );
 
-  if (obligatoryMissing.length > 0) {
-    setMissingInfo(obligatoryMissing);
-    // Esperar a que schemaInfo esté cargado
-    if (!schemaLoaded) {
-      await getSchemaInfo().then(res => setSchemaInfo(res.data)).catch(() => {});
+    if (obligatoryMissing.length > 0) {
+      setMissingInfo(obligatoryMissing);
+      const schemaRes = await getSchemaInfo();
+      setSchemaInfo(schemaRes.data);
+      setTimeout(() => setShowModal(true), 50);
+      return;
     }
-    setShowModal(true);
-    return;
-  }
     onNext();
   };
 
-  // Guardar desde el modal y continuar si ya no hay campos vacíos
   const handleModalSave = async (filledFields) => {
     setLoading(true);
     try {
@@ -348,7 +373,6 @@ const [schemaLoaded, setSchemaLoaded] = useState(false);
       setMetadata(res.data.metadata);
       onBlockDone(currentIdx);
 
-      // Re-chequear si quedan obligatorios
       const metaRes = await getMetadata();
       const nonPublic = isNonPublic(metaRes.data);
       const misRes = await getMissingFields(currentIdx);
@@ -359,10 +383,8 @@ const [schemaLoaded, setSchemaLoaded] = useState(false);
       );
 
       if (stillMissing.length > 0) {
-        // Aún faltan campos — actualizar modal con los restantes
         setMissingInfo(stillMissing);
       } else {
-        // Todo correcto → cerrar y avanzar
         setShowModal(false);
         onNext();
       }
@@ -386,6 +408,7 @@ const [schemaLoaded, setSchemaLoaded] = useState(false);
   const blockQuestion = isNonPublic() && block.fields.includes("identifier")
     ? block.question + "\n\n🔒 El identificador se asignará automáticamente por ser un dataset No Público."
     : block.question;
+
   return (
     <div>
       {showModal && (
@@ -440,7 +463,8 @@ const [schemaLoaded, setSchemaLoaded] = useState(false);
             const fieldLabel = FIELD_LABELS_ES[field] ?? field;
             const fieldSchema = schemaInfo[field] || {};
 
-            if (field === "access_rights" && fieldSchema.choices) {
+            // Cualquier campo con choices → select
+            if (fieldSchema.choices) {
               return (
                 <div key={field} className="field-group">
                   <label className="field-label">{fieldLabel}</label>
@@ -458,6 +482,7 @@ const [schemaLoaded, setSchemaLoaded] = useState(false);
               );
             }
 
+            // hdab → subcampos
             if (field === "hdab" && fieldSchema.subfields) {
               const hdabValues = manualFields.hdab || {};
               return (
@@ -507,6 +532,7 @@ const [schemaLoaded, setSchemaLoaded] = useState(false);
               );
             }
 
+            // Campo de texto libre
             return (
               <div key={field} className="field-group">
                 <label className="field-label">{fieldLabel}</label>
@@ -572,9 +598,14 @@ const [schemaLoaded, setSchemaLoaded] = useState(false);
                   </>
                 )}
                 {blockOptional.length > 0 && (
-                  <div className="alert alert--warn" style={{ marginTop: "8px" }}>
-                    💡 {blockOptional.length} campo(s) opcional(es) sin rellenar en este bloque.
-                  </div>
+                  <>
+                    {blockOptional.map((item, i) => (
+                      <div key={i} className="validation-item">
+                        <span>{FIELD_LABELS_ES[item.field] ?? item.label ?? item.field}</span>
+                        <span className="tag tag--warn">opcional</span>
+                      </div>
+                    ))}
+                  </>
                 )}
                 {globalMissingCount === 0 && blockObligatory.length === 0 && blockErrors.length === 0 && (
                   <div className="alert alert--ok" style={{ marginTop: "8px" }}>

@@ -1051,3 +1051,11 @@ html, body {
   color: #525252;
   font-size: 0.9rem;
 }
+
+.tag--warn {
+  background: #fef3c7;
+  color: #92400e;
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  padding: 2px var(--space-2);
+}
