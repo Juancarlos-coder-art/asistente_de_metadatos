@@ -372,6 +372,7 @@ def apply_conditional_logic(state: MetadataState):
     ar = state.data.get("access_rights", "")
     if ar and "NON_PUBLIC" in str(ar).upper():
         state.data["identifier"] = ENDS_NON_PUBLIC_URI
+        state.data["access_url"] = ENDS_NON_PUBLIC_URI
 
 
 def _extract_choices(choices_list, lang="es"):

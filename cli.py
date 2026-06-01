@@ -110,8 +110,8 @@ BLOCKS = [
     },
     {
         "name": "Acceso_a_Distribucion",
-        "name_en": "Distribution Access",
-        "fields": ["distribution_access_url"],
+        "name_en": "access_url",
+        "fields": ["access_url"],
         "question": (
             "¿Dónde se puede acceder al dataset?\n\n"
             "Indica la URL de acceso a la distribución del dataset."

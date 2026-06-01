@@ -1,4 +1,5 @@
 // src/components/MetadataPreview.jsx
+import { useState } from "react";
 
 const FIELD_INFO = {
   title: { label: "Título", description: "Nombre del dataset" },
@@ -14,6 +15,7 @@ const FIELD_INFO = {
   provenance: { label: "Procedencia", description: "Origen de los datos" },
   keyword: { label: "Palabras clave", description: "Etiquetas descriptivas" },
   contact: { label: "Punto de contacto", description: "Contacto para consultas" },
+  access_url: { label: "URL de Acceso", description: "URL de acceso al dataset" },
   distribution: { label: "Distribución", description: "URL de acceso al dataset" },
   purpose: { label: "Finalidad", description: "Propósito del dataset" },
   language: { label: "Idioma", description: "Idioma en el que están disponibles los datos" },
@@ -50,6 +52,16 @@ const FIELD_INFO = {
   has_version: { label: "Tiene versión", description: "Versiones disponibles" },
   version_notes: { label: "Notas de versión", description: "Notas sobre la versión" },
 };
+
+// Campos que se pueden editar inline (tipos simples de texto)
+const EDITABLE_FIELDS = new Set([
+  "title", "notes", "identifier", "name", "provenance", "keyword",
+  "purpose", "population_coverage", "number_of_unique_individuals",
+  "number_of_records", "min_typical_age", "max_typical_age",
+  "publisher_note", "temporal_resolution", "spatial_resolution_in_meters",
+  "issued", "modified", "alternate_identifier", "version",
+  "has_version", "version_notes", "access_url",
+]);
 
 const HEALTH_CATEGORY_LABELS = {
   "EHRS": "Registros Electrónicos de Salud",
@@ -135,6 +147,7 @@ const LANGUAGE_LABELS = {
   "POR": "Portugués", "RON": "Rumano", "SWE": "Sueco",
   "CAT": "Catalán", "GLG": "Gallego", "EUS": "Euskera",
 };
+
 const HEALTH_ACTIVITY_LABELS = {
   "EHEALTH_APPLICATION": "Aplicación de sanidad electrónica",
   "NONMEDICAL_APPLICATION": "Aplicación no médica",
@@ -319,6 +332,10 @@ function formatValue(key, value, schemaInfo = {}) {
     return value.map((v, i) => <span key={i}>{v.label || v.uri}</span>);
   }
 
+  if (key === "access_url" && typeof value === "string") {
+    return <a href={value} target="_blank" rel="noreferrer">{value}</a>;
+  }
+
   if (key === "distribution" && Array.isArray(value)) {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
@@ -429,7 +446,7 @@ function formatValue(key, value, schemaInfo = {}) {
     const renderAttribution = (v) => {
       const typeCode = v.qualified_attribution_agent_type ? v.qualified_attribution_agent_type.split("/").pop() : null;
       const typeLabel = typeCode ? (PUBLISHER_TYPE_LABELS[typeCode] || typeCode) : null;
-      const roleCode = v.qualified_attribution_role ? v.qualified_attribution_role.split("#").pop() : 
+      const roleCode = v.qualified_attribution_role ? v.qualified_attribution_role.split("#").pop() :
                       v.role ? v.role.split("#").pop() : null;
       const ROLE_LABELS = {
         "author": "Autor", "coAuthor": "Co autor", "collaborator": "Colaborador",
@@ -493,7 +510,93 @@ function formatValue(key, value, schemaInfo = {}) {
   return String(value);
 }
 
-export default function MetadataPreview({ metadata, schemaInfo = {} }) {
+// ── Fila editable inline ──
+function EditableFieldRow({ fieldKey, value, label, schemaInfo, onSave }) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(typeof value === "string" ? value : "");
+  const isEditable = EDITABLE_FIELDS.has(fieldKey) && typeof value === "string";
+
+  const handleSave = () => {
+    onSave(fieldKey, draft);
+    setEditing(false);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") handleSave();
+    if (e.key === "Escape") setEditing(false);
+  };
+
+  const formatted = formatValue(fieldKey, value, schemaInfo);
+  if (!formatted) return null;
+
+  return (
+    <div
+      className="field-row"
+      style={{ position: "relative" }}
+    >
+      <div className="field-key">{label}</div>
+      <div className="field-val" style={{ flex: 1 }}>
+        {editing ? (
+          <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+            <input
+              autoFocus
+              style={{
+                flex: 1,
+                border: "1px solid #0f62fe",
+                padding: "4px 8px",
+                fontSize: "0.85rem",
+                fontFamily: "'IBM Plex Sans', sans-serif",
+                outline: "none",
+                background: "white",
+              }}
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+            <button
+              onClick={handleSave}
+              style={{
+                background: "#0f62fe", color: "white", border: "none",
+                padding: "4px 10px", fontSize: "0.78rem", cursor: "pointer",
+                fontFamily: "'IBM Plex Mono', monospace",
+              }}
+            >✓</button>
+            <button
+              onClick={() => setEditing(false)}
+              style={{
+                background: "transparent", color: "#525252", border: "1px solid #c6c6c6",
+                padding: "4px 8px", fontSize: "0.78rem", cursor: "pointer",
+              }}
+            >✕</button>
+          </div>
+        ) : (
+          <span>{formatted}</span>
+        )}
+      </div>
+      {isEditable && !editing && (
+        <button
+          className="edit-btn"
+          onClick={() => { setDraft(typeof value === "string" ? value : ""); setEditing(true); }}
+          title="Editar"
+          style={{
+            opacity: 1,
+            background: "transparent",
+            border: "1px solid #0f62fe",
+            cursor: "pointer",
+            color: "#0f62fe",
+            fontSize: "0.72rem",
+            padding: "2px 8px",
+            fontFamily: "'IBM Plex Mono', monospace",
+            flexShrink: 0,
+            letterSpacing: "0.03em",
+          }}
+        >Editar</button>
+      )}
+    </div>
+  );
+}
+
+export default function MetadataPreview({ metadata, schemaInfo = {}, onFieldSave }) {
   const entries = Object.entries(metadata).filter(
     ([, v]) => v !== null && v !== "" && !(Array.isArray(v) && v.length === 0)
   );
@@ -507,17 +610,23 @@ export default function MetadataPreview({ metadata, schemaInfo = {} }) {
     );
   }
 
+  const handleSave = (fieldKey, newValue) => {
+    if (onFieldSave) onFieldSave(fieldKey, newValue);
+  };
+
   return (
     <div className="preview-list">
       {entries.map(([key, value]) => {
         const info = FIELD_INFO[key] || { label: key, description: "" };
-        const formatted = formatValue(key, value, schemaInfo);
-        if (!formatted) return null;
         return (
-          <div key={key} className="field-row">
-            <div className="field-key">{info.label}</div>
-            <div className="field-val">{formatted}</div>
-          </div>
+          <EditableFieldRow
+            key={key}
+            fieldKey={key}
+            value={value}
+            label={info.label}
+            schemaInfo={schemaInfo}
+            onSave={handleSave}
+          />
         );
       })}
     </div>

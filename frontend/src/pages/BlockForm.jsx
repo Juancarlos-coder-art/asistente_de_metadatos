@@ -27,6 +27,7 @@ const FIELD_LABELS_ES = {
   personal_data: "Datos personales",
   purpose: "Finalidad",
   contact: "Punto de contacto",
+  access_url: "URL de Acceso",
   spatial: "Cobertura geográfica",
   temporal_coverage: "Cobertura temporal",
   frequency: "Frecuencia",
@@ -285,6 +286,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
 
   const activeFields = block.fields.filter(f => {
     if (f === "identifier" && isNonPublic()) return false;
+    if (f === "access_url" && isNonPublic()) return false; 
     if (f === "applicable_legislation") return false;
     return true;
   });
@@ -457,6 +459,11 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
           {isNonPublic() && block.fields.includes("identifier") && (
             <div className="alert alert--info" style={{ marginBottom: "16px" }}>
               🔒 <strong>Identificador</strong> asignado automáticamente por ser un dataset No Público.
+            </div>
+          )}
+          {isNonPublic() && block.fields.includes("access_url") && (
+            <div className="alert alert--info" style={{ marginBottom: "16px" }}>
+              🔒 <strong>URL de acceso</strong> asignada automáticamente por ser un dataset No Público.
             </div>
           )}
           {activeFields.map(field => {
