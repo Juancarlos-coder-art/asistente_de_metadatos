@@ -1,6 +1,5 @@
 // src/pages/BlockForm.jsx
 import { useState, useEffect } from "react";
-import { FIELD_INFO } from "../constants/fieldInfo";
 import MetadataPreview from "../components/MetadataPreview";
 import {
   completeBlock, saveManual, validateMetadata,
@@ -13,52 +12,41 @@ const FIELD_LABELS_ES = {
   identifier: "Identificador",
   hdab: "Autoridad de acceso a los datos",
   access_rights: "Derechos de acceso",
-  health_category: "Categoría sanitaria",
-  theme: "Tema",
-  dcat_type: "Tipo de dataset",
-  provenance: "Procedencia",
-  keyword: "Palabras clave",
-  contact: "Punto de contacto",
-  distribution_access_url: "URL de acceso",
-  purpose: "Finalidad",
-  language: "Idioma",
-  population_coverage: "Cobertura poblacional",
-  number_of_unique_individuals: "Número de personas individuales",
-  number_of_records: "Número de registros",
-  min_typical_age: "Edad mínima típica",
-  max_typical_age: "Edad máxima típica",
-  personal_data: "Datos personales",
-  legal_basis: "Base jurídica",
-  retention_period: "Periodo de conservación",
-  coding_system: "Sistema de codificación",
-  health_theme: "Tema de salud",
-  code_values: "Valores codificados",
-  publisher: "Editor",
-  publisher_note: "Nota del editor",
-  creator: "Creador",
-  qualified_attribution: "Atribución cualificada",
-  was_generated_by: "Se generó por",
-  spatial: "Cobertura geográfica",
-  temporal_coverage: "Cobertura temporal",
-  temporal_resolution: "Resolución temporal",
-  spatial_resolution_in_meters: "Resolución espacial (metros)",
-  frequency: "Frecuencia",
-  issued: "Fecha de publicación",
-  modified: "Fecha de modificación",
-  alternate_identifier: "Identificador alternativo",
-  conforms_to: "Se ajusta a",
-  related_resource: "Recurso relacionado",
-  is_referenced_by: "Está referenciado por",
-  url: "Página de entrada",
-  documentation: "Documentación",
-  version: "Versión",
-  has_version: "Tiene versión",
-  version_notes: "Notas de versión",
+  applicable_legislation: "Legislación Aplicable"
 };
 
 const NON_PUBLIC_URI = "NON_PUBLIC";
 
-function MissingFieldsModal({ missingInfo, formatErrors = [], onClose }) {
+// ── Modal bloqueante con edición inline ──
+function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInfo }) {
+  console.log("MODAL CARGADO - schemaInfo:", JSON.stringify(schemaInfo));
+  console.log("MODAL CARGADO - missingInfo:", JSON.stringify(missingInfo));
+  const [fields, setFields] = useState({});
+
+  const handleChange = (fieldName, value) => {
+    setFields(prev => ({ ...prev, [fieldName]: value }));
+  };
+
+  const handleHdabChange = (subfield, value) => {
+    setFields(prev => ({
+      ...prev,
+      hdab: { ...(prev.hdab || {}), [subfield]: value }
+    }));
+  };
+
+  const handleSave = () => {
+    // Solo enviar campos que tengan valor
+    const filled = Object.fromEntries(
+      Object.entries(fields).filter(([, v]) => v !== "" && v !== null && v !== undefined)
+    );
+    onSaveAndContinue(filled);
+  };
+
+  const anyFilled = Object.values(fields).some(v =>
+    v !== "" && v !== null && v !== undefined &&
+    (typeof v !== "object" || Object.values(v).some(sv => sv !== "" && sv !== null))
+  );
+
   return (
     <div style={modalStyles.overlay}>
       <div style={modalStyles.modal}>
@@ -66,25 +54,99 @@ function MissingFieldsModal({ missingInfo, formatErrors = [], onClose }) {
           <span style={modalStyles.icon}>⚠️</span>
           <h2 style={modalStyles.title}>Campos con errores</h2>
         </div>
-        <p style={modalStyles.subtitle}>Corrige los siguientes campos antes de continuar.</p>
+        <p style={modalStyles.subtitle}>
+          Corrige los siguientes campos antes de continuar.
+        </p>
         <div style={modalStyles.fieldList}>
-          {missingInfo.map((item, i) => (
-            <div key={i} style={modalStyles.fieldItem}>
-              <div style={modalStyles.fieldName}>
-                🔴 {FIELD_LABELS_ES[item.field] ?? item.field} — obligatorio
+          {missingInfo.map((item, i) => {
+            const fieldName = item.field;
+            const label = FIELD_LABELS_ES[fieldName] ?? item.label ?? fieldName;
+            const fieldSchema = schemaInfo[fieldName] || {};
+
+            return (
+              <div key={i} style={modalStyles.fieldItem}>
+                <div style={modalStyles.fieldName}>
+                  🔴 {label} — <span style={{ color: "#da1e28" }}>obligatorio</span>
+                </div>
+                <div style={modalStyles.fieldDesc}>{item.descripcion}</div>
+                {item.ejemplo && (
+                  <div style={modalStyles.fieldExample}>Ej: {item.ejemplo}</div>
+                )}
+
+                {/* ── Editor inline ── */}
+                <div style={{ marginTop: "10px" }}>
+                  {/* access_rights → select */}
+                  {fieldSchema.choices ? (
+                    <select
+                      style={modalStyles.input}
+                      value={fields[fieldName] || ""}
+                      onChange={e => handleChange(fieldName, e.target.value)}
+                    >
+                      <option value="">— Selecciona una opción —</option>
+                      {fieldSchema.choices.map(ch => (
+                        <option key={ch.value} value={ch.value}>{ch.label}</option>
+                      ))}
+                    </select>
+
+                  /* hdab → subcampos */
+                  ) : fieldName === "hdab" && fieldSchema.subfields ? (
+                    <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                      {fieldSchema.subfields.map(sf => (
+                        <div key={sf.field_name}>
+                          <label style={modalStyles.subLabel}>
+                            {sf.required ? "* " : ""}{sf.label}
+                          </label>
+                          {sf.choices ? (
+                            <select
+                              style={modalStyles.input}
+                              value={(fields.hdab || {})[sf.field_name] || ""}
+                              onChange={e => handleHdabChange(sf.field_name, e.target.value)}
+                            >
+                              <option value="">— Selecciona —</option>
+                              {sf.choices.map(ch => (
+                                <option key={ch.value} value={ch.value}>{ch.label}</option>
+                              ))}
+                            </select>
+                          ) : (
+                            <input
+                              style={modalStyles.input}
+                              type="text"
+                              placeholder={`Introduce ${sf.label}...`}
+                              value={(fields.hdab || {})[sf.field_name] || ""}
+                              onChange={e => handleHdabChange(sf.field_name, e.target.value)}
+                            />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+
+                  /* campo de texto normal */
+                  ) : (
+                    <input
+                      style={modalStyles.input}
+                      type="text"
+                      placeholder={`Introduce ${label}...`}
+                      value={fields[fieldName] || ""}
+                      onChange={e => handleChange(fieldName, e.target.value)}
+                    />
+                  )}
+                </div>
               </div>
-              <div style={modalStyles.fieldDesc}>{item.descripcion}</div>
-              {item.ejemplo && <div style={modalStyles.fieldExample}>Ej: {item.ejemplo}</div>}
-            </div>
-          ))}
-          {formatErrors.map((err, i) => (
-            <div key={`fmt-${i}`} style={modalStyles.fieldItem}>
-              🟠 {err.replace(/^\[(OBLIG|OPT)\]\s*/, '').replace(/^\[[^\]]+\]\s*/, '')}
-            </div>
-          ))}
+            );
+          })}
         </div>
+
         <div style={modalStyles.buttons}>
-          <button style={modalStyles.btnClose} onClick={onClose}> Volver a rellenar</button>
+          <button style={modalStyles.btnBack} onClick={onClose}>
+            ✏️ Volver a rellenar
+          </button>
+          <button
+            style={{ ...modalStyles.btnSave, opacity: anyFilled ? 1 : 0.5 }}
+            onClick={handleSave}
+            disabled={!anyFilled}
+          >
+            💾 Guardar y continuar
+          </button>
         </div>
       </div>
     </div>
@@ -92,51 +154,101 @@ function MissingFieldsModal({ missingInfo, formatErrors = [], onClose }) {
 }
 
 const modalStyles = {
-  overlay: { position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.6)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999 },
-  modal: { background: "white", borderTop: "4px solid #da1e28", padding: "32px", maxWidth: "520px", width: "90%", boxShadow: "0 8px 32px rgba(0,0,0,0.3)", maxHeight: "80vh", overflowY: "auto" },
-  header: { display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" },
+  overlay: {
+    position: "fixed",
+    top: 0, left: 0, right: 0, bottom: 0,
+    background: "rgba(0, 0, 0, 0.6)",
+    display: "flex", alignItems: "center", justifyContent: "center",
+    zIndex: 9999,
+  },
+  modal: {
+    background: "white",
+    borderTop: "4px solid #da1e28",
+    maxWidth: "520px",
+    width: "90%",
+    boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+    maxHeight: "85vh",
+    display: "flex",
+    flexDirection: "column",
+  },
+  header: { display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px", padding: "32px 32px 0 32px" },
   icon: { fontSize: "1.8rem" },
-  title: { fontFamily: "'IBM Plex Mono', monospace", fontSize: "1.1rem", fontWeight: 600, color: "#161616", margin: 0 },
-  subtitle: { fontSize: "0.9rem", color: "#525252", marginBottom: "20px", lineHeight: 1.5 },
-  fieldList: { display: "flex", flexDirection: "column", gap: "10px", marginBottom: "24px" },
-  fieldItem: { background: "#fff1f1", border: "1px solid #ffd7d9", borderLeft: "3px solid #da1e28", padding: "12px 14px" },
-  fieldName: { fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.85rem", fontWeight: 600, color: "#da1e28", marginBottom: "4px" },
+  title: {
+    fontFamily: "'IBM Plex Mono', monospace",
+    fontSize: "1.1rem", fontWeight: 600, color: "#161616", margin: 0,
+  },
+  subtitle: { fontSize: "0.9rem", color: "#525252", marginBottom: "20px", lineHeight: 1.5, padding: "0 32px" },
+  fieldList: { display: "flex", flexDirection: "column", gap: "10px", marginBottom: "0", padding: "0 32px", overflowY: "auto", flex: 1 },
+  fieldItem: {
+    background: "#fff1f1", border: "1px solid #ffd7d9",
+    borderLeft: "3px solid #da1e28", padding: "12px 14px",
+  },
+  fieldName: {
+    fontFamily: "'IBM Plex Mono', monospace",
+    fontSize: "0.85rem", fontWeight: 600, color: "#da1e28", marginBottom: "4px",
+  },
   fieldDesc: { fontSize: "0.88rem", color: "#393939", lineHeight: 1.5 },
   fieldExample: { fontSize: "0.78rem", color: "#6f6f6f", fontStyle: "italic", marginTop: "4px" },
-  buttons: { display: "flex", justifyContent: "flex-end" },
-  btnClose: { background: "#0f62fe", color: "white", border: "none", padding: "12px 24px", fontSize: "0.9rem", fontFamily: "'IBM Plex Sans', sans-serif", fontWeight: 500, cursor: "pointer" },
+  input: {
+    width: "100%", boxSizing: "border-box",
+    border: "1px solid #da1e28", padding: "8px 10px",
+    fontSize: "0.88rem", fontFamily: "'IBM Plex Sans', sans-serif",
+    background: "white", marginTop: "4px",
+    outline: "none",
+  },
+  subLabel: {
+    fontSize: "0.78rem", color: "#525252",
+    fontFamily: "'IBM Plex Sans', sans-serif", display: "block", marginBottom: "2px",
+  },
+  buttons: {
+    display: "flex", justifyContent: "space-between", gap: "12px",
+    padding: "16px 32px 32px 32px",
+    borderTop: "1px solid #e0e0e0",
+    background: "white",
+    flexShrink: 0,
+  },
+  btnBack: {
+    background: "transparent", border: "1px solid #c6c6c6", color: "#525252",
+    padding: "10px 20px", fontSize: "0.88rem",
+    fontFamily: "'IBM Plex Sans', sans-serif", cursor: "pointer",
+  },
+  btnSave: {
+    background: "#0f62fe", color: "white", border: "none",
+    padding: "10px 24px", fontSize: "0.9rem",
+    fontFamily: "'IBM Plex Sans', sans-serif", fontWeight: 600, cursor: "pointer",
+  },
 };
 
-const placeholdersPorBloque = {
-  derechos_de_acceso: "Ej.: El acceso está restringido a personal sanitario autorizado...",
-  identificacion_basica: "Ej.: Dataset sobre casos de viruela del mono en España en 2023...",
-  organismo_acceso_datos_sanitarios: "Ej.: Datos recopilados por el Ministerio de Sanidad...",
-  punto_de_contacto: "Ej.: Contacta en info@ministeriodesanidad.es o visita https://www.sanidad.gob.es/contacto",
-  Acceso_a_Distribucion: "Ej.: https://datos.gob.es/dataset/xyz",
-  default: "Describe el contenido del dataset...",
-};
-
-export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone }) {
+export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone, initialMetadata, onMetadataChange }) {
   const [tab, setTab] = useState("ia");
   const [userContext, setUserContext] = useState("");
   const [manualFields, setManualFields] = useState({});
-  const [editingField, setEditingField] = useState(null);
-  const [expandedInfoField, setExpandedInfoField] = useState(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [validation, setValidation] = useState(null);
   const [blockMissingInfo, setBlockMissingInfo] = useState(null);
-  const [metadata, setMetadata] = useState({});
+  const [metadata, setMetadata] = useState(initialMetadata || {});
   const [showModal, setShowModal] = useState(false);
   const [missingInfo, setMissingInfo] = useState([]);
   const [schemaInfo, setSchemaInfo] = useState({});
 
   const block = blocks[currentIdx];
 
+const [schemaLoaded, setSchemaLoaded] = useState(false);
+
   useEffect(() => {
-    getSchemaInfo().then(res => setSchemaInfo(res.data)).catch(() => {});
+    getSchemaInfo().then(res => {
+      setSchemaInfo(res.data);
+      setSchemaLoaded(true);
+    }).catch(() => setSchemaLoaded(true));
   }, []);
+
+  useEffect(() => {
+    if (initialMetadata && Object.keys(initialMetadata).length > 0) {
+      setMetadata(initialMetadata);
+    }
+  }, [initialMetadata]);
 
   const isNonPublic = (meta = metadata) => {
     const ar = meta.access_rights || "";
@@ -152,7 +264,6 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   useEffect(() => {
     setUserContext("");
     setManualFields({});
-    setEditingField(null);
     setResult(null);
     setError(null);
     setShowModal(false);
@@ -163,7 +274,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const loadMetadata = async () => {
     try {
       const res = await getMetadata();
-      setMetadata(res.data);
+      if (res.data && Object.keys(res.data).length > 5) setMetadata(res.data);
       const val = await validateMetadata();
       setValidation(val.data);
       const misRes = await getMissingFields(currentIdx);
@@ -216,43 +327,52 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     const obligatoryMissing = res.data.descriptions.filter(item =>
       item.obligatorio && !(nonPublic && item.field === "identifier")
     );
-    const val = await validateMetadata();
-    const blockFormatErrors = val.data.errors.filter(e =>
-      activeFields.some(f => e.includes(f))
-    );
-    const blockingFormatErrors = blockFormatErrors.filter(e => e.startsWith("[OBLIG]"));
-    if (obligatoryMissing.length > 0 || blockingFormatErrors.length > 0) {
-      setMissingInfo(obligatoryMissing);
-      setValidation(val.data);
-      setShowModal(true);
-      return;
+
+  if (obligatoryMissing.length > 0) {
+    setMissingInfo(obligatoryMissing);
+    // Esperar a que schemaInfo esté cargado
+    if (!schemaLoaded) {
+      await getSchemaInfo().then(res => setSchemaInfo(res.data)).catch(() => {});
     }
+    setShowModal(true);
+    return;
+  }
     onNext();
   };
 
-  const handleFinalize = async () => {
-    const res = await getMissingFields(currentIdx);
-    const metaRes = await getMetadata();
-    const currentMeta = metaRes.data;
-    const nonPublic = isNonPublic(currentMeta);
+  // Guardar desde el modal y continuar si ya no hay campos vacíos
+  const handleModalSave = async (filledFields) => {
+    setLoading(true);
+    try {
+      const res = await saveManual(currentIdx, filledFields);
+      setMetadata(res.data.metadata);
+      onBlockDone(currentIdx);
 
-    const obligatoryMissing = res.data.descriptions.filter(item =>
-      item.obligatorio && !(nonPublic && item.field === "identifier")
-    );
+      // Re-chequear si quedan obligatorios
+      const metaRes = await getMetadata();
+      const nonPublic = isNonPublic(metaRes.data);
+      const misRes = await getMissingFields(currentIdx);
+      setBlockMissingInfo(misRes.data.descriptions || []);
 
-    const val = await validateMetadata();
-    const blockFormatErrors = val.data.errors.filter(e =>
-      activeFields.some(f => e.includes(f))
-    );
-    const blockingFormatErrors = blockFormatErrors.filter(e => e.startsWith("[OBLIG]"));
+      const stillMissing = misRes.data.descriptions.filter(item =>
+        item.obligatorio && !(nonPublic && item.field === "identifier")
+      );
 
-    if (obligatoryMissing.length > 0 || blockingFormatErrors.length > 0) {
-      setMissingInfo(obligatoryMissing);
-      setValidation(val.data);
-      setShowModal(true);
-      return;
+      if (stillMissing.length > 0) {
+        // Aún faltan campos — actualizar modal con los restantes
+        setMissingInfo(stillMissing);
+      } else {
+        // Todo correcto → cerrar y avanzar
+        setShowModal(false);
+        onNext();
+      }
+    } catch (e) {
+      setError(e.response?.data?.detail || "Error al guardar desde el modal");
     }
+    setLoading(false);
+  };
 
+  const handleFinalize = async () => {
     setLoading(true);
     try {
       await finalizeMetadata();
@@ -263,61 +383,17 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     setLoading(false);
   };
 
-  const placeholder = placeholdersPorBloque[block.name] || block.hint || block.question || placeholdersPorBloque.default;
-
   const blockQuestion = isNonPublic() && block.fields.includes("identifier")
-    ? block.question + "\n\n\ud83d\udd12 El identificador se asignará automáticamente por ser un dataset No Público."
+    ? block.question + "\n\n🔒 El identificador se asignará automáticamente por ser un dataset No Público."
     : block.question;
-    
-  const getDisplayValue = (field, value) => {
-    const fieldSchema = schemaInfo[field];
-
-    if (!value) return "—";
-
-    if (field === "applicable_legislation" && Array.isArray(value)) {
-      return value
-        .map((item) => {
-          if (typeof item === "string") return item;
-          if (!item || typeof item !== "object") return "";
-          return item.label || item.uri || JSON.stringify(item);
-        })
-        .filter(Boolean)
-        .join(", ");
-    }
-
-    const formatSingleValue = (singleValue) => {
-      if (singleValue && typeof singleValue === "object") {
-        return singleValue.label || singleValue.uri || JSON.stringify(singleValue);
-      }
-
-      if (fieldSchema?.choices) {
-        const choice = fieldSchema.choices.find(
-          ch => ch.value === singleValue
-        );
-
-        if (choice) return choice.label;
-      }
-
-      return singleValue;
-    };
-
-    if (Array.isArray(value)) {
-      return value.map(formatSingleValue).join(", ");
-    }
-
-    if (typeof value === "object") {
-      return JSON.stringify(value);
-    }
-
-    return formatSingleValue(value);
-  };
   return (
     <div>
       {showModal && (
         <MissingFieldsModal
           missingInfo={missingInfo}
-          formatErrors={validation ? validation.errors.filter(e => activeFields.some(f => e.includes(f))) : []}
+          schemaInfo={schemaInfo}
           onClose={() => setShowModal(false)}
+          onSaveAndContinue={handleModalSave}
         />
       )}
 
@@ -333,9 +409,16 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
 
       {tab === "ia" && (
         <div className="tab-content">
-          <p className="tab-desc">{block.hint || "Describe este bloque con tus propias palabras."}</p>
+          <p className="tab-desc">
+            {block.fields.includes("identifier") && isNonPublic()
+              ? "Dinos cómo se llama el dataset y de qué trata. El identificador ya está asignado automáticamente."
+              : block.hint || block.question}
+          </p>
           <div className="field-group">
-            <textarea className="field-textarea" placeholder={placeholder} value={userContext} onChange={(e) => setUserContext(e.target.value)} />
+            <textarea
+              className="field-textarea"
+              placeholder={block.placeholder || "Describe el bloque con tus propias palabras..."}
+            />
           </div>
           <button className="btn btn--primary" onClick={handleComplete} disabled={loading || !userContext.trim()}>
             {loading ? "Analizando..." : "Completar bloque"}
@@ -361,45 +444,15 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
               return (
                 <div key={field} className="field-group">
                   <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
+                  <select
+                    className="field-select"
+                    value={manualFields[field] || ""}
+                    onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
+                  >
                     <option value="">— Selecciona una opción —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                  </select>
-                </div>
-              );
-            }
-
-            if (field === "health_category" && fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">— Selecciona una categoría sanitaria —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                  </select>
-                </div>
-              );
-            }
-
-            if (field === "theme" && fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">— Selecciona un tema —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                  </select>
-                </div>
-              );
-            }
-
-            if (field === "dcat_type" && fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">— Selecciona un tipo de dataset —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                    {fieldSchema.choices.map(ch => (
+                      <option key={ch.value} value={ch.value}>{ch.label}</option>
+                    ))}
                   </select>
                 </div>
               );
@@ -417,9 +470,18 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                         return (
                           <div key={sf.field_name} className="field-group">
                             <label className="field-label">{sfLabel}</label>
-                            <select className="field-select" value={hdabValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, hdab: { ...hdabValues, [sf.field_name]: e.target.value } })}>
+                            <select
+                              className="field-select"
+                              value={hdabValues[sf.field_name] || ""}
+                              onChange={(e) => setManualFields({
+                                ...manualFields,
+                                hdab: { ...hdabValues, [sf.field_name]: e.target.value }
+                              })}
+                            >
                               <option value="">— Selecciona —</option>
-                              {sf.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                              {sf.choices.map(ch => (
+                                <option key={ch.value} value={ch.value}>{ch.label}</option>
+                              ))}
                             </select>
                           </div>
                         );
@@ -427,292 +489,19 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                       return (
                         <div key={sf.field_name} className="field-group">
                           <label className="field-label">{sfLabel}</label>
-                          <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={hdabValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, hdab: { ...hdabValues, [sf.field_name]: e.target.value } })} />
+                          <input
+                            className="field-input"
+                            type="text"
+                            placeholder={`Introduce ${sf.label}...`}
+                            value={hdabValues[sf.field_name] || ""}
+                            onChange={(e) => setManualFields({
+                              ...manualFields,
+                              hdab: { ...hdabValues, [sf.field_name]: e.target.value }
+                            })}
+                          />
                         </div>
                       );
                     })}
-                  </div>
-                </div>
-              );
-            }
-
-            if (field === "contact" && fieldSchema.subfields) {
-              const contactValues = manualFields.contact || {};
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
-                  <div className="hdab-subfields">
-                    {fieldSchema.subfields.map(sf => (
-                      <div key={sf.field_name} className="field-group">
-                        <label className="field-label">{sf.label}</label>
-                        <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={contactValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, contact: { ...contactValues, [sf.field_name]: e.target.value } })} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            }
-
-            if (field === "language" && fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">— Selecciona un idioma —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                  </select>
-                </div>
-              );
-            }
-
-            if (field === "personal_data" && fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">— Selecciona tipo de dato personal —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                  </select>
-                </div>
-              );
-            }
-
-            if (["number_of_unique_individuals", "number_of_records", "min_typical_age", "max_typical_age"].includes(field)) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <input className="field-input" type="number" min="0" placeholder={`Introduce ${fieldLabel}...`} value={manualFields[field] ?? ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value ? parseInt(e.target.value, 10) : "" })} />
-                </div>
-              );
-            }
-
-            if (field === "health_theme" && fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">— Selecciona un tema de salud —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                  </select>
-                </div>
-              );
-            }
-
-            if (field === "legal_basis" && fieldSchema.subfields) {
-              const legalValues = manualFields.legal_basis || {};
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
-                  <div className="hdab-subfields">
-                    {fieldSchema.subfields.map(sf => (
-                      <div key={sf.field_name} className="field-group">
-                        <label className="field-label">{sf.label}</label>
-                        <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={legalValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, legal_basis: { ...legalValues, [sf.field_name]: e.target.value } })} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            }
-
-            if (field === "retention_period" && fieldSchema.subfields) {
-              const retentionValues = manualFields.retention_period || {};
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
-                  <div className="hdab-subfields">
-                    {fieldSchema.subfields.map(sf => (
-                      <div key={sf.field_name} className="field-group">
-                        <label className="field-label">{sf.label}</label>
-                        <input className="field-input" type="date" value={retentionValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, retention_period: { ...retentionValues, [sf.field_name]: e.target.value } })} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            }
-
-            if (field === "coding_system" && fieldSchema.subfields) {
-              const codingValues = manualFields.coding_system || {};
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
-                  <div className="hdab-subfields">
-                    {fieldSchema.subfields.map(sf => (
-                      <div key={sf.field_name} className="field-group">
-                        <label className="field-label">{sf.label}</label>
-                        <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={codingValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, coding_system: { ...codingValues, [sf.field_name]: e.target.value } })} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            }
-
-            if (field === "publisher" && fieldSchema.subfields) {
-              const pubValues = manualFields.publisher || {};
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
-                  <div className="hdab-subfields">
-                    {fieldSchema.subfields.map(sf => {
-                      if (sf.choices) {
-                        return (
-                          <div key={sf.field_name} className="field-group">
-                            <label className="field-label">{sf.label}</label>
-                            <select className="field-select" value={pubValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, publisher: { ...pubValues, [sf.field_name]: e.target.value } })}>
-                              <option value="">— Selecciona —</option>
-                              {sf.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                            </select>
-                          </div>
-                        );
-                      }
-                      return (
-                        <div key={sf.field_name} className="field-group">
-                          <label className="field-label">{sf.label}</label>
-                          <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={pubValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, publisher: { ...pubValues, [sf.field_name]: e.target.value } })} />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            }
-
-            if (field === "creator" && fieldSchema.subfields) {
-              const creatorValues = manualFields.creator || {};
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
-                  <div className="hdab-subfields">
-                    {fieldSchema.subfields.map(sf => {
-                      if (sf.choices) {
-                        return (
-                          <div key={sf.field_name} className="field-group">
-                            <label className="field-label">{sf.label}</label>
-                            <select className="field-select" value={creatorValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, creator: { ...creatorValues, [sf.field_name]: e.target.value } })}>
-                              <option value="">— Selecciona —</option>
-                              {sf.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                            </select>
-                          </div>
-                        );
-                      }
-                      return (
-                        <div key={sf.field_name} className="field-group">
-                          <label className="field-label">{sf.label}</label>
-                          <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={creatorValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, creator: { ...creatorValues, [sf.field_name]: e.target.value } })} />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            }
-
-            if (field === "qualified_attribution" && fieldSchema.subfields) {
-              const qaValues = manualFields.qualified_attribution || {};
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
-                  <div className="hdab-subfields">
-                    {fieldSchema.subfields.map(sf => {
-                      if (sf.choices) {
-                        return (
-                          <div key={sf.field_name} className="field-group">
-                            <label className="field-label">{sf.label}</label>
-                            <select className="field-select" value={qaValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, qualified_attribution: { ...qaValues, [sf.field_name]: e.target.value } })}>
-                              <option value="">— Selecciona —</option>
-                              {sf.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                            </select>
-                          </div>
-                        );
-                      }
-                      return (
-                        <div key={sf.field_name} className="field-group">
-                          <label className="field-label">{sf.label}</label>
-                          <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={qaValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, qualified_attribution: { ...qaValues, [sf.field_name]: e.target.value } })} />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            }
-
-            if (field === "was_generated_by" && fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">— Selecciona una actividad —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                  </select>
-                </div>
-              );
-            }
-
-            if (field === "spatial" && fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">— Selecciona un país —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                  </select>
-                </div>
-              );
-            }
-
-            if (field === "temporal_coverage" && fieldSchema.subfields) {
-              const tcValues = manualFields.temporal_coverage || {};
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
-                  <div className="hdab-subfields">
-                    {fieldSchema.subfields.map(sf => (
-                      <div key={sf.field_name} className="field-group">
-                        <label className="field-label">{sf.label}</label>
-                        <input className="field-input" type="date" value={tcValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, temporal_coverage: { ...tcValues, [sf.field_name]: e.target.value } })} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            }
-
-            if (field === "frequency" && fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select className="field-select" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
-                    <option value="">— Selecciona frecuencia —</option>
-                    {fieldSchema.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-                  </select>
-                </div>
-              );
-            }
-
-            if ((field === "issued" || field === "modified") && !fieldSchema.choices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <input className="field-input" type="date" value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })} />
-                </div>
-              );
-            }
-
-            if ((field === "conforms_to" || field === "related_resource" || field === "documentation") && fieldSchema.subfields) {
-              const objValues = manualFields[field] || {};
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
-                  <div className="hdab-subfields">
-                    {fieldSchema.subfields.map(sf => (
-                      <div key={sf.field_name} className="field-group">
-                        <label className="field-label">{sf.label}</label>
-                        <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`} value={objValues[sf.field_name] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: { ...objValues, [sf.field_name]: e.target.value } })} />
-                      </div>
-                    ))}
                   </div>
                 </div>
               );
@@ -721,11 +510,16 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
             return (
               <div key={field} className="field-group">
                 <label className="field-label">{fieldLabel}</label>
-                <input className="field-input" type="text" placeholder={`Introduce ${fieldLabel}...`} value={manualFields[field] || ""} onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })} />
+                <input
+                  className="field-input"
+                  type="text"
+                  placeholder={`Introduce ${fieldLabel}...`}
+                  value={manualFields[field] || ""}
+                  onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
+                />
               </div>
             );
           })}
-
           {block.fields.includes("applicable_legislation") && (
             <div className="alert alert--info">
               <strong>applicable_legislation</strong> se rellena automáticamente al finalizar.
@@ -742,143 +536,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       <div className="bottom-grid">
         <div>
           <p className="json-viewer-header">Resumen del dataset</p>
-
-          <div className="metadata-preview">
-            {Object.keys(metadata).map(field => {
-              const fieldLabel = FIELD_LABELS_ES[field] ?? field;
-              const isEditing = editingField === field;
-
-              return (
-                <div key={field} className="metadata-row">
-
-                  <div className="metadata-label">
-                    <span>{fieldLabel}</span>
-
-                    {FIELD_INFO[field] && (
-                      <button
-                        className="info-btn"
-                        onClick={() =>
-                          setExpandedInfoField(
-                            expandedInfoField === field ? null : field
-                          )
-                        }
-                      >
-                        i
-                      </button>
-                    )}
-                  </div>
-
-                  <div className="metadata-value">
-                    {isEditing ? (
-                      (() => {
-                        const fieldSchema = schemaInfo[field] || {};
-
-                        return fieldSchema.choices ? (
-                          <select
-                            className="field-select"
-                            value={manualFields[field] ?? metadata[field] ?? ""}
-                            onChange={(e) =>
-                              setManualFields({
-                                ...manualFields,
-                                [field]: e.target.value
-                              })
-                            }
-                          >
-                            <option value="">— Selecciona una opción —</option>
-                            {fieldSchema.choices.map(ch => (
-                              <option key={ch.value} value={ch.value}>
-                                {ch.label}
-                              </option>
-                            ))}
-                          </select>
-                        ) : (
-                          <input
-                            className="field-input"
-                            type="text"
-                            value={manualFields[field] ?? metadata[field] ?? ""}
-                            onChange={(e) =>
-                              setManualFields({
-                                ...manualFields,
-                                [field]: e.target.value
-                              })
-                            }
-                          />
-                        );
-                      })()
-                    ) : (
-                      getDisplayValue(field, metadata[field])
-                    )}
-                  </div>
-
-                  <div className="metadata-actions">
-                    {isEditing ? (
-                      <>
-                        <button
-                          className="icon-btn"
-                          onClick={async () => {
-                            const updatedFields = {
-                              ...manualFields,
-                            };
-
-                            if (
-                              field === "access_rights" &&
-                              String(manualFields.access_rights || "").includes("NON_PUBLIC")
-                            ) {
-                              updatedFields.identifier = "";
-                            }
-
-                            await saveManual(currentIdx, updatedFields);
-                            await loadMetadata();
-                            setManualFields({});
-                            setEditingField(null);
-                          }}
-                        >
-                          ✅
-                        </button>
-
-                        <button
-                          className="icon-btn"
-                          onClick={() => setEditingField(null)}
-                        >
-                          ❌
-                        </button>
-                      </>
-                    ) : (
-                      <button
-                        className="icon-btn"
-                        onClick={() => {
-                          setManualFields({
-                            ...manualFields,
-                            [field]: metadata[field] ?? ""
-                          });
-
-                          setEditingField(field);
-                        }}
-                      >
-                        Editar
-                      </button>
-                    )}
-                  </div>
-
-                  {expandedInfoField === field && FIELD_INFO[field] && (
-                    <div className="field-info-box">
-                      <p className="field-info-description">
-                        {FIELD_INFO[field].descripcion}
-                      </p>
-
-                      {FIELD_INFO[field].ejemplo && (
-                        <p className="field-info-example">
-                          <strong>Ejemplo:</strong>{" "}
-                          {FIELD_INFO[field].ejemplo}
-                        </p>
-                      )}
-                    </div>
-                  )}
-
-                  </div>
-                                );
-            })}
-          </div>          
+          <MetadataPreview metadata={metadata} />
         </div>
         <div className="validation-box">
           <p className="validation-header">Estado de validación</p>
@@ -890,11 +548,12 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
               item.obligatorio && !(isNonPublic() && item.field === "identifier")
             );
             const blockOptional = blockMissingInfo.filter(item => !item.obligatorio);
-            const blockErrors = validation ? validation.errors.filter(e => activeFields.some(f => e.includes(f))) : [];
+            const blockErrors = validation ? validation.errors.filter(e =>
+              activeFields.some(f => e.includes(f))
+            ) : [];
             const globalMissingCount = validation
               ? validation.missing_required.filter(m => !activeFields.includes(m)).length
               : 0;
-
             return (
               <>
                 {blockObligatory.length === 0 && blockErrors.length === 0 ? (
@@ -908,18 +567,13 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                       </div>
                     ))}
                     {blockErrors.map((e, i) => (
-                      <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e.replace(/^\[(OBLIG|OPT)\]\s*/, '').replace(/^\[[^\]]+\]\s*/, '')}</div>
+                      <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e}</div>
                     ))}
                   </>
                 )}
                 {blockOptional.length > 0 && (
-                  <div style={{ marginTop: "8px" }}>
-                    {blockOptional.map((item, i) => (
-                      <div key={i} className="validation-item" style={{ borderLeft: "3px solid #f1c21b" }}>
-                        <span>{FIELD_LABELS_ES[item.field] ?? item.label ?? item.field}</span>
-                        <span className="tag">opcional</span>
-                      </div>
-                    ))}
+                  <div className="alert alert--warn" style={{ marginTop: "8px" }}>
+                    💡 {blockOptional.length} campo(s) opcional(es) sin rellenar en este bloque.
                   </div>
                 )}
                 {globalMissingCount === 0 && blockObligatory.length === 0 && blockErrors.length === 0 && (
