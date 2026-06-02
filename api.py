@@ -498,7 +498,7 @@ def _build_relevant_vocab(classification: dict) -> dict:
     return relevant
 
 def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, existing_access_rights: str = None, doc_lang: str = "es") -> dict:
-    
+
     # ── Vocabularios relevantes (completos con URI) ──
     pub_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["publisher_types"].items())
     health_cats_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["health_categories"].items())
@@ -549,8 +549,10 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'personal_data' → array of codes. Choose from: {personal_data_compact}\n"
             f"  URI: https://w3id.org/dpv/pd#{{CODE}}\n"
             f"- 'code_values' → coded values (e.g. A00-B99). Array of strings. null if not mentioned.\n"
-            f"- 'publisher_note' → publisher notes. Free text. null if not mentioned.\n"
-            f"- 'qualified_attribution' → object: name, email, contact_page, role code. Choose role from: {attribution_roles_compact}\n"
+            f"- 'publisher_note' → publisher notes. Array of strings. null if not mentioned.\n"
+            f"- 'qualified_attribution' → object: qualified_attribution_agent_name, qualified_attribution_agent_type (URI),\n"
+            f"  qualified_attribution_agent_contact_page (URL or null), qualified_attribution_agent_email (string or null),\n"
+            f"  qualified_attribution_role (URI). Role codes: {attribution_roles_compact}\n"
             f"  Role URI: https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#{{CODE}}\n"
             f"- 'was_generated_by' → array of activity codes. Choose from: {health_activities_compact}\n"
             f"  URI: http://13.81.34.152:1101/resource/authority/health-activity/{{CODE}}\n"
@@ -559,26 +561,50 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'issued' → publication date (YYYY-MM-DD). null if not mentioned.\n"
             f"- 'modified' → last modification date (YYYY-MM-DD). null if not mentioned.\n"
             f"- 'alternate_identifier' → alternative identifiers. Array of strings. null if not mentioned.\n"
-            f"- 'conforms_to' → standard (DCAT-AP 2.1). Array of strings. null if not mentioned.\n"
-            f"- 'related_resource' → related URLs. Array of strings. null if not mentioned.\n"
-            f"- 'is_referenced_by' → referencing resources. Array of strings. null if not mentioned.\n"
+            f"- 'conforms_to' → standard conformance. Object: uri (URI), label (name). null if not mentioned.\n"
+            f"- 'related_resource' → related resource. Object: uri (URI), label (name). null if not mentioned.\n"
+            f"- 'is_referenced_by' → referencing resources. Array of strings (URIs). null if not mentioned.\n"
             f"- 'url' → landing page URL. String. null if not mentioned.\n"
-            f"- 'documentation' → documentation URL. String. null if not mentioned.\n"
+            f"- 'documentation' → documentation. Object: uri (URI), label (name). null if not mentioned.\n"
             f"- 'has_version' → available versions. Array of strings. null if not mentioned.\n"
             f"- 'version_notes' → version notes. Free text. null if not mentioned.\n"
-            f"- 'legal_basis' → legal basis. Free text. null if not mentioned.\n"
-            f"- 'retention_period' → retention period. Free text. null if not mentioned.\n"
-            f"- 'coding_system' → coding systems (ICD-10, SNOMED CT...). Array of strings. null if not mentioned.\n"
+            f"- 'legal_basis' → legal basis. Object: description (text), source (text). null if not mentioned.\n"
+            f"- 'retention_period' → retention period. Object: start (YYYY-MM-DD or null), end (YYYY-MM-DD or null). null if not mentioned.\n"
+            f"- 'coding_system' → coding systems (ICD-10, SNOMED CT...). Object: uri (URI), label (name). null if not mentioned.\n"
             f"- 'health_theme' → array of health theme codes. Choose from: {health_themes_compact}\n"
             f"  URI: http://13.81.34.152:1101/resource/authority/health-theme/{{CODE}}\n"
-            f"- 'publisher' → object: name, type (URI), email, telephone, contact_page. null if not mentioned.\n"
-            f"- 'creator' → object: name, type (URI), email. null if not mentioned.\n"
+            f"- 'publisher' → object: name, type (URI), email, telephone, contact_page,\n"
+            f"  opening_hours_description (string or null), opening_hours_frequency (frequency URI or null),\n"
+            f"  special_opening_hours_description (string or null), special_opening_hours_frequency (frequency URI or null).\n"
+            f"  null if not mentioned.\n"
+            f"- 'creator' → object: name, type (URI), email, url. null if not mentioned.\n"
             f"- 'spatial' → array of country codes. Choose from: {spatial_compact}\n"
             f"  URI: http://publications.europa.eu/resource/authority/country/{{CODE}}\n"
             f"- 'frequency' → frequency code. Choose from: {frequencies_compact}\n"
             f"  URI: http://publications.europa.eu/resource/authority/frequency/{{CODE}}\n"
             f"- 'temporal_coverage' → object: start (YYYY-MM-DD), end (YYYY-MM-DD). null if not mentioned.\n"
             f"- 'version' → dataset version. String. null if not mentioned.\n"
+            # ── Distribución ──
+            f"- 'access_url' → distribution access URL. String. null if not mentioned.\n"
+            f"- 'download_url' → direct download URL. String. null if not mentioned.\n"
+            f"- 'name' → distribution resource name. String. null if not mentioned.\n"
+            f"- 'description' → distribution resource description. String. null if not mentioned.\n"
+            f"- 'format' → file format (CSV, JSON, XML, XLSX, Parquet, RDF, GeoJSON...). String. null if not mentioned.\n"
+            f"- 'mimetype' → media type (text/csv, application/json, application/xml...). String. null if not mentioned.\n"
+            f"- 'compress_format' → compression format (zip, gzip, bzip2, 7z...). String. null if not mentioned.\n"
+            f"- 'package_format' → packaging format (zip, tar, tar.gz...). String. null if not mentioned.\n"
+            f"- 'size' → file size in bytes. Integer. null if not mentioned.\n"
+            f"- 'hash' → file integrity hash value. String. null if not mentioned.\n"
+            f"- 'hash_algorithm' → hash algorithm (MD5, SHA-256, SHA-512...). String. null if not mentioned.\n"
+            f"- 'rights' → usage rights description. String. null if not mentioned.\n"
+            f"- 'availability' → resource availability description. String. null if not mentioned.\n"
+            f"- 'status' → resource status URI:\n"
+            f"    Completed → http://purl.org/adms/status/Completed\n"
+            f"    Under development → http://purl.org/adms/status/UnderDevelopment\n"
+            f"    Deprecated → http://purl.org/adms/status/Deprecated\n"
+            f"    Withdrawn → http://purl.org/adms/status/Withdrawn\n"
+            f"  null if not mentioned.\n"
+            f"- 'license' → licence URL or name (CC BY 4.0, CC BY-NC 4.0, CC0, ODbL...). String. null if not mentioned.\n"
             f"\nDocument:\n{text[:5000]}"
         )
     else:
@@ -616,8 +642,11 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'personal_data' → array de códigos. Elige entre: {personal_data_compact}\n"
             f"  URI: https://w3id.org/dpv/pd#{{CÓDIGO}}\n"
             f"- 'code_values' → valores codificados (ej: A00-B99). Array de strings. null si no se menciona.\n"
-            f"- 'publisher_note' → notas del editor. Texto libre. null si no se menciona.\n"
-            f"- 'qualified_attribution' → objeto: name, email, contact_page, role (código). Elige role entre: {attribution_roles_compact}\n"
+            f"- 'publisher_note' → notas del editor. Array de strings. null si no se menciona.\n"
+            f"- 'qualified_attribution' → objeto con EXACTAMENTE estas claves:\n"
+            f"  qualified_attribution_agent_name (string), qualified_attribution_agent_type (URI),\n"
+            f"  qualified_attribution_agent_contact_page (URL o null), qualified_attribution_agent_email (string o null),\n"
+            f"  qualified_attribution_role (URI). Códigos de rol: {attribution_roles_compact}\n"
             f"  URI rol: https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#{{CÓDIGO}}\n"
             f"- 'was_generated_by' → array de códigos de actividad. Elige entre: {health_activities_compact}\n"
             f"  URI: http://13.81.34.152:1101/resource/authority/health-activity/{{CÓDIGO}}\n"
@@ -626,26 +655,50 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'issued' → fecha publicación (YYYY-MM-DD). null si no se menciona.\n"
             f"- 'modified' → fecha modificación (YYYY-MM-DD). null si no se menciona.\n"
             f"- 'alternate_identifier' → identificadores alternativos. Array de strings. null si no se menciona.\n"
-            f"- 'conforms_to' → estándar (DCAT-AP 2.1). Array de strings. null si no se menciona.\n"
-            f"- 'related_resource' → URLs relacionadas. Array de strings. null si no se menciona.\n"
-            f"- 'is_referenced_by' → recursos que referencian. Array de strings. null si no se menciona.\n"
-            f"- 'url' → URL de entrada. String. null si no se menciona.\n"
-            f"- 'documentation' → URL documentación. String. null si no se menciona.\n"
+            f"- 'conforms_to' → conformidad con estándar. Objeto: uri (URI del estándar), label (nombre). null si no se menciona.\n"
+            f"- 'related_resource' → recurso relacionado. Objeto: uri (URI), label (nombre). null si no se menciona.\n"
+            f"- 'is_referenced_by' → recursos que referencian. Array de strings (URIs). null si no se menciona.\n"
+            f"- 'url' → URL de entrada (landing page). String. null si no se menciona.\n"
+            f"- 'documentation' → documentación. Objeto: uri (URI), label (nombre). null si no se menciona.\n"
             f"- 'has_version' → versiones disponibles. Array de strings. null si no se menciona.\n"
             f"- 'version_notes' → notas de versión. Texto libre. null si no se menciona.\n"
-            f"- 'legal_basis' → base jurídica. Texto libre. null si no se menciona.\n"
-            f"- 'retention_period' → período conservación. Texto libre. null si no se menciona.\n"
-            f"- 'coding_system' → sistemas codificación (ICD-10, SNOMED CT...). Array de strings. null si no se menciona.\n"
+            f"- 'legal_basis' → base jurídica. Objeto: description (texto), source (texto). null si no se menciona.\n"
+            f"- 'retention_period' → período de conservación. Objeto: start (YYYY-MM-DD o null), end (YYYY-MM-DD o null). null si no se menciona.\n"
+            f"- 'coding_system' → sistema de codificación (ICD-10, SNOMED CT...). Objeto: uri (URI), label (nombre). null si no se menciona.\n"
             f"- 'health_theme' → array de códigos de tema de salud. Elige entre: {health_themes_compact}\n"
             f"  URI: http://13.81.34.152:1101/resource/authority/health-theme/{{CÓDIGO}}\n"
-            f"- 'publisher' → objeto: name, type (URI), email, telephone, contact_page. null si no se menciona.\n"
-            f"- 'creator' → objeto: name, type (URI), email. null si no se menciona.\n"
+            f"- 'publisher' → objeto: name, type (URI), email, telephone, contact_page,\n"
+            f"  opening_hours_description (string o null), opening_hours_frequency (URI de frecuencia o null),\n"
+            f"  special_opening_hours_description (string o null), special_opening_hours_frequency (URI de frecuencia o null).\n"
+            f"  null si no se menciona.\n"
+            f"- 'creator' → objeto: name, type (URI), email, url. null si no se menciona.\n"
             f"- 'spatial' → array de códigos de país. Elige entre: {spatial_compact}\n"
             f"  URI: http://publications.europa.eu/resource/authority/country/{{CÓDIGO}}\n"
             f"- 'frequency' → código de frecuencia. Elige entre: {frequencies_compact}\n"
             f"  URI: http://publications.europa.eu/resource/authority/frequency/{{CÓDIGO}}\n"
             f"- 'temporal_coverage' → objeto: start (YYYY-MM-DD), end (YYYY-MM-DD). null si no se menciona.\n"
             f"- 'version' → versión del dataset. String. null si no se menciona.\n"
+            # ── Distribución ──
+            f"- 'access_url' → URL de acceso a la distribución. String. null si no se menciona.\n"
+            f"- 'download_url' → URL de descarga directa. String. null si no se menciona.\n"
+            f"- 'name' → nombre del recurso de distribución. String. null si no se menciona.\n"
+            f"- 'description' → descripción del recurso de distribución. String. null si no se menciona.\n"
+            f"- 'format' → formato del fichero (CSV, JSON, XML, XLSX, Parquet, RDF, GeoJSON...). String. null si no se menciona.\n"
+            f"- 'mimetype' → tipo MIME (text/csv, application/json, application/xml...). String. null si no se menciona.\n"
+            f"- 'compress_format' → formato de compresión (zip, gzip, bzip2, 7z...). String. null si no se menciona.\n"
+            f"- 'package_format' → formato de empaquetado (zip, tar, tar.gz...). String. null si no se menciona.\n"
+            f"- 'size' → tamaño en bytes. Entero. null si no se menciona.\n"
+            f"- 'hash' → valor hash de integridad. String. null si no se menciona.\n"
+            f"- 'hash_algorithm' → algoritmo hash (MD5, SHA-256, SHA-512...). String. null si no se menciona.\n"
+            f"- 'rights' → descripción de derechos de uso. String. null si no se menciona.\n"
+            f"- 'availability' → descripción de disponibilidad del recurso. String. null si no se menciona.\n"
+            f"- 'status' → URI del estado del recurso:\n"
+            f"    Completado → http://purl.org/adms/status/Completed\n"
+            f"    En desarrollo → http://purl.org/adms/status/UnderDevelopment\n"
+            f"    Obsoleto → http://purl.org/adms/status/Deprecated\n"
+            f"    Retirado → http://purl.org/adms/status/Withdrawn\n"
+            f"  null si no se menciona.\n"
+            f"- 'license' → URL o nombre de licencia (CC BY 4.0, CC BY-NC 4.0, CC0, ODbL...). String. null si no se menciona.\n"
             f"\nDocumento:\n{text[:5000]}"
         )
 
@@ -674,11 +727,12 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
         result["frequency"] = f"{BASE_FREQUENCY}{result['frequency']}"
 
     if result.get("qualified_attribution") and isinstance(result["qualified_attribution"], dict):
-        role = result["qualified_attribution"].get("role", "")
+        role = result["qualified_attribution"].get("qualified_attribution_role", "")
         if role and not str(role).startswith("http"):
-            result["qualified_attribution"]["role"] = f"{BASE_ROLE}{role}"
+            result["qualified_attribution"]["qualified_attribution_role"] = f"{BASE_ROLE}{role}"
 
     return result
+
 # ── Modelos ──
 class CompleteBlockRequest(BaseModel):
     block_id: int
@@ -876,14 +930,28 @@ def finalize(response: Response, session_id: str = Cookie(default=None)):
         state.data["applicable_legislation"] = [
             {"uri": "http://data.europa.eu/eli/reg/2016/679/oj", "label": "GDPR"}
         ]
-    access_url = state.data.pop("access_url", None)
-    if access_url:
-        state.data["distribution"] = [{
-            "access_url": access_url,
-            "applicable_legislation": state.data.get("applicable_legislation", [
-                {"uri": "http://data.europa.eu/eli/reg/2016/679/oj", "label": "GDPR"}
-            ])
-        }]
+
+    # Campos de distribución que viven en el estado raíz
+    DIST_FIELDS = [
+        "access_url", "download_url", "name", "description",
+        "format", "mimetype", "compress_format", "package_format",
+        "size", "hash", "hash_algorithm", "rights", "availability",
+        "status", "license", "retention_period",
+    ]
+
+    # Construir el objeto distribución con todo lo que haya
+    dist_data = {}
+    for f in DIST_FIELDS:
+        val = state.data.pop(f, None)
+        if val not in (None, "", []):
+            dist_data[f] = val
+
+    if dist_data.get("access_url"):
+        dist_data["applicable_legislation"] = state.data.get("applicable_legislation", [
+            {"uri": "http://data.europa.eu/eli/reg/2016/679/oj", "label": "GDPR"}
+        ])
+        state.data["distribution"] = [dist_data]
+
     filename = f"metadata_output_{sid[:8]}.json"
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(state.data, f, indent=2, ensure_ascii=False)

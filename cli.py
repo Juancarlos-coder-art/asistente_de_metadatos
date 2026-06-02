@@ -110,20 +110,49 @@ BLOCKS = [
     },
     {
         "name": "Acceso_a_Distribucion",
-        "name_en": "access_url",
-        "fields": ["access_url"],
+        "name_en": "Distribution Access",
+        "fields": [
+            "access_url", "download_url", "name", "description",
+            "format", "mimetype", "compress_format", "package_format",
+            "size", "hash", "hash_algorithm", "rights", "availability",
+            "status", "license", "retention_period"
+        ],
         "question": (
-            "¿Dónde se puede acceder al dataset?\n\n"
-            "Indica la URL de acceso a la distribución del dataset."
+            "¿Cómo se puede acceder y descargar el dataset? ¿Qué características técnicas tiene el fichero?\n\n"
+            "Indica la URL de acceso y, si existe, la URL de descarga directa. "
+            "Proporciona el nombre del recurso, una breve descripción de su contenido, "
+            "el formato del fichero (CSV, JSON, XML, XLSX, Parquet…) y el tipo de medio (media type, ej: text/csv, application/json). "
+            "Si el fichero está comprimido o empaquetado, indica el formato de compresión (zip, gzip…) y de empaquetado (tar, zip…). "
+            "Si conoces el tamaño en bytes, el hash de integridad y el algoritmo usado (MD5, SHA-256…), inclúyelos. "
+            "Indica también los derechos de uso, la disponibilidad del recurso, "
+            "su estado (completado, en desarrollo, obsoleto o retirado), "
+            "la licencia aplicable (ej: CC BY 4.0, CC BY-NC, licencia propietaria) "
+            "y el periodo de conservación de los datos (fecha de inicio y fin si las conoces)."
         ),
         "question_en": (
-            "Where can the dataset be accessed?\n\n"
-            "Provide the URL to access the dataset distribution."
+            "How can the dataset be accessed and downloaded? What are the technical characteristics of the file?\n\n"
+            "Provide the access URL and, if available, the direct download URL. "
+            "Give the resource name, a brief description of its content, "
+            "the file format (CSV, JSON, XML, XLSX, Parquet…) and media type (e.g. text/csv, application/json). "
+            "If the file is compressed or packaged, indicate the compression format (zip, gzip…) and packaging format (tar, zip…). "
+            "If you know the file size in bytes, the integrity hash and the algorithm used (MD5, SHA-256…), include them. "
+            "Also indicate usage rights, resource availability, "
+            "its status (completed, under development, deprecated or withdrawn), "
+            "the applicable licence (e.g. CC BY 4.0, CC BY-NC, proprietary licence) "
+            "and the data retention period (start and end date if known)."
         ),
-        "hint": "Introduce la URL donde está disponible el dataset.",
-        "hint_en": "Enter the URL where the dataset is available.",
-        "placeholder": "Ej.: https://datos.gob.es/dataset/xyz",
-        "placeholder_en": "E.g.: https://data.europa.eu/dataset/xyz",
+        "hint": "Indica URL de acceso, descarga, nombre, descripción, formato, tipo de medio, compresión, tamaño, hash, derechos, disponibilidad, estado y licencia.",
+        "hint_en": "Provide access URL, download URL, name, description, format, media type, compression, size, hash, rights, availability, status and licence.",
+        "placeholder": (
+            "Ej.: El dataset está disponible en https://datos.gob.es/dataset/xyz y se puede descargar directamente en "
+            "https://datos.gob.es/dataset/xyz/descarga.csv. Es un fichero CSV (text/csv) de 15 MB, comprimido en zip, "
+            "bajo licencia CC BY 4.0. Estado: completado. Hash SHA-256: abc123..."
+        ),
+        "placeholder_en": (
+            "E.g.: The dataset is available at https://datos.gob.es/dataset/xyz and can be downloaded directly at "
+            "https://datos.gob.es/dataset/xyz/download.csv. It is a CSV file (text/csv) of 15 MB, zipped, "
+            "under CC BY 4.0 licence. Status: completed. SHA-256 hash: abc123..."
+        ),
     },
     {
         "name": "responsables_dataset",
@@ -412,6 +441,59 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
 
         # ── url (landing page) ──
         "Para el campo 'url', devuelve la URL de la página de entrada del dataset. null si no se menciona.\n"
+        
+        # ── access_url ──
+        "Para el campo 'access_url', devuelve la URL de acceso a la distribución del dataset. null si no se menciona.\n"
+        
+        # ── description (distribución) ──
+        "Para el campo 'description', devuelve un string con la descripción del recurso de distribución. null si no se menciona.\n"
+        
+        
+        
+        # ── license ──
+        "Para el campo 'license', devuelve la URL o nombre de la licencia. Ejemplos:\n"
+        "- CC BY 4.0 → https://creativecommons.org/licenses/by/4.0/\n"
+        "- CC BY-NC 4.0 → https://creativecommons.org/licenses/by-nc/4.0/\n"
+        "- CC0 → https://creativecommons.org/publicdomain/zero/1.0/\n"
+        "- Open Data Commons ODbL → https://opendatacommons.org/licenses/odbl/\n"
+        "Si el usuario menciona el nombre sin URI, devuelve el nombre como string. null si no se menciona.\n"
+        
+        # ── retention_period (distribución) ──
+        "Para el campo 'retention_period', devuelve un objeto con 'start' (fecha YYYY-MM-DD o null) y 'end' (fecha YYYY-MM-DD o null). null si no se menciona.\n"
+        
+        # ── format ──
+        "Para el campo 'format', devuelve el formato del fichero como string. Ejemplos: 'CSV', 'JSON', 'XML', 'XLSX', 'Parquet', 'RDF', 'GeoJSON'. null si no se menciona.\n"
+        # ── mimetype ──
+        "Para el campo 'mimetype', devuelve el tipo MIME del fichero. Ejemplos: 'text/csv', 'application/json', 'application/xml', 'application/vnd.ms-excel'. null si no se menciona.\n"
+        
+        # ── compress_format ──
+        "Para el campo 'compress_format', devuelve el formato de compresión como string. Ejemplos: 'zip', 'gzip', 'bzip2', '7z'. null si no se menciona.\n"
+        
+        # ── package_format ──
+        "Para el campo 'package_format', devuelve el formato de empaquetado como string. Ejemplos: 'zip', 'tar', 'tar.gz'. null si no se menciona.\n"
+        
+        # ── size ──
+        "Para el campo 'size', devuelve el tamaño del fichero en bytes como número entero. null si no se menciona.\n"
+        
+        # ── hash ──
+        "Para el campo 'hash', devuelve el valor del hash de integridad del fichero como string. null si no se menciona.\n"
+        
+        # ── hash_algorithm ──
+        "Para el campo 'hash_algorithm', devuelve el algoritmo hash como string. Ejemplos: 'MD5', 'SHA-256', 'SHA-512'. null si no se menciona.\n"
+        
+        # ── rights ──
+        "Para el campo 'rights', devuelve un string con los derechos de uso del recurso. null si no se menciona.\n"
+        
+        # ── availability ──
+        "Para el campo 'availability', devuelve un string describiendo la disponibilidad del recurso. null si no se menciona.\n"
+        
+        # ── status ──
+        "Para el campo 'status', devuelve la URI del estado del recurso:\n"
+        "- Completado → http://purl.org/adms/status/Completed\n"
+        "- En desarrollo → http://purl.org/adms/status/UnderDevelopment\n"
+        "- Obsoleto → http://purl.org/adms/status/Deprecated\n"
+        "- Retirado → http://purl.org/adms/status/Withdrawn\n"
+        "null si no se menciona.\n"
 
         # ── documentation ──
         "Para el campo 'documentation', devuelve un objeto con 'uri' (URI) y 'label' (nombre). null si no se menciona.\n"
