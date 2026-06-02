@@ -553,6 +553,7 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"- 'qualified_attribution' → object: qualified_attribution_agent_name, qualified_attribution_agent_type (URI),\n"
             f"  qualified_attribution_agent_contact_page (URL or null), qualified_attribution_agent_email (string or null),\n"
             f"  qualified_attribution_role (URI). Role codes: {attribution_roles_compact}\n"
+            f"- 'quality_annotation' → object: body (URI of the quality body), target (URI or string), motivated_by (motivation URI or string). null if not mentioned.\n"
             f"  Role URI: https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#{{CODE}}\n"
             f"- 'was_generated_by' → array of activity codes. Choose from: {health_activities_compact}\n"
             f"  URI: http://13.81.34.152:1101/resource/authority/health-activity/{{CODE}}\n"
@@ -647,6 +648,7 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"  qualified_attribution_agent_name (string), qualified_attribution_agent_type (URI),\n"
             f"  qualified_attribution_agent_contact_page (URL o null), qualified_attribution_agent_email (string o null),\n"
             f"  qualified_attribution_role (URI). Códigos de rol: {attribution_roles_compact}\n"
+            f"- 'quality_annotation' → objeto: body (URI del organismo de calidad), target (URI o string), motivated_by (motivación URI o string). null si no se menciona.\n"
             f"  URI rol: https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#{{CÓDIGO}}\n"
             f"- 'was_generated_by' → array de códigos de actividad. Elige entre: {health_activities_compact}\n"
             f"  URI: http://13.81.34.152:1101/resource/authority/health-activity/{{CÓDIGO}}\n"
@@ -807,6 +809,7 @@ def get_schema_info(lang: str = "es"):
         "conforms_to": "conforms_to",
         "related_resource": "related_resource",
         "documentation": "documentation",
+        "quality_annotation": "quality_annotation"
     }
     info = {}
     for field_key, yaml_field_name in field_map.items():

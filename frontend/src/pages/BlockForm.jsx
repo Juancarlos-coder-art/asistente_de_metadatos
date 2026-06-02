@@ -52,6 +52,7 @@ const FIELD_LABELS_ES = {
   publisher: "Editor",
   creator: "Creador",
   qualified_attribution: "Atribución cualificada",
+  quality_annotation: "Anotación de calidad",
   legal_basis: "Base jurídica",
   retention_period: "Período de conservación",
   publisher_note: "Nota del editor",
@@ -72,7 +73,6 @@ const FIELD_LABELS_ES = {
 
 const NON_PUBLIC_URI = "NON_PUBLIC";
 
-// ── Modal bloqueante con edición inline ──
 function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInfo }) {
   const [fields, setFields] = useState({});
 
@@ -106,31 +106,23 @@ function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInf
           <span style={modalStyles.icon}>⚠️</span>
           <h2 style={modalStyles.title}>Campos con errores</h2>
         </div>
-        <p style={modalStyles.subtitle}>
-          Corrige los siguientes campos antes de continuar.
-        </p>
+        <p style={modalStyles.subtitle}>Corrige los siguientes campos antes de continuar.</p>
         <div style={modalStyles.fieldList}>
           {missingInfo.map((item, i) => {
             const fieldName = item.field;
             const label = FIELD_LABELS_ES[fieldName] ?? item.label ?? fieldName;
             const fieldSchema = schemaInfo[fieldName] || {};
-
             return (
               <div key={i} style={modalStyles.fieldItem}>
                 <div style={modalStyles.fieldName}>
                   🔴 {label} — <span style={{ color: "#da1e28" }}>obligatorio</span>
                 </div>
                 <div style={modalStyles.fieldDesc}>{item.descripcion}</div>
-                {item.ejemplo && (
-                  <div style={modalStyles.fieldExample}>Ej: {item.ejemplo}</div>
-                )}
+                {item.ejemplo && <div style={modalStyles.fieldExample}>Ej: {item.ejemplo}</div>}
                 <div style={{ marginTop: "10px" }}>
                   {fieldSchema.choices ? (
-                    <select
-                      style={modalStyles.input}
-                      value={fields[fieldName] || ""}
-                      onChange={e => handleChange(fieldName, e.target.value)}
-                    >
+                    <select style={modalStyles.input} value={fields[fieldName] || ""}
+                      onChange={e => handleChange(fieldName, e.target.value)}>
                       <option value="">— Selecciona una opción —</option>
                       {fieldSchema.choices.map(ch => (
                         <option key={ch.value} value={ch.value}>{ch.label}</option>
@@ -140,40 +132,30 @@ function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInf
                     <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                       {fieldSchema.subfields.map(sf => (
                         <div key={sf.field_name}>
-                          <label style={modalStyles.subLabel}>
-                            {sf.required ? "* " : ""}{sf.label}
-                          </label>
+                          <label style={modalStyles.subLabel}>{sf.required ? "* " : ""}{sf.label}</label>
                           {sf.choices ? (
-                            <select
-                              style={modalStyles.input}
+                            <select style={modalStyles.input}
                               value={(fields.hdab || {})[sf.field_name] || ""}
-                              onChange={e => handleHdabChange(sf.field_name, e.target.value)}
-                            >
+                              onChange={e => handleHdabChange(sf.field_name, e.target.value)}>
                               <option value="">— Selecciona —</option>
                               {sf.choices.map(ch => (
                                 <option key={ch.value} value={ch.value}>{ch.label}</option>
                               ))}
                             </select>
                           ) : (
-                            <input
-                              style={modalStyles.input}
-                              type="text"
+                            <input style={modalStyles.input} type="text"
                               placeholder={`Introduce ${sf.label}...`}
                               value={(fields.hdab || {})[sf.field_name] || ""}
-                              onChange={e => handleHdabChange(sf.field_name, e.target.value)}
-                            />
+                              onChange={e => handleHdabChange(sf.field_name, e.target.value)} />
                           )}
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <input
-                      style={modalStyles.input}
-                      type="text"
+                    <input style={modalStyles.input} type="text"
                       placeholder={`Introduce ${label}...`}
                       value={fields[fieldName] || ""}
-                      onChange={e => handleChange(fieldName, e.target.value)}
-                    />
+                      onChange={e => handleChange(fieldName, e.target.value)} />
                   )}
                 </div>
               </div>
@@ -181,14 +163,9 @@ function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInf
           })}
         </div>
         <div style={modalStyles.buttons}>
-          <button style={modalStyles.btnBack} onClick={onClose}>
-            ✏️ Volver a rellenar
-          </button>
-          <button
-            style={{ ...modalStyles.btnSave, opacity: anyFilled ? 1 : 0.5 }}
-            onClick={handleSave}
-            disabled={!anyFilled}
-          >
+          <button style={modalStyles.btnBack} onClick={onClose}>✏️ Volver a rellenar</button>
+          <button style={{ ...modalStyles.btnSave, opacity: anyFilled ? 1 : 0.5 }}
+            onClick={handleSave} disabled={!anyFilled}>
             💾 Guardar y continuar
           </button>
         </div>
@@ -198,70 +175,57 @@ function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInf
 }
 
 const modalStyles = {
-  overlay: {
-    position: "fixed",
-    top: 0, left: 0, right: 0, bottom: 0,
-    background: "rgba(0, 0, 0, 0.6)",
-    display: "flex", alignItems: "center", justifyContent: "center",
-    zIndex: 9999,
-  },
-  modal: {
-    background: "white",
-    borderTop: "4px solid #da1e28",
-    maxWidth: "520px",
-    width: "90%",
-    boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
-    maxHeight: "85vh",
-    display: "flex",
-    flexDirection: "column",
-  },
+  overlay: { position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.6)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999 },
+  modal: { background: "white", borderTop: "4px solid #da1e28", maxWidth: "520px", width: "90%", boxShadow: "0 8px 32px rgba(0,0,0,0.3)", maxHeight: "85vh", display: "flex", flexDirection: "column" },
   header: { display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px", padding: "32px 32px 0 32px" },
   icon: { fontSize: "1.8rem" },
-  title: {
-    fontFamily: "'IBM Plex Mono', monospace",
-    fontSize: "1.1rem", fontWeight: 600, color: "#161616", margin: 0,
-  },
+  title: { fontFamily: "'IBM Plex Mono', monospace", fontSize: "1.1rem", fontWeight: 600, color: "#161616", margin: 0 },
   subtitle: { fontSize: "0.9rem", color: "#525252", marginBottom: "20px", lineHeight: 1.5, padding: "0 32px" },
   fieldList: { display: "flex", flexDirection: "column", gap: "10px", marginBottom: "0", padding: "0 32px", overflowY: "auto", flex: 1 },
-  fieldItem: {
-    background: "#fff1f1", border: "1px solid #ffd7d9",
-    borderLeft: "3px solid #da1e28", padding: "12px 14px",
-  },
-  fieldName: {
-    fontFamily: "'IBM Plex Mono', monospace",
-    fontSize: "0.85rem", fontWeight: 600, color: "#da1e28", marginBottom: "4px",
-  },
+  fieldItem: { background: "#fff1f1", border: "1px solid #ffd7d9", borderLeft: "3px solid #da1e28", padding: "12px 14px" },
+  fieldName: { fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.85rem", fontWeight: 600, color: "#da1e28", marginBottom: "4px" },
   fieldDesc: { fontSize: "0.88rem", color: "#393939", lineHeight: 1.5 },
   fieldExample: { fontSize: "0.78rem", color: "#6f6f6f", fontStyle: "italic", marginTop: "4px" },
-  input: {
-    width: "100%", boxSizing: "border-box",
-    border: "1px solid #da1e28", padding: "8px 10px",
-    fontSize: "0.88rem", fontFamily: "'IBM Plex Sans', sans-serif",
-    background: "white", marginTop: "4px",
-    outline: "none",
-  },
-  subLabel: {
-    fontSize: "0.78rem", color: "#525252",
-    fontFamily: "'IBM Plex Sans', sans-serif", display: "block", marginBottom: "2px",
-  },
-  buttons: {
-    display: "flex", justifyContent: "space-between", gap: "12px",
-    padding: "16px 32px 32px 32px",
-    borderTop: "1px solid #e0e0e0",
-    background: "white",
-    flexShrink: 0,
-  },
-  btnBack: {
-    background: "transparent", border: "1px solid #c6c6c6", color: "#525252",
-    padding: "10px 20px", fontSize: "0.88rem",
-    fontFamily: "'IBM Plex Sans', sans-serif", cursor: "pointer",
-  },
-  btnSave: {
-    background: "#0f62fe", color: "white", border: "none",
-    padding: "10px 24px", fontSize: "0.9rem",
-    fontFamily: "'IBM Plex Sans', sans-serif", fontWeight: 600, cursor: "pointer",
-  },
+  input: { width: "100%", boxSizing: "border-box", border: "1px solid #da1e28", padding: "8px 10px", fontSize: "0.88rem", fontFamily: "'IBM Plex Sans', sans-serif", background: "white", marginTop: "4px", outline: "none" },
+  subLabel: { fontSize: "0.78rem", color: "#525252", fontFamily: "'IBM Plex Sans', sans-serif", display: "block", marginBottom: "2px" },
+  buttons: { display: "flex", justifyContent: "space-between", gap: "12px", padding: "16px 32px 32px 32px", borderTop: "1px solid #e0e0e0", background: "white", flexShrink: 0 },
+  btnBack: { background: "transparent", border: "1px solid #c6c6c6", color: "#525252", padding: "10px 20px", fontSize: "0.88rem", fontFamily: "'IBM Plex Sans', sans-serif", cursor: "pointer" },
+  btnSave: { background: "#0f62fe", color: "white", border: "none", padding: "10px 24px", fontSize: "0.9rem", fontFamily: "'IBM Plex Sans', sans-serif", fontWeight: 600, cursor: "pointer" },
 };
+
+// Helper para renderizar subcampos genéricos
+function SubfieldGroup({ field, label, subfields, values, onChange }) {
+  return (
+    <div className="field-group">
+      <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{label}</label>
+      <div className="hdab-subfields">
+        {subfields.map(sf => {
+          const sfLabel = `${sf.required ? "* " : ""}${sf.label}`;
+          if (sf.choices) {
+            return (
+              <div key={sf.field_name} className="field-group">
+                <label className="field-label">{sfLabel}</label>
+                <select className="field-select" value={values[sf.field_name] || ""}
+                  onChange={(e) => onChange({ ...values, [sf.field_name]: e.target.value })}>
+                  <option value="">— Selecciona —</option>
+                  {sf.choices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+                </select>
+              </div>
+            );
+          }
+          return (
+            <div key={sf.field_name} className="field-group">
+              <label className="field-label">{sfLabel}</label>
+              <input className="field-input" type="text" placeholder={`Introduce ${sf.label}...`}
+                value={values[sf.field_name] || ""}
+                onChange={(e) => onChange({ ...values, [sf.field_name]: e.target.value })} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone, initialMetadata, onMetadataChange }) {
   const [tab, setTab] = useState("ia");
@@ -367,11 +331,9 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     const metaRes = await getMetadata();
     const currentMeta = metaRes.data;
     const nonPublic = isNonPublic(currentMeta);
-
     const obligatoryMissing = res.data.descriptions.filter(item =>
       item.obligatorio && !(nonPublic && item.field === "identifier")
     );
-
     if (obligatoryMissing.length > 0) {
       setMissingInfo(obligatoryMissing);
       const schemaRes = await getSchemaInfo();
@@ -388,16 +350,13 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       const res = await saveManual(currentIdx, filledFields);
       setMetadata(res.data.metadata);
       onBlockDone(currentIdx);
-
       const metaRes = await getMetadata();
       const nonPublic = isNonPublic(metaRes.data);
       const misRes = await getMissingFields(currentIdx);
       setBlockMissingInfo(misRes.data.descriptions || []);
-
       const stillMissing = misRes.data.descriptions.filter(item =>
         item.obligatorio && !(nonPublic && item.field === "identifier")
       );
-
       if (stillMissing.length > 0) {
         setMissingInfo(stillMissing);
       } else {
@@ -432,6 +391,142 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     ? block.question + "\n\n🔒 El identificador se asignará automáticamente por ser un dataset No Público."
     : block.question;
 
+  const STATUS_CHOICES = [
+    { value: "http://purl.org/adms/status/Completed", label: "Completado" },
+    { value: "http://purl.org/adms/status/UnderDevelopment", label: "En desarrollo" },
+    { value: "http://purl.org/adms/status/Deprecated", label: "Obsoleto" },
+    { value: "http://purl.org/adms/status/Withdrawn", label: "Retirado" },
+  ];
+
+  const renderField = (field) => {
+    const isDistribBlock = block.fields.includes("access_url");
+    const fieldLabel = field === "name" && isDistribBlock
+      ? "Nombre del recurso"
+      : (FIELD_LABELS_ES[field] ?? field);
+    const fieldSchema = schemaInfo[field] || {};
+
+    // Campos con choices → select
+    const effectiveChoices = field === "status" && (!fieldSchema.choices || fieldSchema.choices.length === 0)
+      ? STATUS_CHOICES
+      : fieldSchema.choices;
+
+    if (effectiveChoices) {
+      return (
+        <div key={field} className="field-group">
+          <label className="field-label">{fieldLabel}</label>
+          <select className="field-select" value={manualFields[field] || ""}
+            onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}>
+            <option value="">— Selecciona una opción —</option>
+            {effectiveChoices.map(ch => (
+              <option key={ch.value} value={ch.value}>{ch.label}</option>
+            ))}
+          </select>
+        </div>
+      );
+    }
+
+    // Campos con subfields → SubfieldGroup
+    const SUBFIELD_FIELDS = ["hdab", "contact", "legal_basis", "coding_system", "publisher", "creator", "qualified_attribution", "quality_annotation", "conforms_to", "related_resource", "documentation"];
+    if (SUBFIELD_FIELDS.includes(field) && fieldSchema.subfields) {
+      const values = manualFields[field] || {};
+      return (
+        <SubfieldGroup key={field} field={field} label={fieldLabel}
+          subfields={fieldSchema.subfields} values={values}
+          onChange={(newValues) => setManualFields({ ...manualFields, [field]: newValues })} />
+      );
+    }
+
+    // retention_period → start + end con date picker
+    if (field === "retention_period") {
+      const rpValues = manualFields.retention_period || {};
+      return (
+        <div key={field} className="field-group">
+          <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
+          <div style={{ display: "flex", gap: "12px", marginTop: "6px" }}>
+            <div style={{ flex: 1 }}>
+              <label className="field-label" style={{ fontSize: "0.78rem", color: "#525252" }}>Inicio</label>
+              <input className="field-input" type="date" value={rpValues.start || ""}
+                onChange={(e) => setManualFields({ ...manualFields, retention_period: { ...rpValues, start: e.target.value } })} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <label className="field-label" style={{ fontSize: "0.78rem", color: "#525252" }}>Fin</label>
+              <input className="field-input" type="date" value={rpValues.end || ""}
+                onChange={(e) => setManualFields({ ...manualFields, retention_period: { ...rpValues, end: e.target.value } })} />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // temporal_coverage → start + end con date picker
+    if (field === "temporal_coverage") {
+      const tcValues = manualFields.temporal_coverage || {};
+      return (
+        <div key={field} className="field-group">
+          <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
+          <div style={{ display: "flex", gap: "12px", marginTop: "6px" }}>
+            <div style={{ flex: 1 }}>
+              <label className="field-label" style={{ fontSize: "0.78rem", color: "#525252" }}>Inicio</label>
+              <input className="field-input" type="date" value={tcValues.start || ""}
+                onChange={(e) => setManualFields({ ...manualFields, temporal_coverage: { ...tcValues, start: e.target.value } })} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <label className="field-label" style={{ fontSize: "0.78rem", color: "#525252" }}>Fin</label>
+              <input className="field-input" type="date" value={tcValues.end || ""}
+                onChange={(e) => setManualFields({ ...manualFields, temporal_coverage: { ...tcValues, end: e.target.value } })} />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // description → textarea
+    if (field === "description") {
+      return (
+        <div key={field} className="field-group">
+          <label className="field-label">{fieldLabel}</label>
+          <textarea className="field-textarea" placeholder={`Introduce ${fieldLabel}...`}
+            value={manualFields[field] || ""} rows={3}
+            onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })} />
+        </div>
+      );
+    }
+
+    // Campos numéricos
+    if (["number_of_unique_individuals", "number_of_records", "min_typical_age", "max_typical_age", "size", "spatial_resolution_in_meters"].includes(field)) {
+      return (
+        <div key={field} className="field-group">
+          <label className="field-label">{fieldLabel}</label>
+          <input className="field-input" type="number" min="0"
+            placeholder={`Introduce ${fieldLabel}...`}
+            value={manualFields[field] ?? ""}
+            onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value ? parseInt(e.target.value, 10) : "" })} />
+        </div>
+      );
+    }
+
+    // Campos fecha
+    if (["issued", "modified"].includes(field)) {
+      return (
+        <div key={field} className="field-group">
+          <label className="field-label">{fieldLabel}</label>
+          <input className="field-input" type="date" value={manualFields[field] || ""}
+            onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })} />
+        </div>
+      );
+    }
+
+    // Campo de texto libre por defecto
+    return (
+      <div key={field} className="field-group">
+        <label className="field-label">{fieldLabel}</label>
+        <input className="field-input" type="text" placeholder={`Introduce ${fieldLabel}...`}
+          value={manualFields[field] || ""}
+          onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })} />
+      </div>
+    );
+  };
+
   return (
     <div>
       {showModal && (
@@ -461,12 +556,9 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
               : block.hint || block.question}
           </p>
           <div className="field-group">
-            <textarea
-              className="field-textarea"
+            <textarea className="field-textarea"
               placeholder={block.placeholder || "Describe el bloque con tus propias palabras..."}
-              value={userContext}
-              onChange={(e) => setUserContext(e.target.value)}
-            />
+              value={userContext} onChange={(e) => setUserContext(e.target.value)} />
           </div>
           <button className="btn btn--primary" onClick={handleComplete} disabled={loading || !userContext.trim()}>
             {loading ? "Analizando..." : "Completar bloque"}
@@ -489,162 +581,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
               🔒 <strong>URL de acceso</strong> asignada automáticamente por ser un dataset No Público.
             </div>
           )}
-          {activeFields.map(field => {
-            // En el bloque de distribución, 'name' se muestra como "Nombre del recurso"
-            const isDistribBlock = block.fields.includes("access_url");
-            const fieldLabel = field === "name" && isDistribBlock
-              ? "Nombre del recurso"
-              : (FIELD_LABELS_ES[field] ?? field);
-            const fieldSchema = schemaInfo[field] || {};
-
-            // Campos con choices → select
-            // Para 'status' usamos choices hardcoded si el schema no las devuelve
-            const STATUS_CHOICES = [
-              { value: "http://purl.org/adms/status/Completed", label: "Completado" },
-              { value: "http://purl.org/adms/status/UnderDevelopment", label: "En desarrollo" },
-              { value: "http://purl.org/adms/status/Deprecated", label: "Obsoleto" },
-              { value: "http://purl.org/adms/status/Withdrawn", label: "Retirado" },
-            ];
-            const effectiveChoices = field === "status" && (!fieldSchema.choices || fieldSchema.choices.length === 0)
-              ? STATUS_CHOICES
-              : fieldSchema.choices;
-
-            if (effectiveChoices) {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <select
-                    className="field-select"
-                    value={manualFields[field] || ""}
-                    onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
-                  >
-                    <option value="">— Selecciona una opción —</option>
-                    {effectiveChoices.map(ch => (
-                      <option key={ch.value} value={ch.value}>{ch.label}</option>
-                    ))}
-                  </select>
-                </div>
-              );
-            }
-
-            // retention_period → subcampos start/end
-            if (field === "retention_period") {
-              const rpValues = manualFields.retention_period || {};
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>
-                    {fieldLabel}
-                  </label>
-                  <div style={{ display: "flex", gap: "12px", marginTop: "6px" }}>
-                    <div style={{ flex: 1 }}>
-                      <label className="field-label" style={{ fontSize: "0.78rem", color: "#525252" }}>Inicio</label>
-                      <input
-                        className="field-input"
-                        type="date"
-                        value={rpValues.start || ""}
-                        onChange={(e) => setManualFields({
-                          ...manualFields,
-                          retention_period: { ...rpValues, start: e.target.value }
-                        })}
-                      />
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <label className="field-label" style={{ fontSize: "0.78rem", color: "#525252" }}>Fin</label>
-                      <input
-                        className="field-input"
-                        type="date"
-                        value={rpValues.end || ""}
-                        onChange={(e) => setManualFields({
-                          ...manualFields,
-                          retention_period: { ...rpValues, end: e.target.value }
-                        })}
-                      />
-                    </div>
-                  </div>
-                </div>
-              );
-            }
-
-            // description → textarea
-            if (field === "description") {
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label">{fieldLabel}</label>
-                  <textarea
-                    className="field-textarea"
-                    placeholder={`Introduce ${fieldLabel}...`}
-                    value={manualFields[field] || ""}
-                    rows={3}
-                    onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
-                  />
-                </div>
-              );
-            }
-
-            // hdab → subcampos
-            if (field === "hdab" && fieldSchema.subfields) {
-              const hdabValues = manualFields.hdab || {};
-              return (
-                <div key={field} className="field-group">
-                  <label className="field-label" style={{ fontSize: "0.85rem", fontWeight: 600 }}>{fieldLabel}</label>
-                  <div className="hdab-subfields">
-                    {fieldSchema.subfields.map(sf => {
-                      const sfLabel = `${sf.required ? "* " : ""}${sf.label}`;
-                      if (sf.choices) {
-                        return (
-                          <div key={sf.field_name} className="field-group">
-                            <label className="field-label">{sfLabel}</label>
-                            <select
-                              className="field-select"
-                              value={hdabValues[sf.field_name] || ""}
-                              onChange={(e) => setManualFields({
-                                ...manualFields,
-                                hdab: { ...hdabValues, [sf.field_name]: e.target.value }
-                              })}
-                            >
-                              <option value="">— Selecciona —</option>
-                              {sf.choices.map(ch => (
-                                <option key={ch.value} value={ch.value}>{ch.label}</option>
-                              ))}
-                            </select>
-                          </div>
-                        );
-                      }
-                      return (
-                        <div key={sf.field_name} className="field-group">
-                          <label className="field-label">{sfLabel}</label>
-                          <input
-                            className="field-input"
-                            type="text"
-                            placeholder={`Introduce ${sf.label}...`}
-                            value={hdabValues[sf.field_name] || ""}
-                            onChange={(e) => setManualFields({
-                              ...manualFields,
-                              hdab: { ...hdabValues, [sf.field_name]: e.target.value }
-                            })}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            }
-
-            // Campo de texto libre
-            return (
-              <div key={field} className="field-group">
-                <label className="field-label">{fieldLabel}</label>
-                <input
-                  className="field-input"
-                  type="text"
-                  placeholder={`Introduce ${fieldLabel}...`}
-                  value={manualFields[field] || ""}
-                  onChange={(e) => setManualFields({ ...manualFields, [field]: e.target.value })}
-                />
-              </div>
-            );
-          })}
+          {activeFields.map(field => renderField(field))}
           {block.fields.includes("applicable_legislation") && (
             <div className="alert alert--info">
               <strong>applicable_legislation</strong> se rellena automáticamente al finalizar.
@@ -661,11 +598,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
       <div className="bottom-grid">
         <div>
           <p className="json-viewer-header">Resumen del dataset</p>
-          <MetadataPreview
-            metadata={metadata}
-            schemaInfo={schemaInfo}
-            onFieldSave={handleFieldSave}
-          />
+          <MetadataPreview metadata={metadata} schemaInfo={schemaInfo} onFieldSave={handleFieldSave} />
         </div>
         <div className="validation-box">
           <p className="validation-header">Estado de validación</p>
@@ -700,16 +633,12 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                     ))}
                   </>
                 )}
-                {blockOptional.length > 0 && (
-                  <>
-                    {blockOptional.map((item, i) => (
-                      <div key={i} className="validation-item">
-                        <span>{FIELD_LABELS_ES[item.field] ?? item.label ?? item.field}</span>
-                        <span className="tag tag--warn">opcional</span>
-                      </div>
-                    ))}
-                  </>
-                )}
+                {blockOptional.length > 0 && blockOptional.map((item, i) => (
+                  <div key={i} className="validation-item">
+                    <span>{FIELD_LABELS_ES[item.field] ?? item.label ?? item.field}</span>
+                    <span className="tag tag--warn">opcional</span>
+                  </div>
+                ))}
                 {globalMissingCount === 0 && blockObligatory.length === 0 && blockErrors.length === 0 && (
                   <div className="alert alert--ok" style={{ marginTop: "8px" }}>
                     🎉 Todos los campos obligatorios están completos.

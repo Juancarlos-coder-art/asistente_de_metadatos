@@ -157,7 +157,7 @@ BLOCKS = [
     {
         "name": "responsables_dataset",
         "name_en": "Dataset Responsible Parties",
-        "fields": ["publisher", "publisher_note", "creator", "qualified_attribution"],
+        "fields": ["publisher", "publisher_note", "creator", "qualified_attribution","quality_annotation"],
         "question": (
             "Indica quién es el editor (publicador) y el creador de este dataset.\n\n"
             "Para el editor, proporciona el nombre de la organización, su tipo (universidad, autoridad nacional, etc.), "
