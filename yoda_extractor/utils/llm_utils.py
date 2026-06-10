@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
+from google import genai
 
 from utils.logger import get_logger
 
@@ -20,8 +21,8 @@ log = get_logger(__name__)
 
 
 def _use_groq() -> bool:
-    """True si se debe usar Groq en lugar de Gemini (env YODA_LLM_BACKEND=groq)."""
-    return os.getenv("YODA_LLM_BACKEND", "gemini").lower() in ("groq", "grok")
+    """True si se debe usar Groq en lugar de Gemini (default: groq, igual que el resto de la app)."""
+    return os.getenv("YODA_LLM_BACKEND", "groq").lower() in ("groq", "grok")
 
 
 def _call_groq(prompt: str) -> str:
