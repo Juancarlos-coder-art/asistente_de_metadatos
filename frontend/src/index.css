@@ -179,6 +179,13 @@ html, body {
 }
 
 /* Progress ring */
+.rings-row {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: space-around;
+  margin-bottom: var(--space-4);
+}
+
 .ring-wrap {
   display: flex;
   flex-direction: column;
@@ -189,8 +196,8 @@ html, body {
 
 .ring {
   position: relative;
-  width: 84px;
-  height: 84px;
+  width: 88px;
+  height: 88px;
 }
 
 .ring svg {
@@ -219,7 +226,7 @@ html, body {
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: var(--text-lg);
+  font-size: var(--text-sm);
   font-weight: 700;
   color: var(--color-sidebar-text);
 }
@@ -984,6 +991,11 @@ html, body {
 
 .sidebar--collapsed .metrics-grid {
   grid-template-columns: 1fr;
+}
+
+.sidebar--collapsed .rings-row {
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebar--collapsed .nav-btn {

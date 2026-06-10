@@ -13,3 +13,11 @@ __pycache__/
 .ipynb_checkpoints/
 metadata_output*.json
 node_modules
+
+# macOS
+.DS_Store
+
+# yoda_extractor
+yoda_extractor/tests-output/
+yoda_extractor/controlled_vocabularies/db/
+yoda_extractor/tests/datasets/

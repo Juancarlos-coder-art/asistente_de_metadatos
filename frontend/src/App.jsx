@@ -13,7 +13,12 @@ export default function App() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [blocksDone, setBlocksDone] = useState([]);
   const [metadata, setMetadata] = useState({});
-  const [missingCount, setMissingCount] = useState(0);
+  const [progress, setProgress] = useState({
+    total_required: 0,
+    filled_required: 0,
+    total_optional: 0,
+    filled_optional: 0,
+  });
   const [missingDetails, setMissingDetails] = useState([]);
   const [finished, setFinished] = useState(false);
   const [showDocumentModal, setShowDocumentModal] = useState(false);
@@ -33,7 +38,15 @@ export default function App() {
       } else {
         getMetadata().then(res => setMetadata(res.data)).catch(() => {});
       }
-      validateMetadata().then(res => setMissingCount(res.data.missing_required.length)).catch(() => {});
+      validateMetadata().then(res => {
+        const d = res.data;
+        setProgress({
+          total_required: d.total_required ?? 0,
+          filled_required: d.filled_required ?? 0,
+          total_optional: d.total_optional ?? 0,
+          filled_optional: d.filled_optional ?? 0,
+        });
+      }).catch(() => {});
       getMissingFields(currentIdx).then(res => setMissingDetails(res.data.descriptions || [])).catch(() => setMissingDetails([]));
     }
   }, [started, currentIdx]);
@@ -56,7 +69,15 @@ export default function App() {
   const handleBlockDone = (idx) => {
     if (!blocksDone.includes(idx)) setBlocksDone([...blocksDone, idx]);
     getMetadata().then(res => setMetadata(res.data)).catch(() => {});
-    validateMetadata().then(res => setMissingCount(res.data.missing_required.length)).catch(() => {});
+    validateMetadata().then(res => {
+      const d = res.data;
+      setProgress({
+        total_required: d.total_required ?? 0,
+        filled_required: d.filled_required ?? 0,
+        total_optional: d.total_optional ?? 0,
+        filled_optional: d.filled_optional ?? 0,
+      });
+    }).catch(() => {});
     getMissingFields(currentIdx).then(res => setMissingDetails(res.data.descriptions || [])).catch(() => setMissingDetails([]));
   };
 
@@ -211,7 +232,7 @@ export default function App() {
         currentIdx={currentIdx}
         blocksDone={blocksDone}
         metadata={metadata}
-        missingCount={missingCount}
+        progress={progress}
         missingDetails={missingDetails}
         onNavigate={(i) => setCurrentIdx(i)}
         onSaveProgress={handleSaveProgress}

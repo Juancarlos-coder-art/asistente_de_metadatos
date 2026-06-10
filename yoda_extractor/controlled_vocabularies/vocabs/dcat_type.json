@@ -1,0 +1,126 @@
+{
+  "APROF": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/APROF",
+    "prefLabel": "Application profile",
+    "definition": "An application profile is a profile which specifies and describes the metadata used in a particular application."
+  },
+  "ATTO_LEX": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/ATTO_LEX",
+    "prefLabel": "ATTO table – EUR-Lex domain",
+    "definition": "Table of EUR-Lex domain in ATTO, internal translation manager application of the Publications Office of the European Union."
+  },
+  "ATTO_PUB": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/ATTO_PUB",
+    "prefLabel": "ATTO table – Publications domain",
+    "definition": "Table of Publications domain in ATTO, internal translation manager application of the Publications Office of the European Union."
+  },
+  "CODE_LIST": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/CODE_LIST",
+    "prefLabel": "Code list",
+    "definition": "A code list is a complete set of data element values of a coded simple data element."
+  },
+  "CORE_COMP": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/CORE_COMP",
+    "prefLabel": "Core component",
+    "definition": "A core component is a context-free semantic building block for creating clear and meaningful data models, vocabularies and information exchange packages."
+  },
+  "DIRECTORY": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/DIRECTORY",
+    "prefLabel": "Directory",
+    "definition": "A directory contains information about individual entities (e.g. persons) and their (probably) hierarchical organisation and related entities. It is used to browse individuals in their organisational context."
+  },
+  "DOMAIN_MODEL": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/DOMAIN_MODEL",
+    "prefLabel": "Domain model",
+    "definition": "A domain model is a conceptual view of a system or an information exchange that identifies the entities involved and their relationships."
+  },
+  "DSCRP_SERV": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/DSCRP_SERV",
+    "prefLabel": "Service description",
+    "definition": "A service description is a set of documents that describe the interface to and semantics of a service."
+  },
+  "GEOSPATIAL": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/GEOSPATIAL",
+    "prefLabel": "Geospatial data",
+    "definition": "Geospatial data is data that has explicit geographic positioning information included within it in either vector or raster format."
+  },
+  "GLOSSARY": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/GLOSSARY",
+    "prefLabel": "Glossary",
+    "definition": "A glossary is a simple list of terms and their definitions. A glossary focuses on creating a complete list of the terminology of domain-specific terms and acronyms."
+  },
+  "HVD": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/HVD",
+    "prefLabel": "High-value dataset",
+    "definition": "Dataset whose re-use is associated with important benefits for society, the environment and the economy, in particular because of its suitability for the creation of value-added services, applications and new, high-quality and decent jobs, and of the number of potential beneficiaries of the value-added services and applications based on this dataset."
+  },
+  "IEPD": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/IEPD",
+    "prefLabel": "Information exchange package description",
+    "definition": "An information exchange package (IEP) description is a collection of artefacts that define and describe the structure and content of an IEP. An Information Exchange Package Documentation has a specific information exchange context and may refer to other semantic assets."
+  },
+  "MAPPING": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/MAPPING",
+    "prefLabel": "Mapping",
+    "definition": "A mapping is a relationship between a concept in one vocabulary and one or more concepts in another."
+  },
+  "NAL": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/NAL",
+    "prefLabel": "Name authority list",
+    "definition": "A name authority list is a controlled vocabulary for use in naming particular entities consistently."
+  },
+  "ONTOLOGY": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/ONTOLOGY",
+    "prefLabel": "Ontology",
+    "definition": "An ontology is a formal, explicit specification of a shared conceptualisation."
+  },
+  "OP_DATPRO": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/OP_DATPRO",
+    "prefLabel": "Provisional data"
+  },
+  "RELEASE": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/RELEASE",
+    "prefLabel": "Release",
+    "definition": "dataset that accompanies and describes other published datasets, for instance in the scope of the EU Vocabularies publications; it may contain information about differences between the state of the concerned dataset on last publication and on current publication"
+  },
+  "SCHEMA": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/SCHEMA",
+    "prefLabel": "Schema",
+    "definition": "A schema is a concrete view on a system or information exchange, describing the structure, content and semantics of data."
+  },
+  "STATISTICAL": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/STATISTICAL",
+    "prefLabel": "Statistical data",
+    "definition": "Statistical data is data which holds information that is of a statistical nature."
+  },
+  "STYLES": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/STYLES",
+    "prefLabel": "Style sheets",
+    "definition": "Style sheets are a set of rules which describes the presentation of a document written in a markup language."
+  },
+  "SYNTAX_ECD_SCHEME": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/SYNTAX_ECD_SCHEME",
+    "prefLabel": "Syntax encoding scheme",
+    "definition": "Syntax Encoding Schemes indicate that the value is a string formatted in accordance with a formal notation, such as \"2000-01-01\" as the standard expression of a date."
+  },
+  "SYNTHETIC_DATA": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/SYNTHETIC_DATA",
+    "prefLabel": "Synthetic data",
+    "definition": "Synthetic data is data which is (artificially) created entirely or partially for use in tests, and to meet specific needs or conditions in the real-world that (existing) real-world data may not represent, e.g. anonymised datasets, typically used for proof of concept or simulation."
+  },
+  "TAXONOMY": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/TAXONOMY",
+    "prefLabel": "Taxonomy",
+    "definition": "A taxonomy is a scheme of categories and subcategories that can be used to sort and otherwise organise items of knowledge or information."
+  },
+  "TEST_DATA": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/TEST_DATA",
+    "prefLabel": "Test data",
+    "definition": "Test data is data which is created for use in tests, which should be syntactically correct but which may not necessarily represent any real-world phenomena, e.g. datasets with ‘dummy data’, typically used in system integration."
+  },
+  "THESAURUS": {
+    "uri": "http://publications.europa.eu/resource/authority/dataset-type/THESAURUS",
+    "prefLabel": "Thesaurus",
+    "definition": "A thesaurus is a controlled and structured vocabulary in which concepts are represented by terms, organised so that relationships between concepts are made explicit, and preferred terms are accompanied by lead-in entries for synonyms or quasi-synonyms."
+  }
+}

@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.pyo
+tests-output/
+controlled_vocabularies/db/
+arquitectura_inicial_v1.docx
+.env
+.DS_Store

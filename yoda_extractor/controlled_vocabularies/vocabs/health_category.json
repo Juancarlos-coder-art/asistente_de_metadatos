@@ -1,0 +1,70 @@
+{
+  "DIOH": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/DIOH",
+    "prefLabel": "Data on factors impacting on health, including socio-economic, environmental and behavioural determinants of health"
+  },
+  "EHCT": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/EHCT",
+    "prefLabel": "Data from clinical trials, clinical studies, clinical investigations and performance studies subject to Regulation (EU) No 536/2014, Regulation (EU) 2024/1938 of the European Parliament and of the Council34, Regulation (EU) 2017/745 and Regulation (EU) 2017/746"
+  },
+  "EHRS": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/EHRS",
+    "prefLabel": "Electronic Health Data from EHRs"
+  },
+  "EINS": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/EINS",
+    "prefLabel": "Health data from biobanks and associated databases"
+  },
+  "EMRD": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/EMRD",
+    "prefLabel": "Other health data from medical devices"
+  },
+  "HGPD": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/HGPD",
+    "prefLabel": "Human genetic, epigenomic and genomic data"
+  },
+  "HPML": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/HPML",
+    "prefLabel": "Other human molecular data such as proteomic, transcriptomic, metabolomic, lipidomic and other omic data"
+  },
+  "HRAD": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/HRAD",
+    "prefLabel": "Healthcare-related administrative data, including on dispensations, reimbursement claims and reimbursements"
+  },
+  "IDHP": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/IDHP",
+    "prefLabel": "Data on professional status, and on the specialisation and institution of health professionals involved in the treatment of a natural person"
+  },
+  "MRMR": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/MRMR",
+    "prefLabel": "Data from medical registries and mortality registries"
+  },
+  "NRPE": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/NRPE",
+    "prefLabel": "Aggregated data on healthcare needs, resources allocated to healthcare, the provision of and access to healthcare, healthcare expenditure and financing"
+  },
+  "PGEH": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/PGEH",
+    "prefLabel": "Personal electronic health data automatically generated through medical devices"
+  },
+  "PHDR": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/PHDR",
+    "prefLabel": "Data from population-based health data registries such as public health registries"
+  },
+  "RMMD": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/RMMD",
+    "prefLabel": "Data from registries for medicinal products and medical devices"
+  },
+  "RPDG": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/RPDG",
+    "prefLabel": "Data on pathogens that impact human health"
+  },
+  "RQSH": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/RQSH",
+    "prefLabel": "Data from research cohorts, questionnaires and surveys related to health, after the first publication of the related results"
+  },
+  "WELA": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/WELA",
+    "prefLabel": "Data from wellness applications"
+  }
+}

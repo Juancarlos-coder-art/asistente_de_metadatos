@@ -1,0 +1,1157 @@
+{
+  "Accent": {
+    "uri": "https://w3id.org/dpv/pd#Accent",
+    "prefLabel": "Accent",
+    "definition": "Information about linguistic and speech accents"
+  },
+  "AccountIdentifier": {
+    "uri": "https://w3id.org/dpv/pd#AccountIdentifier",
+    "prefLabel": "Account Identifier",
+    "definition": "Information about financial account identifier"
+  },
+  "Acquaintance": {
+    "uri": "https://w3id.org/dpv/pd#Acquaintance",
+    "prefLabel": "Acquaintance",
+    "definition": "Information about acquaintances in a social network"
+  },
+  "Age": {
+    "uri": "https://w3id.org/dpv/pd#Age",
+    "prefLabel": "Age",
+    "definition": "Information about age"
+  },
+  "AgeExact": {
+    "uri": "https://w3id.org/dpv/pd#AgeExact",
+    "prefLabel": "Age Exact",
+    "definition": "Information about the exact age (i.e. to some degree within a year, month, or day)"
+  },
+  "AgeRange": {
+    "uri": "https://w3id.org/dpv/pd#AgeRange",
+    "prefLabel": "Age Range",
+    "definition": "Information about age range i.e. inexact age to some degree (i.e. some years)"
+  },
+  "ApartmentOwned": {
+    "uri": "https://w3id.org/dpv/pd#ApartmentOwned",
+    "prefLabel": "Apartment Owned",
+    "definition": "Information about apartment(s) owned and its history"
+  },
+  "Association": {
+    "uri": "https://w3id.org/dpv/pd#Association",
+    "prefLabel": "Association",
+    "definition": "Information about associations in a social network with other individuals, groups, or entities e.g. friend of a friend"
+  },
+  "Attitude": {
+    "uri": "https://w3id.org/dpv/pd#Attitude",
+    "prefLabel": "Attitude",
+    "definition": "Information about attitude"
+  },
+  "Authenticating": {
+    "uri": "https://w3id.org/dpv/pd#Authenticating",
+    "prefLabel": "Authenticating",
+    "definition": "Information about authentication and information used for authenticating"
+  },
+  "AuthenticationHistory": {
+    "uri": "https://w3id.org/dpv/pd#AuthenticationHistory",
+    "prefLabel": "Authentication History",
+    "definition": "Information about prior authentication and its outcomes such as login attempts or location"
+  },
+  "BankAccount": {
+    "uri": "https://w3id.org/dpv/pd#BankAccount",
+    "prefLabel": "Bank Account",
+    "definition": "Information about bank accounts"
+  },
+  "Behavioural": {
+    "uri": "https://w3id.org/dpv/pd#Behavioural",
+    "prefLabel": "Behavioural",
+    "definition": "Information about behaviour or activity"
+  },
+  "Biometric": {
+    "uri": "https://w3id.org/dpv/pd#Biometric",
+    "prefLabel": "Biometric",
+    "definition": "Information about biometrics and biometric characteristics."
+  },
+  "BirthCountry": {
+    "uri": "https://w3id.org/dpv/pd#BirthCountry",
+    "prefLabel": "Birth Country",
+    "definition": "Information about country of birth"
+  },
+  "BirthDate": {
+    "uri": "https://w3id.org/dpv/pd#BirthDate",
+    "prefLabel": "Birth Date",
+    "definition": "Information about birth date"
+  },
+  "BirthPlace": {
+    "uri": "https://w3id.org/dpv/pd#BirthPlace",
+    "prefLabel": "Birth Place",
+    "definition": "Information about birth place"
+  },
+  "BloodType": {
+    "uri": "https://w3id.org/dpv/pd#BloodType",
+    "prefLabel": "Blood Type",
+    "definition": "Information about blood type"
+  },
+  "BrowserFingerprint": {
+    "uri": "https://w3id.org/dpv/pd#BrowserFingerprint",
+    "prefLabel": "Browser Fingerprint",
+    "definition": "Information about the web browser which is used as a 'fingerprint'"
+  },
+  "BrowserHistory": {
+    "uri": "https://w3id.org/dpv/pd#BrowserHistory",
+    "prefLabel": "Browser History",
+    "definition": "Information about and including web browsing history"
+  },
+  "BrowsingBehaviour": {
+    "uri": "https://w3id.org/dpv/pd#BrowsingBehaviour",
+    "prefLabel": "Browsing Behaviour",
+    "definition": "Information about browsing behaviour"
+  },
+  "BrowsingReferral": {
+    "uri": "https://w3id.org/dpv/pd#BrowsingReferral",
+    "prefLabel": "Browsing Referral",
+    "definition": "Information about web browsing referrer or referral, which can be based on location, targeted referrals, direct, organic search, social media or actions, campaigns."
+  },
+  "CallLog": {
+    "uri": "https://w3id.org/dpv/pd#CallLog",
+    "prefLabel": "Call Log",
+    "definition": "Information about the calls that an individual has made"
+  },
+  "CarOwned": {
+    "uri": "https://w3id.org/dpv/pd#CarOwned",
+    "prefLabel": "Car Owned",
+    "definition": "Information about cars ownership and ownership history"
+  },
+  "Character": {
+    "uri": "https://w3id.org/dpv/pd#Character",
+    "prefLabel": "Character",
+    "definition": "Information about character in the public sphere"
+  },
+  "Citizenship": {
+    "uri": "https://w3id.org/dpv/pd#Citizenship",
+    "prefLabel": "Citizenship",
+    "definition": "Information about citizenship"
+  },
+  "City": {
+    "uri": "https://w3id.org/dpv/pd#City",
+    "prefLabel": "City",
+    "definition": "Information about city as a location"
+  },
+  "Communication": {
+    "uri": "https://w3id.org/dpv/pd#Communication",
+    "prefLabel": "Communication",
+    "definition": "Information communicated from or to an individual"
+  },
+  "CommunicationsMetadata": {
+    "uri": "https://w3id.org/dpv/pd#CommunicationsMetadata",
+    "prefLabel": "Communications Metadata",
+    "definition": "Information about communication metadata in the public sphere"
+  },
+  "Connection": {
+    "uri": "https://w3id.org/dpv/pd#Connection",
+    "prefLabel": "Connection",
+    "definition": "Information about and including connections in a social network"
+  },
+  "Contact": {
+    "uri": "https://w3id.org/dpv/pd#Contact",
+    "prefLabel": "Contact",
+    "definition": "Information about contacts or used for contacting e.g. email address or phone number"
+  },
+  "Country": {
+    "uri": "https://w3id.org/dpv/pd#Country",
+    "prefLabel": "Country",
+    "definition": "Information about country e.g. residence, travel"
+  },
+  "Credit": {
+    "uri": "https://w3id.org/dpv/pd#Credit",
+    "prefLabel": "Credit",
+    "definition": "Information about reputation with regards to money"
+  },
+  "CreditCapacity": {
+    "uri": "https://w3id.org/dpv/pd#CreditCapacity",
+    "prefLabel": "Credit Capacity",
+    "definition": "Information about credit capacity"
+  },
+  "CreditCardNumber": {
+    "uri": "https://w3id.org/dpv/pd#CreditCardNumber",
+    "prefLabel": "Credit Card Number",
+    "definition": "Information about credit card number"
+  },
+  "CreditRecord": {
+    "uri": "https://w3id.org/dpv/pd#CreditRecord",
+    "prefLabel": "Credit Record",
+    "definition": "Information about credit record"
+  },
+  "CreditScore": {
+    "uri": "https://w3id.org/dpv/pd#CreditScore",
+    "prefLabel": "Credit Score",
+    "definition": "Information about credit score"
+  },
+  "CreditStanding": {
+    "uri": "https://w3id.org/dpv/pd#CreditStanding",
+    "prefLabel": "Credit Standing",
+    "definition": "Information about credit standing"
+  },
+  "CreditWorthiness": {
+    "uri": "https://w3id.org/dpv/pd#CreditWorthiness",
+    "prefLabel": "Credit Worthiness",
+    "definition": "Information about credit worthiness"
+  },
+  "Criminal": {
+    "uri": "https://w3id.org/dpv/pd#Criminal",
+    "prefLabel": "Criminal",
+    "definition": "Information about criminal activity e.g. criminal convictions or jail time"
+  },
+  "CriminalCharge": {
+    "uri": "https://w3id.org/dpv/pd#CriminalCharge",
+    "prefLabel": "Criminal Charge",
+    "definition": "Information about criminal charges"
+  },
+  "CriminalConviction": {
+    "uri": "https://w3id.org/dpv/pd#CriminalConviction",
+    "prefLabel": "Criminal Conviction",
+    "definition": "Information about criminal convictions"
+  },
+  "CriminalOffence": {
+    "uri": "https://w3id.org/dpv/pd#CriminalOffence",
+    "prefLabel": "Criminal Offence",
+    "definition": "Information about criminal offences"
+  },
+  "CriminalPardon": {
+    "uri": "https://w3id.org/dpv/pd#CriminalPardon",
+    "prefLabel": "Criminal Pardon",
+    "definition": "Information about criminal pardons"
+  },
+  "CurrentEmployment": {
+    "uri": "https://w3id.org/dpv/pd#CurrentEmployment",
+    "prefLabel": "Current Employment",
+    "definition": "Information about current employment"
+  },
+  "CurrentLocation": {
+    "uri": "https://w3id.org/dpv/pd#CurrentLocation",
+    "prefLabel": "Current Location",
+    "definition": "Information about a person's current location (e.g. by asking the address, using GPS)"
+  },
+  "DNACode": {
+    "uri": "https://w3id.org/dpv/pd#DNACode",
+    "prefLabel": "DNA Code",
+    "definition": "Information about DNA"
+  },
+  "Demeanour": {
+    "uri": "https://w3id.org/dpv/pd#Demeanour",
+    "prefLabel": "Demeanour",
+    "definition": "Information about demeanour"
+  },
+  "Demographic": {
+    "uri": "https://w3id.org/dpv/pd#Demographic",
+    "prefLabel": "Demographic",
+    "definition": "Information about demography and demographic characteristics"
+  },
+  "DeviceApplications": {
+    "uri": "https://w3id.org/dpv/pd#DeviceApplications",
+    "prefLabel": "Device Applications",
+    "definition": "Information about applications or application-like software on a device"
+  },
+  "DeviceBased": {
+    "uri": "https://w3id.org/dpv/pd#DeviceBased",
+    "prefLabel": "Device Based",
+    "definition": "Information about devices"
+  },
+  "DeviceOperatingSystem": {
+    "uri": "https://w3id.org/dpv/pd#DeviceOperatingSystem",
+    "prefLabel": "Device Operating System",
+    "definition": "Information about the operating system (OS) or system software that manages hardware or software resources."
+  },
+  "DeviceSoftware": {
+    "uri": "https://w3id.org/dpv/pd#DeviceSoftware",
+    "prefLabel": "Device Software",
+    "definition": "Information about software on or related to a device"
+  },
+  "Dialect": {
+    "uri": "https://w3id.org/dpv/pd#Dialect",
+    "prefLabel": "Dialect",
+    "definition": "Information about linguistic dialects"
+  },
+  "DigitalFingerprint": {
+    "uri": "https://w3id.org/dpv/pd#DigitalFingerprint",
+    "prefLabel": "Digital Fingerprint",
+    "definition": "Information about a 'digital fingerprint' created for identification"
+  },
+  "Disability": {
+    "uri": "https://w3id.org/dpv/pd#Disability",
+    "prefLabel": "Disability",
+    "definition": "Information about disabilities"
+  },
+  "DisciplinaryAction": {
+    "uri": "https://w3id.org/dpv/pd#DisciplinaryAction",
+    "prefLabel": "Disciplinary Action",
+    "definition": "Information about disciplinary actions and its history"
+  },
+  "Dislike": {
+    "uri": "https://w3id.org/dpv/pd#Dislike",
+    "prefLabel": "Dislike",
+    "definition": "Information about dislikes or preferences regarding repulsions"
+  },
+  "Divorce": {
+    "uri": "https://w3id.org/dpv/pd#Divorce",
+    "prefLabel": "Divorce",
+    "definition": "Information about divorce(s)"
+  },
+  "Domicile": {
+    "uri": "https://w3id.org/dpv/pd#Domicile",
+    "prefLabel": "Domicile",
+    "definition": "Information about domicile status e.g. which region or country a person is domiciled in"
+  },
+  "DrugTestResult": {
+    "uri": "https://w3id.org/dpv/pd#DrugTestResult",
+    "prefLabel": "Drug Test Result",
+    "definition": "Information about drug test results"
+  },
+  "Education": {
+    "uri": "https://w3id.org/dpv/pd#Education",
+    "prefLabel": "Education",
+    "definition": "Information about education"
+  },
+  "EducationExperience": {
+    "uri": "https://w3id.org/dpv/pd#EducationExperience",
+    "prefLabel": "Education Experience",
+    "definition": "Information about education experience e.g. attending a university"
+  },
+  "EducationQualification": {
+    "uri": "https://w3id.org/dpv/pd#EducationQualification",
+    "prefLabel": "Education Qualification",
+    "definition": "Information about educational qualifications"
+  },
+  "EducationTraining": {
+    "uri": "https://w3id.org/dpv/pd#EducationTraining",
+    "prefLabel": "Education Training",
+    "definition": "Information about training as education"
+  },
+  "EmailAddress": {
+    "uri": "https://w3id.org/dpv/pd#EmailAddress",
+    "prefLabel": "Email Address",
+    "definition": "Information about email address"
+  },
+  "EmailAddressPersonal": {
+    "uri": "https://w3id.org/dpv/pd#EmailAddressPersonal",
+    "prefLabel": "Email Address Personal",
+    "definition": "Information about email address used in personal capacity"
+  },
+  "EmailAddressWork": {
+    "uri": "https://w3id.org/dpv/pd#EmailAddressWork",
+    "prefLabel": "Email Address Work",
+    "definition": "Information about email address used for work or in professional capacity"
+  },
+  "EmailContent": {
+    "uri": "https://w3id.org/dpv/pd#EmailContent",
+    "prefLabel": "Email Content",
+    "definition": "Information about the contents of emails sent or received"
+  },
+  "Emotion": {
+    "uri": "https://w3id.org/dpv/pd#Emotion",
+    "prefLabel": "Emotion",
+    "definition": "Information about emotion"
+  },
+  "EmploymentHistory": {
+    "uri": "https://w3id.org/dpv/pd#EmploymentHistory",
+    "prefLabel": "Employment History",
+    "definition": "Information about employment history"
+  },
+  "EthnicOrigin": {
+    "uri": "https://w3id.org/dpv/pd#EthnicOrigin",
+    "prefLabel": "Ethnic Origin",
+    "definition": "Information about ethnic origin"
+  },
+  "Ethnicity": {
+    "uri": "https://w3id.org/dpv/pd#Ethnicity",
+    "prefLabel": "Ethnicity",
+    "definition": "Information about ethnic origins and lineage"
+  },
+  "External": {
+    "uri": "https://w3id.org/dpv/pd#External",
+    "prefLabel": "External",
+    "definition": "Information about external characteristics that can be observed"
+  },
+  "FacialExpression": {
+    "uri": "https://w3id.org/dpv/pd#FacialExpression",
+    "prefLabel": "Facial Expression",
+    "definition": "Information about facial expression"
+  },
+  "FacialPrint": {
+    "uri": "https://w3id.org/dpv/pd#FacialPrint",
+    "prefLabel": "Facial Print",
+    "definition": "Information about facial print or pattern"
+  },
+  "Family": {
+    "uri": "https://w3id.org/dpv/pd#Family",
+    "prefLabel": "Family",
+    "definition": "Information about family and relationships"
+  },
+  "FamilyHealthHistory": {
+    "uri": "https://w3id.org/dpv/pd#FamilyHealthHistory",
+    "prefLabel": "Family Health History",
+    "definition": "Information about family health history"
+  },
+  "FamilyStructure": {
+    "uri": "https://w3id.org/dpv/pd#FamilyStructure",
+    "prefLabel": "Family Structure",
+    "definition": "Information about family and familial structure"
+  },
+  "Favourite": {
+    "uri": "https://w3id.org/dpv/pd#Favourite",
+    "prefLabel": "Favourite",
+    "definition": "Information about favourites"
+  },
+  "FavouriteColour": {
+    "uri": "https://w3id.org/dpv/pd#FavouriteColour",
+    "prefLabel": "Favourite Colour",
+    "definition": "Information about favourite colour"
+  },
+  "FavouriteFood": {
+    "uri": "https://w3id.org/dpv/pd#FavouriteFood",
+    "prefLabel": "Favourite Food",
+    "definition": "Information about favourite food"
+  },
+  "FavouriteMusic": {
+    "uri": "https://w3id.org/dpv/pd#FavouriteMusic",
+    "prefLabel": "Favourite Music",
+    "definition": "Information about favourite music"
+  },
+  "Fetish": {
+    "uri": "https://w3id.org/dpv/pd#Fetish",
+    "prefLabel": "Fetish",
+    "definition": "Information about an individual's sexual fetishes"
+  },
+  "Financial": {
+    "uri": "https://w3id.org/dpv/pd#Financial",
+    "prefLabel": "Financial",
+    "definition": "Information about finance including monetary characteristics and transactions"
+  },
+  "FinancialAccount": {
+    "uri": "https://w3id.org/dpv/pd#FinancialAccount",
+    "prefLabel": "Financial Account",
+    "definition": "Information about financial accounts"
+  },
+  "FinancialAccountNumber": {
+    "uri": "https://w3id.org/dpv/pd#FinancialAccountNumber",
+    "prefLabel": "Financial Account Number",
+    "definition": "Information about financial account number"
+  },
+  "FinancialStatus": {
+    "uri": "https://w3id.org/dpv/pd#FinancialStatus",
+    "prefLabel": "Financial Status",
+    "definition": "Information about financial status or standing"
+  },
+  "Fingerprint": {
+    "uri": "https://w3id.org/dpv/pd#Fingerprint",
+    "prefLabel": "Fingerprint",
+    "definition": "Information about fingerprint used for biometric purposes"
+  },
+  "Friend": {
+    "uri": "https://w3id.org/dpv/pd#Friend",
+    "prefLabel": "Friend",
+    "definition": "Information about friends in a social network, including aspects of friendships such as years together or nature of friendship"
+  },
+  "GPSCoordinate": {
+    "uri": "https://w3id.org/dpv/pd#GPSCoordinate",
+    "prefLabel": "GPS Coordinate",
+    "definition": "Information about location expressed using Global Position System coordinates (GPS)"
+  },
+  "Gender": {
+    "uri": "https://w3id.org/dpv/pd#Gender",
+    "prefLabel": "Gender",
+    "definition": "Information about gender"
+  },
+  "GeneralReputation": {
+    "uri": "https://w3id.org/dpv/pd#GeneralReputation",
+    "prefLabel": "General Reputation",
+    "definition": "Information about reputation in the public sphere"
+  },
+  "Genetic": {
+    "uri": "https://w3id.org/dpv/pd#Genetic",
+    "prefLabel": "Genetic",
+    "definition": "Information about inherited or acquired genetic characteristics"
+  },
+  "Geographic": {
+    "uri": "https://w3id.org/dpv/pd#Geographic",
+    "prefLabel": "Geographic",
+    "definition": "Information about location or based on geography (e.g. home address)"
+  },
+  "GroupMembership": {
+    "uri": "https://w3id.org/dpv/pd#GroupMembership",
+    "prefLabel": "Group Membership",
+    "definition": "Information about groups and memberships included or associated with a social network"
+  },
+  "GroupProfile": {
+    "uri": "https://w3id.org/dpv/pd#GroupProfile",
+    "prefLabel": "Group Profile",
+    "definition": "Group profile or category profile is information and representation of characteristics associated with a group or category of individuals"
+  },
+  "HairColour": {
+    "uri": "https://w3id.org/dpv/pd#HairColour",
+    "prefLabel": "Hair Colour",
+    "definition": "Information about hair colour"
+  },
+  "Health": {
+    "uri": "https://w3id.org/dpv/pd#Health",
+    "prefLabel": "Health",
+    "definition": "Information about health"
+  },
+  "HealthHistory": {
+    "uri": "https://w3id.org/dpv/pd#HealthHistory",
+    "prefLabel": "Health History",
+    "definition": "Information about health history"
+  },
+  "HealthRecord": {
+    "uri": "https://w3id.org/dpv/pd#HealthRecord",
+    "prefLabel": "Health Record",
+    "definition": "Information about health record"
+  },
+  "Height": {
+    "uri": "https://w3id.org/dpv/pd#Height",
+    "prefLabel": "Height",
+    "definition": "Information about physical height"
+  },
+  "Historical": {
+    "uri": "https://w3id.org/dpv/pd#Historical",
+    "prefLabel": "Historical",
+    "definition": "Information about historical data related to or relevant regarding history or past events"
+  },
+  "HomeLocation": {
+    "uri": "https://w3id.org/dpv/pd#HomeLocation",
+    "prefLabel": "Home Place",
+    "definition": "Information about a person's home place, including their location, address, and locality"
+  },
+  "HouseNumber": {
+    "uri": "https://w3id.org/dpv/pd#HouseNumber",
+    "prefLabel": "House Number",
+    "definition": "Information about house or apartment number as a location"
+  },
+  "HouseOwned": {
+    "uri": "https://w3id.org/dpv/pd#HouseOwned",
+    "prefLabel": "House Owned",
+    "definition": "Information about house(s) owned and ownership history"
+  },
+  "Household": {
+    "uri": "https://w3id.org/dpv/pd#Household",
+    "prefLabel": "Household",
+    "definition": "Information about personal or household activities"
+  },
+  "IPAddress": {
+    "uri": "https://w3id.org/dpv/pd#IPAddress",
+    "prefLabel": "IP Address",
+    "definition": "Information about the Internet Protocol (IP) address of a device"
+  },
+  "Identifier": {
+    "uri": "https://w3id.org/dpv/pd#Identifier",
+    "prefLabel": "Identifier",
+    "definition": "Information about an identifier or name used for identification"
+  },
+  "Identifying": {
+    "uri": "https://w3id.org/dpv/pd#Identifying",
+    "prefLabel": "Identifying",
+    "definition": "Information that uniquely or semi-uniquely identifies an individual or a group"
+  },
+  "Income": {
+    "uri": "https://w3id.org/dpv/pd#Income",
+    "prefLabel": "Income",
+    "definition": "Information about financial income e.g. for individual or household or family"
+  },
+  "IncomeBracket": {
+    "uri": "https://w3id.org/dpv/pd#IncomeBracket",
+    "prefLabel": "Income Bracket",
+    "definition": "Information about income bracket"
+  },
+  "IndividualHealthHistory": {
+    "uri": "https://w3id.org/dpv/pd#IndividualHealthHistory",
+    "prefLabel": "Individual Health History",
+    "definition": "Information about information health history"
+  },
+  "IndividualProfile": {
+    "uri": "https://w3id.org/dpv/pd#IndividualProfile",
+    "prefLabel": "Individual Profile",
+    "definition": "Individual profile or user profile is information and representation of characteristics associated with a specific individual"
+  },
+  "Insurance": {
+    "uri": "https://w3id.org/dpv/pd#Insurance",
+    "prefLabel": "Insurance",
+    "definition": "Information about Insurance"
+  },
+  "Intention": {
+    "uri": "https://w3id.org/dpv/pd#Intention",
+    "prefLabel": "Intention",
+    "definition": "Information about intentions"
+  },
+  "Interaction": {
+    "uri": "https://w3id.org/dpv/pd#Interaction",
+    "prefLabel": "Interaction",
+    "definition": "Information about interactions in the public sphere"
+  },
+  "Interest": {
+    "uri": "https://w3id.org/dpv/pd#Interest",
+    "prefLabel": "Interest",
+    "definition": "Information about interests"
+  },
+  "Internal": {
+    "uri": "https://w3id.org/dpv/pd#Internal",
+    "prefLabel": "Internal",
+    "definition": "Information about internal characteristics that cannot be seen or observed"
+  },
+  "Job": {
+    "uri": "https://w3id.org/dpv/pd#Job",
+    "prefLabel": "Job",
+    "definition": "Information about professional jobs"
+  },
+  "KnowledgeBelief": {
+    "uri": "https://w3id.org/dpv/pd#KnowledgeBelief",
+    "prefLabel": "Knowledge and Beliefs",
+    "definition": "Information about knowledge and beliefs"
+  },
+  "Language": {
+    "uri": "https://w3id.org/dpv/pd#Language",
+    "prefLabel": "Language",
+    "definition": "Information about language and lingual history"
+  },
+  "LifeHistory": {
+    "uri": "https://w3id.org/dpv/pd#LifeHistory",
+    "prefLabel": "Life History",
+    "definition": "Information about personal history regarding events or activities - including their occurrences that might be directly related or have had an influence (e.g. World War, 9/11)"
+  },
+  "Like": {
+    "uri": "https://w3id.org/dpv/pd#Like",
+    "prefLabel": "Like",
+    "definition": "Information about likes or preferences regarding attractions"
+  },
+  "LinkClicked": {
+    "uri": "https://w3id.org/dpv/pd#LinkClicked",
+    "prefLabel": "Link Clicked",
+    "definition": "Information about the links that an individual has clicked"
+  },
+  "LoanRecord": {
+    "uri": "https://w3id.org/dpv/pd#LoanRecord",
+    "prefLabel": "Loan Record",
+    "definition": "Information about loans, whether applied, provided or rejected, and its history"
+  },
+  "Locality": {
+    "uri": "https://w3id.org/dpv/pd#Locality",
+    "prefLabel": "Locality",
+    "definition": "Information about locality e.g. city, village, town, portion of a city as a location"
+  },
+  "Location": {
+    "uri": "https://w3id.org/dpv/pd#Location",
+    "prefLabel": "Location",
+    "definition": "Information about location"
+  },
+  "MACAddress": {
+    "uri": "https://w3id.org/dpv/pd#MACAddress",
+    "prefLabel": "MAC Address",
+    "definition": "Information about the Media Access Control (MAC) address of a device"
+  },
+  "MaritalStatus": {
+    "uri": "https://w3id.org/dpv/pd#MaritalStatus",
+    "prefLabel": "Marital Status",
+    "definition": "Information about marital status and history"
+  },
+  "Marriage": {
+    "uri": "https://w3id.org/dpv/pd#Marriage",
+    "prefLabel": "Marriage",
+    "definition": "Information about marriage(s)"
+  },
+  "MedicalHealth": {
+    "uri": "https://w3id.org/dpv/pd#MedicalHealth",
+    "prefLabel": "Medical Health",
+    "definition": "Information about health, medical conditions or health care"
+  },
+  "MentalHealth": {
+    "uri": "https://w3id.org/dpv/pd#MentalHealth",
+    "prefLabel": "Mental Health",
+    "definition": "Information about mental health"
+  },
+  "Mood": {
+    "uri": "https://w3id.org/dpv/pd#Mood",
+    "prefLabel": "Mood",
+    "definition": "Information about mood"
+  },
+  "Name": {
+    "uri": "https://w3id.org/dpv/pd#Name",
+    "prefLabel": "Name",
+    "definition": "Information about names associated or used as given name or nickname"
+  },
+  "Nationality": {
+    "uri": "https://w3id.org/dpv/pd#Nationality",
+    "prefLabel": "Nationality",
+    "definition": "Information about nationality"
+  },
+  "OfficialID": {
+    "uri": "https://w3id.org/dpv/pd#OfficialID",
+    "prefLabel": "Official ID",
+    "definition": "Information about an official identifier or identification document"
+  },
+  "Offspring": {
+    "uri": "https://w3id.org/dpv/pd#Offspring",
+    "prefLabel": "Offspring",
+    "definition": "Information about offspring(s)"
+  },
+  "Opinion": {
+    "uri": "https://w3id.org/dpv/pd#Opinion",
+    "prefLabel": "Opinion",
+    "definition": "Information about opinions"
+  },
+  "Ownership": {
+    "uri": "https://w3id.org/dpv/pd#Ownership",
+    "prefLabel": "Ownership",
+    "definition": "Information about ownership and history, including renting, borrowing, possessions"
+  },
+  "PINCode": {
+    "uri": "https://w3id.org/dpv/pd#PINCode",
+    "prefLabel": "PIN Code",
+    "definition": "Information about personal identification number (PIN), which is usually used in the process of authenticating the individual as an user accessing a system"
+  },
+  "Parent": {
+    "uri": "https://w3id.org/dpv/pd#Parent",
+    "prefLabel": "Parent",
+    "definition": "Information about parent(s)"
+  },
+  "Passport": {
+    "uri": "https://w3id.org/dpv/pd#Passport",
+    "prefLabel": "Passport",
+    "definition": "Information about passport"
+  },
+  "Password": {
+    "uri": "https://w3id.org/dpv/pd#Password",
+    "prefLabel": "Password",
+    "definition": "Information about password used in the process of authenticating the individual as an user accessing a system."
+  },
+  "PastEmployment": {
+    "uri": "https://w3id.org/dpv/pd#PastEmployment",
+    "prefLabel": "Past Employment",
+    "definition": "Information about past employment"
+  },
+  "PaymentCard": {
+    "uri": "https://w3id.org/dpv/pd#PaymentCard",
+    "prefLabel": "Payment Card",
+    "definition": "Information about payment card such as credit and debit cards"
+  },
+  "PaymentCardExpiry": {
+    "uri": "https://w3id.org/dpv/pd#PaymentCardExpiry",
+    "prefLabel": "Payment Card Expiry",
+    "definition": "Information about payment card expiry such as a date"
+  },
+  "PaymentCardNumber": {
+    "uri": "https://w3id.org/dpv/pd#PaymentCardNumber",
+    "prefLabel": "Payment Card Number",
+    "definition": "Information about payment card number"
+  },
+  "PerformanceAtWork": {
+    "uri": "https://w3id.org/dpv/pd#PerformanceAtWork",
+    "prefLabel": "Performance at Work",
+    "definition": "Information about performance at work or within work environments"
+  },
+  "PersonalDocuments": {
+    "uri": "https://w3id.org/dpv/pd#PersonalDocuments",
+    "prefLabel": "Personal Documents",
+    "definition": "Information about and including personal documents e.g. diaries or journals"
+  },
+  "PersonalPossession": {
+    "uri": "https://w3id.org/dpv/pd#PersonalPossession",
+    "prefLabel": "Personal Possession",
+    "definition": "Information about personal possessions"
+  },
+  "Personality": {
+    "uri": "https://w3id.org/dpv/pd#Personality",
+    "prefLabel": "Personality",
+    "definition": "Information about personality (e.g., categorization in terms of the Big Five personality traits)"
+  },
+  "PhilosophicalBelief": {
+    "uri": "https://w3id.org/dpv/pd#PhilosophicalBelief",
+    "prefLabel": "Philosophical Belief",
+    "definition": "Information about philosophical beliefs"
+  },
+  "PhysicalAddress": {
+    "uri": "https://w3id.org/dpv/pd#PhysicalAddress",
+    "prefLabel": "Physical Address",
+    "definition": "Information about physical address"
+  },
+  "PhysicalCharacteristic": {
+    "uri": "https://w3id.org/dpv/pd#PhysicalCharacteristic",
+    "prefLabel": "Physical Characteristic",
+    "definition": "Information about physical characteristics"
+  },
+  "PhysicalHealth": {
+    "uri": "https://w3id.org/dpv/pd#PhysicalHealth",
+    "prefLabel": "Physical Health",
+    "definition": "Information about physical health"
+  },
+  "PhysicalTrait": {
+    "uri": "https://w3id.org/dpv/pd#PhysicalTrait",
+    "prefLabel": "Physical Trait",
+    "definition": "Information about defining traits or features regarding the body"
+  },
+  "Picture": {
+    "uri": "https://w3id.org/dpv/pd#Picture",
+    "prefLabel": "Picture",
+    "definition": "Information about visual representation or image e.g. profile photo"
+  },
+  "Piercing": {
+    "uri": "https://w3id.org/dpv/pd#Piercing",
+    "prefLabel": "Piercing",
+    "definition": "Information about piercings"
+  },
+  "PoliticalAffiliation": {
+    "uri": "https://w3id.org/dpv/pd#PoliticalAffiliation",
+    "prefLabel": "Political Affiliation",
+    "definition": "Information about political affiliation and history"
+  },
+  "PoliticalOpinion": {
+    "uri": "https://w3id.org/dpv/pd#PoliticalOpinion",
+    "prefLabel": "Political Opinion",
+    "definition": "Information about opinions regarding politics and political topics"
+  },
+  "PostalCode": {
+    "uri": "https://w3id.org/dpv/pd#PostalCode",
+    "prefLabel": "Postal Code",
+    "definition": "Information about postal code as a location"
+  },
+  "Preference": {
+    "uri": "https://w3id.org/dpv/pd#Preference",
+    "prefLabel": "Preference",
+    "definition": "Information about preferences or interests"
+  },
+  "Prescription": {
+    "uri": "https://w3id.org/dpv/pd#Prescription",
+    "prefLabel": "Prescription",
+    "definition": "Information about medical and pharmaceutical prescriptions"
+  },
+  "PrivacyPreference": {
+    "uri": "https://w3id.org/dpv/pd#PrivacyPreference",
+    "prefLabel": "Privacy Preference",
+    "definition": "Information about privacy preferences"
+  },
+  "Proclivity": {
+    "uri": "https://w3id.org/dpv/pd#Proclivity",
+    "prefLabel": "Proclivity",
+    "definition": "Information about proclivities in a sexual context"
+  },
+  "Professional": {
+    "uri": "https://w3id.org/dpv/pd#Professional",
+    "prefLabel": "Professional",
+    "definition": "Information about educational or professional career"
+  },
+  "ProfessionalCertification": {
+    "uri": "https://w3id.org/dpv/pd#ProfessionalCertification",
+    "prefLabel": "Professional Certification",
+    "definition": "Information about professional certifications"
+  },
+  "ProfessionalEvaluation": {
+    "uri": "https://w3id.org/dpv/pd#ProfessionalEvaluation",
+    "prefLabel": "Professional Evaluation",
+    "definition": "Information about professional evaluations"
+  },
+  "ProfessionalExperience": {
+    "uri": "https://w3id.org/dpv/pd#ProfessionalExperience",
+    "prefLabel": "Professional Experience",
+    "definition": "Information about professional experiences"
+  },
+  "ProfessionalInterview": {
+    "uri": "https://w3id.org/dpv/pd#ProfessionalInterview",
+    "prefLabel": "Professional Interview",
+    "definition": "Information about professional interviews"
+  },
+  "ProfessionalTraining": {
+    "uri": "https://w3id.org/dpv/pd#ProfessionalTraining",
+    "prefLabel": "Professional Training",
+    "definition": "Information about professional training"
+  },
+  "Profile": {
+    "uri": "https://w3id.org/dpv/pd#Profile",
+    "prefLabel": "Profile",
+    "definition": "Profile or user profile is information and representation of characteristics associated with person(s) or group(s)"
+  },
+  "PublicLife": {
+    "uri": "https://w3id.org/dpv/pd#PublicLife",
+    "prefLabel": "Public Life",
+    "definition": "Information about public life"
+  },
+  "PubliclyAvailableSocialMedia": {
+    "uri": "https://w3id.org/dpv/pd#PubliclyAvailableSocialMedia",
+    "prefLabel": "Publicly Available Social Media",
+    "definition": "Information about social media that is publicly available"
+  },
+  "Purchase": {
+    "uri": "https://w3id.org/dpv/pd#Purchase",
+    "prefLabel": "Purchase",
+    "definition": "Information about purchases such as items bought e.g. grocery or clothing"
+  },
+  "PurchasesAndSpendingHabit": {
+    "uri": "https://w3id.org/dpv/pd#PurchasesAndSpendingHabit",
+    "prefLabel": "Purchases and Spending Habit",
+    "definition": "Information about analysis of purchases made and money spent expressed as a habit e.g. monthly shopping trends"
+  },
+  "Race": {
+    "uri": "https://w3id.org/dpv/pd#Race",
+    "prefLabel": "Race",
+    "definition": "Information about race or racial history"
+  },
+  "Reference": {
+    "uri": "https://w3id.org/dpv/pd#Reference",
+    "prefLabel": "Reference",
+    "definition": "Information about references in the professional context"
+  },
+  "Region": {
+    "uri": "https://w3id.org/dpv/pd#Region",
+    "prefLabel": "Region",
+    "definition": "Information about region as a location"
+  },
+  "Relationship": {
+    "uri": "https://w3id.org/dpv/pd#Relationship",
+    "prefLabel": "Relationship",
+    "definition": "Information about relationships and relationship history"
+  },
+  "Reliability": {
+    "uri": "https://w3id.org/dpv/pd#Reliability",
+    "prefLabel": "Reliability",
+    "definition": "Information about reliability (e.g. of a person)"
+  },
+  "Religion": {
+    "uri": "https://w3id.org/dpv/pd#Religion",
+    "prefLabel": "Religion",
+    "definition": "Information about religion, religious inclinations, and religious history."
+  },
+  "ReligiousBelief": {
+    "uri": "https://w3id.org/dpv/pd#ReligiousBelief",
+    "prefLabel": "Religious Belief",
+    "definition": "Information about religion and religious beliefs"
+  },
+  "Residency": {
+    "uri": "https://w3id.org/dpv/pd#Residency",
+    "prefLabel": "Residency",
+    "definition": "Information about residency e.g. which region or country a person is resident in"
+  },
+  "Retina": {
+    "uri": "https://w3id.org/dpv/pd#Retina",
+    "prefLabel": "Retina",
+    "definition": "Information about retina and the retinal patterns"
+  },
+  "RoomNumber": {
+    "uri": "https://w3id.org/dpv/pd#RoomNumber",
+    "prefLabel": "Room Number",
+    "definition": "Information about location expressed as room number or similar numbering systems"
+  },
+  "Salary": {
+    "uri": "https://w3id.org/dpv/pd#Salary",
+    "prefLabel": "Salary",
+    "definition": "Information about salary"
+  },
+  "Sale": {
+    "uri": "https://w3id.org/dpv/pd#Sale",
+    "prefLabel": "Sale",
+    "definition": "Information about sales e.g. selling of goods or services"
+  },
+  "School": {
+    "uri": "https://w3id.org/dpv/pd#School",
+    "prefLabel": "School",
+    "definition": "Information about school such as name of school, conduct, or grades obtained"
+  },
+  "SecretText": {
+    "uri": "https://w3id.org/dpv/pd#SecretText",
+    "prefLabel": "Secret Text",
+    "definition": "Information about secret text used in the process of authenticating the individual as an user accessing a system, e.g., when recovering a lost password"
+  },
+  "ServiceConsumptionBehaviour": {
+    "uri": "https://w3id.org/dpv/pd#ServiceConsumptionBehaviour",
+    "prefLabel": "Service Consumption Behaviour",
+    "definition": "Information about the consumption of a service, e.g. time and duration of consumption"
+  },
+  "Sexual": {
+    "uri": "https://w3id.org/dpv/pd#Sexual",
+    "prefLabel": "Sexual",
+    "definition": "Information about sexuality and sexual history"
+  },
+  "SexualHistory": {
+    "uri": "https://w3id.org/dpv/pd#SexualHistory",
+    "prefLabel": "Sexual History",
+    "definition": "Information about sexual history"
+  },
+  "SexualPreference": {
+    "uri": "https://w3id.org/dpv/pd#SexualPreference",
+    "prefLabel": "Sexual Preference",
+    "definition": "Information about sexual preferences"
+  },
+  "Sibling": {
+    "uri": "https://w3id.org/dpv/pd#Sibling",
+    "prefLabel": "Sibling",
+    "definition": "Information about sibling(s)"
+  },
+  "SkinTone": {
+    "uri": "https://w3id.org/dpv/pd#SkinTone",
+    "prefLabel": "Skin Tone",
+    "definition": "Information about skin tone"
+  },
+  "Social": {
+    "uri": "https://w3id.org/dpv/pd#Social",
+    "prefLabel": "Social",
+    "definition": "Information about social aspects such as family, public life, or professional networks"
+  },
+  "SocialBehaviour": {
+    "uri": "https://w3id.org/dpv/pd#SocialBehaviour",
+    "prefLabel": "Social Behaviour",
+    "definition": "Information about social behaviour(s)"
+  },
+  "SocialMedia": {
+    "uri": "https://w3id.org/dpv/pd#SocialMedia",
+    "prefLabel": "Social Media",
+    "definition": "Information about social media"
+  },
+  "SocialMediaCommunication": {
+    "uri": "https://w3id.org/dpv/pd#SocialMediaCommunication",
+    "prefLabel": "Social Media Communication",
+    "definition": "Information about social media communication, including the communication itself and metadata"
+  },
+  "SocialNetwork": {
+    "uri": "https://w3id.org/dpv/pd#SocialNetwork",
+    "prefLabel": "Social Network",
+    "definition": "Information about friends or connections expressed as a social network"
+  },
+  "SocialStatus": {
+    "uri": "https://w3id.org/dpv/pd#SocialStatus",
+    "prefLabel": "Social Status",
+    "definition": "Information about social status"
+  },
+  "Street": {
+    "uri": "https://w3id.org/dpv/pd#Street",
+    "prefLabel": "Street",
+    "definition": "Information about street as a location"
+  },
+  "TVViewingBehaviour": {
+    "uri": "https://w3id.org/dpv/pd#TVViewingBehaviour",
+    "prefLabel": "TV Viewing Behaviour",
+    "definition": "Information about TV viewing behaviour, such as timestamps of channel change, duration of viewership, content consumed"
+  },
+  "Tattoo": {
+    "uri": "https://w3id.org/dpv/pd#Tattoo",
+    "prefLabel": "Tattoo",
+    "definition": "Information about tattoos"
+  },
+  "Tax": {
+    "uri": "https://w3id.org/dpv/pd#Tax",
+    "prefLabel": "Tax",
+    "definition": "Information about financial tax e.g. tax records or tax due"
+  },
+  "TechnicalKnowledge": {
+    "uri": "https://w3id.org/dpv/pd#TechnicalKnowledge",
+    "prefLabel": "Technical Knowledge",
+    "definition": "Information about the technical knowledge"
+  },
+  "TelephoneNumber": {
+    "uri": "https://w3id.org/dpv/pd#TelephoneNumber",
+    "prefLabel": "Telephone Number",
+    "definition": "Information about telephone number"
+  },
+  "Thought": {
+    "uri": "https://w3id.org/dpv/pd#Thought",
+    "prefLabel": "Thought",
+    "definition": "Information about thoughts"
+  },
+  "Tracking": {
+    "uri": "https://w3id.org/dpv/pd#Tracking",
+    "prefLabel": "Tracking",
+    "definition": "Information used to track an individual or group e.g. location or email"
+  },
+  "TradeUnionMembership": {
+    "uri": "https://w3id.org/dpv/pd#TradeUnionMembership",
+    "prefLabel": "Trade Union Membership",
+    "definition": "Information about trade union memberships and related topics"
+  },
+  "Transaction": {
+    "uri": "https://w3id.org/dpv/pd#Transaction",
+    "prefLabel": "Transaction",
+    "definition": "Information about financial transactions e.g. bank transfers"
+  },
+  "Transactional": {
+    "uri": "https://w3id.org/dpv/pd#Transactional",
+    "prefLabel": "Transactional",
+    "definition": "Information about a purchasing, spending or income"
+  },
+  "TravelHistory": {
+    "uri": "https://w3id.org/dpv/pd#TravelHistory",
+    "prefLabel": "Travel History",
+    "definition": "Information about travel history"
+  },
+  "UID": {
+    "uri": "https://w3id.org/dpv/pd#UID",
+    "prefLabel": "UID",
+    "definition": "Information about unique identifiers"
+  },
+  "UserAgent": {
+    "uri": "https://w3id.org/dpv/pd#UserAgent",
+    "prefLabel": "User agent",
+    "definition": "Information about software acting on behalf of users e.g. web browser"
+  },
+  "Username": {
+    "uri": "https://w3id.org/dpv/pd#Username",
+    "prefLabel": "Username",
+    "definition": "Information about usernames"
+  },
+  "VehicalLicenseNumber": {
+    "uri": "https://w3id.org/dpv/pd#VehicalLicenseNumber",
+    "prefLabel": "Vehicle License Number",
+    "definition": "Information about vehicle license number"
+  },
+  "VehicalLicenseRegistration": {
+    "uri": "https://w3id.org/dpv/pd#VehicalLicenseRegistration",
+    "prefLabel": "Vehicle License Registration",
+    "definition": "Information about vehicle license registration"
+  },
+  "Vehicle": {
+    "uri": "https://w3id.org/dpv/pd#Vehicle",
+    "prefLabel": "Vehicle",
+    "definition": "Information about vehicles"
+  },
+  "VehicleLicense": {
+    "uri": "https://w3id.org/dpv/pd#VehicleLicense",
+    "prefLabel": "Vehicle License",
+    "definition": "Information about vehicle license"
+  },
+  "VehicleUsage": {
+    "uri": "https://w3id.org/dpv/pd#VehicleUsage",
+    "prefLabel": "Vehicle Usage",
+    "definition": "Information about usage of vehicles, e.g. driving statistics"
+  },
+  "VoiceCommunicationRecording": {
+    "uri": "https://w3id.org/dpv/pd#VoiceCommunicationRecording",
+    "prefLabel": "Voice Communication Recording",
+    "definition": "Information about vocal recorded communication (e.g. telephony, VoIP)"
+  },
+  "VoiceMail": {
+    "uri": "https://w3id.org/dpv/pd#VoiceMail",
+    "prefLabel": "Voice Mail",
+    "definition": "Information about voice mail messages"
+  },
+  "Vulnerability": {
+    "uri": "https://w3id.org/dpv/pd#Vulnerability",
+    "prefLabel": "Vulnerability",
+    "definition": "Information about vulnerability of a person or group"
+  },
+  "Weight": {
+    "uri": "https://w3id.org/dpv/pd#Weight",
+    "prefLabel": "Weight",
+    "definition": "Information about physical weight"
+  },
+  "WorkEnvironment": {
+    "uri": "https://w3id.org/dpv/pd#WorkEnvironment",
+    "prefLabel": "Work Environment",
+    "definition": "Information about work environments"
+  },
+  "WorkExperience": {
+    "uri": "https://w3id.org/dpv/pd#WorkExperience",
+    "prefLabel": "Work Experience",
+    "definition": "Information about work experiences"
+  },
+  "WorkHistory": {
+    "uri": "https://w3id.org/dpv/pd#WorkHistory",
+    "prefLabel": "Work History",
+    "definition": "Information about work history in a professional context"
+  },
+  "WorkLocation": {
+    "uri": "https://w3id.org/dpv/pd#WorkLocation",
+    "prefLabel": "Work Place",
+    "definition": "Information about a person's work place, including their location, address, and locality"
+  }
+}

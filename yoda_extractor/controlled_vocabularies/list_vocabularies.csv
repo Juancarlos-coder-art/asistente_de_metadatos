@@ -1,0 +1,7 @@
+Name; URL; Feature; Number of records; Metadata-Processed-By; Mode_extracted_JSON
+Helath Categories; https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories; health_category; 17; LLM; Iterative
+Dataset Type; http://publications.europa.eu/resource/authority/dataset-type; dcat_type; 25; LLM; Iterative
+Health theme; http://13.81.34.152:1101/resource/authority/health-theme; health_theme; 21; LLM; Iterative
+Coding system; https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system; coding_system; 21; LLM; Iterative
+Standard; https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard; conforms_to; 13; LLM; Iterative
+Personal Data Categories; http://w3c.github.io/dpv/2.3/pd; personal_data; 231; RAG; Personal_data

@@ -17,6 +17,8 @@ function getFileFormat(file) {
 
 const FORMAT_LABEL = { json: "JSON", rdf: "RDF/XML", ttl: "Turtle" };
 
+const STRUCTURED_EXTS = ["csv", "json", "xml", "xlsx", "xls", "parquet"];
+
 export default function DocumentUploadModal({ onClose, onSkip, onSuccess, mode = "document" }) {
   const isSessionImport = mode === "session";
   const [file, setFile] = useState(null);
@@ -30,10 +32,11 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess, mode =
     if (!f) return;
 
     if (!isSessionImport) {
-      if (f.type === "application/pdf") {
+      const ext = (f.name.split(".").pop() || "").toLowerCase();
+      if (f.type === "application/pdf" || ext === "pdf" || STRUCTURED_EXTS.includes(ext)) {
         setFile(f); setError(null);
       } else {
-        setError("Solo se aceptan archivos PDF.");
+        setError("Formatos aceptados: PDF, CSV, JSON, XML, XLSX, XLS, Parquet.");
       }
       return;
     }
@@ -79,7 +82,7 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess, mode =
             <p style={styles.subtitle}>
               {isSessionImport
                 ? "Sube un JSON, RDF/XML o Turtle y el asistente recuperará los campos ya completados para seguir desde ahí."
-                : "Sube un PDF y el asistente intentará rellenar automáticamente todos los campos posibles."}
+                : "Sube un PDF o un fichero de datos (CSV, JSON, XML, Excel, Parquet) y el asistente intentará rellenar automáticamente todos los campos posibles."}
             </p>
           </div>
         </div>
@@ -101,7 +104,7 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess, mode =
             accept={
               isSessionImport
                 ? "application/json,.json,application/rdf+xml,.rdf,text/turtle,.ttl"
-                : "application/pdf"
+                : "application/pdf,.pdf,.csv,.json,.xml,.xlsx,.xls,.parquet"
             }
             style={{ display: "none" }}
             onChange={(e) => handleFile(e.target.files[0])}
@@ -121,16 +124,25 @@ export default function DocumentUploadModal({ onClose, onSkip, onSuccess, mode =
               <p style={styles.dropText}>
                 {isSessionImport
                   ? "Arrastra tu archivo aquí o haz clic para seleccionarlo"
-                  : "Arrastra tu PDF aquí o haz clic para seleccionarlo"}
+                  : "Arrastra tu archivo aquí o haz clic para seleccionarlo"}
               </p>
               <p style={styles.dropSubtext}>
-                {isSessionImport ? "JSON · RDF/XML · Turtle  ·  Máx. 10MB" : "Solo archivos PDF · Máx. 10MB"}
+                {isSessionImport ? "JSON · RDF/XML · Turtle  ·  Máx. 10MB" : "PDF · CSV · JSON · XML · XLSX · Parquet  ·  Máx. 10MB"}
               </p>
-              {isSessionImport && (
+              {isSessionImport ? (
                 <div style={styles.formatTags}>
                   <span style={styles.formatTag}>.json</span>
                   <span style={styles.formatTag}>.rdf</span>
                   <span style={styles.formatTag}>.ttl</span>
+                </div>
+              ) : (
+                <div style={styles.formatTags}>
+                  <span style={styles.formatTag}>.pdf</span>
+                  <span style={styles.formatTag}>.csv</span>
+                  <span style={styles.formatTag}>.json</span>
+                  <span style={styles.formatTag}>.xml</span>
+                  <span style={styles.formatTag}>.xlsx</span>
+                  <span style={styles.formatTag}>.parquet</span>
                 </div>
               )}
             </div>

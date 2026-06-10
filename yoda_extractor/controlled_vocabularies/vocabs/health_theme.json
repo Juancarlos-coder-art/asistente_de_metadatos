@@ -1,0 +1,102 @@
+{
+  "ANTIMICROBIAL_CONTROL": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/ANTIMICROBIAL_CONTROL",
+    "prefLabel": "Antimicrobial resistance & infection control",
+    "definition": "Resistance threats and the practices that prevent or reduce transmission and healthcare-associated infections."
+  },
+  "BLOOD_INFECTIONS": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/BLOOD_INFECTIONS",
+    "prefLabel": "Blood-borne & sexually transmitted infections",
+    "definition": "Infections transmitted by blood exposure or sexual contact (e.g., HIV, hepatitis, STIs)."
+  },
+  "CANCER_DISEASE": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/CANCER_DISEASE",
+    "prefLabel": "Cancer",
+    "definition": "Malignant neoplasms, including site-specific cancers and childhood cancers."
+  },
+  "CLIMATE_HEALTH": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/CLIMATE_HEALTH",
+    "prefLabel": "Climate & planetary health",
+    "definition": "Climate hazards (heat, drought, extremes) and ecological linkages between human, animal and environmental health (One Health)."
+  },
+  "EMERGENCY_SETTINGS": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/EMERGENCY_SETTINGS",
+    "prefLabel": "Emergencies, disasters, travel & humanitarian settings",
+    "definition": "Acute events and humanitarian contexts, including disasters, travel health, emergency/critical care, and risk communication/infodemics."
+  },
+  "ENTERIC_INFECTIONS": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/ENTERIC_INFECTIONS",
+    "prefLabel": "Enteric, water- & food-borne infections",
+    "definition": "Pathogens spread via contaminated water or food and fecal–oral routes, including diarrhoeal disease and many intestinal helminth infections."
+  },
+  "ENVIRONMENTAL_HEALTH": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/ENVIRONMENTAL_HEALTH",
+    "prefLabel": "Environmental, occupational & radiation health (incl. WASH & urban)",
+    "definition": "Environmental exposures, workplace health, radiation risks, and context factors like WASH and urban living."
+  },
+  "HEALTH_PRODUCTS": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/HEALTH_PRODUCTS",
+    "prefLabel": "Health products, technologies, data & research",
+    "definition": "Medicines, devices, diagnostics, oxygen/blood, transplantation, digital health, genomics, and R&D/clinical trials; product quality and safety."
+  },
+  "HEALTH_SYSTEMS": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/HEALTH_SYSTEMS",
+    "prefLabel": "Health systems, quality, care models & determinants",
+    "definition": "Organization and delivery of care, quality/safety, care models, health promotion/behaviour change, and social/commercial/political determinants and population health."
+  },
+  "IMMUNIZATION_DISEASES": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/IMMUNIZATION_DISEASES",
+    "prefLabel": "Immunization & vaccine-preventable diseases",
+    "definition": "Vaccination programmes and diseases for which effective vaccines exist (routine and outbreak control)."
+  },
+  "INJURY_PREVENTION": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/INJURY_PREVENTION",
+    "prefLabel": "Injuries, envenoming & drowning",
+    "definition": "Unintentional injuries and toxin exposures (e.g., road traffic injuries, drowning, snakebite)."
+  },
+  "LIFECOURSE_HEALTH": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/LIFECOURSE_HEALTH",
+    "prefLabel": "Life-course health: maternal, newborn, child, adolescent & ageing",
+    "definition": "Health across life stages, including maternal, newborn, child, adolescent, and older-age health and inequities such as ageism."
+  },
+  "MENTAL_HEALTH": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/MENTAL_HEALTH",
+    "prefLabel": "Mental, neurological & substance use",
+    "definition": "Mental disorders, neurological conditions, and substance use problems (including alcohol, tobacco, and drugs)."
+  },
+  "NONCOMMUNICABLE_DISEASES": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/NONCOMMUNICABLE_DISEASES",
+    "prefLabel": "Noncommunicable diseases – metabolic & cardiopulmonary",
+    "definition": "Chronic metabolic and cardiopulmonary conditions such as CVD, hypertension, diabetes, and chronic respiratory diseases."
+  },
+  "NUTRITION_SECURITY": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/NUTRITION_SECURITY",
+    "prefLabel": "Nutrition & food security",
+    "definition": "Dietary status and interventions: breastfeeding/infant feeding, micronutrients, fortification, and malnutrition prevention/treatment."
+  },
+  "REPRODUCTIVE_HEALTH": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/REPRODUCTIVE_HEALTH",
+    "prefLabel": "Sexual & reproductive health and rights",
+    "definition": "SRHR across the life course, including contraception, fertility/infertility, abortion, and harmful practices (e.g., FGM)."
+  },
+  "RESPIRATORY_DISEASES": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/RESPIRATORY_DISEASES",
+    "prefLabel": "Respiratory infectious diseases",
+    "definition": "Infectious diseases that primarily affect the respiratory tract (e.g., influenza viruses, coronaviruses, RSV, TB, and pneumonias)."
+  },
+  "SENSORY_HEALTH": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/SENSORY_HEALTH",
+    "prefLabel": "Oral, eye & sensory health",
+    "definition": "Health of the mouth/teeth, vision/eye conditions, and hearing/sensory impairments."
+  },
+  "TROPICAL_DISEASES": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/TROPICAL_DISEASES",
+    "prefLabel": "Neglected tropical, parasitic & fungal skin diseases",
+    "definition": "NTDs and other parasitic/fungal diseases with major burden in tropical settings; many affect skin and soft tissues."
+  },
+  "VECTOR_DISEASES": {
+    "uri": "http://13.81.34.152:1101/resource/authority/health-theme/VECTOR_DISEASES",
+    "prefLabel": "Vector-borne & zoonotic viral diseases",
+    "definition": "Infections transmitted by vectors (e.g., mosquitoes, ticks) or originating in animals with spillover to humans (arboviruses, viral haemorrhagic fevers, rabies/plague)."
+  }
+}

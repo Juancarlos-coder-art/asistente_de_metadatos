@@ -1,0 +1,67 @@
+{
+  "CDA": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/CDA",
+    "prefLabel": "HL7 CDA",
+    "definition": "HL7 Clinical Document Architecture standard"
+  },
+  "CDISC-SDTM": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/CDISC-SDTM",
+    "prefLabel": "CDISC SDTM",
+    "definition": "CDISC Study Data Tabulation Model"
+  },
+  "DICOM": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/DICOM",
+    "prefLabel": "DICOM",
+    "definition": "Digital Imaging and Communications in Medicine standard"
+  },
+  "FHIR": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/FHIR",
+    "prefLabel": "HL7 FHIR",
+    "definition": "HL7 Fast Healthcare Interoperability Resources standard"
+  },
+  "HL7-CCOW": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/HL7-CCOW",
+    "prefLabel": "HL7 CCOW",
+    "definition": "HL7 Clinical Context Object Workgroup standard"
+  },
+  "HL7-V2": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/HL7-V2",
+    "prefLabel": "HL7 Version 2",
+    "definition": "HL7 Version 2 messaging standard"
+  },
+  "HL7-V3": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/HL7-V3",
+    "prefLabel": "HL7 Version 3",
+    "definition": "HL7 Version 3 messaging standard"
+  },
+  "IEEE-11073-20702": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/IEEE-11073-20702",
+    "prefLabel": "IEEE 11073-20702 (SDC)",
+    "definition": "IEEE standard for Service-oriented Device Connectivity (SDC)"
+  },
+  "IHE-XDS.b": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/IHE-XDS.b",
+    "prefLabel": "IHE XDS.b",
+    "definition": "IHE Cross-Enterprise Document Sharing profile"
+  },
+  "ISO-13606-1": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/ISO-13606-1",
+    "prefLabel": "ISO 13606-1",
+    "definition": "Electronic health record communication (reference model)"
+  },
+  "ISO-13940": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/ISO-13940",
+    "prefLabel": "ISO 13940 (ContSys)",
+    "definition": "System of concepts to support continuity of care"
+  },
+  "OMOP-CDM": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/OMOP-CDM",
+    "prefLabel": "OMOP CDM",
+    "definition": "OHDSI OMOP Common Data Model specification"
+  },
+  "OPENEHR": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/OPENEHR",
+    "prefLabel": "openEHR",
+    "definition": "openEHR EHR specifications (models, archetypes, APIs, etc.)"
+  }
+}

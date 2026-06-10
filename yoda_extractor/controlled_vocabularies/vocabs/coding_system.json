@@ -1,0 +1,107 @@
+{
+  "ATC": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/ATC",
+    "prefLabel": "Anatomical Therapeutic Chemical Classification System",
+    "definition": "WHO classification system for medicines according to the organ or system they act on and their therapeutic, pharmacological, and chemical properties"
+  },
+  "EDQM": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/EDQM",
+    "prefLabel": "EDQM Standard Terms",
+    "definition": "Standard terminology for pharmaceutical dose forms, routes and methods of administration, packaging, and related product characteristics"
+  },
+  "GMDN": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/GMDN",
+    "prefLabel": "Global Medical Device Nomenclature",
+    "definition": "Standard nomenclature for medical devices"
+  },
+  "HGNC": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/HGNC",
+    "prefLabel": "HUGO Gene Nomenclature Committee Symbols",
+    "definition": "Approved gene symbols and names"
+  },
+  "ICD-10": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/ICD-10",
+    "prefLabel": "International Classification of Diseases, 10th Revision",
+    "definition": "WHO disease classification standard"
+  },
+  "ICD-11": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/ICD-11",
+    "prefLabel": "International Classification of Diseases, 11th Revision",
+    "definition": "Latest WHO disease classification"
+  },
+  "ICD-9-CM": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/ICD-9-CM",
+    "prefLabel": "International Classification of Diseases, 9th Revision, Clinical Modification",
+    "definition": "Clinical modification of ICD-9 used for diagnosis coding"
+  },
+  "ICD-O-3": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/ICD-O-3",
+    "prefLabel": "International Classification of Diseases for Oncology, 3rd Edition",
+    "definition": "Oncology morphology and topography classification"
+  },
+  "ICF": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/ICF",
+    "prefLabel": "International Classification of Functioning, Disability and Health",
+    "definition": "WHO framework for health and disability"
+  },
+  "ICHI": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/ICHI",
+    "prefLabel": "International Classification of Health Interventions",
+    "definition": "WHO classification for documenting and reporting health interventions"
+  },
+  "ICPC-2": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/ICPC-2",
+    "prefLabel": "International Classification of Primary Care, 2nd Edition",
+    "definition": "Primary care classification system"
+  },
+  "ICPC-3": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/ICPC-3",
+    "prefLabel": "International Classification of Primary Care, 3nd Edition",
+    "definition": "Primary care classification system"
+  },
+  "LOINC": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/LOINC",
+    "prefLabel": "Logical Observation Identifiers Names and Codes",
+    "definition": "International standard for identifying laboratory observations, clinical measurements, and diagnostic reports"
+  },
+  "MEDDRA": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/MEDDRA",
+    "prefLabel": "Medical Dictionary for Regulatory Activities",
+    "definition": "International medical terminology used for regulatory communication, coding, and safety reporting"
+  },
+  "MESH": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/MESH",
+    "prefLabel": "Medical Subject Headings",
+    "definition": "Controlled vocabulary for biomedical literature"
+  },
+  "OPS": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/OPS",
+    "prefLabel": "Operations and Procedures Coding System",
+    "definition": "German procedure coding system"
+  },
+  "ORPHACODE": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/ORPHACODE",
+    "prefLabel": "Orphanet Nomenclature for Rare Diseases",
+    "definition": "Controlled terminology for the identification and coding of rare diseases"
+  },
+  "RXNORM": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/RXNORM",
+    "prefLabel": "RxNorm",
+    "definition": "Normalized naming system for clinical drugs"
+  },
+  "SNOMED-CT": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/SNOMED-CT",
+    "prefLabel": "SNOMED Clinical Terms",
+    "definition": "Comprehensive clinical healthcare terminology"
+  },
+  "UCUM": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/UCUM",
+    "prefLabel": "Unified Code for Units of Measure",
+    "definition": "Standardized coding for measurement units"
+  },
+  "UMLS": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/coding-system/UMLS",
+    "prefLabel": "Unified Medical Language System",
+    "definition": "Metathesaurus integrating multiple biomedical vocabularies"
+  }
+}

@@ -3,54 +3,47 @@ import { useState } from "react";
 const isProduction = window.location.hostname !== "localhost";
 const guideUrl = isProduction ? "/guide" : "http://localhost:8000/guide";
 
-const countFilledFields = (metadata) => {
-  let count = 0;
+const RING_RADIUS = 38;
+const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
-  const SUBFIELDS = {
-    hdab: ["name", "type", "contact", "email", "telephone", "opening_hours_description", "opening_hours_frequency", "special_opening_hours_description", "special_opening_hours_frequency"],
-    contact: ["email", "url"],
-    legal_basis: ["description", "source"],
-    retention_period: ["start", "end"],
-    coding_system: ["uri", "label"],
-    publisher: ["name", "type", "contact_page", "email", "telephone", "opening_hours_description", "opening_hours_frequency", "special_opening_hours_description", "special_opening_hours_frequency"],
-    creator: ["name", "email", "url", "type"],
-    qualified_attribution: ["qualified_attribution_agent_name", "qualified_attribution_agent_type", "qualified_attribution_agent_contact_page", "qualified_attribution_agent_email", "qualified_attribution_role"],
-    temporal_coverage: ["start", "end"],
-    conforms_to: ["uri", "label"],
-    related_resource: ["uri", "label"],
-    documentation: ["uri", "label"],
-  };
-
-  for (const [key, val] of Object.entries(metadata)) {
-    if (val === null || val === "" || (Array.isArray(val) && val.length === 0) || (typeof val === "object" && !Array.isArray(val) && Object.keys(val).length === 0)) continue;
-
-    if (SUBFIELDS[key] && typeof val === "object" && !Array.isArray(val)) {
-      const filled = SUBFIELDS[key].filter(sf => val[sf] && val[sf] !== "").length;
-      count += filled;
-    } else if (Array.isArray(val)) {
-      count += val.length;
-    } else {
-      count += 1;
-    }
-  }
-
-  return count;
-};
+function ProgressRing({ filled, total, label, color }) {
+  const pct = total > 0 ? filled / total : 0;
+  const offset = RING_CIRCUMFERENCE * (1 - pct);
+  return (
+    <div className="ring-wrap">
+      <div className="ring">
+        <svg width="88" height="88" viewBox="0 0 88 88">
+          <circle className="ring-bg" cx="44" cy="44" r={RING_RADIUS} />
+          <circle
+            className="ring-fg"
+            cx="44"
+            cy="44"
+            r={RING_RADIUS}
+            style={{
+              stroke: color,
+              strokeDasharray: RING_CIRCUMFERENCE,
+              strokeDashoffset: offset,
+            }}
+          />
+        </svg>
+        <div className="ring-label">{filled}/{total}</div>
+      </div>
+      <span className="ring-text">{label}</span>
+    </div>
+  );
+}
 
 export default function Sidebar({
   blocks,
   currentIdx,
   blocksDone,
-  metadata,
-  missingCount,
+  progress,
   onNavigate,
   onReset,
   onSaveProgress
 }) {
 
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-
-  const filled = countFilledFields(metadata); 
 
   return (
     <aside className={`sidebar ${sidebarCollapsed ? "sidebar--collapsed" : ""}`}>
@@ -64,15 +57,19 @@ export default function Sidebar({
       </button>
       <p className="sidebar-title">HealthDCAT-AP</p>
 
-      <div className="metrics-grid">
-        <div className="metric-box">
-          <span className="metric-num">{filled}</span>
-          <span className="metric-label">campos rellenos</span>
-        </div>
-        <div className="metric-box">
-          <span className={`metric-num ${missingCount > 0 ? "metric-num--error" : ""}`}>{missingCount}</span>
-          <span className="metric-label">obligatorios pendientes</span>
-        </div>
+      <div className="rings-row">
+        <ProgressRing
+          filled={progress.filled_optional}
+          total={progress.total_optional}
+          label="Opcionales"
+          color="#78a9ff"
+        />
+        <ProgressRing
+          filled={progress.filled_required}
+          total={progress.total_required}
+          label="Obligatorios"
+          color="#ff8389"
+        />
       </div>
 
       <hr className="sidebar-divider" />

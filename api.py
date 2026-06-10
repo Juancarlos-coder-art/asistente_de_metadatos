@@ -7,6 +7,9 @@ load_dotenv()
 import json
 import uuid
 import os
+import sys
+import tempfile
+from pathlib import Path
 from fastapi import FastAPI, HTTPException, Cookie, Response, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -19,10 +22,15 @@ from rdflib import Graph
 from schema_loader import HealthDCATAPSchema
 from assistant.metadata_state import MetadataState
 from assistant.llm_provider import call_llm, llm_available
-from assistant.rag_helper import get_block_missing, get_missing_descriptions
+from assistant.rag_helper import get_block_missing, get_missing_descriptions, FIELD_INDEX
 from cli import BLOCKS, build_prompt_for_block, build_contract
 from rdflib import Graph, URIRef, Literal, Namespace, RDF, XSD
 from fastapi.responses import Response as FastAPIResponse
+
+# ── yoda_extractor: hacer importable el paquete (carpeta en raíz del repo) ──
+_YODA_DIR = Path(__file__).resolve().parent / "yoda_extractor"
+if str(_YODA_DIR) not in sys.path:
+    sys.path.insert(0, str(_YODA_DIR))
 
 app = FastAPI(title="Asistente HealthDCAT-AP", version="1.0.0")
 
@@ -904,7 +912,29 @@ def validate(response: Response, session_id: str = Cookie(default=None)):
     sid, state = get_session(session_id, response)
     errors = state.validate_types_basic()
     missing = state.missing_required()
-    return {"valid": len(errors) == 0 and len(missing) == 0, "errors": errors, "missing_required": missing}
+
+    filled_required = total_required = 0
+    filled_optional = total_optional = 0
+    for field, info in FIELD_INDEX.items():
+        is_filled = state.data.get(field) not in (None, "", [], {})
+        if info.get("obligatorio", False):
+            total_required += 1
+            if is_filled:
+                filled_required += 1
+        else:
+            total_optional += 1
+            if is_filled:
+                filled_optional += 1
+
+    return {
+        "valid": len(errors) == 0 and len(missing) == 0,
+        "errors": errors,
+        "missing_required": missing,
+        "total_required": total_required,
+        "filled_required": filled_required,
+        "total_optional": total_optional,
+        "filled_optional": filled_optional,
+    }
 
 @app.get("/missing/{block_id}")
 def get_missing_fields(block_id: int, response: Response, session_id: str = Cookie(default=None)):
@@ -1307,6 +1337,39 @@ async def import_session(
         "source_type": source_type,
     }
 
+
+def _run_yoda(file_bytes: bytes, filename: str) -> dict:
+    """Ejecuta el pipeline de yoda_extractor sobre un fichero y devuelve el dict HealthDCAT-AP."""
+    from readers import get_reader
+    from extractors import ALL_EXTRACTORS
+    from extractors.static import normalize_language
+    from main import _load_dataframe, _merge_output
+
+    suffix = Path(filename).suffix.lower()
+    with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as tmp:
+        tmp.write(file_bytes)
+        tmp_path = tmp.name
+    try:
+        reader = get_reader(tmp_path)
+        extractors = [cls(file_path=tmp_path) for cls in ALL_EXTRACTORS]
+        for record in reader.stream_records():
+            for extractor in extractors:
+                extractor.update(record)
+        results = {e.name: e.result() for e in extractors}
+        df = _load_dataframe(tmp_path)
+        for extractor in extractors:
+            finalized = extractor.finalize(results, df)
+            if finalized:
+                results[extractor.name] = {**results.get(extractor.name, {}), **finalized}
+        output, _structure = _merge_output(results)
+        return normalize_language(output)
+    finally:
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+
+
 @app.post("/upload-document")
 async def upload_document(
     file: UploadFile = File(...),
@@ -1315,8 +1378,51 @@ async def upload_document(
 ):
     sid, state = get_session(session_id, response)
 
+    contents = await file.read()
+    ext = Path(file.filename or "").suffix.lower()
+
+    # ── Rama 2: ficheros de datos estructurados (yoda_extractor) ──
+    if ext in {".csv", ".json", ".xml", ".xlsx", ".xls", ".parquet"}:
+        try:
+            yoda_metadata = _run_yoda(contents, file.filename or f"upload{ext}")
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Error en yoda_extractor: {e}")
+
+        existing_access_rights = state.data.get("access_rights")
+        if existing_access_rights:
+            yoda_metadata["access_rights"] = existing_access_rights
+
+        results_by_block = {}
+        filled_fields = {}
+        for block in BLOCKS:
+            block_result = {}
+            block_filled = 0
+            for field in block["fields"]:
+                value = yoda_metadata.get(field)
+                block_result[field] = value
+                if value is not None and value != "" and value != []:
+                    block_filled += 1
+                    filled_fields[field] = value
+            results_by_block[block["name"]] = {
+                "fields": block_result,
+                "filled": block_filled,
+                "total": len(block["fields"]),
+                "complete": block_filled == len(block["fields"]),
+            }
+
+        state.merge_partial(filled_fields)
+        apply_conditional_logic(state)
+        return {
+            "success": True,
+            "source": "yoda",
+            "results_by_block": results_by_block,
+            "metadata": state.data,
+            "errors": yoda_metadata.get("errors", []),
+            "session_id": sid,
+        }
+
+    # ── Rama 1: PDF (comportamiento original) ──
     try:
-        contents = await file.read()
         pdf = PdfReader(io.BytesIO(contents))
         text = "\n".join(page.extract_text() or "" for page in pdf.pages)
         text = text[:8000]

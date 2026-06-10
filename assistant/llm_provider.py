@@ -10,6 +10,10 @@ def get_use_openai() -> bool:
     return os.getenv("USE_OPENAI", "false").lower() == "true"
 
 
+def get_use_gemini() -> bool:
+    return os.getenv("USE_GEMINI", "false").lower() == "true"
+
+
 def get_openai_client():
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
@@ -24,6 +28,14 @@ def get_groq_client():
         return None
     from groq import Groq
     return Groq(api_key=api_key)
+
+
+def get_gemini_client():
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return None
+    from google import genai
+    return genai.Client(api_key=api_key)
 
 
 # =====================================================
@@ -77,6 +89,26 @@ def openai_llm(prompt: str) -> dict:
     )
 
     raw = response.choices[0].message.content
+    return extract_json_from_text(raw)
+
+
+def gemini_llm(prompt: str) -> dict:
+    client = get_gemini_client()
+    if not client:
+        raise RuntimeError("GEMINI_API_KEY no definida")
+
+    model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    response = client.models.generate_content(
+        model=model,
+        contents=(
+            "Eres un experto en metadatos sanitarios HealthDCAT-AP. "
+            "Extrae campos del texto del usuario y devuelve SOLO un objeto JSON válido, "
+            "sin explicaciones, sin markdown, sin texto adicional. "
+            "Si un campo no está en el texto, devuelve null para ese campo.\n\n"
+            + prompt
+        ),
+    )
+    raw = response.text or ""
     return extract_json_from_text(raw)
 
 
@@ -146,6 +178,11 @@ def call_llm(prompt: str, contract: dict, user_input: str) -> dict:
         if client:
             return openai_llm(prompt)
 
+    if get_use_gemini():
+        client = get_gemini_client()
+        if client:
+            return gemini_llm(prompt)
+
     client = get_groq_client()
     if client:
         return groq_llm(prompt)
@@ -157,5 +194,6 @@ def call_llm(prompt: str, contract: dict, user_input: str) -> dict:
 def llm_available() -> bool:
     return bool(
         get_groq_client() or
-        (get_use_openai() and get_openai_client())
+        (get_use_openai() and get_openai_client()) or
+        (get_use_gemini() and get_gemini_client())
     )
