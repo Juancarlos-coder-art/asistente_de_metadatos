@@ -7,7 +7,7 @@ from google.cloud import bigquery
 
 
 def log_usage(provider, model, usage):
-    table = os.getenv("BQ_USAGE_TABLE")  # 👈 MOVER AQUÍ
+    table = os.getenv("BQ_USAGE_TABLE")  
 
     if not table:
         print("❌ BQ_USAGE_TABLE vacía")
@@ -113,15 +113,41 @@ def groq_llm(prompt: str) -> dict:
         max_tokens=4096,
     )
 
-    log_usage(
-        provider="groq",
-        model="llama-3.3-70b-versatile",
-        usage=response.usage
-    )
+    usage = getattr(response, "usage", None)
+    print("🔥 USAGE RAW:", usage)
 
+    if usage is None:
+        print("⚠️ usage es None — usando estimación manual")
+
+        prompt_tokens = len(prompt) // 4
+        completion_text = response.choices[0].message.content
+        completion_tokens = len(completion_text) // 4
+
+        class FakeUsage:
+            def __init__(self):
+                self.prompt_tokens = prompt_tokens
+                self.completion_tokens = completion_tokens
+                self.total_tokens = prompt_tokens + completion_tokens
+
+        log_usage(
+            provider="groq",
+            model="llama-3.3-70b-versatile",
+            usage=FakeUsage()
+        )
+
+    else:
+        print("✅ usage detectado")
+        print("🔥 tokens:", usage.prompt_tokens, usage.completion_tokens)
+
+        log_usage(
+            provider="groq",
+            model="llama-3.3-70b-versatile",
+            usage=usage
+        )
 
     raw = response.choices[0].message.content
     return extract_json_from_text(raw)
+
 
 def openai_llm(prompt: str) -> dict:
     client = get_openai_client()
