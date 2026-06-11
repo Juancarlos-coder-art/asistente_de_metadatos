@@ -425,13 +425,18 @@ def _classify_document(text: str) -> dict:
         f"Documento:\n{text[:2000]}"
     )
     try:
-        return call_llm(prompt, {
-            "idioma": None,
-            "tipo_organismo": None,
-            "categorias_salud": None,
-            "temas": None,
-            "tipo_dataset": None
-        }, text[:2000])
+        return call_llm(
+            prompt,
+            {
+                "idioma": None,
+                "tipo_organismo": None,
+                "categorias_salud": None,
+                "temas": None,
+                "tipo_dataset": None
+            },
+            text[:2000],
+            endpoint="/classify_document"
+        )
     except Exception:
         return {}
 
@@ -705,7 +710,7 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
         )
 
     # ── Llamada al LLM ──
-    result = call_llm(prompt, {f: None for f in all_fields}, "")
+    result = call_llm(prompt, {f: None for f in all_fields}, "", endpoint="/extract_fields")
 
     # ── Convertir códigos cortos a URIs completas ──
     BASE_ACTIVITY = "http://13.81.34.152:1101/resource/authority/health-activity/"
@@ -865,7 +870,7 @@ def complete_block(block_id: int, body: CompleteBlockRequest, response: Response
     try:
         prompt = build_prompt_for_block(_schema, block, body.user_context)
         contract = build_contract(block)
-        ai_result = call_llm(prompt, contract, body.user_context)
+        ai_result = call_llm(prompt, contract, body.user_context, endpoint="/complete")
         partial = {name: ai_result.get(name, None) for name in block["fields"]}
         state.merge_partial(partial)
         apply_conditional_logic(state)
@@ -888,7 +893,7 @@ def save_manual(body: ManualSaveRequest, response: Response, session_id: str = C
             user_context = f"Datos actuales:\n{json.dumps(state.data, ensure_ascii=False)}\nNuevos datos:\n{json.dumps(to_merge, ensure_ascii=False)}\nCompleta SOLO los campos faltantes."
             prompt = build_prompt_for_block(_schema, block, user_context)
             contract = {f: None for f in missing_fields}
-            ai_result = call_llm(prompt, contract, user_context)
+            ai_result = call_llm(prompt, contract, user_context, endpoint="/save-manual")
             ai_partial = {k: v for k, v in ai_result.items() if v not in (None, "", [])}
             state.merge_partial(ai_partial)
         except Exception as e:
@@ -1524,4 +1529,4 @@ if os.path.exists("frontend/dist") and os.path.exists("frontend/dist/assets"):
     def serve_react(full_path: str):
         return FileResponse("frontend/dist/index.html")
     
-    
+

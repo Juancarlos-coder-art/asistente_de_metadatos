@@ -5,14 +5,17 @@ from datetime import datetime
 from google.cloud import bigquery
 
 
+# =====================================================
+# Logging usage en BigQuery
+# =====================================================
 
-def log_usage(provider, model, usage):
-    table = os.getenv("BQ_USAGE_TABLE")  
+def log_usage(provider, model, usage, endpoint=None):
+    table = os.getenv("BQ_USAGE_TABLE")
 
     if not table:
         print("❌ BQ_USAGE_TABLE vacía")
         return
-    
+
     try:
         client = bigquery.Client()
 
@@ -36,9 +39,10 @@ def log_usage(provider, model, usage):
             "completion_tokens": completion_tokens,
             "total_tokens": total_tokens,
             "estimated_cost_usd": cost,
+            "endpoint": endpoint
         }
 
-        print("✅ insertando en:", table)  # 👈 DEBUG
+        print("✅ insertando en:", table)
 
         errors = client.insert_rows_json(table, [row])
 
@@ -50,8 +54,9 @@ def log_usage(provider, model, usage):
     except Exception as e:
         print("❌ Error logging usage:", e)
 
+
 # =====================================================
-# Helpers para configuración (runtime, no import-time!)
+# Helpers para configuración
 # =====================================================
 
 def get_use_openai() -> bool:
@@ -90,13 +95,15 @@ def get_gemini_client():
 # LLM implementations
 # =====================================================
 
-def groq_llm(prompt: str) -> dict:
+def groq_llm(prompt: str, endpoint=None) -> dict:
     client = get_groq_client()
     if not client:
         raise RuntimeError("GROQ_API_KEY no definida")
 
+    model = "llama-3.3-70b-versatile"
+
     response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model=model,
         messages=[
             {
                 "role": "system",
@@ -124,15 +131,18 @@ def groq_llm(prompt: str) -> dict:
         completion_tokens = len(completion_text) // 4
 
         class FakeUsage:
-            def __init__(self):
-                self.prompt_tokens = prompt_tokens
-                self.completion_tokens = completion_tokens
-                self.total_tokens = prompt_tokens + completion_tokens
+            def __init__(self, pt, ct):
+                self.prompt_tokens = pt
+                self.completion_tokens = ct
+                self.total_tokens = pt + ct
+
+        fake_usage = FakeUsage(prompt_tokens, completion_tokens)
 
         log_usage(
             provider="groq",
-            model="llama-3.3-70b-versatile",
-            usage=FakeUsage()
+            model=model,
+            usage=fake_usage,
+            endpoint=endpoint
         )
 
     else:
@@ -141,15 +151,16 @@ def groq_llm(prompt: str) -> dict:
 
         log_usage(
             provider="groq",
-            model="llama-3.3-70b-versatile",
-            usage=usage
+            model=model,
+            usage=usage,
+            endpoint=endpoint
         )
 
     raw = response.choices[0].message.content
     return extract_json_from_text(raw)
 
 
-def openai_llm(prompt: str) -> dict:
+def openai_llm(prompt: str, endpoint=None) -> dict:
     client = get_openai_client()
     if not client:
         raise RuntimeError("OPENAI_API_KEY no definida")
@@ -173,7 +184,7 @@ def openai_llm(prompt: str) -> dict:
     return extract_json_from_text(raw)
 
 
-def gemini_llm(prompt: str) -> dict:
+def gemini_llm(prompt: str, endpoint=None) -> dict:
     client = get_gemini_client()
     if not client:
         raise RuntimeError("GEMINI_API_KEY no definida")
@@ -238,37 +249,31 @@ def parse_simple_field(field_name: str, user_input: str):
 
 
 def mock_llm(prompt: str, contract: dict, user_input: str) -> dict:
-    """
-    Modo fallback sin LLM real.
-    """
     result = {}
-
     for field_name in contract.keys():
         result[field_name] = parse_simple_field(field_name, user_input)
-
     return result
 
 
 # =====================================================
-# Public API usada por Streamlit
+# Public API
 # =====================================================
 
-def call_llm(prompt: str, contract: dict, user_input: str) -> dict:
+def call_llm(prompt: str, contract: dict, user_input: str, endpoint=None) -> dict:
     if get_use_openai():
         client = get_openai_client()
         if client:
-            return openai_llm(prompt)
+            return openai_llm(prompt, endpoint=endpoint)
 
     if get_use_gemini():
         client = get_gemini_client()
         if client:
-            return gemini_llm(prompt)
+            return gemini_llm(prompt, endpoint=endpoint)
 
     client = get_groq_client()
     if client:
-        return groq_llm(prompt)
+        return groq_llm(prompt, endpoint=endpoint)
 
-    # Fallback seguro
     return mock_llm(prompt, contract, user_input)
 
 
