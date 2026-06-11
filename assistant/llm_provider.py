@@ -5,10 +5,12 @@ from datetime import datetime
 from google.cloud import bigquery
 
 
-BQ_TABLE = os.getenv("BQ_USAGE_TABLE")
 
 def log_usage(provider, model, usage):
-    if not BQ_TABLE:
+    table = os.getenv("BQ_USAGE_TABLE")  # 👈 MOVER AQUÍ
+
+    if not table:
+        print("❌ BQ_USAGE_TABLE vacía")
         return
     
     try:
@@ -18,7 +20,6 @@ def log_usage(provider, model, usage):
         completion_tokens = getattr(usage, "completion_tokens", 0)
         total_tokens = getattr(usage, "total_tokens", 0)
 
-        # 💰 precios (puedes cambiarlos luego)
         PRICE_INPUT = float(os.getenv("GROQ_INPUT_PRICE_PER_M", "0.59"))
         PRICE_OUTPUT = float(os.getenv("GROQ_OUTPUT_PRICE_PER_M", "0.79"))
 
@@ -37,11 +38,17 @@ def log_usage(provider, model, usage):
             "estimated_cost_usd": cost,
         }
 
-        client.insert_rows_json(BQ_TABLE, [row])
+        print("✅ insertando en:", table)  # 👈 DEBUG
+
+        errors = client.insert_rows_json(table, [row])
+
+        if errors:
+            print("❌ errores BigQuery:", errors)
+        else:
+            print("✅ fila insertada")
 
     except Exception as e:
-        print("Error logging usage:", e)
-
+        print("❌ Error logging usage:", e)
 
 # =====================================================
 # Helpers para configuración (runtime, no import-time!)
