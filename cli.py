@@ -109,52 +109,6 @@ BLOCKS = [
         "placeholder_en": "E.g.: For enquiries contact info@health.gov or visit https://www.health.gov/contact",
     },
     {
-        "name": "Acceso_a_Distribucion",
-        "name_en": "Distribution Access",
-        "fields": [
-            "access_url", "download_url", "name", "description",
-            "format", "mimetype", "compress_format", "package_format",
-            "size", "hash", "hash_algorithm", "rights", "availability",
-            "status", "license", "retention_period"
-        ],
-        "question": (
-            "¿Cómo se puede acceder y descargar el dataset? ¿Qué características técnicas tiene el fichero?\n\n"
-            "Indica la URL de acceso y, si existe, la URL de descarga directa. "
-            "Proporciona el nombre del recurso, una breve descripción de su contenido, "
-            "el formato del fichero (CSV, JSON, XML, XLSX, Parquet…) y el tipo de medio (media type, ej: text/csv, application/json). "
-            "Si el fichero está comprimido o empaquetado, indica el formato de compresión (zip, gzip…) y de empaquetado (tar, zip…). "
-            "Si conoces el tamaño en bytes, el hash de integridad y el algoritmo usado (MD5, SHA-256…), inclúyelos. "
-            "Indica también los derechos de uso, la disponibilidad del recurso, "
-            "su estado (completado, en desarrollo, obsoleto o retirado), "
-            "la licencia aplicable (ej: CC BY 4.0, CC BY-NC, licencia propietaria) "
-            "y el periodo de conservación de los datos (fecha de inicio y fin si las conoces)."
-        ),
-        "question_en": (
-            "How can the dataset be accessed and downloaded? What are the technical characteristics of the file?\n\n"
-            "Provide the access URL and, if available, the direct download URL. "
-            "Give the resource name, a brief description of its content, "
-            "the file format (CSV, JSON, XML, XLSX, Parquet…) and media type (e.g. text/csv, application/json). "
-            "If the file is compressed or packaged, indicate the compression format (zip, gzip…) and packaging format (tar, zip…). "
-            "If you know the file size in bytes, the integrity hash and the algorithm used (MD5, SHA-256…), include them. "
-            "Also indicate usage rights, resource availability, "
-            "its status (completed, under development, deprecated or withdrawn), "
-            "the applicable licence (e.g. CC BY 4.0, CC BY-NC, proprietary licence) "
-            "and the data retention period (start and end date if known)."
-        ),
-        "hint": "Indica URL de acceso, descarga, nombre, descripción, formato, tipo de medio, compresión, tamaño, hash, derechos, disponibilidad, estado y licencia.",
-        "hint_en": "Provide access URL, download URL, name, description, format, media type, compression, size, hash, rights, availability, status and licence.",
-        "placeholder": (
-            "Ej.: El dataset está disponible en https://datos.gob.es/dataset/xyz y se puede descargar directamente en "
-            "https://datos.gob.es/dataset/xyz/descarga.csv. Es un fichero CSV (text/csv) de 15 MB, comprimido en zip, "
-            "bajo licencia CC BY 4.0. Estado: completado. Hash SHA-256: abc123..."
-        ),
-        "placeholder_en": (
-            "E.g.: The dataset is available at https://datos.gob.es/dataset/xyz and can be downloaded directly at "
-            "https://datos.gob.es/dataset/xyz/download.csv. It is a CSV file (text/csv) of 15 MB, zipped, "
-            "under CC BY 4.0 licence. Status: completed. SHA-256 hash: abc123..."
-        ),
-    },
-    {
         "name": "responsables_dataset",
         "name_en": "Dataset Responsible Parties",
         "fields": ["publisher", "publisher_note", "creator", "qualified_attribution","quality_annotation"],
@@ -257,6 +211,12 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "  - RESTRINGIDO = se puede acceder bajo ciertas condiciones o solicitud\n"
         "  - NO PÚBLICO = no está disponible para nadie fuera de la organización propietaria\n"
 
+        # ── Notes (Descripción) ──
+        "notes": (
+            "Para el campo 'notes', devuelve un string con la descripción completa del dataset. "
+            "Cópiala literalmente del texto del usuario si la proporciona. Máx 300 caracteres.\n"
+        ),
+
         # ── health_category ──
         "Para el campo 'health_category', devuelve un ARRAY con las URIs correspondientes:\n"
         "- Registros Electrónicos de Salud → http://13.81.34.152:1101/resource/authority/healthcategories/EHRS\n"
@@ -323,7 +283,7 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
 
         # ── campos numéricos ──
         "Para los campos 'number_of_unique_individuals', 'number_of_records', 'min_typical_age' y 'max_typical_age', "
-        "devuelve un número entero o null si no se menciona.\n"
+        "devuelve un número entero"
 
         # ── personal_data ──
         "Para el campo 'personal_data', devuelve un ARRAY con SOLO las URIs DPV-PD correspondientes:\n"
@@ -335,19 +295,19 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "Si el usuario no lo menciona, devuelve null.\n"
 
         # ── legal_basis ──
-        "Para el campo 'legal_basis', devuelve un objeto con 'description' (texto) y 'source' (texto). null si no se menciona.\n"
+        "Para el campo 'legal_basis', devuelve un objeto con 'description' (texto) y 'source' (texto). \n"
 
         # ── retention_period ──
-        "Para el campo 'retention_period', devuelve un objeto con 'start' (fecha YYYY-MM-DD o null) y 'end' (fecha YYYY-MM-DD o null). null si no se menciona.\n"
+        "Para el campo 'retention_period', devuelve un objeto con 'start' (fecha YYYY-MM-DD o null) y 'end' (fecha YYYY-MM-DD o null). \n"
 
         # ── coding_system ──
-        "Para el campo 'coding_system', devuelve un objeto con 'uri' (URI del sistema) y 'label' (nombre). Ej: ICD-10, SNOMED CT. null si no se menciona.\n"
+        "Para el campo 'coding_system', devuelve un objeto con 'uri' (URI del sistema) y 'label' (nombre). Ej: ICD-10, SNOMED CT. \n"
 
         # ── health_theme ──
-        "Para el campo 'health_theme', devuelve un ARRAY con las URIs de temas de salud. null si no se menciona.\n"
+        "Para el campo 'health_theme', devuelve un ARRAY con las URIs de temas de salud. \n"
 
         # ── code_values ──
-        "Para el campo 'code_values', devuelve un ARRAY de strings con los valores codificados. null si no se menciona.\n"
+        "Para el campo 'code_values', devuelve un ARRAY de strings con los valores codificados. \n"
 
         # ── publisher ──
         "Para el campo 'publisher', devuelve un objeto con EXACTAMENTE estas claves:\n"
@@ -364,7 +324,7 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "No uses claves en español ni inventes URIs.\n"
 
         # ── publisher_note ──
-        "Para el campo 'publisher_note', devuelve un ARRAY de strings con las notas del editor. null si no se menciona.\n"
+        "Para el campo 'publisher_note', devuelve un ARRAY de strings con las notas del editor. \n"
 
         # ── creator ──
         "Para el campo 'creator', devuelve un objeto con EXACTAMENTE estas claves:\n"
@@ -385,7 +345,7 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "- Custodio → https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#custodian\n"
         "- Financiador → https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#funder\n"
         "- Propietario → https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#owner\n"
-        "null si no se menciona.\n"
+        "\n"
 
         # ── was_generated_by ──
         "Para el campo 'was_generated_by', devuelve un ARRAY con las URIs de actividad sanitaria. Ejemplos:\n"
@@ -393,7 +353,7 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "- Registros hospitalarios → http://13.81.34.152:1101/resource/authority/health-activity/HOSPITAL_RECORDS\n"
         "- Encuesta de salud → http://13.81.34.152:1101/resource/authority/health-activity/HEALTH_SURVEY\n"
         "- Proyecto de investigación → http://13.81.34.152:1101/resource/authority/health-activity/RESEARCH_PROJECT\n"
-        "null si no se menciona.\n"
+        "\n"
 
         # ── spatial ──
         "Para el campo 'spatial', devuelve un ARRAY con las URIs de país. Ejemplos:\n"
@@ -401,16 +361,16 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "- Francia → http://publications.europa.eu/resource/authority/country/FRA\n"
         "- Alemania → http://publications.europa.eu/resource/authority/country/DEU\n"
         "- Italia → http://publications.europa.eu/resource/authority/country/ITA\n"
-        "null si no se menciona.\n"
+        "\n"
 
         # ── temporal_coverage ──
-        "Para el campo 'temporal_coverage', devuelve un objeto con 'start' (fecha YYYY-MM-DD o null) y 'end' (fecha YYYY-MM-DD o null). null si no se menciona.\n"
+        "Para el campo 'temporal_coverage', devuelve un objeto con 'start' (fecha YYYY-MM-DD o null) y 'end' (fecha YYYY-MM-DD o null). \n"
 
         # ── temporal_resolution ──
-        "Para el campo 'temporal_resolution', devuelve un string con la resolución temporal (ej: 'P1D' para diaria, 'PT1H' para horaria, 'P1M' para mensual). null si no se menciona.\n"
+        "Para el campo 'temporal_resolution', devuelve un string con la resolución temporal (ej: 'P1D' para diaria, 'PT1H' para horaria, 'P1M' para mensual). \n"
 
         # ── spatial_resolution_in_meters ──
-        "Para el campo 'spatial_resolution_in_meters', devuelve un string con la resolución espacial en metros. null si no se menciona.\n"
+        "Para el campo 'spatial_resolution_in_meters', devuelve un string con la resolución espacial en metros. \n"
 
         # ── frequency ──
         "Para el campo 'frequency', devuelve la URI de frecuencia. Ejemplos:\n"
@@ -419,34 +379,34 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "- Mensual → http://publications.europa.eu/resource/authority/frequency/MONTHLY\n"
         "- Anual → http://publications.europa.eu/resource/authority/frequency/ANNUAL\n"
         "- Trimestral → http://publications.europa.eu/resource/authority/frequency/QUARTERLY\n"
-        "null si no se menciona.\n"
+        "\n"
 
         # ── issued ──
-        "Para el campo 'issued', devuelve la fecha de publicación en formato YYYY-MM-DD. null si no se menciona.\n"
+        "Para el campo 'issued', devuelve la fecha de publicación en formato YYYY-MM-DD. \n"
 
         # ── modified ──
-        "Para el campo 'modified', devuelve la fecha de última modificación en formato YYYY-MM-DD. null si no se menciona.\n"
+        "Para el campo 'modified', devuelve la fecha de última modificación en formato YYYY-MM-DD. \n"
 
         # ── alternate_identifier ──
-        "Para el campo 'alternate_identifier', devuelve un ARRAY de strings con identificadores alternativos (DOI, URN, etc.). null si no se menciona.\n"
+        "Para el campo 'alternate_identifier', devuelve un ARRAY de strings con identificadores alternativos (DOI, URN, etc.). \n"
 
         # ── conforms_to ──
-        "Para el campo 'conforms_to', devuelve un objeto con 'uri' (URI del estándar) y 'label' (nombre). null si no se menciona.\n"
+        "Para el campo 'conforms_to', devuelve un objeto con 'uri' (URI del estándar) y 'label' (nombre). \n"
 
         # ── related_resource ──
-        "Para el campo 'related_resource', devuelve un objeto con 'uri' (URI del recurso) y 'label' (nombre). null si no se menciona.\n"
+        "Para el campo 'related_resource', devuelve un objeto con 'uri' (URI del recurso) y 'label' (nombre). \n"
 
         # ── is_referenced_by ──
-        "Para el campo 'is_referenced_by', devuelve un ARRAY de strings con URIs de recursos que referencian al dataset. null si no se menciona.\n"
+        "Para el campo 'is_referenced_by', devuelve un ARRAY de strings con URIs de recursos que referencian al dataset. \n"
 
         # ── url (landing page) ──
-        "Para el campo 'url', devuelve la URL de la página de entrada del dataset. null si no se menciona.\n"
+        "Para el campo 'url', devuelve la URL de la página de entrada del dataset. \n"
         
         # ── access_url ──
-        "Para el campo 'access_url', devuelve la URL de acceso a la distribución del dataset. null si no se menciona.\n"
+        "Para el campo 'access_url', devuelve la URL de acceso a la distribución del dataset. \n"
         
         # ── description (distribución) ──
-        "Para el campo 'description', devuelve un string con la descripción del recurso de distribución. null si no se menciona.\n"
+        "Para el campo 'description', devuelve un string con la descripción del recurso de distribución. \n"
         
         
         
@@ -456,36 +416,36 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "- CC BY-NC 4.0 → https://creativecommons.org/licenses/by-nc/4.0/\n"
         "- CC0 → https://creativecommons.org/publicdomain/zero/1.0/\n"
         "- Open Data Commons ODbL → https://opendatacommons.org/licenses/odbl/\n"
-        "Si el usuario menciona el nombre sin URI, devuelve el nombre como string. null si no se menciona.\n"
+        "Si el usuario menciona el nombre sin URI, devuelve el nombre como string. \n"
         
         # ── retention_period (distribución) ──
-        "Para el campo 'retention_period', devuelve un objeto con 'start' (fecha YYYY-MM-DD o null) y 'end' (fecha YYYY-MM-DD o null). null si no se menciona.\n"
+        "Para el campo 'retention_period', devuelve un objeto con 'start' (fecha YYYY-MM-DD o null) y 'end' (fecha YYYY-MM-DD o null). \n"
         
         # ── format ──
-        "Para el campo 'format', devuelve el formato del fichero como string. Ejemplos: 'CSV', 'JSON', 'XML', 'XLSX', 'Parquet', 'RDF', 'GeoJSON'. null si no se menciona.\n"
+        "Para el campo 'format', devuelve el formato del fichero como string. Ejemplos: 'CSV', 'JSON', 'XML', 'XLSX', 'Parquet', 'RDF', 'GeoJSON'. \n"
         # ── mimetype ──
-        "Para el campo 'mimetype', devuelve el tipo MIME del fichero. Ejemplos: 'text/csv', 'application/json', 'application/xml', 'application/vnd.ms-excel'. null si no se menciona.\n"
+        "Para el campo 'mimetype', devuelve el tipo MIME del fichero. Ejemplos: 'text/csv', 'application/json', 'application/xml', 'application/vnd.ms-excel'. \n"
         
         # ── compress_format ──
-        "Para el campo 'compress_format', devuelve el formato de compresión como string. Ejemplos: 'zip', 'gzip', 'bzip2', '7z'. null si no se menciona.\n"
+        "Para el campo 'compress_format', devuelve el formato de compresión como string. Ejemplos: 'zip', 'gzip', 'bzip2', '7z'. \n"
         
         # ── package_format ──
-        "Para el campo 'package_format', devuelve el formato de empaquetado como string. Ejemplos: 'zip', 'tar', 'tar.gz'. null si no se menciona.\n"
+        "Para el campo 'package_format', devuelve el formato de empaquetado como string. Ejemplos: 'zip', 'tar', 'tar.gz'. \n"
         
         # ── size ──
-        "Para el campo 'size', devuelve el tamaño del fichero en bytes como número entero. null si no se menciona.\n"
+        "Para el campo 'size', devuelve el tamaño del fichero en bytes como número entero. \n"
         
         # ── hash ──
-        "Para el campo 'hash', devuelve el valor del hash de integridad del fichero como string. null si no se menciona.\n"
+        "Para el campo 'hash', devuelve el valor del hash de integridad del fichero como string. \n"
         
         # ── hash_algorithm ──
-        "Para el campo 'hash_algorithm', devuelve el algoritmo hash como string. Ejemplos: 'MD5', 'SHA-256', 'SHA-512'. null si no se menciona.\n"
+        "Para el campo 'hash_algorithm', devuelve el algoritmo hash como string. Ejemplos: 'MD5', 'SHA-256', 'SHA-512'. \n"
         
         # ── rights ──
-        "Para el campo 'rights', devuelve un string con los derechos de uso del recurso. null si no se menciona.\n"
+        "Para el campo 'rights', devuelve un string con los derechos de uso del recurso. \n"
         
         # ── availability ──
-        "Para el campo 'availability', devuelve un string describiendo la disponibilidad del recurso. null si no se menciona.\n"
+        "Para el campo 'availability', devuelve un string describiendo la disponibilidad del recurso. \n"
         
         # ── status ──
         "Para el campo 'status', devuelve la URI del estado del recurso:\n"
@@ -493,27 +453,33 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "- En desarrollo → http://purl.org/adms/status/UnderDevelopment\n"
         "- Obsoleto → http://purl.org/adms/status/Deprecated\n"
         "- Retirado → http://purl.org/adms/status/Withdrawn\n"
-        "null si no se menciona.\n"
+        "\n"
 
         # ── documentation ──
-        "Para el campo 'documentation', devuelve un objeto con 'uri' (URI) y 'label' (nombre). null si no se menciona.\n"
+        "Para el campo 'documentation', devuelve un objeto con 'uri' (URI) y 'label' (nombre). \n"
 
         # ── version ──
-        "Para el campo 'version', devuelve un string con la versión (ej: '1.0', '2.3.1'). null si no se menciona.\n"
+        "Para el campo 'version', devuelve un string con la versión (ej: '1.0', '2.3.1'). \n"
 
         # ── has_version ──
-        "Para el campo 'has_version', devuelve un ARRAY de strings con versiones disponibles. null si no se menciona.\n"
+        "Para el campo 'has_version', devuelve un ARRAY de strings con versiones disponibles. \n"
 
         # ── version_notes ──
-        "Para el campo 'version_notes', devuelve un string con las notas de versión. null si no se menciona.\n"
+        "Para el campo 'version_notes', devuelve un string con las notas de versión. \n"
 
         "No añadas claves extra ni texto fuera del JSON."
+    # Solo añadir instrucciones de los campos de este bloque
+    for field in block["fields"]:
+        if field in FIELD_INSTRUCTIONS:
+            instrucciones += FIELD_INSTRUCTIONS[field]
+
+    instrucciones += "No añadas claves extra ni texto fuera del JSON."
     )
     return (
-        f"{block['question']}\n\n"
+        f"Extrae los campos de metadatos del siguiente texto.\n"  
         f"Claves esperadas: [{fields}]\n"
         f"{instrucciones}\n"
-        f"{'Contexto del usuario: ' + user_context if user_context else ''}"
+        f"Texto del usuario: {user_context}"  
     )
 
 

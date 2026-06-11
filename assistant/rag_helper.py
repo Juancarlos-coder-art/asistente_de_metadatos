@@ -97,13 +97,6 @@ FIELD_INDEX = {
         "ejemplo": "info@ministeriodesanidad.es",
         "bloque": "punto_de_contacto"
     },
-    "access_url": {
-    "label": "URL de acceso a la distribución",
-    "obligatorio": True,
-    "descripcion": "URL donde se puede acceder o descargar el dataset.",
-    "ejemplo": "https://datos.gob.es/dataset/xyz",
-    "bloque": "distribucion"
-    },
     "purpose": {
         "label": "Finalidad",
         "obligatorio": False,
@@ -351,7 +344,7 @@ FIELD_INDEX["hdab.name"] = {
     "ejemplo": "Ministerio de Sanidad",
     "bloque": "organismo_acceso_datos_sanitarios"
 }
-FIELD_INDEX["hdab.contact"] = {
+FIELD_INDEX["hdab.contact_page"] = {
     "label": "Página de contacto (HDAB)",
     "obligatorio": True,
     "descripcion": "URL de la página de contacto del organismo.",
@@ -448,8 +441,7 @@ def get_block_missing(block: dict, state_data: dict) -> list:
         
         # Para campos con subcampos obligatorios, verifica subcampos específicos
         if field_name == "hdab" and isinstance(val, dict):
-            # name, contact y email son obligatorios según el YAML
-            for subfield in ["name", "contact", "email"]:
+            for subfield in ["name", "contact_page", "email"]:
                 if not val.get(subfield):
                     missing.append(f"hdab.{subfield}")
             continue
