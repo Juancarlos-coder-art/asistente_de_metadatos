@@ -192,17 +192,7 @@ def is_non_public(state_data: dict) -> bool:
 def build_contract(block: dict) -> dict:
     return {name: None for name in block["fields"]}
 
-
-def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context: str = "") -> str:
-    fields = ", ".join(block["fields"])
-    instrucciones = (
-        "Devuelve SOLO JSON válido. Las listas como arrays JSON. "
-        "REGLA MÁS IMPORTANTE: Si el usuario NO menciona explícitamente un campo, "
-        "devuelve null para ese campo. NUNCA deduzcas, infieras ni inventes valores. "
-        "Solo rellena un campo si el usuario ha proporcionado información DIRECTA sobre él. "
-        "Si hay duda, devuelve null. "
-
-        # ── access_rights ──
+FIELD_INSTRUCTIONS = { # ── access_rights ──
         "Para el campo 'access_rights', analiza la descripción y devuelve SOLO la URI:\n"
         "- Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
         "- Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
@@ -212,10 +202,9 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "  - NO PÚBLICO = no está disponible para nadie fuera de la organización propietaria\n"
 
         # ── Notes (Descripción) ──
-        "notes": (
-            "Para el campo 'notes', devuelve un string con la descripción completa del dataset. "
-            "Cópiala literalmente del texto del usuario si la proporciona. Máx 300 caracteres.\n"
-        ),
+        "notes: Para el campo 'notes', devuelve un string con la descripción completa del dataset. "
+        "Cópiala literalmente del texto del usuario si la proporciona. Máx 300 caracteres.\n"
+
 
         # ── health_category ──
         "Para el campo 'health_category', devuelve un ARRAY con las URIs correspondientes:\n"
@@ -467,21 +456,33 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         # ── version_notes ──
         "Para el campo 'version_notes', devuelve un string con las notas de versión. \n"
 
-        "No añadas claves extra ni texto fuera del JSON."
+        "No añadas claves extra ni texto fuera del JSON."}
+
+def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context: str = "") -> str:
+    fields = ", ".join(block["fields"])
+
+    # Instrucciones base (siempre presentes)
+    instrucciones = (
+        "Devuelve SOLO JSON válido. Las listas como arrays JSON. "
+        "REGLA MÁS IMPORTANTE: Si el usuario NO menciona explícitamente un campo, "
+        "devuelve null para ese campo. NUNCA deduzcas, infieras ni inventes valores. "
+        "Solo rellena un campo si el usuario ha proporcionado información DIRECTA sobre él. "
+        "Si hay duda, devuelve null.\n"
+    )
+
     # Solo añadir instrucciones de los campos de este bloque
     for field in block["fields"]:
         if field in FIELD_INSTRUCTIONS:
             instrucciones += FIELD_INSTRUCTIONS[field]
 
     instrucciones += "No añadas claves extra ni texto fuera del JSON."
-    )
+
     return (
-        f"Extrae los campos de metadatos del siguiente texto.\n"  
+        f"Extrae los campos de metadatos del siguiente texto.\n"
         f"Claves esperadas: [{fields}]\n"
         f"{instrucciones}\n"
-        f"Texto del usuario: {user_context}"  
+        f"Texto del usuario: {user_context}"
     )
-
 
 def apply_conditional_logic(state: MetadataState):
     """Si access_rights es NON_PUBLIC → asignar identifier predeterminado SIEMPRE."""
