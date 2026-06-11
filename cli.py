@@ -192,271 +192,589 @@ def is_non_public(state_data: dict) -> bool:
 def build_contract(block: dict) -> dict:
     return {name: None for name in block["fields"]}
 
-FIELD_INSTRUCTIONS = { # ── access_rights ──
+LANGUAGES = {
+    "alemán": "http://publications.europa.eu/resource/authority/language/DEU",
+    "bokmål": "http://publications.europa.eu/resource/authority/language/NOB",
+    "búlgaro": "http://publications.europa.eu/resource/authority/language/BUL",
+    "checo": "http://publications.europa.eu/resource/authority/language/CES",
+    "croata": "http://publications.europa.eu/resource/authority/language/HRV",
+    "danés": "http://publications.europa.eu/resource/authority/language/DAN",
+    "eslovaco": "http://publications.europa.eu/resource/authority/language/SLK",
+    "esloveno": "http://publications.europa.eu/resource/authority/language/SLV",
+    "español": "http://publications.europa.eu/resource/authority/language/SPA",
+    "estonio": "http://publications.europa.eu/resource/authority/language/EST",
+    "finés": "http://publications.europa.eu/resource/authority/language/FIN",
+    "francés": "http://publications.europa.eu/resource/authority/language/FRA",
+    "griego": "http://publications.europa.eu/resource/authority/language/ELL",
+    "húngaro": "http://publications.europa.eu/resource/authority/language/HUN",
+    "inglés": "http://publications.europa.eu/resource/authority/language/ENG",
+    "irlandés": "http://publications.europa.eu/resource/authority/language/GLE",
+    "islandés": "http://publications.europa.eu/resource/authority/language/ISL",
+    "italiano": "http://publications.europa.eu/resource/authority/language/ITA",
+    "letón": "http://publications.europa.eu/resource/authority/language/LAV",
+    "lituano": "http://publications.europa.eu/resource/authority/language/LIT",
+    "maltés": "http://publications.europa.eu/resource/authority/language/MLT",
+    "neerlandés": "http://publications.europa.eu/resource/authority/language/NLD",
+    "nynorsk": "http://publications.europa.eu/resource/authority/language/NNO",
+    "polaco": "http://publications.europa.eu/resource/authority/language/POL",
+    "portugués": "http://publications.europa.eu/resource/authority/language/POR",
+    "rumano": "http://publications.europa.eu/resource/authority/language/RON",
+    "sueco": "http://publications.europa.eu/resource/authority/language/SWE",
+}
+
+PERSONAL_DATA_TYPES = {
+    "edad": "https://w3id.org/dpv/pd#Age",
+    "rango de edad": "https://w3id.org/dpv/pd#AgeRange",
+    "datos biométricos": "https://w3id.org/dpv/pd#Biometric",
+    "tipo de sangre": "https://w3id.org/dpv/pd#BloodType",
+    "fecha de nacimiento": "https://w3id.org/dpv/pd#BirthDate",
+    "país de nacimiento": "https://w3id.org/dpv/pd#BirthCountry",
+    "discapacidad": "https://w3id.org/dpv/pd#Disability",
+    "adn": "https://w3id.org/dpv/pd#DNACode",
+    "origen étnico": "https://w3id.org/dpv/pd#Ethnicity",
+    "género": "https://w3id.org/dpv/pd#Gender",
+    "datos genéticos": "https://w3id.org/dpv/pd#Genetic",
+    "datos de salud": "https://w3id.org/dpv/pd#HealthData",
+    "historial de salud": "https://w3id.org/dpv/pd#HealthHistory",
+    "registro de salud": "https://w3id.org/dpv/pd#HealthRecord",
+    "altura": "https://w3id.org/dpv/pd#Height",
+    "vida sexual": "https://w3id.org/dpv/pd#LifeSexual",
+    "historial médico": "https://w3id.org/dpv/pd#MedicalHealth",
+    "salud mental": "https://w3id.org/dpv/pd#MentalHealth",
+    "salud física": "https://w3id.org/dpv/pd#PhysicalHealth",
+    "receta médica": "https://w3id.org/dpv/pd#Prescription",
+    "origen racial": "https://w3id.org/dpv/pd#Race",
+    "datos de salud sexual": "https://w3id.org/dpv/pd#SexualHistory",
+    "peso": "https://w3id.org/dpv/pd#Weight",
+}
+
+PUBLISHER_TYPES = {
+    "instituto de salud pública": "http://13.81.34.152:1101/resource/authority/publisher-type/public-health-institute",
+    "instituto/organización de investigación": "http://13.81.34.152:1101/resource/authority/publisher-type/research-institute-org",
+    "autoridad nacional": "http://13.81.34.152:1101/resource/authority/publisher-type/national-authority",
+    "autoridad regional": "http://13.81.34.152:1101/resource/authority/publisher-type/regional-authority",
+    "universidad": "http://13.81.34.152:1101/resource/authority/publisher-type/university",
+    "registro de salud pública": "http://13.81.34.152:1101/resource/authority/publisher-type/public-health-registry",
+    "organización de salud pública": "http://13.81.34.152:1101/resource/authority/publisher-type/public-health-org",
+    "agencia de estadísticas": "http://13.81.34.152:1101/resource/authority/publisher-type/stat-agency",
+    "biobanco": "http://13.81.34.152:1101/resource/authority/publisher-type/biobank",
+    "institución de hospitalización/hospital": "http://13.81.34.152:1101/resource/authority/publisher-type/inpatient-institute",
+    "laboratorio": "http://13.81.34.152:1101/resource/authority/publisher-type/laboratory",
+    "empresa privada": "http://13.81.34.152:1101/resource/authority/publisher-type/private-company",
+    "organizaciones gubernamentales y del sector público": "http://13.81.34.152:1101/resource/authority/publisher-type/gov-public-sector-org",
+    "proveedor de atención médica": "http://13.81.34.152:1101/resource/authority/publisher-type/healthcare-providers",
+    "compañía/organización de seguros de salud": "http://13.81.34.152:1101/resource/authority/publisher-type/health-insurance-company-org",
+    "empresas farmacéuticas": "http://13.81.34.152:1101/resource/authority/publisher-type/pharma-company",
+    "entidades del sector privado": "http://13.81.34.152:1101/resource/authority/publisher-type/private-sector-entities",
+    "fabricante de aplicaciones/tecnología de salud": "http://13.81.34.152:1101/resource/authority/publisher-type/health-technology-manufacturer",
+    "fabricante de software": "http://13.81.34.152:1101/resource/authority/publisher-type/software-manufacturer",
+    "farmacia": "http://13.81.34.152:1101/resource/authority/publisher-type/pharmacy",
+    "infraestructuras de investigación": "http://13.81.34.152:1101/resource/authority/publisher-type/research-infra",
+    "institución administrativa": "http://13.81.34.152:1101/resource/authority/publisher-type/administrative-institution",
+    "institución ambulatoria": "http://13.81.34.152:1101/resource/authority/publisher-type/outpatient-institute",
+    "instituto nacional del cáncer": "http://13.81.34.152:1101/resource/authority/publisher-type/national-cancer-institute",
+    "municipio u otra área": "http://13.81.34.152:1101/resource/authority/publisher-type/municipality-or-other-area",
+    "organizaciones de investigación y académicas": "http://13.81.34.152:1101/resource/authority/publisher-type/research-academic-org",
+    "organizaciones no gubernamentales": "http://13.81.34.152:1101/resource/authority/publisher-type/non-gov-org",
+    "organización de atención primaria": "http://13.81.34.152:1101/resource/authority/publisher-type/primary-care-org",
+    "organización de salud mental": "http://13.81.34.152:1101/resource/authority/publisher-type/mental-health-org",
+    "organización sin ánimo de lucro": "http://13.81.34.152:1101/resource/authority/publisher-type/not-for-profit-org",
+    "otra agencia gubernamental": "http://13.81.34.152:1101/resource/authority/publisher-type/other-government-agency",
+    "otro tipo de empresa que de alguna manera recopila datos de salud": "http://13.81.34.152:1101/resource/authority/publisher-type/other-company",
+    "otros institutos públicos que recogen datos de salud": "http://13.81.34.152:1101/resource/authority/publisher-type/other-public-institute",
+    "registro de calidad": "http://13.81.34.152:1101/resource/authority/publisher-type/quality-registry",
+    "registro de patología": "http://13.81.34.152:1101/resource/authority/publisher-type/pathology-registry",
+    "seguro de salud privado": "http://13.81.34.152:1101/resource/authority/publisher-type/private-health-insurance",
+}
+
+HEALTH_CATEGORIES = {
+    "registros electrónicos de salud": "http://13.81.34.152:1101/resource/authority/healthcategories/EHRS",
+    "datos administrativos relacionados con la salud, incluidos los datos de dispensación, reclamaciones y reembolsos": "http://13.81.34.152:1101/resource/authority/healthcategories/HRAD",
+    "datos de registros médicos y registros de mortalidad": "http://13.81.34.152:1101/resource/authority/healthcategories/MRMR",
+    "datos de patógenos que afectan a la salud humana": "http://13.81.34.152:1101/resource/authority/healthcategories/RPDG",
+    "datos de cohortes de investigación, cuestionarios y encuestas relacionados con la salud, tras la primera publicación de los resultados": "http://13.81.34.152:1101/resource/authority/healthcategories/RQSH",
+    "datos de ensayos clínicos, estudios clínicos e investigaciones clínicas sujetos respectivamente al reglamento (ue) 536/2014, al reglamento [soho], al reglamento (ue) 2017/745 y al reglamento (ue) 2017/746": "http://13.81.34.152:1101/resource/authority/healthcategories/EHCT",
+    "datos genéticos, epigenómicos y genómicos humanos": "http://13.81.34.152:1101/resource/authority/healthcategories/HGPD",
+    "datos de salud de biobancos y bases de datos asociadas": "http://13.81.34.152:1101/resource/authority/healthcategories/EINS",
+    "otros datos de salud de dispositivos médicos": "http://13.81.34.152:1101/resource/authority/healthcategories/EMRD",
+    "otros datos moleculares humanos como datos proteómicos, transcriptómicos, metabolómicos, lipidómicos y otros datos ómicos": "http://13.81.34.152:1101/resource/authority/healthcategories/HPML",
+    "datos de registros de productos medicinales y dispositivos médicos": "http://13.81.34.152:1101/resource/authority/healthcategories/RMMD",
+    "datos agregados sobre las necesidades de atención sanitaria, los recursos asignados a la atención sanitaria, la prestación y el acceso a la atención sanitaria, el gasto sanitario y la financiación": "http://13.81.34.152:1101/resource/authority/healthcategories/NRPE",
+    "registros de datos de salud basados en la población (registros de salud pública)": "http://13.81.34.152:1101/resource/authority/healthcategories/PHDR",
+    "datos de aplicaciones de bienestar": "http://13.81.34.152:1101/resource/authority/healthcategories/WELA",
+    "datos electrónicos de salud personales generados automáticamente a través de dispositivos médicos": "http://13.81.34.152:1101/resource/authority/healthcategories/PGEH",
+    "datos sobre el estado profesional, la especialización y la institución de los profesionales de la salud involucrados en el tratamiento de una persona física": "http://13.81.34.152:1101/resource/authority/healthcategories/IDHP",
+    "datos sobre factores que afectan a la salud, incluidos los determinantes socioeconómicos, ambientales y de comportamiento de la salud": "http://13.81.34.152:1101/resource/authority/healthcategories/DIOH",
+}
+
+THEMES = {
+    "agricultura, pesca, silvicultura y alimentación": "http://publications.europa.eu/resource/authority/data-theme/AGRI",
+    "economía y finanzas": "http://publications.europa.eu/resource/authority/data-theme/ECON",
+    "educación, cultura y deportes": "http://publications.europa.eu/resource/authority/data-theme/EDUC",
+    "energía": "http://publications.europa.eu/resource/authority/data-theme/ENER",
+    "medio ambiente": "http://publications.europa.eu/resource/authority/data-theme/ENVI",
+    "gobierno y sector público": "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+    "salud": "http://publications.europa.eu/resource/authority/data-theme/HEAL",
+    "asuntos internacionales": "http://publications.europa.eu/resource/authority/data-theme/INTR",
+    "justicia, sistema judicial y seguridad pública": "http://publications.europa.eu/resource/authority/data-theme/JUST",
+    "datos provisionales": "http://publications.europa.eu/resource/authority/data-theme/OP_DATPRO",
+    "regiones y ciudades": "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "población y sociedad": "http://publications.europa.eu/resource/authority/data-theme/SOCI",
+    "ciencia y tecnología": "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "transporte": "http://publications.europa.eu/resource/authority/data-theme/TRAN",
+}
+
+DATASET_TYPES = {
+    "componente básico": "http://publications.europa.eu/resource/authority/dataset-type/CORE_COMP",
+    "conjunto de datos de alto valor": "http://publications.europa.eu/resource/authority/dataset-type/HVD",
+    "correspondencia": "http://publications.europa.eu/resource/authority/dataset-type/MAPPING",
+    "cuadro atto – dominio eur-lex": "http://publications.europa.eu/resource/authority/dataset-type/ATTO_LEX",
+    "cuadro atto – dominio publicaciones": "http://publications.europa.eu/resource/authority/dataset-type/ATTO_PUB",
+    "datos de prueba": "http://publications.europa.eu/resource/authority/dataset-type/TEST_DATA",
+    "datos estadísticos": "http://publications.europa.eu/resource/authority/dataset-type/STATISTICAL",
+    "datos geoespaciales": "http://publications.europa.eu/resource/authority/dataset-type/GEOSPATIAL",
+    "datos provisionales": "http://publications.europa.eu/resource/authority/dataset-type/OP_DATPRO",
+    "datos sintéticos": "http://publications.europa.eu/resource/authority/dataset-type/SYNTHETIC_DATA",
+    "descripción de un paquete de intercambio de información": "http://publications.europa.eu/resource/authority/dataset-type/IEPD",
+    "descripción del servicio": "http://publications.europa.eu/resource/authority/dataset-type/DSCRP_SERV",
+    "directorio": "http://publications.europa.eu/resource/authority/dataset-type/DIRECTORY",
+    "esquema": "http://publications.europa.eu/resource/authority/dataset-type/SCHEMA",
+    "esquema de codificación sintáctica": "http://publications.europa.eu/resource/authority/dataset-type/SYNTAX_ECD_SCHEME",
+    "glosario": "http://publications.europa.eu/resource/authority/dataset-type/GLOSSARY",
+    "hojas de estilo": "http://publications.europa.eu/resource/authority/dataset-type/STYLES",
+    "lista autorizada de nombres": "http://publications.europa.eu/resource/authority/dataset-type/NAL",
+    "lista de códigos": "http://publications.europa.eu/resource/authority/dataset-type/CODE_LIST",
+    "modelo de dominio": "http://publications.europa.eu/resource/authority/dataset-type/DOMAIN_MODEL",
+    "ontología": "http://publications.europa.eu/resource/authority/dataset-type/ONTOLOGY",
+    "perfil de aplicación": "http://publications.europa.eu/resource/authority/dataset-type/APROF",
+    "publicación": "http://publications.europa.eu/resource/authority/dataset-type/RELEASE",
+    "taxonomía": "http://publications.europa.eu/resource/authority/dataset-type/TAXONOMY",
+    "tesauro": "http://publications.europa.eu/resource/authority/dataset-type/THESAURUS",
+}
+HEALTH_ACTIVITIES = {
+    "aplicación de sanidad electrónica": "http://13.81.34.152:1101/resource/authority/health-activity/EHEALTH_APPLICATION",
+    "aplicación no médica": "http://13.81.34.152:1101/resource/authority/health-activity/NONMEDICAL_APPLICATION",
+    "base de datos de historiales hospitalarios": "http://13.81.34.152:1101/resource/authority/health-activity/HOSPITAL_RECORDS",
+    "base de datos de investigación específica": "http://13.81.34.152:1101/resource/authority/health-activity/RESEARCH_DATABASE",
+    "biobanco/recogida de muestras": "http://13.81.34.152:1101/resource/authority/health-activity/BIOBANK_COLLECTION",
+    "cohorte": "http://13.81.34.152:1101/resource/authority/health-activity/COHORT",
+    "colecciones de muestras": "http://13.81.34.152:1101/resource/authority/health-activity/SAMPLE_COLLECTIONS",
+    "datos de observación": "http://13.81.34.152:1101/resource/authority/health-activity/OBSERVATIONAL_DATA",
+    "datos del censo": "http://13.81.34.152:1101/resource/authority/health-activity/CENSUS_DATA",
+    "encuesta de probabilidad": "http://13.81.34.152:1101/resource/authority/health-activity/PROBABILITY_SURVEY",
+    "encuesta de salud": "http://13.81.34.152:1101/resource/authority/health-activity/HEALTH_SURVEY",
+    "ensayo clínico": "http://13.81.34.152:1101/resource/authority/health-activity/CLINICAL_TRIAL",
+    "generado automáticamente": "http://13.81.34.152:1101/resource/authority/health-activity/AUTOMATIC_GENERATION",
+    "ingreso, atención y alta del paciente": "http://13.81.34.152:1101/resource/authority/health-activity/ADMISSION_DISCHARGE",
+    "mediciones": "http://13.81.34.152:1101/resource/authority/health-activity/MEASUREMENTS",
+    "modelos y simulaciones": "http://13.81.34.152:1101/resource/authority/health-activity/MODELS_SIMULATIONS",
+    "prescripción o dispensación de medicamentos": "http://13.81.34.152:1101/resource/authority/health-activity/PRESCRIBING_DISPENSING",
+    "procesos administrativos": "http://13.81.34.152:1101/resource/authority/health-activity/ADMINISTRATIVE_PROCESSES",
+    "prom (medidas de resultados comunicados por los pacientes)": "http://13.81.34.152:1101/resource/authority/health-activity/PATIENT_OUTCOMES",
+    "proyecto de investigación": "http://13.81.34.152:1101/resource/authority/health-activity/RESEARCH_PROJECT",
+    "pruebas de laboratorio": "http://13.81.34.152:1101/resource/authority/health-activity/LABORATORY_TESTS",
+    "reclamaciones, seguros y reembolsos": "http://13.81.34.152:1101/resource/authority/health-activity/INSURANCE_CLAIMS",
+    "registro de calidad": "http://13.81.34.152:1101/resource/authority/health-activity/QUALITY_REGISTRY",
+    "registro médico": "http://13.81.34.152:1101/resource/authority/health-activity/MEDICAL_REGISTRY",
+    "registros de rutina (no sanitarios)": "http://13.81.34.152:1101/resource/authority/health-activity/ROUTINE_RECORDS",
+    "registros nacionales de calidad médica": "http://13.81.34.152:1101/resource/authority/health-activity/QUALITY_REGISTRIES",
+    "registros nacionales de salud": "http://13.81.34.152:1101/resource/authority/health-activity/HEALTH_REGISTRIES",
+    "repositorio municipal de datos sanitarios": "http://13.81.34.152:1101/resource/authority/health-activity/MUNICIPAL_REPOSITORY",
+    "seguimiento geoespacial": "http://13.81.34.152:1101/resource/authority/health-activity/GEOSPATIAL_MONITORING",
+    "uso de productos sanitarios": "http://13.81.34.152:1101/resource/authority/health-activity/MEDICAL_DEVICES",
+    "vigilancia": "http://13.81.34.152:1101/resource/authority/health-activity/SURVEILLANCE",
+    "vigilancia de enfermedades infecciosas": "http://13.81.34.152:1101/resource/authority/health-activity/DISEASE_MONITORING",
+    "vigilancia de la salud pública": "http://13.81.34.152:1101/resource/authority/health-activity/HEALTH_SURVEILLANCE",
+    "visita sanitaria": "http://13.81.34.152:1101/resource/authority/health-activity/HEALTHCARE_VISIT",
+}
+
+HEALTH_THEMES = {
+    "clima y salud planetaria": "http://13.81.34.152:1101/resource/authority/health-theme/CLIMATE_HEALTH",
+    "cáncer": "http://13.81.34.152:1101/resource/authority/health-theme/CANCER_DISEASE",
+    "emergencias, catástrofes, viajes y entornos humanitarios": "http://13.81.34.152:1101/resource/authority/health-theme/EMERGENCY_SETTINGS",
+    "enfermedades cutáneas tropicales, parasitarias y fúngicas desatendidas": "http://13.81.34.152:1101/resource/authority/health-theme/TROPICAL_DISEASES",
+    "enfermedades infecciosas respiratorias": "http://13.81.34.152:1101/resource/authority/health-theme/RESPIRATORY_DISEASES",
+    "enfermedades no transmisibles: metabólicas y cardiopulmonares": "http://13.81.34.152:1101/resource/authority/health-theme/NONCOMMUNICABLE_DISEASES",
+    "enfermedades víricas de transmisión vectorial y zoonóticas": "http://13.81.34.152:1101/resource/authority/health-theme/VECTOR_DISEASES",
+    "infecciones de transmisión sanguínea y de transmisión sexual": "http://13.81.34.152:1101/resource/authority/health-theme/BLOOD_INFECTIONS",
+    "infecciones entéricas, transmitidas por el agua y los alimentos": "http://13.81.34.152:1101/resource/authority/health-theme/ENTERIC_INFECTIONS",
+    "inmunización y enfermedades prevenibles mediante vacunación": "http://13.81.34.152:1101/resource/authority/health-theme/IMMUNIZATION_DISEASES",
+    "lesiones, envenenamiento y ahogamiento": "http://13.81.34.152:1101/resource/authority/health-theme/INJURY_PREVENTION",
+    "nutrición y seguridad alimentaria": "http://13.81.34.152:1101/resource/authority/health-theme/NUTRITION_SECURITY",
+    "productos sanitarios, tecnologías, datos e investigación": "http://13.81.34.152:1101/resource/authority/health-theme/HEALTH_PRODUCTS",
+    "resistencia a los antimicrobianos y control de las infecciones": "http://13.81.34.152:1101/resource/authority/health-theme/ANTIMICROBIAL_CONTROL",
+    "salud a lo largo de la vida: materna, neonatal, infantil, adolescente y envejecimiento": "http://13.81.34.152:1101/resource/authority/health-theme/LIFECOURSE_HEALTH",
+    "salud ambiental, laboral y radiológica (incl. wash y urbana)": "http://13.81.34.152:1101/resource/authority/health-theme/ENVIRONMENTAL_HEALTH",
+    "salud bucal, ocular y sensorial": "http://13.81.34.152:1101/resource/authority/health-theme/SENSORY_HEALTH",
+    "salud y derechos sexuales y reproductivos": "http://13.81.34.152:1101/resource/authority/health-theme/REPRODUCTIVE_HEALTH",
+    "sistemas de salud, calidad, modelos de atención y determinantes": "http://13.81.34.152:1101/resource/authority/health-theme/HEALTH_SYSTEMS",
+    "uso de sustancias mentales, neurológicas y": "http://13.81.34.152:1101/resource/authority/health-theme/MENTAL_HEALTH",
+}
+
+FREQUENCIES = {
+    "anual": "http://publications.europa.eu/resource/authority/frequency/ANNUAL",
+    "bienal": "http://publications.europa.eu/resource/authority/frequency/BIENNIAL",
+    "bimensual": "http://publications.europa.eu/resource/authority/frequency/MONTHLY_2",
+    "bimestral": "http://publications.europa.eu/resource/authority/frequency/BIMONTHLY",
+    "bisemanal": "http://publications.europa.eu/resource/authority/frequency/WEEKLY_2",
+    "continuo": "http://publications.europa.eu/resource/authority/frequency/CONT",
+    "continuamente actualizado": "http://publications.europa.eu/resource/authority/frequency/UPDATE_CONT",
+    "cuatrimestral": "http://publications.europa.eu/resource/authority/frequency/ANNUAL_3",
+    "diario": "http://publications.europa.eu/resource/authority/frequency/DAILY",
+    "dos veces al día": "http://publications.europa.eu/resource/authority/frequency/DAILY_2",
+    "en función de las necesidades": "http://publications.europa.eu/resource/authority/frequency/AS_NEEDED",
+    "irregular": "http://publications.europa.eu/resource/authority/frequency/IRREG",
+    "mensual": "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
+    "no previsto": "http://publications.europa.eu/resource/authority/frequency/NOT_PLANNED",
+    "nunca": "http://publications.europa.eu/resource/authority/frequency/NEVER",
+    "otro": "http://publications.europa.eu/resource/authority/frequency/OTHER",
+    "quincenal": "http://publications.europa.eu/resource/authority/frequency/BIWEEKLY",
+    "semanal": "http://publications.europa.eu/resource/authority/frequency/WEEKLY",
+    "semestral": "http://publications.europa.eu/resource/authority/frequency/ANNUAL_2",
+    "trimestral": "http://publications.europa.eu/resource/authority/frequency/QUARTERLY",
+    "trienal": "http://publications.europa.eu/resource/authority/frequency/TRIENNIAL",
+    "desconocido": "http://publications.europa.eu/resource/authority/frequency/UNKNOWN",
+}
+
+ATTRIBUTION_ROLES = {
+    "autor": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#author",
+    "co autor": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#coAuthor",
+    "colaborador": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#collaborator",
+    "contribuyente": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#contributor",
+    "custodio": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#custodian",
+    "distribuidor": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#distributor",
+    "editor": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#publisher",
+    "financiador": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#funder",
+    "investigador principal": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#principalInvestigator",
+    "originador": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#originator",
+    "propietario": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#owner",
+    "punto de contacto": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#pointOfContact",
+    "titular de los derechos": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#rightsHolder",
+    "usuario": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#user",
+}
+
+# Solo países más relevantes para datasets sanitarios europeos
+SPATIAL_COUNTRIES = {
+    "españa": "http://publications.europa.eu/resource/authority/country/ESP",
+    "alemania": "http://publications.europa.eu/resource/authority/country/DEU",
+    "francia": "http://publications.europa.eu/resource/authority/country/FRA",
+    "italia": "http://publications.europa.eu/resource/authority/country/ITA",
+    "portugal": "http://publications.europa.eu/resource/authority/country/PRT",
+    "países bajos": "http://publications.europa.eu/resource/authority/country/NLD",
+    "bélgica": "http://publications.europa.eu/resource/authority/country/BEL",
+    "suecia": "http://publications.europa.eu/resource/authority/country/SWE",
+    "finlandia": "http://publications.europa.eu/resource/authority/country/FIN",
+    "dinamarca": "http://publications.europa.eu/resource/authority/country/DNK",
+    "noruega": "http://publications.europa.eu/resource/authority/country/NOR",
+    "austria": "http://publications.europa.eu/resource/authority/country/AUT",
+    "suiza": "http://publications.europa.eu/resource/authority/country/CHE",
+    "polonia": "http://publications.europa.eu/resource/authority/country/POL",
+    "irlanda": "http://publications.europa.eu/resource/authority/country/IRL",
+    "grecia": "http://publications.europa.eu/resource/authority/country/GRC",
+    "república checa": "http://publications.europa.eu/resource/authority/country/CZE",
+    "rumanía": "http://publications.europa.eu/resource/authority/country/ROU",
+    "hungría": "http://publications.europa.eu/resource/authority/country/HUN",
+    "unión europea": "http://publications.europa.eu/resource/authority/country/EUR",
+    "reino unido": "http://publications.europa.eu/resource/authority/country/GBR",
+    "estados unidos": "http://publications.europa.eu/resource/authority/country/USA",
+    "canada": "http://publications.europa.eu/resource/authority/country/CAN",
+}
+
+
+relevant_vocab = {
+    "languages": LANGUAGES,
+    "personal_data_types": PERSONAL_DATA_TYPES,
+
+    "publisher_types": PUBLISHER_TYPES,
+    "health_categories": HEALTH_CATEGORIES,
+    "themes": THEMES,
+    "dataset_types": DATASET_TYPES,
+
+    "health_activities": HEALTH_ACTIVITIES,
+    "health_themes": HEALTH_THEMES,
+    "frequencies": FREQUENCIES,
+    "attribution_roles": ATTRIBUTION_ROLES,
+
+    "spatial_countries": SPATIAL_COUNTRIES,
+}
+def build_vocabularies(relevant_vocab: dict) -> dict:
+    pub_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["publisher_types"].items())
+    health_cats_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["health_categories"].items())
+    themes_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["themes"].items())
+    dataset_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["dataset_types"].items())
+    languages_str = "\n".join(f"    {l} → {u}" for l, u in LANGUAGES.items())
+
+    personal_data_compact = " | ".join(uri.split("#")[-1] for uri in PERSONAL_DATA_TYPES.values())
+    health_activities_compact = " | ".join(uri.split("/")[-1] for uri in HEALTH_ACTIVITIES.values())
+    health_themes_compact = " | ".join(uri.split("/")[-1] for uri in HEALTH_THEMES.values())
+    frequencies_compact = " | ".join(uri.split("/")[-1] for uri in FREQUENCIES.values())
+    attribution_roles_compact = " | ".join(uri.split("#")[-1] for uri in ATTRIBUTION_ROLES.values())
+    spatial_compact = " | ".join(uri.split("/")[-1] for uri in SPATIAL_COUNTRIES.values())
+
+    return {
+        "pub_types_str": pub_types_str,
+        "health_cats_str": health_cats_str,
+        "themes_str": themes_str,
+        "dataset_types_str": dataset_types_str,
+        "languages_str": languages_str,
+        "personal_data_compact": personal_data_compact,
+        "health_activities_compact": health_activities_compact,
+        "health_themes_compact": health_themes_compact,
+        "frequencies_compact": frequencies_compact,
+        "attribution_roles_compact": attribution_roles_compact,
+        "spatial_compact": spatial_compact,
+    }
+vocabs = build_vocabularies(relevant_vocab)
+
+FIELD_INSTRUCTIONS = {
+
+    # ── access_rights ──
+    "access_rights": (
         "Para el campo 'access_rights', analiza la descripción y devuelve SOLO la URI:\n"
         "- Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
         "- Restringido → http://publications.europa.eu/resource/authority/access-right/RESTRICTED\n"
         "- No público → http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC\n"
-        "IMPORTANTE: La diferencia clave entre RESTRINGIDO y NO PÚBLICO es:\n"
-        "  - RESTRINGIDO = se puede acceder bajo ciertas condiciones o solicitud\n"
-        "  - NO PÚBLICO = no está disponible para nadie fuera de la organización propietaria\n"
+        "IMPORTANTE:\n"
+        "- RESTRINGIDO = acceso bajo condiciones\n"
+        "- NO PÚBLICO = no accesible externamente\n"
+    ),
 
-        # ── Notes (Descripción) ──
-        "notes: Para el campo 'notes', devuelve un string con la descripción completa del dataset. "
-        "Cópiala literalmente del texto del usuario si la proporciona. Máx 300 caracteres.\n"
+    # ── notes ──
+    "notes": (
+        "Para el campo 'notes', devuelve la descripción completa literal (máx 300 caracteres).\n"
+    ),
 
+    # ── health_category ──
+    "health_category": (
+        "Para el campo 'health_category', devuelve un ARRAY de URIs:\n"
+        f"{vocabs['health_cats_str']}\n"
+    ),
 
-        # ── health_category ──
-        "Para el campo 'health_category', devuelve un ARRAY con las URIs correspondientes:\n"
-        "- Registros Electrónicos de Salud → http://13.81.34.152:1101/resource/authority/healthcategories/EHRS\n"
-        "- Datos administrativos relacionados con la salud → http://13.81.34.152:1101/resource/authority/healthcategories/HRAD\n"
-        "- Datos de registros médicos y de mortalidad → http://13.81.34.152:1101/resource/authority/healthcategories/MRMR\n"
-        "- Datos de ensayos clínicos → http://13.81.34.152:1101/resource/authority/healthcategories/EHCT\n"
-        "- Datos genómicos → http://13.81.34.152:1101/resource/authority/healthcategories/HGPD\n"
-        "- Datos de registros de salud pública → http://13.81.34.152:1101/resource/authority/healthcategories/PHDR\n"
-        "- Datos de cohortes e investigación → http://13.81.34.152:1101/resource/authority/healthcategories/RQSH\n"
-        "- Datos de patógenos → http://13.81.34.152:1101/resource/authority/healthcategories/RPDG\n"
+    # ── theme ──
+    "theme": (
+        "Para el campo 'theme', devuelve un ARRAY de URIs:\n"
+        f"{vocabs['themes_str']}\n"
+    ),
 
-        # ── theme ──
-        "Para el campo 'theme', devuelve un ARRAY con las URIs del vocabulario europeo de temas:\n"
-        "- Salud → http://publications.europa.eu/resource/authority/data-theme/HEAL\n"
-        "- Ciencia y tecnología → http://publications.europa.eu/resource/authority/data-theme/TECH\n"
-        "- Población y sociedad → http://publications.europa.eu/resource/authority/data-theme/SOCI\n"
-        "- Gobierno y sector público → http://publications.europa.eu/resource/authority/data-theme/GOVE\n"
+    # ── dcat_type ──
+    "dcat_type": (
+        "Para el campo 'dcat_type', devuelve una URI:\n"
+        f"{vocabs['dataset_types_str']}\n"
+    ),
 
-        # ── dcat_type ──
-        "Para el campo 'dcat_type', devuelve la URI más adecuada:\n"
-        "- Datos estadísticos → http://publications.europa.eu/resource/authority/dataset-type/STATISTICAL\n"
-        "- Datos geoespaciales → http://publications.europa.eu/resource/authority/dataset-type/GEOSPATIAL\n"
-        "- Datos sintéticos → http://publications.europa.eu/resource/authority/dataset-type/SYNTHETIC_DATA\n"
-        "- Conjunto de datos de alto valor → http://publications.europa.eu/resource/authority/dataset-type/HVD\n"
+    # ── keyword ──
+    "keyword": (
+        "Para el campo 'keyword', devuelve un ARRAY de strings.\n"
+    ),
 
-        # ── keyword ──
-        "Para el campo 'keyword', devuelve un ARRAY de strings con las palabras clave del dataset.\n"
+    # ── provenance ──
+    "provenance": (
+        "Para el campo 'provenance', devuelve el origen de los datos.\n"
+    ),
 
-        # ── provenance ──
-        "Para el campo 'provenance', devuelve un string describiendo el origen de los datos.\n"
+    # ── contact ──
+    "contact": (
+        "Para el campo 'contact', devuelve objeto con: email, url\n"
+    ),
 
-        # ── contact ──
-        "Para el campo 'contact', devuelve un objeto con:\n"
-        "  email (string o null), url (URL o null)\n"
+    # ── hdab ──
+    "hdab": (
+        "Para el campo 'hdab', devuelve objeto con:\n"
+        "name, type (URI), email, telephone, contact_page\n"
+    ),
 
-        # ── hdab ──
-        "Para el campo 'hdab', devuelve un objeto con EXACTAMENTE estas claves:\n"
-        "  name (string), type (URI del tipo de organismo), email (string o null),\n"
-        "  telephone (string o null), contact_page (URL o null).\n"
-        "Para 'type', usa la URI más adecuada, por ejemplo:\n"
-        "- Instituto de investigación → http://13.81.34.152:1101/resource/authority/publisher-type/research-institute-org\n"
-        "- Universidad → http://13.81.34.152:1101/resource/authority/publisher-type/university\n"
-        "- Instituto de salud pública → http://13.81.34.152:1101/resource/authority/publisher-type/public-health-institute\n"
-        "- Autoridad nacional → http://13.81.34.152:1101/resource/authority/publisher-type/national-authority\n"
-        "No uses claves en español ni inventes URIs.\n"
+    # ── purpose ──
+    "purpose": (
+        "Para el campo 'purpose', devuelve ARRAY de strings.\n"
+    ),
 
-        # ── purpose ──
-        "Para el campo 'purpose', devuelve un ARRAY de strings con la finalidad del dataset.\n"
+    # ── language ──
+    "language": (
+        "Para el campo 'language', devuelve ARRAY de URIs:\n"
+        f"{vocabs['languages_str']}\n"
+    ),
 
-        # ── language ──
-        "Para el campo 'language', devuelve un ARRAY con SOLO las URIs de idiomas:\n"
-        "- Español → http://publications.europa.eu/resource/authority/language/SPA\n"
-        "- Inglés → http://publications.europa.eu/resource/authority/language/ENG\n"
-        "- Francés → http://publications.europa.eu/resource/authority/language/FRA\n"
-        "- Alemán → http://publications.europa.eu/resource/authority/language/DEU\n"
-        "- Portugués → http://publications.europa.eu/resource/authority/language/POR\n"
-        "- Italiano → http://publications.europa.eu/resource/authority/language/ITA\n"
-        "- Catalán → http://publications.europa.eu/resource/authority/language/CAT\n"
-        "- Gallego → http://publications.europa.eu/resource/authority/language/GLG\n"
-        "- Euskera → http://publications.europa.eu/resource/authority/language/EUS\n"
+    # ── population_coverage ──
+    "population_coverage": (
+        "Para el campo 'population_coverage', devuelve ARRAY de strings.\n"
+    ),
 
-        # ── population_coverage ──
-        "Para el campo 'population_coverage', devuelve un ARRAY de strings describiendo la cobertura poblacional.\n"
+    # ── numéricos ──
+    "number_of_unique_individuals": "Devuelve un entero o null.\n",
+    "number_of_records": "Devuelve un entero o null.\n",
+    "min_typical_age": "Devuelve un entero o null.\n",
+    "max_typical_age": "Devuelve un entero o null.\n",
 
-        # ── campos numéricos ──
-        "Para los campos 'number_of_unique_individuals', 'number_of_records', 'min_typical_age' y 'max_typical_age', "
-        "devuelve un número entero"
+    # ── personal_data ──
+    "personal_data": (
+        "Para el campo 'personal_data', devuelve ARRAY de códigos:\n"
+        f"{vocabs['personal_data_compact']}\n"
+    ),
 
-        # ── personal_data ──
-        "Para el campo 'personal_data', devuelve un ARRAY con SOLO las URIs DPV-PD correspondientes:\n"
-        "- Datos de salud → https://w3id.org/dpv/pd#HealthData\n"
-        "- Datos genéticos → https://w3id.org/dpv/pd#Genetic\n"
-        "- Datos biométricos → https://w3id.org/dpv/pd#Biometric\n"
-        "- Acento → https://w3id.org/dpv/pd#Accent\n"
-        "- Identificador de cuenta → https://w3id.org/dpv/pd#AccountIdentifier\n"
-        "Si el usuario no lo menciona, devuelve null.\n"
+    # ── legal_basis ──
+    "legal_basis": (
+        "Devuelve objeto: description, source.\n"
+    ),
 
-        # ── legal_basis ──
-        "Para el campo 'legal_basis', devuelve un objeto con 'description' (texto) y 'source' (texto). \n"
+    # ── retention_period ──
+    "retention_period": (
+        "Devuelve objeto: start, end.\n"
+    ),
 
-        # ── retention_period ──
-        "Para el campo 'retention_period', devuelve un objeto con 'start' (fecha YYYY-MM-DD o null) y 'end' (fecha YYYY-MM-DD o null). \n"
+    # ── coding_system ──
+    "coding_system": (
+        "Devuelve objeto: uri, label.\n"
+    ),
 
-        # ── coding_system ──
-        "Para el campo 'coding_system', devuelve un objeto con 'uri' (URI del sistema) y 'label' (nombre). Ej: ICD-10, SNOMED CT. \n"
+    # ── health_theme ──
+    "health_theme": (
+        "Devuelve ARRAY de códigos:\n"
+        f"{vocabs['health_themes_compact']}\n"
+    ),
 
-        # ── health_theme ──
-        "Para el campo 'health_theme', devuelve un ARRAY con las URIs de temas de salud. \n"
+    # ── code_values ──
+    "code_values": (
+        "Devuelve ARRAY de strings.\n"
+    ),
 
-        # ── code_values ──
-        "Para el campo 'code_values', devuelve un ARRAY de strings con los valores codificados. \n"
+    # ── publisher ──
+    "publisher": (
+        "Devuelve objeto con:\n"
+        "name, type, email, telephone, contact_page\n"
+    ),
 
-        # ── publisher ──
-        "Para el campo 'publisher', devuelve un objeto con EXACTAMENTE estas claves:\n"
-        "  name (string), type (URI del tipo de organismo), email (string o null),\n"
-        "  telephone (string o null), contact_page (URL o null),\n"
-        "  opening_hours_description (string o null), opening_hours_frequency (URI de frecuencia o null),\n"
-        "  special_opening_hours_description (string o null), special_opening_hours_frequency (URI de frecuencia o null).\n"
-        "Para 'type', usa la URI más adecuada, por ejemplo:\n"
-        "- Universidad → http://13.81.34.152:1101/resource/authority/publisher-type/university\n"
-        "- Autoridad nacional → http://13.81.34.152:1101/resource/authority/publisher-type/national-authority\n"
-        "- Autoridad regional → http://13.81.34.152:1101/resource/authority/publisher-type/regional-authority\n"
-        "- Agencia de estadísticas → http://13.81.34.152:1101/resource/authority/publisher-type/stat-agency\n"
-        "- Biobanco → http://13.81.34.152:1101/resource/authority/publisher-type/biobank\n"
-        "No uses claves en español ni inventes URIs.\n"
+    # ── creator ──
+    "creator": (
+        "Devuelve objeto con:\n"
+        "name, email, url, type\n"
+    ),
 
-        # ── publisher_note ──
-        "Para el campo 'publisher_note', devuelve un ARRAY de strings con las notas del editor. \n"
+    # ── qualified_attribution ──
+    "qualified_attribution": (
+        "Devuelve objeto con role:\n"
+        f"{vocabs['attribution_roles_compact']}\n"
+    ),
 
-        # ── creator ──
-        "Para el campo 'creator', devuelve un objeto con EXACTAMENTE estas claves:\n"
-        "  name (string), email (string o null), url (URL o null), type (URI del tipo de organismo).\n"
-        "Para 'type', usa las mismas URIs que para publisher, por ejemplo:\n"
-        "- Universidad → http://13.81.34.152:1101/resource/authority/publisher-type/university\n"
-        "- Autoridad nacional → http://13.81.34.152:1101/resource/authority/publisher-type/national-authority\n"
-        "No uses claves en español ni inventes URIs.\n"
+    # ── was_generated_by ──
+    "was_generated_by": (
+        "Devuelve ARRAY de códigos:\n"
+        f"{vocabs['health_activities_compact']}\n"
+    ),
 
-        # ── qualified_attribution ──
-        "Para el campo 'qualified_attribution', devuelve un objeto con EXACTAMENTE estas claves:\n"
-        "  qualified_attribution_agent_name (string), qualified_attribution_agent_type (URI del tipo),\n"
-        "  qualified_attribution_agent_contact_page (URL o null), qualified_attribution_agent_email (string o null),\n"
-        "  qualified_attribution_role (URI del rol ISO 19115).\n"
-        "Para 'qualified_attribution_agent_type', usa las mismas URIs de publisher-type.\n"
-        "Para 'qualified_attribution_role', usa URIs como:\n"
-        "- Autor → https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#author\n"
-        "- Custodio → https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#custodian\n"
-        "- Financiador → https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#funder\n"
-        "- Propietario → https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#owner\n"
-        "\n"
+    # ── spatial ──
+    "spatial": (
+        "Devuelve ARRAY de códigos:\n"
+        f"{vocabs['spatial_compact']}\n"
+    ),
 
-        # ── was_generated_by ──
-        "Para el campo 'was_generated_by', devuelve un ARRAY con las URIs de actividad sanitaria. Ejemplos:\n"
-        "- Ensayo clínico → http://13.81.34.152:1101/resource/authority/health-activity/CLINICAL_TRIAL\n"
-        "- Registros hospitalarios → http://13.81.34.152:1101/resource/authority/health-activity/HOSPITAL_RECORDS\n"
-        "- Encuesta de salud → http://13.81.34.152:1101/resource/authority/health-activity/HEALTH_SURVEY\n"
-        "- Proyecto de investigación → http://13.81.34.152:1101/resource/authority/health-activity/RESEARCH_PROJECT\n"
-        "\n"
+    # ── temporal_coverage ──
+    "temporal_coverage": (
+        "Devuelve objeto: start, end.\n"
+    ),
 
-        # ── spatial ──
-        "Para el campo 'spatial', devuelve un ARRAY con las URIs de país. Ejemplos:\n"
-        "- España → http://publications.europa.eu/resource/authority/country/ESP\n"
-        "- Francia → http://publications.europa.eu/resource/authority/country/FRA\n"
-        "- Alemania → http://publications.europa.eu/resource/authority/country/DEU\n"
-        "- Italia → http://publications.europa.eu/resource/authority/country/ITA\n"
-        "\n"
+    # ── temporal_resolution ──
+    "temporal_resolution": (
+        "Devuelve string (ej: P1D, PT1H).\n"
+    ),
 
-        # ── temporal_coverage ──
-        "Para el campo 'temporal_coverage', devuelve un objeto con 'start' (fecha YYYY-MM-DD o null) y 'end' (fecha YYYY-MM-DD o null). \n"
+    # ── spatial_resolution_in_meters ──
+    "spatial_resolution_in_meters": (
+        "Devuelve entero.\n"
+    ),
 
-        # ── temporal_resolution ──
-        "Para el campo 'temporal_resolution', devuelve un string con la resolución temporal (ej: 'P1D' para diaria, 'PT1H' para horaria, 'P1M' para mensual). \n"
+    # ── frequency ──
+    "frequency": (
+        "Devuelve código:\n"
+        f"{vocabs['frequencies_compact']}\n"
+    ),
 
-        # ── spatial_resolution_in_meters ──
-        "Para el campo 'spatial_resolution_in_meters', devuelve un string con la resolución espacial en metros. \n"
+    # ── issued ──
+    "issued": "Devuelve fecha YYYY-MM-DD.\n",
 
-        # ── frequency ──
-        "Para el campo 'frequency', devuelve la URI de frecuencia. Ejemplos:\n"
-        "- Diario → http://publications.europa.eu/resource/authority/frequency/DAILY\n"
-        "- Semanal → http://publications.europa.eu/resource/authority/frequency/WEEKLY\n"
-        "- Mensual → http://publications.europa.eu/resource/authority/frequency/MONTHLY\n"
-        "- Anual → http://publications.europa.eu/resource/authority/frequency/ANNUAL\n"
-        "- Trimestral → http://publications.europa.eu/resource/authority/frequency/QUARTERLY\n"
-        "\n"
+    # ── modified ──
+    "modified": "Devuelve fecha YYYY-MM-DD.\n",
 
-        # ── issued ──
-        "Para el campo 'issued', devuelve la fecha de publicación en formato YYYY-MM-DD. \n"
+    # ── alternate_identifier ──
+    "alternate_identifier": (
+        "Devuelve ARRAY de strings.\n"
+    ),
 
-        # ── modified ──
-        "Para el campo 'modified', devuelve la fecha de última modificación en formato YYYY-MM-DD. \n"
+    # ── conforms_to ──
+    "conforms_to": (
+        "Devuelve objeto: uri, label.\n"
+    ),
 
-        # ── alternate_identifier ──
-        "Para el campo 'alternate_identifier', devuelve un ARRAY de strings con identificadores alternativos (DOI, URN, etc.). \n"
+    # ── related_resource ──
+    "related_resource": (
+        "Devuelve objeto: uri, label.\n"
+    ),
 
-        # ── conforms_to ──
-        "Para el campo 'conforms_to', devuelve un objeto con 'uri' (URI del estándar) y 'label' (nombre). \n"
+    # ── is_referenced_by ──
+    "is_referenced_by": (
+        "Devuelve ARRAY de strings.\n"
+    ),
 
-        # ── related_resource ──
-        "Para el campo 'related_resource', devuelve un objeto con 'uri' (URI del recurso) y 'label' (nombre). \n"
+    # ── url ──
+    "url": "Devuelve URL.\n",
 
-        # ── is_referenced_by ──
-        "Para el campo 'is_referenced_by', devuelve un ARRAY de strings con URIs de recursos que referencian al dataset. \n"
+    # ── access_url ──
+    "access_url": "Devuelve URL.\n",
 
-        # ── url (landing page) ──
-        "Para el campo 'url', devuelve la URL de la página de entrada del dataset. \n"
-        
-        # ── access_url ──
-        "Para el campo 'access_url', devuelve la URL de acceso a la distribución del dataset. \n"
-        
-        # ── description (distribución) ──
-        "Para el campo 'description', devuelve un string con la descripción del recurso de distribución. \n"
-        
-        
-        
-        # ── license ──
-        "Para el campo 'license', devuelve la URL o nombre de la licencia. Ejemplos:\n"
-        "- CC BY 4.0 → https://creativecommons.org/licenses/by/4.0/\n"
-        "- CC BY-NC 4.0 → https://creativecommons.org/licenses/by-nc/4.0/\n"
-        "- CC0 → https://creativecommons.org/publicdomain/zero/1.0/\n"
-        "- Open Data Commons ODbL → https://opendatacommons.org/licenses/odbl/\n"
-        "Si el usuario menciona el nombre sin URI, devuelve el nombre como string. \n"
-        
-        # ── retention_period (distribución) ──
-        "Para el campo 'retention_period', devuelve un objeto con 'start' (fecha YYYY-MM-DD o null) y 'end' (fecha YYYY-MM-DD o null). \n"
-        
-        # ── format ──
-        "Para el campo 'format', devuelve el formato del fichero como string. Ejemplos: 'CSV', 'JSON', 'XML', 'XLSX', 'Parquet', 'RDF', 'GeoJSON'. \n"
-        # ── mimetype ──
-        "Para el campo 'mimetype', devuelve el tipo MIME del fichero. Ejemplos: 'text/csv', 'application/json', 'application/xml', 'application/vnd.ms-excel'. \n"
-        
-        # ── compress_format ──
-        "Para el campo 'compress_format', devuelve el formato de compresión como string. Ejemplos: 'zip', 'gzip', 'bzip2', '7z'. \n"
-        
-        # ── package_format ──
-        "Para el campo 'package_format', devuelve el formato de empaquetado como string. Ejemplos: 'zip', 'tar', 'tar.gz'. \n"
-        
-        # ── size ──
-        "Para el campo 'size', devuelve el tamaño del fichero en bytes como número entero. \n"
-        
-        # ── hash ──
-        "Para el campo 'hash', devuelve el valor del hash de integridad del fichero como string. \n"
-        
-        # ── hash_algorithm ──
-        "Para el campo 'hash_algorithm', devuelve el algoritmo hash como string. Ejemplos: 'MD5', 'SHA-256', 'SHA-512'. \n"
-        
-        # ── rights ──
-        "Para el campo 'rights', devuelve un string con los derechos de uso del recurso. \n"
-        
-        # ── availability ──
-        "Para el campo 'availability', devuelve un string describiendo la disponibilidad del recurso. \n"
-        
-        # ── status ──
-        "Para el campo 'status', devuelve la URI del estado del recurso:\n"
-        "- Completado → http://purl.org/adms/status/Completed\n"
-        "- En desarrollo → http://purl.org/adms/status/UnderDevelopment\n"
-        "- Obsoleto → http://purl.org/adms/status/Deprecated\n"
-        "- Retirado → http://purl.org/adms/status/Withdrawn\n"
-        "\n"
+    # ── license ──
+    "license": (
+        "Devuelve nombre o URL de licencia.\n"
+    ),
 
-        # ── documentation ──
-        "Para el campo 'documentation', devuelve un objeto con 'uri' (URI) y 'label' (nombre). \n"
+    # ── format ──
+    "format": "Devuelve formato (CSV, JSON, etc).\n",
 
-        # ── version ──
-        "Para el campo 'version', devuelve un string con la versión (ej: '1.0', '2.3.1'). \n"
+    # ── mimetype ──
+    "mimetype": "Devuelve MIME type.\n",
 
-        # ── has_version ──
-        "Para el campo 'has_version', devuelve un ARRAY de strings con versiones disponibles. \n"
+    # ── compress_format ──
+    "compress_format": "Devuelve formato compresión.\n",
 
-        # ── version_notes ──
-        "Para el campo 'version_notes', devuelve un string con las notas de versión. \n"
+    # ── package_format ──
+    "package_format": "Devuelve formato empaquetado.\n",
 
-        "No añadas claves extra ni texto fuera del JSON."}
+    # ── size ──
+    "size": "Devuelve tamaño en bytes.\n",
+
+    # ── hash ──
+    "hash": "Devuelve hash.\n",
+
+    # ── hash_algorithm ──
+    "hash_algorithm": "Devuelve algoritmo hash.\n",
+
+    # ── rights ──
+    "rights": "Devuelve descripción.\n",
+
+    # ── availability ──
+    "availability": "Devuelve descripción.\n",
+
+    # ── status ──
+    "status": (
+        "Devuelve URI:\n"
+        "- Completed\n"
+        "- UnderDevelopment\n"
+        "- Deprecated\n"
+        "- Withdrawn\n"
+    ),
+
+    # ── documentation ──
+    "documentation": (
+        "Devuelve objeto: uri, label.\n"
+    ),
+
+    # ── version ──
+    "version": "Devuelve string versión.\n",
+
+    # ── has_version ──
+    "has_version": "Devuelve ARRAY strings.\n",
+
+    # ── version_notes ──
+    "version_notes": "Devuelve string.\n",
+}
 
 def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context: str = "") -> str:
     fields = ", ".join(block["fields"])
