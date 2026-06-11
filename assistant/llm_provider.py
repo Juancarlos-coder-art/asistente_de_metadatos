@@ -1,6 +1,47 @@
 import os
 import json
 import re
+from datetime import datetime
+from google.cloud import bigquery
+
+
+BQ_TABLE = os.getenv("BQ_USAGE_TABLE")
+
+def log_usage(provider, model, usage):
+    if not BQ_TABLE:
+        return
+    
+    try:
+        client = bigquery.Client()
+
+        prompt_tokens = getattr(usage, "prompt_tokens", 0)
+        completion_tokens = getattr(usage, "completion_tokens", 0)
+        total_tokens = getattr(usage, "total_tokens", 0)
+
+        # 💰 precios (puedes cambiarlos luego)
+        PRICE_INPUT = float(os.getenv("GROQ_INPUT_PRICE_PER_M", "0.59"))
+        PRICE_OUTPUT = float(os.getenv("GROQ_OUTPUT_PRICE_PER_M", "0.79"))
+
+        cost = (
+            (prompt_tokens / 1_000_000) * PRICE_INPUT +
+            (completion_tokens / 1_000_000) * PRICE_OUTPUT
+        )
+
+        row = {
+            "ts": datetime.utcnow().isoformat(),
+            "provider": provider,
+            "model": model,
+            "prompt_tokens": prompt_tokens,
+            "completion_tokens": completion_tokens,
+            "total_tokens": total_tokens,
+            "estimated_cost_usd": cost,
+        }
+
+        client.insert_rows_json(BQ_TABLE, [row])
+
+    except Exception as e:
+        print("Error logging usage:", e)
+
 
 # =====================================================
 # Helpers para configuración (runtime, no import-time!)
@@ -64,6 +105,13 @@ def groq_llm(prompt: str) -> dict:
         temperature=0.4,
         max_tokens=4096,
     )
+
+    log_usage(
+        provider="groq",
+        model="llama-3.3-70b-versatile",
+        usage=response.usage
+    )
+
 
     raw = response.choices[0].message.content
     return extract_json_from_text(raw)

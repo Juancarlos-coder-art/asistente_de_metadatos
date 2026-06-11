@@ -1523,3 +1523,5 @@ if os.path.exists("frontend/dist") and os.path.exists("frontend/dist/assets"):
     @app.get("/{full_path:path}")
     def serve_react(full_path: str):
         return FileResponse("frontend/dist/index.html")
+    
+    

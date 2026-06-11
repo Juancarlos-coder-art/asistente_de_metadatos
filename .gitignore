@@ -5,6 +5,7 @@ env/
 # secretos
 .env
 env
+.venv
 # python
 __pycache__/
 *.pyc
