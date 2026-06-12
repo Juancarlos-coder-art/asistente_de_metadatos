@@ -538,12 +538,27 @@ FIELD_INSTRUCTIONS = {
         "- RESTRINGIDO = acceso bajo condiciones\n"
         "- NO PÚBLICO = no accesible externamente\n"
     ),
-
+    # ── Título ──
+    "title": (
+        "Para el campo 'title', devuelve el título del dataset como string.\n"
+    ),
+    # ── Identificador ──
+    "identifier": (
+        "Para el campo 'identifier', devuelve el DOI o identificador único del dataset.\n"
+    ),
+    # ── Notas del editor ──
+    "publisher_note": (
+        "Para el campo 'publisher_note', devuelve ARRAY de strings con notas del editor.\n"
+    ),
+    # ── Organismo de calidad ──
+    "quality_annotation": (
+        "Para el campo 'quality_annotation', devuelve objeto con: "
+        "body (URI), target (URI o string), motivated_by (URI o string).\n"
+    ),
     # ── notes ──
     "notes": (
         "Para el campo 'notes', devuelve la descripción completa literal (máx 300 caracteres).\n"
     ),
-
     # ── health_category ──
     "health_category": (
         "Para el campo 'health_category', devuelve un ARRAY de URIs:\n"
