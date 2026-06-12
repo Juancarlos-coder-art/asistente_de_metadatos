@@ -33,6 +33,53 @@ BQ_DATASET = "analytics"
 BQ_TABLE = "llm_usage"               
 
 bq_client = bigquery.Client(project=BQ_PROJECT)
+LIMITE_TOKENS_SESION = 10_000
+LIMITE_TOKENS_DIA = 100_000
+
+def check_token_limits(sid: str):
+    """
+    Comprueba los límites de tokens por sesión y por día.
+    Lanza HTTPException 429 si se supera alguno.
+    """
+    try:
+        table = os.getenv("BQ_USAGE_TABLE", f"{BQ_PROJECT}.{BQ_DATASET}.{BQ_TABLE}")
+
+        # Tokens consumidos por esta sesión hoy
+        query_sesion = f"""
+            SELECT COALESCE(SUM(total_tokens), 0) as tokens
+            FROM `{table}`
+            WHERE session_id = '{sid}'
+            AND DATE(ts) = CURRENT_DATE()
+        """
+        resultado_sesion = list(bq_client.query(query_sesion).result())
+        tokens_sesion = resultado_sesion[0].tokens if resultado_sesion else 0
+
+        if tokens_sesion >= LIMITE_TOKENS_SESION:
+            raise HTTPException(
+                status_code=429,
+                detail=f"Has superado el límite de {LIMITE_TOKENS_SESION:,} tokens por sesión. Inténtalo mañana."
+            )
+
+        # Tokens consumidos en total hoy (todas las sesiones)
+        query_dia = f"""
+            SELECT COALESCE(SUM(total_tokens), 0) as tokens
+            FROM `{table}`
+            WHERE DATE(ts) = CURRENT_DATE()
+        """
+        resultado_dia = list(bq_client.query(query_dia).result())
+        tokens_dia = resultado_dia[0].tokens if resultado_dia else 0
+
+        if tokens_dia >= LIMITE_TOKENS_DIA:
+            raise HTTPException(
+                status_code=429,
+                detail=f"El servicio ha alcanzado el límite diario de {LIMITE_TOKENS_DIA:,} tokens. Disponible mañana."
+            )
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        # Si BigQuery falla, no bloqueamos al usuario
+        print(f"[WARN] No se pudo comprobar límites de tokens: {e}")
 
 # ── yoda_extractor: hacer importable el paquete (carpeta en raíz del repo) ──
 _YODA_DIR = Path(__file__).resolve().parent / "yoda_extractor"
@@ -880,8 +927,12 @@ def complete_block(block_id: int, body: CompleteBlockRequest, response: Response
         raise HTTPException(status_code=404, detail="Bloque no encontrado")
     if not llm_available():
         raise HTTPException(status_code=503, detail="LLM no disponible.")
+    check_token_limits(sid)
     if not body.user_context.strip():
         raise HTTPException(status_code=400, detail="El texto no puede estar vacío.")
+
+    check_token_limits(sid)  
+
     block = BLOCKS[block_id]
     try:
         prompt = build_prompt_for_block(_schema, block, body.user_context)
@@ -912,6 +963,7 @@ def save_manual(body: ManualSaveRequest, response: Response, session_id: str = C
     missing_fields = [f for f in block["fields"] if not state.data.get(f)]
     ai_partial = {}
     if missing_fields and llm_available():
+        check_token_limits(sid)
         try:
             user_context = f"Datos actuales:\n{json.dumps(state.data, ensure_ascii=False)}\nNuevos datos:\n{json.dumps(to_merge, ensure_ascii=False)}\nCompleta SOLO los campos faltantes."
             prompt = build_prompt_for_block(_schema, block, user_context)
