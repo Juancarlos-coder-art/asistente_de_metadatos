@@ -9,7 +9,7 @@ from google.cloud import bigquery
 # Logging usage en BigQuery
 # =====================================================
 
-def log_usage(provider, model, usage, endpoint=None):
+def log_usage(provider, model, usage, endpoint=None, session_id=None, extra_json=None):
     table = os.getenv("BQ_USAGE_TABLE")
 
     if not table:
@@ -39,11 +39,12 @@ def log_usage(provider, model, usage, endpoint=None):
             "completion_tokens": completion_tokens,
             "total_tokens": total_tokens,
             "estimated_cost_usd": cost,
-            "endpoint": endpoint
+            "endpoint": endpoint,
+            "session_id": session_id,
+            "extra_json": extra_json
         }
 
         print("✅ insertando en:", table)
-
         errors = client.insert_rows_json(table, [row])
 
         if errors:
