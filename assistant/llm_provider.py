@@ -23,8 +23,8 @@ def log_usage(provider, model, usage, endpoint=None):
         completion_tokens = getattr(usage, "completion_tokens", 0)
         total_tokens = getattr(usage, "total_tokens", 0)
 
-        PRICE_INPUT = float(os.getenv("GROQ_INPUT_PRICE_PER_M", "0.59"))
-        PRICE_OUTPUT = float(os.getenv("GROQ_OUTPUT_PRICE_PER_M", "0.79"))
+        PRICE_INPUT = float(os.getenv("GROQ_INPUT_PRICE_PER_M", "0.35"))
+        PRICE_OUTPUT = float(os.getenv("GROQ_OUTPUT_PRICE_PER_M", "0.62"))
 
         cost = (
             (prompt_tokens / 1_000_000) * PRICE_INPUT +
