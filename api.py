@@ -28,7 +28,7 @@ from rdflib import Graph, URIRef, Literal, Namespace, RDF, XSD
 from fastapi.responses import Response as FastAPIResponse
 from google.cloud import bigquery
 
-BQ_PROJECT = "peaceful-oath-462814-j5"
+BQ_PROJECT = "peaceful-oath-492814-j5"
 BQ_DATASET = "analytics"  
 BQ_TABLE = "llm_usage"               
 
