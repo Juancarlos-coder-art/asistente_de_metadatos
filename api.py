@@ -26,6 +26,13 @@ from assistant.rag_helper import get_block_missing, get_missing_descriptions, FI
 from cli import BLOCKS, build_prompt_for_block, build_contract
 from rdflib import Graph, URIRef, Literal, Namespace, RDF, XSD
 from fastapi.responses import Response as FastAPIResponse
+from google.cloud import bigquery
+
+BQ_PROJECT = "peaceful-oath-462814-j5"
+BQ_DATASET = "analytics"  
+BQ_TABLE = "llm_usage"               
+
+bq_client = bigquery.Client(project=BQ_PROJECT)
 
 # ── yoda_extractor: hacer importable el paquete (carpeta en raíz del repo) ──
 _YODA_DIR = Path(__file__).resolve().parent / "yoda_extractor"
@@ -984,7 +991,6 @@ def finalize(response: Response, session_id: str = Cookie(default=None)):
             {"uri": "http://data.europa.eu/eli/reg/2016/679/oj", "label": "GDPR"}
         ]
 
-    # Campos de distribución que viven en el estado raíz
     DIST_FIELDS = [
         "access_url", "download_url", "name", "description",
         "format", "mimetype", "compress_format", "package_format",
@@ -992,7 +998,6 @@ def finalize(response: Response, session_id: str = Cookie(default=None)):
         "status", "license", "retention_period",
     ]
 
-    # Construir el objeto distribución con todo lo que haya
     dist_data = {}
     for f in DIST_FIELDS:
         val = state.data.pop(f, None)
@@ -1008,6 +1013,22 @@ def finalize(response: Response, session_id: str = Cookie(default=None)):
     filename = f"metadata_output_{sid[:8]}.json"
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(state.data, f, indent=2, ensure_ascii=False)
+
+    # ── Envío a BigQuery ──
+    try:
+        table_ref = f"{BQ_PROJECT}.{BQ_DATASET}.{BQ_TABLE}"
+        row = {
+            "session_id": sid,
+            "extra_json": json.dumps(state.data, ensure_ascii=False)
+        }
+        errors = bq_client.insert_rows_json(table_ref, [row])
+        if errors:
+            print(f"[WARN] BigQuery insert errors: {errors}")
+        else:
+            print(f"[INFO] BigQuery: fila insertada para sesión {sid[:8]}")
+    except Exception as e:
+        print(f"[WARN] Error al escribir en BigQuery: {e}")
+
     return {"success": True, "metadata": state.data, "file": filename}
 
 @app.get("/export-rdf")
