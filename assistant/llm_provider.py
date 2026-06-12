@@ -5,6 +5,7 @@ from datetime import datetime
 from google.cloud import bigquery
 
 
+
 # =====================================================
 # Logging usage en BigQuery
 # =====================================================
@@ -96,7 +97,7 @@ def get_gemini_client():
 # LLM implementations
 # =====================================================
 
-def groq_llm(prompt: str, endpoint=None) -> dict:
+def groq_llm(prompt: str, endpoint=None, session_id=None, extra_json=None) -> dict:
     client = get_groq_client()
     if not client:
         raise RuntimeError("GROQ_API_KEY no definida")
@@ -137,31 +138,37 @@ def groq_llm(prompt: str, endpoint=None) -> dict:
                 self.completion_tokens = ct
                 self.total_tokens = pt + ct
 
+
         fake_usage = FakeUsage(prompt_tokens, completion_tokens)
 
         log_usage(
             provider="groq",
             model=model,
             usage=fake_usage,
-            endpoint=endpoint
+            endpoint=endpoint,
+            session_id=session_id,
+            extra_json=extra_json
         )
+
 
     else:
         print("✅ usage detectado")
         print("🔥 tokens:", usage.prompt_tokens, usage.completion_tokens)
 
         log_usage(
-            provider="groq",
-            model=model,
-            usage=usage,
-            endpoint=endpoint
-        )
+                    provider="groq",
+                    model=model,
+                    usage=usage,
+                    endpoint=endpoint,
+                    session_id=session_id,
+                    extra_json=extra_json
+                )
 
     raw = response.choices[0].message.content
     return extract_json_from_text(raw)
 
 
-def openai_llm(prompt: str, endpoint=None) -> dict:
+def openai_llm(prompt: str, endpoint=None, session_id=None, extra_json=None) -> dict:
     client = get_openai_client()
     if not client:
         raise RuntimeError("OPENAI_API_KEY no definida")
@@ -185,7 +192,8 @@ def openai_llm(prompt: str, endpoint=None) -> dict:
     return extract_json_from_text(raw)
 
 
-def gemini_llm(prompt: str, endpoint=None) -> dict:
+
+def gemini_llm(prompt: str, endpoint=None, session_id=None, extra_json=None) -> dict:
     client = get_gemini_client()
     if not client:
         raise RuntimeError("GEMINI_API_KEY no definida")
@@ -260,23 +268,22 @@ def mock_llm(prompt: str, contract: dict, user_input: str) -> dict:
 # Public API
 # =====================================================
 
-def call_llm(prompt: str, contract: dict, user_input: str, endpoint=None) -> dict:
+def call_llm(prompt: str, contract: dict, user_input: str, endpoint=None, session_id=None, extra_json=None) -> dict:
     if get_use_openai():
         client = get_openai_client()
         if client:
-            return openai_llm(prompt, endpoint=endpoint)
+            return openai_llm(prompt, endpoint=endpoint, session_id=session_id, extra_json=extra_json)
 
     if get_use_gemini():
         client = get_gemini_client()
         if client:
-            return gemini_llm(prompt, endpoint=endpoint)
+            return gemini_llm(prompt, endpoint=endpoint, session_id=session_id, extra_json=extra_json)
 
     client = get_groq_client()
     if client:
-        return groq_llm(prompt, endpoint=endpoint)
+        return groq_llm(prompt, endpoint=endpoint, session_id=session_id, extra_json=extra_json)
 
     return mock_llm(prompt, contract, user_input)
-
 
 def llm_available() -> bool:
     return bool(
