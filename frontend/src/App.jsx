@@ -26,7 +26,7 @@ export default function App() {
   const [documentResults, setDocumentResults] = useState(null);
   const [skipNextMetadataFetch, setSkipNextMetadataFetch] = useState(false);
   const [exportingRdf, setExportingRdf] = useState(false);
-  const [navigateTaget, setNavigateTarget] = useState(null);
+  const [navigateTarget, setNavigateTarget] = useState(null);
 
   useEffect(() => {
     getBlocks().then(res => setBlocks(res.data)).catch(() => {});
