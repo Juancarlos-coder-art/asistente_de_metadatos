@@ -976,7 +976,7 @@ def save_manual(body: ManualSaveRequest, response: Response, session_id: str = C
                 session_id=sid,
                 extra_json={"block_id": body.block_id}
             )
-            ai_partial = {k: v for k, v in ai_result.items() if v not in (None, "", [])}
+            ai_partial = {k: v for k, v in ai_result.items() if k in missing_fields and v not in (None, "", [])}
             state.merge_partial(ai_partial)
         except Exception as e:
             print(f"[WARN] LLM error: {e}")
