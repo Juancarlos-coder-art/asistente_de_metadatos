@@ -629,7 +629,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
                       </div>
                     ))}
                     {blockErrors.map((e, i) => (
-                      <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e}</div>
+                      <div key={i} className="alert alert--error" style={{ marginTop: "4px" }}>{e.replace(/^[(OBLIG|OPT)]\s*/,"").replace(/^[[^]]+]\s*/,"")}</div>
                     ))}
                   </>
                 )}
