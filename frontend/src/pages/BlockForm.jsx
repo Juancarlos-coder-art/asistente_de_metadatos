@@ -241,7 +241,8 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
   const [missingInfo, setMissingInfo] = useState([]);
   const [schemaInfo, setSchemaInfo] = useState({});
   const [schemaLoaded, setSchemaLoaded] = useState(false);
-
+  const [pendingNavTarget, setPendingNavTarget] = useState(null);
+  
   const block = blocks[currentIdx];
 
   useEffect(() => {
