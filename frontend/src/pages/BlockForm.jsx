@@ -227,7 +227,7 @@ function SubfieldGroup({ field, label, subfields, values, onChange }) {
   );
 }
 
-export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone, initialMetadata, onMetadataChange }) {
+export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish, onBlockDone, initialMetadata, onMetadataChange, navigateTarget, onNavigateComplete }) {
   const [tab, setTab] = useState("ia");
   const [userContext, setUserContext] = useState("");
   const [manualFields, setManualFields] = useState({});
@@ -276,8 +276,32 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
     setError(null);
     setShowModal(false);
     setBlockMissingInfo(null);
+    setPendingNavTarget(null);
     loadMetadata();
   }, [currentIdx]);
+
+  useEffect(() => {
+    if (navigateTarget === null || navigateTarget === currentIdx) return;
+    const validateAndNavigate = async () => {
+      const res = await getMissingFields(currentIdx);
+      const metaRes = await getMetadata();
+      const currentMeta = metaRes.data;
+      const nonPublic = isNonPublic(currentMeta);
+      const obligatoryMissing = res.data.descriptions.filter(item =>
+        item.obligatorio && !(nonPublic && item.field === "identifier")
+      );
+      if (obligatoryMissing.length > 0) {
+        setPendingNavTarget(navigateTarget);
+        setMissingInfo(obligatoryMissing);
+        const schemaRes = await getSchemaInfo();
+        setSchemaInfo(schemaRes.data);
+        setTimeout(() => setShowModal(true), 50);
+      } else {
+        onNavigateComplete(navigateTarget);
+      }
+    };
+    validateAndNavigate();
+  }, [navigateTarget]);
 
   const loadMetadata = async () => {
     try {
@@ -361,7 +385,13 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
         setMissingInfo(stillMissing);
       } else {
         setShowModal(false);
-        onNext();
+        if (pendingNavTarget !== null) {
+          const target = pendingNavTarget;
+          setPendingNavTarget(null);
+          onNavigateComplete(target);
+        } else {
+          onNext();
+        }
       }
     } catch (e) {
       setError(e.response?.data?.detail || "Error al guardar desde el modal");
@@ -533,7 +563,7 @@ export default function BlockForm({ blocks, currentIdx, onNext, onPrev, onFinish
         <MissingFieldsModal
           missingInfo={missingInfo}
           schemaInfo={schemaInfo}
-          onClose={() => setShowModal(false)}
+          onClose={() => { setShowModal(false); setPendingNavTarget(null); if (onNavigateComplete && navigateTarget !== null) onNavigateComplete(currentIdx); }}
           onSaveAndContinue={handleModalSave}
         />
       )}

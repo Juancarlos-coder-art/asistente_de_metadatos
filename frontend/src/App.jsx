@@ -26,6 +26,7 @@ export default function App() {
   const [documentResults, setDocumentResults] = useState(null);
   const [skipNextMetadataFetch, setSkipNextMetadataFetch] = useState(false);
   const [exportingRdf, setExportingRdf] = useState(false);
+  const [navigateTaget, setNavigateTarget] = useState(null);
 
   useEffect(() => {
     getBlocks().then(res => setBlocks(res.data)).catch(() => {});
@@ -234,7 +235,7 @@ export default function App() {
         metadata={metadata}
         progress={progress}
         missingDetails={missingDetails}
-        onNavigate={(i) => setCurrentIdx(i)}
+        onNavigate={(i) => setNavigateTarget(i)}
         onSaveProgress={handleSaveProgress}
         onReset={handleReset}
       />
@@ -255,6 +256,8 @@ export default function App() {
             onFinish={handleFinish}
             onBlockDone={handleBlockDone}
             initialMetadata={metadata}
+            navigateTarget={navigateTarget}
+            onNavigateComplete={(i) => {setCurrentIdx(i); setNavigateTarget(null);}}
           />
         )}
       </main>
