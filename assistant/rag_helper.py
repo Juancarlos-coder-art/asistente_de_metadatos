@@ -432,20 +432,26 @@ def get_missing_descriptions(missing_fields: list, use_llm: bool = False, call_l
         if f != "applicable_legislation"
     ]
 
-def get_block_missing(block: dict, state_data: dict) -> list:
+def get_block_missing(block: dict, state_data: dict, restrictions: dict = None) -> list:
     missing = []
     for field_name in block.get("fields", []):
         if field_name == "applicable_legislation":
             continue
         val = state_data.get(field_name)
         
-        # Para campos con subcampos obligatorios, verifica subcampos específicos
-        if field_name == "hdab" and isinstance(val, dict):
-            for subfield in ["name", "contact_page", "email"]:
-                if not val.get(subfield):
-                    missing.append(f"hdab.{subfield}")
-            continue
-            
+        # Para campos con subcampos obligatorios, verificar cada uno de ellos
+        if isinstance(val, dict) and restrictions and field_name in restrictions:
+            rule = restrictions[field_name]
+            if rule.get("type") == "list_object" and rule.get("subfield_required"):
+                has_missing = False
+                for sf, req in rule["subfield_required"].items():
+                    if req and not val.get(sf):
+                        missing.append(f"{field_name}.{sf}") 
+                        has_missing = True
+                        break
+                if has_missing:
+                    continue  # Saltar al siguiente campo principal
+                           
         if val in (None, "", [], {}):
             missing.append(field_name)
     return missing

@@ -958,7 +958,17 @@ def save_manual(body: ManualSaveRequest, response: Response, session_id: str = C
     if body.block_id < 0 or body.block_id >= len(BLOCKS):
         raise HTTPException(status_code=404, detail="Bloque no encontrado")
     block = BLOCKS[body.block_id]
-    to_merge = {k: v for k, v in body.partial.items() if v not in (None, "", [])}
+    #convertir claves con punto (ej: hdab.contact_page) en objetos anidados
+    raw_partial = {k: v for k, v in body.partial.items() if v not in (None, "", [])}
+    to_merge = {}
+    for k, v in raw_partial.items():
+        if "." in k:
+            parent, child = k.split(".", 1)
+            to_merge.setdefault(parent, {})
+            if isinstance(to_merge[parent], dict):
+                to_merge[parent][child] = v
+        else:
+            to_merge[k] = v
     state.merge_partial(to_merge)
     missing_fields = [f for f in block["fields"] if not state.data.get(f)]
     ai_partial = {}
@@ -1029,7 +1039,7 @@ def get_missing_fields(block_id: int, response: Response, session_id: str = Cook
     if block_id < 0 or block_id >= len(BLOCKS):
         raise HTTPException(status_code=404, detail="Bloque no encontrado")
     block = BLOCKS[block_id]
-    missing = get_block_missing(block, state.data)
+    missing = get_block_missing(block, state.data, restrictions=state.restrictions)
     ar = state.data.get("access_rights", "")
     non_public = "NON_PUBLIC" in str(ar).upper()
     descriptions = get_missing_descriptions(missing, use_llm=False, is_non_public=non_public)

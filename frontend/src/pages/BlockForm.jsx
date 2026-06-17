@@ -76,14 +76,35 @@ const NON_PUBLIC_URI = "NON_PUBLIC";
 function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInfo }) {
   const [fields, setFields] = useState({});
 
+  // Agrupar subcampos "PARENT.CHILD" para renderizarlos juntos
+  const grouped = {};
+  const simpleFields = [];
+  for (const item of missingInfo) {
+    if (item.field.includes(".")) {
+      const parent = item.field.split(".")[0];
+      if (!grouped[parent]) {
+        grouped[parent] = [];
+      }
+      grouped[parent].push(item);
+    } else {
+      simpleFields.push(item);
+    }
+  }
+  const groupedMissingInfo = [...simpleFields, ...Object.entries(grouped).map(([parent, children]) => ({
+    field: parent,
+    label: FIELD_LABELS_ES[parent] ?? parent,
+    descripcion: "Completa los subcampos requeridos.",
+    subfields: children,
+  }))];
+
   const handleChange = (fieldName, value) => {
     setFields(prev => ({ ...prev, [fieldName]: value }));
   };
 
-  const handleHdabChange = (subfield, value) => {
+  const handleSubfieldChange = (parent, subfield, value) => {
     setFields(prev => ({
       ...prev,
-      hdab: { ...(prev.hdab || {}), [subfield]: value }
+      [parent]: { ...(prev[parent] || {}), [subfield]: value }
     }));
   };
 
@@ -108,7 +129,7 @@ function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInf
         </div>
         <p style={modalStyles.subtitle}>Corrige los siguientes campos antes de continuar.</p>
         <div style={modalStyles.fieldList}>
-          {missingInfo.map((item, i) => {
+          {groupedMissingInfo.map((item,i) => {
             const fieldName = item.field;
             const label = FIELD_LABELS_ES[fieldName] ?? item.label ?? fieldName;
             const fieldSchema = schemaInfo[fieldName] || {};
@@ -128,15 +149,45 @@ function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInf
                         <option key={ch.value} value={ch.value}>{ch.label}</option>
                       ))}
                     </select>
-                  ) : fieldName === "hdab" && fieldSchema.subfields ? (
+                  ) : item._subfields ? (
+                    // Subcampos específicos faltantes (parent.child)
+                    <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                      {item._subfields.map(sf => {
+                        const sfName = sf.field.split(".").slice(1).join(".");
+                        const sfSchema = fieldSchema.subfields?.find(s => s.field_name === sfName);
+                        const sfLabel = sfSchema?.label || sf.label || sfName;
+                        return (
+                          <div key={sfName}>
+                            <label style={modalStyles.subLabel}>{sfSchema?.required ? "* " : ""}{sfLabel}</label>
+                            {sfSchema?.choices ? (
+                              <select style={modalStyles.input}
+                                value={(fields[fieldName] || {})[sfName] || ""}
+                                onChange={e => handleSubfieldChange(fieldName, sfName, e.target.value)}>
+                                <option value="">— Selecciona —</option>
+                                {sfSchema.choices.map(ch => (
+                                  <option key={ch.value} value={ch.value}>{ch.label}</option>
+                                ))}
+                              </select>
+                            ) : (
+                              <input style={modalStyles.input} type="text"
+                                placeholder={`Introduce ${sfLabel}...`}
+                                value={(fields[fieldName] || {})[sfName] || ""}
+                                onChange={e => handleSubfieldChange(fieldName, sfName, e.target.value)} />
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (fieldSchema.subfields && !item._subfields) ? (
+                    // Campo objeto completo faltante: mostrar todos los subcampos
                     <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                       {fieldSchema.subfields.map(sf => (
                         <div key={sf.field_name}>
                           <label style={modalStyles.subLabel}>{sf.required ? "* " : ""}{sf.label}</label>
                           {sf.choices ? (
                             <select style={modalStyles.input}
-                              value={(fields.hdab || {})[sf.field_name] || ""}
-                              onChange={e => handleHdabChange(sf.field_name, e.target.value)}>
+                              value={(fields[fieldName] || {})[sf.field_name] || ""}
+                              onChange={e => handleSubfieldChange(fieldName, sf.field_name, e.target.value)}>
                               <option value="">— Selecciona —</option>
                               {sf.choices.map(ch => (
                                 <option key={ch.value} value={ch.value}>{ch.label}</option>
@@ -145,8 +196,8 @@ function MissingFieldsModal({ missingInfo, onClose, onSaveAndContinue, schemaInf
                           ) : (
                             <input style={modalStyles.input} type="text"
                               placeholder={`Introduce ${sf.label}...`}
-                              value={(fields.hdab || {})[sf.field_name] || ""}
-                              onChange={e => handleHdabChange(sf.field_name, e.target.value)} />
+                              value={(fields[fieldName] || {})[sf.field_name] || ""}
+                              onChange={e => handleSubfieldChange(fieldName, sf.field_name, e.target.value)} />
                           )}
                         </div>
                       ))}

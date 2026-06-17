@@ -30,8 +30,11 @@ class MetadataState:
 
             # Si llega un valor válido, lo guardamos
             if value is not None:
-                self.data[key] = value
-
+                # para campos objetos (hdab, publisher, etc.) fusionamos los subcampos
+                if isinstance(value, dict) and isinstance(self.data.get(key), dict):
+                    self.data[key] = {**self.data[key], **value}
+                else:
+                    self.data[key] = value
             # Si no llega valor y el campo no existe, lo creamos vacío
             elif key not in self.data:
                 self.data[key] = None
