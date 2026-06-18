@@ -3,7 +3,7 @@ api.py — Backend FastAPI para el Asistente HealthDCAT-AP
 """
 from dotenv import load_dotenv
 load_dotenv()
-
+from datetime import datetime, timezone
 import json
 import uuid
 import os
@@ -1080,7 +1080,9 @@ def finalize(response: Response, session_id: str = Cookie(default=None)):
     try:
         table_ref = f"{BQ_PROJECT}.{BQ_DATASET}.{BQ_TABLE}"
         row = {
+            "ts": datetime.now(timezone.utc).isoformat(),
             "session_id": sid,
+            "endpoint": "/finalize",
             "extra_json": json.dumps(state.data, ensure_ascii=False)
         }
         errors = bq_client.insert_rows_json(table_ref, [row])
@@ -1090,6 +1092,7 @@ def finalize(response: Response, session_id: str = Cookie(default=None)):
             print(f"[INFO] BigQuery: fila insertada para sesión {sid[:8]}")
     except Exception as e:
         print(f"[WARN] Error al escribir en BigQuery: {e}")
+    # ── FIN DEL BLOQUE ──
 
     return {"success": True, "metadata": state.data, "file": filename}
 
