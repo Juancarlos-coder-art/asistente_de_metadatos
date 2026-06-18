@@ -119,7 +119,7 @@ def groq_llm(prompt: str, endpoint=None, session_id=None, extra_json=None) -> di
             },
             {"role": "user", "content": prompt}
         ],
-        temperature=0.4,
+        temperature=0.2,
         max_tokens=4096,
     )
 

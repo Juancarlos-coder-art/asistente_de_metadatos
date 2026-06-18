@@ -600,7 +600,7 @@ FIELD_INSTRUCTIONS = {
 
     # ── purpose ──
     "purpose": (
-        "Para el campo 'purpose', devuelve ARRAY de strings.\n"
+        "Para el campo 'purpose', devuelve texto libre.\n"
     ),
 
     # ── language ──
