@@ -595,7 +595,7 @@ FIELD_INSTRUCTIONS = {
     # ── hdab ──
     "hdab": (
         "Para el campo 'hdab', devuelve objeto con:\n"
-        "name, type (URI), email, telephone, contact_page\n"
+        "name, type (URI), email, telephone, contact\n" 
     ),
 
     # ── purpose ──

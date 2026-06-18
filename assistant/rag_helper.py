@@ -337,11 +337,11 @@ FIELD_INDEX = {
     },
 }
 
-FIELD_INDEX["hdab.name"] = {
-    "label": "Nombre del organismo (HDAB)",
+FIELD_INDEX["hdab.contact"] = {
+    "label": "Página de contacto (HDAB)",
     "obligatorio": True,
-    "descripcion": "Nombre del organismo que gestiona el acceso a los datos.",
-    "ejemplo": "Ministerio de Sanidad",
+    "descripcion": "URL de la página de contacto del organismo.",
+    "ejemplo": "https://www.sanidad.gob.es/contacto",
     "bloque": "organismo_acceso_datos_sanitarios"
 }
 FIELD_INDEX["hdab.contact_page"] = {
