@@ -438,8 +438,9 @@ function formatDisplayValue(key, value) {
 // ── Editor inline para cada campo ─────────────────────────────────────────
 function InlineEditor({ fieldKey, value, schemaInfo, onSave, onCancel }) {
   const [draft, setDraft] = useState(() => {
-    if (typeof value === "object" && value !== null) return { ...value };
-    return value ?? "";
+      if (Array.isArray(value)) return [...value];
+      if (typeof value === "object" && value !== null) return { ...value };
+      return value ?? "";
   });
 
   const update = (k, v) => setDraft(prev =>
@@ -461,7 +462,7 @@ function InlineEditor({ fieldKey, value, schemaInfo, onSave, onCancel }) {
 
   // Campos de texto simple
   const SIMPLE_TEXT = [
-    "title", "notes", "identifier", "name", "provenance", "keyword",
+    "title", "notes", "identifier", "name", "provenance",
     "purpose", "population_coverage", "number_of_unique_individuals",
     "number_of_records", "min_typical_age", "max_typical_age",
     "publisher_note", "temporal_resolution", "spatial_resolution_in_meters",
@@ -723,6 +724,51 @@ function InlineEditor({ fieldKey, value, schemaInfo, onSave, onCancel }) {
             {roleChoices.map(ch => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
           </select>
         </>
+      );
+    }
+
+// Campos multi-valor con vocabulario controlado (checkboxes)
+    const MULTI_VOCAB_FIELDS = [
+      "health_category", "theme", "language", "personal_data",
+      "was_generated_by", "health_theme", "spatial",
+    ];
+    if (MULTI_VOCAB_FIELDS.includes(fieldKey)) {
+      const arr = Array.isArray(draft) ? draft : [];
+      const choices = schemaInfo?.[fieldKey]?.choices || [];
+      const toggle = (val) => {
+        setDraft(prev => {
+          const current = Array.isArray(prev) ? prev : [];
+          return current.includes(val)
+            ? current.filter(v => v !== val)
+            : [...current, val];
+        });
+      };
+      return (
+        <div style={{ maxHeight: "180px", overflowY: "auto", border: "1px solid #d0d0d0", padding: "6px" }}>
+          {choices.map(ch => (
+            <label key={ch.value} style={{ display: "block", fontSize: "0.8rem", padding: "2px 0" }}>
+              <input
+                type="checkbox"
+                checked={arr.includes(ch.value)}
+                onChange={() => toggle(ch.value)}
+                style={{ marginRight: "6px" }}
+              />
+              {ch.label}
+            </label>
+          ))}
+        </div>
+      );
+    }
+
+    // keyword: lista libre de strings separados por comas
+    if (fieldKey === "keyword") {
+      const arr = Array.isArray(draft) ? draft : [];
+      return (
+        <input style={inputStyle}
+          value={arr.join(", ")}
+          onChange={e => setDraft(e.target.value.split(",").map(s => s.trim()).filter(Boolean))}
+          onKeyDown={e => { if (e.key === "Enter") onSave(draft); if (e.key === "Escape") onCancel(); }}
+          autoFocus />
       );
     }
 
