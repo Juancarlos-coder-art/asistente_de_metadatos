@@ -257,29 +257,43 @@ function formatDisplayValue(key, value) {
   if (key === "access_rights" && typeof value === "string")
     return ACCESS_RIGHTS_LABELS[value.split("/").pop()] || value.split("/").pop();
 
-  if (key === "health_category" && Array.isArray(value))
-    return value.map(u => HEALTH_CATEGORY_LABELS[u.split("/").pop()] || u.split("/").pop()).join(", ");
+  if (key === "health_category") {
+      const arr = Array.isArray(value) ? value : [value];
+      return arr.map(u => HEALTH_CATEGORY_LABELS[u.split("/").pop()] || u.split("/").pop()).join(", ");
+  }
 
-  if (key === "theme" && Array.isArray(value))
-    return value.map(u => THEME_LABELS[u.split("/").pop()] || u.split("/").pop()).join(", ");
+  if (key === "theme") {
+      const arr = Array.isArray(value) ? value : [value];
+      return arr.map(u => THEME_LABELS[u.split("/").pop()] || u.split("/").pop()).join(", ");
+  }
 
   if (key === "dcat_type" && typeof value === "string")
     return DCAT_TYPE_LABELS[value.split("/").pop()] || value.split("/").pop();
 
-  if (key === "language" && Array.isArray(value))
-    return value.map(u => LANGUAGE_LABELS[u.split("/").pop()] || u.split("/").pop()).join(", ");
+  if (key === "language") {
+      const arr = Array.isArray(value) ? value : [value];
+      return arr.map(u => LANGUAGE_LABELS[u.split("/").pop()] || u.split("/").pop()).join(", ");
+  }
 
-  if (key === "personal_data" && Array.isArray(value))
-    return value.map(u => PERSONAL_DATA_LABELS[u.split("#").pop()] || u.split("#").pop().replace(/([a-z])([A-Z])/g, "$1 $2")).join(", ");
+  if (key === "personal_data") {
+      const arr = Array.isArray(value) ? value : [value];
+      return arr.map(u => PERSONAL_DATA_LABELS[u.split("#").pop()] || u.split("#").pop().replace(/([a-z])([A-Z])/g, "$1 $2")).join(", ");
+  }
 
-  if (key === "was_generated_by" && Array.isArray(value))
-    return value.map(u => HEALTH_ACTIVITY_LABELS[u.split("/").pop()] || u.split("/").pop()).join(", ");
+  if (key === "was_generated_by") {
+      const arr = Array.isArray(value) ? value : [value];
+      return arr.map(u => HEALTH_ACTIVITY_LABELS[u.split("/").pop()] || u.split("/").pop()).join(", ");
+  }
 
-  if (key === "health_theme" && Array.isArray(value))
-    return value.map(u => HEALTH_THEME_LABELS[u.split("/").pop()] || u.split("/").pop()).join(", ");
+  if (key === "health_theme") {
+      const arr = Array.isArray(value) ? value : [value];
+      return arr.map(u => HEALTH_THEME_LABELS[u.split("/").pop()] || u.split("/").pop()).join(", ");
+  }
 
-  if (key === "spatial" && Array.isArray(value))
-    return value.map(u => COUNTRY_LABELS[u.split("/").pop()] || u.split("/").pop()).join(", ");
+  if (key === "spatial") {
+      const arr = Array.isArray(value) ? value : [value];
+      return arr.map(u => COUNTRY_LABELS[u.split("/").pop()] || u.split("/").pop()).join(", ");
+  }
 
   if (key === "frequency" && typeof value === "string")
     return FREQUENCY_LABELS[value.split("/").pop()] || value.split("/").pop();
