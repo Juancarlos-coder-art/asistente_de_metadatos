@@ -32,6 +32,7 @@ def log_usage(provider, model, usage, endpoint=None, session_id=None, extra_json
             (completion_tokens / 1_000_000) * PRICE_OUTPUT
         )
 
+
         row = {
             "ts": datetime.utcnow().isoformat(),
             "provider": provider,
@@ -42,7 +43,7 @@ def log_usage(provider, model, usage, endpoint=None, session_id=None, extra_json
             "estimated_cost_usd": cost,
             "endpoint": endpoint,
             "session_id": session_id,
-            "extra_json": extra_json
+            "extra_json": json.dumps(extra_json, ensure_ascii=False) if extra_json is not None else None
         }
 
         print("✅ insertando en:", table)
