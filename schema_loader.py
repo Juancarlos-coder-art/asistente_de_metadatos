@@ -12,16 +12,12 @@ class HealthDCATAPSchema:
         self.dataset_fields = self.schema.get("dataset_fields", [])
         self.resource_fields = self.schema.get("resource_fields", [])
 
-    # ------------------------------
     # CARGA DEL ESQUEMA
-    # ------------------------------
     def _load_schema(self, path):
         with open(path, "r", encoding="utf-8") as f:
             return yaml.safe_load(f)
 
-    # ------------------------------
     # OBTENER LISTAS DE CAMPOS
-    # ------------------------------
     def list_dataset_fields(self):
         """
         Devuelve una lista simplificada y legible con la información
@@ -55,9 +51,7 @@ class HealthDCATAPSchema:
             })
         return fields
 
-    # ------------------------------
     # GENERAR PREGUNTA PARA EL ASISTENTE
-    # ------------------------------
     def build_question(self, field):
         """
         A partir de un campo del esquema, generar texto de pregunta conversacional.
@@ -76,18 +70,14 @@ class HealthDCATAPSchema:
 
         return pregunta
 
-    # ------------------------------
     # GET DETALLE DEL CAMPO
-    # ------------------------------
     def get_field(self, field_name):
         for f in self.dataset_fields:
             if f.get("field_name") == field_name:
                 return f
         return None
 
-    # ------------------------------
     # CREAR PLANTILLA VACÍA DE METADATOS
-    # ------------------------------
     def empty_metadata_template(self):
         """
         Crea una estructura vacía lista para rellenar con valores del usuario.
@@ -95,13 +85,8 @@ class HealthDCATAPSchema:
         return { f["field_name"]: None for f in self.dataset_fields }
     
 
-    # ------------------------------
-    # EXTRAER RESTRICCIONES DEL ESQUEMA
-    # -----------------------------
 
-    # ------------------------------
     # EXTRAER RESTRICCIONES DEL ESQUEMA
-    # ------------------------------
     def extract_restrictions(self):
         import yaml
         restrictions = {}
@@ -128,9 +113,7 @@ class HealthDCATAPSchema:
                 "type": "text"
             }
 
-            # ============================
             # 1. REGLAS BASADAS EN EL YAML
-            # ============================
             yaml_field = yaml_by_name.get(fname)
 
             if yaml_field:
@@ -167,10 +150,7 @@ class HealthDCATAPSchema:
                 if "regex" in yaml_field:
                     rule["regex"] = yaml_field["regex"]
 
-            # ============================
             # 2. REGLAS DEL JSON
-            # ============================
-
             preset = field.get("preset")
             if preset == "dataset_slug":
                 rule["type"] = "slug"
@@ -211,11 +191,11 @@ class HealthDCATAPSchema:
 
             restrictions[fname] = rule
         
-        # ── Alias: mapear clave interna "hdab" a la clave del YAML ──
+        #  Alias: mapear clave interna "hdab" a la clave del YAML 
         if "Organismo de acceso a datos de salud" in restrictions:
             restrictions["hdab"] = restrictions["Organismo de acceso a datos de salud"]
 
-        # ── Campo de resource_fields que no se procesa arriba ──
+        #  Campo de resource_fields que no se procesa arriba 
         restrictions["access_url"] = {"required": False, "type": "url"}
 
         return restrictions

@@ -1,4 +1,3 @@
-# assistant/rag_helper.py
 """
 RAG ligero basado en el documento Word guia_campos_ends.docx.
 Indexa los campos en memoria y genera descripciones cortas

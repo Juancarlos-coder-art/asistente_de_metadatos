@@ -67,7 +67,7 @@ const FIELD_INFO = {
   version_notes: { label: "Notas de versión", tooltip: "Descripción de los cambios introducidos en esta versión respecto a la anterior." },
 };
 
-// ── Vocabularios de etiquetas ──────────────────────────────────────────────
+//  Vocabularios de etiquetas 
 const HEALTH_CATEGORY_LABELS = {
   "EHRS": "Registros Electrónicos de Salud",
   "HRAD": "Datos administrativos relacionados con la salud",
@@ -250,7 +250,7 @@ const ACCESS_RIGHTS_LABELS = {
   OP_DATPRO: "Datos provisionales",
 };
 
-// ── Formato solo para mostrar (no edición) ────────────────────────────────
+// ── Formato solo para mostrar (no edición) 
 function formatDisplayValue(key, value) {
   if (value === null || value === undefined || value === "") return null;
 
@@ -449,7 +449,7 @@ function formatDisplayValue(key, value) {
   return String(value);
 }
 
-// ── Editor inline para cada campo ─────────────────────────────────────────
+//  Editor inline para cada campo 
 function InlineEditor({ fieldKey, value, schemaInfo, onSave, onCancel }) {
   const [draft, setDraft] = useState(() => {
       if (Array.isArray(value)) return [...value];
@@ -811,7 +811,7 @@ function InlineEditor({ fieldKey, value, schemaInfo, onSave, onCancel }) {
   );
 }
 
-// ── Fila editable ──────────────────────────────────────────────────────────
+//  Fila editable 
 function EditableFieldRow({ fieldKey, value, label, tooltip, schemaInfo, onSave }) {
   const [editing, setEditing] = useState(false);
   const [tooltipPos, setTooltipPos] = useState(null);
@@ -890,7 +890,7 @@ function EditableFieldRow({ fieldKey, value, label, tooltip, schemaInfo, onSave 
   );
 }
 
-// ── Componente principal ───────────────────────────────────────────────────
+//  Componente principal 
 export default function MetadataPreview({ metadata, schemaInfo = {}, onFieldSave }) {
   const entries = Object.entries(metadata).filter(
     ([, v]) => v !== null && v !== "" && !(Array.isArray(v) && v.length === 0)

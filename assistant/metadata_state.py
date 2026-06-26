@@ -1,5 +1,3 @@
-# metadata_state.py
-
 import json
 import re
 from schema_loader import HealthDCATAPSchema
@@ -22,9 +20,7 @@ class MetadataState:
         # Estado final del dataset
         self.data = {}
 
-    # -------------------------------------------------------------
     # FUSIÓN DE DATOS PARCIALES. Se unen bloques
-    # -------------------------------------------------------------
     def merge_partial(self, partial):
         for key, value in partial.items():
 
@@ -38,9 +34,7 @@ class MetadataState:
             # Si no llega valor y el campo no existe, lo creamos vacío
             elif key not in self.data:
                 self.data[key] = None
-    # -------------------------------------------------------------
     # CAMPOS OBLIGATORIOS
-    # -------------------------------------------------------------
     def required_fields(self):
         """
         Devuelve una lista con los nombres de los campos
@@ -67,9 +61,7 @@ class MetadataState:
                 missing.append(field_name)
         return missing
 
-    # -------------------------------------------------------------
     # VALIDACIONES BASADAS EN SCHEMA
-    # -------------------------------------------------------------
     def validate_types_basic(self):
         errors = []
         obligatorios = set(self.required_fields())
@@ -144,7 +136,7 @@ class MetadataState:
                             if not re.match(r"^[\d\s\+\-\(\)]+$", subvalue) or len(digits_only) < 9:
                                 errors.append(f"{sf_tag} [{field}] {sf_label} debe ser un teléfono válido.")
 
-        # ── Validación de identifier (DOI) según access_rights ──
+        #  Validación de identifier (DOI) según access_rights 
         identifier_val = self.data.get("identifier", "")
         access_rights_val = self.data.get("access_rights", "")
         is_non_public = access_rights_val and access_rights_val.rsplit("/", 1)[-1] == "NON_PUBLIC"

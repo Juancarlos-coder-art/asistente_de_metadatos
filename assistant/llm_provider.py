@@ -94,9 +94,7 @@ def get_gemini_client():
     return genai.Client(api_key=api_key)
 
 
-# =====================================================
 # LLM implementations
-# =====================================================
 
 def groq_llm(prompt: str, endpoint=None, session_id=None, extra_json=None) -> dict:
     client = get_groq_client()
@@ -214,9 +212,9 @@ def gemini_llm(prompt: str, endpoint=None, session_id=None, extra_json=None) -> 
     return extract_json_from_text(raw)
 
 
-# =====================================================
+
 # Utils
-# =====================================================
+
 
 def extract_json_from_text(text: str) -> dict:
     try:
@@ -265,9 +263,7 @@ def mock_llm(prompt: str, contract: dict, user_input: str) -> dict:
     return result
 
 
-# =====================================================
 # Public API
-# =====================================================
 
 def call_llm(prompt: str, contract: dict, user_input: str, endpoint=None, session_id=None, extra_json=None) -> dict:
     if get_use_openai():

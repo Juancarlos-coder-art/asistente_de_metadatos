@@ -17,7 +17,6 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from pypdf import PdfReader
 import io
-# AÑADIR junto a los otros imports
 from rdflib import Graph
 from schema_loader import HealthDCATAPSchema
 from assistant.metadata_state import MetadataState
@@ -81,7 +80,7 @@ def check_token_limits(sid: str):
         # Si BigQuery falla, no bloqueamos al usuario
         print(f"[WARN] No se pudo comprobar límites de tokens: {e}")
 
-# ── yoda_extractor: hacer importable el paquete (carpeta en raíz del repo) ──
+#  yoda_extractor: hacer importable el paquete (carpeta en raíz del repo) 
 _YODA_DIR = Path(__file__).resolve().parent / "yoda_extractor"
 if str(_YODA_DIR) not in sys.path:
     sys.path.insert(0, str(_YODA_DIR))
@@ -102,7 +101,7 @@ sessions: dict = {}
 ENDS_NON_PUBLIC_URI = "https://catalogo.ends.gob.es/dataset"
 NON_PUBLIC_URI = "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC"
 
-# ── Vocabularios para mapeo dirigido ──
+#  Vocabularios para mapeo dirigido 
 LANGUAGES = {
     "alemán": "http://publications.europa.eu/resource/authority/language/DEU",
     "bokmål": "http://publications.europa.eu/resource/authority/language/NOB",
@@ -568,14 +567,14 @@ def _build_relevant_vocab(classification: dict) -> dict:
 
 def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, existing_access_rights: str = None, doc_lang: str = "es") -> dict:
 
-    # ── Vocabularios relevantes (completos con URI) ──
+    #  Vocabularios relevantes (completos con URI) 
     pub_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["publisher_types"].items())
     health_cats_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["health_categories"].items())
     themes_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["themes"].items())
     dataset_types_str = "\n".join(f"    {l} → {u}" for l, u in relevant_vocab["dataset_types"].items())
     languages_str = "\n".join(f"    {l} → {u}" for l, u in LANGUAGES.items())
 
-    # ── Vocabularios compactos (solo códigos) ──
+    #  Vocabularios compactos (solo códigos)
     personal_data_compact = " | ".join(uri.split("#")[-1] for uri in PERSONAL_DATA_TYPES.values())
     health_activities_compact = " | ".join(uri.split("/")[-1] for uri in HEALTH_ACTIVITIES.values())
     health_themes_compact = " | ".join(uri.split("/")[-1] for uri in HEALTH_THEMES.values())
@@ -650,7 +649,7 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"  URI: http://publications.europa.eu/resource/authority/frequency/{{CODE}}\n"
             f"- 'temporal_coverage' → object: start (YYYY-MM-DD), end (YYYY-MM-DD). null if not mentioned.\n"
             f"- 'version' → dataset version. String. null if not mentioned.\n"
-            # ── Distribución ──
+            #  Distribución 
             f"- 'access_url' → distribution access URL. String. null if not mentioned.\n"
             f"- 'download_url' → direct download URL. String. null if not mentioned.\n"
             f"- 'name' → distribution resource name. String. null if not mentioned.\n"
@@ -741,7 +740,7 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"  URI: http://publications.europa.eu/resource/authority/frequency/{{CÓDIGO}}\n"
             f"- 'temporal_coverage' → objeto: start (YYYY-MM-DD), end (YYYY-MM-DD). null si no se menciona.\n"
             f"- 'version' → versión del dataset. String. null si no se menciona.\n"
-            # ── Distribución ──
+            #  Distribución 
             f"- 'access_url' → URL de acceso a la distribución. String. null si no se menciona.\n"
             f"- 'download_url' → URL de descarga directa. String. null si no se menciona.\n"
             f"- 'name' → nombre del recurso de distribución. String. null si no se menciona.\n"
@@ -765,7 +764,7 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
             f"\nDocumento:\n{text[:5000]}"
         )
 
-    # ── Llamada al LLM ──
+    #  Llamada al LLM 
     result = call_llm(
         prompt,
         {f: None for f in all_fields},
@@ -775,7 +774,7 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
         extra_json={"doc_lang": doc_lang}
     )
 
-    # ── Convertir códigos cortos a URIs completas ──
+    #  Convertir códigos cortos a URIs completas 
     BASE_ACTIVITY = "http://13.81.34.152:1101/resource/authority/health-activity/"
     BASE_HEALTH_THEME = "http://13.81.34.152:1101/resource/authority/health-theme/"
     BASE_FREQUENCY = "http://publications.europa.eu/resource/authority/frequency/"
@@ -803,7 +802,7 @@ def _extract_fields_smart(text: str, all_fields: list, relevant_vocab: dict, exi
 
     return result
 
-# ── Modelos ──
+#  Modelos 
 class CompleteBlockRequest(BaseModel):
     block_id: int
     user_context: str
@@ -819,7 +818,7 @@ class LegislationRequest(BaseModel):
     legislation: list
 
 
-# ── Endpoints ──
+#  Endpoints 
 _ALLOWED_ACCESS_RIGHTS = {"PUBLIC", "RESTRICTED", "NON_PUBLIC"}
 
 @app.get("/health")
@@ -1076,7 +1075,7 @@ def finalize(response: Response, session_id: str = Cookie(default=None)):
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(state.data, f, indent=2, ensure_ascii=False)
 
-    # ── Envío a BigQuery ──
+    #  Envío a BigQuery 
     try:
         table_ref = f"{BQ_PROJECT}.{BQ_DATASET}.{BQ_TABLE}"
         row = {
@@ -1092,7 +1091,7 @@ def finalize(response: Response, session_id: str = Cookie(default=None)):
             print(f"[INFO] BigQuery: fila insertada para sesión {sid[:8]}")
     except Exception as e:
         print(f"[WARN] Error al escribir en BigQuery: {e}")
-    # ── FIN DEL BLOQUE ──
+    #  FIN DEL BLOQUE 
 
     return {"success": True, "metadata": state.data, "file": filename}
 
@@ -1114,7 +1113,7 @@ async def export_rdf(
     if not d.get("title"):
         raise HTTPException(status_code=400, detail="No hay metadatos que exportar.")
 
-    # ── Namespaces ──────────────────────────────────────────────────────────
+    #  Namespaces 
     DCAT    = Namespace("http://www.w3.org/ns/dcat#")
     DCT     = Namespace("http://purl.org/dc/terms/")
     HEALTH  = Namespace("https://healthdcat-ap.eu/ns#")
@@ -1136,7 +1135,7 @@ async def export_rdf(
     )
     g.add((dataset_uri, RDF.type, DCAT.Dataset))
 
-    # ── Campos escalares simples ────────────────────────────────────────────
+    #  Campos escalares simples 
     SCALAR_MAP = {
         "title":                    (DCT.title,                  "es"),
         "notes":                    (DCT.description,            "es"),
@@ -1173,7 +1172,7 @@ async def export_rdf(
         else:
             g.add((dataset_uri, pred, Literal(str(val))))
 
-    # ── Campos lista de URIs ────────────────────────────────────────────────
+    #  Campos lista de URIs 
     URI_LIST_MAP = {
         "theme":            DCAT.theme,
         "health_category":  HEALTH.healthCategory,
@@ -1197,7 +1196,7 @@ async def export_rdf(
                 node = URIRef(v) if str(v).startswith("http") else Literal(str(v))
                 g.add((dataset_uri, pred, node))
 
-    # ── Campos lista de literales ───────────────────────────────────────────
+    #  Campos lista de literales ─
     LITERAL_LIST_MAP = {
         "keyword":             (DCAT.keyword,          "es"),
         "purpose":             (HEALTH.purpose,        "es"),
@@ -1215,7 +1214,7 @@ async def export_rdf(
             if v:
                 g.add((dataset_uri, pred, Literal(str(v), lang=lang) if lang else Literal(str(v))))
 
-    # ── Cobertura temporal ──────────────────────────────────────────────────
+    #  Cobertura temporal 
     tc = d.get("temporal_coverage")
     if isinstance(tc, dict):
         from rdflib import BNode
@@ -1226,7 +1225,7 @@ async def export_rdf(
         if tc.get("end"):
             g.add((period, Literal("endDate"),   Literal(tc["end"],   datatype=XSD.date)))
 
-    # ── Contacto ───────────────────────────────────────────────────────────
+    #  Contacto ─
     contact = d.get("contact")
     if isinstance(contact, dict):
         from rdflib import BNode
@@ -1238,7 +1237,7 @@ async def export_rdf(
         if contact.get("url"):
             g.add((cp, VCARD.hasURL, URIRef(contact["url"])))
 
-    # ── Publisher ──────────────────────────────────────────────────────────
+    #  Publisher 
     for field, pred in [("publisher", DCT.publisher), ("creator", DCT.creator)]:
         org = d.get(field)
         if isinstance(org, dict) and org.get("name"):
@@ -1251,14 +1250,14 @@ async def export_rdf(
             if org.get("email"):
                 g.add((org_node, VCARD.hasEmail, URIRef(f"mailto:{org['email']}")))
 
-    # ── Legislación aplicable ──────────────────────────────────────────────
+    #  Legislación aplicable 
     for leg in (d.get("applicable_legislation") or []):
         if isinstance(leg, dict) and leg.get("uri"):
             g.add((dataset_uri, DCT.isPartOf, URIRef(leg["uri"])))
         elif isinstance(leg, str) and leg.startswith("http"):
             g.add((dataset_uri, DCT.isPartOf, URIRef(leg)))
 
-    # ── Distribución ──────────────────────────────────────────────────────
+    #  Distribución 
     for dist in (d.get("distribution") or []):
         if isinstance(dist, dict) and dist.get("access_url"):
             from rdflib import BNode
@@ -1267,7 +1266,7 @@ async def export_rdf(
             g.add((dist_node, RDF.type, DCAT.Distribution))
             g.add((dist_node, DCAT.accessURL, URIRef(dist["access_url"])))
 
-    # ── Serializar ────────────────────────────────────────────────────────
+    #  Serializar 
     if fmt == "turtle":
         rdf_bytes = g.serialize(format="turtle").encode("utf-8")
         media_type  = "text/turtle"
@@ -1313,7 +1312,7 @@ def guide():
 def sessions_count():
     return {"active_sessions": len(sessions)}
 
-# ── Conversor RDF → dict de metadatos ──────────────────────────────────────
+#  Conversor RDF → dict de metadatos 
 def _rdf_graph_to_metadata(g: Graph) -> dict:
     """
     Extrae predicados del grafo RDF y los mapea a los campos internos del asistente.
@@ -1495,7 +1494,7 @@ async def upload_document(
     contents = await file.read()
     ext = Path(file.filename or "").suffix.lower()
 
-    # ── Rama 2: ficheros de datos estructurados (yoda_extractor) ──
+    #  Rama 2: ficheros de datos estructurados (yoda_extractor) 
     if ext in {".csv", ".json", ".xml", ".xlsx", ".xls", ".parquet"}:
         try:
             yoda_metadata = _run_yoda(contents, file.filename or f"upload{ext}")
@@ -1535,7 +1534,7 @@ async def upload_document(
             "session_id": sid,
         }
 
-    # ── Rama 1: PDF (comportamiento original) ──
+    #  Rama 1: PDF (comportamiento original) 
     try:
         pdf = PdfReader(io.BytesIO(contents))
         text = "\n".join(page.extract_text() or "" for page in pdf.pages)
@@ -1551,21 +1550,21 @@ async def upload_document(
     existing_access_rights = state.data.get("access_rights")
     all_fields = list(dict.fromkeys(f for block in BLOCKS for f in block["fields"]))
 
-    # PASO 1: Clasificación rápida
+    # Clasificación rápida
     classification = _classify_document(text)
-    print(f"[DEBUG] Classification: {classification}")  # ← añade esto
+    print(f"[DEBUG] Classification: {classification}")  
 
-    # PASO 1.5: Filtrar vocabulario relevante
+    # Filtrar vocabulario relevante
     relevant_vocab = _build_relevant_vocab(classification)
-    print(f"[DEBUG] Relevant vocab: {relevant_vocab}")  # ← y esto
+    print(f"[DEBUG] Relevant vocab: {relevant_vocab}")  
 
-    # ← AÑADE ESTO
+ 
     doc_lang = classification.get("idioma", "es")
-    print(f"[DEBUG] doc_lang: {doc_lang}")  # ← y esto
+    print(f"[DEBUG] doc_lang: {doc_lang}") 
     if doc_lang not in ("es", "en"):
         doc_lang = "es"
 
-    # PASO 2: Extracción dirigida
+    #  Extracción dirigida
     try:
         ai_result = _extract_fields_smart(
             text, all_fields, relevant_vocab,
@@ -1630,7 +1629,7 @@ async def upload_document(
         "session_id": sid
     }
 
-# ── Servir React (SIEMPRE AL FINAL) ──
+#  Servir React  
 if os.path.exists("frontend/dist") and os.path.exists("frontend/dist/assets"):
     app.mount("/assets", StaticFiles(directory="frontend/dist/assets"), name="assets")
 

@@ -528,7 +528,7 @@ vocabs = build_vocabularies(relevant_vocab)
 
 FIELD_INSTRUCTIONS = {
 
-    # ── access_rights ──
+    #  access_rights 
     "access_rights": (
         "Para el campo 'access_rights', analiza la descripción y devuelve SOLO la URI:\n"
         "- Público → http://publications.europa.eu/resource/authority/access-right/PUBLIC\n"
@@ -538,236 +538,236 @@ FIELD_INSTRUCTIONS = {
         "- RESTRINGIDO = acceso bajo condiciones\n"
         "- NO PÚBLICO = no accesible externamente\n"
     ),
-    # ── Título ──
+    #  Título 
     "title": (
         "Para el campo 'title', devuelve el título del dataset como string.\n"
     ),
-    # ── Identificador ──
+    #  Identificador 
     "identifier": (
         "Para el campo 'identifier', devuelve el DOI o identificador único del dataset.\n"
     ),
-    # ── Notas del editor ──
+    #  Notas del editor 
     "publisher_note": (
         "Para el campo 'publisher_note', devuelve ARRAY de strings con notas del editor.\n"
     ),
-    # ── Organismo de calidad ──
+    #  Organismo de calidad 
     "quality_annotation": (
         "Para el campo 'quality_annotation', devuelve objeto con: "
         "body (URI), target (URI o string), motivated_by (URI o string).\n"
     ),
-    # ── notes ──
+    #  notes 
     "notes": (
         "Para el campo 'notes', devuelve la descripción completa literal (máx 300 caracteres).\n"
     ),
-    # ── health_category ──
+    #  health_category 
     "health_category": (
         "Para el campo 'health_category', devuelve un ARRAY de URIs:\n"
         f"{vocabs['health_cats_str']}\n"
     ),
 
-    # ── theme ──
+    # theme 
     "theme": (
         "Para el campo 'theme', devuelve un ARRAY de URIs:\n"
         f"{vocabs['themes_str']}\n"
     ),
 
-    # ── dcat_type ──
+    # dcat_type 
     "dcat_type": (
         "Para el campo 'dcat_type', devuelve una URI:\n"
         f"{vocabs['dataset_types_str']}\n"
     ),
 
-    # ── keyword ──
+    # keyword 
     "keyword": (
         "Para el campo 'keyword', devuelve un ARRAY de strings.\n"
     ),
 
-    # ── provenance ──
+    # provenance 
     "provenance": (
         "Para el campo 'provenance', devuelve el origen de los datos.\n"
     ),
 
-    # ── contact ──
+    # contact
     "contact": (
         "Para el campo 'contact', devuelve objeto con: email, url\n"
     ),
 
-    # ── hdab ──
+    # hdab 
     "hdab": (
         "Para el campo 'hdab', devuelve objeto con:\n"
         "name, type (URI), email, telephone, contact\n" 
     ),
 
-    # ── purpose ──
+    # purpose 
     "purpose": (
         "Para el campo 'purpose', devuelve texto libre.\n"
     ),
 
-    # ── language ──
+    # language 
     "language": (
         "Para el campo 'language', devuelve ARRAY de URIs:\n"
         f"{vocabs['languages_str']}\n"
     ),
 
-    # ── population_coverage ──
+    # population_coverage 
     "population_coverage": (
         "Para el campo 'population_coverage', devuelve ARRAY de strings.\n"
     ),
 
-    # ── numéricos ──
+    # numéricos 
     "number_of_unique_individuals": "Devuelve un entero o null.\n",
     "number_of_records": "Devuelve un entero o null.\n",
     "min_typical_age": "Devuelve un entero o null.\n",
     "max_typical_age": "Devuelve un entero o null.\n",
 
-    # ── personal_data ──
+    # personal_data
     "personal_data": (
         "Para el campo 'personal_data', devuelve ARRAY de códigos:\n"
         f"{vocabs['personal_data_compact']}\n"
     ),
 
-    # ── legal_basis ──
+    # legal_basis 
     "legal_basis": (
         "Devuelve objeto: description, source.\n"
     ),
 
-    # ── retention_period ──
+    # retention_period 
     "retention_period": (
         "Devuelve objeto: start, end.\n"
     ),
 
-    # ── coding_system ──
+    # coding_system 
     "coding_system": (
         "Devuelve objeto: uri, label.\n"
     ),
 
-    # ── health_theme ──
+    # health_theme
     "health_theme": (
         "Devuelve ARRAY de códigos:\n"
         f"{vocabs['health_themes_compact']}\n"
     ),
 
-    # ── code_values ──
+    # code_values 
     "code_values": (
         "Devuelve ARRAY de strings.\n"
     ),
 
-    # ── publisher ──
+    # publisher 
     "publisher": (
         "Devuelve objeto con:\n"
         "name, type, email, telephone, contact_page\n"
     ),
 
-    # ── creator ──
+    # creator 
     "creator": (
         "Devuelve objeto con:\n"
         "name, email, url, type\n"
     ),
 
-    # ── qualified_attribution ──
+    # qualified_attribution 
     "qualified_attribution": (
         "Devuelve objeto con role:\n"
         f"{vocabs['attribution_roles_compact']}\n"
     ),
 
-    # ── was_generated_by ──
+    # was_generated_by 
     "was_generated_by": (
         "Devuelve ARRAY de códigos:\n"
         f"{vocabs['health_activities_compact']}\n"
     ),
 
-    # ── spatial ──
+    # spatial 
     "spatial": (
         "Devuelve ARRAY de códigos:\n"
         f"{vocabs['spatial_compact']}\n"
     ),
 
-    # ── temporal_coverage ──
+    # temporal_coverage 
     "temporal_coverage": (
         "Devuelve objeto: start, end.\n"
     ),
 
-    # ── temporal_resolution ──
+    # temporal_resolution 
     "temporal_resolution": (
         "Devuelve string (ej: P1D, PT1H).\n"
     ),
 
-    # ── spatial_resolution_in_meters ──
+    # spatial_resolution_in_meters 
     "spatial_resolution_in_meters": (
         "Devuelve entero.\n"
     ),
 
-    # ── frequency ──
+    # frequency 
     "frequency": (
         "Devuelve código:\n"
         f"{vocabs['frequencies_compact']}\n"
     ),
 
-    # ── issued ──
+    # issued 
     "issued": "Devuelve fecha YYYY-MM-DD.\n",
 
-    # ── modified ──
+    # modified 
     "modified": "Devuelve fecha YYYY-MM-DD.\n",
 
-    # ── alternate_identifier ──
+    # alternate_identifier 
     "alternate_identifier": (
         "Devuelve ARRAY de strings.\n"
     ),
 
-    # ── conforms_to ──
+    # conforms_to
     "conforms_to": (
         "Devuelve objeto: uri, label.\n"
     ),
 
-    # ── related_resource ──
+    # related_resource 
     "related_resource": (
         "Devuelve objeto: uri, label.\n"
     ),
 
-    # ── is_referenced_by ──
+    # is_referenced_by 
     "is_referenced_by": (
         "Devuelve ARRAY de strings.\n"
     ),
 
-    # ── url ──
+    # url 
     "url": "Devuelve URL.\n",
 
-    # ── access_url ──
+    # access_url 
     "access_url": "Devuelve URL.\n",
 
-    # ── license ──
+    # license 
     "license": (
         "Devuelve nombre o URL de licencia.\n"
     ),
 
-    # ── format ──
+    # format 
     "format": "Devuelve formato (CSV, JSON, etc).\n",
 
-    # ── mimetype ──
+    # mimetype 
     "mimetype": "Devuelve MIME type.\n",
 
-    # ── compress_format ──
+    # compress_format 
     "compress_format": "Devuelve formato compresión.\n",
 
-    # ── package_format ──
+    # package_format 
     "package_format": "Devuelve formato empaquetado.\n",
 
-    # ── size ──
+    # size 
     "size": "Devuelve tamaño en bytes.\n",
 
-    # ── hash ──
+    # hash 
     "hash": "Devuelve hash.\n",
 
-    # ── hash_algorithm ──
+    # hash_algorithm 
     "hash_algorithm": "Devuelve algoritmo hash.\n",
 
-    # ── rights ──
+    # rights 
     "rights": "Devuelve descripción.\n",
 
-    # ── availability ──
+    # availability 
     "availability": "Devuelve descripción.\n",
 
-    # ── status ──
+    # status 
     "status": (
         "Devuelve URI:\n"
         "- Completed\n"
@@ -776,18 +776,18 @@ FIELD_INSTRUCTIONS = {
         "- Withdrawn\n"
     ),
 
-    # ── documentation ──
+    # documentation
     "documentation": (
         "Devuelve objeto: uri, label.\n"
     ),
 
-    # ── version ──
+    #  version 
     "version": "Devuelve string versión.\n",
 
-    # ── has_version ──
+    # has_version 
     "has_version": "Devuelve ARRAY strings.\n",
 
-    # ── version_notes ──
+    # version_notes
     "version_notes": "Devuelve string.\n",
 }
 
@@ -803,7 +803,6 @@ def build_prompt_for_block(schema: HealthDCATAPSchema, block: dict, user_context
         "Si hay duda, devuelve null.\n"
     )
 
-    # Solo añadir instrucciones de los campos de este bloque
     for field in block["fields"]:
         if field in FIELD_INSTRUCTIONS:
             instrucciones += FIELD_INSTRUCTIONS[field]

@@ -20,7 +20,7 @@ export const saveManual = (blockId, partial) =>
 export async function importSessionMetadata(file, format = "json") {
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("format", format);   // ← añadir esto
+  formData.append("format", format);   
   return axios.post(`${BASE_URL}/import-session`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
     withCredentials: true,

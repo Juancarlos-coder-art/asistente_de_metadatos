@@ -9,30 +9,33 @@
 - [¿Qué hace este proyecto?](#-qué-hace-este-proyecto)
 - [Arquitectura](#-arquitectura)
 - [Requisitos previos](#-requisitos-previos)
-- [Instalación paso a paso](#-instalación-paso-a-paso)
-- [Configuración de la API de Groq](#-configuración-de-la-api-de-groq)
+- [Instalación](#-instalación)
+- [Variables de entorno](#-variables-de-entorno)
 - [Estructura del proyecto](#-estructura-del-proyecto)
 - [Cómo ejecutarlo](#-cómo-ejecutarlo)
+- [Despliegue en Google Cloud Run](#-despliegue-en-google-cloud-run)
 - [Resultado generado](#-resultado-generado)
 - [Integración con CKAN](#-integración-con-ckan)
-- [Ramas del repositorio](#-ramas-del-repositorio)
 
 ---
 
 ## ¿Qué hace este proyecto?
 
-Este asistente guía al usuario a través de una serie de preguntas por bloques para recopilar la información necesaria y generar automáticamente un archivo **`metadata_output.json`** conforme al esquema HealthDCAT-AP.
+El asistente guía al usuario a través de bloques temáticos para recopilar la información necesaria y generar metadatos conformes al esquema HealthDCAT-AP. Admite dos modos de entrada por bloque:
 
-El usuario responde en lenguaje natural y la IA interpreta, estructura y valida los datos según el esquema oficial.
+- **Modo IA:** el usuario describe el dataset en lenguaje natural y el LLM extrae y estructura los campos automáticamente.
+- **Modo manual:** el usuario rellena los campos directamente en el formulario.
+
+También permite subir un documento PDF o un fichero de datos estructurado (CSV, Excel, JSON, Parquet, XML) para pre-rellenar los metadatos automáticamente mediante el módulo `yoda_extractor`.
 
 ```
-Usuario responde en texto libre
+Usuario describe el dataset (texto libre) o sube un fichero
         ↓
-LLM (Groq) interpreta y extrae campos
+LLM (Groq / OpenAI) interpreta y extrae campos
         ↓
-Validación automática contra el esquema YAML
+Validación automática contra el esquema YAML (HealthDCAT-AP)
         ↓
-metadata_output.json ← listo para publicar en CKAN
+Previsualización editable → exportación RDF/JSON
 ```
 
 ---
@@ -40,34 +43,56 @@ metadata_output.json ← listo para publicar en CKAN
 ## 🏗 Arquitectura
 
 ```
-asistente-metadato/
-├── app.py                  # Interfaz web (Streamlit)
-├── cli.py                  # Interfaz de línea de comandos
-├── schema_loader.py        # Carga y gestiona el esquema YAML
-├── health_dcat_ap.yaml     # Esquema HealthDCAT-AP
+asistente_de_metadatos/
+├── api.py                        # Backend FastAPI — endpoints REST + lógica principal
+├── cli.py                        # Interfaz de línea de comandos (desarrollo/debug)
+├── schema_loader.py              # Carga el YAML y expone restricciones y vocabularios
+├── health_dcat_ap.yaml           # Esquema HealthDCAT-AP completo
+├── dockerfile                    # Imagen multi-stage (Node → Python)
+├── cloudbuild.yaml               # Pipeline CI/CD → Google Cloud Run (europe-west1)
+│
 ├── assistant/
-│   ├── llm_provider.py     # Conexión con la API de Groq
-│   ├── metadata_state.py   # Estado y validación de metadatos
-│   └── rag_helper.py       # Sistema de ayuda contextual por campo
-└── requirements.txt        # Dependencias Python
+│   ├── llm_provider.py           # Cliente Groq/OpenAI + logging a BigQuery
+│   ├── metadata_state.py         # Estado acumulado de metadatos y validación
+│   └── rag_helper.py             # Índice de campos con descripciones de ayuda
+│
+├── frontend/                     # React + Vite
+│   └── src/
+│       ├── App.jsx               # Enrutamiento y estado global
+│       ├── api/client.js         # Llamadas al backend
+│       ├── components/
+│       │   ├── Sidebar.jsx           # Navegación por bloques y progreso
+│       │   ├── MetadataPreview.jsx   # Previsualización editable con tooltips
+│       │   ├── DocumentUploadModal.jsx
+│       │   └── LegislationSelector.jsx
+│       ├── pages/
+│       │   ├── Welcome.jsx
+│       │   └── BlockForm.jsx     # Formulario por bloque (modo IA + modo manual)
+│       └── constants/fieldInfo.js  # Etiquetas, tooltips y ejemplos por campo
+│
+├── yoda_extractor/               # Extractor automático de metadatos desde ficheros de datos
+│   ├── main.py
+│   ├── extractors/               # Módulos: estructura, temporal, geoespacial, LLM, vocabulario…
+│   ├── readers/                  # CSV, Excel, JSON, Parquet, XML
+│   └── utils/
+│
+└── requirements.txt
 ```
 
 ---
 
 ## ✅ Requisitos previos
 
-Antes de instalar, asegúrate de tener:
-
-| Requisito | Versión mínima | Cómo verificar |
-|-----------|---------------|----------------|
-| Python | 3.10 o superior | `python --version` |
-| pip | 23 o superior | `pip --version` |
-| Git | cualquier versión | `git --version` |
-| Cuenta en Groq | gratuita | [console.groq.com](https://console.groq.com) |
+| Requisito | Versión mínima | Verificar |
+|-----------|---------------|-----------|
+| Python | 3.11 | `python --version` |
+| Node.js | 20 | `node --version` |
+| pip | 23 | `pip --version` |
+| Cuenta Groq | gratuita | [console.groq.com](https://console.groq.com) |
 
 ---
 
-## 🚀 Instalación paso a paso
+## 🚀 Instalación
 
 ### 1. Clonar el repositorio
 
@@ -76,108 +101,124 @@ git clone https://github.com/Juancarlos-coder-art/asistente_de_metadatos.git
 cd asistente_de_metadatos
 ```
 
-### 2. Crear un entorno virtual
+### 2. Backend — entorno virtual Python
 
 ```bash
-# Windows
 python -m venv .venv
+
+# Windows
 .venv\Scripts\activate
 
 # macOS / Linux
-python -m venv .venv
 source .venv/bin/activate
+
+pip install -r requirements.txt
 ```
 
-### 3. Instalar las dependencias
+### 3. Frontend — dependencias Node
 
 ```bash
-pip install -r requirements.txt
+cd frontend
+npm install
+npm run build   # genera frontend/dist/ que sirve FastAPI
+cd ..
 ```
 
 ---
 
-## 🔑 Configuración de la API de Groq
+## 🔑 Variables de entorno
 
-Este proyecto utiliza **Groq** como proveedor de LLM. Es **gratuito** para desarrollo.
-
-### Paso 1 — Crear una cuenta
-
-Ve a [console.groq.com](https://console.groq.com) y regístrate (no requiere tarjeta de crédito).
-
-### Paso 2 — Obtener tu API Key
-
-1. Dentro de la consola, ve a **API Keys** en el menú lateral
-2. Haz clic en **Create API Key**
-3. Dale un nombre (por ejemplo: `asistente-metadatos`)
-4. **Copia la key** — solo se muestra una vez
-
-### Paso 3 — Crear el archivo `.env`
-
-En la raíz del proyecto, crea un archivo llamado `.env`:
+Crea un archivo `.env` en la raíz del proyecto (ya está en `.gitignore`):
 
 ```bash
-# .env
+# LLM — al menos una de las dos
 GROQ_API_KEY=gsk_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxx   # opcional
+
+# BigQuery — opcional, solo para analytics de uso
+BQ_USAGE_TABLE=proyecto.dataset.tabla
+GOOGLE_APPLICATION_CREDENTIALS=/ruta/a/credenciales.json
 ```
 
-> ⚠️ **Importante:** El archivo `.env` ya está en el `.gitignore`. Nunca lo subas a GitHub.
-
-### Modelos disponibles (gratuitos)
-
-| Modelo | Uso recomendado |
-|--------|----------------|
-| `llama-3.3-70b-versatile` | **Recomendado** — mejor calidad |
-| `llama-3.1-8b-instant` | Más rápido, respuestas más simples |
-
-El modelo se configura en `assistant/llm_provider.py`.
+El modelo activo se configura en `assistant/llm_provider.py`. Por defecto usa `llama-3.3-70b-versatile` (Groq).
 
 ---
 
 ## 📁 Estructura del proyecto
 
-| Archivo | Descripción |
-|---------|-------------|
-| `app.py` | Interfaz web con Streamlit. Incluye pantalla de bienvenida, navegación por bloques, modo IA y modo manual |
-| `cli.py` | Versión de terminal. El usuario responde preguntas una a una |
-| `schema_loader.py` | Lee el `health_dcat_ap.yaml` y expone los campos, restricciones y vocabularios controlados |
-| `health_dcat_ap.yaml` | Esquema completo HealthDCAT-AP con todos los campos, etiquetas, validaciones y vocabularios |
-| `assistant/llm_provider.py` | Llama a la API de Groq y parsea la respuesta JSON |
-| `assistant/metadata_state.py` | Mantiene el estado acumulado de los metadatos y valida tipos y campos obligatorios |
-| `assistant/rag_helper.py` | Índice en memoria de los campos del esquema. Genera descripciones de ayuda cuando un campo queda vacío |
-| `guia_campos_ends.docx` | Guía descargable con la descripción de todos los campos activos |
+| Fichero / carpeta | Descripción |
+|---|---|
+| `api.py` | Backend FastAPI. Expone los endpoints `/chat`, `/upload-document`, `/export-rdf`, `/session/*`, y sirve el frontend React desde `/` |
+| `cli.py` | Versión terminal del asistente. Útil para pruebas y desarrollo sin frontend |
+| `schema_loader.py` | Parsea `health_dcat_ap.yaml` y extrae restricciones, vocabularios controlados y reglas de validación |
+| `health_dcat_ap.yaml` | Esquema HealthDCAT-AP con todos los campos, etiquetas, validaciones y vocabularios |
+| `assistant/llm_provider.py` | Llama a Groq u OpenAI, gestiona límites de tokens por sesión y registra uso en BigQuery |
+| `assistant/metadata_state.py` | Mantiene el estado acumulado de metadatos y valida tipos, formatos y campos obligatorios |
+| `assistant/rag_helper.py` | Índice estático de campos con descripciones y ejemplos. Genera ayuda contextual cuando un campo queda vacío |
+| `yoda_extractor/` | Extrae metadatos automáticamente desde ficheros de datos (CSV, Excel, JSON, Parquet, XML): estructura, temporalidad, cobertura geoespacial, vocabularios controlados |
+| `frontend/` | Interfaz React/Vite. Se compila a `frontend/dist/` y es servida estáticamente por FastAPI |
+| `dockerfile` | Build multi-stage: compila el frontend con Node 20 y luego monta el backend con Python 3.11 |
+| `cloudbuild.yaml` | Pipeline CI/CD para Google Cloud Run en `europe-west1` |
 
 ---
 
 ## ▶️ Cómo ejecutarlo
 
-### Opción A — Interfaz web (recomendada)
+### Desarrollo local (recomendado)
+
+En una terminal, arranca el backend:
 
 ```bash
-streamlit run app.py
+uvicorn api:app --reload --port 8080
 ```
 
-Se abrirá automáticamente en el navegador en `http://localhost:8501`.
+En otra terminal, arranca el frontend en modo dev (con hot reload):
 
-**Flujo de uso:**
-1. Pantalla de bienvenida → descargar guía de campos (opcional)
-2. Hacer clic en **Comenzar a metadatar**
-3. Para cada bloque: describir el dataset en lenguaje natural y pulsar **Autocompletar con IA**
-4. Al terminar todos los bloques: **Finalizar y guardar**
-5. Se genera `metadata_output.json` en la raíz del proyecto
+```bash
+cd frontend
+npm run dev
+```
 
-### Opción B — Terminal (CLI)
+La app estará en `http://localhost:5173` (Vite) con proxy al backend en `:8080`.
+
+### Producción local (frontend compilado)
+
+```bash
+cd frontend && npm run build && cd ..
+uvicorn api:app --host 0.0.0.0 --port 8080
+```
+
+Accede en `http://localhost:8080`.
+
+### CLI (sin frontend)
 
 ```bash
 python cli.py
 ```
 
-El asistente irá preguntando bloque a bloque. Pulsa **Enter dos veces** para confirmar cada respuesta.
+---
+
+## ☁️ Despliegue en Google Cloud Run
+
+El proyecto incluye un pipeline completo con `cloudbuild.yaml`:
+
+```bash
+gcloud builds submit --config cloudbuild.yaml
+```
+
+Esto construye la imagen Docker multi-stage, la sube a Artifact Registry y despliega en Cloud Run (`europe-west1`) con:
+- Memoria: 1 GiB
+- CPU: 1
+- Timeout: 300 s
+- `GROQ_API_KEY` inyectada desde Secret Manager
 
 ---
 
 ## 📄 Resultado generado
 
-Al finalizar se crea `metadata_output.json` con esta estructura:
+Al completar todos los bloques se puede exportar el metadata en dos formatos:
+
+**JSON** — compatible con la API de CKAN:
 
 ```json
 {
@@ -187,65 +228,40 @@ Al finalizar se crea `metadata_output.json` con esta estructura:
   "identifier": "https://doi.org/10.5281/zenodo.123456",
   "access_rights": "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
   "hdab": {
-    "name": "CSIC",
-    "type": "http://13.81.34.152:1101/resource/authority/publisher-type/research-institute-org",
-    "email": null,
-    "telephone": "639 99 15 67",
-    "contact_page": null
+    "name": "ISCIII",
+    "email": "datos.salud@isciii.es",
+    "contact_page": "https://www.isciii.es/contacto"
   },
   "applicable_legislation": [
-    {
-      "uri": "http://data.europa.eu/eli/reg/2016/679/oj",
-      "label": "GDPR"
-    }
+    { "uri": "http://data.europa.eu/eli/reg/2016/679/oj", "label": "GDPR" }
   ]
 }
 ```
+
+**RDF/Turtle** — exportable desde el endpoint `/export-rdf`, conforme al perfil HealthDCAT-AP.
 
 ---
 
 ## 🔗 Integración con CKAN
 
-Este proyecto genera el JSON de metadatos. La integración con un portal CKAN es responsabilidad del equipo técnico del portal receptor.
-
 El JSON generado es compatible con el perfil `EuropeanHealthDCATAPProfile` de la extensión `ckanext-dcat`.
 
-**Lo que hace este asistente:** genera `metadata_output.json`
+**Este asistente:** genera el JSON / RDF de metadatos.
 
-**Lo que hace el equipo CKAN:** importa ese JSON usando el perfil RDF correspondiente
-
----
-
-## 🌿 Ramas del repositorio
-
-| Rama | Descripción |
-|------|-------------|
-| `master` | Versión estable con LLM (Groq). Lista para uso en desarrollo |
-
+**El equipo CKAN:** importa ese JSON usando la API o el perfil RDF correspondiente.
 
 ---
 
-## 📦 Dependencias principales
+## ⚠️ Notas
 
-```
-streamlit          # Interfaz web
-pyyaml             # Lectura del esquema YAML
-groq               # Cliente oficial de la API de Groq
-python-dotenv      # Carga de variables de entorno desde .env
-```
-
----
-
-## ⚠️ Notas importantes
-
-- El campo `applicable_legislation` (GDPR) se inserta **automáticamente** al finalizar. No es necesario introducirlo.
-- El campo `name` (URL del dataset en CKAN) se genera automáticamente a partir del título.
-- Los campos marcados con 🔴 en la interfaz son **obligatorios** según el esquema HealthDCAT-AP.
-- Para uso en **producción institucional**, consultar la rama `qa_nlp` que no depende de IA generativa.
+- El campo `applicable_legislation` (GDPR) se inserta automáticamente. No hace falta introducirlo manualmente.
+- El campo `name` (slug del dataset en CKAN) se genera automáticamente desde el título.
+- Los campos marcados con 🔴 en la interfaz son obligatorios según el esquema HealthDCAT-AP.
+- Los datasets marcados como `NON_PUBLIC` reciben un identificador predeterminado automáticamente.
 
 ---
 
 ## 📬 Contacto
 
-Proyecto desarrollado para la **Estrategia Nacional de Datos de Salud (ENDS)**.
+Proyecto desarrollado para la **Estrategia Nacional de Datos de Salud (ENDS)**.  
 Repositorio: [github.com/Juancarlos-coder-art/asistente_de_metadatos](https://github.com/Juancarlos-coder-art/asistente_de_metadatos)
