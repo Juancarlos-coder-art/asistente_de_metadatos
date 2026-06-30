@@ -1,0 +1,30 @@
+﻿<data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<row _id="1"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>15-19</TramosEdad><TotalPacientes>1</TotalPacientes></row>
+<row _id="2"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>20-24</TramosEdad><TotalPacientes>3</TotalPacientes></row>
+<row _id="3"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>25-29</TramosEdad><TotalPacientes>15</TotalPacientes></row>
+<row _id="4"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>30-34</TramosEdad><TotalPacientes>48</TotalPacientes></row>
+<row _id="5"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>35-39</TramosEdad><TotalPacientes>85</TotalPacientes></row>
+<row _id="6"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>40-44</TramosEdad><TotalPacientes>192</TotalPacientes></row>
+<row _id="7"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>45-49</TramosEdad><TotalPacientes>379</TotalPacientes></row>
+<row _id="8"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>50-54</TramosEdad><TotalPacientes>503</TotalPacientes></row>
+<row _id="9"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>55-59</TramosEdad><TotalPacientes>689</TotalPacientes></row>
+<row _id="10"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>60-64</TramosEdad><TotalPacientes>715</TotalPacientes></row>
+<row _id="11"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>65-69</TramosEdad><TotalPacientes>618</TotalPacientes></row>
+<row _id="12"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>70-74</TramosEdad><TotalPacientes>544</TotalPacientes></row>
+<row _id="13"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>75-79</TramosEdad><TotalPacientes>549</TotalPacientes></row>
+<row _id="14"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>80-84</TramosEdad><TotalPacientes>349</TotalPacientes></row>
+<row _id="15"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Femenino</Sexo><TramosEdad>&gt;= 85</TramosEdad><TotalPacientes>230</TotalPacientes></row>
+<row _id="16"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>25-29</TramosEdad><TotalPacientes>1</TotalPacientes></row>
+<row _id="17"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>30-34</TramosEdad><TotalPacientes>3</TotalPacientes></row>
+<row _id="18"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>35-39</TramosEdad><TotalPacientes>2</TotalPacientes></row>
+<row _id="19"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>40-44</TramosEdad><TotalPacientes>14</TotalPacientes></row>
+<row _id="20"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>45-49</TramosEdad><TotalPacientes>34</TotalPacientes></row>
+<row _id="21"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>50-54</TramosEdad><TotalPacientes>48</TotalPacientes></row>
+<row _id="22"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>55-59</TramosEdad><TotalPacientes>62</TotalPacientes></row>
+<row _id="23"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>60-64</TramosEdad><TotalPacientes>39</TotalPacientes></row>
+<row _id="24"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>65-69</TramosEdad><TotalPacientes>30</TotalPacientes></row>
+<row _id="25"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>70-74</TramosEdad><TotalPacientes>22</TotalPacientes></row>
+<row _id="26"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>75-79</TramosEdad><TotalPacientes>28</TotalPacientes></row>
+<row _id="27"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>80-84</TramosEdad><TotalPacientes>17</TotalPacientes></row>
+<row _id="28"><FechaFibromialgia>12/05/2026</FechaFibromialgia><DiaMundial>Fibromialgia</DiaMundial><Sexo>Masculino</Sexo><TramosEdad>&gt;= 85</TramosEdad><TotalPacientes>7</TotalPacientes></row>
+</data>

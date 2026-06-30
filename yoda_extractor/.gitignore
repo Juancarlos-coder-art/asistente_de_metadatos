@@ -2,7 +2,22 @@ __pycache__/
 *.pyc
 *.pyo
 tests-output/
+tests/integration/tests-output/
+example_pipeline/pipeline-output/
+tests-tmp/
 controlled_vocabularies/db/
 arquitectura_inicial_v1.docx
 .env
 .DS_Store
+.coverage
+
+# Large datasets (>45MB)
+tests/datasets/dataset_0035/033_Urgencias_Hospitalarias_atendidas_2026__Urgencias_Hospitalarias_atendidas_2026.json
+tests/datasets/dataset_0034/032_Actividad_de_pediatria_a_nivel_de_Zona_Basica_de_Salud_2026__Actividad_de_pediatria_a_nivel_de_Zona_Basica_de_Salud_2026.json
+tests/datasets/dataset_0042/040_Mapa_ruido_tarde_2022__Mapa_ruido_tarde_2022.json
+tests/datasets/dataset_0048/046_Mapa_ruido_24h_2022__Mapa_ruido_24h_2022.json
+tests/datasets/dataset_0044/042_Mapa_ruido_noche_2022__Mapa_ruido_noche_2022.json
+tests/datasets/dataset_0046/044_Mapa_ruido_dia_2022__Mapa_ruido_dia_2022.json
+tests/datasets/dataset_0049/047_Mapa_ruido_24h_2022__Mapa_ruido_24h_2022.json
+tests/datasets/dataset_0394/companies_des.parquet/
+.venv

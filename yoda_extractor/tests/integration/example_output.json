@@ -1,0 +1,95 @@
+{
+  "purpose": [
+    "Monitoreo y análisis epidemiológico de pacientes diagnosticados con fibromialgia.",
+    "Distribución estadística de pacientes por rangos de edad y sexo."
+  ],
+  "language": [
+    "http://publications.europa.eu/resource/authority/language/SPA"
+  ],
+  "title": "Distribución demográfica de pacientes con fibromialgia",
+  "notes": "Este conjunto de datos presenta el recuento de pacientes diagnosticados con fibromialgia segmentado por tramos de edad y sexo. La información permite observar la prevalencia de esta condición en diferentes grupos poblacionales a fecha de mayo de 2026.",
+  "keyword": [
+    "fibromialgia",
+    "salud",
+    "epidemiología",
+    "pacientes",
+    "demografía"
+  ],
+  "population_coverage": [
+    "Pacientes diagnosticados con fibromialgia clasificados por sexo y rangos de edad."
+  ],
+  "coding_system":{},
+  "purpose_en_tmpt": [
+    "Epidemiological monitoring and analysis of patients diagnosed with fibromyalgia.",
+    "Statistical distribution of patients by age groups and sex."
+  ],
+  "title_en_tmpt": "Demographic distribution of patients with fibromyalgia",
+  "notes_en_tmpt": "This dataset presents the count of patients diagnosed with fibromyalgia segmented by age groups and sex. The information allows for observing the prevalence of this condition in different population groups as of May 2026.",
+  "keyword_en_tmpt": [
+    "fibromyalgia",
+    "health",
+    "epidemiology",
+    "patients",
+    "demographics"
+  ],
+  "errors": [],
+  "issued": "2026-06-14T15:31:12.872Z",
+  "modified": "2026-06-14T15:31:12.872Z",
+  "theme": [
+    "http://publications.europa.eu/resource/authority/data-theme/HEAL"
+  ],
+  "legal_basis": {
+    "description": "RGPD",
+    "source": "https://www.boe.es/doue/2016/119/L00001-00088.pdf"
+  },
+  "applicable_legislation": [
+    {
+      "uri": "http://data.europa.eu/eli/reg/2016/679/oj",
+      "label": "GDPR"
+    },
+    {
+      "uri": "http://data.europa.eu/eli/reg/2025/327/oj",
+      "label": "Reglamento EHDS"
+    }
+  ],
+  "version": "2.0",
+  "has_version": [
+    "1.0",
+    "2.0"
+  ],
+  "number_of_records": 28,
+  "number_of_unique_individuals": 28,
+  "min_typical_age": 15,
+  "max_typical_age": 84,
+  "temporal_coverage": {
+    "start": "2026-05-12",
+    "end": "2026-05-12"
+  },
+  "health_category": [
+    "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/PHDR",
+    "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/MRMR",
+    "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/healthcategories/DIOH"
+  ],
+  "dcat_type": "http://publications.europa.eu/resource/authority/dataset-type/STATISTICAL",
+  "health_theme": [
+    "http://13.81.34.152:1101/resource/authority/health-theme/HEALTH_SYSTEMS",
+    "http://13.81.34.152:1101/resource/authority/health-theme/LIFECOURSE_HEALTH",
+    "http://13.81.34.152:1101/resource/authority/health-theme/MENTAL_HEALTH"
+  ],
+  "conforms_to": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/standard/OMOP-CDM",
+  "personal_data": [
+    "https://w3id.org/dpv/pd#PhysicalHealth",
+    "https://w3id.org/dpv/pd#Age",
+    "https://w3id.org/dpv/pd#Demographic"
+  ],
+  "was_generated_by": [
+    "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/MEDICAL_REGISTRY"
+  ],
+  "structure": {
+    "number_of_unique_individuals": [],
+    "min_typical_age": [],
+    "max_typical_age": [],
+    "spatial": [],
+    "temporal_coverage": []
+  }
+}

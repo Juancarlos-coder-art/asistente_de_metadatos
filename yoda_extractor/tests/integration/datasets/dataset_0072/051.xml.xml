@@ -1,0 +1,1803 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resultado>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija mayorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>Bucle compartido</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>553595</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija mayorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>Bucle desagregado</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>430878</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija mayorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>Concentración ATM/IP</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>386883</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija mayorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>Reventa</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>191566</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Euskaltel</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>HFC</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>144008</lineas>
+	<tasa_de_penetracion>0.3</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Movistar</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>xDSL</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>3782001</lineas>
+	<tasa_de_penetracion>8.4</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Ono</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>HFC</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>1142696</lineas>
+	<tasa_de_penetracion>2.6</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Resto</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>HFC</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>166605</lineas>
+	<tasa_de_penetracion>0.4</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Resto</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>xDSL</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>1562922</lineas>
+	<tasa_de_penetracion>3.5</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Euskaltel</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>46409</lineas>
+	<tasa_de_penetracion>0.1</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Euskaltel</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>258706</lineas>
+	<tasa_de_penetracion>0.6</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Jazztel</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>4390</lineas>
+	<tasa_de_penetracion>0</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Jazztel</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>172337</lineas>
+	<tasa_de_penetracion>0.4</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Movistar</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>6389339</lineas>
+	<tasa_de_penetracion>14.3</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Movistar</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>10267333</lineas>
+	<tasa_de_penetracion>22.9</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Ono</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>219746</lineas>
+	<tasa_de_penetracion>0.5</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Ono</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>1694951</lineas>
+	<tasa_de_penetracion>3.8</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Orange</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>73055</lineas>
+	<tasa_de_penetracion>0.2</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Orange</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>947</lineas>
+	<tasa_de_penetracion>0</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Resto</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>54241</lineas>
+	<tasa_de_penetracion>0.1</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Resto</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>240073</lineas>
+	<tasa_de_penetracion>0.5</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Vodafone</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>107001</lineas>
+	<tasa_de_penetracion>0.2</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Vodafone</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>122264</lineas>
+	<tasa_de_penetracion>0.3</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>62705</portabilidades>
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Movistar</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Pospago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>11956741</lineas>
+	<tasa_de_penetracion>26.7</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Movistar</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Prepago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>9297598</lineas>
+	<tasa_de_penetracion>20.8</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>Asociados a máquinas</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>769638</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>OMV</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Pospago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>77703</lineas>
+	<tasa_de_penetracion>0.2</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>OMV</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Prepago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>24185</lineas>
+	<tasa_de_penetracion>0.1</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Orange</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Pospago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>5365172</lineas>
+	<tasa_de_penetracion>12</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Orange</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Prepago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>5692306</lineas>
+	<tasa_de_penetracion>12.7</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Vodafone</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Pospago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>7953401</lineas>
+	<tasa_de_penetracion>17.8</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Vodafone</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Prepago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>5944669</lineas>
+	<tasa_de_penetracion>13.3</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Yoigo</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Pospago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>21768</lineas>
+	<tasa_de_penetracion>0</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Yoigo</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Prepago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>21811</lineas>
+	<tasa_de_penetracion>0</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Movistar</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Exportados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>161021</portabilidades>
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Movistar</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Importados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>144287</portabilidades>
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>OMV</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Importados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>87700</portabilidades>
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Orange</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Exportados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>213945</portabilidades>
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Orange</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Importados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>117255</portabilidades>
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Vodafone</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Exportados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>127808</portabilidades>
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Vodafone</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Importados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>144832</portabilidades>
+</registro>
+<registro>
+	<mes>2007-01</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Yoigo</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Importados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>8700</portabilidades>
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija mayorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>Bucle compartido</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>585182</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija mayorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>Bucle desagregado</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>452103</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija mayorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>Concentración ATM/IP</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>385365</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija mayorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>Reventa</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>185456</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Euskaltel</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>HFC</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>147337</lineas>
+	<tasa_de_penetracion>0.3</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Movistar</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>xDSL</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>3858960</lineas>
+	<tasa_de_penetracion>8.6</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Ono</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>HFC</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>1169014</lineas>
+	<tasa_de_penetracion>2.6</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Resto</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>HFC</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>171130</lineas>
+	<tasa_de_penetracion>0.4</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Resto</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>xDSL</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>1608106</lineas>
+	<tasa_de_penetracion>3.6</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Euskaltel</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>46959</lineas>
+	<tasa_de_penetracion>0.1</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Euskaltel</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>261241</lineas>
+	<tasa_de_penetracion>0.6</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Jazztel</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>4512</lineas>
+	<tasa_de_penetracion>0</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Jazztel</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>176728</lineas>
+	<tasa_de_penetracion>0.4</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Movistar</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>6393227</lineas>
+	<tasa_de_penetracion>14.3</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Movistar</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>10262235</lineas>
+	<tasa_de_penetracion>22.9</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Ono</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>219757</lineas>
+	<tasa_de_penetracion>0.5</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Ono</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>1695034</lineas>
+	<tasa_de_penetracion>3.8</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Orange</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>73116</lineas>
+	<tasa_de_penetracion>0.2</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Orange</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>827</lineas>
+	<tasa_de_penetracion>0</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Resto</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>56523</lineas>
+	<tasa_de_penetracion>0.1</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Resto</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>242196</lineas>
+	<tasa_de_penetracion>0.5</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Vodafone</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>108259</lineas>
+	<tasa_de_penetracion>0.2</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Vodafone</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>135953</lineas>
+	<tasa_de_penetracion>0.3</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>68270</portabilidades>
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Movistar</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Pospago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>12062947</lineas>
+	<tasa_de_penetracion>26.9</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Movistar</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Prepago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>9295302</lineas>
+	<tasa_de_penetracion>20.8</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>Asociados a máquinas</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>792915</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>OMV</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Pospago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>136465</lineas>
+	<tasa_de_penetracion>0.3</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>OMV</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Prepago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>45404</lineas>
+	<tasa_de_penetracion>0.1</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Orange</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Pospago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>5360227</lineas>
+	<tasa_de_penetracion>12</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Orange</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Prepago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>5621538</lineas>
+	<tasa_de_penetracion>12.6</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Vodafone</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Pospago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>8039069</lineas>
+	<tasa_de_penetracion>18</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Vodafone</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Prepago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>5954970</lineas>
+	<tasa_de_penetracion>13.3</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Yoigo</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Pospago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>29875</lineas>
+	<tasa_de_penetracion>0.1</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Yoigo</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>Prepago</contrato>
+	<terminal_de_telefonia_movil>Sin tipo de terminal</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>37172</lineas>
+	<tasa_de_penetracion>0.1</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Movistar</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Exportados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>124270</portabilidades>
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Movistar</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Importados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>139658</portabilidades>
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>OMV</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Importados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>77630</portabilidades>
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Orange</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Exportados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>180073</portabilidades>
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Orange</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Importados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>94695</portabilidades>
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Vodafone</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Exportados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>115442</portabilidades>
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Vodafone</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Importados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>100878</portabilidades>
+</registro>
+<registro>
+	<mes>2007-02</mes>
+	<pais>España</pais>
+	<servicio>Telefonía móvil</servicio>
+	<concepto>Portabilidades</concepto>
+	<operador>Yoigo</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>Importados</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas />
+	<tasa_de_penetracion />
+	<portabilidades>6924</portabilidades>
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija mayorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>Bucle compartido</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>605187</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija mayorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>Bucle desagregado</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>466038</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija mayorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>Concentración ATM/IP</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>382794</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija mayorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>N/A</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>Reventa</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>178946</lineas>
+	<tasa_de_penetracion />
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Euskaltel</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>HFC</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>149831</lineas>
+	<tasa_de_penetracion>0.3</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Movistar</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>xDSL</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>3967221</lineas>
+	<tasa_de_penetracion>8.9</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Ono</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>HFC</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>1190121</lineas>
+	<tasa_de_penetracion>2.7</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Resto</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>HFC</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>176045</lineas>
+	<tasa_de_penetracion>0.4</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Banda ancha fija minorista</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Resto</operador>
+	<segmento>N/A</segmento>
+	<tecnologia_de_acceso>xDSL</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>1632965</lineas>
+	<tasa_de_penetracion>3.6</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Euskaltel</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>69008</lineas>
+	<tasa_de_penetracion>0.2</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Euskaltel</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>263978</lineas>
+	<tasa_de_penetracion>0.6</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Jazztel</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>4815</lineas>
+	<tasa_de_penetracion>0</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Jazztel</operador>
+	<segmento>Residencial</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>171551</lineas>
+	<tasa_de_penetracion>0.4</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+<registro>
+	<mes>2007-03</mes>
+	<pais>España</pais>
+	<servicio>Telefonía fija</servicio>
+	<concepto>Líneas</concepto>
+	<operador>Movistar</operador>
+	<segmento>Negocios</segmento>
+	<tecnologia_de_acceso>N/A</tecnologia_de_acceso>
+	<contrato>N/A</contrato>
+	<terminal_de_telefonia_movil>N/A</terminal_de_telefonia_movil>
+	<linea_ba_movil>N/A</linea_ba_movil>
+	<tipo_de_ba_mayorista>N/A</tipo_de_ba_mayorista>
+	<tipo_de_portabilidad>N/A</tipo_de_portabilidad>
+	<unidades>Unidades</unidades>
+	<lineas>6407433</lineas>
+	<tasa_de_penetracion>14.3</tasa_de_penetracion>
+	<portabilidades />
+</registro>
+</resultado>

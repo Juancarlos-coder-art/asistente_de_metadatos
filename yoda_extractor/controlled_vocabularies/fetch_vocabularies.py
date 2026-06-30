@@ -52,6 +52,9 @@ def main() -> None:
         elif mode == "personal_data":
             print(f"[{feature}] {name}  (local RDF)")
             personal_data_fetcher.extract()
+        
+        elif mode == "none":
+            print(f"Skipping '{name}': mode=none. Manually extracted.")
 
         else:
             print(f"Skipping '{name}': unknown mode '{mode}'")

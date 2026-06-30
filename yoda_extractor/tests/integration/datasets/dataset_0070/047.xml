@@ -1,0 +1,610 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:socrata="http://www.socrata.com/rdf/terms#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:ods="http://open-data-standards.github.com/2012/01/open-data-standards#" xmlns:dcterm="http://purl.org/dc/terms/" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dsbase="https://analisi.transparenciacatalunya.cat/resource/" xmlns:ds="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/">
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-ekmb~dskn-sis4">
+    <socrata:rowID>row-ekmb~dskn-sis4</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 1-2016</ds:codi>
+    <ds:ambit>Grups d'interès</ds:ambit>
+    <ds:tema>Publicitat activa de reunions amb sindicats</ds:tema>
+    <ds:autor_consulta>Desconegut</ds:autor_consulta>
+    <ds:paraules_clau>Publicitat activa | Grups d’interès</ds:paraules_clau>
+    <ds:consulta_formulada>Publicitat activa de reunions amb sindicats</ds:consulta_formulada>
+    <ds:data>2016-07-18T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_1-2016.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-xvhp-uae2.nqnc">
+    <socrata:rowID>row-xvhp-uae2.nqnc</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 2-2016</ds:codi>
+    <ds:ambit>Grups d'interès</ds:ambit>
+    <ds:tema>Aplicació de la normativa en matèria de grups d'interès i de publicitat activa de les agendes, en relació amb reunions a l'estranger amb empreses del país corresponent</ds:tema>
+    <ds:autor_consulta>Delegació de la Generalitat de Catalunya a l’estranger</ds:autor_consulta>
+    <ds:paraules_clau>Publicitat activa | Grups d’interès | Reunions fora de Catalunya</ds:paraules_clau>
+    <ds:consulta_formulada>Aplicació de la normativa en matèria de grups d’interès i de publicitat activa de les agendes, en relació amb reunions a l’estranger amb empreses del país corresponent.</ds:consulta_formulada>
+    <ds:data>2016-08-01T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_2-2016.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-az6p-8r3z.gt3e">
+    <socrata:rowID>row-az6p-8r3z.gt3e</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 5-2016</ds:codi>
+    <ds:ambit>Adhesió al Codi de conducta</ds:ambit>
+    <ds:tema>Aplicació del Codi de conducta d’alts càrrecs i directius a expresidents de la Generalitat</ds:tema>
+    <ds:autor_consulta>Gabinet Tècnic d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Àmbit subjectiu d’aplicació | Expresidents</ds:paraules_clau>
+    <ds:consulta_formulada>El Codi de conducta d’alts càrrecs i directius és d’aplicació als expresidents?</ds:consulta_formulada>
+    <ds:data>2016-09-26T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_5-2016.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-im4g_daa7.ebk2">
+    <socrata:rowID>row-im4g_daa7.ebk2</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 3-2016</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Invitació a espectacles</ds:tema>
+    <ds:autor_consulta>Alt càrrec d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Invitacions | Espectacles, actes</ds:paraules_clau>
+    <ds:consulta_formulada>Possibilitat d’acceptar invitacions a actes de caràcter cultural o a espectacles públics per raó de càrrecs ocupats amb anterioritat a l’actual i/o per formar part d’un consell d’administració d’una entitat, com a membre designat per un departament en representació de la Generalitat de Catalunya.</ds:consulta_formulada>
+    <ds:data>2016-09-26T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_3-2016.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-2t5w.wmt2.ex5h">
+    <socrata:rowID>row-2t5w.wmt2.ex5h</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 6-2016</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Invitacions a viatges, desplaçaments i allotjaments</ds:tema>
+    <ds:autor_consulta>Gabinet Tècnic d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Invitacions | Jornades | Desplaçaments</ds:paraules_clau>
+    <ds:consulta_formulada>Obligatorietat de publicar els viatges, desplaçaments i allotjaments pagats per l’Administració de la Generalitat?</ds:consulta_formulada>
+    <ds:data>2016-09-26T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_6-2016.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-mq3t-sgdx.2f38">
+    <socrata:rowID>row-mq3t-sgdx.2f38</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 7-2016</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Pagament de les despeses de desplaçament a un alt càrrec per a participar en unes jornades professionals</ds:tema>
+    <ds:autor_consulta>Gabinet Tècnic d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Invitacions | Viatges, desplaçaments, allotjaments.</ds:paraules_clau>
+    <ds:consulta_formulada>Un col·legi professional convida a un alt càrrec departamental a assistir a una jornada a Madrid on hi participa com a ponent en una taula rodona, amb totes les despeses de desplaçament a càrrec del col·legi. Pot acceptar el pagament de les despeses de desplaçament?</ds:consulta_formulada>
+    <ds:data>2016-09-26T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_7-2016.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-sfwc.jygq.6dx6">
+    <socrata:rowID>row-sfwc.jygq.6dx6</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 8-2016</ds:codi>
+    <ds:ambit>Adhesió al Codi de conducta</ds:ambit>
+    <ds:tema>Adhesió al Codi de conducta en cas d’acumulació de càrrecs</ds:tema>
+    <ds:autor_consulta>Gabinet Tècnic d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Adhesió codi de conducta | Departaments, organismes, ens</ds:paraules_clau>
+    <ds:consulta_formulada>Hi ha supòsits de persones que són alts càrrecs del Departament o directius del sector públic que acumulen un càrrec directiu en alguna altra empresa. La consulta és si cal que aquestes persones s’adhereixin al Codi de conducta per a cadascun del càrrecs acumulats o bé és suficient fer-ho com a alt càrrec departamental o directiu de l’empresa mare. En cas d’haver-se d’adherir per a tots els càrrecs, cal també publicar agenda, obsequis i viatges en el webs corresponents? Què passa en el cas que alguna entitat no en tingui?</ds:consulta_formulada>
+    <ds:data>2016-10-26T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_8-2016.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-gfpb~2jhr-tuew">
+    <socrata:rowID>row-gfpb~2jhr-tuew</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 9-2016</ds:codi>
+    <ds:ambit>Adhesió al Codi de conducta</ds:ambit>
+    <ds:tema>Abast del punt 5.6 del Codi de conducta</ds:tema>
+    <ds:autor_consulta>Gabinet Tècnic d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Adhesió codi de conducta | Personal directiu</ds:paraules_clau>
+    <ds:consulta_formulada>Un càrrec de comandament funcionarial ostenta per raó d’aquest càrrec la presidència –no retribuïda- del comitè executiu d’una entitat del sector públic de l’Administració de la Generalitat de Catalunya. La consulta que es formula és si hi ha obligació d’adherirse al Codi de conducta i, en cas afirmatiu, si el document d’adhesió s’ha de signar com a càrrec de comandament funcionarial o com a persona que ostenta la presidència del comitè executiu.</ds:consulta_formulada>
+    <ds:data>2016-11-07T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_9-2016.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-9jgj-a2tf_7gmf">
+    <socrata:rowID>row-9jgj-a2tf_7gmf</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 10-2016</ds:codi>
+    <ds:ambit>Adhesió al Codi de conducta</ds:ambit>
+    <ds:tema>Abast del personal directiu que ha de formalitzar l’adhesió al Codi de conducta</ds:tema>
+    <ds:autor_consulta>Gabinet Tècnic d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Adhesió codi de conducta | Personal directiu</ds:paraules_clau>
+    <ds:consulta_formulada>En relació amb la consideració de personal directiu al qual s’ha d’aplicar el Codi de conducta dels alts càrrecs i personal directiu de l'Administració de la Generalitat i de les entitats del seu sector públic, es plantegen els dubtes següents: 
+1. Els màxims directius de les fundacions que s’adscriuen al Departament tenen consideració de directius públics i, per tant, els és d’aplicació el previst al Codi de conducta? 
+2. En el cas de la Corporació Catalana de Mitjans Audiovisuals el dubte es planteja amb els membres del Consell de Govern de la Corporació i amb la resta de membres de l’equip directiu</ds:consulta_formulada>
+    <ds:data>2016-11-07T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_10-2016.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-z54f-39tj-j484">
+    <socrata:rowID>row-z54f-39tj-j484</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 11-2016</ds:codi>
+    <ds:ambit>Grups d'interès</ds:ambit>
+    <ds:tema>Agenda pública i consideració com a grups d'interès</ds:tema>
+    <ds:autor_consulta>Gabinet Tècnic d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Agenda pública | Grups d'interès</ds:paraules_clau>
+    <ds:consulta_formulada>1. L’assistència als esmorzars i dinars informatius que organitzen les entitats Tribuna Barcelona i Fòrum Europa–Tribuna Catalunya, s’han d’incloure a l’agenda pública dels alts càrrecs? En cas afirmatiu, aquestes entitats han de tenir la consideració de grups d’interès? 
+2. Tractament dels grups d’interès estrangers. Estan exempts d’inscripció al RGI, però s’han d’incloure a l’agenda pública? I els grups d’interès de la resta de l’Estat? 
+3. S’ha d’incloure l’assistència d’alts càrrecs a congressos internacionals a l’agenda pública? Depèn aquesta inclusió o no de si el congrés l’organitza una entitat pública o privada?
+4. Cal incloure a l’agenda els actes organitzats per altres administracions en què participen els alts càrrecs? 
+5. En cas d’actes de concessió de premis en els quals es premia a la Generalitat de Catalunya, les entitats o empreses que convoquen el premi han d’estar inscrites al RGI? Hem d’incloure aquests actes a l’agenda?</ds:consulta_formulada>
+    <ds:data>2016-11-30T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_11-2016.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-psvm_e2tf.55cr">
+    <socrata:rowID>row-psvm_e2tf.55cr</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 12-2016</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Obsequis que perceben els alts càrrecs del Departament: amb motiu del Nadal</ds:tema>
+    <ds:autor_consulta>Àrea d'organització d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Regals</ds:paraules_clau>
+    <ds:consulta_formulada>Es poden acceptar o no regals d’una empresa privada, amb motiu del Nadal, com és un lot de tres ampolles de vi? En cas d’acceptar-ho, quin hauria de ser el destí de les ampolles?</ds:consulta_formulada>
+    <ds:data>2016-12-22T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_12-2016.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-d652.y38n-dx5t">
+    <socrata:rowID>row-d652.y38n-dx5t</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 13-2016</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Nota sobre la consulta formulada al Comitè Assessor d'Ètica Pública en relació amb els conflictes d'interessos familiars i Interpretació que cal realitzar respecte del punt 5.22 del Codi de conducta i, per remissió, dels punts 2 i 4 del Codi de principis i conductes recomanable en la contractació pública</ds:tema>
+    <ds:autor_consulta>Entitat del sector públic</ds:autor_consulta>
+    <ds:paraules_clau>Contractació pública | Interessos familiars | Conflicte d’interès</ds:paraules_clau>
+    <ds:consulta_formulada>Interpretació que cal realitzar respecte del punt 5.22 del Codi de conducta i, per remissió, dels punts 2 i 4 del Codi de principis i conductes recomanable en la contractació pública</ds:consulta_formulada>
+    <ds:data>2017-01-09T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_13-2016.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-2axt-bdbz.x4cn">
+    <socrata:rowID>row-2axt-bdbz.x4cn</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 2-2017</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Invitació a un congrés internacional d’interès per Catalunya, en què l’organització és fruit d’una col·laboració entre dues entitats de les quals n’hi ha una que és una empresa i l’altre que és una entitat sense ànim de lucre (non-profit)</ds:tema>
+    <ds:autor_consulta>Àrea d'organització d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Conflicte d’interès | Invitacions | Pagament de viatges, desplaçaments i allotjament</ds:paraules_clau>
+    <ds:consulta_formulada>Acceptació o no de la invitació per a assistir, com a representant institucional, a un Congrés internacional, invitació que inclou el pagament del viatge i allotjament.</ds:consulta_formulada>
+    <ds:data>2017-02-10T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_2-2017.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-s9hz~f4v8~wpf6">
+    <socrata:rowID>row-s9hz~f4v8~wpf6</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 1-2017</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Possibilitat d’acceptar targetes d’accés a fires de Fira de Barcelona i d’altres targetes de “visitant d’honor”.</ds:tema>
+    <ds:autor_consulta>Gabinets Tècnics departamentals</ds:autor_consulta>
+    <ds:paraules_clau>Regals | Tractes avantatjosos</ds:paraules_clau>
+    <ds:consulta_formulada>Cal considerar com a obsequi a comunicar per a informació pública a la web de transparència la recepció de targetes de “visitant d’honor” que es reben d’entitats com Fira de Barcelona o Circuit de Barcelona–Catalunya, i/o si es poden acceptar targetes de Fira de Barcelona que dóna accés lliure a les fires que s’organitzin durant l’any?</ds:consulta_formulada>
+    <ds:data>2017-02-20T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_1-2017.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-fvh8.vcer.bfki">
+    <socrata:rowID>row-fvh8.vcer.bfki</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 4-2017</ds:codi>
+    <ds:ambit>Grups d'interès</ds:ambit>
+    <ds:tema>Obligatorietat d'inscripció en el Registre de grups d’interès i de publicitat de l'agenda de les reunions amb contractistes en el marc de seguiment d'un contracte</ds:tema>
+    <ds:autor_consulta>Alt càrrec d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Agenda pública | Grups d'interès</ds:paraules_clau>
+    <ds:consulta_formulada>Les reunions amb empreses d’alts càrrecs i personal directiu en el marc d’un contracte ja adjudicat es consideren influència en la presa de decisió i requereixen la inscripció al Registre i la publicitat a l’agenda?</ds:consulta_formulada>
+    <ds:data>2017-05-08T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_4-2017.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-ashx_bxyw_2p8b">
+    <socrata:rowID>row-ashx_bxyw_2p8b</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 5-2017</ds:codi>
+    <ds:ambit>Grups d'interès</ds:ambit>
+    <ds:tema>Com procedir en relació amb una reunió a la delegació de la Unió Europea, amb un grup d’interès inscrit en el Registre de transparència de la UE</ds:tema>
+    <ds:autor_consulta>Gabinet Tècnic d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Publicitat activa | Grups d’interès | Viatges | Conflicte d'interès</ds:paraules_clau>
+    <ds:consulta_formulada>Com procedir en relació amb la publicació de les agendes dels alts càrrecs respecte a reunions amb grups d’interès inscrits en el Registre de transparència de la Unió Europea?</ds:consulta_formulada>
+    <ds:data>2017-06-06T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_5-2017.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-5fsh-q8g4_5jjk">
+    <socrata:rowID>row-5fsh-q8g4_5jjk</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 3-2017</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Invitació, en representació de Catalunya, a un Fòrum de Farmaindústria–Comunitats Autònomes sobre temes de resultats en salut i accés a la innovació, i sobre el Sistema Español de Verificación de Medicamentos, i en relació amb si es pot acceptar el pagament de desplaçament i allotjament</ds:tema>
+    <ds:autor_consulta>Unitat d’informació d’entitat del sector públic.</ds:autor_consulta>
+    <ds:paraules_clau>Conflicte d’interès | Invitacions | Pagament de viatges, desplaçaments i allotjament</ds:paraules_clau>
+    <ds:consulta_formulada>Es pot acceptar la invitació, per a un directiu de l’organització, a un Fòrum de Farmaindústria–Comunitats Autònomes? Es tracta del XX Fòrum i tractarà sobre temes de resultats en salut i accés a la innovació, i sobre el Sistema Español de Verificación de Medicamentos? El Fòrum es celebra a Melilla i des de Farmaindústria pagarien els desplaçaments i l’estada. Aquesta participació suposaria la representació de Catalunya. Farmaindústria és una Associació i, per tant, una entitat sense ànim de lucre.</ds:consulta_formulada>
+    <ds:data>2017-10-10T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_3-2017.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-9zxf_2m4m.esja">
+    <socrata:rowID>row-9zxf_2m4m.esja</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 6-2017</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Oferiment de passis personalitzats per al conjunt de museus del sistema territorial del MNATEC</ds:tema>
+    <ds:autor_consulta>Gabinets Tècnics departamentals | Personal directiu</ds:autor_consulta>
+    <ds:paraules_clau>Regals, tractes avantatjosos</ds:paraules_clau>
+    <ds:consulta_formulada>Es poden acceptar passis personalitzats per al conjunt de museus del sistema territorial del MNATEC, i/o cal considerar-los com a obsequis a comunicar per a informació pública al Portal de Transparència?</ds:consulta_formulada>
+    <ds:data>2017-10-10T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_6-2017.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-5gtj~bdbm.jrim">
+    <socrata:rowID>row-5gtj~bdbm.jrim</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 7-2017</ds:codi>
+    <ds:ambit>Grups d'interès</ds:ambit>
+    <ds:tema>Publicitat activa de viatges associats a una segona activitat, i la relació amb grups d’interès derivada d’aquesta activitat</ds:tema>
+    <ds:autor_consulta>Gabinet Tècnic d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Publicitat activa | Grups d’interès | Reunions fora de Catalunya</ds:paraules_clau>
+    <ds:consulta_formulada>Un directiu d’una entitat del sector públic de l’Administració de la Generalitat de Catalunya que ostenta la presidència d’una associació internacional (que agrupa entitats del mateix sector on presta serveis com alt càrrec) planteja si cal que faci publicitat des del web institucional de la seva entitat, de les reunions que manté amb grups d’interès i dels viatges que fa, com a president de l’associació. Tenint en compte que totes les despeses que generen aquests viatges van a càrrec de l’associació internacional.</ds:consulta_formulada>
+    <ds:data>2017-10-25T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_7-2017.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-8vhy_94hk~wys6">
+    <socrata:rowID>row-8vhy_94hk~wys6</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 1-2018</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Acceptar o no una invitació (desplaçament) per assistir a una reunió a l’estranger, d’una associació inscrita al registre de grups d’interès i que rep subvencions de la unitat que ha rebut la invitació.</ds:tema>
+    <ds:autor_consulta>Direcció de serveis d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Grup d'interès | Conflicte d’interès | Invitacions | Pagament de viatges, desplaçaments i allotjament</ds:paraules_clau>
+    <ds:consulta_formulada>Pot un alt càrrec acceptar una invitació (pagament de desplaçament) per assistir a una reunió a l’estranger per part d’una associació inscrita al registre de grups d’interès i que rep subvencions de la unitat que ha rebut la invitació?</ds:consulta_formulada>
+    <ds:data>2018-08-01T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_1-2018.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-ijt2.6amt-aq2y">
+    <socrata:rowID>row-ijt2.6amt-aq2y</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 1-2019</ds:codi>
+    <ds:ambit>Ús eficient i responsable dels recursos materials</ds:ambit>
+    <ds:tema>Tarifa (classe turista o classe primera) que pot utilitzar un alt càrrec en els seus desplaçaments, quan ha de viatjar en avió.</ds:tema>
+    <ds:autor_consulta>Secretaria general d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Austeritat | Ús responsable recursos públics</ds:paraules_clau>
+    <ds:consulta_formulada>Quina tarifa, classe turista o classe primera, pot utilitzar un alt càrrec en els seus desplaçaments, quan ha de viatjar en avió?</ds:consulta_formulada>
+    <ds:data>2019-01-30T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_1-2019.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-tu4c.qwpn_eri3">
+    <socrata:rowID>row-tu4c.qwpn_eri3</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 2-2019</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Oferiment d’invitacions a alts càrrecs i directius, per part de la Cambra Oficial de Comerç, Indústria, Serveis i Navegació per assistir, com a ponents i/o assistents als Dinars Cambra, que organitza aquesta entitat.</ds:tema>
+    <ds:autor_consulta>Alt càrrec d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Invitacions | Conflcite d'interès</ds:paraules_clau>
+    <ds:consulta_formulada>Els/Les alts càrrecs i directius públics de la Generalitat de Catalunya poden acceptar les invitacions a Dinars Cambra, dinars-col·loqui amb destacats noms del món polític, empresarial i econòmic, moderats per un/a periodista, per a debatre sobre les necessitats, inquietuds i interessos de l'empresariat català?</ds:consulta_formulada>
+    <ds:data>2019-01-30T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_2-2019.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-pt59_asub-dysw">
+    <socrata:rowID>row-pt59_asub-dysw</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 3-2019</ds:codi>
+    <ds:ambit>Grups d'interès</ds:ambit>
+    <ds:tema>Constància a l’agenda oficial dels alts càrrecs i personal directiu, de determinades activitats de relació o contacte amb les organitzacions empresarials i sindicals</ds:tema>
+    <ds:autor_consulta>Direcció General de Dret i Entitats Jurídiques (en el seu moment competent en grups d'interès)</ds:autor_consulta>
+    <ds:paraules_clau>Grups d’interès | Publicitat de l’agenda</ds:paraules_clau>
+    <ds:consulta_formulada>El Codi de conducta preveu en l’apartat 5.20 que en relació amb els grups d’interès i l’agenda oficial, els alts càrrecs i personal directiu han de “vetllar pel compliment de la normativa reguladora dels grups d’interès i del Codi de conducta que els és aplicable i posar en coneixement dels òrgans competents les irregularitats o infraccions de què tinguin constància en aquest àmbit”. Així mateix, l’apartat 5.21 preveu que han d’”ajustar les seves relacions amb els grups d’interès als criteris i protocols d’actuació adoptats corporativament”.</ds:consulta_formulada>
+    <ds:data>2019-01-30T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_3-2019.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-daxf-q68b_4c8u">
+    <socrata:rowID>row-daxf-q68b_4c8u</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 4-2019</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Acceptació per part d'un alt càrrec  una invitació que s’estén també per a una persona acompanyant.</ds:tema>
+    <ds:autor_consulta>Direcció general d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Tracte avantatjó | Ús responsable de recursos públics | Invitació | Publicitat activa</ds:paraules_clau>
+    <ds:consulta_formulada>Es planteja el dubte en el supòsit que un alt càrrec rep la invitació d’algun organisme del sector públic, si per poder acceptar-la, ha d’estar relacionada amb algunes de les funcions que desenvolupa per raó del càrrec o, si, en aquest cas, no és necessari. I si, en cas de poder acceptar la invitació, si també es pot acceptar la invitació per un acompanyant, en el cas que te l’ofereixin.</ds:consulta_formulada>
+    <ds:data>2019-06-04T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_4-2019.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-29d6.ydcv-i2hd">
+    <socrata:rowID>row-29d6.ydcv-i2hd</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 5-2019</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Existència de conflicte d’interès en el cas d’una persona facultativa que compatibilitza el càrrec de director amb tasques de consultoria remunerades.</ds:tema>
+    <ds:autor_consulta>Direcció general d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Conflicte d'interès | Compatibilitat</ds:paraules_clau>
+    <ds:consulta_formulada>Es dóna algun conflicte amb el codi ètic i de bones pràctiques en el cas d’una persona que compatibilitza el càrrec de la direcció de centre amb el de la de direcció clínica d’un Institut especialitzat del propi centre? I que, en tant que facultatiu d’aquesta àrea de coneixement, realitzarà tasques de consultoria remunerades?. En la consulta s’envia adjunt, part del contracte amb una empresa en la que s’especifiquen les tasques que ha de dur a terme. Es manifesta que sembla que no hi hagi problema d’incompatibilitats pel fet que ostenta ambdós càrrecs, però no s’aporta cap documentació acreditativa de la compatibilitat, si és que s’havia d’haver sol·licitat.</ds:consulta_formulada>
+    <ds:data>2019-07-26T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_5-2019.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-6kt2-gzer~qhwg">
+    <socrata:rowID>row-6kt2-gzer~qhwg</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 6-2019</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Conflictes d’interès de les persones patrones d’una fundació privada, sense afany de lucre, que rep subvencions de la Generalitat, en supòsits relacionats amb la contractació pública</ds:tema>
+    <ds:autor_consulta>Direcció general d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Conflicte d'interès</ds:paraules_clau>
+    <ds:consulta_formulada>Una fundació privada, sense afany de lucre, que rep subvencions de la Generalitat i en la qual, en el seu patronat hi ha representants de la Generalitat de Catalunya: 
+1. Pot presentar-se a una licitació pública d’una Administració pública (estatal, autonòmica o local) mitjançant la fórmula d’unió temporal d’empreses amb empreses privades? 
+2. Per presentar-se a una licitació pública d’una Administració pública (estatal, autonòmica o local) és necessari que ho prevegin els seus estatuts fundacionals de forma expressa? 
+3. Els membres del patronat que tinguin càrrecs públics podrien incórrer en situació de conflicte d’interès en el cas que la Fundació ITEC liciti sola o en UTE a un concurs per obtenir un contracte públic? 
+4. En cas que la resposta sigui afirmativa, com caldria actuar?</ds:consulta_formulada>
+    <ds:data>2019-08-01T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_6-2019.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-8ssx~74x8.mwus">
+    <socrata:rowID>row-8ssx~74x8.mwus</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 7-2019</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Assistència d’una persona alt càrrec a un sopar benèfic organitzat per un grup d’interès i les obligacions de publicitat activa que se’n puguin derivar.</ds:tema>
+    <ds:autor_consulta>Àrea d'organització d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Grup d'interès | Invitacions | Publicitat activa</ds:paraules_clau>
+    <ds:consulta_formulada>En un sopar benèfic organitzat per un grup d’interès: si un alt càrrec hi assisteix i assumeix a títol personal el cost del sopar, el tractament hauria de ser el mateix que el d’una reunió?</ds:consulta_formulada>
+    <ds:data>2019-10-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_6-2019.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-6btq.jymk_acny">
+    <socrata:rowID>row-6btq.jymk_acny</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 8-2019</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Acceptació o no d’una targeta de subscripció d’un diari</ds:tema>
+    <ds:autor_consulta>Àrea d'organització d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Regals</ds:paraules_clau>
+    <ds:consulta_formulada>El Departament rep, com a subscriptors del diari, la targeta del “club Vanguardia” a nom del Conseller. Es pot acceptar? O bé caldria tractar-ho com un dels supòsits establerts en el punt 5.17 del Codi de conducta?</ds:consulta_formulada>
+    <ds:data>2019-10-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_8-2019.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-d8y6_9twk-arxf">
+    <socrata:rowID>row-d8y6_9twk-arxf</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 9-2019</ds:codi>
+    <ds:ambit>Ús eficient i responsable dels recursos materials</ds:ambit>
+    <ds:tema>Recàrrega de vehicles privats “zero emissions” en aparcaments d’edificis públics de la Generalitat de Catalunya</ds:tema>
+    <ds:autor_consulta>Direcció de serveis d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Ús responsable recursos públics</ds:paraules_clau>
+    <ds:consulta_formulada>Un/a alt càrrec que disposa d’una plaça d’aparcament assignada a l’edifici on treballa, pot recarregar el seu vehicle “zero emissions” consumint l’energia que paga l’Administració de la Generalitat? 
+I si a l’edifici públic cal fer una petita instal·lació elèctrica per a fer possible la recàrrega de vehicles, el cost ha de ser assumit també per la Generalitat? 
+Tenen consideració general de vehicles Zero Emissions aquells vehicles (moto, cotxe o furgoneta) classificats en el Registre de Vehicles de la DGT com a vehicles elèctrics de bateria (BEV), vehicles elèctrics d'autonomia extensa (REEV), i vehicles elèctrics híbrids endollables (PHEV) amb una autonomia mínima de 40 quilòmetres. 
+El dubte es planteja perquè si bé el Govern ha emprès un ampli ventall d’iniciatives per a fomentar la mobilitat sostenible, la despesa associada a la recàrrega del vehicle particular es podria interpretar, per exemple, com una bonificació al transport. El mateix plantejament es podria fer extensiu a bicicletes elèctriques, patinets elèctrics i, fins i tot, a la recàrrega de telèfons mòbils consumint l’electricitat dels edificis públics.</ds:consulta_formulada>
+    <ds:data>2019-10-08T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_8-2019.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-wcet.gw3i-4nmk">
+    <socrata:rowID>row-wcet.gw3i-4nmk</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 5-2022</ds:codi>
+    <ds:ambit>Grups d'interès</ds:ambit>
+    <ds:tema>Aplicació de la normativa en matèria de regals als alts càrrecs públics</ds:tema>
+    <ds:autor_consulta>Gabinet Tècnic d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Grups d’interès | Regals</ds:paraules_clau>
+    <ds:consulta_formulada>El Director/La Directora d’una entitat pública esta interessat/da en assistir a un esdeveniment organitzat per una empresa. Per fer la inscripció demanen un document signat per l’autoritat competent en compliance on es confirmi que no hi ha problemes a l’hora d’acceptar regals, menjars o entreteniment que es proporcionin als assistents. Demana: com ha d’actuar?</ds:consulta_formulada>
+    <ds:data>2021-09-19T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_5-2022.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-fggr_9vsd.5d2w">
+    <socrata:rowID>row-fggr_9vsd.5d2w</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 4-2022</ds:codi>
+    <ds:ambit>Comunicació</ds:ambit>
+    <ds:tema>Aprovació d’una investigació externa per part del Comitè d’Ètica de Catalunya</ds:tema>
+    <ds:autor_consulta>Periodista</ds:autor_consulta>
+    <ds:paraules_clau>Retribucions | Formació</ds:paraules_clau>
+    <ds:consulta_formulada>Quina és la gestió que han d’iniciar perquè el Comitè d’Ètica de Catalunya aprovi una investigació sobre satisfacció materna?</ds:consulta_formulada>
+    <ds:data>2022-05-10T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_4-2022.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-aqun-j7pd_gjn9">
+    <socrata:rowID>row-aqun-j7pd_gjn9</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 2-2021</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Possible conflicte d’interès d’un alt càrrec en la promoció d’un negoci familiar</ds:tema>
+    <ds:autor_consulta>Direcció de serveis d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Conflicte d'nterès</ds:paraules_clau>
+    <ds:consulta_formulada>Un alt càrrec promociona de manera directa, i a través de les xarxes socials, un negoci familiar amb el que no té cap vincle formal ni rep cap remuneració. L’activitat empresarial no està relacionada amb l’àmbit de responsabilitat de l’alt càrrec.
+En aquest context, hi podria haver algun incompliment normatiu o del Codi de conducta?</ds:consulta_formulada>
+    <ds:data>2022-05-18T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_2-2021.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-xs64_zsjs-nikp">
+    <socrata:rowID>row-xs64_zsjs-nikp</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 1-2022</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Sol·licitud d’una subvenció per part d’un alt càrrec</ds:tema>
+    <ds:autor_consulta>Direcció de serveis d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Informació privilegiada | Subvenció</ds:paraules_clau>
+    <ds:consulta_formulada>Un/a alt càrrec està interessat/da en sol·licitar una subvenció sobre certa temàtica, subvenció que atorga una entitat del sector públic adscrita al Departament en el qual exerceix el seu càrrec. Es planteja si pot sol·licitar la subvenció com qualsevol ciutadà i si podria haver algun incompliment normatiu o del Codi de conducta.</ds:consulta_formulada>
+    <ds:data>2022-05-18T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_1-2022.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-9ewv-qaki.jxpf">
+    <socrata:rowID>row-9ewv-qaki.jxpf</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 3-2022</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Un alt càrrec pot fer d’aval a títol personal a cooperatives i entitats?</ds:tema>
+    <ds:autor_consulta>Direcció de serveis d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Conflicte d'interès | Incompatibilitat</ds:paraules_clau>
+    <ds:consulta_formulada>Possibilitat que un alt càrrec pugui avalar a títol personal a cooperatives i entitats per a projectes socials i, concretament, al fet de si es tractaria d’una activitat incompatible d’acord amb el règim d’incompatibilitats establert a la Llei 13/2005, de 27 de setembre.</ds:consulta_formulada>
+    <ds:data>2022-05-19T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_3-2022.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-sqji.7a9e_83je">
+    <socrata:rowID>row-sqji.7a9e_83je</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 2-2022</ds:codi>
+    <ds:ambit>Remuneracions per activitats docents</ds:ambit>
+    <ds:tema>Percepció de remuneracions per la participació d’alts càrrecs en jornades, cursos, conferències, etc.</ds:tema>
+    <ds:autor_consulta>Intervenció General</ds:autor_consulta>
+    <ds:paraules_clau>Retribucions | Formació</ds:paraules_clau>
+    <ds:consulta_formulada>Participació i remuneració d’alts càrrecs i directius del sector públic de la Generalitat de Catalunya, en jornades, cursos, o conferències, organitzats per aquestes entitats o per la resta del sector públic, i si es considera oportuna una limitació en els imports percebuts.</ds:consulta_formulada>
+    <ds:data>2022-09-29T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_2-2022.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-2nc4_ndrp~za7p">
+    <socrata:rowID>row-2nc4_ndrp~za7p</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 1-2023</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Pagament d’un viatge a un membre del Consell d’Administració d’una entitat del sector públic que alhora és alt càrrec</ds:tema>
+    <ds:autor_consulta>Direcció d’una entitat del sector públic</ds:autor_consulta>
+    <ds:paraules_clau>Pagament de viatges</ds:paraules_clau>
+    <ds:consulta_formulada>Una entitat pot satisfer les despeses de viatge d’un membre del seu Consell d’Administració de que alhora és alt càrrec? O bé ha de gestionar-ho el Departament de l’alt càrrec? Es tracta d’un congrés internacional en el que hi participaran tant la direcció de l’entitat com l’alt càrrec.</ds:consulta_formulada>
+    <ds:data>2023-03-09T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_2-2022.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-6akz.bvnc.2nhj">
+    <socrata:rowID>row-6akz.bvnc.2nhj</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 3-2023</ds:codi>
+    <ds:ambit>Adhesió al Codi de conducta</ds:ambit>
+    <ds:tema>Aplicació del Codi de conducta a una figura amb responsabilitats directives</ds:tema>
+    <ds:autor_consulta>Direcció de serveis d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Àmbit subjectiu d’aplicació</ds:paraules_clau>
+    <ds:consulta_formulada>La direcció d’un programa temporal amb un contracte laboral d’alta direcció i amb unes retribucions anuals equivalents a les d’un/a funcionari/ària de nivell 29 amb jornada de dedicació especial, està subjecte a l’acceptació del Codi de conducta dels alts càrrecs i personal directiu de l'Administració de la Generalitat i de les entitats del seu sector públic?</ds:consulta_formulada>
+    <ds:data>2023-07-05T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_3-2023.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-2rmw~uwg6-u9ig">
+    <socrata:rowID>row-2rmw~uwg6-u9ig</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 2-2023</ds:codi>
+    <ds:ambit>Grups d'interès</ds:ambit>
+    <ds:tema>Inscripció d'una fundació al Registre de grups d’interès abans d’una reunió amb alts càrrecs de la Generalitat.</ds:tema>
+    <ds:autor_consulta>Direcció d’una entitat del sector públic</ds:autor_consulta>
+    <ds:paraules_clau>Conflicte d’interès | Grups d’interès</ds:paraules_clau>
+    <ds:consulta_formulada>Determinada fundació s’havia d’inscriure al Registre de grups d’interès abans d’una reunió amb alts càrrecs de la Generalita? La fundació planteja que actua com a sòcia de la Generalitat en el marc d’un acord de col·laboració per al desenvolupament d’un projecte i no com a grup d’interès atès que no pretén influir directament o indirectament en l'elaboració i l'aplicació de les polítiques públiques, en l'elaboració de propostes normatives o en la presa de decisions, en defensa d'un interès propi o de tercers o d'un interès general.</ds:consulta_formulada>
+    <ds:data>2024-03-06T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_2-2023.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-drgr.3f6y~vcxa">
+    <socrata:rowID>row-drgr.3f6y~vcxa</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 1-2024</ds:codi>
+    <ds:ambit>Competències del CAEP</ds:ambit>
+    <ds:tema>Tramitació d’un cas que afecta un alt càrrec i en què aparentment es vulnera el Codi de conducta</ds:tema>
+    <ds:autor_consulta>Secretaria general d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Competències del CAEP</ds:paraules_clau>
+    <ds:consulta_formulada>Ateses les funcions del Comitè Assessor d'Ètica Pública, en concret les establertes en el punt 2 de l'apartat sisè de l'Acord de Govern de 21 de juny de 2016, us adjuntem l'escrit rebut en aquesta Secretaria General, i restem amatents a les recomanacions que pugueu efectuar o dels tràmits que corresponguin. L’escrit remès fa referència a una sèrie de comportaments d’un alt càrrec del Departament contra un directiu d’una entitat del sector públic adscrita a l’òrgan del que aquest alt càrrec n’és titular.</ds:consulta_formulada>
+    <ds:data>2024-03-06T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_1-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-i6dw_vkmb.sdnu">
+    <socrata:rowID>row-i6dw_vkmb.sdnu</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 2-2024</ds:codi>
+    <ds:ambit>Grups d'interès</ds:ambit>
+    <ds:tema>Invitacions a grups d’interès per part d’entitats</ds:tema>
+    <ds:autor_consulta>Servei d’organització d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Conflictes d’interès | Àpats, obsequis i regals | Grups d’interès</ds:paraules_clau>
+    <ds:consulta_formulada>Es poden convidar grups d'interès a àpats per part de la direcció d'una entitat?</ds:consulta_formulada>
+    <ds:data>2024-03-06T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_2-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-7jmk-cudu_wyjj">
+    <socrata:rowID>row-7jmk-cudu_wyjj</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 3-2024</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Conflicte d’interès en la participació d’un directiu en una publicació col·lectiva promoguda per una fundació adscrita a una empresa proveïdora</ds:tema>
+    <ds:autor_consulta>Gerència d'una entitat del sector públic</ds:autor_consulta>
+    <ds:paraules_clau>Conflicte d’interès | Grups d’interès</ds:paraules_clau>
+    <ds:consulta_formulada>Pot incórrer en conflicte d’interès un directiu d’una entitat del sector públic convidat a participar en una obra científica promoguda per una Fundació adscrita a una empresa proveïdora en el seu sector d’activitat? La fundació ha ofert una compensació econòmica i el directiu l’ha declinada.</ds:consulta_formulada>
+    <ds:data>2024-03-06T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_3-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-6k8j.ktyg-2bpx">
+    <socrata:rowID>row-6k8j.ktyg-2bpx</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 4-2024</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Pagaments de viatges i allotjament a empleats</ds:tema>
+    <ds:autor_consulta>Entitat del sector públic</ds:autor_consulta>
+    <ds:paraules_clau>Conflictes d’interès | Àpats, obsequis i regals | Grups d’interès</ds:paraules_clau>
+    <ds:consulta_formulada>Un empleat sense rang directiu, que assisteix a una ponència organitzada per un grup d’interès (proveïdor), podria acceptar el pagament del viatge i/o allotjament?</ds:consulta_formulada>
+    <ds:data>2025-06-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_4-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-mxv6~7hw6_xs8h">
+    <socrata:rowID>row-mxv6~7hw6_xs8h</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 5-2024</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Participació en una activitat formativa promoguda per una universitat a l’estranger</ds:tema>
+    <ds:autor_consulta>Direcció d’una entitat del sector públic</ds:autor_consulta>
+    <ds:paraules_clau>Formació | Conflicte d’interès</ds:paraules_clau>
+    <ds:consulta_formulada>Una universitat de l’estranger convida el director d’una entitat del sector públic a impartir formació en el seu àmbit d’expertesa. La dedicació es fa en període de vacances i sense remuneració. La universitat es fa càrrec del desplaçament, l’allotjament i una assegurança mèdica.</ds:consulta_formulada>
+    <ds:data>2025-06-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_5-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-amxy-nh7n_ftza">
+    <socrata:rowID>row-amxy-nh7n_ftza</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 6-2024</ds:codi>
+    <ds:ambit>Competències del CAEP</ds:ambit>
+    <ds:tema>Possible aplicació del Codi de conducta en un cas d’irregularitat en la gestió econòmica</ds:tema>
+    <ds:autor_consulta>Secretaria general d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Funcions del Comitè Assessor | Règim sancionador</ds:paraules_clau>
+    <ds:consulta_formulada>Arran d’un expedient d’informació reservada en relació amb unes presumptes irregularitats de gestió econòmica comeses per un director general es demana al CAEP si se’n deriva algun incompliment dels principis o regles de conducta dels alts càrrecs que li eren aplicables.</ds:consulta_formulada>
+    <ds:data>2025-06-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_6-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-8dki~g5re_r9ti">
+    <socrata:rowID>row-8dki~g5re_r9ti</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 7-2024</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Atorgament d’un premi honorífic a un alt càrrec per part d’una empresa privada</ds:tema>
+    <ds:autor_consulta>Direcció general d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Conflictes d’interès | Àpats, obsequis i regals | Premis i reconeixements</ds:paraules_clau>
+    <ds:consulta_formulada>El director general pot rebre un premi honorífic per part d’una empresa privada per una obra de caràcter divulgatiu en un àmbit concret?</ds:consulta_formulada>
+    <ds:data>2025-06-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_7-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-e6i3-u9yp_j4tj">
+    <socrata:rowID>row-e6i3-u9yp_j4tj</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 8-2024</ds:codi>
+    <ds:ambit>Grups d'interès</ds:ambit>
+    <ds:tema>Àpats/regals amb grups d’interès</ds:tema>
+    <ds:autor_consulta>Responsable de publicitat activa d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Conflictes d’interès | Àpats, obsequis i regals | Grups d’interès | Transparència</ds:paraules_clau>
+    <ds:consulta_formulada>Es pot acceptar una invitació a un àpat per part d’un grup d’interès?</ds:consulta_formulada>
+    <ds:data>2025-06-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_8-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-g6sj-4wsv_877c">
+    <socrata:rowID>row-g6sj-4wsv_877c</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 9-2024</ds:codi>
+    <ds:ambit>Remuneracions per activitats docents</ds:ambit>
+    <ds:tema>Precisió de la consulta C2_2022 al respecte de la possible destinació de remuneracions per participar en activitats formatives</ds:tema>
+    <ds:autor_consulta>Direcció d’una entitat del sector públic</ds:autor_consulta>
+    <ds:paraules_clau>Formació</ds:paraules_clau>
+    <ds:consulta_formulada>Què s’entén per “tercers legitimats per percebre-les (d’acord amb la política de les institucions formadores) en la resposta a la consulta C 2-2022 sobre remuneració per participar en activitats formatives?</ds:consulta_formulada>
+    <ds:data>2025-06-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_9-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-z8c5.xp7z-y3ta">
+    <socrata:rowID>row-z8c5.xp7z-y3ta</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 10-2024</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Postocupació</ds:tema>
+    <ds:autor_consulta>Direcció de serveis d’un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Incompatibilitats | Conflicte d’interès | Registre d’activitats | Postocupació</ds:paraules_clau>
+    <ds:consulta_formulada>Després del cessament, les persones que han exercit com a alt càrrec crec que han d’estar un període de 2 anys sense desenvolupar una activitat que pugui suposar un conflicte d’interessos real o aparent?  A l’Administració General de l’Estat hi ha una Oficina de Conflictes d’Interès que pot autoritzar exercir activitats privades després del cessament, a l’Administració de la Generalitat també? Diversos alts càrrecs que han cessat han fet aquestes consultes i no hi ha informació clara al respecte.</ds:consulta_formulada>
+    <ds:data>2025-06-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_10-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-9ssz_ug56.t3df">
+    <socrata:rowID>row-9ssz_ug56.t3df</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 11-2024</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Consideració d’obsequi/regal</ds:tema>
+    <ds:autor_consulta>Direcció d’un centre administratiu</ds:autor_consulta>
+    <ds:paraules_clau>Àpats, obsequis i regals</ds:paraules_clau>
+    <ds:consulta_formulada>Segons l’art. 54.6 del TREBEP, “S’ha de rebutjar qualsevol regal, favor o servei en condicions avantatjoses que vagi més enllà dels usos habituals, socials i de cortesia, sense perjudici del que estableix el Codi penal.” En el marc de la Generalitat de Catalunya existeixen criteris per a determinar si un regal, favor o servei va més enllà dels usos habituals, socials i de cortesia? Per exemple, un administrat amb mostra d’agraïment que et regala una caixa de bombons o bé una ampolla de vi...</ds:consulta_formulada>
+    <ds:data>2025-06-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_11-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-8ttp-txqk_sdsy">
+    <socrata:rowID>row-8ttp-txqk_sdsy</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 12-2024</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Participació en una activitat formativa promoguda per una empresa proveïdora</ds:tema>
+    <ds:autor_consulta>Subdirecció general d’una unitat de gestió</ds:autor_consulta>
+    <ds:paraules_clau>Formació | Conflicte d’interès</ds:paraules_clau>
+    <ds:consulta_formulada>La nostra unitat contracta empreses molt especialitzades en un àmbit de gestió concret sobre el que també fan activisme i formació. Una d’aquestes empreses organitza una jornada i conviden un tècnic de la subdirecció expert en la matèria. Per impartir formació. Tot i que ofereixen remuneració, aquesta s’ha descartat, però  se’ns plantegen molts dubtes sobre la col·laboració, més enllà de l’oportunitat de difondre els projectes de la Generalitat.</ds:consulta_formulada>
+    <ds:data>2025-06-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_12-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-2tyx~g2bu_h4ya">
+    <socrata:rowID>row-2tyx~g2bu_h4ya</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 13-2024</ds:codi>
+    <ds:ambit>Debat públic</ds:ambit>
+    <ds:tema>Fer referència al càrrec públic en activitats de formació o altres</ds:tema>
+    <ds:autor_consulta>Direcció d’una entitat del sector públic</ds:autor_consulta>
+    <ds:paraules_clau>Càrrec públic | Participació en debats públics</ds:paraules_clau>
+    <ds:consulta_formulada>El director ha estat convidat a impartir una conferència en un ajuntament i, en principi, ha demanat que en el programa es faci constar la seva condició de  catedràtic emèrit de l’àmbit de coneixement que es tracta, i no pas la del càrrec directiu que deté. Té clar que no pot acceptar cap retribució, llevat d'un obsequi institucional de poc valor. El dubte és si la referència al càrrec públic actual és una cosa que he de deixar de banda, si s’ha de fer constar, o si fer-ho o no depèn del seu criteri.</ds:consulta_formulada>
+    <ds:data>2025-06-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_13-2024.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-qq4x.w6uf-8uiq">
+    <socrata:rowID>row-qq4x.w6uf-8uiq</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 1-2025</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Acceptació d’obsequi/regal</ds:tema>
+    <ds:autor_consulta>Direcció general d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Conflictes d’interès | Àpats, obsequis i regals</ds:paraules_clau>
+    <ds:consulta_formulada>Una associació ofereix a la directora una dispensa de la quota de sòcia com a compensació per haver moderat una taula rodona organitzada per aquesta associació.</ds:consulta_formulada>
+    <ds:data>2025-06-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_1-2025.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-rs37-7t6w_7d4a">
+    <socrata:rowID>row-rs37-7t6w_7d4a</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 2-2025</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Acceptació del pagament d’un viatge</ds:tema>
+    <ds:autor_consulta>Direcció general d'un Departament</ds:autor_consulta>
+    <ds:paraules_clau>Conflictes d’interès | Viatges</ds:paraules_clau>
+    <ds:consulta_formulada>Una Fundació m’ha convidat a una altra comunitat autònoma a fer una xerrada d’una hora sobre un projecte clau en l’àmbit de gestió sobre el que el Departament en vol fer divulgació. Podria acceptar que em paguin el viatge?</ds:consulta_formulada>
+    <ds:data>2025-06-02T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_2-2025.pdf"/></dsbase:_63kp-3u4f>
+<dsbase:_63kp-3u4f rdf:about="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f/row-nq4p.iw3f_ainz">
+    <socrata:rowID>row-nq4p.iw3f_ainz</socrata:rowID>
+    <rdfs:member rdf:resource="https://analisi.transparenciacatalunya.cat/resource/_63kp-3u4f"/>
+    <ds:codi>C 3-2025</ds:codi>
+    <ds:ambit>Conflicte d'interès</ds:ambit>
+    <ds:tema>Acceptació del pagament d’un viatge</ds:tema>
+    <ds:autor_consulta>Àrea jurídica d’una entitat del sector públic</ds:autor_consulta>
+    <ds:paraules_clau>Viatge</ds:paraules_clau>
+    <ds:consulta_formulada>Voldria saber si és conforme amb el Codi de conducta que un alt càrrec de la Generalitat accepti que un ajuntament d’una altra comunitat autònoma assumeixi les despeses de viatge i allotjament per participar com a ponent en un congrés de caràcter institucional organitzat per aquest ajuntament. La participació en el congrés respon a una invitació formal i té com a objectiu compartir coneixement i experiència en l’àmbit de l’administració pública, sense cap mena de contraprestació econòmica ni benefici personal. 
+Aquesta situació pot ser considerada compatible amb els principis de transparència, imparcialitat i integritat que estableix el codi. Caldria seguir algun procediment específic (com ara la declaració prèvia o autorització expressa)?</ds:consulta_formulada>
+    <ds:data>2025-09-16T00:00:00</ds:data>
+    <foaf:document rdf:resource="https://documents.dadesobertes.gencat.cat/etica-publica/docs/C_3-2025.pdf"/></dsbase:_63kp-3u4f></rdf:RDF>

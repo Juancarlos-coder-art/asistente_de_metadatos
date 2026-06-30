@@ -16,7 +16,7 @@ Output shape per entry:
 
 import json
 import time
-import xml.etree.ElementTree as ET
+import defusedxml.ElementTree as ET
 from pathlib import Path
 
 import requests
@@ -45,7 +45,7 @@ _LABEL_TAGS = {
 }
 
 
-def _fetch_rdf(url: str) -> ET.Element | None:
+def _fetch_rdf(url: str) -> "xml.etree.ElementTree.Element" | None:
     try:
         r = requests.get(url, headers=_HEADERS, timeout=15)
         r.raise_for_status()
@@ -55,7 +55,7 @@ def _fetch_rdf(url: str) -> ET.Element | None:
         return None
 
 
-def _concept_uris(root_element: ET.Element, base_url: str) -> list[str]:
+def _concept_uris(root_element: "xml.etree.ElementTree.Element", base_url: str) -> list[str]:
     uris = []
     base = base_url.rstrip("/") + "/"
     for desc in root_element.findall(f"{{{_NS['rdf']}}}Description"):
@@ -65,7 +65,7 @@ def _concept_uris(root_element: ET.Element, base_url: str) -> list[str]:
     return sorted(set(uris))
 
 
-def _extract_english_fields(element: ET.Element) -> dict:
+def _extract_english_fields(element: "xml.etree.ElementTree.Element") -> dict:
     fields: dict[str, list] = {}
     for tag, key in _LABEL_TAGS.items():
         for node in element.iter(tag):

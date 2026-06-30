@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sr:codes xmlns:cdomain="http://www.siemac.org/metamac/rest/common/v1.0/domain" xmlns:sr="http://www.siemac.org/metamac/rest/structural-resources/v1.0/domain" kind="structuralResources#codes" total="12" selfLink="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes">
+    <sr:code kind="structuralResources#code">
+        <cdomain:id>_T</cdomain:id>
+        <cdomain:urn>urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000)._T</cdomain:urn>
+        <cdomain:selfLink kind="structuralResources#code" href="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/_T"/>
+        <cdomain:name>
+            <cdomain:text xml:lang="en">Total</cdomain:text>
+            <cdomain:text xml:lang="es">Total</cdomain:text>
+        </cdomain:name>
+        <cdomain:description>
+            <cdomain:text xml:lang="en">Used for expressing totals.</cdomain:text>
+            <cdomain:text xml:lang="es">Usado para expresar totales.</cdomain:text>
+        </cdomain:description>
+        <cdomain:visualizerHtmlLink>https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/_T/01.000/detail</cdomain:visualizerHtmlLink>
+    </sr:code>
+    <sr:code kind="structuralResources#code">
+        <cdomain:id>NIF</cdomain:id>
+        <cdomain:urn>urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000).NIF</cdomain:urn>
+        <cdomain:selfLink kind="structuralResources#code" href="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/NIF"/>
+        <cdomain:name>
+            <cdomain:text xml:lang="es">Número de identificación fiscal (NIF)</cdomain:text>
+        </cdomain:name>
+        <cdomain:description>
+            <cdomain:text xml:lang="es">Número de identifcación fiscal</cdomain:text>
+        </cdomain:description>
+        <cdomain:visualizerHtmlLink>https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/NIF/01.000/detail</cdomain:visualizerHtmlLink>
+    </sr:code>
+    <sr:code kind="structuralResources#code">
+        <cdomain:id>NIE</cdomain:id>
+        <cdomain:urn>urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000).NIE</cdomain:urn>
+        <cdomain:selfLink kind="structuralResources#code" href="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/NIE"/>
+        <cdomain:name>
+            <cdomain:text xml:lang="es">Número de identificación de extranjero (NIE)</cdomain:text>
+        </cdomain:name>
+        <cdomain:description>
+            <cdomain:text xml:lang="es">Número de identificación de extranjero</cdomain:text>
+        </cdomain:description>
+        <cdomain:visualizerHtmlLink>https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/NIE/01.000/detail</cdomain:visualizerHtmlLink>
+    </sr:code>
+    <sr:code kind="structuralResources#code">
+        <cdomain:id>PASAPORTE</cdomain:id>
+        <cdomain:urn>urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000).PASAPORTE</cdomain:urn>
+        <cdomain:selfLink kind="structuralResources#code" href="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/PASAPORTE"/>
+        <cdomain:name>
+            <cdomain:text xml:lang="es">Pasaporte</cdomain:text>
+        </cdomain:name>
+        <cdomain:description>
+            <cdomain:text xml:lang="es">Documento de identidad de ciudadano de un pais, expedido por las autoridades de su país, que acredita su identidad y nacionalidad</cdomain:text>
+        </cdomain:description>
+        <cdomain:visualizerHtmlLink>https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/PASAPORTE/01.000/detail</cdomain:visualizerHtmlLink>
+    </sr:code>
+    <sr:code kind="structuralResources#code">
+        <cdomain:id>NUSS</cdomain:id>
+        <cdomain:urn>urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000).NUSS</cdomain:urn>
+        <cdomain:selfLink kind="structuralResources#code" href="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/NUSS"/>
+        <cdomain:name>
+            <cdomain:text xml:lang="es">Número de la Seguridad Social (NUSS / NAF)</cdomain:text>
+        </cdomain:name>
+        <cdomain:description>
+            <cdomain:text xml:lang="es">Número de la Seguridad Social (NUSS) es el número de identificación personal de la Seguridad Social. También se conoce como Número de Afiliación (NAF) o puede aparece como NAFILIA</cdomain:text>
+        </cdomain:description>
+        <cdomain:visualizerHtmlLink>https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/NUSS/01.000/detail</cdomain:visualizerHtmlLink>
+    </sr:code>
+    <sr:code kind="structuralResources#code">
+        <cdomain:id>CIP_SNS</cdomain:id>
+        <cdomain:urn>urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000).CIP_SNS</cdomain:urn>
+        <cdomain:selfLink kind="structuralResources#code" href="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/CIP_SNS"/>
+        <cdomain:name>
+            <cdomain:text xml:lang="es">Código de identificación del Sistema Nacional de Salud</cdomain:text>
+        </cdomain:name>
+        <cdomain:description>
+            <cdomain:text xml:lang="es">Código de identificación personal único del Sistema Nacional de Salud asociado a la tarjeta sanitaria individual (TSI). Este último es el documento oficial, necesario y suficiente, establecido para la identificación de cada ciudadano en el acceso a las prestaciones y uso de los servicios del Sistema Nacional de Salud (SNS), según establece en la Ley 16/2003, de 28 de mayo, de cohesión y calidad del Sistema Nacional de Salud</cdomain:text>
+        </cdomain:description>
+        <cdomain:visualizerHtmlLink>https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/CIP_SNS/01.000/detail</cdomain:visualizerHtmlLink>
+    </sr:code>
+    <sr:code kind="structuralResources#code">
+        <cdomain:id>NIS</cdomain:id>
+        <cdomain:urn>urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000).NIS</cdomain:urn>
+        <cdomain:selfLink kind="structuralResources#code" href="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/NIS"/>
+        <cdomain:name>
+            <cdomain:text xml:lang="es">Número de identificación sistemática del sistema penitenciario</cdomain:text>
+        </cdomain:name>
+        <cdomain:description>
+            <cdomain:text xml:lang="es">Número de identificación unico asignado a una persona cuando ingresa por primera vez en un centro penitenciario.</cdomain:text>
+        </cdomain:description>
+        <cdomain:visualizerHtmlLink>https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/NIS/01.000/detail</cdomain:visualizerHtmlLink>
+    </sr:code>
+    <sr:code kind="structuralResources#code">
+        <cdomain:id>_N</cdomain:id>
+        <cdomain:urn>urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000)._N</cdomain:urn>
+        <cdomain:selfLink kind="structuralResources#code" href="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/_N"/>
+        <cdomain:name>
+            <cdomain:text xml:lang="en">Non response</cdomain:text>
+            <cdomain:text xml:lang="es">No sabe/No contesta</cdomain:text>
+        </cdomain:name>
+        <cdomain:description>
+            <cdomain:text xml:lang="en">Failure to obtain a measurement on one or more study variables for one or more elements in a survey.</cdomain:text>
+            <cdomain:text xml:lang="es">Fallo al obtener la medida en una o más variables de estudio para uno o más elementos de una encuesta.</cdomain:text>
+        </cdomain:description>
+        <cdomain:visualizerHtmlLink>https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/_N/01.000/detail</cdomain:visualizerHtmlLink>
+    </sr:code>
+    <sr:code kind="structuralResources#code">
+        <cdomain:id>_O</cdomain:id>
+        <cdomain:urn>urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000)._O</cdomain:urn>
+        <cdomain:selfLink kind="structuralResources#code" href="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/_O"/>
+        <cdomain:name>
+            <cdomain:text xml:lang="en">Other</cdomain:text>
+            <cdomain:text xml:lang="es">Otros</cdomain:text>
+        </cdomain:name>
+        <cdomain:description>
+            <cdomain:text xml:lang="en">Used to cover residual information not contained in other categories of the code list (in some contexts, e.g. classifications, referred to as n.e.s., not elsewhere specified, n.e.c., not elsewhere classified, etc.)</cdomain:text>
+            <cdomain:text xml:lang="es">Usado para identificar información residual no contenida en otras categorías de la clasificación (en algunos contextos, por ejemplo, en las clasificaciones, se hace referencia a estos datos como no especificados en otra parte, no clasificados en otra parte, etc.)</cdomain:text>
+        </cdomain:description>
+        <cdomain:visualizerHtmlLink>https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/_O/01.000/detail</cdomain:visualizerHtmlLink>
+    </sr:code>
+    <sr:code kind="structuralResources#code">
+        <cdomain:id>_U</cdomain:id>
+        <cdomain:urn>urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000)._U</cdomain:urn>
+        <cdomain:selfLink kind="structuralResources#code" href="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/_U"/>
+        <cdomain:name>
+            <cdomain:text xml:lang="en">No data/unknown</cdomain:text>
+            <cdomain:text xml:lang="es">No consta</cdomain:text>
+        </cdomain:name>
+        <cdomain:description>
+            <cdomain:text xml:lang="en">Failure to obtain a measurement (e.g. non response, no data available, information not known by the respondent unit, etc.)</cdomain:text>
+            <cdomain:text xml:lang="es">Fallo al obtener un dato (por ejemplo: sin respuesta, dato no disponible, información desconocida por el encuestado, etc.)</cdomain:text>
+        </cdomain:description>
+        <cdomain:visualizerHtmlLink>https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/_U/01.000/detail</cdomain:visualizerHtmlLink>
+    </sr:code>
+    <sr:code kind="structuralResources#code">
+        <cdomain:id>_X</cdomain:id>
+        <cdomain:urn>urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000)._X</cdomain:urn>
+        <cdomain:selfLink kind="structuralResources#code" href="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/_X"/>
+        <cdomain:name>
+            <cdomain:text xml:lang="en">Not allocated/unspecified</cdomain:text>
+            <cdomain:text xml:lang="es">No clasificable</cdomain:text>
+        </cdomain:name>
+        <cdomain:description>
+            <cdomain:text xml:lang="en">Used where the value for a particular variable falls outside the expected range. An example could be the failure to allocate a classification to a particular unit due to insufficient information, and/or if further breakdown over any related items mentioned in code list not available.</cdomain:text>
+            <cdomain:text xml:lang="es">Se usa cuando el valor de una variable cae por debajo del rango esperado. Por ejemplo, se podría usar para un dato del que no se tiene suficiente información y no se le puede asignar una clasificación.</cdomain:text>
+        </cdomain:description>
+        <cdomain:visualizerHtmlLink>https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/_X/01.000/detail</cdomain:visualizerHtmlLink>
+    </sr:code>
+    <sr:code kind="structuralResources#code">
+        <cdomain:id>_Z</cdomain:id>
+        <cdomain:urn>urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000)._Z</cdomain:urn>
+        <cdomain:selfLink kind="structuralResources#code" href="https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/_Z"/>
+        <cdomain:name>
+            <cdomain:text xml:lang="en">Not applicable</cdomain:text>
+            <cdomain:text xml:lang="es">No aplicable</cdomain:text>
+        </cdomain:name>
+        <cdomain:description>
+            <cdomain:text xml:lang="en">Used in cases where the coding of a concept is technically required (dimension or mandatory attribute), but does not have a statistical meaning for a specific series or observation.</cdomain:text>
+            <cdomain:text xml:lang="es">Se usa en los casos en los que la codificación de un concepto es técnicamente requerida (dimensión o atributo obligatorio), pero no tiene significado estadístico para una serie u observación específica.</cdomain:text>
+        </cdomain:description>
+        <cdomain:visualizerHtmlLink>https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/_Z/01.000/detail</cdomain:visualizerHtmlLink>
+    </sr:code>
+</sr:codes>

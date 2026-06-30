@@ -1,0 +1,72 @@
+
+{
+    "autonomies": {
+        "Andalucía": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Andalucia",
+        "Aragón": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Aragon",
+        "Principado de Asturias": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Principado-Asturias",
+        "Illes Balears": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Illes-Balears",
+        "Canarias": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Canarias",
+        "Cantabria": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Cantabria",
+        "Castilla y León": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Castilla-Leon",
+        "Castilla-La Mancha": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Castilla-La-Mancha",
+        "Cataluña": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Cataluna",
+        "Comunitat Valenciana": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Comunitat-Valenciana",
+        "Extremadura": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Extremadura",
+        "Galicia": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Galicia",
+        "Comunidad de Madrid": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Comunidad-Madrid",
+        "Región de Murcia": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Region-Murcia",
+        "C. Foral de Navarra": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Comunidad-Foral-Navarra",
+        "País Vasco": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Pais-Vasco",
+        "La Rioja": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/La-Rioja",
+        "Ceuta": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Ceuta",
+        "Melilla": "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Melilla"
+    },
+    "provinces":{
+        "Almería": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Almeria",
+        "Cádiz": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Cadiz",
+        "Córdoba": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Cordoba",
+        "Granada": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Granada",
+        "Huelva": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Huelva",
+        "Jaén": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Jaen",
+        "Málaga": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Malaga",
+        "Sevilla": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Sevilla",
+        "Ciudad Real": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Ciudad-Real",
+        "Cuenca": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Cuenca",
+        "Guadalajara": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Guadalajara",
+        "Toledo": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Toledo",
+        "Barcelona": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Barcelona",
+        "Girona": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Girona",
+        "Lleida": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Lleida",
+        "Tarragona": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Tarragona",
+        "Alicante": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Alicante",
+        "Castellón": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Castellon",
+        "Valencia": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Valencia",
+        "Badajoz": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Badajoz",
+        "Cáceres": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Caceres",
+        "A Coruña": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/A-Coruna",
+        "Lugo": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Lugo",
+        "Ourense": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Ourense",
+        "Pontevedra": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Pontevedra",
+        "Comunidad de Madrid": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Madrid",
+        "Región de Murcia": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Murcia",
+        "C. Foral de Navarra": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Navarra",
+        "País Vasco": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Alava",
+        "Guipúzcoa": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Guipuzcoa",
+        "Vizcaya": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Vizcaya",
+        "La Rioja": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/La-Rioja",
+        "Ceuta": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Ceuta",
+        "Melilla": "http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Melilla"
+    },
+    "contients":{
+        "America": "http://publications.europa.eu/resource/authority/continent/AMERICA",
+        "Asia": "http://publications.europa.eu/resource/authority/continent/ASIA",
+        "Europe": "http://publications.europa.eu/resource/authority/continent/EUROPE",
+        "Africa": "http://publications.europa.eu/resource/authority/continent/AFRICA",
+        "Oceania": "http://publications.europa.eu/resource/authority/continent/OCEANIA",
+        "Antarctica": "http://publications.europa.eu/resource/authority/continent/ANTARCTICA"
+
+    },
+    "countries":{
+        "Spain": "http://publications.europa.eu/resource/authority/country/ESP"
+    }
+}

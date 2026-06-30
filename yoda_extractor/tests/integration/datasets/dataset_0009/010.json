@@ -1,0 +1,2042 @@
+[
+  {
+    "nombre": "Aín",
+    "direccion_calle_num_y_cp": "Plaça José Sorribes Fuster, 4",
+    "codigo_postal": 12222,
+    "intrucciones_de_localizacion": "Entrada derecha consultorio médico.",
+    "ubicacion": {
+      "lon": -0.340681113,
+      "lat": 39.900625478
+    }
+  },
+  {
+    "nombre": "Alcala de Xivert",
+    "direccion_calle_num_y_cp": "C/Maestrat, 9",
+    "codigo_postal": 12570,
+    "intrucciones_de_localizacion": "Unidad de Respiro. Sala de curas",
+    "ubicacion": {
+      "lon": 0.221707002,
+      "lat": 40.306462051
+    }
+  },
+  {
+    "nombre": "Alcala de Xivert",
+    "direccion_calle_num_y_cp": "Paseo Marruecos, 2",
+    "codigo_postal": 12570,
+    "intrucciones_de_localizacion": "CESAL Alcalá. Vestíbulo",
+    "ubicacion": {
+      "lon": 0.228744146,
+      "lat": 40.305160936
+    }
+  },
+  {
+    "nombre": "Alcora",
+    "direccion_calle_num_y_cp": "C/San Francisco,7. Policía Local",
+    "codigo_postal": 12110,
+    "intrucciones_de_localizacion": "Vehiculo policial",
+    "ubicacion": {
+      "lon": -0.213014502,
+      "lat": 40.07402522
+    }
+  },
+  {
+    "nombre": "Alcudia de Veo",
+    "direccion_calle_num_y_cp": "Calle San Pedro, s/n.",
+    "codigo_postal": 12222,
+    "intrucciones_de_localizacion": "Piscina Municipal",
+    "ubicacion": {
+      "lon": -0.505583156,
+      "lat": 39.195031945
+    }
+  },
+  {
+    "nombre": "Almassora",
+    "direccion_calle_num_y_cp": "C/Pla del Calvari, 15",
+    "codigo_postal": 12550,
+    "intrucciones_de_localizacion": "Estadio de futbol CD Almazora",
+    "ubicacion": {
+      "lon": -0.069299229,
+      "lat": 39.952690005
+    }
+  },
+  {
+    "nombre": "Almassora",
+    "direccion_calle_num_y_cp": "C/Boqueras, 70",
+    "codigo_postal": 12550,
+    "intrucciones_de_localizacion": "Ayuntamiento de Almazora",
+    "ubicacion": {
+      "lon": -0.068141038,
+      "lat": 39.95110933
+    }
+  },
+  {
+    "nombre": "Almenara",
+    "direccion_calle_num_y_cp": "C/Corona s/n.",
+    "codigo_postal": 12590,
+    "intrucciones_de_localizacion": "Polideportivo",
+    "ubicacion": {
+      "lon": -0.228113208,
+      "lat": 39.754567325
+    }
+  },
+  {
+    "nombre": "Almenara",
+    "direccion_calle_num_y_cp": "C/Mayor, 103",
+    "codigo_postal": 12590,
+    "intrucciones_de_localizacion": "Centro E.P.A.",
+    "ubicacion": {
+      "lon": -0.219952872,
+      "lat": 39.753295375
+    }
+  },
+  {
+    "nombre": "Altura",
+    "direccion_calle_num_y_cp": "C/San Vicente, 2",
+    "codigo_postal": 12410,
+    "intrucciones_de_localizacion": "C/Valencia, s/n Asociación de jubilados",
+    "ubicacion": {
+      "lon": -0.510594025,
+      "lat": 39.851398813
+    }
+  },
+  {
+    "nombre": "Argelita",
+    "direccion_calle_num_y_cp": "C/Honorato Ros, 9",
+    "codigo_postal": 12230,
+    "intrucciones_de_localizacion": "Portal del Ayuntamiento de Argelita",
+    "ubicacion": {
+      "lon": -0.350083681,
+      "lat": 40.054513952
+    }
+  },
+  {
+    "nombre": "Artana",
+    "direccion_calle_num_y_cp": "Plaza Ayuntamiento, 1",
+    "codigo_postal": 12527,
+    "intrucciones_de_localizacion": "Oficinas municipales",
+    "ubicacion": {
+      "lon": -0.257930943,
+      "lat": 39.891291735
+    }
+  },
+  {
+    "nombre": "Azuébar",
+    "direccion_calle_num_y_cp": "C/Diputación, 5",
+    "codigo_postal": 12490,
+    "intrucciones_de_localizacion": "Oficinas municipales",
+    "ubicacion": {
+      "lon": -0.3704844,
+      "lat": 39.8341987
+    }
+  },
+  {
+    "nombre": "Bejís",
+    "direccion_calle_num_y_cp": "Calle Virgen de Loreto, 2",
+    "codigo_postal": 12430,
+    "intrucciones_de_localizacion": "Portal de entrada al ayuntamiento",
+    "ubicacion": {
+      "lon": -0.707513681,
+      "lat": 39.909715652
+    }
+  },
+  {
+    "nombre": "Benassal",
+    "direccion_calle_num_y_cp": "Av Puig Rivera s/n.",
+    "codigo_postal": 12160,
+    "intrucciones_de_localizacion": "Pedania Fuente en segures",
+    "ubicacion": {
+      "lon": -0.1370781,
+      "lat": 40.378143
+    }
+  },
+  {
+    "nombre": "Benlloc",
+    "direccion_calle_num_y_cp": "Plaça País Valencià s/n.",
+    "codigo_postal": 12181,
+    "intrucciones_de_localizacion": "Llar de Jubilats (Entrada)",
+    "ubicacion": {
+      "lon": 0.030407331,
+      "lat": 40.209484467
+    }
+  },
+  {
+    "nombre": "Betxí",
+    "direccion_calle_num_y_cp": "Plaça Major, 1",
+    "codigo_postal": 12549,
+    "intrucciones_de_localizacion": "Policia Local",
+    "ubicacion": {
+      "lon": -0.197356688,
+      "lat": 39.928527074
+    }
+  },
+  {
+    "nombre": "Cabanes",
+    "direccion_calle_num_y_cp": "C/El Campet, 3",
+    "codigo_postal": 12180,
+    "intrucciones_de_localizacion": "Oficina entrada campo de futbol",
+    "ubicacion": {
+      "lon": 0.047608855,
+      "lat": 40.154435715
+    }
+  },
+  {
+    "nombre": "Castello de la Plana",
+    "direccion_calle_num_y_cp": "C/Astrònom Francesc Aragó. Camp de futbol Javier Marquina",
+    "codigo_postal": 12100,
+    "intrucciones_de_localizacion": "Cafeteria",
+    "ubicacion": {
+      "lon": 0.0221564,
+      "lat": 39.9806371
+    }
+  },
+  {
+    "nombre": "Castello de la Plana",
+    "direccion_calle_num_y_cp": "C/La Sardina, 2. Pavelló Pablo Herrera",
+    "codigo_postal": 12100,
+    "intrucciones_de_localizacion": "Conserjeria",
+    "ubicacion": {
+      "lon": 0.0099986,
+      "lat": 39.9686923
+    }
+  },
+  {
+    "nombre": "Castello de la Plana (Diputación)",
+    "direccion_calle_num_y_cp": "Palacio Provincial. Plaza Las Aulas, 7",
+    "codigo_postal": 12001,
+    "intrucciones_de_localizacion": "Recepción",
+    "ubicacion": {
+      "lon": -0.035510123,
+      "lat": 39.987906018
+    }
+  },
+  {
+    "nombre": "Castello de la Plana (Diputación)",
+    "direccion_calle_num_y_cp": "Nuevas Dependencias. Avda Vall d'Uixo, 25",
+    "codigo_postal": 12004,
+    "intrucciones_de_localizacion": "Recepción",
+    "ubicacion": {
+      "lon": -0.048807159,
+      "lat": 39.991800728
+    }
+  },
+  {
+    "nombre": "Castello de la Plana (Diputación)",
+    "direccion_calle_num_y_cp": "C.E.E. “Penyeta Roja”",
+    "codigo_postal": 12004,
+    "intrucciones_de_localizacion": "Recepción",
+    "ubicacion": {
+      "lon": -0.048767915,
+      "lat": 40.006575972
+    }
+  },
+  {
+    "nombre": "Catí",
+    "direccion_calle_num_y_cp": "C/Mayor, 1",
+    "codigo_postal": 12513,
+    "intrucciones_de_localizacion": "Recepción",
+    "ubicacion": {
+      "lon": 0.022708236,
+      "lat": 40.471362283
+    }
+  },
+  {
+    "nombre": "Catí",
+    "direccion_calle_num_y_cp": "C/l'Avellà, 1",
+    "codigo_postal": 12513,
+    "intrucciones_de_localizacion": "Entrant a l'ermita a l'esquerra",
+    "ubicacion": {
+      "lon": 0.0222751,
+      "lat": 40.4709933
+    }
+  },
+  {
+    "nombre": "Cirat",
+    "direccion_calle_num_y_cp": "Plaza Mayor, 18",
+    "codigo_postal": 12231,
+    "intrucciones_de_localizacion": "Entrada oficinas Ayuntamiento de Cirat",
+    "ubicacion": {
+      "lon": -0.462392047,
+      "lat": 40.055209231
+    }
+  },
+  {
+    "nombre": "Forcall",
+    "direccion_calle_num_y_cp": "Plaça Major, 36",
+    "codigo_postal": 12310,
+    "intrucciones_de_localizacion": "Oficina tourist info Accès lliure des del carrer",
+    "ubicacion": {
+      "lon": -0.199690713,
+      "lat": 40.646052226
+    }
+  },
+  {
+    "nombre": "Fuentes de Ayodar",
+    "direccion_calle_num_y_cp": "Plaza Salvador Segarra, 14",
+    "codigo_postal": 12225,
+    "intrucciones_de_localizacion": "Recepción Ayuntamiento de fuentes",
+    "ubicacion": {
+      "lon": -0.419727238,
+      "lat": 40.020700139
+    }
+  },
+  {
+    "nombre": "Gaibiel",
+    "direccion_calle_num_y_cp": "Plaza Mayor, 2",
+    "codigo_postal": 12415,
+    "intrucciones_de_localizacion": "Entrada al Ayuntamiento",
+    "ubicacion": {
+      "lon": -0.495204767,
+      "lat": 39.926245226
+    }
+  },
+  {
+    "nombre": "Geldo",
+    "direccion_calle_num_y_cp": "Av. Castellon, 20 BJ",
+    "codigo_postal": 12412,
+    "intrucciones_de_localizacion": "Pasillo WC Bar Jubilados,frente las puertas WC",
+    "ubicacion": {
+      "lon": -0.467377855,
+      "lat": 39.835794852
+    }
+  },
+  {
+    "nombre": "Herbés",
+    "direccion_calle_num_y_cp": "C/Del Sol, 1",
+    "codigo_postal": 12317,
+    "intrucciones_de_localizacion": "Entrada Consulta",
+    "ubicacion": {
+      "lon": -0.004257252,
+      "lat": 40.720566381
+    }
+  },
+  {
+    "nombre": "Higueras",
+    "direccion_calle_num_y_cp": "Plaza de la Iglesia, 5",
+    "codigo_postal": 12449,
+    "intrucciones_de_localizacion": "Consultorio Médico",
+    "ubicacion": {
+      "lon": -0.503035058,
+      "lat": 39.983605859
+    }
+  },
+  {
+    "nombre": "La Mata de Morella",
+    "direccion_calle_num_y_cp": "C/Església, 7",
+    "codigo_postal": 12312,
+    "intrucciones_de_localizacion": "Porche del Bar",
+    "ubicacion": {
+      "lon": -0.280319424,
+      "lat": 40.616329917
+    }
+  },
+  {
+    "nombre": "La Pobla Tornesa",
+    "direccion_calle_num_y_cp": "C/Vilafamés s/n",
+    "codigo_postal": 12191,
+    "intrucciones_de_localizacion": "Campo de futbol. Entrada vestuarios",
+    "ubicacion": {
+      "lon": -0.002736444,
+      "lat": 40.103581475
+    }
+  },
+  {
+    "nombre": "La Salzadella",
+    "direccion_calle_num_y_cp": "C/Santa Magdalena, s/n.",
+    "codigo_postal": 12186,
+    "intrucciones_de_localizacion": "Campo de futbol- Caseta arbitro",
+    "ubicacion": {
+      "lon": 0.177340147,
+      "lat": 40.417933968
+    }
+  },
+  {
+    "nombre": "La Serratella",
+    "direccion_calle_num_y_cp": "Plaça Sant Miquel, 3",
+    "codigo_postal": 12184,
+    "intrucciones_de_localizacion": "Despacho de Medicina General",
+    "ubicacion": {
+      "lon": 0.031402895,
+      "lat": 40.312545387
+    }
+  },
+  {
+    "nombre": "La Torre d'en Domenech",
+    "direccion_calle_num_y_cp": "C/De L'Era, 5",
+    "codigo_postal": 12184,
+    "intrucciones_de_localizacion": "Entrada",
+    "ubicacion": {
+      "lon": 0.068955403,
+      "lat": 40.261936258
+    }
+  },
+  {
+    "nombre": "La Vilavella",
+    "direccion_calle_num_y_cp": "C/Betxí, 3",
+    "codigo_postal": 12526,
+    "intrucciones_de_localizacion": "Campo Futbol (Sala Control)",
+    "ubicacion": {
+      "lon": -0.184759624,
+      "lat": 39.861416678
+    }
+  },
+  {
+    "nombre": "Les Alqueries",
+    "direccion_calle_num_y_cp": "Plaza Mayor, 1",
+    "codigo_postal": 12539,
+    "intrucciones_de_localizacion": "Retén de la policia",
+    "ubicacion": {
+      "lon": -0.11384451,
+      "lat": 39.896648538
+    }
+  },
+  {
+    "nombre": "Lucena del Cid",
+    "direccion_calle_num_y_cp": "Calle San Roque, 20",
+    "codigo_postal": 12120,
+    "intrucciones_de_localizacion": "Planta Baja zona privada Museo Castell",
+    "ubicacion": {
+      "lon": -0.279212095,
+      "lat": 40.139108561
+    }
+  },
+  {
+    "nombre": "Montanejos",
+    "direccion_calle_num_y_cp": "Plaza España,1",
+    "codigo_postal": 12448,
+    "intrucciones_de_localizacion": "Ayuntamiento Montanejos",
+    "ubicacion": {
+      "lon": -0.522933528,
+      "lat": 40.068301847
+    }
+  },
+  {
+    "nombre": "Morella (Ortells)",
+    "direccion_calle_num_y_cp": "Plaça Major s/n.",
+    "codigo_postal": 12311,
+    "intrucciones_de_localizacion": "Exterior local Py3",
+    "ubicacion": {
+      "lon": -0.176445544,
+      "lat": 40.691132601
+    }
+  },
+  {
+    "nombre": "Navajas",
+    "direccion_calle_num_y_cp": "C/San Roque, 2",
+    "codigo_postal": 12470,
+    "intrucciones_de_localizacion": "Planta Baja Edificio, entrada fondo izquierda",
+    "ubicacion": {
+      "lon": -0.507722888,
+      "lat": 39.876991278
+    }
+  },
+  {
+    "nombre": "Nules",
+    "direccion_calle_num_y_cp": "Plaza Mayor, 1",
+    "codigo_postal": 12529,
+    "intrucciones_de_localizacion": "Ayuntamiento Recepción",
+    "ubicacion": {
+      "lon": -0.1547617,
+      "lat": 39.853290692
+    }
+  },
+  {
+    "nombre": "Onda",
+    "direccion_calle_num_y_cp": "C/Cirat, s/n.",
+    "codigo_postal": 12200,
+    "intrucciones_de_localizacion": "Campo L'olimpic En recepción",
+    "ubicacion": {
+      "lon": -0.268358634,
+      "lat": 39.969425998
+    }
+  },
+  {
+    "nombre": "Pobla de Benifassà (Coratxà)",
+    "direccion_calle_num_y_cp": "C/Major, 6",
+    "codigo_postal": 12599,
+    "intrucciones_de_localizacion": "Entrada hostatgeria Sant Jaume",
+    "ubicacion": {
+      "lon": 0.157761667,
+      "lat": 40.65680977
+    }
+  },
+  {
+    "nombre": "Sacañet",
+    "direccion_calle_num_y_cp": "Plaza Ayuntamiento, 1",
+    "codigo_postal": 12510,
+    "intrucciones_de_localizacion": "Ayuntamiento (Almacén)",
+    "ubicacion": {
+      "lon": -0.714672162,
+      "lat": 39.851635056
+    }
+  },
+  {
+    "nombre": "Sant Joan de Moró",
+    "direccion_calle_num_y_cp": "Av Borriol campo de fútbol",
+    "codigo_postal": 12130,
+    "intrucciones_de_localizacion": "Cuarto arbitro Campo de futbol",
+    "ubicacion": {
+      "lon": -0.135367364,
+      "lat": 40.060753714
+    }
+  },
+  {
+    "nombre": "Sant Joan de Moró",
+    "direccion_calle_num_y_cp": "Unidad Móvil",
+    "codigo_postal": 12130,
+    "intrucciones_de_localizacion": "Coche patrulla Policia Local",
+    "ubicacion": {
+      "lon": -0.1371611,
+      "lat": 40.0608065
+    }
+  },
+  {
+    "nombre": "Sant Joan de Moró",
+    "direccion_calle_num_y_cp": "C/Sant Miguel s/n.",
+    "codigo_postal": 12130,
+    "intrucciones_de_localizacion": "Edificio Social",
+    "ubicacion": {
+      "lon": -0.137393865,
+      "lat": 40.061254869
+    }
+  },
+  {
+    "nombre": "Sant Jordi",
+    "direccion_calle_num_y_cp": "Calle San Jaime, 51",
+    "codigo_postal": 12320,
+    "intrucciones_de_localizacion": "Caixa Rural Vinaròs",
+    "ubicacion": {
+      "lon": 0.331076542,
+      "lat": 40.508104498
+    }
+  },
+  {
+    "nombre": "Segorbe",
+    "direccion_calle_num_y_cp": "Plaza Almudín, 15",
+    "codigo_postal": 12400,
+    "intrucciones_de_localizacion": "Teatro Serrano. Entrada a la derecha",
+    "ubicacion": {
+      "lon": -0.486991257,
+      "lat": 39.852623534
+    }
+  },
+  {
+    "nombre": "Sierra Engarcerán (Els Rosildos)",
+    "direccion_calle_num_y_cp": "Polideportivo municipal",
+    "codigo_postal": 12182,
+    "intrucciones_de_localizacion": "Cuarto enfermeria interior polideportivo",
+    "ubicacion": {
+      "lon": -0.04588,
+      "lat": 40.2927
+    }
+  },
+  {
+    "nombre": "Toràs",
+    "direccion_calle_num_y_cp": "Plaza de la Iglesia, 1",
+    "codigo_postal": 12431,
+    "intrucciones_de_localizacion": "Recibidor de la entrada al ayuntamiento",
+    "ubicacion": {
+      "lon": -0.686325487,
+      "lat": 39.919350943
+    }
+  },
+  {
+    "nombre": "Torralba del pinar",
+    "direccion_calle_num_y_cp": "Calle Horno, 13",
+    "codigo_postal": 12225,
+    "intrucciones_de_localizacion": null,
+    "ubicacion": {
+      "lon": -0.438533463,
+      "lat": 39.988932139
+    }
+  },
+  {
+    "nombre": "Vall d'almonacid",
+    "direccion_calle_num_y_cp": "Plaza Iglesia, 6",
+    "codigo_postal": 12414,
+    "intrucciones_de_localizacion": "Bar La Plaza",
+    "ubicacion": {
+      "lon": -0.456495965,
+      "lat": 39.903715257
+    }
+  },
+  {
+    "nombre": "Vall d'Uixó",
+    "direccion_calle_num_y_cp": "Avda Jaume I, 18",
+    "codigo_postal": 12600,
+    "intrucciones_de_localizacion": "Recepción",
+    "ubicacion": {
+      "lon": -0.232876763,
+      "lat": 39.822660535
+    }
+  },
+  {
+    "nombre": "Vall d'Uixó",
+    "direccion_calle_num_y_cp": "C/Belaire, s/n.",
+    "codigo_postal": 12600,
+    "intrucciones_de_localizacion": "Recepción",
+    "ubicacion": {
+      "lon": -0.232206452,
+      "lat": 39.818504187
+    }
+  },
+  {
+    "nombre": "Villanueva de Viver",
+    "direccion_calle_num_y_cp": "Plaza Ayuntamiento, 41",
+    "codigo_postal": 12428,
+    "intrucciones_de_localizacion": "Entrada Ayuntamiento",
+    "ubicacion": {
+      "lon": -0.646627955,
+      "lat": 40.059035611
+    }
+  },
+  {
+    "nombre": "Vinaròs",
+    "direccion_calle_num_y_cp": "Plaça San Agustí, 8",
+    "codigo_postal": 12500,
+    "intrucciones_de_localizacion": "Mercado Municipal",
+    "ubicacion": {
+      "lon": 0.476839347,
+      "lat": 40.469976017
+    }
+  },
+  {
+    "nombre": "Vistabella del Maestrat",
+    "direccion_calle_num_y_cp": "C/Major, 13",
+    "codigo_postal": 12135,
+    "intrucciones_de_localizacion": "Hall Ayuntamiento",
+    "ubicacion": {
+      "lon": -0.292911977,
+      "lat": 40.293660211
+    }
+  },
+  {
+    "nombre": "Xert",
+    "direccion_calle_num_y_cp": "C/San Vicente, 32",
+    "codigo_postal": 12360,
+    "intrucciones_de_localizacion": "Entrada Ayuntamiento (Planta baja)",
+    "ubicacion": {
+      "lon": 0.158067104,
+      "lat": 40.518128039
+    }
+  },
+  {
+    "nombre": "Xodos",
+    "direccion_calle_num_y_cp": "C/Major,1",
+    "codigo_postal": 12132,
+    "intrucciones_de_localizacion": "Entrada Ayuntamiento",
+    "ubicacion": {
+      "lon": -0.286316173,
+      "lat": 40.244797864
+    }
+  },
+  {
+    "nombre": "Alcudia de Veo",
+    "direccion_calle_num_y_cp": "Carrer d'Enmig",
+    "codigo_postal": 12222,
+    "intrucciones_de_localizacion": "Bar Tercera Edad Jubilados Veo",
+    "ubicacion": {
+      "lon": -0.340937701,
+      "lat": 39.899959578
+    }
+  },
+  {
+    "nombre": "Alcudia de Veo",
+    "direccion_calle_num_y_cp": "Carrer d'Enmig",
+    "codigo_postal": 12222,
+    "intrucciones_de_localizacion": "Consultorio Médico Veo",
+    "ubicacion": {
+      "lon": -0.340937701,
+      "lat": 39.899959578
+    }
+  },
+  {
+    "nombre": "Alfondeguilla",
+    "direccion_calle_num_y_cp": "Calle Acequia, 18",
+    "codigo_postal": 12609,
+    "intrucciones_de_localizacion": "Consultorio Médico en Casa de la Cultura.",
+    "ubicacion": {
+      "lon": -0.267988388,
+      "lat": 39.838037975
+    }
+  },
+  {
+    "nombre": "Almassora",
+    "direccion_calle_num_y_cp": "Avda Generalitat, 24",
+    "codigo_postal": 12550,
+    "intrucciones_de_localizacion": "Piscina cubierta",
+    "ubicacion": {
+      "lon": -0.057987488,
+      "lat": 39.945543743
+    }
+  },
+  {
+    "nombre": "Ares del Maestre.",
+    "direccion_calle_num_y_cp": "C/Forn, 17",
+    "codigo_postal": 12165,
+    "intrucciones_de_localizacion": "Entrada gimnasio municipal Edificio Usos Múltiples",
+    "ubicacion": {
+      "lon": -0.13087864,
+      "lat": 40.455985321
+    }
+  },
+  {
+    "nombre": "Benicassim",
+    "direccion_calle_num_y_cp": "C/Torre de San Vicente, 43",
+    "codigo_postal": 12560,
+    "intrucciones_de_localizacion": "Polideportivo municipal Benicassim",
+    "ubicacion": {
+      "lon": 0.065011965,
+      "lat": 40.052508187
+    }
+  },
+  {
+    "nombre": "Betxí",
+    "direccion_calle_num_y_cp": "C/ De la Concordia, 37",
+    "codigo_postal": 12549,
+    "intrucciones_de_localizacion": "Poliesportiu Municipal",
+    "ubicacion": {
+      "lon": -0.200747168,
+      "lat": 39.92405206
+    }
+  },
+  {
+    "nombre": "Borriana",
+    "direccion_calle_num_y_cp": "Plaza Mayor, 1",
+    "codigo_postal": 12530,
+    "intrucciones_de_localizacion": "Entrando Izquierda junto Máquina ficha",
+    "ubicacion": {
+      "lon": -0.083683829,
+      "lat": 39.889906432
+    }
+  },
+  {
+    "nombre": "Borriana",
+    "direccion_calle_num_y_cp": "C/Sant Pere Pasqual, 4-6",
+    "codigo_postal": 12530,
+    "intrucciones_de_localizacion": "Entrada principal, detrás mesa conserje",
+    "ubicacion": {
+      "lon": -0.080947224,
+      "lat": 39.888478173
+    }
+  },
+  {
+    "nombre": "Borriana",
+    "direccion_calle_num_y_cp": "C/Albert Einstein, s/n.",
+    "codigo_postal": 12530,
+    "intrucciones_de_localizacion": "Entrada principal",
+    "ubicacion": {
+      "lon": -0.088759417,
+      "lat": 39.894812809
+    }
+  },
+  {
+    "nombre": "Borriol",
+    "direccion_calle_num_y_cp": "Vehículo Patrulla P.L.",
+    "codigo_postal": 12190,
+    "intrucciones_de_localizacion": "Vehiculo Patrulla Policia Local",
+    "ubicacion": {
+      "lon": -0.0664211,
+      "lat": 40.0416858
+    }
+  },
+  {
+    "nombre": "Cabanes",
+    "direccion_calle_num_y_cp": "C/Poliesportiu, 2",
+    "codigo_postal": 12595,
+    "intrucciones_de_localizacion": "Centro Polifuncional Ribera de Cabanes",
+    "ubicacion": {
+      "lon": 0.156948958,
+      "lat": 40.152438972
+    }
+  },
+  {
+    "nombre": "Castello de la Plana",
+    "direccion_calle_num_y_cp": "Gran Via Tárrega Monteblanco 102. Parc Esportiu Gran Vía",
+    "codigo_postal": 12006,
+    "intrucciones_de_localizacion": "Conserjeria",
+    "ubicacion": {
+      "lon": -0.062965854,
+      "lat": 39.968773444
+    }
+  },
+  {
+    "nombre": "Castello de la Plana",
+    "direccion_calle_num_y_cp": "Avda Ribesalbes, 9. Instalaciones deportivas Gaetà Huguet",
+    "codigo_postal": 12006,
+    "intrucciones_de_localizacion": "Vestidor davant de conserjeria",
+    "ubicacion": {
+      "lon": -0.108295168,
+      "lat": 39.990438554
+    }
+  },
+  {
+    "nombre": "Castello de la Plana",
+    "direccion_calle_num_y_cp": "Carrer La Llosa s/n. Pabellón Fernando Úbeda. Entrada vestuario frente conserjería.",
+    "codigo_postal": 12003,
+    "intrucciones_de_localizacion": "Entrada vestidor situat davant de Conserjeria",
+    "ubicacion": {
+      "lon": -0.028911908,
+      "lat": 39.980186294
+    }
+  },
+  {
+    "nombre": "Castello de la Plana (Diputación)",
+    "direccion_calle_num_y_cp": "C.I.T.D. “Penyeta Roja”",
+    "codigo_postal": 12004,
+    "intrucciones_de_localizacion": "Recepción",
+    "ubicacion": {
+      "lon": -0.048767915,
+      "lat": 40.006575972
+    }
+  },
+  {
+    "nombre": "Caudiel",
+    "direccion_calle_num_y_cp": "Plaza España, 1",
+    "codigo_postal": 12440,
+    "intrucciones_de_localizacion": "Junto a Oficinas Ayuntamiento",
+    "ubicacion": {
+      "lon": -0.56834498,
+      "lat": 39.946851443
+    }
+  },
+  {
+    "nombre": "Chovar",
+    "direccion_calle_num_y_cp": "Plaza Iglesia, 1",
+    "codigo_postal": 12149,
+    "intrucciones_de_localizacion": "Planta Baja, Entrada al edificio",
+    "ubicacion": {
+      "lon": -0.321099821,
+      "lat": 39.851311196
+    }
+  },
+  {
+    "nombre": "Cortes de Arenoso",
+    "direccion_calle_num_y_cp": "Plaza Iglesia",
+    "codigo_postal": 12127,
+    "intrucciones_de_localizacion": "Porches",
+    "ubicacion": {
+      "lon": -0.54184203,
+      "lat": 40.187013808
+    }
+  },
+  {
+    "nombre": "Culla",
+    "direccion_calle_num_y_cp": "C/Abadía, 5",
+    "codigo_postal": 12119,
+    "intrucciones_de_localizacion": "Oficina de Turismo",
+    "ubicacion": {
+      "lon": -0.16553035,
+      "lat": 40.33764848
+    }
+  },
+  {
+    "nombre": "El Toro",
+    "direccion_calle_num_y_cp": "Plaza Iglesia",
+    "codigo_postal": 12429,
+    "intrucciones_de_localizacion": "C/Valencia, s/n Asociación de jubilados",
+    "ubicacion": {
+      "lon": -0.748651766,
+      "lat": 39.982519809
+    }
+  },
+  {
+    "nombre": "Espadilla",
+    "direccion_calle_num_y_cp": "C/Abadía, 4",
+    "codigo_postal": 12230,
+    "intrucciones_de_localizacion": "Entrada",
+    "ubicacion": {
+      "lon": -0.35502783,
+      "lat": 40.026591066
+    }
+  },
+  {
+    "nombre": "Figueroles",
+    "direccion_calle_num_y_cp": "Ayuntamiento Plaza de la Iglesia, 1",
+    "codigo_postal": 12122,
+    "intrucciones_de_localizacion": "Puerta de entrada",
+    "ubicacion": {
+      "lon": -0.861109291,
+      "lat": 39.788567396
+    }
+  },
+  {
+    "nombre": "Fuente la Reina",
+    "direccion_calle_num_y_cp": "Plaza de la Iglesia, 3",
+    "codigo_postal": 12428,
+    "intrucciones_de_localizacion": "Entrada del edificio, tras la reja de acceso",
+    "ubicacion": {
+      "lon": -0.609027241,
+      "lat": 40.064180298
+    }
+  },
+  {
+    "nombre": "Jérica",
+    "direccion_calle_num_y_cp": "C/Historiador Vayo, 19",
+    "codigo_postal": 12450,
+    "intrucciones_de_localizacion": "Coche patrulla Policia Local",
+    "ubicacion": {
+      "lon": -0.571781667,
+      "lat": 39.912265092
+    }
+  },
+  {
+    "nombre": "Jérica",
+    "direccion_calle_num_y_cp": "C/Randurias, 1",
+    "codigo_postal": 12450,
+    "intrucciones_de_localizacion": "Polideportivo municipal",
+    "ubicacion": {
+      "lon": -0.575463167,
+      "lat": 39.915006603
+    }
+  },
+  {
+    "nombre": "La Salzadella",
+    "direccion_calle_num_y_cp": "C/Escoles,18",
+    "codigo_postal": 12186,
+    "intrucciones_de_localizacion": "Col.legi Public L'ullastre",
+    "ubicacion": {
+      "lon": 0.174814062,
+      "lat": 40.416214992
+    }
+  },
+  {
+    "nombre": "La Torre d'en Domenech",
+    "direccion_calle_num_y_cp": "C/De Castelló, 52A",
+    "codigo_postal": 12184,
+    "intrucciones_de_localizacion": "Barra Mostrador",
+    "ubicacion": {
+      "lon": 0.071937097,
+      "lat": 40.262367674
+    }
+  },
+  {
+    "nombre": "La Vilavella",
+    "direccion_calle_num_y_cp": "Plaza de la Vila, 1",
+    "codigo_postal": 12526,
+    "intrucciones_de_localizacion": "Ayuntamiento Policia Local",
+    "ubicacion": {
+      "lon": -0.184536148,
+      "lat": 39.858769774
+    }
+  },
+  {
+    "nombre": "La Vilavella",
+    "direccion_calle_num_y_cp": "C/Betxí, 5",
+    "codigo_postal": 12526,
+    "intrucciones_de_localizacion": "Campo Futbol (Entre Cafetería y Vestuario)",
+    "ubicacion": {
+      "lon": -0.185061526,
+      "lat": 39.86158161
+    }
+  },
+  {
+    "nombre": "Les Coves de Vinromà",
+    "direccion_calle_num_y_cp": "Campo de futbol  “El Temple”",
+    "codigo_postal": 12185,
+    "intrucciones_de_localizacion": "Vestidor del árbitro",
+    "ubicacion": {
+      "lon": 0.1225409,
+      "lat": 40.3080438
+    }
+  },
+  {
+    "nombre": "Les Useres",
+    "direccion_calle_num_y_cp": "Plaza del Ayuntamiento, 12",
+    "codigo_postal": 12118,
+    "intrucciones_de_localizacion": "Ayuntamiento",
+    "ubicacion": {
+      "lon": -0.162792993,
+      "lat": 40.157225238
+    }
+  },
+  {
+    "nombre": "Moncofa",
+    "direccion_calle_num_y_cp": "Cami Biniesma, s/n.",
+    "codigo_postal": 12593,
+    "intrucciones_de_localizacion": "Canseta Conserje",
+    "ubicacion": {
+      "lon": -0.145052595,
+      "lat": 39.793898634
+    }
+  },
+  {
+    "nombre": "Moncofa",
+    "direccion_calle_num_y_cp": "C/Murillo, 1.",
+    "codigo_postal": 12593,
+    "intrucciones_de_localizacion": "Oficina dirección",
+    "ubicacion": {
+      "lon": -0.143208504,
+      "lat": 39.805927742
+    }
+  },
+  {
+    "nombre": "Montanejos",
+    "direccion_calle_num_y_cp": "Policía Local",
+    "codigo_postal": 12448,
+    "intrucciones_de_localizacion": "Maletero del vehiculo patrulla del policia local",
+    "ubicacion": {
+      "lon": -0.5227369,
+      "lat": 40.067959
+    }
+  },
+  {
+    "nombre": "Montanejos",
+    "direccion_calle_num_y_cp": "Calle Cantón, 2",
+    "codigo_postal": 12448,
+    "intrucciones_de_localizacion": "Garita del alguacil",
+    "ubicacion": {
+      "lon": -0.522921374,
+      "lat": 40.068381224
+    }
+  },
+  {
+    "nombre": "Morella",
+    "direccion_calle_num_y_cp": "Passeig Jaume I s/n.",
+    "codigo_postal": 12300,
+    "intrucciones_de_localizacion": "Centre ludic i Esportiu Jaume I",
+    "ubicacion": {
+      "lon": -0.0978876,
+      "lat": 40.6189357
+    }
+  },
+  {
+    "nombre": "Morella (Xiva de Morella)",
+    "direccion_calle_num_y_cp": "C/Solana, 5",
+    "codigo_postal": 12314,
+    "intrucciones_de_localizacion": "Local de Pensionistas y Jubilados",
+    "ubicacion": {
+      "lon": -0.125557892,
+      "lat": 40.659019281
+    }
+  },
+  {
+    "nombre": "Nules",
+    "direccion_calle_num_y_cp": "Av. Illes Columbretes s/n",
+    "codigo_postal": 12529,
+    "intrucciones_de_localizacion": "Oficina de Turismo",
+    "ubicacion": {
+      "lon": -0.104152209,
+      "lat": 39.833116573
+    }
+  },
+  {
+    "nombre": "Olocau del Rey",
+    "direccion_calle_num_y_cp": "C/Piscina s/n.",
+    "codigo_postal": 12312,
+    "intrucciones_de_localizacion": "Entrada consultorio médico",
+    "ubicacion": {
+      "lon": -0.336253,
+      "lat": 40.6374
+    }
+  },
+  {
+    "nombre": "Onda",
+    "direccion_calle_num_y_cp": "Av.Catalunya s/n",
+    "codigo_postal": 12200,
+    "intrucciones_de_localizacion": "Pabellón V.Cabedo En recepción",
+    "ubicacion": {
+      "lon": -0.258824637,
+      "lat": 39.966620616
+    }
+  },
+  {
+    "nombre": "Onda",
+    "direccion_calle_num_y_cp": "C/Torrechiva, s/n.",
+    "codigo_postal": 12200,
+    "intrucciones_de_localizacion": "Campo La Serratella En recepción",
+    "ubicacion": {
+      "lon": -0.267221796,
+      "lat": 39.968775368
+    }
+  },
+  {
+    "nombre": "Onda",
+    "direccion_calle_num_y_cp": "C/Sant Fermí, s/n.",
+    "codigo_postal": 12200,
+    "intrucciones_de_localizacion": "Campo La cosa. En recepción",
+    "ubicacion": {
+      "lon": -0.269820448,
+      "lat": 39.96615961
+    }
+  },
+  {
+    "nombre": "Palanques",
+    "direccion_calle_num_y_cp": "Consultorio Médico C/Coll, 3",
+    "codigo_postal": 12311,
+    "intrucciones_de_localizacion": "En el consultorio médico",
+    "ubicacion": {
+      "lon": -0.1786634,
+      "lat": 40.7172044
+    }
+  },
+  {
+    "nombre": "Peñíscola",
+    "direccion_calle_num_y_cp": "C/Madrid, 5",
+    "codigo_postal": 12598,
+    "intrucciones_de_localizacion": "Coche patrulla V-2 2138 JOX",
+    "ubicacion": {
+      "lon": 0.404455447,
+      "lat": 40.37059285
+    }
+  },
+  {
+    "nombre": "Peñíscola",
+    "direccion_calle_num_y_cp": "C/Madrid, 5",
+    "codigo_postal": 12598,
+    "intrucciones_de_localizacion": "Coche patrulla V-1 2132 JOX",
+    "ubicacion": {
+      "lon": 0.404455447,
+      "lat": 40.37059285
+    }
+  },
+  {
+    "nombre": "Pina de Montalgrao",
+    "direccion_calle_num_y_cp": "Plaza Mayor, 8 Bajo",
+    "codigo_postal": 12429,
+    "intrucciones_de_localizacion": "En el Bar, enfrente del mostrador hacia los aseos",
+    "ubicacion": {
+      "lon": -0.655148075,
+      "lat": 40.021198472
+    }
+  },
+  {
+    "nombre": "Pobla de Benifassà",
+    "direccion_calle_num_y_cp": "C/Major, 13",
+    "codigo_postal": 12599,
+    "intrucciones_de_localizacion": "Entrada consultorio médico",
+    "ubicacion": {
+      "lon": 0.157480706,
+      "lat": 40.656661452
+    }
+  },
+  {
+    "nombre": "Pobla de Benifassà (Ballestar)",
+    "direccion_calle_num_y_cp": "C/Major, 43D",
+    "codigo_postal": 12599,
+    "intrucciones_de_localizacion": "Mesón Ballestar",
+    "ubicacion": {
+      "lon": 0.17625137,
+      "lat": 40.664176842
+    }
+  },
+  {
+    "nombre": "Ribesalbes",
+    "direccion_calle_num_y_cp": "Avda Eulogio Oset, s/n.",
+    "codigo_postal": 12210,
+    "intrucciones_de_localizacion": "Polideportivo Municipal (gimnasio)",
+    "ubicacion": {
+      "lon": -0.278664669,
+      "lat": 40.022921096
+    }
+  },
+  {
+    "nombre": "San Rafael del Rio",
+    "direccion_calle_num_y_cp": "C/Doctor Salvador Pons, 16",
+    "codigo_postal": 12510,
+    "intrucciones_de_localizacion": "Puerta de entrada del Consultorio Médico",
+    "ubicacion": {
+      "lon": 0.347826099,
+      "lat": 40.605878476
+    }
+  },
+  {
+    "nombre": "Sant Mateu",
+    "direccion_calle_num_y_cp": "C/Historiador Beti",
+    "codigo_postal": 12170,
+    "intrucciones_de_localizacion": "Oficinas municipales",
+    "ubicacion": {
+      "lon": 0.179444181,
+      "lat": 40.466281285
+    }
+  },
+  {
+    "nombre": "Sant Mateu",
+    "direccion_calle_num_y_cp": "Avinguda Nostra Senyora dels Àngels",
+    "codigo_postal": 12170,
+    "intrucciones_de_localizacion": "CEIP Mare de Deu dels Angels",
+    "ubicacion": {
+      "lon": 0.183408804,
+      "lat": 40.463413123
+    }
+  },
+  {
+    "nombre": "Santa Magdalena de Pulpis",
+    "direccion_calle_num_y_cp": "Ayuntamiento Plaza España, 9",
+    "codigo_postal": 12597,
+    "intrucciones_de_localizacion": "Tras la puerta de acceso",
+    "ubicacion": {
+      "lon": 0.302851824,
+      "lat": 40.356304376
+    }
+  },
+  {
+    "nombre": "Segorbe",
+    "direccion_calle_num_y_cp": "C/Fray Bonifacio Ferrer, 3",
+    "codigo_postal": 12400,
+    "intrucciones_de_localizacion": "Edificio Glorieta. Entrada a la derecha",
+    "ubicacion": {
+      "lon": -0.492353076,
+      "lat": 39.849913581
+    }
+  },
+  {
+    "nombre": "Segorbe",
+    "direccion_calle_num_y_cp": "C/La Enrramada, 12",
+    "codigo_postal": 12400,
+    "intrucciones_de_localizacion": "Ciudad deportiva. Enfermeria",
+    "ubicacion": {
+      "lon": -0.484658322,
+      "lat": 39.84528895
+    }
+  },
+  {
+    "nombre": "Teresa",
+    "direccion_calle_num_y_cp": "C/Manolo Montoliu, 2",
+    "codigo_postal": 12469,
+    "intrucciones_de_localizacion": "Planta Baja",
+    "ubicacion": {
+      "lon": -0.657371041,
+      "lat": 39.900242761
+    }
+  },
+  {
+    "nombre": "Toga",
+    "direccion_calle_num_y_cp": "Avenida San Juan, 75",
+    "codigo_postal": 12230,
+    "intrucciones_de_localizacion": "Local destinado a la Asoc.jubilados",
+    "ubicacion": {
+      "lon": -0.365453493,
+      "lat": 40.0422278
+    }
+  },
+  {
+    "nombre": "Torreblanca",
+    "direccion_calle_num_y_cp": "Carrer Sant Antoni 11 - 13",
+    "codigo_postal": 12596,
+    "intrucciones_de_localizacion": "Vehicle de la Policia Local",
+    "ubicacion": {
+      "lon": 0.194897083,
+      "lat": 40.220458627
+    }
+  },
+  {
+    "nombre": "Vall d'alba",
+    "direccion_calle_num_y_cp": "Av.Pou Ample s/n.",
+    "codigo_postal": 12330,
+    "intrucciones_de_localizacion": "Campo Fútbol, Caseta Árbitro",
+    "ubicacion": {
+      "lon": -0.033741059,
+      "lat": 40.170664216
+    }
+  },
+  {
+    "nombre": "Vall d'Uixó",
+    "direccion_calle_num_y_cp": "Avda Suroeste; 13.",
+    "codigo_postal": 12600,
+    "intrucciones_de_localizacion": "CEIP Ausias March",
+    "ubicacion": {
+      "lon": -0.234663449,
+      "lat": 39.820747827
+    }
+  },
+  {
+    "nombre": "Vilafranca del Cid",
+    "direccion_calle_num_y_cp": "C/Santa Teresa, 154",
+    "codigo_postal": 12150,
+    "intrucciones_de_localizacion": "Enfermeria",
+    "ubicacion": {
+      "lon": -0.260783723,
+      "lat": 40.432698801
+    }
+  },
+  {
+    "nombre": "Villareal",
+    "direccion_calle_num_y_cp": "Policia Local, C/José Ramón Batalla, 62",
+    "codigo_postal": 12540,
+    "intrucciones_de_localizacion": "Vehiculo de atestados",
+    "ubicacion": {
+      "lon": -0.106612932,
+      "lat": 39.938523498
+    }
+  },
+  {
+    "nombre": "Villareal",
+    "direccion_calle_num_y_cp": "Auditorio, Avda La Murá, 1",
+    "codigo_postal": 12540,
+    "intrucciones_de_localizacion": "Hall entrada",
+    "ubicacion": {
+      "lon": -0.098593812,
+      "lat": 39.937426769
+    }
+  },
+  {
+    "nombre": "Villores",
+    "direccion_calle_num_y_cp": "Plaza La Vila, 1",
+    "codigo_postal": 12311,
+    "intrucciones_de_localizacion": "Porche (lado del Ayuntamiento)",
+    "ubicacion": {
+      "lon": -0.200589085,
+      "lat": 40.676095859
+    }
+  },
+  {
+    "nombre": "Albocasser",
+    "direccion_calle_num_y_cp": "Campo de futbol municipal Passeig de la Planeta, s/n",
+    "codigo_postal": 12140,
+    "intrucciones_de_localizacion": "Cantina",
+    "ubicacion": {
+      "lon": 0.0253618,
+      "lat": 40.3562617
+    }
+  },
+  {
+    "nombre": "Alcala de Xivert",
+    "direccion_calle_num_y_cp": "Plaza Justo Zaragoza, 8A",
+    "codigo_postal": 12110,
+    "intrucciones_de_localizacion": "Policia Local. Coche Patrulla",
+    "ubicacion": {
+      "lon": 0.225159209,
+      "lat": 40.305987811
+    }
+  },
+  {
+    "nombre": "Alcora",
+    "direccion_calle_num_y_cp": "Centro Social Araya",
+    "codigo_postal": 12110,
+    "intrucciones_de_localizacion": "Salon Social",
+    "ubicacion": {
+      "lon": -0.2129828,
+      "lat": 40.0727574
+    }
+  },
+  {
+    "nombre": "Alcora",
+    "direccion_calle_num_y_cp": "Av.País València, s/n. Piscina cubierta",
+    "codigo_postal": 12110,
+    "intrucciones_de_localizacion": "Cuarto de monitores",
+    "ubicacion": {
+      "lon": -0.2129828,
+      "lat": 40.0727574
+    }
+  },
+  {
+    "nombre": "Algimia de Almonacid",
+    "direccion_calle_num_y_cp": "Calle Balsa",
+    "codigo_postal": 12414,
+    "intrucciones_de_localizacion": "Almacén municipal",
+    "ubicacion": {
+      "lon": -0.44193911,
+      "lat": 39.914042365
+    }
+  },
+  {
+    "nombre": "Almassora",
+    "direccion_calle_num_y_cp": "C/Deporte s/n.",
+    "codigo_postal": 12550,
+    "intrucciones_de_localizacion": "Complejo deportivo La Garrafera",
+    "ubicacion": {
+      "lon": -0.062062293,
+      "lat": 39.949954906
+    }
+  },
+  {
+    "nombre": "Almenara",
+    "direccion_calle_num_y_cp": "C/Casablanca, 56",
+    "codigo_postal": 12590,
+    "intrucciones_de_localizacion": "Ayto. Registro",
+    "ubicacion": {
+      "lon": -0.223284764,
+      "lat": 39.75167755
+    }
+  },
+  {
+    "nombre": "Arañuel",
+    "direccion_calle_num_y_cp": "Avda. Venta Laurel, 2",
+    "codigo_postal": 12232,
+    "intrucciones_de_localizacion": "Puerta de entrada lateral",
+    "ubicacion": {
+      "lon": -0.482244669,
+      "lat": 40.071537136
+    }
+  },
+  {
+    "nombre": "Ayódar",
+    "direccion_calle_num_y_cp": "Plaza Mayor, 1",
+    "codigo_postal": 12224,
+    "intrucciones_de_localizacion": "Sala Espera Ayuntamiento",
+    "ubicacion": {
+      "lon": -0.374889756,
+      "lat": 39.998447108
+    }
+  },
+  {
+    "nombre": "Barracas",
+    "direccion_calle_num_y_cp": "C/Valencia, 46",
+    "codigo_postal": 12420,
+    "intrucciones_de_localizacion": "Entrada Ayuntamiento de Barracas",
+    "ubicacion": {
+      "lon": -0.69781188,
+      "lat": 40.016715676
+    }
+  },
+  {
+    "nombre": "Benafigos",
+    "direccion_calle_num_y_cp": "Plaça Major, 1",
+    "codigo_postal": 12134,
+    "intrucciones_de_localizacion": "Bajos Ayuntamiento",
+    "ubicacion": {
+      "lon": -0.209362339,
+      "lat": 40.276631746
+    }
+  },
+  {
+    "nombre": "Benassal",
+    "direccion_calle_num_y_cp": "C/San Isidro, 2",
+    "codigo_postal": 12160,
+    "intrucciones_de_localizacion": "Escuela Alcalde Fabregat e IES Alfonso XII",
+    "ubicacion": {
+      "lon": -0.139722554,
+      "lat": 40.38021564
+    }
+  },
+  {
+    "nombre": "Benassal",
+    "direccion_calle_num_y_cp": "Maria Coll de la Rualda",
+    "codigo_postal": 12160,
+    "intrucciones_de_localizacion": "Pedania La Rualda",
+    "ubicacion": {
+      "lon": -0.1370781,
+      "lat": 40.378143
+    }
+  },
+  {
+    "nombre": "Benicarló",
+    "direccion_calle_num_y_cp": "Carrer de València, s/n.",
+    "codigo_postal": 12580,
+    "intrucciones_de_localizacion": "Auditori Pedro Maercader",
+    "ubicacion": {
+      "lon": 0.427719242,
+      "lat": 40.413862457
+    }
+  },
+  {
+    "nombre": "Benicarló",
+    "direccion_calle_num_y_cp": "Carrer Ferreres Bretó, 10",
+    "codigo_postal": 12580,
+    "intrucciones_de_localizacion": "Ajuntament de Benicarló",
+    "ubicacion": {
+      "lon": 0.423177313,
+      "lat": 40.418393701
+    }
+  },
+  {
+    "nombre": "Benicarló",
+    "direccion_calle_num_y_cp": "Carrer Pius XII, 10",
+    "codigo_postal": 12580,
+    "intrucciones_de_localizacion": "Mercat Municipal de Benicarló",
+    "ubicacion": {
+      "lon": 0.425566659,
+      "lat": 40.417357153
+    }
+  },
+  {
+    "nombre": "Benicarló",
+    "direccion_calle_num_y_cp": "Carrer Castelló, 2",
+    "codigo_postal": 12580,
+    "intrucciones_de_localizacion": "Museu de Benicarló",
+    "ubicacion": {
+      "lon": 0.426262021,
+      "lat": 40.422547395
+    }
+  },
+  {
+    "nombre": "Borriana",
+    "direccion_calle_num_y_cp": "C/Thomas Edison, 2 BJ",
+    "codigo_postal": 12530,
+    "intrucciones_de_localizacion": "Entrada principal, frente mostrador",
+    "ubicacion": {
+      "lon": -0.093837653,
+      "lat": 39.888383612
+    }
+  },
+  {
+    "nombre": "Borriol",
+    "direccion_calle_num_y_cp": "C/Henri Bouché, 27",
+    "codigo_postal": 12190,
+    "intrucciones_de_localizacion": "Pista d'esports",
+    "ubicacion": {
+      "lon": -0.065832388,
+      "lat": 40.044096481
+    }
+  },
+  {
+    "nombre": "Càlig",
+    "direccion_calle_num_y_cp": "Passeig d'En Blai O'Sanz, 10",
+    "codigo_postal": 12589,
+    "intrucciones_de_localizacion": "Polideportivo, Planta Baja junto al mostrador",
+    "ubicacion": {
+      "lon": 0.359578198,
+      "lat": 40.461457279
+    }
+  },
+  {
+    "nombre": "Canet lo Roig",
+    "direccion_calle_num_y_cp": "Plaza España, 8",
+    "codigo_postal": 12350,
+    "intrucciones_de_localizacion": "Recibidor de la entrada",
+    "ubicacion": {
+      "lon": 0.24281418,
+      "lat": 40.550747724
+    }
+  },
+  {
+    "nombre": "Castell de Cabres",
+    "direccion_calle_num_y_cp": "Callejon de la Iglesia, 23",
+    "codigo_postal": 12319,
+    "intrucciones_de_localizacion": "Exterior consultorio atención primaria",
+    "ubicacion": {
+      "lon": 0.0423209,
+      "lat": 40.660647969
+    }
+  },
+  {
+    "nombre": "Castellfort",
+    "direccion_calle_num_y_cp": "C/De La Virgen, 2",
+    "codigo_postal": 12159,
+    "intrucciones_de_localizacion": "Puerta entrada Aparthotel, acceso exterior",
+    "ubicacion": {
+      "lon": -0.190029715,
+      "lat": 40.501267428
+    }
+  },
+  {
+    "nombre": "Castellnovo",
+    "direccion_calle_num_y_cp": "C/Comandante Pérez, 1",
+    "codigo_postal": 12413,
+    "intrucciones_de_localizacion": "Derecha en sala servicios sociales",
+    "ubicacion": {
+      "lon": -0.457849056,
+      "lat": 39.861360788
+    }
+  },
+  {
+    "nombre": "Castello de la Plana",
+    "direccion_calle_num_y_cp": "C/Vilavella s/n. Instalaciones deportivas Rafalafena",
+    "codigo_postal": 12003,
+    "intrucciones_de_localizacion": "Oficines",
+    "ubicacion": {
+      "lon": -0.028696072,
+      "lat": 39.990532634
+    }
+  },
+  {
+    "nombre": "Castello de la Plana",
+    "direccion_calle_num_y_cp": "C/Pascual Asensio Hernández, s/n. Pavelló Ciutat de Castelló",
+    "codigo_postal": 12006,
+    "intrucciones_de_localizacion": "Entrada en pista d'arbitres i jugadors",
+    "ubicacion": {
+      "lon": -0.054455758,
+      "lat": 39.973355713
+    }
+  },
+  {
+    "nombre": "Castillo de Villamalefa",
+    "direccion_calle_num_y_cp": "Plaza España, 14",
+    "codigo_postal": 12123,
+    "intrucciones_de_localizacion": "Plaza España 14",
+    "ubicacion": {
+      "lon": -0.379176344,
+      "lat": 40.13069163
+    }
+  },
+  {
+    "nombre": "Cervera del Maestre",
+    "direccion_calle_num_y_cp": "Mártires, 1",
+    "codigo_postal": 12578,
+    "intrucciones_de_localizacion": "Armario entrada antiguo Ayuntamiento",
+    "ubicacion": {
+      "lon": 0.277261539,
+      "lat": 40.454358519
+    }
+  },
+  {
+    "nombre": "Cinctorres",
+    "direccion_calle_num_y_cp": "C/Pajares de San Luis",
+    "codigo_postal": 12318,
+    "intrucciones_de_localizacion": "Camp Futbol (Bar)",
+    "ubicacion": {
+      "lon": -0.217617552,
+      "lat": 40.584141368
+    }
+  },
+  {
+    "nombre": "Cortes de Arenoso",
+    "direccion_calle_num_y_cp": "Mayor, 1",
+    "codigo_postal": 12127,
+    "intrucciones_de_localizacion": "Ayuntamiento",
+    "ubicacion": {
+      "lon": -0.54162852,
+      "lat": 40.186957257
+    }
+  },
+  {
+    "nombre": "Costur",
+    "direccion_calle_num_y_cp": "Plaza Mayor, 13",
+    "codigo_postal": 12127,
+    "intrucciones_de_localizacion": "Entrada del Ayto. Abrir puerta principal y a la izda",
+    "ubicacion": {
+      "lon": -0.173442448,
+      "lat": 40.12019048
+    }
+  },
+  {
+    "nombre": "Eslida",
+    "direccion_calle_num_y_cp": "Calle Principe Felipe, 49",
+    "codigo_postal": 12528,
+    "intrucciones_de_localizacion": "Edificio Servicio Social",
+    "ubicacion": {
+      "lon": -0.307039985,
+      "lat": 39.881773061
+    }
+  },
+  {
+    "nombre": "Fanzara",
+    "direccion_calle_num_y_cp": "Plaza de la Iglesia, 1",
+    "codigo_postal": 12230,
+    "intrucciones_de_localizacion": "Plaza de la Iglesia",
+    "ubicacion": {
+      "lon": -0.316082658,
+      "lat": 40.01911948
+    }
+  },
+  {
+    "nombre": "Jérica",
+    "direccion_calle_num_y_cp": "Plaza Correos",
+    "codigo_postal": 12450,
+    "intrucciones_de_localizacion": "Viviendas tuteladas",
+    "ubicacion": {
+      "lon": -0.571111061,
+      "lat": 39.912411857
+    }
+  },
+  {
+    "nombre": "La Jana",
+    "direccion_calle_num_y_cp": "C/El Perche s/n.",
+    "codigo_postal": 12340,
+    "intrucciones_de_localizacion": "Pared con cobertizo",
+    "ubicacion": {
+      "lon": 0.252265278,
+      "lat": 40.512818145
+    }
+  },
+  {
+    "nombre": "La Llosa",
+    "direccion_calle_num_y_cp": "Plaza España, 14",
+    "codigo_postal": 12591,
+    "intrucciones_de_localizacion": "Dependencias policia local",
+    "ubicacion": {
+      "lon": -0.206362326,
+      "lat": 39.768707012
+    }
+  },
+  {
+    "nombre": "La Mata de Morella",
+    "direccion_calle_num_y_cp": "C/Església, 13",
+    "codigo_postal": 12312,
+    "intrucciones_de_localizacion": "En el porche de la entrada",
+    "ubicacion": {
+      "lon": -0.280419124,
+      "lat": 40.616571731
+    }
+  },
+  {
+    "nombre": "La Vilavella",
+    "direccion_calle_num_y_cp": "Plaça La Vila, 1",
+    "codigo_postal": 12526,
+    "intrucciones_de_localizacion": "Recepción Policia Local",
+    "ubicacion": {
+      "lon": -0.184536148,
+      "lat": 39.858769774
+    }
+  },
+  {
+    "nombre": "Lucena del Cid",
+    "direccion_calle_num_y_cp": "Avenida Fernando León B 33",
+    "codigo_postal": 12120,
+    "intrucciones_de_localizacion": "Cuarto cuadro eléctrico y almacén",
+    "ubicacion": {
+      "lon": -0.280629806,
+      "lat": 40.134440428
+    }
+  },
+  {
+    "nombre": "Ludiente",
+    "direccion_calle_num_y_cp": "Plaza Olmet, 1",
+    "codigo_postal": 12123,
+    "intrucciones_de_localizacion": "Planta -1 Pasillo de acceso a la planta",
+    "ubicacion": {
+      "lon": -0.371614192,
+      "lat": 40.086863027
+    }
+  },
+  {
+    "nombre": "Matet",
+    "direccion_calle_num_y_cp": "C/San Miguel, 16 Bajo",
+    "codigo_postal": 12415,
+    "intrucciones_de_localizacion": "En la recepción, al lado ascensor",
+    "ubicacion": {
+      "lon": -0.467825197,
+      "lat": 39.937637197
+    }
+  },
+  {
+    "nombre": "Moncofa",
+    "direccion_calle_num_y_cp": "Av. Diputació, s/n.",
+    "codigo_postal": 12593,
+    "intrucciones_de_localizacion": "Acceso principal",
+    "ubicacion": {
+      "lon": -0.15217312,
+      "lat": 39.803365586
+    }
+  },
+  {
+    "nombre": "Montán",
+    "direccion_calle_num_y_cp": "Plaza Ayuntamiento, 1",
+    "codigo_postal": 12447,
+    "intrucciones_de_localizacion": "Planta Baja",
+    "ubicacion": {
+      "lon": -0.554272626,
+      "lat": 40.035308036
+    }
+  },
+  {
+    "nombre": "Nules",
+    "direccion_calle_num_y_cp": "Av. Jaime I s/n.",
+    "codigo_postal": 12520,
+    "intrucciones_de_localizacion": "Campo fútbol entrada vestidores",
+    "ubicacion": {
+      "lon": -0.164262378,
+      "lat": 39.84877645
+    }
+  },
+  {
+    "nombre": "Oropesa del mar",
+    "direccion_calle_num_y_cp": "C/Vicente Blasco Ibáñez, 14",
+    "codigo_postal": 12594,
+    "intrucciones_de_localizacion": "IES Torre del rey (Conserjeria)",
+    "ubicacion": {
+      "lon": 0.134140793,
+      "lat": 40.090144877
+    }
+  },
+  {
+    "nombre": "Peñíscola (Diputacion provincial)",
+    "direccion_calle_num_y_cp": "Castillo de Peñíscola. C/Castillo s/n.",
+    "codigo_postal": 12598,
+    "intrucciones_de_localizacion": "Recepción",
+    "ubicacion": {
+      "lon": 0.4028515,
+      "lat": 40.3602859
+    }
+  },
+  {
+    "nombre": "Pobla de Benifassà (Boixar)",
+    "direccion_calle_num_y_cp": "C/Del Sol, 23",
+    "codigo_postal": 12599,
+    "intrucciones_de_localizacion": "Ventana del consultorio médico",
+    "ubicacion": {
+      "lon": 0.119623752,
+      "lat": 40.679667254
+    }
+  },
+  {
+    "nombre": "Pobla de Benifassà (Fredes)",
+    "direccion_calle_num_y_cp": "C/Major, 5",
+    "codigo_postal": 12599,
+    "intrucciones_de_localizacion": "Antiguo Ayuntamiento",
+    "ubicacion": {
+      "lon": 0.170970531,
+      "lat": 40.705325308
+    }
+  },
+  {
+    "nombre": "Portell de Morella",
+    "direccion_calle_num_y_cp": "Calle Mayor, 4",
+    "codigo_postal": 12318,
+    "intrucciones_de_localizacion": "Portal de acceso",
+    "ubicacion": {
+      "lon": -0.262647187,
+      "lat": 40.531711625
+    }
+  },
+  {
+    "nombre": "Rosell",
+    "direccion_calle_num_y_cp": "Mestra Saiz, 31",
+    "codigo_postal": 12511,
+    "intrucciones_de_localizacion": "Entrada",
+    "ubicacion": {
+      "lon": 0.221483996,
+      "lat": 40.618707147
+    }
+  },
+  {
+    "nombre": "Segorbe",
+    "direccion_calle_num_y_cp": "C/Monseñor Romualdo Amigó, 7",
+    "codigo_postal": 12400,
+    "intrucciones_de_localizacion": "Auditorio. Entrada a la derecha",
+    "ubicacion": {
+      "lon": -0.490743751,
+      "lat": 39.849774358
+    }
+  },
+  {
+    "nombre": "Sierra Engarcerán (Els ibarsos)",
+    "direccion_calle_num_y_cp": "Campo de futbol El Olivar",
+    "codigo_postal": 12182,
+    "intrucciones_de_localizacion": "Vestuario de hombres",
+    "ubicacion": {
+      "lon": -0.07908,
+      "lat": 40.22825
+    }
+  },
+  {
+    "nombre": "Soneja",
+    "direccion_calle_num_y_cp": "C/Mayor, 2",
+    "codigo_postal": 12480,
+    "intrucciones_de_localizacion": "Recepción del retén de policía local",
+    "ubicacion": {
+      "lon": -0.428508539,
+      "lat": 39.817348421
+    }
+  },
+  {
+    "nombre": "Soneja",
+    "direccion_calle_num_y_cp": "Camino El Arco",
+    "codigo_postal": 12480,
+    "intrucciones_de_localizacion": "Recepción del campo de fútbol",
+    "ubicacion": {
+      "lon": -0.432463229,
+      "lat": 39.817348403
+    }
+  },
+  {
+    "nombre": "Sueras",
+    "direccion_calle_num_y_cp": "C/Mayor, 1",
+    "codigo_postal": 12223,
+    "intrucciones_de_localizacion": "Patio posterior del ayuntamiento",
+    "ubicacion": {
+      "lon": -0.332513368,
+      "lat": 39.952275688
+    }
+  },
+  {
+    "nombre": "Tales",
+    "direccion_calle_num_y_cp": "Av.Castellón, 35",
+    "codigo_postal": 12221,
+    "intrucciones_de_localizacion": "Entrada",
+    "ubicacion": {
+      "lon": -0.30983395,
+      "lat": 39.947295203
+    }
+  },
+  {
+    "nombre": "Tirig",
+    "direccion_calle_num_y_cp": "C/Valencia, 18",
+    "codigo_postal": 12179,
+    "intrucciones_de_localizacion": "Ayuntamiento de Tirig",
+    "ubicacion": {
+      "lon": 0.078963647,
+      "lat": 40.42352858
+    }
+  },
+  {
+    "nombre": "Todolella",
+    "direccion_calle_num_y_cp": "Plaza Mayor, 1",
+    "codigo_postal": 12312,
+    "intrucciones_de_localizacion": "Distribuidor rellano.Ayuntamiento",
+    "ubicacion": {
+      "lon": -0.24663683,
+      "lat": 40.646838993
+    }
+  },
+  {
+    "nombre": "Torreblanca",
+    "direccion_calle_num_y_cp": "Avinguda Camp d'Esports 14 - 16",
+    "codigo_postal": 12596,
+    "intrucciones_de_localizacion": "Camp de futbol municipal",
+    "ubicacion": {
+      "lon": 0.1956185,
+      "lat": 40.2201395
+    }
+  },
+  {
+    "nombre": "Torreblanca",
+    "direccion_calle_num_y_cp": "Camí dels Romans, 11",
+    "codigo_postal": 12596,
+    "intrucciones_de_localizacion": "Pabelló Poliesportiu Municipal",
+    "ubicacion": {
+      "lon": 0.203819811,
+      "lat": 40.220928871
+    }
+  },
+  {
+    "nombre": "Torrechiva",
+    "direccion_calle_num_y_cp": "C/De la Iglesia, 9",
+    "codigo_postal": 12232,
+    "intrucciones_de_localizacion": "Entrada",
+    "ubicacion": {
+      "lon": -0.39792113,
+      "lat": 40.048785382
+    }
+  },
+  {
+    "nombre": "Traiguera",
+    "direccion_calle_num_y_cp": "Polideportivo Municipal - Partida Colomer",
+    "codigo_postal": 12330,
+    "intrucciones_de_localizacion": "Vestuarios campo de futbol",
+    "ubicacion": {
+      "lon": 0.2936563,
+      "lat": 40.5249587
+    }
+  },
+  {
+    "nombre": "Traiguera",
+    "direccion_calle_num_y_cp": "C/Virgen Fuente de la Salud, 2",
+    "codigo_postal": 12330,
+    "intrucciones_de_localizacion": "Hogar del jubilado",
+    "ubicacion": {
+      "lon": 0.289083123,
+      "lat": 40.52360314
+    }
+  },
+  {
+    "nombre": "Vall d'alba",
+    "direccion_calle_num_y_cp": "C/Hermenegildo Pons s/n.",
+    "codigo_postal": 12194,
+    "intrucciones_de_localizacion": "Al lado de la barra, local multiusos",
+    "ubicacion": {
+      "lon": -0.038422602,
+      "lat": 40.177017785
+    }
+  },
+  {
+    "nombre": "Vall d'alba",
+    "direccion_calle_num_y_cp": "Av.Pasillos s/n.",
+    "codigo_postal": 12194,
+    "intrucciones_de_localizacion": "Gimnasio Municipal",
+    "ubicacion": {
+      "lon": -0.033510274,
+      "lat": 40.169866391
+    }
+  },
+  {
+    "nombre": "Vall d'alba (La Barona)",
+    "direccion_calle_num_y_cp": "CV-159 Ctra Barona",
+    "codigo_postal": 12193,
+    "intrucciones_de_localizacion": "Escuela la Barona",
+    "ubicacion": {
+      "lon": -0.062453011,
+      "lat": 40.166231462
+    }
+  },
+  {
+    "nombre": "Vall d'almonacid",
+    "direccion_calle_num_y_cp": "Calle Aureliano Garcia, 1",
+    "codigo_postal": 12414,
+    "intrucciones_de_localizacion": "Consultorio Médico",
+    "ubicacion": {
+      "lon": -0.456039319,
+      "lat": 39.903696566
+    }
+  },
+  {
+    "nombre": "Vall d'Uixó",
+    "direccion_calle_num_y_cp": "Paraje de San José s/n.",
+    "codigo_postal": 12600,
+    "intrucciones_de_localizacion": "Cuevas de Sant Josep",
+    "ubicacion": {
+      "lon": -0.24981361,
+      "lat": 39.826070336
+    }
+  },
+  {
+    "nombre": "Vallibona",
+    "direccion_calle_num_y_cp": "Plaza San Antonio, 6",
+    "codigo_postal": 12315,
+    "intrucciones_de_localizacion": "Exterior consultorio atención primaria",
+    "ubicacion": {
+      "lon": 0.045961663,
+      "lat": 40.603347603
+    }
+  },
+  {
+    "nombre": "Vilafames",
+    "direccion_calle_num_y_cp": "Avda Fabián Ribes, s/n.",
+    "codigo_postal": 12192,
+    "intrucciones_de_localizacion": "Vestuarios campo de futbol",
+    "ubicacion": {
+      "lon": -0.04839441,
+      "lat": 40.115445562
+    }
+  },
+  {
+    "nombre": "Vilanova d'alcolea",
+    "direccion_calle_num_y_cp": "C/Calvari, 12",
+    "codigo_postal": 12183,
+    "intrucciones_de_localizacion": "Acces",
+    "ubicacion": {
+      "lon": 0.072297603,
+      "lat": 40.232031471
+    }
+  },
+  {
+    "nombre": "Villahermosa del Rio",
+    "direccion_calle_num_y_cp": "Camino San Antonio, s/n.",
+    "codigo_postal": 12124,
+    "intrucciones_de_localizacion": "Consultorio Medico de la residencia",
+    "ubicacion": {
+      "lon": -0.417802234,
+      "lat": 40.202959983
+    }
+  },
+  {
+    "nombre": "Villareal",
+    "direccion_calle_num_y_cp": "Casa Consistorial, Plaza Mayor s/n.",
+    "codigo_postal": 12540,
+    "intrucciones_de_localizacion": "Hall entrada",
+    "ubicacion": {
+      "lon": -0.100944547,
+      "lat": 39.936442873
+    }
+  },
+  {
+    "nombre": "Xilxes",
+    "direccion_calle_num_y_cp": "Ronda Adolfo Suárez, 6",
+    "codigo_postal": 12592,
+    "intrucciones_de_localizacion": "Inst. Deport. L'alter, junto puerta acceso planta baja",
+    "ubicacion": {
+      "lon": -0.182198178,
+      "lat": 39.781895132
+    }
+  },
+  {
+    "nombre": "Zorita del Maestrazgo.",
+    "direccion_calle_num_y_cp": "C/Plaça, 22",
+    "codigo_postal": 12311,
+    "intrucciones_de_localizacion": "Fachada Ayuntamiento de Zorita",
+    "ubicacion": {
+      "lon": -0.16686785,
+      "lat": 40.728722099
+    }
+  },
+  {
+    "nombre": "Zucaina",
+    "direccion_calle_num_y_cp": "Plaza Iglesia, 1.",
+    "codigo_postal": 12125,
+    "intrucciones_de_localizacion": "Justo al entrar en el ayuntamiento",
+    "ubicacion": {
+      "lon": -0.418247916,
+      "lat": 40.131825986
+    }
+  }
+]

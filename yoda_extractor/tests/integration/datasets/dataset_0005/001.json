@@ -1,0 +1,367 @@
+{
+  "code": [
+    {
+      "id": "_T",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000)._T",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/_T"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Total",
+            "lang": "en"
+          },
+          {
+            "value": "Total",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Used for expressing totals.",
+            "lang": "en"
+          },
+          {
+            "value": "Usado para expresar totales.",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/_T/01.000/detail",
+      "kind": "structuralResources#code"
+    },
+    {
+      "id": "NIF",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000).NIF",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/NIF"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Número de identificación fiscal (NIF)",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Número de identifcación fiscal",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/NIF/01.000/detail",
+      "kind": "structuralResources#code"
+    },
+    {
+      "id": "NIE",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000).NIE",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/NIE"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Número de identificación de extranjero (NIE)",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Número de identificación de extranjero",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/NIE/01.000/detail",
+      "kind": "structuralResources#code"
+    },
+    {
+      "id": "PASAPORTE",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000).PASAPORTE",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/PASAPORTE"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Pasaporte",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Documento de identidad de ciudadano de un pais, expedido por las autoridades de su país, que acredita su identidad y nacionalidad",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/PASAPORTE/01.000/detail",
+      "kind": "structuralResources#code"
+    },
+    {
+      "id": "NUSS",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000).NUSS",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/NUSS"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Número de la Seguridad Social (NUSS / NAF)",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Número de la Seguridad Social (NUSS) es el número de identificación personal de la Seguridad Social. También se conoce como Número de Afiliación (NAF) o puede aparece como NAFILIA",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/NUSS/01.000/detail",
+      "kind": "structuralResources#code"
+    },
+    {
+      "id": "CIP_SNS",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000).CIP_SNS",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/CIP_SNS"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Código de identificación del Sistema Nacional de Salud",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Código de identificación personal único del Sistema Nacional de Salud asociado a la tarjeta sanitaria individual (TSI). Este último es el documento oficial, necesario y suficiente, establecido para la identificación de cada ciudadano en el acceso a las prestaciones y uso de los servicios del Sistema Nacional de Salud (SNS), según establece en la Ley 16/2003, de 28 de mayo, de cohesión y calidad del Sistema Nacional de Salud",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/CIP_SNS/01.000/detail",
+      "kind": "structuralResources#code"
+    },
+    {
+      "id": "NIS",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000).NIS",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/NIS"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Número de identificación sistemática del sistema penitenciario",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Número de identificación unico asignado a una persona cuando ingresa por primera vez en un centro penitenciario.",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/NIS/01.000/detail",
+      "kind": "structuralResources#code"
+    },
+    {
+      "id": "_N",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000)._N",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/_N"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Non response",
+            "lang": "en"
+          },
+          {
+            "value": "No sabe/No contesta",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Failure to obtain a measurement on one or more study variables for one or more elements in a survey.",
+            "lang": "en"
+          },
+          {
+            "value": "Fallo al obtener la medida en una o más variables de estudio para uno o más elementos de una encuesta.",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/_N/01.000/detail",
+      "kind": "structuralResources#code"
+    },
+    {
+      "id": "_O",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000)._O",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/_O"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Other",
+            "lang": "en"
+          },
+          {
+            "value": "Otros",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Used to cover residual information not contained in other categories of the code list (in some contexts, e.g. classifications, referred to as n.e.s., not elsewhere specified, n.e.c., not elsewhere classified, etc.)",
+            "lang": "en"
+          },
+          {
+            "value": "Usado para identificar información residual no contenida en otras categorías de la clasificación (en algunos contextos, por ejemplo, en las clasificaciones, se hace referencia a estos datos como no especificados en otra parte, no clasificados en otra parte, etc.)",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/_O/01.000/detail",
+      "kind": "structuralResources#code"
+    },
+    {
+      "id": "_U",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000)._U",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/_U"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "No data/unknown",
+            "lang": "en"
+          },
+          {
+            "value": "No consta",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Failure to obtain a measurement (e.g. non response, no data available, information not known by the respondent unit, etc.)",
+            "lang": "en"
+          },
+          {
+            "value": "Fallo al obtener un dato (por ejemplo: sin respuesta, dato no disponible, información desconocida por el encuestado, etc.)",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/_U/01.000/detail",
+      "kind": "structuralResources#code"
+    },
+    {
+      "id": "_X",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000)._X",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/_X"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Not allocated/unspecified",
+            "lang": "en"
+          },
+          {
+            "value": "No clasificable",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Used where the value for a particular variable falls outside the expected range. An example could be the failure to allocate a classification to a particular unit due to insufficient information, and/or if further breakdown over any related items mentioned in code list not available.",
+            "lang": "en"
+          },
+          {
+            "value": "Se usa cuando el valor de una variable cae por debajo del rango esperado. Por ejemplo, se podría usar para un dato del que no se tiene suficiente información y no se le puede asignar una clasificación.",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/_X/01.000/detail",
+      "kind": "structuralResources#code"
+    },
+    {
+      "id": "_Z",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS(01.000)._Z",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes/_Z"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Not applicable",
+            "lang": "en"
+          },
+          {
+            "value": "No aplicable",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Used in cases where the coding of a concept is technically required (dimension or mandatory attribute), but does not have a statistical meaning for a specific series or observation.",
+            "lang": "en"
+          },
+          {
+            "value": "Se usa en los casos en los que la codificación de un concepto es técnicamente requerida (dimensión o atributo obligatorio), pero no tiene significado estadístico para una serie u observación específica.",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/codelists/codes/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/_Z/01.000/detail",
+      "kind": "structuralResources#code"
+    }
+  ],
+  "kind": "structuralResources#codes",
+  "total": 12,
+  "selfLink": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_TIPOS_IDENTIFICADORES_PERSONAS_FISICAS/01.000/codes"
+}

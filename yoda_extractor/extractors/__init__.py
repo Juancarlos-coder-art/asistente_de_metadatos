@@ -10,5 +10,4 @@ ALL_EXTRACTORS = [
     StructureExtractor,
     DataFrameStatisticsExtractor,
     VocabularyMatcher,
-    # GeospatialExtractor,
 ]

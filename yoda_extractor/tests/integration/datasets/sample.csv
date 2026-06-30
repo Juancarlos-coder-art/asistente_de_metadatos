@@ -1,0 +1,501 @@
+id,name,category,value,event_date,created_at,country,notes
+0,Carlos,B,59.33,2018-03-01,2018-03-01T00:00:00,BEL,
+1,Alice,A,61.98,03/03/2018,2018-03-03T00:00:00,NLD,no date here
+2,Diana,B,62.79,"March 05, 2018",2018-03-05T00:00:00,NLD,no date here
+3,Carlos,A,90.01,2018-03-07,2018-03-07T00:00:00,GBR,no date here
+4,Alice,C,8.55,09/03/2018,2018-03-09T00:00:00,BEL,no date here
+5,Diana,C,66.08,"March 11, 2018",2018-03-11T00:00:00,DEU,no date here
+6,Diana,A,69.05,2018-03-13,2018-03-13T00:00:00,United Kingdom,no date here
+7,Alice,A,80.96,15/03/2018,2018-03-15T00:00:00,BEL,no date here
+8,Alice,A,31.06,"March 17, 2018",2018-03-17T00:00:00,France,no date here
+9,Eve,A,40.6,2018-03-19,2018-03-19T00:00:00,ITA,no date here
+10,Eve,A,96.04,21/03/2018,2018-03-21T00:00:00,Spain,
+11,Bob,C,70.28,"March 23, 2018",2018-03-23T00:00:00,GBR,no date here
+12,Diana,C,73.22,2018-03-25,2018-03-25T00:00:00,BEL,no date here
+13,Frank,C,36.45,27/03/2018,2018-03-27T00:00:00,PRT,no date here
+14,Bob,A,7.07,"March 29, 2018",2018-03-29T00:00:00,United Kingdom,no date here
+15,Alice,A,16.3,2018-03-31,2018-03-31T00:00:00,United Kingdom,no date here
+16,Eve,A,26.17,02/04/2018,2018-04-02T00:00:00,NLD,no date here
+17,Bob,B,22.28,"April 04, 2018",2018-04-04T00:00:00,POL,no date here
+18,Diana,B,33.76,2018-04-06,2018-04-06T00:00:00,Spain,no date here
+19,Frank,B,32.11,08/04/2018,2018-04-08T00:00:00,United Kingdom,no date here
+20,Eve,C,85.66,"April 10, 2018",2018-04-10T00:00:00,France,
+21,Eve,C,67.78,2018-04-12,2018-04-12T00:00:00,BEL,no date here
+22,Bob,A,68.16,14/04/2018,2018-04-14T00:00:00,DEU,no date here
+23,Eve,A,21.81,"April 16, 2018",2018-04-16T00:00:00,SWE,no date here
+24,Eve,C,56.62,2018-04-18,2018-04-18T00:00:00,United Kingdom,no date here
+25,Diana,B,6.32,20/04/2018,2018-04-20T00:00:00,GBR,no date here
+26,Diana,C,5.31,"April 22, 2018",2018-04-22T00:00:00,ITA,no date here
+27,Diana,A,79.71,2018-04-24,2018-04-24T00:00:00,BEL,no date here
+28,Frank,A,87.23,26/04/2018,2018-04-26T00:00:00,ES,no date here
+29,Diana,C,24.39,"April 28, 2018",2018-04-28T00:00:00,DEU,no date here
+30,Diana,B,37.31,2018-04-30,2018-04-30T00:00:00,GBR,
+31,Diana,B,52.58,02/05/2018,2018-05-02T00:00:00,GBR,no date here
+32,Frank,B,39.97,"May 04, 2018",2018-05-04T00:00:00,Spain,no date here
+33,Carlos,C,76.45,2018-05-06,2018-05-06T00:00:00,France,no date here
+34,Carlos,A,7.88,08/05/2018,2018-05-08T00:00:00,United Kingdom,no date here
+35,Diana,A,1.72,"May 10, 2018",2018-05-10T00:00:00,SWE,no date here
+36,Alice,A,10.63,2018-05-12,2018-05-12T00:00:00,ES,no date here
+37,Alice,B,93.72,14/05/2018,2018-05-14T00:00:00,ITA,no date here
+38,Frank,C,58.26,"May 16, 2018",2018-05-16T00:00:00,ITA,no date here
+39,Eve,C,74.18,2018-05-18,2018-05-18T00:00:00,POL,no date here
+40,Diana,C,54.0,20/05/2018,2018-05-20T00:00:00,GBR,
+41,Alice,C,61.24,"May 22, 2018",2018-05-22T00:00:00,DEU,no date here
+42,Alice,C,7.72,2018-05-24,2018-05-24T00:00:00,Germany,no date here
+43,Bob,C,98.85,26/05/2018,2018-05-26T00:00:00,SWE,no date here
+44,Eve,B,41.96,"May 28, 2018",2018-05-28T00:00:00,Spain,no date here
+45,Bob,A,95.35,2018-05-30,2018-05-30T00:00:00,NLD,no date here
+46,Alice,C,8.96,01/06/2018,2018-06-01T00:00:00,United Kingdom,no date here
+47,Eve,B,11.54,"June 03, 2018",2018-06-03T00:00:00,GBR,no date here
+48,Alice,B,17.12,2018-06-05,2018-06-05T00:00:00,SWE,no date here
+49,Eve,C,96.94,07/06/2018,2018-06-07T00:00:00,SWE,no date here
+50,Alice,C,99.86,"June 09, 2018",2018-06-09T00:00:00,France,
+51,Frank,C,85.17,2018-06-11,2018-06-11T00:00:00,Germany,no date here
+52,Bob,C,48.72,13/06/2018,2018-06-13T00:00:00,BEL,no date here
+53,Bob,C,20.46,"June 15, 2018",2018-06-15T00:00:00,France,no date here
+54,Eve,C,79.24,2018-06-17,2018-06-17T00:00:00,FR,no date here
+55,Alice,A,88.53,19/06/2018,2018-06-19T00:00:00,FR,no date here
+56,Bob,C,40.48,"June 21, 2018",2018-06-21T00:00:00,SWE,no date here
+57,Eve,A,83.6,2018-06-23,2018-06-23T00:00:00,DEU,no date here
+58,Alice,A,35.4,25/06/2018,2018-06-25T00:00:00,United Kingdom,no date here
+59,Diana,B,30.8,"June 27, 2018",2018-06-27T00:00:00,NLD,no date here
+60,Carlos,B,56.95,2018-06-29,2018-06-29T00:00:00,NLD,
+61,Bob,C,64.43,01/07/2018,2018-07-01T00:00:00,DEU,no date here
+62,Alice,A,52.46,"July 03, 2018",2018-07-03T00:00:00,DEU,no date here
+63,Carlos,C,76.94,2018-07-05,2018-07-05T00:00:00,Germany,no date here
+64,Carlos,C,60.63,07/07/2018,2018-07-07T00:00:00,GBR,no date here
+65,Diana,A,60.11,"July 09, 2018",2018-07-09T00:00:00,PRT,no date here
+66,Bob,C,1.2,2018-07-11,2018-07-11T00:00:00,Spain,no date here
+67,Diana,A,74.47,13/07/2018,2018-07-13T00:00:00,ES,no date here
+68,Carlos,A,9.93,"July 15, 2018",2018-07-15T00:00:00,POL,no date here
+69,Carlos,A,1.08,2018-07-17,2018-07-17T00:00:00,DEU,no date here
+70,Carlos,B,66.38,19/07/2018,2018-07-19T00:00:00,DEU,
+71,Carlos,B,18.74,"July 21, 2018",2018-07-21T00:00:00,PRT,no date here
+72,Diana,B,82.78,2018-07-23,2018-07-23T00:00:00,GBR,no date here
+73,Bob,C,9.46,25/07/2018,2018-07-25T00:00:00,Spain,no date here
+74,Eve,C,59.87,"July 27, 2018",2018-07-27T00:00:00,Germany,no date here
+75,Diana,A,94.52,2018-07-29,2018-07-29T00:00:00,Spain,no date here
+76,Bob,B,65.25,31/07/2018,2018-07-31T00:00:00,BEL,no date here
+77,Alice,A,89.95,"August 02, 2018",2018-08-02T00:00:00,GBR,no date here
+78,Alice,A,67.08,2018-08-04,2018-08-04T00:00:00,Germany,no date here
+79,Eve,B,19.45,06/08/2018,2018-08-06T00:00:00,ES,no date here
+80,Diana,A,39.21,"August 08, 2018",2018-08-08T00:00:00,NLD,
+81,Alice,A,93.04,2018-08-10,2018-08-10T00:00:00,BEL,no date here
+82,Frank,B,46.65,12/08/2018,2018-08-12T00:00:00,Germany,no date here
+83,Bob,C,78.51,"August 14, 2018",2018-08-14T00:00:00,NLD,no date here
+84,Frank,B,27.33,2018-08-16,2018-08-16T00:00:00,Spain,no date here
+85,Carlos,A,27.71,18/08/2018,2018-08-18T00:00:00,POL,no date here
+86,Carlos,B,48.07,"August 20, 2018",2018-08-20T00:00:00,DEU,no date here
+87,Frank,B,91.69,2018-08-22,2018-08-22T00:00:00,PRT,no date here
+88,Eve,A,15.9,24/08/2018,2018-08-24T00:00:00,POL,no date here
+89,Frank,C,84.69,"August 26, 2018",2018-08-26T00:00:00,PRT,no date here
+90,Eve,B,64.91,2018-08-28,2018-08-28T00:00:00,Germany,
+91,Diana,C,53.57,30/08/2018,2018-08-30T00:00:00,GBR,no date here
+92,Frank,A,40.5,"September 01, 2018",2018-09-01T00:00:00,Germany,no date here
+93,Carlos,B,42.38,2018-09-03,2018-09-03T00:00:00,SWE,no date here
+94,Carlos,A,46.69,05/09/2018,2018-09-05T00:00:00,POL,no date here
+95,Eve,A,43.46,"September 07, 2018",2018-09-07T00:00:00,France,no date here
+96,Frank,C,1.57,2018-09-09,2018-09-09T00:00:00,GBR,no date here
+97,Bob,C,36.22,11/09/2018,2018-09-11T00:00:00,ITA,no date here
+98,Bob,A,69.85,"September 13, 2018",2018-09-13T00:00:00,GBR,no date here
+99,Frank,A,42.62,2018-09-15,2018-09-15T00:00:00,BEL,no date here
+100,Carlos,A,9.1,17/09/2018,2018-09-17T00:00:00,POL,
+101,Frank,C,6.98,"September 19, 2018",2018-09-19T00:00:00,FR,no date here
+102,Diana,A,12.29,2018-09-21,2018-09-21T00:00:00,Spain,no date here
+103,Bob,B,64.79,23/09/2018,2018-09-23T00:00:00,ES,no date here
+104,Eve,B,23.22,"September 25, 2018",2018-09-25T00:00:00,Spain,no date here
+105,Diana,A,13.53,2018-09-27,2018-09-27T00:00:00,Germany,no date here
+106,Bob,B,27.0,29/09/2018,2018-09-29T00:00:00,FR,no date here
+107,Bob,B,19.57,"October 01, 2018",2018-10-01T00:00:00,FR,no date here
+108,Bob,B,83.0,2018-10-03,2018-10-03T00:00:00,POL,no date here
+109,Diana,A,79.59,05/10/2018,2018-10-05T00:00:00,PRT,no date here
+110,Diana,B,26.33,"October 07, 2018",2018-10-07T00:00:00,NLD,
+111,Eve,A,1.35,2018-10-09,2018-10-09T00:00:00,SWE,no date here
+112,Diana,A,91.59,11/10/2018,2018-10-11T00:00:00,DEU,no date here
+113,Eve,C,52.82,"October 13, 2018",2018-10-13T00:00:00,France,no date here
+114,Carlos,C,11.9,2018-10-15,2018-10-15T00:00:00,BEL,no date here
+115,Eve,A,74.38,17/10/2018,2018-10-17T00:00:00,France,no date here
+116,Bob,C,7.04,"October 19, 2018",2018-10-19T00:00:00,NLD,no date here
+117,Frank,A,72.9,2018-10-21,2018-10-21T00:00:00,POL,no date here
+118,Bob,B,85.21,23/10/2018,2018-10-23T00:00:00,GBR,no date here
+119,Bob,B,44.16,"October 25, 2018",2018-10-25T00:00:00,Germany,no date here
+120,Bob,C,95.61,2018-10-27,2018-10-27T00:00:00,SWE,
+121,Carlos,B,18.46,29/10/2018,2018-10-29T00:00:00,NLD,no date here
+122,Eve,C,32.31,"October 31, 2018",2018-10-31T00:00:00,ITA,no date here
+123,Diana,C,34.78,2018-11-02,2018-11-02T00:00:00,BEL,no date here
+124,Frank,A,61.15,04/11/2018,2018-11-04T00:00:00,NLD,no date here
+125,Frank,A,93.26,"November 06, 2018",2018-11-06T00:00:00,FR,no date here
+126,Alice,A,26.2,2018-11-08,2018-11-08T00:00:00,ITA,no date here
+127,Eve,A,24.13,10/11/2018,2018-11-10T00:00:00,France,no date here
+128,Bob,C,26.56,"November 12, 2018",2018-11-12T00:00:00,Germany,no date here
+129,Diana,A,65.36,2018-11-14,2018-11-14T00:00:00,PRT,no date here
+130,Frank,B,72.3,16/11/2018,2018-11-16T00:00:00,ITA,
+131,Frank,B,96.54,"November 18, 2018",2018-11-18T00:00:00,GBR,no date here
+132,Bob,B,88.72,2018-11-20,2018-11-20T00:00:00,NLD,no date here
+133,Bob,B,3.53,22/11/2018,2018-11-22T00:00:00,POL,no date here
+134,Frank,B,69.47,"November 24, 2018",2018-11-24T00:00:00,Germany,no date here
+135,Bob,B,58.44,2018-11-26,2018-11-26T00:00:00,FR,no date here
+136,Alice,C,70.01,28/11/2018,2018-11-28T00:00:00,Germany,no date here
+137,Diana,C,96.5,"November 30, 2018",2018-11-30T00:00:00,DEU,no date here
+138,Alice,A,44.33,2018-12-02,2018-12-02T00:00:00,NLD,no date here
+139,Eve,A,24.65,04/12/2018,2018-12-04T00:00:00,ES,no date here
+140,Carlos,C,83.49,"December 06, 2018",2018-12-06T00:00:00,PRT,
+141,Carlos,C,82.16,2018-12-08,2018-12-08T00:00:00,NLD,no date here
+142,Frank,C,63.57,10/12/2018,2018-12-10T00:00:00,Spain,no date here
+143,Eve,A,78.39,"December 12, 2018",2018-12-12T00:00:00,FR,no date here
+144,Carlos,B,10.09,2018-12-14,2018-12-14T00:00:00,ES,no date here
+145,Frank,B,42.33,16/12/2018,2018-12-16T00:00:00,Germany,no date here
+146,Diana,B,68.97,"December 18, 2018",2018-12-18T00:00:00,PRT,no date here
+147,Eve,B,31.93,2018-12-20,2018-12-20T00:00:00,SWE,no date here
+148,Alice,B,73.2,22/12/2018,2018-12-22T00:00:00,Spain,no date here
+149,Frank,C,67.79,"December 24, 2018",2018-12-24T00:00:00,SWE,no date here
+150,Eve,C,97.79,2018-12-26,2018-12-26T00:00:00,France,
+151,Alice,B,98.7,28/12/2018,2018-12-28T00:00:00,ITA,no date here
+152,Carlos,A,33.84,"December 30, 2018",2018-12-30T00:00:00,ES,no date here
+153,Carlos,B,64.88,2019-01-01,2019-01-01T00:00:00,Germany,no date here
+154,Diana,A,51.73,03/01/2019,2019-01-03T00:00:00,United Kingdom,no date here
+155,Eve,B,79.97,"January 05, 2019",2019-01-05T00:00:00,GBR,no date here
+156,Frank,C,77.45,2019-01-07,2019-01-07T00:00:00,Spain,no date here
+157,Bob,A,36.6,09/01/2019,2019-01-09T00:00:00,ITA,no date here
+158,Diana,B,68.4,"January 11, 2019",2019-01-11T00:00:00,NLD,no date here
+159,Carlos,C,88.47,2019-01-13,2019-01-13T00:00:00,ITA,no date here
+160,Bob,C,1.03,15/01/2019,2019-01-15T00:00:00,France,
+161,Alice,C,72.98,"January 17, 2019",2019-01-17T00:00:00,NLD,no date here
+162,Bob,A,22.55,2019-01-19,2019-01-19T00:00:00,France,no date here
+163,Carlos,A,53.12,21/01/2019,2019-01-21T00:00:00,Germany,no date here
+164,Diana,B,57.28,"January 23, 2019",2019-01-23T00:00:00,United Kingdom,no date here
+165,Carlos,B,46.43,2019-01-25,2019-01-25T00:00:00,Germany,no date here
+166,Alice,C,83.89,27/01/2019,2019-01-27T00:00:00,ITA,no date here
+167,Frank,B,25.26,"January 29, 2019",2019-01-29T00:00:00,United Kingdom,no date here
+168,Diana,B,77.19,2019-01-31,2019-01-31T00:00:00,NLD,no date here
+169,Frank,B,95.74,02/02/2019,2019-02-02T00:00:00,United Kingdom,no date here
+170,Bob,A,29.17,"February 04, 2019",2019-02-04T00:00:00,NLD,
+171,Diana,B,14.75,2019-02-06,2019-02-06T00:00:00,GBR,no date here
+172,Eve,C,25.65,08/02/2019,2019-02-08T00:00:00,ES,no date here
+173,Diana,B,31.09,"February 10, 2019",2019-02-10T00:00:00,Germany,no date here
+174,Carlos,A,45.14,2019-02-12,2019-02-12T00:00:00,BEL,no date here
+175,Diana,A,42.24,14/02/2019,2019-02-14T00:00:00,NLD,no date here
+176,Alice,C,50.76,"February 16, 2019",2019-02-16T00:00:00,ITA,no date here
+177,Alice,B,50.44,2019-02-18,2019-02-18T00:00:00,DEU,no date here
+178,Diana,C,96.7,20/02/2019,2019-02-20T00:00:00,ES,no date here
+179,Bob,A,89.91,"February 22, 2019",2019-02-22T00:00:00,FR,no date here
+180,Alice,A,58.82,2019-02-24,2019-02-24T00:00:00,United Kingdom,
+181,Diana,C,55.04,26/02/2019,2019-02-26T00:00:00,PRT,no date here
+182,Eve,B,75.13,"February 28, 2019",2019-02-28T00:00:00,United Kingdom,no date here
+183,Carlos,B,78.62,2019-03-02,2019-03-02T00:00:00,ITA,no date here
+184,Bob,C,75.73,04/03/2019,2019-03-04T00:00:00,Spain,no date here
+185,Alice,C,71.86,"March 06, 2019",2019-03-06T00:00:00,FR,no date here
+186,Bob,C,11.1,2019-03-08,2019-03-08T00:00:00,GBR,no date here
+187,Carlos,A,66.82,10/03/2019,2019-03-10T00:00:00,BEL,no date here
+188,Diana,A,69.88,"March 12, 2019",2019-03-12T00:00:00,SWE,no date here
+189,Diana,B,1.91,2019-03-14,2019-03-14T00:00:00,ES,no date here
+190,Bob,A,36.22,16/03/2019,2019-03-16T00:00:00,DEU,
+191,Diana,A,59.99,"March 18, 2019",2019-03-18T00:00:00,DEU,no date here
+192,Carlos,C,26.25,2019-03-20,2019-03-20T00:00:00,Germany,no date here
+193,Eve,C,60.38,22/03/2019,2019-03-22T00:00:00,United Kingdom,no date here
+194,Carlos,C,14.57,"March 24, 2019",2019-03-24T00:00:00,France,no date here
+195,Frank,C,99.71,2019-03-26,2019-03-26T00:00:00,ES,no date here
+196,Eve,B,25.97,28/03/2019,2019-03-28T00:00:00,ITA,no date here
+197,Diana,C,77.51,"March 30, 2019",2019-03-30T00:00:00,BEL,no date here
+198,Frank,C,89.1,2019-04-01,2019-04-01T00:00:00,GBR,no date here
+199,Bob,C,69.93,03/04/2019,2019-04-03T00:00:00,France,no date here
+200,Carlos,B,2.86,"April 05, 2019",2019-04-05T00:00:00,France,
+201,Bob,C,72.38,2019-04-07,2019-04-07T00:00:00,POL,no date here
+202,Bob,A,35.02,09/04/2019,2019-04-09T00:00:00,ITA,no date here
+203,Bob,C,48.32,"April 11, 2019",2019-04-11T00:00:00,FR,no date here
+204,Frank,B,33.15,2019-04-13,2019-04-13T00:00:00,NLD,no date here
+205,Frank,B,30.74,15/04/2019,2019-04-15T00:00:00,BEL,no date here
+206,Alice,C,53.41,"April 17, 2019",2019-04-17T00:00:00,POL,no date here
+207,Alice,A,43.64,2019-04-19,2019-04-19T00:00:00,ES,no date here
+208,Carlos,B,19.58,21/04/2019,2019-04-21T00:00:00,NLD,no date here
+209,Carlos,B,16.24,"April 23, 2019",2019-04-23T00:00:00,POL,no date here
+210,Bob,B,67.51,2019-04-25,2019-04-25T00:00:00,SWE,
+211,Frank,C,36.34,27/04/2019,2019-04-27T00:00:00,BEL,no date here
+212,Eve,B,49.96,"April 29, 2019",2019-04-29T00:00:00,ITA,no date here
+213,Alice,C,58.83,2019-05-01,2019-05-01T00:00:00,United Kingdom,no date here
+214,Diana,C,32.07,03/05/2019,2019-05-03T00:00:00,BEL,no date here
+215,Alice,A,99.61,"May 05, 2019",2019-05-05T00:00:00,GBR,no date here
+216,Eve,B,97.18,2019-05-07,2019-05-07T00:00:00,FR,no date here
+217,Carlos,A,59.5,09/05/2019,2019-05-09T00:00:00,Spain,no date here
+218,Diana,C,34.5,"May 11, 2019",2019-05-11T00:00:00,Spain,no date here
+219,Alice,A,35.04,2019-05-13,2019-05-13T00:00:00,France,no date here
+220,Alice,B,61.8,15/05/2019,2019-05-15T00:00:00,United Kingdom,
+221,Frank,C,24.51,"May 17, 2019",2019-05-17T00:00:00,Spain,no date here
+222,Diana,B,5.41,2019-05-19,2019-05-19T00:00:00,FR,no date here
+223,Alice,B,63.6,21/05/2019,2019-05-21T00:00:00,ES,no date here
+224,Bob,C,76.15,"May 23, 2019",2019-05-23T00:00:00,POL,no date here
+225,Alice,C,88.97,2019-05-25,2019-05-25T00:00:00,Spain,no date here
+226,Alice,A,48.63,27/05/2019,2019-05-27T00:00:00,SWE,no date here
+227,Frank,C,50.61,"May 29, 2019",2019-05-29T00:00:00,ES,no date here
+228,Alice,B,86.8,2019-05-31,2019-05-31T00:00:00,Spain,no date here
+229,Eve,A,75.11,02/06/2019,2019-06-02T00:00:00,SWE,no date here
+230,Diana,C,67.32,"June 04, 2019",2019-06-04T00:00:00,DEU,
+231,Alice,A,50.16,2019-06-06,2019-06-06T00:00:00,SWE,no date here
+232,Eve,B,99.02,08/06/2019,2019-06-08T00:00:00,Spain,no date here
+233,Carlos,C,83.94,"June 10, 2019",2019-06-10T00:00:00,GBR,no date here
+234,Frank,C,98.64,2019-06-12,2019-06-12T00:00:00,ITA,no date here
+235,Frank,B,67.62,14/06/2019,2019-06-14T00:00:00,United Kingdom,no date here
+236,Carlos,A,8.32,"June 16, 2019",2019-06-16T00:00:00,PRT,no date here
+237,Frank,C,55.48,2019-06-18,2019-06-18T00:00:00,GBR,no date here
+238,Diana,B,59.44,20/06/2019,2019-06-20T00:00:00,SWE,no date here
+239,Alice,A,57.11,"June 22, 2019",2019-06-22T00:00:00,FR,no date here
+240,Bob,A,7.75,2019-06-24,2019-06-24T00:00:00,ES,
+241,Alice,A,39.79,26/06/2019,2019-06-26T00:00:00,Spain,no date here
+242,Frank,B,88.3,"June 28, 2019",2019-06-28T00:00:00,France,no date here
+243,Eve,C,34.55,2019-06-30,2019-06-30T00:00:00,POL,no date here
+244,Alice,A,14.33,02/07/2019,2019-07-02T00:00:00,PRT,no date here
+245,Alice,A,43.5,"July 04, 2019",2019-07-04T00:00:00,FR,no date here
+246,Eve,B,30.78,2019-07-06,2019-07-06T00:00:00,NLD,no date here
+247,Diana,A,57.23,08/07/2019,2019-07-08T00:00:00,BEL,no date here
+248,Frank,B,31.59,"July 10, 2019",2019-07-10T00:00:00,GBR,no date here
+249,Diana,A,5.8,2019-07-12,2019-07-12T00:00:00,United Kingdom,no date here
+250,Eve,A,59.39,14/07/2019,2019-07-14T00:00:00,United Kingdom,
+251,Diana,C,37.19,"July 16, 2019",2019-07-16T00:00:00,GBR,no date here
+252,Carlos,A,37.23,2019-07-18,2019-07-18T00:00:00,POL,no date here
+253,Bob,C,81.46,20/07/2019,2019-07-20T00:00:00,Spain,no date here
+254,Carlos,C,85.02,"July 22, 2019",2019-07-22T00:00:00,United Kingdom,no date here
+255,Diana,C,20.37,2019-07-24,2019-07-24T00:00:00,Spain,no date here
+256,Carlos,C,9.84,26/07/2019,2019-07-26T00:00:00,PRT,no date here
+257,Eve,B,78.1,"July 28, 2019",2019-07-28T00:00:00,Spain,no date here
+258,Alice,B,53.65,2019-07-30,2019-07-30T00:00:00,France,no date here
+259,Eve,B,74.39,01/08/2019,2019-08-01T00:00:00,NLD,no date here
+260,Eve,A,28.1,"August 03, 2019",2019-08-03T00:00:00,ITA,
+261,Alice,B,57.23,2019-08-05,2019-08-05T00:00:00,France,no date here
+262,Carlos,A,19.35,07/08/2019,2019-08-07T00:00:00,NLD,no date here
+263,Diana,A,21.97,"August 09, 2019",2019-08-09T00:00:00,BEL,no date here
+264,Bob,C,31.21,2019-08-11,2019-08-11T00:00:00,POL,no date here
+265,Frank,B,1.2,13/08/2019,2019-08-13T00:00:00,ES,no date here
+266,Diana,B,66.92,"August 15, 2019",2019-08-15T00:00:00,NLD,no date here
+267,Alice,A,41.9,2019-08-17,2019-08-17T00:00:00,BEL,no date here
+268,Eve,C,76.0,19/08/2019,2019-08-19T00:00:00,GBR,no date here
+269,Frank,C,64.48,"August 21, 2019",2019-08-21T00:00:00,DEU,no date here
+270,Diana,B,12.92,2019-08-23,2019-08-23T00:00:00,SWE,
+271,Diana,B,6.45,25/08/2019,2019-08-25T00:00:00,Germany,no date here
+272,Alice,C,58.56,"August 27, 2019",2019-08-27T00:00:00,ES,no date here
+273,Frank,C,94.57,2019-08-29,2019-08-29T00:00:00,ITA,no date here
+274,Alice,A,83.17,31/08/2019,2019-08-31T00:00:00,NLD,no date here
+275,Alice,A,32.85,"September 02, 2019",2019-09-02T00:00:00,GBR,no date here
+276,Frank,B,53.33,2019-09-04,2019-09-04T00:00:00,POL,no date here
+277,Frank,C,11.24,06/09/2019,2019-09-06T00:00:00,ITA,no date here
+278,Alice,C,64.33,"September 08, 2019",2019-09-08T00:00:00,ES,no date here
+279,Alice,A,71.42,2019-09-10,2019-09-10T00:00:00,United Kingdom,no date here
+280,Frank,B,62.85,12/09/2019,2019-09-12T00:00:00,Germany,
+281,Carlos,B,17.1,"September 14, 2019",2019-09-14T00:00:00,BEL,no date here
+282,Frank,A,51.17,2019-09-16,2019-09-16T00:00:00,FR,no date here
+283,Bob,C,81.66,18/09/2019,2019-09-18T00:00:00,NLD,no date here
+284,Bob,C,69.04,"September 20, 2019",2019-09-20T00:00:00,FR,no date here
+285,Eve,B,47.61,2019-09-22,2019-09-22T00:00:00,Germany,no date here
+286,Alice,A,48.04,24/09/2019,2019-09-24T00:00:00,BEL,no date here
+287,Bob,B,33.56,"September 26, 2019",2019-09-26T00:00:00,NLD,no date here
+288,Alice,B,78.55,2019-09-28,2019-09-28T00:00:00,NLD,no date here
+289,Alice,B,76.26,30/09/2019,2019-09-30T00:00:00,United Kingdom,no date here
+290,Eve,A,92.66,"October 02, 2019",2019-10-02T00:00:00,United Kingdom,
+291,Frank,B,56.69,2019-10-04,2019-10-04T00:00:00,FR,no date here
+292,Bob,C,30.17,06/10/2019,2019-10-06T00:00:00,ITA,no date here
+293,Eve,A,89.63,"October 08, 2019",2019-10-08T00:00:00,Spain,no date here
+294,Eve,B,94.81,2019-10-10,2019-10-10T00:00:00,ES,no date here
+295,Frank,B,17.96,12/10/2019,2019-10-12T00:00:00,ES,no date here
+296,Alice,A,40.91,"October 14, 2019",2019-10-14T00:00:00,BEL,no date here
+297,Bob,C,99.15,2019-10-16,2019-10-16T00:00:00,ES,no date here
+298,Diana,B,4.02,18/10/2019,2019-10-18T00:00:00,ITA,no date here
+299,Diana,A,23.01,"October 20, 2019",2019-10-20T00:00:00,POL,no date here
+300,Alice,C,64.76,2019-10-22,2019-10-22T00:00:00,ITA,
+301,Alice,A,9.3,24/10/2019,2019-10-24T00:00:00,ITA,no date here
+302,Frank,C,13.21,"October 26, 2019",2019-10-26T00:00:00,NLD,no date here
+303,Alice,B,90.79,2019-10-28,2019-10-28T00:00:00,FR,no date here
+304,Bob,C,47.7,30/10/2019,2019-10-30T00:00:00,France,no date here
+305,Diana,C,67.38,"November 01, 2019",2019-11-01T00:00:00,Germany,no date here
+306,Eve,A,56.8,2019-11-03,2019-11-03T00:00:00,Spain,no date here
+307,Frank,A,39.37,05/11/2019,2019-11-05T00:00:00,DEU,no date here
+308,Eve,B,33.11,"November 07, 2019",2019-11-07T00:00:00,ES,no date here
+309,Eve,A,90.48,2019-11-09,2019-11-09T00:00:00,DEU,no date here
+310,Frank,A,71.34,11/11/2019,2019-11-11T00:00:00,DEU,
+311,Bob,A,49.03,"November 13, 2019",2019-11-13T00:00:00,FR,no date here
+312,Carlos,A,18.7,2019-11-15,2019-11-15T00:00:00,NLD,no date here
+313,Alice,C,39.85,17/11/2019,2019-11-17T00:00:00,DEU,no date here
+314,Bob,B,66.08,"November 19, 2019",2019-11-19T00:00:00,NLD,no date here
+315,Diana,A,95.59,2019-11-21,2019-11-21T00:00:00,France,no date here
+316,Bob,C,60.88,23/11/2019,2019-11-23T00:00:00,SWE,no date here
+317,Eve,A,95.46,"November 25, 2019",2019-11-25T00:00:00,POL,no date here
+318,Eve,B,2.39,2019-11-27,2019-11-27T00:00:00,United Kingdom,no date here
+319,Diana,A,41.4,29/11/2019,2019-11-29T00:00:00,SWE,no date here
+320,Carlos,B,13.01,"December 01, 2019",2019-12-01T00:00:00,Spain,
+321,Carlos,B,44.3,2019-12-03,2019-12-03T00:00:00,NLD,no date here
+322,Eve,B,2.03,05/12/2019,2019-12-05T00:00:00,GBR,no date here
+323,Frank,C,14.09,"December 07, 2019",2019-12-07T00:00:00,SWE,no date here
+324,Carlos,A,93.98,2019-12-09,2019-12-09T00:00:00,DEU,no date here
+325,Eve,B,84.78,11/12/2019,2019-12-11T00:00:00,DEU,no date here
+326,Eve,C,72.49,"December 13, 2019",2019-12-13T00:00:00,DEU,no date here
+327,Frank,B,30.05,2019-12-15,2019-12-15T00:00:00,DEU,no date here
+328,Eve,B,78.79,17/12/2019,2019-12-17T00:00:00,Germany,no date here
+329,Alice,B,28.76,"December 19, 2019",2019-12-19T00:00:00,POL,no date here
+330,Eve,B,34.71,2019-12-21,2019-12-21T00:00:00,BEL,
+331,Carlos,B,74.46,23/12/2019,2019-12-23T00:00:00,United Kingdom,no date here
+332,Bob,A,14.8,"December 25, 2019",2019-12-25T00:00:00,SWE,no date here
+333,Diana,A,14.31,2019-12-27,2019-12-27T00:00:00,GBR,no date here
+334,Diana,C,57.11,29/12/2019,2019-12-29T00:00:00,United Kingdom,no date here
+335,Diana,C,91.72,"December 31, 2019",2019-12-31T00:00:00,Spain,no date here
+336,Diana,C,48.93,2020-01-02,2020-01-02T00:00:00,DEU,no date here
+337,Alice,A,43.85,04/01/2020,2020-01-04T00:00:00,United Kingdom,no date here
+338,Carlos,C,24.29,"January 06, 2020",2020-01-06T00:00:00,France,no date here
+339,Bob,C,71.13,2020-01-08,2020-01-08T00:00:00,GBR,no date here
+340,Eve,A,72.06,10/01/2020,2020-01-10T00:00:00,FR,
+341,Diana,C,3.91,"January 12, 2020",2020-01-12T00:00:00,GBR,no date here
+342,Eve,B,51.51,2020-01-14,2020-01-14T00:00:00,SWE,no date here
+343,Diana,C,16.89,16/01/2020,2020-01-16T00:00:00,France,no date here
+344,Frank,C,15.32,"January 18, 2020",2020-01-18T00:00:00,Spain,no date here
+345,Eve,A,84.5,2020-01-20,2020-01-20T00:00:00,DEU,no date here
+346,Frank,B,13.78,22/01/2020,2020-01-22T00:00:00,Germany,no date here
+347,Frank,A,8.63,"January 24, 2020",2020-01-24T00:00:00,NLD,no date here
+348,Diana,B,73.33,2020-01-26,2020-01-26T00:00:00,Germany,no date here
+349,Alice,C,46.84,28/01/2020,2020-01-28T00:00:00,France,no date here
+350,Alice,A,96.18,"January 30, 2020",2020-01-30T00:00:00,France,
+351,Frank,B,18.15,2020-02-01,2020-02-01T00:00:00,FR,no date here
+352,Bob,A,49.51,03/02/2020,2020-02-03T00:00:00,NLD,no date here
+353,Alice,B,11.99,"February 05, 2020",2020-02-05T00:00:00,SWE,no date here
+354,Eve,B,76.3,2020-02-07,2020-02-07T00:00:00,ITA,no date here
+355,Eve,A,26.3,09/02/2020,2020-02-09T00:00:00,PRT,no date here
+356,Eve,B,88.55,"February 11, 2020",2020-02-11T00:00:00,POL,no date here
+357,Diana,C,59.29,2020-02-13,2020-02-13T00:00:00,United Kingdom,no date here
+358,Alice,C,65.84,15/02/2020,2020-02-15T00:00:00,GBR,no date here
+359,Alice,C,83.18,"February 17, 2020",2020-02-17T00:00:00,POL,no date here
+360,Bob,B,93.61,2020-02-19,2020-02-19T00:00:00,FR,
+361,Alice,A,11.46,21/02/2020,2020-02-21T00:00:00,POL,no date here
+362,Bob,A,20.25,"February 23, 2020",2020-02-23T00:00:00,FR,no date here
+363,Bob,C,31.84,2020-02-25,2020-02-25T00:00:00,Germany,no date here
+364,Bob,A,92.18,27/02/2020,2020-02-27T00:00:00,ES,no date here
+365,Bob,C,49.47,"February 29, 2020",2020-02-29T00:00:00,PRT,no date here
+366,Alice,A,41.8,2020-03-02,2020-03-02T00:00:00,Germany,no date here
+367,Frank,B,36.88,04/03/2020,2020-03-04T00:00:00,DEU,no date here
+368,Diana,B,81.5,"March 06, 2020",2020-03-06T00:00:00,POL,no date here
+369,Eve,A,13.76,2020-03-08,2020-03-08T00:00:00,POL,no date here
+370,Alice,C,47.57,10/03/2020,2020-03-10T00:00:00,DEU,
+371,Alice,C,29.86,"March 12, 2020",2020-03-12T00:00:00,ES,no date here
+372,Eve,B,45.33,2020-03-14,2020-03-14T00:00:00,GBR,no date here
+373,Diana,C,34.58,16/03/2020,2020-03-16T00:00:00,NLD,no date here
+374,Frank,C,53.94,"March 18, 2020",2020-03-18T00:00:00,GBR,no date here
+375,Alice,B,3.73,2020-03-20,2020-03-20T00:00:00,POL,no date here
+376,Diana,A,58.93,22/03/2020,2020-03-22T00:00:00,PRT,no date here
+377,Carlos,C,99.61,"March 24, 2020",2020-03-24T00:00:00,SWE,no date here
+378,Bob,C,1.68,2020-03-26,2020-03-26T00:00:00,PRT,no date here
+379,Frank,A,96.01,28/03/2020,2020-03-28T00:00:00,PRT,no date here
+380,Eve,B,71.37,"March 30, 2020",2020-03-30T00:00:00,BEL,
+381,Bob,B,32.14,2020-04-01,2020-04-01T00:00:00,GBR,no date here
+382,Bob,A,44.57,03/04/2020,2020-04-03T00:00:00,United Kingdom,no date here
+383,Diana,B,49.28,"April 05, 2020",2020-04-05T00:00:00,DEU,no date here
+384,Eve,A,99.47,2020-04-07,2020-04-07T00:00:00,PRT,no date here
+385,Frank,C,18.21,09/04/2020,2020-04-09T00:00:00,GBR,no date here
+386,Carlos,A,24.07,"April 11, 2020",2020-04-11T00:00:00,POL,no date here
+387,Frank,C,17.3,2020-04-13,2020-04-13T00:00:00,ITA,no date here
+388,Carlos,B,23.16,15/04/2020,2020-04-15T00:00:00,GBR,no date here
+389,Alice,B,67.64,"April 17, 2020",2020-04-17T00:00:00,Spain,no date here
+390,Diana,C,52.71,2020-04-19,2020-04-19T00:00:00,Germany,
+391,Carlos,B,89.01,21/04/2020,2020-04-21T00:00:00,DEU,no date here
+392,Alice,A,10.22,"April 23, 2020",2020-04-23T00:00:00,GBR,no date here
+393,Alice,C,45.16,2020-04-25,2020-04-25T00:00:00,ES,no date here
+394,Bob,A,40.1,27/04/2020,2020-04-27T00:00:00,France,no date here
+395,Bob,C,7.45,"April 29, 2020",2020-04-29T00:00:00,Spain,no date here
+396,Alice,A,81.25,2020-05-01,2020-05-01T00:00:00,BEL,no date here
+397,Carlos,A,48.43,03/05/2020,2020-05-03T00:00:00,France,no date here
+398,Frank,B,66.82,"May 05, 2020",2020-05-05T00:00:00,France,no date here
+399,Frank,C,93.79,2020-05-07,2020-05-07T00:00:00,BEL,no date here
+400,Alice,A,19.15,09/05/2020,2020-05-09T00:00:00,United Kingdom,
+401,Carlos,B,19.5,"May 11, 2020",2020-05-11T00:00:00,ITA,no date here
+402,Alice,C,93.57,2020-05-13,2020-05-13T00:00:00,NLD,no date here
+403,Carlos,C,35.28,15/05/2020,2020-05-15T00:00:00,Spain,no date here
+404,Eve,A,77.76,"May 17, 2020",2020-05-17T00:00:00,FR,no date here
+405,Eve,A,70.47,2020-05-19,2020-05-19T00:00:00,ITA,no date here
+406,Frank,A,29.03,21/05/2020,2020-05-21T00:00:00,SWE,no date here
+407,Alice,C,99.91,"May 23, 2020",2020-05-23T00:00:00,FR,no date here
+408,Alice,A,88.34,2020-05-25,2020-05-25T00:00:00,Germany,no date here
+409,Frank,C,25.63,27/05/2020,2020-05-27T00:00:00,Germany,no date here
+410,Frank,C,83.31,"May 29, 2020",2020-05-29T00:00:00,PRT,
+411,Bob,C,88.03,2020-05-31,2020-05-31T00:00:00,GBR,no date here
+412,Bob,B,60.4,02/06/2020,2020-06-02T00:00:00,SWE,no date here
+413,Bob,C,40.19,"June 04, 2020",2020-06-04T00:00:00,SWE,no date here
+414,Frank,B,13.08,2020-06-06,2020-06-06T00:00:00,Germany,no date here
+415,Alice,B,80.22,08/06/2020,2020-06-08T00:00:00,ES,no date here
+416,Alice,B,66.19,"June 10, 2020",2020-06-10T00:00:00,BEL,no date here
+417,Frank,B,35.49,2020-06-12,2020-06-12T00:00:00,France,no date here
+418,Eve,B,13.37,14/06/2020,2020-06-14T00:00:00,FR,no date here
+419,Alice,C,39.5,"June 16, 2020",2020-06-16T00:00:00,GBR,no date here
+420,Alice,B,61.18,2020-06-18,2020-06-18T00:00:00,Spain,
+421,Bob,B,59.63,20/06/2020,2020-06-20T00:00:00,France,no date here
+422,Eve,C,70.73,"June 22, 2020",2020-06-22T00:00:00,BEL,no date here
+423,Eve,A,59.7,2020-06-24,2020-06-24T00:00:00,POL,no date here
+424,Carlos,B,8.24,26/06/2020,2020-06-26T00:00:00,PRT,no date here
+425,Diana,A,2.21,"June 28, 2020",2020-06-28T00:00:00,POL,no date here
+426,Eve,B,85.63,2020-06-30,2020-06-30T00:00:00,ES,no date here
+427,Alice,C,96.04,02/07/2020,2020-07-02T00:00:00,DEU,no date here
+428,Eve,C,12.68,"July 04, 2020",2020-07-04T00:00:00,GBR,no date here
+429,Diana,C,93.53,2020-07-06,2020-07-06T00:00:00,United Kingdom,no date here
+430,Carlos,B,48.88,08/07/2020,2020-07-08T00:00:00,BEL,
+431,Alice,C,91.16,"July 10, 2020",2020-07-10T00:00:00,GBR,no date here
+432,Carlos,A,63.33,2020-07-12,2020-07-12T00:00:00,ITA,no date here
+433,Diana,C,91.64,14/07/2020,2020-07-14T00:00:00,SWE,no date here
+434,Alice,A,70.23,"July 16, 2020",2020-07-16T00:00:00,NLD,no date here
+435,Frank,B,41.29,2020-07-18,2020-07-18T00:00:00,United Kingdom,no date here
+436,Alice,A,93.67,20/07/2020,2020-07-20T00:00:00,SWE,no date here
+437,Eve,B,92.84,"July 22, 2020",2020-07-22T00:00:00,PRT,no date here
+438,Carlos,B,22.61,2020-07-24,2020-07-24T00:00:00,United Kingdom,no date here
+439,Frank,A,64.61,26/07/2020,2020-07-26T00:00:00,Germany,no date here
+440,Frank,C,9.34,"July 28, 2020",2020-07-28T00:00:00,GBR,
+441,Alice,C,28.77,2020-07-30,2020-07-30T00:00:00,France,no date here
+442,Alice,A,44.71,01/08/2020,2020-08-01T00:00:00,NLD,no date here
+443,Frank,B,29.86,"August 03, 2020",2020-08-03T00:00:00,POL,no date here
+444,Eve,A,69.11,2020-08-05,2020-08-05T00:00:00,POL,no date here
+445,Frank,A,68.49,07/08/2020,2020-08-07T00:00:00,BEL,no date here
+446,Diana,A,19.5,"August 09, 2020",2020-08-09T00:00:00,United Kingdom,no date here
+447,Diana,B,9.82,2020-08-11,2020-08-11T00:00:00,POL,no date here
+448,Alice,A,94.92,13/08/2020,2020-08-13T00:00:00,SWE,no date here
+449,Carlos,C,70.09,"August 15, 2020",2020-08-15T00:00:00,United Kingdom,no date here
+450,Carlos,C,2.58,2020-08-17,2020-08-17T00:00:00,PRT,
+451,Alice,A,44.28,19/08/2020,2020-08-19T00:00:00,POL,no date here
+452,Alice,B,91.22,"August 21, 2020",2020-08-21T00:00:00,BEL,no date here
+453,Bob,A,93.95,2020-08-23,2020-08-23T00:00:00,France,no date here
+454,Diana,B,70.25,25/08/2020,2020-08-25T00:00:00,GBR,no date here
+455,Bob,C,60.7,"August 27, 2020",2020-08-27T00:00:00,United Kingdom,no date here
+456,Bob,C,84.62,2020-08-29,2020-08-29T00:00:00,France,no date here
+457,Eve,C,96.69,31/08/2020,2020-08-31T00:00:00,SWE,no date here
+458,Carlos,A,43.35,"September 02, 2020",2020-09-02T00:00:00,POL,no date here
+459,Carlos,C,58.55,2020-09-04,2020-09-04T00:00:00,PRT,no date here
+460,Carlos,B,41.25,06/09/2020,2020-09-06T00:00:00,PRT,
+461,Alice,B,34.95,"September 08, 2020",2020-09-08T00:00:00,GBR,no date here
+462,Diana,C,34.91,2020-09-10,2020-09-10T00:00:00,NLD,no date here
+463,Bob,A,58.63,12/09/2020,2020-09-12T00:00:00,United Kingdom,no date here
+464,Alice,B,76.45,"September 14, 2020",2020-09-14T00:00:00,United Kingdom,no date here
+465,Bob,A,7.47,2020-09-16,2020-09-16T00:00:00,France,no date here
+466,Eve,A,63.91,18/09/2020,2020-09-18T00:00:00,FR,no date here
+467,Eve,C,57.5,"September 20, 2020",2020-09-20T00:00:00,NLD,no date here
+468,Bob,A,33.68,2020-09-22,2020-09-22T00:00:00,BEL,no date here
+469,Eve,A,62.29,24/09/2020,2020-09-24T00:00:00,BEL,no date here
+470,Carlos,C,34.73,"September 26, 2020",2020-09-26T00:00:00,ES,
+471,Bob,C,46.39,2020-09-28,2020-09-28T00:00:00,United Kingdom,no date here
+472,Frank,C,72.73,30/09/2020,2020-09-30T00:00:00,Spain,no date here
+473,Carlos,A,6.97,"October 02, 2020",2020-10-02T00:00:00,France,no date here
+474,Bob,A,32.3,2020-10-04,2020-10-04T00:00:00,GBR,no date here
+475,Carlos,C,49.12,06/10/2020,2020-10-06T00:00:00,BEL,no date here
+476,Carlos,A,94.62,"October 08, 2020",2020-10-08T00:00:00,SWE,no date here
+477,Diana,C,76.15,2020-10-10,2020-10-10T00:00:00,PRT,no date here
+478,Alice,A,61.66,12/10/2020,2020-10-12T00:00:00,DEU,no date here
+479,Eve,C,51.57,"October 14, 2020",2020-10-14T00:00:00,ITA,no date here
+480,Bob,A,6.88,2020-10-16,2020-10-16T00:00:00,SWE,
+481,Diana,B,18.61,18/10/2020,2020-10-18T00:00:00,NLD,no date here
+482,Alice,A,84.87,"October 20, 2020",2020-10-20T00:00:00,SWE,no date here
+483,Diana,C,6.6,2020-10-22,2020-10-22T00:00:00,France,no date here
+484,Eve,A,37.66,24/10/2020,2020-10-24T00:00:00,ITA,no date here
+485,Alice,B,21.82,"October 26, 2020",2020-10-26T00:00:00,PRT,no date here
+486,Alice,C,89.42,2020-10-28,2020-10-28T00:00:00,ES,no date here
+487,Diana,C,57.28,30/10/2020,2020-10-30T00:00:00,FR,no date here
+488,Carlos,C,68.45,"November 01, 2020",2020-11-01T00:00:00,GBR,no date here
+489,Carlos,C,12.27,2020-11-03,2020-11-03T00:00:00,ITA,no date here
+490,Frank,A,67.47,05/11/2020,2020-11-05T00:00:00,ITA,
+491,Frank,C,21.53,"November 07, 2020",2020-11-07T00:00:00,SWE,no date here
+492,Bob,B,61.62,2020-11-09,2020-11-09T00:00:00,Germany,no date here
+493,Bob,C,74.77,11/11/2020,2020-11-11T00:00:00,France,no date here
+494,Carlos,A,47.3,"November 13, 2020",2020-11-13T00:00:00,France,no date here
+495,Eve,C,79.46,2020-11-15,2020-11-15T00:00:00,DEU,no date here
+496,Eve,C,38.96,17/11/2020,2020-11-17T00:00:00,DEU,no date here
+497,Diana,B,22.87,"November 19, 2020",2020-11-19T00:00:00,FR,no date here
+498,Frank,A,13.71,2020-11-21,2020-11-21T00:00:00,PRT,no date here
+499,Diana,B,37.65,23/11/2020,2020-11-23T00:00:00,France,no date here

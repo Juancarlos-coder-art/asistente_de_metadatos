@@ -1,0 +1,296 @@
+{
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://dipcas.opendatasoft.com/api/v2/catalog/datasets/relacion-de-centros-de-dialisis"
+    },
+    {
+      "rel": "datasets",
+      "href": "https://dipcas.opendatasoft.com/api/v2/catalog/datasets"
+    },
+    {
+      "rel": "records",
+      "href": "https://dipcas.opendatasoft.com/api/v2/catalog/datasets/relacion-de-centros-de-dialisis/records"
+    },
+    {
+      "rel": "exports",
+      "href": "https://dipcas.opendatasoft.com/api/v2/catalog/datasets/relacion-de-centros-de-dialisis/exports"
+    },
+    {
+      "rel": "facets",
+      "href": "https://dipcas.opendatasoft.com/api/v2/catalog/datasets/relacion-de-centros-de-dialisis/facets"
+    }
+  ],
+  "dataset": {
+    "visibility": "domain",
+    "fields": [
+      {
+        "name": "provincia",
+        "description": null,
+        "annotations": {
+          "sortable": true,
+          "facet": true
+        },
+        "label": "PROVINCIA",
+        "type": "text",
+        "label_en": "PROVINCIA",
+        "label_es": "PROVINCIA",
+        "label_ca": "PROVINCIA",
+        "description_en": null,
+        "description_es": null,
+        "description_ca": null
+      },
+      {
+        "name": "area_de_salud",
+        "description": null,
+        "annotations": {},
+        "label": "ÁREA DE SALUD",
+        "type": "text",
+        "label_en": "ÁREA DE SALUD",
+        "label_es": "ÁREA DE SALUD",
+        "label_ca": "ÁREA DE SALUD",
+        "description_en": null,
+        "description_es": null,
+        "description_ca": null
+      },
+      {
+        "name": "nombre",
+        "description": null,
+        "annotations": {
+          "facet": true
+        },
+        "label": "NOMBRE",
+        "type": "text",
+        "label_en": "NOMBRE",
+        "label_es": "NOMBRE",
+        "label_ca": "NOMBRE",
+        "description_en": null,
+        "description_es": null,
+        "description_ca": null
+      },
+      {
+        "name": "domicilio",
+        "description": null,
+        "annotations": {},
+        "label": "DOMICILIO",
+        "type": "text",
+        "label_en": "DOMICILIO",
+        "label_es": "DOMICILIO",
+        "label_ca": "DOMICILIO",
+        "description_en": null,
+        "description_es": null,
+        "description_ca": null
+      },
+      {
+        "name": "telefono",
+        "description": null,
+        "annotations": {},
+        "label": "TELÉFONO",
+        "type": "text",
+        "label_en": "TELÉFONO",
+        "label_es": "TELÉFONO",
+        "label_ca": "TELÉFONO",
+        "description_en": null,
+        "description_es": null,
+        "description_ca": null
+      },
+      {
+        "name": "gestionado_por",
+        "description": null,
+        "annotations": {},
+        "label": "GESTIONADO POR",
+        "type": "text",
+        "label_en": "GESTIONADO POR",
+        "label_es": "GESTIONADO POR",
+        "label_ca": "GESTIONADO POR",
+        "description_en": null,
+        "description_es": null,
+        "description_ca": null
+      },
+      {
+        "name": "ciudad",
+        "description": null,
+        "annotations": {
+          "facet": true
+        },
+        "label": "CIUDAD",
+        "type": "text",
+        "label_en": "CIUDAD",
+        "label_es": "CIUDAD",
+        "label_ca": "CIUDAD",
+        "description_en": null,
+        "description_es": null,
+        "description_ca": null
+      },
+      {
+        "name": "ubicacion",
+        "description": null,
+        "annotations": {},
+        "label": "ubicacion",
+        "type": "geo_point_2d",
+        "label_en": "ubicacion",
+        "label_es": "ubicacion",
+        "label_ca": "ubicacion",
+        "description_en": null,
+        "description_es": null,
+        "description_ca": null
+      }
+    ],
+    "dataset_id": "relacion-de-centros-de-dialisis",
+    "dataset_uid": "da_v00tgd",
+    "has_records": true,
+    "features": [
+      "geo",
+      "analyze",
+      "custom_view"
+    ],
+    "attachments": [],
+    "alternative_exports": [],
+    "data_visible": true,
+    "metas": {
+      "dcat": {
+        "created": null,
+        "issued": null,
+        "creator": null,
+        "contributor": null,
+        "contact_name": null,
+        "contact_email": null,
+        "accrualperiodicity": "anual",
+        "spatial": null,
+        "temporal": null,
+        "granularity": null,
+        "dataquality": null,
+        "publisher_type": null,
+        "conforms_to": null,
+        "temporal_coverage_start": null,
+        "temporal_coverage_end": null,
+        "accessRights": null,
+        "relation": null
+      },
+      "default": {
+        "title": "Relación de centros de diálisis en la Comunidad Valenciana",
+        "title_en_tmpt": "Relación de centros de diálisis en la Comunidad Valenciana",
+        "title_es": "Relación de centros de diálisis en la Comunidad Valenciana",
+        "title_ca": "Relación de centros de diálisis en la Comunidad Valenciana",
+        "description": "<p style='font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 12.495px;'>Relación de centros de diálisis por población y áreas de salud, en la Comunidad Valenciana.<span style=\"font-size: 12.495px;\">(Este dataset se actualiza con las aportaciones de la asociación ALCER Castalia, entidad cuyos fines van destinados a la mejora la calidad de vida de las personas con enfermedad renal y la de sus familiares).</span></p>",
+        "description_en": "<p style='font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 12.495px;'>Relación de centros de diálisis por población y áreas de salud, en la Comunidad Valenciana.<span style=\"font-size: 12.495px;\">(Este dataset se actualiza con las aportaciones de la asociación ALCER Castalia, entidad cuyos fines van destinados a la mejora la calidad de vida de las personas con enfermedad renal y la de sus familiares).</span></p>",
+        "description_es": "<p style='font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 12.495px;'>Relación de centros de diálisis por población y áreas de salud, en la Comunidad Valenciana.<span style=\"font-size: 12.495px;\">(Este dataset se actualiza con las aportaciones de la asociación ALCER Castalia, entidad cuyos fines van destinados a la mejora la calidad de vida de las personas con enfermedad renal y la de sus familiares).</span></p>",
+        "description_ca": "<p style='font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 12.495px;'>Relación de centros de diálisis por población y áreas de salud, en la Comunidad Valenciana.<span style=\"font-size: 12.495px;\">(Este dataset se actualiza con las aportaciones de la asociación ALCER Castalia, entidad cuyos fines van destinados a la mejora la calidad de vida de las personas con enfermedad renal y la de sus familiares).</span></p>",
+        "theme": [
+          "Health",
+          "Society and welfare"
+        ],
+        "theme_en": [
+          "Health",
+          "Society and welfare"
+        ],
+        "theme_es": [
+          "Salud",
+          "Sociedad y bienestar"
+        ],
+        "theme_ca": [
+          "Salut",
+          "Societat i benestar"
+        ],
+        "keyword": [
+          "salud",
+          "diálisis",
+          "provincia de Castellón"
+        ],
+        "keyword_en_tmpt": [
+          "salud",
+          "diálisis",
+          "provincia de Castellón"
+        ],
+        "keyword_es": [
+          "salud",
+          "diálisis",
+          "provincia de Castellón"
+        ],
+        "keyword_ca": [
+          "salud",
+          "diálisis",
+          "provincia de Castellón"
+        ],
+        "license": "http://www.opendefinition.org/licenses/cc-by",
+        "license_en": "http://www.opendefinition.org/licenses/cc-by",
+        "license_es": "http://www.opendefinition.org/licenses/cc-by",
+        "license_ca": "http://www.opendefinition.org/licenses/cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_url_en": "https://creativecommons.org/licenses/by/4.0/",
+        "license_url_es": "https://creativecommons.org/licenses/by/4.0/",
+        "license_url_ca": "https://creativecommons.org/licenses/by/4.0/",
+        "language": "es",
+        "metadata_languages": [
+          "es"
+        ],
+        "timezone": [
+          "Europe/Madrid"
+        ],
+        "modified": "2026-06-02T10:55:03+00:00",
+        "modified_updates_on_metadata_change": true,
+        "modified_updates_on_data_change": true,
+        "data_processed": "2026-06-02T10:55:03+00:00",
+        "metadata_processed": "2026-06-02T10:55:03.422000+00:00",
+        "geographic_reference": [
+          "es_40_10"
+        ],
+        "geographic_reference_auto": true,
+        "territory": [
+          "Comunitat Valenciana"
+        ],
+        "geometry_types": [
+          "Point"
+        ],
+        "bbox": {
+          "type": "Feature",
+          "geometry": {
+            "coordinates": [
+              [
+                [
+                  0.46887184493243694,
+                  40.46776870731264
+                ],
+                [
+                  -1.0908635426312685,
+                  40.46776870731264
+                ],
+                [
+                  -1.0908635426312685,
+                  37.96169579029083
+                ],
+                [
+                  0.46887184493243694,
+                  37.96169579029083
+                ],
+                [
+                  0.46887184493243694,
+                  40.46776870731264
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "properties": {}
+        },
+        "publisher": "Diputación Provincial de Castelló/Castellón",
+        "publisher_en": "Diputación Provincial de Castelló/Castellón",
+        "publisher_es": "Diputación Provincial de Castelló/Castellón",
+        "publisher_ca": "Diputación Provincial de Castelló/Castellón",
+        "references": "https://docs.google.com/spreadsheets/d/1Y8qvY509hjnhOHKJw9X7H3JkEFyz5QIEBxUkonDRV8c/edit?usp=sharing",
+        "records_count": 38,
+        "attributions": [
+          "https://datosabiertos.dipcas.es/backoffice/license/informations/"
+        ],
+        "source_domain": null,
+        "source_domain_title": null,
+        "source_domain_address": null,
+        "source_dataset": null,
+        "shared_catalog": null,
+        "federated": false,
+        "parent_domain": null,
+        "update_frequency": null
+      }
+    }
+  }
+}

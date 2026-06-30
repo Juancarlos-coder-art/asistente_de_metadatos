@@ -9,18 +9,14 @@ Each field is an **array of mapping objects** — one per distinct column combin
 
 ```json
 {
-  "structure": {
+  "structure_tmpt": {
     "number_of_unique_individuals": [
-      {"columns": ["patient_id"], "transform": null}
+      {"columns": ["patient_id"], "transform": []}
     ],
     "min_typical_age": [],
     "max_typical_age": [],
-    "spatial": [
-      {"columns": ["country_code"], "transform": null},
-      {"columns": ["lat", "lon"], "transform": "df['spatial_mod_1'] = df['lat'].astype(str) + ',' + df['lon'].astype(str)"}
-    ],
     "temporal_coverage": [
-      {"columns": ["event_date"], "transform": null}
+      {"columns": ["event_date"], "transform": []}
     ],
     "errors": []
   }
@@ -32,28 +28,27 @@ Each field is an **array of mapping objects** — one per distinct column combin
 | Key | Type | Description |
 |-----|------|-------------|
 | `columns` | `string[]` | Source column paths involved in this mapping. |
-| `transform` | `string \| null` | Single-line pandas expression that creates `df['<field>_mod']`, or `null` when the field maps directly to one existing column. |
-
-When a field has multiple transforms they are automatically numbered: **`<field>_mod_1`**, **`<field>_mod_2`**, etc.
-Fields with a single transform use `<field>_mod_1`. Fields with `transform: null` are not renamed.
-Multiple mappings per field are included when different column combinations independently satisfy the same field.
+| `transform` | `array` | List of DSL step dictionaries defining operations to perform sequentially on the columns, or `[]` when the field maps directly to the columns. |
 
 ---
 
-## When is `transform` non-null?
+## When is `transform` non-empty?
 
-`transform` is provided when the field requires combining or converting multiple columns:
+`transform` is provided when the field requires combining, parsing or converting columns. Supported DSL operators include:
+- `to_string`: Casts a series to string with automated cleanups (e.g. converting `2017.0` to `"2017"`).
+- `strip`: Strips leading and trailing whitespace.
+- `split`: Splits a string on a separator and retrieves a specific index.
+- `regex_extract`: Extracts a regex pattern with groups.
+- `to_numeric`: Coerces a column to numeric, setting invalid values to NaN.
+- `to_datetime_part`: Parses dates and extracts part (`"year"`, `"month"`, `"day"`).
+- `replace`: Replaces text occurrences (supports regex).
+- `map`: Mappings of keys to values (dictionaries).
+- `json_extract`: Decodes a JSON-format column cell and extracts a value by key.
+- `format_point`: Joins lat/lon values into a `"latitude,longitude"` format.
+- `join_columns`: Combines multiple columns using a separator.
+- `constant`: Injects a static value.
 
-| Situation | Example transform |
-|-----------|------------------|
-| Date split across year / month / day | `df['temporal_coverage_mod_1'] = pd.to_datetime(df[['year','month','day']])` |
-| Full name from first + last | `df['number_of_unique_individuals_mod_1'] = df['first_name'].str.strip() + '_' + df['last_name'].str.strip()` |
-| Coordinates from lat + lon | `df['spatial_mod_1'] = df['lat'].astype(str) + ',' + df['lon'].astype(str)` |
-| Age derived from birth date | `df['min_typical_age_mod_1'] = (pd.Timestamp.now() - pd.to_datetime(df['birth_date'])).dt.days // 365` |
-
-The LLM always writes `df['<field>_mod']`; the suffix `_1`, `_2`… is added automatically in code per transform order.
-
-`transform` is `null` when:
+`transform` is `[]` when:
 - The field maps directly to a single existing column (no combination needed).
 - No columns were found for the field (`columns: []`).
 
@@ -96,13 +91,13 @@ The prompt includes:
 - Filename (basename only)
 - Number of columns and sampled records
 - Full schema (sorted paths with example values)
-- Instructions to return `columns` + `transform` per field, using `<field>_mod` as the new column name
+- Instructions to return `columns` + `transform` (as a list of DSL step dictionaries) per field.
 
 ### 4. Response parsing
 
-- Each field is normalised to a list of `{"columns": [...], "transform": "..." | null}` objects.
-- A single object (old format) is automatically wrapped in a list.
-- Plain string column names are wrapped as `{"columns": [name], "transform": null}`.
+- Each field is normalised to a list of `{"columns": [...], "transform": [...]}` objects.
+- A single mapping object (old format) is automatically wrapped in a list.
+- Plain string column names are wrapped as `{"columns": [name], "transform": []}`.
 - If JSON parsing fails entirely, all fields return `[]` and the error is reported.
 
 ---
@@ -123,8 +118,8 @@ The prompt includes:
 |-----------|-----------|
 | No records in dataset | All fields `[]`, error reported |
 | Empty schema (all values null/empty) | All fields `[]`, error reported |
-| Single existing column, no combination | `[{"columns": ["col"], "transform": null}]` |
-| Multiple columns need combining | `[{"columns": [...], "transform": "df['field_mod'] = ..."}]` |
+| Single existing column, no combination | `[{"columns": ["col"], "transform": []}]` |
+| Multiple columns need combining | `[{"columns": [...], "transform": [{"op": "...", "params": {...}}]}]` |
 | Multiple independent combinations | Array with one object per combination |
 | Gemini returns single object | Wrapped in a list automatically |
 | LLM call fails | All fields `[]`, exception message in `errors` |

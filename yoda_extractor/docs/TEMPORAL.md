@@ -2,22 +2,34 @@
 
 Resolves the  **date fields** — `temporal_coverage`  — into a
 single `{"start", "end"}` range each. It is **not** a streaming extractor and does no column
-auto-detection: the columns are already chosen and cleaned by the [`structure`](STRUCTURE.md)
+auto-detection: the columns are already chosen and cleaned by the [`structure_tmpt`](STRUCTURE.md)
 step. `temporal.py` only does the second half of the job — join the cleaned date parts and
 standardize them — and is invoked from [`dataframe_statistics`](DATA_FRAME_STATISTICS.md).
 
 ## Input
 
-A date field from `structure` is an **array of date-mapping objects**. Each mapping has three
+A date field from `structure_tmpt` is an **array of date-mapping objects**. Each mapping has three
 keys (`year`, `month`, `day`); each part is either `null` or `{"column", "transform"}`, already
 cleaned on its own by the structure transform (which assigns to `df['<part>_<column>']`):
 
 ```json
 [
   {
-    "year":  {"column": "Year",  "transform": ["df['year_Year'] = pd.to_numeric(df['Year'], errors='coerce').astype('Int64').astype(str)"]},
-    "month": {"column": "Month", "transform": ["df['month_Month'] = df['Month'].astype(str).str.split(r'[,/;-]').str[0].str.strip()"]},
-    "day":   null
+    "year": {
+      "column": "Year",
+      "transform": [
+        {"op": "to_numeric", "params": {}},
+        {"op": "to_string", "params": {}}
+      ]
+    },
+    "month": {
+      "column": "Month",
+      "transform": [
+        {"op": "split", "params": {"sep": "[,/;-]", "index": 0}},
+        {"op": "strip", "params": {}}
+      ]
+    },
+    "day": null
   }
 ]
 ```
@@ -44,10 +56,7 @@ For each date-mapping, in order:
 
 ### 1. Resolve each part (`_resolve_part`)
 
-Runs the part's `transform` (a list of pandas expressions) on a fresh `df.copy()` and reads the
-column assigned by the **last** expression (detected via the `df['col'] = …` regex). If the
-transform list is empty, the raw `column` is used directly. Any exception during execution logs a
-warning and drops that part (returns `None`).
+Runs the part's `transform` (a list of DSL step dictionaries) using `evaluate_dsl` on the DataFrame. If the transform list is empty, the raw `column` is used directly. Any exception during execution logs a warning and drops that part (returns `None`).
 
 ### 2. Join into one column (`build_date_series`)
 

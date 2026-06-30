@@ -23,7 +23,7 @@ load_dotenv(Path(__file__).parent / ".env")
 
 from readers import get_reader
 from extractors import ALL_EXTRACTORS
-from extractors.static import normalize_language
+from extractors.static import normalize_array_fields, normalize_language
 from utils.logger import get_logger, setup_logging
 
 log = get_logger(__name__)
@@ -32,18 +32,42 @@ log = get_logger(__name__)
 def _load_dataframe(file_path: str) -> pd.DataFrame | None:
     ext = Path(file_path).suffix.lower()
     try:
-        if ext == ".csv":
-            return pd.read_csv(file_path)
+        if ext == ".csv" or ext in (".json", ".xml"):
+            records = list(get_reader(file_path).stream_records())
+            return pd.DataFrame(records) if records else None
         if ext in (".xlsx", ".xls"):
             return pd.read_excel(file_path)
         if ext == ".parquet":
             return pd.read_parquet(file_path)
-        if ext in (".json", ".xml"):
-            records = list(get_reader(file_path).stream_records())
-            return pd.DataFrame(records) if records else None
     except Exception as exc:
         log.warning("Could not load DataFrame for stats — %s", exc)
     return None
+
+
+def _has_content(val) -> bool:
+    if val is None:
+        return False
+    if isinstance(val, str):
+        return bool(val.strip())
+    if isinstance(val, (list, dict)):
+        return len(val) > 0
+    return True
+
+
+def _load_input_json(input_json_arg: str | None) -> dict:
+    if not input_json_arg:
+        return {}
+    if os.path.exists(input_json_arg):
+        try:
+            with open(input_json_arg, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            log.warning("Could not read input JSON file %s: %s", input_json_arg, e)
+    try:
+        return json.loads(input_json_arg)
+    except Exception as e:
+        log.warning("Could not parse input JSON string: %s", e)
+    return {}
 
 
 def parse_args() -> argparse.Namespace:
@@ -73,15 +97,27 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Directory where the JSON output file is saved (default: tests-output/).",
     )
+    parser.add_argument(
+        "--input-json",
+        default=None,
+        help="Path to a JSON file containing pre-filled metadata, or an inline JSON string.",
+    )
+    parser.add_argument(
+        "--include-tmpt",
+        action="store_true",
+        default=None,
+        help="Include internal *_tmpt fields in the output. Defaults to true when --log-level DEBUG, false otherwise.",
+    )
     return parser.parse_args()
 
 
 DEFAULT_OUTPUT_DIR = Path(__file__).parent / "tests-output"
 
 
-def run(file_path: str, output_format: str = "json", output_dir: Path | None = None) -> None:
+def run(file_path: str, output_format: str = "json", output_dir: Path | None = None, input_json: dict | None = None, include_tmpt: bool | None = None) -> None:
+    input_dict = normalize_array_fields(dict(input_json or {}))
     reader = get_reader(file_path)
-    extractors = [cls(file_path=file_path) for cls in ALL_EXTRACTORS]
+    extractors = [cls(file_path=file_path, input_json=input_dict) for cls in ALL_EXTRACTORS]
 
     log.info("Reading: %s", file_path)
     log.info("Extractors: %s", [e.name for e in extractors])
@@ -103,15 +139,35 @@ def run(file_path: str, output_format: str = "json", output_dir: Path | None = N
 
     results = {e.name: e.result() for e in extractors}
 
-    df = _load_dataframe(file_path)
+    stats_fields = ("number_of_records", "number_of_unique_individuals", "min_typical_age", "max_typical_age", "temporal_coverage")
+    all_stats_present = all(f in input_dict for f in stats_fields)
+    prefilled_stats = {f: input_dict[f] for f in stats_fields if f in input_dict and _has_content(input_dict[f])}
+
+    df = None
+    if all_stats_present or len(prefilled_stats) == len(stats_fields):
+        log.info("All statistics fields present or prefilled in input_json, skipping DataFrame loading.")
+    else:
+        df = _load_dataframe(file_path)
     for extractor in extractors:
         finalized = extractor.finalize(results, df)
         if finalized:
             results[extractor.name] = {**results.get(extractor.name, {}), **finalized}
 
-    output, structure_data = _merge_output(results)
-    output = normalize_language(output)
-    output = _maybe_add_structure(output, structure_data)
+    output = _merge_output(results)
+    output = normalize_array_fields(output)
+    output = _strip_tmpt_fields(output, include_tmpt=include_tmpt)
+
+    _static_managed = {"version", "has_version"}
+    for k, v in input_dict.items():
+        if k in _static_managed:
+            log.debug("[input_json override] skipping static-managed field %r (value: %r)", k, v)
+            continue
+        if k not in output:
+            log.debug("[input_json override] adding missing field %r = %r", k, v)
+            output[k] = v
+        elif _has_content(v):
+            log.debug("[input_json override] overriding %r: %r → %r", k, output[k], v)
+            output[k] = v
 
     pretty = json.dumps(output, indent=2, ensure_ascii=False)
     if output_format == "json":
@@ -124,36 +180,30 @@ def run(file_path: str, output_format: str = "json", output_dir: Path | None = N
 _PIPELINE_ORDER = [
     "llm_metadata",
     "static",
-    "structure",
+    "structure_tmpt",
     "dataframe_statistics",
     "vocabulary",
-    "geospatial",
 ]
 
 
-def _merge_output(results: dict) -> tuple[dict, dict | None]:
+def _merge_output(results: dict) -> dict:
     """Merge all extractor results into a single output dict in pipeline order.
 
-    Returns (output, structure_data). structure_data is kept separate so the
-    caller can decide whether to include it (only at DEBUG level).
-    All other extractors are spread at the top level.
+    All extractors are spread at the top level.
     Later steps overwrite earlier ones for duplicate keys.
     'errors' lists are accumulated rather than overwritten.
     """
-    sources = {**results}
-
     output: dict = {}
-    structure_data: dict | None = None
 
     for key in _PIPELINE_ORDER:
-        data = sources.get(key)
+        data = results.get(key)
         if not data:
             continue
-        if key == "structure":
-            structure_data = data
+        errors = []
+        if key == "structure_tmpt":
+            output["structure_tmpt"] = {k: v for k, v in data.items() if k != "errors"}
             errors = data.get("errors", [])
         else:
-            errors = []
             for k, v in data.items():
                 if k in ("errors", "_vocabulary_errors"):
                     errors += v if isinstance(v, list) else ([str(v)] if v else [])
@@ -163,15 +213,16 @@ def _merge_output(results: dict) -> tuple[dict, dict | None]:
         if isinstance(errors, list):
             output["errors"].extend(errors)
 
-    return output, structure_data
-
-
-def _maybe_add_structure(output: dict, structure_data: dict | None) -> dict:
-    """Include structure only when DEBUG logging is active."""
-    import logging
-    if structure_data and logging.getLogger().isEnabledFor(logging.DEBUG):
-        output["structure"] = {k: v for k, v in structure_data.items() if k != "errors"}
     return output
+
+
+def _strip_tmpt_fields(output: dict, include_tmpt: bool | None = None) -> dict:
+    """Remove all *_tmpt fields unless explicitly included or DEBUG logging is active."""
+    import logging
+    keep = include_tmpt if include_tmpt is not None else logging.getLogger().isEnabledFor(logging.DEBUG)
+    if keep:
+        return output
+    return {k: v for k, v in output.items() if not k.endswith("_tmpt")}
 
 
 def _print_text(output: dict) -> None:
@@ -221,4 +272,6 @@ if __name__ == "__main__":
     level = args.log_level or os.environ.get("LOG_LEVEL", "INFO")
     setup_logging(level=level, log_file=args.log_file)
     out_dir = Path(args.output_dir) if args.output_dir else None
-    run(args.file, args.output, out_dir)
+    input_json = _load_input_json(args.input_json)
+    include_tmpt = args.include_tmpt if args.include_tmpt else None
+    run(args.file, args.output, out_dir, input_json=input_json, include_tmpt=include_tmpt)

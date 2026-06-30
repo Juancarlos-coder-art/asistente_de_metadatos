@@ -4,12 +4,12 @@ Computes concrete statistics from an already-loaded pandas DataFrame using the
 column mappings produced by the [Structure Extractor](STRUCTURE.md).
 
 Unlike the streaming extractors, this one operates on a full DataFrame and requires
-the `structure` output as a second input.
+the `structure_tmpt` output as a second input.
 
 ## Usage
 
 `DataFrameStatisticsExtractor` runs automatically inside `main.py` after the streaming
-pass, whenever `structure` is present in `ALL_EXTRACTORS`. No extra configuration needed.
+pass, whenever `structure_tmpt` is present in `ALL_EXTRACTORS`. No extra configuration needed.
 
 It can also be called directly:
 
@@ -21,6 +21,12 @@ structure_result = {...}   # output of StructureExtractor.result()
 df = pd.read_csv("dataset.csv")
 stats = DataFrameStatisticsExtractor().extract(df, structure_result)
 ```
+
+## Prefilled metadata bypass
+
+If any statistical field (e.g., `number_of_records`, `min_typical_age`, `temporal_coverage`) is already present and has content in the input JSON, the pandas calculation/aggregation for that specific field is skipped, and the prefilled value is used directly.
+
+Furthermore, if all statistical fields are prefilled, the orchestrator in `main.py` skips loading the DataFrame from the input file entirely. In this case, `DataFrameStatisticsExtractor` receives `df = None` and returns the prefilled values directly.
 
 ## Output
 
@@ -50,45 +56,22 @@ stats = DataFrameStatisticsExtractor().extract(df, structure_result)
 
 ### 2. `number_of_unique_individuals`
 
-Iterates the structure mappings for this field. Applies the transform if present
-(same exec mechanism as the age fields), then calls `df[col_name].nunique()` on
-the resulting column. Returns the first successful result.
+Iterates the structure mappings for this field. Applies the DSL transform steps if present using `evaluate_dsl`, then calls `series.nunique()` on the resulting Series. Returns the first successful result.
 
 ### 4. `temporal_coverage`
 
-Columns are taken directly from `structure["temporal_coverage"]` — no auto-detection is performed. For each mapping:
-1. Resolves the target Series via `_resolve_series`: applies the pandas transform if present (creating a derived column), otherwise uses the first column in `columns` directly.
-2. Parses dates vectorially with `pd.to_datetime(series, errors="coerce")`.
-3. Tracks min and max per mapping; returns global min (start) and max (end) across all mappings.
-
-Returns `{"start": "YYYY-MM-DD", "end": "YYYY-MM-DD"}` or `null` if no mappings or no parseable dates.
+Handled by the [Temporal Resolution](TEMPORAL.md) module.
 
 ### 3. Age fields (`min_typical_age`, `max_typical_age`)
 
 For each field the extractor iterates over the array of mapping objects from the
 structure output and tries each one in order, returning the first successful result:
 
-1. **Apply transform (if present)** — the pandas expression from `transform` is
-   executed on a working copy of the DataFrame. The new derived column (e.g.
-   `min_typical_age_mod_1`) is created in that copy.
-
-   ```python
-   # example transform from structure output
-   "df['min_typical_age_mod_1'] = (pd.Timestamp.now() - pd.to_datetime(df['birth_date'])).dt.days // 365"
-   ```
-
-2. **Identify target column** — if a transform was executed, the target column is the
-   one assigned by the transform (parsed from `df['<name>'] = ...`). Otherwise the
-   first entry in `columns` is used.
-
-3. **Coerce to numeric** — `pd.to_numeric(..., errors='coerce')` so non-numeric
-   values are silently dropped.
-
-4. **Aggregate** — `series.min()` for `min_typical_age`, `series.max()` for
-   `max_typical_age`. Integer when the result has no fractional part, float otherwise.
-
-5. **Fallback** — if a mapping fails (missing column, transform error, all-NaN series),
-   the next mapping in the array is tried. Returns `null` if all mappings fail.
+1. **Apply transform (if present)** — the DSL transform steps are executed sequentially on the DataFrame using `evaluate_dsl` to return a cleaned target Series.
+2. **Identify target column** — if no transform is present, the first entry in `columns` is used directly.
+3. **Coerce to numeric** — `pd.to_numeric(..., errors='coerce')` so non-numeric values are silently dropped.
+4. **Aggregate** — `series.min()` for `min_typical_age`, `series.max()` for `max_typical_age`. Integer when the result has no fractional part, float otherwise.
+5. **Fallback** — if a mapping fails (missing column, transform error, all-NaN series), the next mapping in the array is tried. Returns `null` if all mappings fail.
 
 ## Edge cases
 

@@ -1,0 +1,2114 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><resultado>
+<registro>
+	<fecha>2026-04</fecha>
+	<promedio_butano_80_propano_20_>0.7616</promedio_butano_80_propano_20_>
+	<flete>0.0364</flete>
+	<brent_dated>0.7618</brent_dated>
+</registro>
+<registro>
+	<fecha>2026-03</fecha>
+	<promedio_butano_80_propano_20_>0.4347</promedio_butano_80_propano_20_>
+	<flete>0.0275</flete>
+	<brent_dated>0.6546</brent_dated>
+</registro>
+<registro>
+	<fecha>2026-02</fecha>
+	<promedio_butano_80_propano_20_>0.4139</promedio_butano_80_propano_20_>
+	<flete>0.024</flete>
+	<brent_dated>0.4383</brent_dated>
+</registro>
+<registro>
+	<fecha>2026-01</fecha>
+	<promedio_butano_80_propano_20_>0.4067</promedio_butano_80_propano_20_>
+	<flete>0.0211</flete>
+	<brent_dated>0.4133</brent_dated>
+</registro>
+<registro>
+	<fecha>2025-12</fecha>
+	<promedio_butano_80_propano_20_>0.4073</promedio_butano_80_propano_20_>
+	<flete>0.0202</flete>
+	<brent_dated>0.3903</brent_dated>
+</registro>
+<registro>
+	<fecha>2025-11</fecha>
+	<promedio_butano_80_propano_20_>0.3977</promedio_butano_80_propano_20_>
+	<flete>0.019</flete>
+	<brent_dated>0.401</brent_dated>
+</registro>
+<registro>
+	<fecha>2025-10</fecha>
+	<promedio_butano_80_propano_20_>0.3993</promedio_butano_80_propano_20_>
+	<flete>0.017</flete>
+	<brent_dated>0.4055</brent_dated>
+</registro>
+<registro>
+	<fecha>2025-09</fecha>
+	<promedio_butano_80_propano_20_>0.3679</promedio_butano_80_propano_20_>
+	<flete>0.0201</flete>
+	<brent_dated>0.4223</brent_dated>
+</registro>
+<registro>
+	<fecha>2025-08</fecha>
+	<promedio_butano_80_propano_20_>0.3654</promedio_butano_80_propano_20_>
+	<flete>0.0225</flete>
+	<brent_dated>0.4271</brent_dated>
+</registro>
+<registro>
+	<fecha>2025-07</fecha>
+	<promedio_butano_80_propano_20_>0.3734</promedio_butano_80_propano_20_>
+	<flete>0.0212</flete>
+	<brent_dated>0.4428</brent_dated>
+</registro>
+<registro>
+	<fecha>2025-06</fecha>
+	<promedio_butano_80_propano_20_>0.3771</promedio_butano_80_propano_20_>
+	<flete>0.0205</flete>
+	<brent_dated>0.452</brent_dated>
+</registro>
+<registro>
+	<fecha>2025-05</fecha>
+	<promedio_butano_80_propano_20_>0.4262</promedio_butano_80_propano_20_>
+	<flete>0.0184</flete>
+	<brent_dated>0.4143</brent_dated>
+</registro>
+<registro>
+	<fecha>2025-04</fecha>
+	<promedio_butano_80_propano_20_>0.4828</promedio_butano_80_propano_20_>
+	<flete>0.015</flete>
+	<brent_dated>0.4407</brent_dated>
+</registro>
+<registro>
+	<fecha>2025-03</fecha>
+	<promedio_butano_80_propano_20_>0.5306</promedio_butano_80_propano_20_>
+	<flete>0.0159</flete>
+	<brent_dated>0.4893</brent_dated>
+</registro>
+<registro>
+	<fecha>2025-02</fecha>
+	<promedio_butano_80_propano_20_>0.5669</promedio_butano_80_propano_20_>
+	<flete>0.0152</flete>
+	<brent_dated>0.5257</brent_dated>
+</registro>
+<registro>
+	<fecha>2025-01</fecha>
+	<promedio_butano_80_propano_20_>0.5355</promedio_butano_80_propano_20_>
+	<flete>0.0178</flete>
+	<brent_dated>0.556</brent_dated>
+</registro>
+<registro>
+	<fecha>2024-12</fecha>
+	<promedio_butano_80_propano_20_>0.5459</promedio_butano_80_propano_20_>
+	<flete>0.0176</flete>
+	<brent_dated>0.5135</brent_dated>
+</registro>
+<registro>
+	<fecha>2024-11</fecha>
+	<promedio_butano_80_propano_20_>0.5592</promedio_butano_80_propano_20_>
+	<flete>0.0151</flete>
+	<brent_dated>0.5102</brent_dated>
+</registro>
+<registro>
+	<fecha>2024-10</fecha>
+	<promedio_butano_80_propano_20_>0.5289</promedio_butano_80_propano_20_>
+	<flete>0.0169</flete>
+	<brent_dated>0.5053</brent_dated>
+</registro>
+<registro>
+	<fecha>2024-09</fecha>
+	<promedio_butano_80_propano_20_>0.5067</promedio_butano_80_propano_20_>
+	<flete>0.0141</flete>
+	<brent_dated>0.4875</brent_dated>
+</registro>
+<registro>
+	<fecha>2024-08</fecha>
+	<promedio_butano_80_propano_20_>0.4643</promedio_butano_80_propano_20_>
+	<flete>0.0156</flete>
+	<brent_dated>0.5352</brent_dated>
+</registro>
+<registro>
+	<fecha>2024-07</fecha>
+	<promedio_butano_80_propano_20_>0.4658</promedio_butano_80_propano_20_>
+	<flete>0.0161</flete>
+	<brent_dated>0.5729</brent_dated>
+</registro>
+<registro>
+	<fecha>2024-06</fecha>
+	<promedio_butano_80_propano_20_>0.4071</promedio_butano_80_propano_20_>
+	<flete>0.0208</flete>
+	<brent_dated>0.5592</brent_dated>
+</registro>
+<registro>
+	<fecha>2024-05</fecha>
+	<promedio_butano_80_propano_20_>0.4481</promedio_butano_80_propano_20_>
+	<flete>0.0228</flete>
+	<brent_dated>0.5525</brent_dated>
+</registro>
+<registro>
+	<fecha>2024-04</fecha>
+	<promedio_butano_80_propano_20_>0.5128</promedio_butano_80_propano_20_>
+	<flete>0.0186</flete>
+	<brent_dated>0.611</brent_dated>
+</registro>
+<registro>
+	<fecha>2024-03</fecha>
+	<promedio_butano_80_propano_20_>0.5241</promedio_butano_80_propano_20_>
+	<flete>0.0195</flete>
+	<brent_dated>0.5731</brent_dated>
+</registro>
+<registro>
+	<fecha>2024-02</fecha>
+	<promedio_butano_80_propano_20_>0.4982</promedio_butano_80_propano_20_>
+	<flete>0.0163</flete>
+	<brent_dated>0.5663</brent_dated>
+</registro>
+<registro>
+	<fecha>2024-01</fecha>
+	<promedio_butano_80_propano_20_>0.4833</promedio_butano_80_propano_20_>
+	<flete>0.0218</flete>
+	<brent_dated>0.5356</brent_dated>
+</registro>
+<registro>
+	<fecha>2023-12</fecha>
+	<promedio_butano_80_propano_20_>0.4851</promedio_butano_80_propano_20_>
+	<flete>0.0336</flete>
+	<brent_dated>0.5223</brent_dated>
+</registro>
+<registro>
+	<fecha>2023-11</fecha>
+	<promedio_butano_80_propano_20_>0.4913</promedio_butano_80_propano_20_>
+	<flete>0.0385</flete>
+	<brent_dated>0.5605</brent_dated>
+</registro>
+<registro>
+	<fecha>2023-10</fecha>
+	<promedio_butano_80_propano_20_>0.5294</promedio_butano_80_propano_20_>
+	<flete>0.0301</flete>
+	<brent_dated>0.6278</brent_dated>
+</registro>
+<registro>
+	<fecha>2023-09</fecha>
+	<promedio_butano_80_propano_20_>0.5077</promedio_butano_80_propano_20_>
+	<flete>0.0406</flete>
+	<brent_dated>0.6408</brent_dated>
+</registro>
+<registro>
+	<fecha>2023-08</fecha>
+	<promedio_butano_80_propano_20_>0.4254</promedio_butano_80_propano_20_>
+	<flete>0.0266</flete>
+	<brent_dated>0.5753</brent_dated>
+</registro>
+<registro>
+	<fecha>2023-07</fecha>
+	<promedio_butano_80_propano_20_>0.3066</promedio_butano_80_propano_20_>
+	<flete>0.0275</flete>
+	<brent_dated>0.5272</brent_dated>
+</registro>
+<registro>
+	<fecha>2023-06</fecha>
+	<promedio_butano_80_propano_20_>0.3715</promedio_butano_80_propano_20_>
+	<flete>0.029</flete>
+	<brent_dated>0.5019</brent_dated>
+</registro>
+<registro>
+	<fecha>2023-05</fecha>
+	<promedio_butano_80_propano_20_>0.446</promedio_butano_80_propano_20_>
+	<flete>0.0254</flete>
+	<brent_dated>0.5085</brent_dated>
+</registro>
+<registro>
+	<fecha>2023-04</fecha>
+	<promedio_butano_80_propano_20_>0.4592</promedio_butano_80_propano_20_>
+	<flete>0.0212</flete>
+	<brent_dated>0.5649</brent_dated>
+</registro>
+<registro>
+	<fecha>2023-03</fecha>
+	<promedio_butano_80_propano_20_>0.6323</promedio_butano_80_propano_20_>
+	<flete>0.0256</flete>
+	<brent_dated>0.5345</brent_dated>
+</registro>
+<registro>
+	<fecha>2023-02</fecha>
+	<promedio_butano_80_propano_20_>0.6075</promedio_butano_80_propano_20_>
+	<flete>0.0256</flete>
+	<brent_dated>0.5607</brent_dated>
+</registro>
+<registro>
+	<fecha>2023-01</fecha>
+	<promedio_butano_80_propano_20_>0.5264</promedio_butano_80_propano_20_>
+	<flete>0.0215</flete>
+	<brent_dated>0.5594</brent_dated>
+</registro>
+<registro>
+	<fecha>2022-12</fecha>
+	<promedio_butano_80_propano_20_>0.5568</promedio_butano_80_propano_20_>
+	<flete>0.0357</flete>
+	<brent_dated>0.5578</brent_dated>
+</registro>
+<registro>
+	<fecha>2022-11</fecha>
+	<promedio_butano_80_propano_20_>0.5722</promedio_butano_80_propano_20_>
+	<flete>0.0369</flete>
+	<brent_dated>0.6545</brent_dated>
+</registro>
+<registro>
+	<fecha>2022-10</fecha>
+	<promedio_butano_80_propano_20_>0.5577</promedio_butano_80_propano_20_>
+	<flete>0.0269</flete>
+	<brent_dated>0.6918</brent_dated>
+</registro>
+<registro>
+	<fecha>2022-09</fecha>
+	<promedio_butano_80_propano_20_>0.6198</promedio_butano_80_propano_20_>
+	<flete>0.0224</flete>
+	<brent_dated>0.6613</brent_dated>
+</registro>
+<registro>
+	<fecha>2022-08</fecha>
+	<promedio_butano_80_propano_20_>0.6361</promedio_butano_80_propano_20_>
+	<flete>0.0192</flete>
+	<brent_dated>0.7189</brent_dated>
+</registro>
+<registro>
+	<fecha>2022-07</fecha>
+	<promedio_butano_80_propano_20_>0.65</promedio_butano_80_propano_20_>
+	<flete>0.0195</flete>
+	<brent_dated>0.8064</brent_dated>
+</registro>
+<registro>
+	<fecha>2022-06</fecha>
+	<promedio_butano_80_propano_20_>0.7609</promedio_butano_80_propano_20_>
+	<flete>0.0214</flete>
+	<brent_dated>0.8522</brent_dated>
+</registro>
+<registro>
+	<fecha>2022-05</fecha>
+	<promedio_butano_80_propano_20_>0.7705</promedio_butano_80_propano_20_>
+	<flete>0.0214</flete>
+	<brent_dated>0.7781</brent_dated>
+</registro>
+<registro>
+	<fecha>2022-04</fecha>
+	<promedio_butano_80_propano_20_>0.8424</promedio_butano_80_propano_20_>
+	<flete>0.0189</flete>
+	<brent_dated>0.7042</brent_dated>
+</registro>
+<registro>
+	<fecha>2022-03</fecha>
+	<promedio_butano_80_propano_20_>0.7709</promedio_butano_80_propano_20_>
+	<flete>0.016</flete>
+	<brent_dated>0.7853</brent_dated>
+</registro>
+<registro>
+	<fecha>2022-02</fecha>
+	<promedio_butano_80_propano_20_>0.6853</promedio_butano_80_propano_20_>
+	<flete>0.0131</flete>
+	<brent_dated>0.6305</brent_dated>
+</registro>
+<registro>
+	<fecha>2022-01</fecha>
+	<promedio_butano_80_propano_20_>0.6267</promedio_butano_80_propano_20_>
+	<flete>0.0175</flete>
+	<brent_dated>0.5583</brent_dated>
+</registro>
+<registro>
+	<fecha>2021-12</fecha>
+	<promedio_butano_80_propano_20_>0.6315</promedio_butano_80_propano_20_>
+	<flete>0.0175</flete>
+	<brent_dated>0.4781</brent_dated>
+</registro>
+<registro>
+	<fecha>2021-11</fecha>
+	<promedio_butano_80_propano_20_>0.718</promedio_butano_80_propano_20_>
+	<flete>0.0163</flete>
+	<brent_dated>0.5197</brent_dated>
+</registro>
+<registro>
+	<fecha>2021-10</fecha>
+	<promedio_butano_80_propano_20_>0.6473</promedio_butano_80_propano_20_>
+	<flete>0.0129</flete>
+	<brent_dated>0.5252</brent_dated>
+</registro>
+<registro>
+	<fecha>2021-09</fecha>
+	<promedio_butano_80_propano_20_>0.5621</promedio_butano_80_propano_20_>
+	<flete>0.0114</flete>
+	<brent_dated>0.4615</brent_dated>
+</registro>
+<registro>
+	<fecha>2021-08</fecha>
+	<promedio_butano_80_propano_20_>0.5442</promedio_butano_80_propano_20_>
+	<flete>0.0124</flete>
+	<brent_dated>0.4384</brent_dated>
+</registro>
+<registro>
+	<fecha>2021-07</fecha>
+	<promedio_butano_80_propano_20_>0.5057</promedio_butano_80_propano_20_>
+	<flete>0.0122</flete>
+	<brent_dated>0.4623</brent_dated>
+</registro>
+<registro>
+	<fecha>2021-06</fecha>
+	<promedio_butano_80_propano_20_>0.4056</promedio_butano_80_propano_20_>
+	<flete>0.0133</flete>
+	<brent_dated>0.4416</brent_dated>
+</registro>
+<registro>
+	<fecha>2021-05</fecha>
+	<promedio_butano_80_propano_20_>0.3769</promedio_butano_80_propano_20_>
+	<flete>0.0155</flete>
+	<brent_dated>0.412</brent_dated>
+</registro>
+<registro>
+	<fecha>2021-04</fecha>
+	<promedio_butano_80_propano_20_>0.4211</promedio_butano_80_propano_20_>
+	<flete>0.0142</flete>
+	<brent_dated>0.392</brent_dated>
+</registro>
+<registro>
+	<fecha>2021-03</fecha>
+	<promedio_butano_80_propano_20_>0.4485</promedio_butano_80_propano_20_>
+	<flete>0.0111</flete>
+	<brent_dated>0.4017</brent_dated>
+</registro>
+<registro>
+	<fecha>2021-02</fecha>
+	<promedio_butano_80_propano_20_>0.4112</promedio_butano_80_propano_20_>
+	<flete>0.0109</flete>
+	<brent_dated>0.3746</brent_dated>
+</registro>
+<registro>
+	<fecha>2021-01</fecha>
+	<promedio_butano_80_propano_20_>0.3926</promedio_butano_80_propano_20_>
+	<flete>0.0225</flete>
+	<brent_dated>0.327</brent_dated>
+</registro>
+<registro>
+	<fecha>2020-12</fecha>
+	<promedio_butano_80_propano_20_>0.3314</promedio_butano_80_propano_20_>
+	<flete>0.0248</flete>
+	<brent_dated>0.2987</brent_dated>
+</registro>
+<registro>
+	<fecha>2020-11</fecha>
+	<promedio_butano_80_propano_20_>0.3263</promedio_butano_80_propano_20_>
+	<flete>0.0177</flete>
+	<brent_dated>0.2625</brent_dated>
+</registro>
+<registro>
+	<fecha>2020-10</fecha>
+	<promedio_butano_80_propano_20_>0.3123</promedio_butano_80_propano_20_>
+	<flete>0.0165</flete>
+	<brent_dated>0.2484</brent_dated>
+</registro>
+<registro>
+	<fecha>2020-09</fecha>
+	<promedio_butano_80_propano_20_>0.2801</promedio_butano_80_propano_20_>
+	<flete>0.0154</flete>
+	<brent_dated>0.252</brent_dated>
+</registro>
+<registro>
+	<fecha>2020-08</fecha>
+	<promedio_butano_80_propano_20_>0.2542</promedio_butano_80_propano_20_>
+	<flete>0.0166</flete>
+	<brent_dated>0.276</brent_dated>
+</registro>
+<registro>
+	<fecha>2020-07</fecha>
+	<promedio_butano_80_propano_20_>0.2778</promedio_butano_80_propano_20_>
+	<flete>0.0133</flete>
+	<brent_dated>0.2755</brent_dated>
+</registro>
+<registro>
+	<fecha>2020-06</fecha>
+	<promedio_butano_80_propano_20_>0.216</promedio_butano_80_propano_20_>
+	<flete>0.0121</flete>
+	<brent_dated>0.2593</brent_dated>
+</registro>
+<registro>
+	<fecha>2020-05</fecha>
+	<promedio_butano_80_propano_20_>0.1726</promedio_butano_80_propano_20_>
+	<flete>0.0161</flete>
+	<brent_dated>0.1936</brent_dated>
+</registro>
+<registro>
+	<fecha>2020-04</fecha>
+	<promedio_butano_80_propano_20_>0.1315</promedio_butano_80_propano_20_>
+	<flete>0.0197</flete>
+	<brent_dated>0.1275</brent_dated>
+</registro>
+<registro>
+	<fecha>2020-03</fecha>
+	<promedio_butano_80_propano_20_>0.3394</promedio_butano_80_propano_20_>
+	<flete>0.0186</flete>
+	<brent_dated>0.2095</brent_dated>
+</registro>
+<registro>
+	<fecha>2020-02</fecha>
+	<promedio_butano_80_propano_20_>0.412</promedio_butano_80_propano_20_>
+	<flete>0.0233</flete>
+	<brent_dated>0.3703</brent_dated>
+</registro>
+<registro>
+	<fecha>2020-01</fecha>
+	<promedio_butano_80_propano_20_>0.4169</promedio_butano_80_propano_20_>
+	<flete>0.0241</flete>
+	<brent_dated>0.4176</brent_dated>
+</registro>
+<registro>
+	<fecha>2019-12</fecha>
+	<promedio_butano_80_propano_20_>0.3947</promedio_butano_80_propano_20_>
+	<flete>0.0239</flete>
+	<brent_dated>0.4402</brent_dated>
+</registro>
+<registro>
+	<fecha>2019-11</fecha>
+	<promedio_butano_80_propano_20_>0.3811</promedio_butano_80_propano_20_>
+	<flete>0.0262</flete>
+	<brent_dated>0.4153</brent_dated>
+</registro>
+<registro>
+	<fecha>2019-10</fecha>
+	<promedio_butano_80_propano_20_>0.3436</promedio_butano_80_propano_20_>
+	<flete>0.0252</flete>
+	<brent_dated>0.3935</brent_dated>
+</registro>
+<registro>
+	<fecha>2019-09</fecha>
+	<promedio_butano_80_propano_20_>0.2755</promedio_butano_80_propano_20_>
+	<flete>0.022</flete>
+	<brent_dated>0.4155</brent_dated>
+</registro>
+<registro>
+	<fecha>2019-08</fecha>
+	<promedio_butano_80_propano_20_>0.2596</promedio_butano_80_propano_20_>
+	<flete>0.0218</flete>
+	<brent_dated>0.3861</brent_dated>
+</registro>
+<registro>
+	<fecha>2019-07</fecha>
+	<promedio_butano_80_propano_20_>0.2998</promedio_butano_80_propano_20_>
+	<flete>0.0225</flete>
+	<brent_dated>0.4158</brent_dated>
+</registro>
+<registro>
+	<fecha>2019-06</fecha>
+	<promedio_butano_80_propano_20_>0.3336</promedio_butano_80_propano_20_>
+	<flete>0.0223</flete>
+	<brent_dated>0.4134</brent_dated>
+</registro>
+<registro>
+	<fecha>2019-05</fecha>
+	<promedio_butano_80_propano_20_>0.4083</promedio_butano_80_propano_20_>
+	<flete>0.0184</flete>
+	<brent_dated>0.4626</brent_dated>
+</registro>
+<registro>
+	<fecha>2019-04</fecha>
+	<promedio_butano_80_propano_20_>0.4125</promedio_butano_80_propano_20_>
+	<flete>0.018</flete>
+	<brent_dated>0.4617</brent_dated>
+</registro>
+<registro>
+	<fecha>2019-03</fecha>
+	<promedio_butano_80_propano_20_>0.4185</promedio_butano_80_propano_20_>
+	<flete>0.0135</flete>
+	<brent_dated>0.4261</brent_dated>
+</registro>
+<registro>
+	<fecha>2019-02</fecha>
+	<promedio_butano_80_propano_20_>0.3714</promedio_butano_80_propano_20_>
+	<flete>0.0122</flete>
+	<brent_dated>0.4109</brent_dated>
+</registro>
+<registro>
+	<fecha>2019-01</fecha>
+	<promedio_butano_80_propano_20_>0.3204</promedio_butano_80_propano_20_>
+	<flete>0.0131</flete>
+	<brent_dated>0.3768</brent_dated>
+</registro>
+<registro>
+	<fecha>2018-12</fecha>
+	<promedio_butano_80_propano_20_>0.3283</promedio_butano_80_propano_20_>
+	<flete>0.0144</flete>
+	<brent_dated>0.3593</brent_dated>
+</registro>
+<registro>
+	<fecha>2018-11</fecha>
+	<promedio_butano_80_propano_20_>0.452</promedio_butano_80_propano_20_>
+	<flete>0.0146</flete>
+	<brent_dated>0.4148</brent_dated>
+</registro>
+<registro>
+	<fecha>2018-10</fecha>
+	<promedio_butano_80_propano_20_>0.5621</promedio_butano_80_propano_20_>
+	<flete>0.0167</flete>
+	<brent_dated>0.5147</brent_dated>
+</registro>
+<registro>
+	<fecha>2018-09</fecha>
+	<promedio_butano_80_propano_20_>0.5124</promedio_butano_80_propano_20_>
+	<flete>0.0153</flete>
+	<brent_dated>0.4926</brent_dated>
+</registro>
+<registro>
+	<fecha>2018-08</fecha>
+	<promedio_butano_80_propano_20_>0.486</promedio_butano_80_propano_20_>
+	<flete>0.0154</flete>
+	<brent_dated>0.4587</brent_dated>
+</registro>
+<registro>
+	<fecha>2018-07</fecha>
+	<promedio_butano_80_propano_20_>0.4576</promedio_butano_80_propano_20_>
+	<flete>0.0142</flete>
+	<brent_dated>0.4634</brent_dated>
+</registro>
+<registro>
+	<fecha>2018-06</fecha>
+	<promedio_butano_80_propano_20_>0.4566</promedio_butano_80_propano_20_>
+	<flete>0.013</flete>
+	<brent_dated>0.4635</brent_dated>
+</registro>
+<registro>
+	<fecha>2018-05</fecha>
+	<promedio_butano_80_propano_20_>0.4037</promedio_butano_80_propano_20_>
+	<flete>0.012</flete>
+	<brent_dated>0.4736</brent_dated>
+</registro>
+<registro>
+	<fecha>2018-04</fecha>
+	<promedio_butano_80_propano_20_>0.365</promedio_butano_80_propano_20_>
+	<flete>0.0103</flete>
+	<brent_dated>0.4247</brent_dated>
+</registro>
+<registro>
+	<fecha>2018-03</fecha>
+	<promedio_butano_80_propano_20_>0.3535</promedio_butano_80_propano_20_>
+	<flete>0.0104</flete>
+	<brent_dated>0.3895</brent_dated>
+</registro>
+<registro>
+	<fecha>2018-02</fecha>
+	<promedio_butano_80_propano_20_>0.3896</promedio_butano_80_propano_20_>
+	<flete>0.0113</flete>
+	<brent_dated>0.3845</brent_dated>
+</registro>
+<registro>
+	<fecha>2018-01</fecha>
+	<promedio_butano_80_propano_20_>0.4324</promedio_butano_80_propano_20_>
+	<flete>0.0116</flete>
+	<brent_dated>0.4123</brent_dated>
+</registro>
+<registro>
+	<fecha>2017-12</fecha>
+	<promedio_butano_80_propano_20_>0.4491</promedio_butano_80_propano_20_>
+	<flete>0.0128</flete>
+	<brent_dated>0.3951</brent_dated>
+</registro>
+<registro>
+	<fecha>2017-11</fecha>
+	<promedio_butano_80_propano_20_>0.4458</promedio_butano_80_propano_20_>
+	<flete>0.0128</flete>
+	<brent_dated>0.3885</brent_dated>
+</registro>
+<registro>
+	<fecha>2017-10</fecha>
+	<promedio_butano_80_propano_20_>0.4409</promedio_butano_80_propano_20_>
+	<flete>0.015</flete>
+	<brent_dated>0.3554</brent_dated>
+</registro>
+<registro>
+	<fecha>2017-09</fecha>
+	<promedio_butano_80_propano_20_>0.3937</promedio_butano_80_propano_20_>
+	<flete>0.0133</flete>
+	<brent_dated>0.3426</brent_dated>
+</registro>
+<registro>
+	<fecha>2017-08</fecha>
+	<promedio_butano_80_propano_20_>0.3408</promedio_butano_80_propano_20_>
+	<flete>0.012</flete>
+	<brent_dated>0.3187</brent_dated>
+</registro>
+<registro>
+	<fecha>2017-07</fecha>
+	<promedio_butano_80_propano_20_>0.2694</promedio_butano_80_propano_20_>
+	<flete>0.0153</flete>
+	<brent_dated>0.3073</brent_dated>
+</registro>
+<registro>
+	<fecha>2017-06</fecha>
+	<promedio_butano_80_propano_20_>0.312</promedio_butano_80_propano_20_>
+	<flete>0.0167</flete>
+	<brent_dated>0.3017</brent_dated>
+</registro>
+<registro>
+	<fecha>2017-05</fecha>
+	<promedio_butano_80_propano_20_>0.3096</promedio_butano_80_propano_20_>
+	<flete>0.0172</flete>
+	<brent_dated>0.3324</brent_dated>
+</registro>
+<registro>
+	<fecha>2017-04</fecha>
+	<promedio_butano_80_propano_20_>0.3452</promedio_butano_80_propano_20_>
+	<flete>0.0187</flete>
+	<brent_dated>0.3585</brent_dated>
+</registro>
+<registro>
+	<fecha>2017-03</fecha>
+	<promedio_butano_80_propano_20_>0.4367</promedio_butano_80_propano_20_>
+	<flete>0.0187</flete>
+	<brent_dated>0.3515</brent_dated>
+</registro>
+<registro>
+	<fecha>2017-02</fecha>
+	<promedio_butano_80_propano_20_>0.4515</promedio_butano_80_propano_20_>
+	<flete>0.0179</flete>
+	<brent_dated>0.3772</brent_dated>
+</registro>
+<registro>
+	<fecha>2017-01</fecha>
+	<promedio_butano_80_propano_20_>0.3951</promedio_butano_80_propano_20_>
+	<flete>0.0188</flete>
+	<brent_dated>0.3752</brent_dated>
+</registro>
+<registro>
+	<fecha>2016-12</fecha>
+	<promedio_butano_80_propano_20_>0.3492</promedio_butano_80_propano_20_>
+	<flete>0.018</flete>
+	<brent_dated>0.3703</brent_dated>
+</registro>
+<registro>
+	<fecha>2016-11</fecha>
+	<promedio_butano_80_propano_20_>0.3455</promedio_butano_80_propano_20_>
+	<flete>0.0176</flete>
+	<brent_dated>0.3049</brent_dated>
+</registro>
+<registro>
+	<fecha>2016-10</fecha>
+	<promedio_butano_80_propano_20_>0.3156</promedio_butano_80_propano_20_>
+	<flete>0.0163</flete>
+	<brent_dated>0.328</brent_dated>
+</registro>
+<registro>
+	<fecha>2016-09</fecha>
+	<promedio_butano_80_propano_20_>0.2784</promedio_butano_80_propano_20_>
+	<flete>0.015</flete>
+	<brent_dated>0.3032</brent_dated>
+</registro>
+<registro>
+	<fecha>2016-08</fecha>
+	<promedio_butano_80_propano_20_>0.2291</promedio_butano_80_propano_20_>
+	<flete>0.0148</flete>
+	<brent_dated>0.2984</brent_dated>
+</registro>
+<registro>
+	<fecha>2016-07</fecha>
+	<promedio_butano_80_propano_20_>0.2718</promedio_butano_80_propano_20_>
+	<flete>0.0168</flete>
+	<brent_dated>0.2968</brent_dated>
+</registro>
+<registro>
+	<fecha>2016-06</fecha>
+	<promedio_butano_80_propano_20_>0.2609</promedio_butano_80_propano_20_>
+	<flete>0.0178</flete>
+	<brent_dated>0.3135</brent_dated>
+</registro>
+<registro>
+	<fecha>2016-05</fecha>
+	<promedio_butano_80_propano_20_>0.2635</promedio_butano_80_propano_20_>
+	<flete>0.0177</flete>
+	<brent_dated>0.3021</brent_dated>
+</registro>
+<registro>
+	<fecha>2016-04</fecha>
+	<promedio_butano_80_propano_20_>0.2482</promedio_butano_80_propano_20_>
+	<flete>0.0175</flete>
+	<brent_dated>0.2664</brent_dated>
+</registro>
+<registro>
+	<fecha>2016-03</fecha>
+	<promedio_butano_80_propano_20_>0.24</promedio_butano_80_propano_20_>
+	<flete>0.0198</flete>
+	<brent_dated>0.2526</brent_dated>
+</registro>
+<registro>
+	<fecha>2016-02</fecha>
+	<promedio_butano_80_propano_20_>0.2381</promedio_butano_80_propano_20_>
+	<flete>0.0215</flete>
+	<brent_dated>0.2132</brent_dated>
+</registro>
+<registro>
+	<fecha>2016-01</fecha>
+	<promedio_butano_80_propano_20_>0.2937</promedio_butano_80_propano_20_>
+	<flete>0.0258</flete>
+	<brent_dated>0.2075</brent_dated>
+</registro>
+<registro>
+	<fecha>2015-12</fecha>
+	<promedio_butano_80_propano_20_>0.3403</promedio_butano_80_propano_20_>
+	<flete>0.0331</flete>
+	<brent_dated>0.2552</brent_dated>
+</registro>
+<registro>
+	<fecha>2015-11</fecha>
+	<promedio_butano_80_propano_20_>0.3379</promedio_butano_80_propano_20_>
+	<flete>0.0306</flete>
+	<brent_dated>0.3005</brent_dated>
+</registro>
+<registro>
+	<fecha>2015-10</fecha>
+	<promedio_butano_80_propano_20_>0.3186</promedio_butano_80_propano_20_>
+	<flete>0.031</flete>
+	<brent_dated>0.3148</brent_dated>
+</registro>
+<registro>
+	<fecha>2015-09</fecha>
+	<promedio_butano_80_propano_20_>0.2409</promedio_butano_80_propano_20_>
+	<flete>0.034</flete>
+	<brent_dated>0.309</brent_dated>
+</registro>
+<registro>
+	<fecha>2015-08</fecha>
+	<promedio_butano_80_propano_20_>0.2666</promedio_butano_80_propano_20_>
+	<flete>0.0356</flete>
+	<brent_dated>0.3055</brent_dated>
+</registro>
+<registro>
+	<fecha>2015-07</fecha>
+	<promedio_butano_80_propano_20_>0.3117</promedio_butano_80_propano_20_>
+	<flete>0.0413</flete>
+	<brent_dated>0.3745</brent_dated>
+</registro>
+<registro>
+	<fecha>2015-06</fecha>
+	<promedio_butano_80_propano_20_>0.3116</promedio_butano_80_propano_20_>
+	<flete>0.0453</flete>
+	<brent_dated>0.4007</brent_dated>
+</registro>
+<registro>
+	<fecha>2015-05</fecha>
+	<promedio_butano_80_propano_20_>0.3656</promedio_butano_80_propano_20_>
+	<flete>0.0427</flete>
+	<brent_dated>0.4202</brent_dated>
+</registro>
+<registro>
+	<fecha>2015-04</fecha>
+	<promedio_butano_80_propano_20_>0.3915</promedio_butano_80_propano_20_>
+	<flete>0.0399</flete>
+	<brent_dated>0.4004</brent_dated>
+</registro>
+<registro>
+	<fecha>2015-03</fecha>
+	<promedio_butano_80_propano_20_>0.4171</promedio_butano_80_propano_20_>
+	<flete>0.0461</flete>
+	<brent_dated>0.3758</brent_dated>
+</registro>
+<registro>
+	<fecha>2015-02</fecha>
+	<promedio_butano_80_propano_20_>0.3416</promedio_butano_80_propano_20_>
+	<flete>0.0978</flete>
+	<brent_dated>0.373</brent_dated>
+</registro>
+<registro>
+	<fecha>2015-01</fecha>
+	<promedio_butano_80_propano_20_>0.3448</promedio_butano_80_propano_20_>
+	<flete>0.074</flete>
+	<brent_dated>0.302</brent_dated>
+</registro>
+<registro>
+	<fecha>2014-12</fecha>
+	<promedio_butano_80_propano_20_>0.4371</promedio_butano_80_propano_20_>
+	<flete>0.0689</flete>
+	<brent_dated>0.3673</brent_dated>
+</registro>
+<registro>
+	<fecha>2014-11</fecha>
+	<promedio_butano_80_propano_20_>0.4578</promedio_butano_80_propano_20_>
+	<flete>0.0826</flete>
+	<brent_dated>0.4607</brent_dated>
+</registro>
+<registro>
+	<fecha>2014-10</fecha>
+	<promedio_butano_80_propano_20_>0.5677</promedio_butano_80_propano_20_>
+	<flete>0.0876</flete>
+	<brent_dated>0.5023</brent_dated>
+</registro>
+<registro>
+	<fecha>2014-09</fecha>
+	<promedio_butano_80_propano_20_>0.5779</promedio_butano_80_propano_20_>
+	<flete>0.0922</flete>
+	<brent_dated>0.5493</brent_dated>
+</registro>
+<registro>
+	<fecha>2014-08</fecha>
+	<promedio_butano_80_propano_20_>0.5838</promedio_butano_80_propano_20_>
+	<flete>0.0901</flete>
+	<brent_dated>0.5555</brent_dated>
+</registro>
+<registro>
+	<fecha>2014-07</fecha>
+	<promedio_butano_80_propano_20_>0.5995</promedio_butano_80_propano_20_>
+	<flete>0.1064</flete>
+	<brent_dated>0.5736</brent_dated>
+</registro>
+<registro>
+	<fecha>2014-06</fecha>
+	<promedio_butano_80_propano_20_>0.5726</promedio_butano_80_propano_20_>
+	<flete>0.0942</flete>
+	<brent_dated>0.5983</brent_dated>
+</registro>
+<registro>
+	<fecha>2014-05</fecha>
+	<promedio_butano_80_propano_20_>0.5616</promedio_butano_80_propano_20_>
+	<flete>0.0743</flete>
+	<brent_dated>0.5817</brent_dated>
+</registro>
+<registro>
+	<fecha>2014-04</fecha>
+	<promedio_butano_80_propano_20_>0.5843</promedio_butano_80_propano_20_>
+	<flete>0.0956</flete>
+	<brent_dated>0.5681</brent_dated>
+</registro>
+<registro>
+	<fecha>2014-03</fecha>
+	<promedio_butano_80_propano_20_>0.6045</promedio_butano_80_propano_20_>
+	<flete>0.0564</flete>
+	<brent_dated>0.5667</brent_dated>
+</registro>
+<registro>
+	<fecha>2014-02</fecha>
+	<promedio_butano_80_propano_20_>0.6656</promedio_butano_80_propano_20_>
+	<flete>0.0417</flete>
+	<brent_dated>0.5805</brent_dated>
+</registro>
+<registro>
+	<fecha>2014-01</fecha>
+	<promedio_butano_80_propano_20_>0.7262</promedio_butano_80_propano_20_>
+	<flete>0.0514</flete>
+	<brent_dated>0.5798</brent_dated>
+</registro>
+<registro>
+	<fecha>2013-12</fecha>
+	<promedio_butano_80_propano_20_>0.7844</promedio_butano_80_propano_20_>
+	<flete>0.0496</flete>
+	<brent_dated>0.5892</brent_dated>
+</registro>
+<registro>
+	<fecha>2013-11</fecha>
+	<promedio_butano_80_propano_20_>0.6421</promedio_butano_80_propano_20_>
+	<flete>0.0548</flete>
+	<brent_dated>0.5828</brent_dated>
+</registro>
+<registro>
+	<fecha>2013-10</fecha>
+	<promedio_butano_80_propano_20_>0.609</promedio_butano_80_propano_20_>
+	<flete>0.055</flete>
+	<brent_dated>0.5825</brent_dated>
+</registro>
+<registro>
+	<fecha>2013-09</fecha>
+	<promedio_butano_80_propano_20_>0.6495</promedio_butano_80_propano_20_>
+	<flete>0.0622</flete>
+	<brent_dated>0.6106</brent_dated>
+</registro>
+<registro>
+	<fecha>2013-08</fecha>
+	<promedio_butano_80_propano_20_>0.6095</promedio_butano_80_propano_20_>
+	<flete>0.0661</flete>
+	<brent_dated>0.6089</brent_dated>
+</registro>
+<registro>
+	<fecha>2013-07</fecha>
+	<promedio_butano_80_propano_20_>0.5915</promedio_butano_80_propano_20_>
+	<flete>0.065</flete>
+	<brent_dated>0.6011</brent_dated>
+</registro>
+<registro>
+	<fecha>2013-06</fecha>
+	<promedio_butano_80_propano_20_>0.5576</promedio_butano_80_propano_20_>
+	<flete>0.0667</flete>
+	<brent_dated>0.5683</brent_dated>
+</registro>
+<registro>
+	<fecha>2013-05</fecha>
+	<promedio_butano_80_propano_20_>0.5604</promedio_butano_80_propano_20_>
+	<flete>0.057</flete>
+	<brent_dated>0.5752</brent_dated>
+</registro>
+<registro>
+	<fecha>2013-04</fecha>
+	<promedio_butano_80_propano_20_>0.615</promedio_butano_80_propano_20_>
+	<flete>0.0399</flete>
+	<brent_dated>0.5713</brent_dated>
+</registro>
+<registro>
+	<fecha>2013-03</fecha>
+	<promedio_butano_80_propano_20_>0.6849</promedio_butano_80_propano_20_>
+	<flete>0.0401</flete>
+	<brent_dated>0.6086</brent_dated>
+</registro>
+<registro>
+	<fecha>2013-02</fecha>
+	<promedio_butano_80_propano_20_>0.671</promedio_butano_80_propano_20_>
+	<flete>0.0397</flete>
+	<brent_dated>0.634</brent_dated>
+</registro>
+<registro>
+	<fecha>2013-01</fecha>
+	<promedio_butano_80_propano_20_>0.6899</promedio_butano_80_propano_20_>
+	<flete>0.0369</flete>
+	<brent_dated>0.6187</brent_dated>
+</registro>
+<registro>
+	<fecha>2012-12</fecha>
+	<promedio_butano_80_propano_20_>0.7427</promedio_butano_80_propano_20_>
+	<flete>0.0389</flete>
+	<brent_dated>0.6064</brent_dated>
+</registro>
+<registro>
+	<fecha>2012-11</fecha>
+	<promedio_butano_80_propano_20_>0.7858</promedio_butano_80_propano_20_>
+	<flete>0.0468</flete>
+	<brent_dated>0.6195</brent_dated>
+</registro>
+<registro>
+	<fecha>2012-10</fecha>
+	<promedio_butano_80_propano_20_>0.7313</promedio_butano_80_propano_20_>
+	<flete>0.0617</flete>
+	<brent_dated>0.6265</brent_dated>
+</registro>
+<registro>
+	<fecha>2012-09</fecha>
+	<promedio_butano_80_propano_20_>0.7182</promedio_butano_80_propano_20_>
+	<flete>0.0591</flete>
+	<brent_dated>0.6394</brent_dated>
+</registro>
+<registro>
+	<fecha>2012-08</fecha>
+	<promedio_butano_80_propano_20_>0.6033</promedio_butano_80_propano_20_>
+	<flete>0.0694</flete>
+	<brent_dated>0.6665</brent_dated>
+</registro>
+<registro>
+	<fecha>2012-07</fecha>
+	<promedio_butano_80_propano_20_>0.4835</promedio_butano_80_propano_20_>
+	<flete>0.0675</flete>
+	<brent_dated>0.608</brent_dated>
+</registro>
+<registro>
+	<fecha>2012-06</fecha>
+	<promedio_butano_80_propano_20_>0.5698</promedio_butano_80_propano_20_>
+	<flete>0.0655</flete>
+	<brent_dated>0.5534</brent_dated>
+</registro>
+<registro>
+	<fecha>2012-05</fecha>
+	<promedio_butano_80_propano_20_>0.6999</promedio_butano_80_propano_20_>
+	<flete>0.0633</flete>
+	<brent_dated>0.628</brent_dated>
+</registro>
+<registro>
+	<fecha>2012-04</fecha>
+	<promedio_butano_80_propano_20_>0.7518</promedio_butano_80_propano_20_>
+	<flete>0.0448</flete>
+	<brent_dated>0.6633</brent_dated>
+</registro>
+<registro>
+	<fecha>2012-03</fecha>
+	<promedio_butano_80_propano_20_>0.8387</promedio_butano_80_propano_20_>
+	<flete>0.0394</flete>
+	<brent_dated>0.6915</brent_dated>
+</registro>
+<registro>
+	<fecha>2012-02</fecha>
+	<promedio_butano_80_propano_20_>0.7433</promedio_butano_80_propano_20_>
+	<flete>0.0401</flete>
+	<brent_dated>0.6585</brent_dated>
+</registro>
+<registro>
+	<fecha>2012-01</fecha>
+	<promedio_butano_80_propano_20_>0.6814</promedio_butano_80_propano_20_>
+	<flete>0.038</flete>
+	<brent_dated>0.6231</brent_dated>
+</registro>
+<registro>
+	<fecha>2011-12</fecha>
+	<promedio_butano_80_propano_20_>0.5961</promedio_butano_80_propano_20_>
+	<flete>0.0448</flete>
+	<brent_dated>0.5962</brent_dated>
+</registro>
+<registro>
+	<fecha>2011-11</fecha>
+	<promedio_butano_80_propano_20_>0.5887</promedio_butano_80_propano_20_>
+	<flete>0.0575</flete>
+	<brent_dated>0.5946</brent_dated>
+</registro>
+<registro>
+	<fecha>2011-10</fecha>
+	<promedio_butano_80_propano_20_>0.5927</promedio_butano_80_propano_20_>
+	<flete>0.0606</flete>
+	<brent_dated>0.5815</brent_dated>
+</registro>
+<registro>
+	<fecha>2011-09</fecha>
+	<promedio_butano_80_propano_20_>0.6327</promedio_butano_80_propano_20_>
+	<flete>0.0552</flete>
+	<brent_dated>0.5983</brent_dated>
+</registro>
+<registro>
+	<fecha>2011-08</fecha>
+	<promedio_butano_80_propano_20_>0.6182</promedio_butano_80_propano_20_>
+	<flete>0.0516</flete>
+	<brent_dated>0.5609</brent_dated>
+</registro>
+<registro>
+	<fecha>2011-07</fecha>
+	<promedio_butano_80_propano_20_>0.5823</promedio_butano_80_propano_20_>
+	<flete>0.0442</flete>
+	<brent_dated>0.5968</brent_dated>
+</registro>
+<registro>
+	<fecha>2011-06</fecha>
+	<promedio_butano_80_propano_20_>0.624</promedio_butano_80_propano_20_>
+	<flete>0.0341</flete>
+	<brent_dated>0.5773</brent_dated>
+</registro>
+<registro>
+	<fecha>2011-05</fecha>
+	<promedio_butano_80_propano_20_>0.6946</promedio_butano_80_propano_20_>
+	<flete>0.0369</flete>
+	<brent_dated>0.5842</brent_dated>
+</registro>
+<registro>
+	<fecha>2011-04</fecha>
+	<promedio_butano_80_propano_20_>0.632</promedio_butano_80_propano_20_>
+	<flete>0.0416</flete>
+	<brent_dated>0.6243</brent_dated>
+</registro>
+<registro>
+	<fecha>2011-03</fecha>
+	<promedio_butano_80_propano_20_>0.612</promedio_butano_80_propano_20_>
+	<flete>0.0414</flete>
+	<brent_dated>0.5962</brent_dated>
+</registro>
+<registro>
+	<fecha>2011-02</fecha>
+	<promedio_butano_80_propano_20_>0.5935</promedio_butano_80_propano_20_>
+	<flete>0.0366</flete>
+	<brent_dated>0.5537</brent_dated>
+</registro>
+<registro>
+	<fecha>2011-01</fecha>
+	<promedio_butano_80_propano_20_>0.6711</promedio_butano_80_propano_20_>
+	<flete>0.0374</flete>
+	<brent_dated>0.5253</brent_dated>
+</registro>
+<registro>
+	<fecha>2010-12</fecha>
+	<promedio_butano_80_propano_20_>0.7225</promedio_butano_80_propano_20_>
+	<flete>0.0401</flete>
+	<brent_dated>0.5042</brent_dated>
+</registro>
+<registro>
+	<fecha>2010-11</fecha>
+	<promedio_butano_80_propano_20_>0.5895</promedio_butano_80_propano_20_>
+	<flete>0.041</flete>
+	<brent_dated>0.4549</brent_dated>
+</registro>
+<registro>
+	<fecha>2010-10</fecha>
+	<promedio_butano_80_propano_20_>0.4973</promedio_butano_80_propano_20_>
+	<flete>0.0353</flete>
+	<brent_dated>0.4336</brent_dated>
+</registro>
+<registro>
+	<fecha>2010-09</fecha>
+	<promedio_butano_80_propano_20_>0.4935</promedio_butano_80_propano_20_>
+	<flete>0.0352</flete>
+	<brent_dated>0.4336</brent_dated>
+</registro>
+<registro>
+	<fecha>2010-08</fecha>
+	<promedio_butano_80_propano_20_>0.4593</promedio_butano_80_propano_20_>
+	<flete>0.0357</flete>
+	<brent_dated>0.4353</brent_dated>
+</registro>
+<registro>
+	<fecha>2010-07</fecha>
+	<promedio_butano_80_propano_20_>0.4875</promedio_butano_80_propano_20_>
+	<flete>0.0384</flete>
+	<brent_dated>0.4314</brent_dated>
+</registro>
+<registro>
+	<fecha>2010-06</fecha>
+	<promedio_butano_80_propano_20_>0.5102</promedio_butano_80_propano_20_>
+	<flete>0.041</flete>
+	<brent_dated>0.4465</brent_dated>
+</registro>
+<registro>
+	<fecha>2010-05</fecha>
+	<promedio_butano_80_propano_20_>0.555</promedio_butano_80_propano_20_>
+	<flete>0.0326</flete>
+	<brent_dated>0.438</brent_dated>
+</registro>
+<registro>
+	<fecha>2010-04</fecha>
+	<promedio_butano_80_propano_20_>0.516</promedio_butano_80_propano_20_>
+	<flete>0.0239</flete>
+	<brent_dated>0.4602</brent_dated>
+</registro>
+<registro>
+	<fecha>2010-03</fecha>
+	<promedio_butano_80_propano_20_>0.5114</promedio_butano_80_propano_20_>
+	<flete>0.0214</flete>
+	<brent_dated>0.4235</brent_dated>
+</registro>
+<registro>
+	<fecha>2010-02</fecha>
+	<promedio_butano_80_propano_20_>0.5337</promedio_butano_80_propano_20_>
+	<flete>0.0205</flete>
+	<brent_dated>0.3919</brent_dated>
+</registro>
+<registro>
+	<fecha>2010-01</fecha>
+	<promedio_butano_80_propano_20_>0.4918</promedio_butano_80_propano_20_>
+	<flete>0.021</flete>
+	<brent_dated>0.3892</brent_dated>
+</registro>
+<registro>
+	<fecha>2009-12</fecha>
+	<promedio_butano_80_propano_20_>0.4694</promedio_butano_80_propano_20_>
+	<flete>0.0205</flete>
+	<brent_dated>0.3702</brent_dated>
+</registro>
+<registro>
+	<fecha>2009-11</fecha>
+	<promedio_butano_80_propano_20_>0.4294</promedio_butano_80_propano_20_>
+	<flete>0.0201</flete>
+	<brent_dated>0.3743</brent_dated>
+</registro>
+<registro>
+	<fecha>2009-10</fecha>
+	<promedio_butano_80_propano_20_>0.3777</promedio_butano_80_propano_20_>
+	<flete>0.0297</flete>
+	<brent_dated>0.3576</brent_dated>
+</registro>
+<registro>
+	<fecha>2009-09</fecha>
+	<promedio_butano_80_propano_20_>0.3918</promedio_butano_80_propano_20_>
+	<flete>0.0234</flete>
+	<brent_dated>0.337</brent_dated>
+</registro>
+<registro>
+	<fecha>2009-08</fecha>
+	<promedio_butano_80_propano_20_>0.3595</promedio_butano_80_propano_20_>
+	<flete>0.0224</flete>
+	<brent_dated>0.3718</brent_dated>
+</registro>
+<registro>
+	<fecha>2009-07</fecha>
+	<promedio_butano_80_propano_20_>0.3576</promedio_butano_80_propano_20_>
+	<flete>0.0227</flete>
+	<brent_dated>0.334</brent_dated>
+</registro>
+<registro>
+	<fecha>2009-06</fecha>
+	<promedio_butano_80_propano_20_>0.3136</promedio_butano_80_propano_20_>
+	<flete>0.02</flete>
+	<brent_dated>0.3562</brent_dated>
+</registro>
+<registro>
+	<fecha>2009-05</fecha>
+	<promedio_butano_80_propano_20_>0.2641</promedio_butano_80_propano_20_>
+	<flete>0.0202</flete>
+	<brent_dated>0.3056</brent_dated>
+</registro>
+<registro>
+	<fecha>2009-04</fecha>
+	<promedio_butano_80_propano_20_>0.2787</promedio_butano_80_propano_20_>
+	<flete>0.0197</flete>
+	<brent_dated>0.279</brent_dated>
+</registro>
+<registro>
+	<fecha>2009-03</fecha>
+	<promedio_butano_80_propano_20_>0.3152</promedio_butano_80_propano_20_>
+	<flete>0.0211</flete>
+	<brent_dated>0.2598</brent_dated>
+</registro>
+<registro>
+	<fecha>2009-02</fecha>
+	<promedio_butano_80_propano_20_>0.3797</promedio_butano_80_propano_20_>
+	<flete>0.0207</flete>
+	<brent_dated>0.2454</brent_dated>
+</registro>
+<registro>
+	<fecha>2009-01</fecha>
+	<promedio_butano_80_propano_20_>0.2454</promedio_butano_80_propano_20_>
+	<flete>0.0208</flete>
+	<brent_dated>0.2381</brent_dated>
+</registro>
+<registro>
+	<fecha>2008-12</fecha>
+	<promedio_butano_80_propano_20_>0.2293</promedio_butano_80_propano_20_>
+	<flete>0.0216</flete>
+	<brent_dated>0.2153</brent_dated>
+</registro>
+<registro>
+	<fecha>2008-11</fecha>
+	<promedio_butano_80_propano_20_>0.3618</promedio_butano_80_propano_20_>
+	<flete>0.0244</flete>
+	<brent_dated>0.3004</brent_dated>
+</registro>
+<registro>
+	<fecha>2008-10</fecha>
+	<promedio_butano_80_propano_20_>0.5821</promedio_butano_80_propano_20_>
+	<flete>0.0285</flete>
+	<brent_dated>0.3929</brent_dated>
+</registro>
+<registro>
+	<fecha>2008-09</fecha>
+	<promedio_butano_80_propano_20_>0.5792</promedio_butano_80_propano_20_>
+	<flete>0.0404</flete>
+	<brent_dated>0.4974</brent_dated>
+</registro>
+<registro>
+	<fecha>2008-08</fecha>
+	<promedio_butano_80_propano_20_>0.5879</promedio_butano_80_propano_20_>
+	<flete>0.0551</flete>
+	<brent_dated>0.5498</brent_dated>
+</registro>
+<registro>
+	<fecha>2008-07</fecha>
+	<promedio_butano_80_propano_20_>0.6007</promedio_butano_80_propano_20_>
+	<flete>0.0587</flete>
+	<brent_dated>0.6151</brent_dated>
+</registro>
+<registro>
+	<fecha>2008-06</fecha>
+	<promedio_butano_80_propano_20_>0.5711</promedio_butano_80_propano_20_>
+	<flete>0.0531</flete>
+	<brent_dated>0.6202</brent_dated>
+</registro>
+<registro>
+	<fecha>2008-05</fecha>
+	<promedio_butano_80_propano_20_>0.5385</promedio_butano_80_propano_20_>
+	<flete>0.0466</flete>
+	<brent_dated>0.5761</brent_dated>
+</registro>
+<registro>
+	<fecha>2008-04</fecha>
+	<promedio_butano_80_propano_20_>0.5034</promedio_butano_80_propano_20_>
+	<flete>0.0343</flete>
+	<brent_dated>0.5039</brent_dated>
+</registro>
+<registro>
+	<fecha>2008-03</fecha>
+	<promedio_butano_80_propano_20_>0.5168</promedio_butano_80_propano_20_>
+	<flete>0.0283</flete>
+	<brent_dated>0.4854</brent_dated>
+</registro>
+<registro>
+	<fecha>2008-02</fecha>
+	<promedio_butano_80_propano_20_>0.5294</promedio_butano_80_propano_20_>
+	<flete>0.0298</flete>
+	<brent_dated>0.4693</brent_dated>
+</registro>
+<registro>
+	<fecha>2008-01</fecha>
+	<promedio_butano_80_propano_20_>0.565</promedio_butano_80_propano_20_>
+	<flete>0.034</flete>
+	<brent_dated>0.4561</brent_dated>
+</registro>
+<registro>
+	<fecha>2007-12</fecha>
+	<promedio_butano_80_propano_20_>0.5867</promedio_butano_80_propano_20_>
+	<flete>0.0432</flete>
+	<brent_dated>0.4562</brent_dated>
+</registro>
+<registro>
+	<fecha>2007-11</fecha>
+	<promedio_butano_80_propano_20_>0.5174</promedio_butano_80_propano_20_>
+	<flete>0.0415</flete>
+	<brent_dated>0.4594</brent_dated>
+</registro>
+<registro>
+	<fecha>2007-10</fecha>
+	<promedio_butano_80_propano_20_>0.4788</promedio_butano_80_propano_20_>
+	<flete>0.0359</flete>
+	<brent_dated>0.4223</brent_dated>
+</registro>
+<registro>
+	<fecha>2007-09</fecha>
+	<promedio_butano_80_propano_20_>0.4275</promedio_butano_80_propano_20_>
+	<flete>0.0475</flete>
+	<brent_dated>0.4029</brent_dated>
+</registro>
+<registro>
+	<fecha>2007-08</fecha>
+	<promedio_butano_80_propano_20_>0.4388</promedio_butano_80_propano_20_>
+	<flete>0.0396</flete>
+	<brent_dated>0.3782</brent_dated>
+</registro>
+<registro>
+	<fecha>2007-07</fecha>
+	<promedio_butano_80_propano_20_>0.4176</promedio_butano_80_propano_20_>
+	<flete>0.0394</flete>
+	<brent_dated>0.4089</brent_dated>
+</registro>
+<registro>
+	<fecha>2007-06</fecha>
+	<promedio_butano_80_propano_20_>0.4388</promedio_butano_80_propano_20_>
+	<flete>0.0395</flete>
+	<brent_dated>0.3883</brent_dated>
+</registro>
+<registro>
+	<fecha>2007-05</fecha>
+	<promedio_butano_80_propano_20_>0.4025</promedio_butano_80_propano_20_>
+	<flete>0.0363</flete>
+	<brent_dated>0.3632</brent_dated>
+</registro>
+<registro>
+	<fecha>2007-04</fecha>
+	<promedio_butano_80_propano_20_>0.3967</promedio_butano_80_propano_20_>
+	<flete>0.0315</flete>
+	<brent_dated>0.3641</brent_dated>
+</registro>
+<registro>
+	<fecha>2007-03</fecha>
+	<promedio_butano_80_propano_20_>0.3828</promedio_butano_80_propano_20_>
+	<flete>0.0287</flete>
+	<brent_dated>0.3418</brent_dated>
+</registro>
+<registro>
+	<fecha>2007-02</fecha>
+	<promedio_butano_80_propano_20_>0.3748</promedio_butano_80_propano_20_>
+	<flete>0.0249</flete>
+	<brent_dated>0.3199</brent_dated>
+</registro>
+<registro>
+	<fecha>2007-01</fecha>
+	<promedio_butano_80_propano_20_>0.3858</promedio_butano_80_propano_20_>
+	<flete>0.0265</flete>
+	<brent_dated>0.3021</brent_dated>
+</registro>
+<registro>
+	<fecha>2006-12</fecha>
+	<promedio_butano_80_propano_20_>0.3648</promedio_butano_80_propano_20_>
+	<flete>0.031</flete>
+	<brent_dated>0.3436</brent_dated>
+</registro>
+<registro>
+	<fecha>2006-11</fecha>
+	<promedio_butano_80_propano_20_>0.3707</promedio_butano_80_propano_20_>
+	<flete>0.0365</flete>
+	<brent_dated>0.3331</brent_dated>
+</registro>
+<registro>
+	<fecha>2006-10</fecha>
+	<promedio_butano_80_propano_20_>0.3796</promedio_butano_80_propano_20_>
+	<flete>0.0333</flete>
+	<brent_dated>0.3338</brent_dated>
+</registro>
+<registro>
+	<fecha>2006-09</fecha>
+	<promedio_butano_80_propano_20_>0.4322</promedio_butano_80_propano_20_>
+	<flete>0.0452</flete>
+	<brent_dated>0.3531</brent_dated>
+</registro>
+<registro>
+	<fecha>2006-08</fecha>
+	<promedio_butano_80_propano_20_>0.4202</promedio_butano_80_propano_20_>
+	<flete>0.055</flete>
+	<brent_dated>0.4157</brent_dated>
+</registro>
+<registro>
+	<fecha>2006-07</fecha>
+	<promedio_butano_80_propano_20_>0.4107</promedio_butano_80_propano_20_>
+	<flete>0.0611</flete>
+	<brent_dated>0.423</brent_dated>
+</registro>
+<registro>
+	<fecha>2006-06</fecha>
+	<promedio_butano_80_propano_20_>0.3775</promedio_butano_80_propano_20_>
+	<flete>0.0573</flete>
+	<brent_dated>0.3955</brent_dated>
+</registro>
+<registro>
+	<fecha>2006-05</fecha>
+	<promedio_butano_80_propano_20_>0.3679</promedio_butano_80_propano_20_>
+	<flete>0.0489</flete>
+	<brent_dated>0.3983</brent_dated>
+</registro>
+<registro>
+	<fecha>2006-04</fecha>
+	<promedio_butano_80_propano_20_>0.3645</promedio_butano_80_propano_20_>
+	<flete>0.0428</flete>
+	<brent_dated>0.4172</brent_dated>
+</registro>
+<registro>
+	<fecha>2006-03</fecha>
+	<promedio_butano_80_propano_20_>0.4247</promedio_butano_80_propano_20_>
+	<flete>0.0395</flete>
+	<brent_dated>0.3762</brent_dated>
+</registro>
+<registro>
+	<fecha>2006-02</fecha>
+	<promedio_butano_80_propano_20_>0.5068</promedio_butano_80_propano_20_>
+	<flete>0.0482</flete>
+	<brent_dated>0.3668</brent_dated>
+</registro>
+<registro>
+	<fecha>2006-01</fecha>
+	<promedio_butano_80_propano_20_>0.4645</promedio_butano_80_propano_20_>
+	<flete>0.0475</flete>
+	<brent_dated>0.3781</brent_dated>
+</registro>
+<registro>
+	<fecha>2005-12</fecha>
+	<promedio_butano_80_propano_20_>0.4303</promedio_butano_80_propano_20_>
+	<flete>0.0401</flete>
+	<brent_dated>0.3495</brent_dated>
+</registro>
+<registro>
+	<fecha>2005-11</fecha>
+	<promedio_butano_80_propano_20_>0.4688</promedio_butano_80_propano_20_>
+	<flete>0.0403</flete>
+	<brent_dated>0.341</brent_dated>
+</registro>
+<registro>
+	<fecha>2005-10</fecha>
+	<promedio_butano_80_propano_20_>0.4508</promedio_butano_80_propano_20_>
+	<flete>0.0541</flete>
+	<brent_dated>0.3553</brent_dated>
+</registro>
+<registro>
+	<fecha>2005-09</fecha>
+	<promedio_butano_80_propano_20_>0.3885</promedio_butano_80_propano_20_>
+	<flete>0.053</flete>
+	<brent_dated>0.3738</brent_dated>
+</registro>
+<registro>
+	<fecha>2005-08</fecha>
+	<promedio_butano_80_propano_20_>0.3299</promedio_butano_80_propano_20_>
+	<flete>0.0386</flete>
+	<brent_dated>0.3799</brent_dated>
+</registro>
+<registro>
+	<fecha>2005-07</fecha>
+	<promedio_butano_80_propano_20_>0.3322</promedio_butano_80_propano_20_>
+	<flete>0.0332</flete>
+	<brent_dated>0.3484</brent_dated>
+</registro>
+<registro>
+	<fecha>2005-06</fecha>
+	<promedio_butano_80_propano_20_>0.311</promedio_butano_80_propano_20_>
+	<flete>0.0308</flete>
+	<brent_dated>0.3256</brent_dated>
+</registro>
+<registro>
+	<fecha>2005-05</fecha>
+	<promedio_butano_80_propano_20_>0.3107</promedio_butano_80_propano_20_>
+	<flete>0.0295</flete>
+	<brent_dated>0.2789</brent_dated>
+</registro>
+<registro>
+	<fecha>2005-04</fecha>
+	<promedio_butano_80_propano_20_>0.3176</promedio_butano_80_propano_20_>
+	<flete>0.0332</flete>
+	<brent_dated>0.2917</brent_dated>
+</registro>
+<registro>
+	<fecha>2005-03</fecha>
+	<promedio_butano_80_propano_20_>0.2985</promedio_butano_80_propano_20_>
+	<flete>0.0326</flete>
+	<brent_dated>0.2918</brent_dated>
+</registro>
+<registro>
+	<fecha>2005-02</fecha>
+	<promedio_butano_80_propano_20_>0.2809</promedio_butano_80_propano_20_>
+	<flete>0.0346</flete>
+	<brent_dated>0.2539</brent_dated>
+</registro>
+<registro>
+	<fecha>2005-01</fecha>
+	<promedio_butano_80_propano_20_>0.2787</promedio_butano_80_propano_20_>
+	<flete>0.0419</flete>
+	<brent_dated>0.2455</brent_dated>
+</registro>
+<registro>
+	<fecha>2004-12</fecha>
+	<promedio_butano_80_propano_20_>0.3255</promedio_butano_80_propano_20_>
+	<flete>0.041</flete>
+	<brent_dated>0.2147</brent_dated>
+</registro>
+<registro>
+	<fecha>2004-11</fecha>
+	<promedio_butano_80_propano_20_>0.3645</promedio_butano_80_propano_20_>
+	<flete>0.0462</flete>
+	<brent_dated>0.2402</brent_dated>
+</registro>
+<registro>
+	<fecha>2004-10</fecha>
+	<promedio_butano_80_propano_20_>0.3343</promedio_butano_80_propano_20_>
+	<flete>0.0521</flete>
+	<brent_dated>0.2895</brent_dated>
+</registro>
+<registro>
+	<fecha>2004-09</fecha>
+	<promedio_butano_80_propano_20_>0.3178</promedio_butano_80_propano_20_>
+	<flete>0.0409</flete>
+	<brent_dated>0.2579</brent_dated>
+</registro>
+<registro>
+	<fecha>2004-08</fecha>
+	<promedio_butano_80_propano_20_>0.2818</promedio_butano_80_propano_20_>
+	<flete>0.039</flete>
+	<brent_dated>0.2574</brent_dated>
+</registro>
+<registro>
+	<fecha>2004-07</fecha>
+	<promedio_butano_80_propano_20_>0.2564</promedio_butano_80_propano_20_>
+	<flete>0.0298</flete>
+	<brent_dated>0.2276</brent_dated>
+</registro>
+<registro>
+	<fecha>2004-06</fecha>
+	<promedio_butano_80_propano_20_>0.2747</promedio_butano_80_propano_20_>
+	<flete>0.0284</flete>
+	<brent_dated>0.2103</brent_dated>
+</registro>
+<registro>
+	<fecha>2004-05</fecha>
+	<promedio_butano_80_propano_20_>0.2537</promedio_butano_80_propano_20_>
+	<flete>0.0279</flete>
+	<brent_dated>0.229</brent_dated>
+</registro>
+<registro>
+	<fecha>2004-04</fecha>
+	<promedio_butano_80_propano_20_>0.2427</promedio_butano_80_propano_20_>
+	<flete>0.028</flete>
+	<brent_dated>0.2022</brent_dated>
+</registro>
+<registro>
+	<fecha>2004-03</fecha>
+	<promedio_butano_80_propano_20_>0.2276</promedio_butano_80_propano_20_>
+	<flete>0.0273</flete>
+	<brent_dated>0.2007</brent_dated>
+</registro>
+<registro>
+	<fecha>2004-02</fecha>
+	<promedio_butano_80_propano_20_>0.248</promedio_butano_80_propano_20_>
+	<flete>0.0265</flete>
+	<brent_dated>0.1776</brent_dated>
+</registro>
+<registro>
+	<fecha>2004-01</fecha>
+	<promedio_butano_80_propano_20_>0.2459</promedio_butano_80_propano_20_>
+	<flete>0.0266</flete>
+	<brent_dated>0.18</brent_dated>
+</registro>
+<registro>
+	<fecha>2003-12</fecha>
+	<promedio_butano_80_propano_20_>0.2478</promedio_butano_80_propano_20_>
+	<flete>0.0261</flete>
+	<brent_dated>0.1769</brent_dated>
+</registro>
+<registro>
+	<fecha>2003-11</fecha>
+	<promedio_butano_80_propano_20_>0.2357</promedio_butano_80_propano_20_>
+	<flete>0.0256</flete>
+	<brent_dated>0.1788</brent_dated>
+</registro>
+<registro>
+	<fecha>2003-10</fecha>
+	<promedio_butano_80_propano_20_>0.2121</promedio_butano_80_propano_20_>
+	<flete>0.0227</flete>
+	<brent_dated>0.1847</brent_dated>
+</registro>
+<registro>
+	<fecha>2003-09</fecha>
+	<promedio_butano_80_propano_20_>0.2248</promedio_butano_80_propano_20_>
+	<flete>0.0236</flete>
+	<brent_dated>0.1757</brent_dated>
+</registro>
+<registro>
+	<fecha>2003-08</fecha>
+	<promedio_butano_80_propano_20_>0.2209</promedio_butano_80_propano_20_>
+	<flete>0.0292</flete>
+	<brent_dated>0.1948</brent_dated>
+</registro>
+<registro>
+	<fecha>2003-07</fecha>
+	<promedio_butano_80_propano_20_>0.2105</promedio_butano_80_propano_20_>
+	<flete>0.0286</flete>
+	<brent_dated>0.1816</brent_dated>
+</registro>
+<registro>
+	<fecha>2003-06</fecha>
+	<promedio_butano_80_propano_20_>0.1811</promedio_butano_80_propano_20_>
+	<flete>0.033</flete>
+	<brent_dated>0.1718</brent_dated>
+</registro>
+<registro>
+	<fecha>2003-05</fecha>
+	<promedio_butano_80_propano_20_>0.1692</promedio_butano_80_propano_20_>
+	<flete>0.0311</flete>
+	<brent_dated>0.1621</brent_dated>
+</registro>
+<registro>
+	<fecha>2003-04</fecha>
+	<promedio_butano_80_propano_20_>0.2427</promedio_butano_80_propano_20_>
+	<flete>0.0313</flete>
+	<brent_dated>0.167</brent_dated>
+</registro>
+<registro>
+	<fecha>2003-03</fecha>
+	<promedio_butano_80_propano_20_>0.326</promedio_butano_80_propano_20_>
+	<flete>0.0296</flete>
+	<brent_dated>0.2058</brent_dated>
+</registro>
+<registro>
+	<fecha>2003-02</fecha>
+	<promedio_butano_80_propano_20_>0.3139</promedio_butano_80_propano_20_>
+	<flete>0.0297</flete>
+	<brent_dated>0.2209</brent_dated>
+</registro>
+<registro>
+	<fecha>2003-01</fecha>
+	<promedio_butano_80_propano_20_>0.2967</promedio_butano_80_propano_20_>
+	<flete>0.033</flete>
+	<brent_dated>0.2145</brent_dated>
+</registro>
+<registro>
+	<fecha>2002-12</fecha>
+	<promedio_butano_80_propano_20_>0.2973</promedio_butano_80_propano_20_>
+	<flete>0.03</flete>
+	<brent_dated>0.206</brent_dated>
+</registro>
+<registro>
+	<fecha>2002-11</fecha>
+	<promedio_butano_80_propano_20_>0.2966</promedio_butano_80_propano_20_>
+	<flete>0.0325</flete>
+	<brent_dated>0.1753</brent_dated>
+</registro>
+<registro>
+	<fecha>2002-10</fecha>
+	<promedio_butano_80_propano_20_>0.2866</promedio_butano_80_propano_20_>
+	<flete>0.0301</flete>
+	<brent_dated>0.2047</brent_dated>
+</registro>
+<registro>
+	<fecha>2002-09</fecha>
+	<promedio_butano_80_propano_20_>0.2479</promedio_butano_80_propano_20_>
+	<flete>0.028</flete>
+	<brent_dated>0.2107</brent_dated>
+</registro>
+<registro>
+	<fecha>2002-08</fecha>
+	<promedio_butano_80_propano_20_>0.2139</promedio_butano_80_propano_20_>
+	<flete>0.0281</flete>
+	<brent_dated>0.1986</brent_dated>
+</registro>
+<registro>
+	<fecha>2002-07</fecha>
+	<promedio_butano_80_propano_20_>0.197</promedio_butano_80_propano_20_>
+	<flete>0.0257</flete>
+	<brent_dated>0.1895</brent_dated>
+</registro>
+<registro>
+	<fecha>2002-06</fecha>
+	<promedio_butano_80_propano_20_>0.2024</promedio_butano_80_propano_20_>
+	<flete>0.0256</flete>
+	<brent_dated>0.184</brent_dated>
+</registro>
+<registro>
+	<fecha>2002-05</fecha>
+	<promedio_butano_80_propano_20_>0.2248</promedio_butano_80_propano_20_>
+	<flete>0.0267</flete>
+	<brent_dated>0.2011</brent_dated>
+</registro>
+<registro>
+	<fecha>2002-04</fecha>
+	<promedio_butano_80_propano_20_>0.2208</promedio_butano_80_propano_20_>
+	<flete>0.0299</flete>
+	<brent_dated>0.211</brent_dated>
+</registro>
+<registro>
+	<fecha>2002-03</fecha>
+	<promedio_butano_80_propano_20_>0.199</promedio_butano_80_propano_20_>
+	<flete>0.0303</flete>
+	<brent_dated>0.1981</brent_dated>
+</registro>
+<registro>
+	<fecha>2002-02</fecha>
+	<promedio_butano_80_propano_20_>0.1998</promedio_butano_80_propano_20_>
+	<flete>0.0282</flete>
+	<brent_dated>0.1693</brent_dated>
+</registro>
+<registro>
+	<fecha>2002-01</fecha>
+	<promedio_butano_80_propano_20_>0.2168</promedio_butano_80_propano_20_>
+	<flete>0.0277</flete>
+	<brent_dated>0.1605</brent_dated>
+</registro>
+<registro>
+	<fecha>2001-12</fecha>
+	<promedio_butano_80_propano_20_>0.1957</promedio_butano_80_propano_20_>
+	<flete>0.0275</flete>
+	<brent_dated>0.1525</brent_dated>
+</registro>
+<registro>
+	<fecha>2001-11</fecha>
+	<promedio_butano_80_propano_20_>0.2369</promedio_butano_80_propano_20_>
+	<flete>0.0276</flete>
+	<brent_dated>0.1556</brent_dated>
+</registro>
+<registro>
+	<fecha>2001-10</fecha>
+	<promedio_butano_80_propano_20_>0.2401</promedio_butano_80_propano_20_>
+	<flete>0.0271</flete>
+	<brent_dated>0.1647</brent_dated>
+</registro>
+<registro>
+	<fecha>2001-09</fecha>
+	<promedio_butano_80_propano_20_>0.2261</promedio_butano_80_propano_20_>
+	<flete>0.0291</flete>
+	<brent_dated>0.2044</brent_dated>
+</registro>
+<registro>
+	<fecha>2001-08</fecha>
+	<promedio_butano_80_propano_20_>0.2117</promedio_butano_80_propano_20_>
+	<flete>0.0322</flete>
+	<brent_dated>0.2082</brent_dated>
+</registro>
+<registro>
+	<fecha>2001-07</fecha>
+	<promedio_butano_80_propano_20_>0.2462</promedio_butano_80_propano_20_>
+	<flete>0.0366</flete>
+	<brent_dated>0.208</brent_dated>
+</registro>
+<registro>
+	<fecha>2001-06</fecha>
+	<promedio_butano_80_propano_20_>0.2796</promedio_butano_80_propano_20_>
+	<flete>0.0393</flete>
+	<brent_dated>0.2376</brent_dated>
+</registro>
+<registro>
+	<fecha>2001-05</fecha>
+	<promedio_butano_80_propano_20_>0.2607</promedio_butano_80_propano_20_>
+	<flete>0.0423</flete>
+	<brent_dated>0.2377</brent_dated>
+</registro>
+<registro>
+	<fecha>2001-04</fecha>
+	<promedio_butano_80_propano_20_>0.2636</promedio_butano_80_propano_20_>
+	<flete>0.0432</flete>
+	<brent_dated>0.2099</brent_dated>
+</registro>
+<registro>
+	<fecha>2001-03</fecha>
+	<promedio_butano_80_propano_20_>0.3004</promedio_butano_80_propano_20_>
+	<flete>0.044</flete>
+	<brent_dated>0.1956</brent_dated>
+</registro>
+<registro>
+	<fecha>2001-02</fecha>
+	<promedio_butano_80_propano_20_>0.3152</promedio_butano_80_propano_20_>
+	<flete>0.0488</flete>
+	<brent_dated>0.2169</brent_dated>
+</registro>
+<registro>
+	<fecha>2001-01</fecha>
+	<promedio_butano_80_propano_20_>0.3446</promedio_butano_80_propano_20_>
+	<flete>0.0458</flete>
+	<brent_dated>0.1982</brent_dated>
+</registro>
+<registro>
+	<fecha>2000-12</fecha>
+	<promedio_butano_80_propano_20_>0.3543</promedio_butano_80_propano_20_>
+	<flete>0.0474</flete>
+	<brent_dated>0.2027</brent_dated>
+</registro>
+<registro>
+	<fecha>2000-11</fecha>
+	<promedio_butano_80_propano_20_>0.3966</promedio_butano_80_propano_20_>
+	<flete>0.0496</flete>
+	<brent_dated>0.2771</brent_dated>
+</registro>
+<registro>
+	<fecha>2000-10</fecha>
+	<promedio_butano_80_propano_20_>0.3859</promedio_butano_80_propano_20_>
+	<flete>0.0497</flete>
+	<brent_dated>0.2632</brent_dated>
+</registro>
+<registro>
+	<fecha>2000-09</fecha>
+	<promedio_butano_80_propano_20_>0.342</promedio_butano_80_propano_20_>
+	<flete>0.0487</flete>
+	<brent_dated>0.2733</brent_dated>
+</registro>
+<registro>
+	<fecha>2000-08</fecha>
+	<promedio_butano_80_propano_20_>0.3097</promedio_butano_80_propano_20_>
+	<flete>0.0492</flete>
+	<brent_dated>0.2425</brent_dated>
+</registro>
+<registro>
+	<fecha>2000-07</fecha>
+	<promedio_butano_80_propano_20_>0.2976</promedio_butano_80_propano_20_>
+	<flete>0.0474</flete>
+	<brent_dated>0.2208</brent_dated>
+</registro>
+<registro>
+	<fecha>2000-06</fecha>
+	<promedio_butano_80_propano_20_>0.2694</promedio_butano_80_propano_20_>
+	<flete>0.0469</flete>
+	<brent_dated>0.2287</brent_dated>
+</registro>
+<registro>
+	<fecha>2000-05</fecha>
+	<promedio_butano_80_propano_20_>0.2471</promedio_butano_80_propano_20_>
+	<flete>0.0469</flete>
+	<brent_dated>0.2229</brent_dated>
+</registro>
+<registro>
+	<fecha>2000-04</fecha>
+	<promedio_butano_80_propano_20_>0.2896</promedio_butano_80_propano_20_>
+	<flete>0.0438</flete>
+	<brent_dated>0.1746</brent_dated>
+</registro>
+<registro>
+	<fecha>2000-03</fecha>
+	<promedio_butano_80_propano_20_>0.3275</promedio_butano_80_propano_20_>
+	<flete>0.0368</flete>
+	<brent_dated>0.2059</brent_dated>
+</registro>
+<registro>
+	<fecha>2000-02</fecha>
+	<promedio_butano_80_propano_20_>0.2834</promedio_butano_80_propano_20_>
+	<flete>0.0483</flete>
+	<brent_dated>0.2066</brent_dated>
+</registro>
+<registro>
+	<fecha>2000-01</fecha>
+	<promedio_butano_80_propano_20_>0.257</promedio_butano_80_propano_20_>
+	<flete>0.0419</flete>
+	<brent_dated>0.1832</brent_dated>
+</registro>
+<registro>
+	<fecha>1999-12</fecha>
+	<promedio_butano_80_propano_20_>0.2198</promedio_butano_80_propano_20_>
+	<flete>0.0396</flete>
+	<brent_dated>0.1839</brent_dated>
+</registro>
+<registro>
+	<fecha>1999-11</fecha>
+	<promedio_butano_80_propano_20_>0.2141</promedio_butano_80_propano_20_>
+	<flete>0.0363</flete>
+	<brent_dated>0.1739</brent_dated>
+</registro>
+<registro>
+	<fecha>1999-10</fecha>
+	<promedio_butano_80_propano_20_>0.2254</promedio_butano_80_propano_20_>
+	<flete>0.0313</flete>
+	<brent_dated>0.1497</brent_dated>
+</registro>
+<registro>
+	<fecha>1999-09</fecha>
+	<promedio_butano_80_propano_20_>0.2394</promedio_butano_80_propano_20_>
+	<flete>0.0319</flete>
+	<brent_dated>0.1559</brent_dated>
+</registro>
+<registro>
+	<fecha>1999-08</fecha>
+	<promedio_butano_80_propano_20_>0.2293</promedio_butano_80_propano_20_>
+	<flete>0.0316</flete>
+	<brent_dated>0.1395</brent_dated>
+</registro>
+<registro>
+	<fecha>1999-07</fecha>
+	<promedio_butano_80_propano_20_>0.1643</promedio_butano_80_propano_20_>
+	<flete>0.0324</flete>
+	<brent_dated>0.1339</brent_dated>
+</registro>
+<registro>
+	<fecha>1999-06</fecha>
+	<promedio_butano_80_propano_20_>0.1323</promedio_butano_80_propano_20_>
+	<flete>0.0279</flete>
+	<brent_dated>0.111</brent_dated>
+</registro>
+<registro>
+	<fecha>1999-05</fecha>
+	<promedio_butano_80_propano_20_>0.1216</promedio_butano_80_propano_20_>
+	<flete>0.0264</flete>
+	<brent_dated>0.1047</brent_dated>
+</registro>
+<registro>
+	<fecha>1999-04</fecha>
+	<promedio_butano_80_propano_20_>0.11</promedio_butano_80_propano_20_>
+	<flete>0.0243</flete>
+	<brent_dated>0.104</brent_dated>
+</registro>
+<registro>
+	<fecha>1999-03</fecha>
+	<promedio_butano_80_propano_20_>0.0973</promedio_butano_80_propano_20_>
+	<flete>0.0253</flete>
+	<brent_dated>0.0837</brent_dated>
+</registro>
+<registro>
+	<fecha>1999-02</fecha>
+	<promedio_butano_80_propano_20_>0.0973</promedio_butano_80_propano_20_>
+	<flete>0.0245</flete>
+	<brent_dated>0.0665</brent_dated>
+</registro>
+<registro>
+	<fecha>1999-01</fecha>
+	<promedio_butano_80_propano_20_>0.1218</promedio_butano_80_propano_20_>
+	<flete>0.025</flete>
+	<brent_dated>0.0696</brent_dated>
+</registro>
+<registro>
+	<fecha>1998-12</fecha>
+	<promedio_butano_80_propano_20_>0.1621</promedio_butano_80_propano_20_>
+	<flete>0.0235</flete>
+	<brent_dated>0.0614</brent_dated>
+</registro>
+<registro>
+	<fecha>1998-11</fecha>
+	<promedio_butano_80_propano_20_>0.1557</promedio_butano_80_propano_20_>
+	<flete>0.0258</flete>
+	<brent_dated>0.0686</brent_dated>
+</registro>
+<registro>
+	<fecha>1998-10</fecha>
+	<promedio_butano_80_propano_20_>0.122</promedio_butano_80_propano_20_>
+	<flete>0.0263</flete>
+	<brent_dated>0.077</brent_dated>
+</registro>
+<registro>
+	<fecha>1998-09</fecha>
+	<promedio_butano_80_propano_20_>0.0933</promedio_butano_80_propano_20_>
+	<flete>0.026</flete>
+	<brent_dated>0.0846</brent_dated>
+</registro>
+<registro>
+	<fecha>1998-08</fecha>
+	<promedio_butano_80_propano_20_>0.0935</promedio_butano_80_propano_20_>
+	<flete>0.0273</flete>
+	<brent_dated>0.0793</brent_dated>
+</registro>
+<registro>
+	<fecha>1998-07</fecha>
+	<promedio_butano_80_propano_20_>0.0926</promedio_butano_80_propano_20_>
+	<flete>0.0275</flete>
+	<brent_dated>0.0804</brent_dated>
+</registro>
+<registro>
+	<fecha>1998-06</fecha>
+	<promedio_butano_80_propano_20_>0.0985</promedio_butano_80_propano_20_>
+	<flete>0.0288</flete>
+	<brent_dated>0.0802</brent_dated>
+</registro>
+<registro>
+	<fecha>1998-05</fecha>
+	<promedio_butano_80_propano_20_>0.1062</promedio_butano_80_propano_20_>
+	<flete>0.0285</flete>
+	<brent_dated>0.0952</brent_dated>
+</registro>
+<registro>
+	<fecha>1998-04</fecha>
+	<promedio_butano_80_propano_20_>0.1068</promedio_butano_80_propano_20_>
+	<flete>0.0291</flete>
+	<brent_dated>0.0904</brent_dated>
+</registro>
+<registro>
+	<fecha>1998-03</fecha>
+	<promedio_butano_80_propano_20_>0.1199</promedio_butano_80_propano_20_>
+	<flete>0.0293</flete>
+	<brent_dated>0.0884</brent_dated>
+</registro>
+<registro>
+	<fecha>1998-02</fecha>
+	<promedio_butano_80_propano_20_>0.1255</promedio_butano_80_propano_20_>
+	<flete>0.03</flete>
+	<brent_dated>0.0938</brent_dated>
+</registro>
+<registro>
+	<fecha>1998-01</fecha>
+	<promedio_butano_80_propano_20_>0.154</promedio_butano_80_propano_20_>
+	<flete>0.03</flete>
+	<brent_dated>0.1021</brent_dated>
+</registro>
+<registro>
+	<fecha>1997-12</fecha>
+	<promedio_butano_80_propano_20_>0.1888</promedio_butano_80_propano_20_>
+	<flete>0.0329</flete>
+	<brent_dated>0.1123</brent_dated>
+</registro>
+<registro>
+	<fecha>1997-11</fecha>
+	<promedio_butano_80_propano_20_>0.1892</promedio_butano_80_propano_20_>
+	<flete>0.0387</flete>
+	<brent_dated>0.1225</brent_dated>
+</registro>
+<registro>
+	<fecha>1997-10</fecha>
+	<promedio_butano_80_propano_20_>0.1859</promedio_butano_80_propano_20_>
+	<flete>0.0392</flete>
+	<brent_dated>0.1289</brent_dated>
+</registro>
+<registro>
+	<fecha>1997-09</fecha>
+	<promedio_butano_80_propano_20_>0.1736</promedio_butano_80_propano_20_>
+	<flete>0.0381</flete>
+	<brent_dated>0.1217</brent_dated>
+</registro>
+<registro>
+	<fecha>1997-08</fecha>
+	<promedio_butano_80_propano_20_>0.1686</promedio_butano_80_propano_20_>
+	<flete>0.0355</flete>
+	<brent_dated>0.1268</brent_dated>
+</registro>
+<registro>
+	<fecha>1997-07</fecha>
+	<promedio_butano_80_propano_20_>0.1576</promedio_butano_80_propano_20_>
+	<flete>0.0344</flete>
+	<brent_dated>0.1222</brent_dated>
+</registro>
+<registro>
+	<fecha>1997-06</fecha>
+	<promedio_butano_80_propano_20_>0.1535</promedio_butano_80_propano_20_>
+	<flete>0.0333</flete>
+	<brent_dated>0.1122</brent_dated>
+</registro>
+<registro>
+	<fecha>1997-05</fecha>
+	<promedio_butano_80_propano_20_>0.1535</promedio_butano_80_propano_20_>
+	<flete>0.0294</flete>
+	<brent_dated>0.1202</brent_dated>
+</registro>
+<registro>
+	<fecha>1997-04</fecha>
+	<promedio_butano_80_propano_20_>0.171</promedio_butano_80_propano_20_>
+	<flete>0.0278</flete>
+	<brent_dated>0.1102</brent_dated>
+</registro>
+<registro>
+	<fecha>1997-03</fecha>
+	<promedio_butano_80_propano_20_>0.2061</promedio_butano_80_propano_20_>
+	<flete>0.0272</flete>
+	<brent_dated>0.1199</brent_dated>
+</registro>
+<registro>
+	<fecha>1997-02</fecha>
+	<promedio_butano_80_propano_20_>0.2439</promedio_butano_80_propano_20_>
+	<flete>0.0319</flete>
+	<brent_dated>0.1292</brent_dated>
+</registro>
+<registro>
+	<fecha>1997-01</fecha>
+	<promedio_butano_80_propano_20_>0.2516</promedio_butano_80_propano_20_>
+	<flete>0.0352</flete>
+	<brent_dated>0.1384</brent_dated>
+</registro>
+</resultado>

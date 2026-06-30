@@ -13,7 +13,7 @@ Output shape per entry:
 
 import json
 from pathlib import Path
-from xml.etree import ElementTree as ET
+from defusedxml import ElementTree as ET
 
 _HERE    = Path(__file__).parent.parent          # controlled_vocabularies/
 RDF_FILE = _HERE / "personal_data.rdf"
@@ -27,7 +27,7 @@ NS = {
 CONCEPT_TYPE = "http://www.w3.org/2004/02/skos/core#Concept"
 
 
-def _en(element: ET.Element, tag: str) -> str:
+def _en(element: "xml.etree.ElementTree.Element", tag: str) -> str:
     for child in element.findall(f"skos:{tag}", NS):
         lang = child.get("{http://www.w3.org/XML/1998/namespace}lang", "")
         if lang == "en" and child.text:

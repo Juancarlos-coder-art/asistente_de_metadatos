@@ -1,0 +1,1515 @@
+{
+  "id": "C00036A_000005",
+  "urn": "urn:siemac:org.siemac.metamac.infomodel.statisticalresources.Dataset=ISTAC:C00036A_000005(1.0)",
+  "selfLink": {
+    "kind": "statisticalResources#dataset",
+    "href": "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00036A_000005/1.0"
+  },
+  "parentLink": {
+    "kind": "statisticalResources#datasets",
+    "href": "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets"
+  },
+  "name": {
+    "text": [
+      {
+        "value": "Índice de Donación en Canarias por años",
+        "lang": "es"
+      }
+    ]
+  },
+  "description": {
+    "text": [
+      {
+        "value": "<font face=\"Arial, Verdana, sans-serif\"><span style=\"font-size: 11px;\">Información a nivel regional y anual del índice de donación, a partir de donantes fallecidos exclusivamente, por cada millón de habitantes&nbsp;</span></font>",
+        "lang": "es"
+      }
+    ]
+  },
+  "selectedLanguages": {
+    "language": [
+      "es",
+      "en",
+      "ca",
+      "eu",
+      "gl"
+    ],
+    "total": 5
+  },
+  "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/istac/statistical-visualizer/visualizer/data.html?resourceType=dataset&agencyId=ISTAC&resourceId=C00036A_000005&version=1.0",
+  "metadata": {
+    "language": {
+      "id": "es",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_LANGUAGE_639_1(01.000).es",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_LANGUAGE_639_1/01.000/codes/es"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Spanish; Castilian",
+            "lang": "en"
+          },
+          {
+            "value": "Español (o Castellano)",
+            "lang": "es"
+          }
+        ]
+      },
+      "kind": "structuralResources#code"
+    },
+    "languages": {
+      "resource": [
+        {
+          "id": "es",
+          "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_LANGUAGE_639_1(01.000).es",
+          "selfLink": {
+            "kind": "structuralResources#code",
+            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_LANGUAGE_639_1/01.000/codes/es"
+          },
+          "name": {
+            "text": [
+              {
+                "value": "Spanish; Castilian",
+                "lang": "en"
+              },
+              {
+                "value": "Español (o Castellano)",
+                "lang": "es"
+              }
+            ]
+          },
+          "kind": "structuralResources#code"
+        }
+      ],
+      "total": 1
+    },
+    "statisticalOperation": {
+      "id": "C00036A",
+      "urn": "urn:siemac:org.siemac.metamac.infomodel.statisticaloperations.Operation=C00036A",
+      "selfLink": {
+        "kind": "statisticalOperations#operation",
+        "href": "https://datos.canarias.es/api/estadisticas/operations/latest/operations/C00036A"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Recopilación de Estadísticas sobre Donaciones y Trasplantes de Órganos",
+            "lang": "es"
+          }
+        ]
+      },
+      "kind": "statisticalOperations#operation"
+    },
+    "type": "DATASET",
+    "creator": {
+      "id": "A05003423",
+      "urn": "urn:sdmx:org.sdmx.infomodel.base.OrganisationUnit=ISTAC:GOBCAN(05.000).A05003423",
+      "selfLink": {
+        "kind": "structuralResources#organisationUnit",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/organisationunitschemes/ISTAC/GOBCAN/05.000/organisationunits/A05003423"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Instituto Canario de Estadística",
+            "lang": "es"
+          }
+        ]
+      },
+      "kind": "structuralResources#organisationUnit"
+    },
+    "lastUpdate": "2026-02-13T12:58:00.972Z",
+    "publishers": {
+      "resource": [
+        {
+          "id": "A05003423",
+          "urn": "urn:sdmx:org.sdmx.infomodel.base.OrganisationUnit=ISTAC:GOBCAN(05.000).A05003423",
+          "selfLink": {
+            "kind": "structuralResources#organisationUnit",
+            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/organisationunitschemes/ISTAC/GOBCAN/05.000/organisationunits/A05003423"
+          },
+          "name": {
+            "text": [
+              {
+                "value": "Instituto Canario de Estadística",
+                "lang": "es"
+              }
+            ]
+          },
+          "kind": "structuralResources#organisationUnit"
+        }
+      ],
+      "total": 1
+    },
+    "isPartOf": {
+      "resource": [
+        {
+          "id": "C00036A_000001",
+          "urn": "urn:siemac:org.siemac.metamac.infomodel.statisticalresources.Collection=ISTAC:C00036A_000001",
+          "selfLink": {
+            "kind": "statisticalResources#collection",
+            "href": "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/collections/ISTAC/C00036A_000001"
+          },
+          "name": {
+            "text": [
+              {
+                "value": "Recopilación de Estadísticas sobre Donaciones y Trasplantes de Órganos / Series anuales. 2000-2025",
+                "lang": "es"
+              }
+            ]
+          },
+          "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/istac/statistical-visualizer/visualizer/collection.html?resourceType=collection&agencyId=ISTAC&resourceId=C00036A_000001",
+          "kind": "statisticalResources#collection"
+        }
+      ],
+      "total": 1
+    },
+    "rightsHolder": {
+      "contacts": {
+        "contact": [
+          {
+            "name": {
+              "text": [
+                {
+                  "value": "Instituto Canario de Estadística (ISTAC)",
+                  "lang": "es"
+                }
+              ]
+            },
+            "telephones": [
+              "928 89 92 60",
+              "922 92 28 01"
+            ],
+            "faxes": [
+              "928 89 92 75",
+              "922 92 28 40"
+            ],
+            "urls": [
+              "http://www.gobiernodecanarias.org/istac/"
+            ],
+            "emails": [
+              "consultas.istac@gobiernodecanarias.org"
+            ]
+          }
+        ],
+        "total": 1
+      },
+      "id": "ISTAC",
+      "nestedId": "ISTAC",
+      "urn": "urn:sdmx:org.sdmx.infomodel.base.Agency=SDMX:AGENCIES(1.0).ISTAC",
+      "selfLink": {
+        "kind": "structuralResources#agency",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/agencyschemes/SDMX/AGENCIES/1.0/agencies/ISTAC"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Canary Islands Statistics Institute (ISTAC)",
+            "lang": "en"
+          },
+          {
+            "value": "Instituto Canario de Estadística (ISTAC)",
+            "lang": "es"
+          }
+        ]
+      },
+      "kind": "structuralResources#agency"
+    },
+    "copyrightDate": 2026,
+    "license": {
+      "text": [
+        {
+          "value": "<a href=\"http://www.gobiernodecanarias.org/istac/aviso_legal.html\">Aviso Legal</a>",
+          "lang": "es"
+        }
+      ]
+    },
+    "maintainer": {
+      "id": "ISTAC",
+      "nestedId": "ISTAC",
+      "urn": "urn:sdmx:org.sdmx.infomodel.base.Agency=SDMX:AGENCIES(1.0).ISTAC",
+      "selfLink": {
+        "kind": "structuralResources#agency",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/agencyschemes/SDMX/AGENCIES/1.0/agencies/ISTAC"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Instituto Canario de Estadística (ISTAC)",
+            "lang": "es"
+          },
+          {
+            "value": "Canary Islands Statistics Institute (ISTAC)",
+            "lang": "en"
+          }
+        ]
+      },
+      "kind": "structuralResources#agency"
+    },
+    "version": "1.0",
+    "versionRationaleTypes": {
+      "versionRationaleType": [
+        "MAJOR_NEW_RESOURCE"
+      ],
+      "total": 1
+    },
+    "validFrom": "2026-02-13T12:58:46.649Z",
+    "nextVersion": "NON_SCHEDULED_UPDATE",
+    "dataProviders": {
+      "resource": [
+        {
+          "id": "AGE_ONT",
+          "urn": "urn:sdmx:org.sdmx.infomodel.base.DataProvider=ISTAC:DATA_PROVIDERS(01.000).AGE_ONT",
+          "selfLink": {
+            "kind": "structuralResources#dataProvider",
+            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/dataproviderschemes/ISTAC/DATA_PROVIDERS/01.000/dataproviders/AGE_ONT"
+          },
+          "name": {
+            "text": [
+              {
+                "value": "Organización Nacional de Transplantes",
+                "lang": "es"
+              }
+            ]
+          },
+          "kind": "structuralResources#dataProvider"
+        }
+      ],
+      "total": 1
+    },
+    "geographicCoverages": {
+      "resource": [
+        {
+          "id": "ES70",
+          "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES70",
+          "selfLink": {
+            "kind": "structuralResources#code",
+            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES70"
+          },
+          "name": {
+            "text": [
+              {
+                "value": "Canary Islands",
+                "lang": "en"
+              },
+              {
+                "value": "Canarias",
+                "lang": "es"
+              }
+            ]
+          },
+          "kind": "structuralResources#code"
+        }
+      ],
+      "total": 1
+    },
+    "temporalCoverages": {
+      "item": [
+        {
+          "id": "2010",
+          "name": {
+            "text": [
+              {
+                "value": "2010",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2009",
+          "name": {
+            "text": [
+              {
+                "value": "2009",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2008",
+          "name": {
+            "text": [
+              {
+                "value": "2008",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2007",
+          "name": {
+            "text": [
+              {
+                "value": "2007",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2006",
+          "name": {
+            "text": [
+              {
+                "value": "2006",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2005",
+          "name": {
+            "text": [
+              {
+                "value": "2005",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2004",
+          "name": {
+            "text": [
+              {
+                "value": "2004",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2025",
+          "name": {
+            "text": [
+              {
+                "value": "2025",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2024",
+          "name": {
+            "text": [
+              {
+                "value": "2024",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2023",
+          "name": {
+            "text": [
+              {
+                "value": "2023",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2022",
+          "name": {
+            "text": [
+              {
+                "value": "2022",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2021",
+          "name": {
+            "text": [
+              {
+                "value": "2021",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2020",
+          "name": {
+            "text": [
+              {
+                "value": "2020",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2019",
+          "name": {
+            "text": [
+              {
+                "value": "2019",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2018",
+          "name": {
+            "text": [
+              {
+                "value": "2018",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2017",
+          "name": {
+            "text": [
+              {
+                "value": "2017",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2016",
+          "name": {
+            "text": [
+              {
+                "value": "2016",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2015",
+          "name": {
+            "text": [
+              {
+                "value": "2015",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2014",
+          "name": {
+            "text": [
+              {
+                "value": "2014",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2013",
+          "name": {
+            "text": [
+              {
+                "value": "2013",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2012",
+          "name": {
+            "text": [
+              {
+                "value": "2012",
+                "lang": "es"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2011",
+          "name": {
+            "text": [
+              {
+                "value": "2011",
+                "lang": "es"
+              }
+            ]
+          }
+        }
+      ],
+      "total": 22
+    },
+    "measureCoverages": {
+      "resource": [
+        {
+          "id": "DONACIONES_ORGANOS__INDICE",
+          "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00036A(01.000).DONACIONES_ORGANOS__INDICE",
+          "selfLink": {
+            "kind": "structuralResources#concept",
+            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/conceptschemes/ISTAC/CSM_C00036A/01.000/concepts/DONACIONES_ORGANOS__INDICE"
+          },
+          "name": {
+            "text": [
+              {
+                "value": "Índice de donación anual de órganos por cada millón de habitantes",
+                "lang": "es"
+              }
+            ]
+          },
+          "kind": "structuralResources#concept"
+        }
+      ],
+      "total": 1
+    },
+    "geographicGranularities": {
+      "resource": [
+        {
+          "id": "REGIONS",
+          "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_GRANULARIDADES_GEOGRAFICAS(04.001).REGIONS",
+          "selfLink": {
+            "kind": "structuralResources#code",
+            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/04.001/codes/REGIONS"
+          },
+          "name": {
+            "text": [
+              {
+                "value": "Comunitats autònomes",
+                "lang": "ca"
+              },
+              {
+                "value": "Regions",
+                "lang": "en"
+              },
+              {
+                "value": "Comunidades autónomas",
+                "lang": "es"
+              }
+            ]
+          },
+          "kind": "structuralResources#code"
+        }
+      ],
+      "total": 1
+    },
+    "temporalGranularities": {
+      "resource": [
+        {
+          "id": "A",
+          "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_FREQ(01.003).A",
+          "selfLink": {
+            "kind": "structuralResources#code",
+            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_FREQ/01.003/codes/A"
+          },
+          "name": {
+            "text": [
+              {
+                "value": "Annual",
+                "lang": "en"
+              },
+              {
+                "value": "Anual",
+                "lang": "ca"
+              },
+              {
+                "value": "Anual",
+                "lang": "es"
+              }
+            ]
+          },
+          "kind": "structuralResources#code"
+        }
+      ],
+      "total": 1
+    },
+    "dateStart": {
+      "text": [
+        {
+          "value": "2004",
+          "lang": "en"
+        },
+        {
+          "value": "2004",
+          "lang": "es"
+        },
+        {
+          "value": "2004",
+          "lang": "ca"
+        }
+      ]
+    },
+    "dateEnd": {
+      "text": [
+        {
+          "value": "2025",
+          "lang": "en"
+        },
+        {
+          "value": "2025",
+          "lang": "es"
+        },
+        {
+          "value": "2025",
+          "lang": "ca"
+        }
+      ]
+    },
+    "subjectAreas": {
+      "resource": [
+        {
+          "id": "0320000",
+          "nestedId": "0300000.0320000",
+          "urn": "urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ISTAC:TEMAS_CANARIAS(02.000).0300000.0320000",
+          "selfLink": {
+            "kind": "structuralResources#category",
+            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/categoryschemes/ISTAC/TEMAS_CANARIAS/02.000/categories/0300000.0320000"
+          },
+          "name": {
+            "text": [
+              {
+                "value": "Salud",
+                "lang": "es"
+              },
+              {
+                "value": "Health",
+                "lang": "en"
+              }
+            ]
+          },
+          "kind": "structuralResources#category"
+        }
+      ],
+      "total": 1
+    },
+    "relatedDsd": {
+      "heading": {
+        "dimensionId": [
+          "MEDIDAS"
+        ],
+        "total": 1
+      },
+      "stub": {
+        "dimensionId": [
+          "TIME_PERIOD"
+        ],
+        "total": 1
+      },
+      "autoOpen": true,
+      "showNullValuesByDefault": true,
+      "showZeroValuesByDefault": true,
+      "showDecimals": 2,
+      "id": "DSD_C00036A_00002",
+      "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ISTAC:DSD_C00036A_00002(01.000)",
+      "selfLink": {
+        "kind": "structuralResources#dataStructure",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/datastructures/ISTAC/DSD_C00036A_00002/01.000"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Donantes de órganos. Indicadores, territorio y periodos",
+            "lang": "es"
+          }
+        ]
+      },
+      "kind": "structuralResources#dataStructure"
+    },
+    "dimensions": {
+      "dimension": [
+        {
+          "id": "TIME_PERIOD",
+          "name": {
+            "text": [
+              {
+                "value": "Time period",
+                "lang": "en"
+              },
+              {
+                "value": "Periodo",
+                "lang": "es"
+              }
+            ]
+          },
+          "type": "TIME_DIMENSION",
+          "dimensionValues": {
+            "value": [
+              {
+                "id": "2025",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2025",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2025",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2025",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2024",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2024",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2024",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2024",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2023",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2023",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2023",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2023",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2022",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2022",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2022",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2022",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2021",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2021",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2021",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2021",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2020",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2020",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2020",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2020",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2019",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2019",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2019",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2019",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2018",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2018",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2018",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2018",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2017",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2017",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2017",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2017",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2016",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2016",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2016",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2016",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2015",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2015",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2015",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2015",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2014",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2014",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2014",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2014",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2013",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2013",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2013",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2013",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2012",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2012",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2012",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2012",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2011",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2011",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2011",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2011",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2010",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2010",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2010",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2010",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2009",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2009",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2009",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2009",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2008",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2008",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2008",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2008",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2007",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2007",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2007",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2007",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2006",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2006",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2006",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2006",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2005",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2005",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2005",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2005",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              },
+              {
+                "id": "2004",
+                "name": {
+                  "text": [
+                    {
+                      "value": "2004",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "2004",
+                      "lang": "es"
+                    },
+                    {
+                      "value": "2004",
+                      "lang": "ca"
+                    }
+                  ]
+                },
+                "temporalGranularity": "YEARLY"
+              }
+            ],
+            "total": 22
+          },
+          "pluralName": {
+            "text": [
+              {
+                "value": "Periodos",
+                "lang": "es"
+              },
+              {
+                "value": "Time periods",
+                "lang": "en"
+              }
+            ]
+          },
+          "showCode": false
+        },
+        {
+          "id": "MEDIDAS",
+          "name": {
+            "text": [
+              {
+                "value": "Indicador",
+                "lang": "es"
+              },
+              {
+                "value": "Indicator",
+                "lang": "en"
+              }
+            ]
+          },
+          "type": "MEASURE_DIMENSION",
+          "dimensionValues": {
+            "value": [
+              {
+                "id": "DONACIONES_ORGANOS__INDICE",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00036A(01.000).DONACIONES_ORGANOS__INDICE",
+                "selfLink": {
+                  "kind": "structuralResources#concept",
+                  "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00036A/01.000/concepts/DONACIONES_ORGANOS__INDICE"
+                },
+                "name": {
+                  "text": [
+                    {
+                      "value": "Índice de donación anual de órganos por cada millón de habitantes",
+                      "lang": "es"
+                    }
+                  ]
+                },
+                "kind": "structuralResources#concept"
+              }
+            ],
+            "total": 1
+          },
+          "pluralName": {
+            "text": [
+              {
+                "value": "Indicadores",
+                "lang": "es"
+              },
+              {
+                "value": "Indicators",
+                "lang": "en"
+              }
+            ]
+          },
+          "showCode": false
+        }
+      ],
+      "total": 2
+    },
+    "attributes": {
+      "attribute": [
+        {
+          "id": "TERRITORIO",
+          "name": {
+            "text": [
+              {
+                "value": "Territorio",
+                "lang": "es"
+              },
+              {
+                "value": "Reference area",
+                "lang": "en"
+              }
+            ]
+          },
+          "attachmentLevel": "DATASET",
+          "attributeValues": {
+            "value": [
+              {
+                "id": "ES70",
+                "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES70",
+                "selfLink": {
+                  "kind": "structuralResources#code",
+                  "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES70"
+                },
+                "name": {
+                  "text": [
+                    {
+                      "value": "Canary Islands",
+                      "lang": "en"
+                    },
+                    {
+                      "value": "Canarias",
+                      "lang": "es"
+                    }
+                  ]
+                },
+                "kind": "structuralResources#code"
+              }
+            ],
+            "total": 1
+          },
+          "type": "SPATIAL"
+        },
+        {
+          "id": "ESTADO_OBSERVACION",
+          "name": {
+            "text": [
+              {
+                "value": "Observation status",
+                "lang": "en"
+              },
+              {
+                "value": "Estado de la observación",
+                "lang": "es"
+              }
+            ]
+          },
+          "attachmentLevel": "PRIMARY_MEASURE",
+          "type": "OTHER"
+        },
+        {
+          "id": "CONFIDENCIALIDAD_OBSERVACION",
+          "name": {
+            "text": [
+              {
+                "value": "Observation status",
+                "lang": "en"
+              },
+              {
+                "value": "Estado de la observación",
+                "lang": "es"
+              }
+            ]
+          },
+          "attachmentLevel": "PRIMARY_MEASURE",
+          "type": "OTHER"
+        }
+      ],
+      "total": 3
+    },
+    "formatExtentObservations": 22,
+    "formatExtentDimensions": 2,
+    "formatExtentTableSize": 22,
+    "updateFrequency": {
+      "id": "A",
+      "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_FREQ(01.003).A",
+      "selfLink": {
+        "kind": "structuralResources#code",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_FREQ/01.003/codes/A"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Anual",
+            "lang": "es"
+          },
+          {
+            "value": "Anual",
+            "lang": "ca"
+          },
+          {
+            "value": "Annual",
+            "lang": "en"
+          }
+        ]
+      },
+      "kind": "structuralResources#code"
+    },
+    "statisticOfficiality": {
+      "id": "OFFICIAL",
+      "name": {
+        "text": [
+          {
+            "value": "Estadística oficial",
+            "lang": "es"
+          }
+        ]
+      }
+    },
+    "bibliographicCitation": {
+      "text": [
+        {
+          "value": "A05003423 (2026) Índice de Donación en Canarias por años (v1.0) [dataset]. Instituto Canario de Estadística (https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00036A_000005/1.0)",
+          "lang": "es"
+        }
+      ]
+    },
+    "keepAllData": true
+  },
+  "data": {
+    "dimensions": {
+      "dimension": [
+        {
+          "dimensionId": "TIME_PERIOD",
+          "representations": {
+            "representation": [
+              {
+                "code": "2004",
+                "index": 0
+              },
+              {
+                "code": "2005",
+                "index": 1
+              },
+              {
+                "code": "2006",
+                "index": 2
+              },
+              {
+                "code": "2007",
+                "index": 3
+              },
+              {
+                "code": "2008",
+                "index": 4
+              },
+              {
+                "code": "2009",
+                "index": 5
+              },
+              {
+                "code": "2010",
+                "index": 6
+              },
+              {
+                "code": "2011",
+                "index": 7
+              },
+              {
+                "code": "2012",
+                "index": 8
+              },
+              {
+                "code": "2013",
+                "index": 9
+              },
+              {
+                "code": "2014",
+                "index": 10
+              },
+              {
+                "code": "2015",
+                "index": 11
+              },
+              {
+                "code": "2016",
+                "index": 12
+              },
+              {
+                "code": "2017",
+                "index": 13
+              },
+              {
+                "code": "2018",
+                "index": 14
+              },
+              {
+                "code": "2019",
+                "index": 15
+              },
+              {
+                "code": "2020",
+                "index": 16
+              },
+              {
+                "code": "2021",
+                "index": 17
+              },
+              {
+                "code": "2022",
+                "index": 18
+              },
+              {
+                "code": "2023",
+                "index": 19
+              },
+              {
+                "code": "2024",
+                "index": 20
+              },
+              {
+                "code": "2025",
+                "index": 21
+              }
+            ],
+            "total": 22
+          }
+        },
+        {
+          "dimensionId": "MEDIDAS",
+          "representations": {
+            "representation": [
+              {
+                "code": "DONACIONES_ORGANOS__INDICE",
+                "index": 0
+              }
+            ],
+            "total": 1
+          }
+        }
+      ],
+      "total": 2
+    },
+    "attributes": {
+      "attribute": [
+        {
+          "value": "ES70",
+          "id": "TERRITORIO"
+        }
+      ],
+      "total": 1
+    },
+    "observations": "35.5 | 45.7 | 39 | 44.3 | 44.7 | 33.3 | 35.4 | 34.3 | 26.4 | 32.6 | 33.7 | 41.4 | 46.7 | 43.8 | 49.5 | 50.7 | 51.6 | 44.7 | 54.8 | 53.6 | 58.6 | 50"
+  },
+  "kind": "statisticalResources#dataset"
+}

@@ -1,0 +1,496 @@
+[
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. Dr. Peset",
+    "nombre": "CLÍNICA DIAVERUM ALFAFAR",
+    "domicilio": "C/ Profesora Ana Rojo, 1",
+    "telefono": "961801811",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "ALFAFAR",
+    "ubicacion": {
+      "lon": -0.383138806,
+      "lat": 39.417505027
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. La Fe",
+    "nombre": "CLÍNICA DIAVERUM CATARROJA",
+    "domicilio": "C/ Luis Vives, 20",
+    "telefono": "960905207",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "CATARROJA",
+    "ubicacion": {
+      "lon": -0.399167855,
+      "lat": 39.401842016
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. Arnau-Lliria",
+    "nombre": "CLÍNICA DIAVERUM PATERNA",
+    "domicilio": "C/ Vicente Cardona, 22",
+    "telefono": "960905150",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "PATERNA",
+    "ubicacion": {
+      "lon": -0.442164336,
+      "lat": 39.499540222
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. Sagunto",
+    "nombre": "CLÍNICA DIAVERUM PUERTO SAGUNTO",
+    "domicilio": "C/ Urani, 27",
+    "telefono": "961801690",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "PUERTO SAGUNTO",
+    "ubicacion": {
+      "lon": -0.217082376,
+      "lat": 39.668473525
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. Gandía",
+    "nombre": "CLÍNICA DIAVERUM GANDÍA",
+    "domicilio": "C/ Jaume II, 51-55",
+    "telefono": "960901184",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "GANDÍA",
+    "ubicacion": {
+      "lon": -0.181829045,
+      "lat": 38.975225901
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. Clínico",
+    "nombre": "Bbraun VALNEFRON",
+    "domicilio": "C/ Serpis, 8",
+    "telefono": "963613908",
+    "gestionado_por": "BBRAUN",
+    "ciudad": "VALENCIA",
+    "ubicacion": {
+      "lon": -0.349361496,
+      "lat": 39.476037994
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. General",
+    "nombre": "CLÍNICA DIAVERUM VALENCIA",
+    "domicilio": "C/ Alcàsser, 54",
+    "telefono": null,
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "VALENCIA",
+    "ubicacion": {
+      "lon": -0.410711244,
+      "lat": 39.471828476
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. General",
+    "nombre": "CLÍNICA DIAVERUM TORRENT",
+    "domicilio": "C/ Músic José Ortí Soriano, 25",
+    "telefono": null,
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "TORRENT",
+    "ubicacion": {
+      "lon": -0.457154783,
+      "lat": 39.43977239
+    }
+  },
+  {
+    "provincia": "CASTELLÓN",
+    "area_de_salud": "H. Vinaròs",
+    "nombre": "CLÍNICA DIAVERUM VINARÒS",
+    "domicilio": "C/ Ruiz Picasso, 35",
+    "telefono": "96442034",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "VINARÒS",
+    "ubicacion": {
+      "lon": 0.468871845,
+      "lat": 40.467768726
+    }
+  },
+  {
+    "provincia": "CASTELLÓN",
+    "area_de_salud": "HGUCS",
+    "nombre": "H. GENERAL",
+    "domicilio": "Avda. Benicàssim, s/n",
+    "telefono": "964725223",
+    "gestionado_por": "SEGURIDAD SOCIAL",
+    "ciudad": "CASTELLÓ",
+    "ubicacion": {
+      "lon": -0.039429661,
+      "lat": 39.998652497
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud San Juan",
+    "nombre": "NEFROSOL SALUD",
+    "domicilio": "Avda. La Goleta, 17",
+    "telefono": "626429193",
+    "gestionado_por": "RIVERA SALUD",
+    "ciudad": "ALICANTE",
+    "ubicacion": {
+      "lon": -0.42413964,
+      "lat": 38.362766103
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud Marina Baixa",
+    "nombre": "H CLÍNICA BENIDORM",
+    "domicilio": "Avda. Alfonso Puchades, 8",
+    "telefono": "965853850",
+    "gestionado_por": "CENTRO MÉDICO SALUS BALEARES",
+    "ciudad": "BENIDORM",
+    "ubicacion": {
+      "lon": -0.131084559,
+      "lat": 38.54382524
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud Elche",
+    "nombre": "CLÍNICA DIAVERUM ELCHE",
+    "domicilio": "Avda. De Jubalcoi, 36",
+    "telefono": "966901336",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "ELCHE",
+    "ubicacion": {
+      "lon": -0.670356201,
+      "lat": 38.279529362
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud Elche",
+    "nombre": "CASAS REPOSO Y SANATORIO PPTO. SOCORRO",
+    "domicilio": "C/ Vicent Andrés Estellés, 3",
+    "telefono": "965201100",
+    "gestionado_por": "CASA DE REPOSO Y SANATORIO PPTO. SOCORRO SA",
+    "ciudad": "ELCHE",
+    "ubicacion": {
+      "lon": -0.679956246,
+      "lat": 38.270905641
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud Alicante",
+    "nombre": "H. GENERAL ALICANTE",
+    "domicilio": "Avda. Sevilla, 5",
+    "telefono": "965357657",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "SANT VICENT DEL RASPEIG",
+    "ubicacion": {
+      "lon": -0.514159268,
+      "lat": 38.391863419
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud Marina Baixa",
+    "nombre": "H MARINA BAIXA VILLAJOYOSA",
+    "domicilio": "Avda. Alcalde En Jaume Botella Mayor, 7",
+    "telefono": "966 85 98 00",
+    "gestionado_por": "GENERALITAT VALENCIANA",
+    "ciudad": "VILLAJOYOSA",
+    "ubicacion": {
+      "lon": -0.198717817,
+      "lat": 38.526800926
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud Orihuela",
+    "nombre": "CLÍNICA DIAVERUM ORIHUELA",
+    "domicilio": "C/ Temístocles Almagro, 26-30",
+    "telefono": "966 901 510",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "ORIHUELA",
+    "ubicacion": {
+      "lon": -0.940051467,
+      "lat": 38.081053057
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. Dr. Peset",
+    "nombre": "CLÍNICA DIAVERUM NEFROCLUB",
+    "domicilio": "C/ Primero de Mayo, 16 bajo.",
+    "telefono": "963570012",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "VALENCIA",
+    "ubicacion": {
+      "lon": -0.459892061,
+      "lat": 39.474242087
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. La Fe",
+    "nombre": "CLÍNICA DIAVERUM GAMAPAL",
+    "domicilio": "C/. Reina Violante, s/n (Esq. Padre Barranco, 42)",
+    "telefono": "960905123 (tel. anterior de Pio XII)",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "VALENCIA",
+    "ubicacion": {
+      "lon": -0.403558295,
+      "lat": 39.487641314
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. Arnau-Lliria",
+    "nombre": "CLÍNICA DIAVERUM BURJASSOT",
+    "domicilio": "C/ Sèquia de Montcada, s/n",
+    "telefono": "963160586",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "BURJASSOT",
+    "ubicacion": {
+      "lon": -0.413863429,
+      "lat": 39.516270323
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. Arnau-Lliria",
+    "nombre": "CLÍNICA DIAVERUM LLÍRIA",
+    "domicilio": "C/ Ausias March, 20",
+    "telefono": "960905162",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "LLÍRIA",
+    "ubicacion": {
+      "lon": -0.600235043,
+      "lat": 39.630632014
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. Clínico",
+    "nombre": "BBraun MASSAMAGRELL",
+    "domicilio": "C/ San Miguel, 6",
+    "telefono": "964917230",
+    "gestionado_por": "BBRAUN",
+    "ciudad": "MASSAMAGRELL",
+    "ubicacion": {
+      "lon": -0.333417524,
+      "lat": 39.567399313
+    }
+  },
+  {
+    "provincia": "CASTELLÓN",
+    "area_de_salud": "HGUCS",
+    "nombre": "CLÍNICA DIAVERUM CASTELLÓ",
+    "domicilio": "C/ Puig, 10 - Bajo",
+    "telefono": "964233773",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "CASTELLÓ",
+    "ubicacion": {
+      "lon": -0.032516923,
+      "lat": 39.992100708
+    }
+  },
+  {
+    "provincia": "CASTELLÓN",
+    "area_de_salud": "H La Plana",
+    "nombre": "BBraun Avitum VALL D'UIXÒ",
+    "domicilio": "Avda. Corazon de Jesus, 157",
+    "telefono": "964663333",
+    "gestionado_por": "BBRAUN",
+    "ciudad": "VALL D’UIXÒ",
+    "ubicacion": {
+      "lon": -0.221257259,
+      "lat": 39.82279389
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud Alcoi",
+    "nombre": "H VIRGEN DE LOS LÍRIOS",
+    "domicilio": "C/ Caramanxel. s/n",
+    "telefono": "965 53 74 54",
+    "gestionado_por": "GENERALITAT VALENCIANA",
+    "ciudad": "ALICANTE",
+    "ubicacion": {
+      "lon": -0.472052933,
+      "lat": 38.70522427
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Alicante",
+    "nombre": "VITHAS H PERPETUO INTERNACIONAL",
+    "domicilio": "Plaza Doctor Gómez Ulla, 15",
+    "telefono": "965201100",
+    "gestionado_por": "VITHAS ALICANTE, SL",
+    "ciudad": "ALICANTE",
+    "ubicacion": {
+      "lon": -0.47756331,
+      "lat": 38.353457631
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud Elche – Crevillente",
+    "nombre": "H UNIVERSITARIO VINALOPÓ",
+    "domicilio": "C/ Tonico Sansano Mora, 14",
+    "telefono": "966679800",
+    "gestionado_por": "ELCHE CREVILLENTE SALUD",
+    "ciudad": "ELCHE",
+    "ubicacion": {
+      "lon": -0.715239281,
+      "lat": 38.254597726
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud Elda",
+    "nombre": "H GENERAL UNIVERSITARIO ELDA",
+    "domicilio": "Crtra. Sax – La Torreta, s/n",
+    "telefono": "966 98 90 71",
+    "gestionado_por": "GENERALITAT VALENCIANA",
+    "ciudad": "ELDA",
+    "ubicacion": {
+      "lon": -0.8114776,
+      "lat": 38.5019665
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud Torrevieja",
+    "nombre": "H UNIVERSITARIO TORREVIEJA",
+    "domicilio": "Carretera CV 95, s/n",
+    "telefono": "965 72 13 49",
+    "gestionado_por": "TORREVIEJA SALUD UTE LEY 18/82",
+    "ciudad": "TORREVIEJA",
+    "ubicacion": {
+      "lon": -0.710228179,
+      "lat": 37.961695795
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. Requena",
+    "nombre": "REQUENA",
+    "domicilio": "C/ Casablanca, s/n",
+    "telefono": "962304352",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "REQUENA",
+    "ubicacion": {
+      "lon": -1.090863484,
+      "lat": 39.486194831
+    }
+  },
+  {
+    "provincia": "VALENCIA",
+    "area_de_salud": "H. General",
+    "nombre": "CLÍNICA DIAVERUM XIRIVELLA",
+    "domicilio": "C/ Dels Corretgers, 68",
+    "telefono": null,
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "XIRIVELLA",
+    "ubicacion": {
+      "lon": -0.43519537,
+      "lat": 39.454186875
+    }
+  },
+  {
+    "provincia": "CASTELLÓN",
+    "area_de_salud": "HGUCS",
+    "nombre": "CLÍNICA DIAVERUM OROPESA",
+    "domicilio": "C/ José Ribera Forner, 94-96",
+    "telefono": "964313387",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "OROPESA",
+    "ubicacion": {
+      "lon": 0.134765832,
+      "lat": 40.099543924
+    }
+  },
+  {
+    "provincia": "CASTELLÓN",
+    "area_de_salud": "H La Plana",
+    "nombre": "BBraun VILA-REAL",
+    "domicilio": "Avda. Italia, 56",
+    "telefono": "964917120",
+    "gestionado_por": "BBRAUN",
+    "ciudad": "VILA-REAL",
+    "ubicacion": {
+      "lon": -0.109373108,
+      "lat": 39.933252204
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "H General",
+    "nombre": "H. GENERAL",
+    "domicilio": "C/ Pintor Baeza s/n",
+    "telefono": "965 93 84 93/95",
+    "gestionado_por": "GENERALITAT VALENCIANA",
+    "ciudad": "ALICANTE",
+    "ubicacion": {
+      "lon": -0.487340302,
+      "lat": 38.362662866
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud Denia",
+    "nombre": "H MARINA SALUD DENIA",
+    "domicilio": "Avda. Marina Alta, s/n",
+    "telefono": "966 42 90 00",
+    "gestionado_por": "GENERALITAT VALENCIANA",
+    "ciudad": "DENIA",
+    "ubicacion": {
+      "lon": 0.088878812,
+      "lat": 38.772858219
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Alicante",
+    "nombre": "CLÍNICA VISTAHERMOSA GRUPO HLA",
+    "domicilio": "Avda. Denia, 103",
+    "telefono": "965268000",
+    "gestionado_por": "CLÍNICA VISTAHERMOSA GRUPO HLA",
+    "ciudad": "ALICANTE",
+    "ubicacion": {
+      "lon": -0.46308741,
+      "lat": 38.36278601
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Alicante",
+    "nombre": "CLÍNICA DIAVERUM ALICANTE",
+    "domicilio": "C/ Proción, 3",
+    "telefono": "627427220",
+    "gestionado_por": "DIAVERUM",
+    "ciudad": "ALICANTE",
+    "ubicacion": {
+      "lon": -0.507689115,
+      "lat": 38.345166211
+    }
+  },
+  {
+    "provincia": "ALICANTE",
+    "area_de_salud": "Dpto. Salud Elche",
+    "nombre": "H GENERAL ELCHE",
+    "domicilio": "C/ Almazara, 11",
+    "telefono": "966616928",
+    "gestionado_por": "GENERALITAT VALENCIANA",
+    "ciudad": "ELCHE",
+    "ubicacion": {
+      "lon": -0.684797571,
+      "lat": 38.259579175
+    }
+  }
+]

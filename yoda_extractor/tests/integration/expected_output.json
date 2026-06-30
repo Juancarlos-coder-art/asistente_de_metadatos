@@ -1,0 +1,167 @@
+{
+  "access_rights": "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
+  "identifier": "https://catalogo.ends.gob.es/dataset",
+  "access_url": "https://catalogo.ends.gob.es/dataset",
+  "title": "Un perfil de las personas mayores en España, 2024",
+  "notes": "Un perfil de las personas mayores en España, 2024. Indicadores estadísticos básicos",
+  "health_category": [
+    "http://13.81.34.152:1101/resource/authority/healthcategories/MRMR",
+    "http://13.81.34.152:1101/resource/authority/healthcategories/HRAD"
+  ],
+  "theme": [
+    "http://publications.europa.eu/resource/authority/data-theme/HEAL"
+  ],
+  "dcat_type": "http://publications.europa.eu/resource/authority/dataset-type/STATISTICAL",
+  "provenance": "Fuentes nacionales e internacionales",
+  "keyword": [
+    "Personas mayores",
+    "datos estadísticos",
+    "indicadores",
+    "España",
+    "demografía",
+    "salud",
+    "pensiones",
+    "hogares"
+  ],
+  "purpose": [
+    "Proporcionar una visión conjunta de las condiciones de vida de la población de 65 y más años"
+  ],
+  "language": [
+    "http://publications.europa.eu/resource/authority/language/SPA"
+  ],
+  "population_coverage": [
+    "Personas mayores en España"
+  ],
+  "min_typical_age": 6,
+  "personal_data": [
+    "https://w3id.org/dpv/pd#Age",
+    "https://w3id.org/dpv/pd#AgeRange",
+    "https://w3id.org/dpv/pd#HealthData"
+  ],
+  "health_theme": [
+    "http://13.81.34.152:1101/resource/authority/health-theme/HEALTH_SYSTEMS",
+    "http://13.81.34.152:1101/resource/authority/health-theme/MENTAL_HEALTH"
+  ],
+  "hdab": {
+    "name": "CSIC",
+    "type": "http://13.81.34.152:1101/resource/authority/publisher-type/stat-agency",
+    "contact": "https://www.csic.es/es",
+    "email": "CSIC@csic.es",
+    "telephone": "789 39 15 67",
+    "opening_hours_description": "De lunes a viernes de 8:00 a 14:00",
+    "opening_hours_frequency": "http://publications.europa.eu/resource/authority/frequency/1MIN",
+    "special_opening_hours_description": "Los festivos no abren",
+    "special_opening_hours_frequency": "http://publications.europa.eu/resource/authority/frequency/TRIHOURLY"
+  },
+  "contact": {
+    "email": "enred@cchs.csic.es",
+    "url": "https://envejecimientoenred.csic.es"
+  },
+  "download_url": "https://envejecimientoenred.csic.es/wp-content/uploads/2024/12/enred-indicadoresbasicos2024.pdf",
+  "name": "enred",
+  "description": "Indicadores estadísticos básicos",
+  "format": "pdf",
+  "mimetype": "application/pdf",
+  "rights": "Creative Commons 4.0",
+  "license": "Creative Commons 4.0",
+  "publisher": {
+    "name": "Envejecimiento en red y Estadísticas experimentales",
+    "type": "http://13.81.34.152:1101/resource/authority/publisher-type/research-academic-org",
+    "email": "enred@cchs.csic.es",
+    "telephone": null,
+    "contact_page": "https://envejecimientoenred.csic.es"
+  },
+  "creator": {
+    "name": "Julio Pérez Díaz, Ana Belén Castillo Belmonte, Pilar Aceituno Nieto, Diego Ramiro Fariñas, Dariya Ordanovich",
+    "type": "http://13.81.34.152:1101/resource/authority/publisher-type/research-academic-org",
+    "email": null,
+    "url": null
+  },
+  "qualified_attribution": {
+    "qualified_attribution_agent_name": "Envejecimiento en red y Estadísticas experimentales",
+    "qualified_attribution_agent_type": "http://13.81.34.152:1101/resource/authority/publisher-type/research-academic-org",
+    "qualified_attribution_agent_contact_page": "https://envejecimientoenred.csic.es",
+    "qualified_attribution_agent_email": "enred@cchs.csic.es",
+    "qualified_attribution_role": "https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml#author"
+  },
+  "was_generated_by": [
+    "http://13.81.34.152:1101/resource/authority/health-activity/RESEARCH_DATABASE"
+  ],
+  "spatial": [
+    "http://publications.europa.eu/resource/authority/country/ESP"
+  ],
+  "issued": "2024-12-30",
+  "url": "https://envejecimientoenred.csic.es/datos-abiertos/residencias/",
+  "number_of_unique_individuals": 1000,
+  "number_of_records": 1000,
+  "max_typical_age": 80,
+  "legal_basis": {
+    "description": "RGPD",
+    "source": "https://www.boe.es/doue/2016/119/L00001-00088.pdf"
+  },
+  "retention_period": {
+    "start": "2026-01-01",
+    "end": "2027-01-01"
+  },
+  "coding_system": {
+    "uri": null,
+    "label": "Diccionario regulatorio de médicos"
+  },
+  "code_values": [
+    "ISD-10"
+  ],
+  "compress_format": "zip",
+  "package_format": "zip",
+  "size": 20000,
+  "hash": "5d41402abc4b2a76b9719d911017c592",
+  "hash_algorithm": "md5",
+  "status": "http://purl.org/adms/status/UnderDevelopment",
+  "availability": "en proceso",
+  "publisher_note": "El editor no dice nada",
+  "quality_annotation": {
+    "body": "Ministerio de Sanidad",
+    "target": "Se encargará de evaluar la calidad de los datos",
+    "motivated_by": "Su principal motivación viene dada por la preocupación de que se filtren datos personales"
+  },
+  "temporal_coverage": {
+    "start": "2025-05-01",
+    "end": "2026-05-01"
+  },
+  "temporal_resolution": "P1Y",
+  "spatial_resolution_in_meters": "500",
+  "frequency": "http://publications.europa.eu/resource/authority/frequency/ANNUAL",
+  "modified": "2026-06-02",
+  "alternate_identifier": [
+    "https://envejecimientoenred.csic.es/datos-abiertos/residencias"
+  ],
+  "conforms_to": {
+    "uri": "ISO 13000",
+    "label": "ISO 13000"
+  },
+  "related_resource": {
+    "uri": "file:///C:/Users/SW273BT/Downloads/Gu%C3%ADa%20de%20campos%20%E2%80%93%20HealthDCAT-AP%20(1).pdf",
+    "label": "Guía de campos – HealthDCAT-AP"
+  },
+  "is_referenced_by": [
+    "https://envejecimientoenred.csic.es/datos-abiertos/residencias/"
+  ],
+  "documentation": {
+    "uri": "https://envejecimientoenred.csic.es/datos-abiertos/residencias/",
+    "label": "Documentación"
+  },
+  "version": "1.0",
+  "has_version": [
+    "1.0"
+  ],
+  "version_notes": "es la primera versión",
+  "applicable_legislation": [
+    {
+      "uri": "http://data.europa.eu/eli/reg/2016/679/oj",
+      "label": "GDPR"
+    },
+    {
+      "uri": "http://data.europa.eu/eli/reg/2025/327/oj",
+      "label": "Reglamento EHDS"
+    }
+  ]
+}

@@ -20,37 +20,21 @@ log = get_logger(__name__)
 
 # ── Shared helper ─────────────────────────────────────────────────────────────
 
-def _derived_col_name(expr: str) -> str | None:
-    """Extract the assigned column name from a df['col'] = ... expression."""
-    m = re.match(r"df\['([^']+)'\]\s*=", expr.strip())
-    return m.group(1) if m else None
-
-
 def _resolve_series(df: pd.DataFrame, mapping: dict) -> pd.Series | None:
     """Return the target Series for a structure mapping, applying transforms if needed.
 
-    transform is an ordered list of pandas expressions; the last one that assigns
-    to df['<field>_mod_N'] is the final derived column. Executes each expression
-    in sequence on a working copy of df.
+    With DSL, uses the safe evaluate_dsl interpreter.
     """
+    from utils.dsl_evaluator import evaluate_dsl
     cols = mapping.get("columns", [])
-    transforms: list = mapping.get("transform") or []
-    if isinstance(transforms, str):
-        transforms = [transforms]
-
+    transforms = mapping.get("transform") or []
+    
     if transforms:
-        final_expr = transforms[-1]
-        col_name = _derived_col_name(final_expr)
-        if not col_name:
-            return None
-        working = df.copy()
         try:
-            for expr in transforms:
-                exec(expr, {"df": working, "pd": pd})  # noqa: S102
+            return evaluate_dsl(df, mapping)
         except Exception as exc:
-            log.warning("Failed to apply transform for '%s' — %s", col_name, exc)
+            log.warning("Failed to apply DSL transform — %s", exc)
             return None
-        return working.get(col_name)
 
     col_name = cols[0] if cols else None
     if not col_name or col_name not in df.columns:
@@ -70,37 +54,58 @@ class DataFrameStatisticsExtractor(BaseExtractor):
         return {}
 
     def finalize(self, results: dict, df: pd.DataFrame | None) -> dict[str, Any]:
+        prefilled = {
+            f: self.input_json[f]
+            for f in ("number_of_records", "number_of_unique_individuals", "min_typical_age", "max_typical_age", "temporal_coverage")
+            if f in self.input_json and self.has_content(self.input_json[f])
+        }
         if df is None:
+            if prefilled:
+                log.info("No DataFrame available, returning prefilled stats: %s", list(prefilled.keys()))
+                return prefilled
             log.warning("No DataFrame available — skipping dataframe_statistics")
             return {}
-        structure = results.get("structure", {})
+        structure = results.get("structure_tmpt", {})
         log.info("Computing dataframe statistics (%d rows)", len(df))
         return self._extract(df, structure)
 
     def _extract(self, df: pd.DataFrame, structure: dict) -> dict:
-        """
-        Compute statistics from df using the column mappings in structure.
-
-        structure is the direct output of StructureExtractor. Value fields are
-        arrays of {"columns": [...], "transform": [...]} objects; the date fields
-        (temporal_coverage) are arrays of {year, month, day}
-        objects resolved and standardized in extractors.temporal.
-        """
-        return {
-            "number_of_records": len(df),
-            "number_of_unique_individuals": self._count_unique(
+        out = {}
+        
+        if "number_of_records" in self.input_json and self.has_content(self.input_json["number_of_records"]):
+            out["number_of_records"] = self.input_json["number_of_records"]
+        else:
+            out["number_of_records"] = len(df)
+            
+        if "number_of_unique_individuals" in self.input_json and self.has_content(self.input_json["number_of_unique_individuals"]):
+            out["number_of_unique_individuals"] = self.input_json["number_of_unique_individuals"]
+        else:
+            out["number_of_unique_individuals"] = self._count_unique(
                 df, structure.get("number_of_unique_individuals", [])
-            ),
-            "min_typical_age": self._agg_numeric(
+            )
+            
+        if "min_typical_age" in self.input_json and self.has_content(self.input_json["min_typical_age"]):
+            out["min_typical_age"] = self.input_json["min_typical_age"]
+        else:
+            out["min_typical_age"] = self._agg_numeric(
                 df, structure.get("min_typical_age", []), "min"
-            ),
-            "max_typical_age": self._agg_numeric(
+            )
+            
+        if "max_typical_age" in self.input_json and self.has_content(self.input_json["max_typical_age"]):
+            out["max_typical_age"] = self.input_json["max_typical_age"]
+        else:
+            out["max_typical_age"] = self._agg_numeric(
                 df, structure.get("max_typical_age", []), "max"
-            ),
-            "temporal_coverage": temporal.coverage(
+            )
+            
+        if "temporal_coverage" in self.input_json and self.has_content(self.input_json["temporal_coverage"]):
+            out["temporal_coverage"] = self.input_json["temporal_coverage"]
+        else:
+            out["temporal_coverage"] = temporal.coverage(
                 df, structure.get("temporal_coverage", [])
-            ),
-        }
+            )
+            
+        return out
 
     # ── Per-field methods ──────────────────────────────────────────────────────
 

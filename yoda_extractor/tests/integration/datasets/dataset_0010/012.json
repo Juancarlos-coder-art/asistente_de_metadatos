@@ -1,0 +1,211 @@
+{
+  "concept": [
+    {
+      "id": "FORMULA_TEORICA",
+      "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSO_C00124A_ODS(01.000).FORMULA_TEORICA",
+      "selfLink": {
+        "kind": "structuralResources#concept",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSO_C00124A_ODS/01.000/concepts/FORMULA_TEORICA"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Fórmula teòrica",
+            "lang": "ca"
+          },
+          {
+            "value": "Fórmula teórica",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Fórmula teórica de los subindicadores o series de los Objetivos de Desarrollo Sostenible (ODS).",
+            "lang": "es"
+          },
+          {
+            "value": "Fórmula teòrica dels subindicadors o sèries dels Objectius de Desenvolupament Sostenible (ODS).",
+            "lang": "ca"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/concepts/concepts/ISTAC/CSO_C00124A_ODS/FORMULA_TEORICA/01.000/detail",
+      "kind": "structuralResources#concept"
+    },
+    {
+      "id": "FUENTES_INFORMACION",
+      "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSO_C00124A_ODS(01.000).FUENTES_INFORMACION",
+      "selfLink": {
+        "kind": "structuralResources#concept",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSO_C00124A_ODS/01.000/concepts/FUENTES_INFORMACION"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Fuentes de información",
+            "lang": "es"
+          },
+          {
+            "value": "Fonts d'informació",
+            "lang": "ca"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Fuentes de información de los subindicadores o series de los Objetivos de Desarrollo Sostenible (ODS).",
+            "lang": "es"
+          },
+          {
+            "value": "Fonts dinformació dels subindicadors o sèries dels Objectius de Desenvolupament Sostenible (ODS).",
+            "lang": "ca"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/concepts/concepts/ISTAC/CSO_C00124A_ODS/FUENTES_INFORMACION/01.000/detail",
+      "kind": "structuralResources#concept"
+    },
+    {
+      "id": "GRANULARIDAD_GEOGRAFICA",
+      "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSO_C00124A_ODS(01.000).GRANULARIDAD_GEOGRAFICA",
+      "selfLink": {
+        "kind": "structuralResources#concept",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSO_C00124A_ODS/01.000/concepts/GRANULARIDAD_GEOGRAFICA"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Granularidad geográfica",
+            "lang": "es"
+          },
+          {
+            "value": "Granularitat geogràfica",
+            "lang": "ca"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Grau de detall o resolució amb què es representen les dades en una àrea geogràfica.",
+            "lang": "ca"
+          },
+          {
+            "value": " Grado de detalle o resolución con que se representan los datos en un área geográfica.",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/concepts/concepts/ISTAC/CSO_C00124A_ODS/GRANULARIDAD_GEOGRAFICA/01.000/detail",
+      "kind": "structuralResources#concept"
+    },
+    {
+      "id": "OBSERVACIONES",
+      "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSO_C00124A_ODS(01.000).OBSERVACIONES",
+      "selfLink": {
+        "kind": "structuralResources#concept",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSO_C00124A_ODS/01.000/concepts/OBSERVACIONES"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Observaciones",
+            "lang": "es"
+          },
+          {
+            "value": "Observacions",
+            "lang": "ca"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Observacions associades als subindicadors o sèries dels Objectius de Desenvolupament Sostenible (ODS).",
+            "lang": "ca"
+          },
+          {
+            "value": "Observaciones asociadas a los subindicadores o series de los Objetivos de Desarrollo Sostenible (ODS).",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/concepts/concepts/ISTAC/CSO_C00124A_ODS/OBSERVACIONES/01.000/detail",
+      "kind": "structuralResources#concept"
+    },
+    {
+      "id": "OCECAS",
+      "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSO_C00124A_ODS(01.000).OCECAS",
+      "selfLink": {
+        "kind": "structuralResources#concept",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSO_C00124A_ODS/01.000/concepts/OCECAS"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Nota OCECAS",
+            "lang": "es"
+          },
+          {
+            "value": "Nota OCECAS",
+            "lang": "ca"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Nota de los Órganos Centrales de Estadística de las Comunidades Autónomas (OCECAS).",
+            "lang": "es"
+          },
+          {
+            "value": "Nota Nota dels Òrgans Centrals d'Estadística de les comunitats autònomes (OCECAS).",
+            "lang": "ca"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/concepts/concepts/ISTAC/CSO_C00124A_ODS/OCECAS/01.000/detail",
+      "kind": "structuralResources#concept"
+    },
+    {
+      "id": "SERIES_ORDEN",
+      "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSO_C00124A_ODS(01.000).SERIES_ORDEN",
+      "selfLink": {
+        "kind": "structuralResources#concept",
+        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSO_C00124A_ODS/01.000/concepts/SERIES_ORDEN"
+      },
+      "name": {
+        "text": [
+          {
+            "value": "Ordre de la sèrie",
+            "lang": "ca"
+          },
+          {
+            "value": "Orden de la serie",
+            "lang": "es"
+          }
+        ]
+      },
+      "description": {
+        "text": [
+          {
+            "value": "Ordre definit pels Òrgans Centrals d'Estadística de les comunitats autònomes (OCECAS) per a la difusió dels subindicadors o sèries dels Objectius de Desenvolupament Sostenible (ODS).",
+            "lang": "ca"
+          },
+          {
+            "value": "Orden definido por los Órganos Centrales de Estadística de las Comunidades Autónomas (OCECAS) para la difusión de los subindicadores o series de los Objetivos de Desarrollo Sostenible (ODS).",
+            "lang": "es"
+          }
+        ]
+      },
+      "visualizerHtmlLink": "https://www3.gobiernodecanarias.org/aplicaciones/appsistac/activos-semanticos/concepts/concepts/ISTAC/CSO_C00124A_ODS/SERIES_ORDEN/01.000/detail",
+      "kind": "structuralResources#concept"
+    }
+  ],
+  "kind": "structuralResources#concepts",
+  "total": 6,
+  "selfLink": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSO_C00124A_ODS/01.000/concepts"
+}

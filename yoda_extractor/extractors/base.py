@@ -15,8 +15,19 @@ class BaseExtractor(ABC):
 
     name: str = "base"
 
-    def __init__(self, file_path: str = "") -> None:
+    def __init__(self, file_path: str = "", input_json: dict | None = None) -> None:
         self.file_path = file_path
+        self.input_json = input_json or {}
+
+    @staticmethod
+    def has_content(val: Any) -> bool:
+        if val is None:
+            return False
+        if isinstance(val, str):
+            return bool(val.strip())
+        if isinstance(val, (list, dict)):
+            return len(val) > 0
+        return True
 
     @abstractmethod
     def update(self, record: dict) -> None:

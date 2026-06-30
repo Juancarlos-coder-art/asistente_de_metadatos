@@ -1,0 +1,165 @@
+{
+  "version": "2.0",
+  "label": "Índice de Donación en Canarias por años",
+  "updated": "2026-02-13T12:58:00.972Z",
+  "extension": {
+    "datasetId": "C00036A_000005",
+    "datasetUrn": "urn:siemac:org.siemac.metamac.infomodel.statisticalresources.Dataset=ISTAC:C00036A_000005(1.0)",
+    "lang": "es",
+    "survey": "Recopilación de estadísticas sobre donaciones y trasplantes de órganos",
+    "publishers": "Instituto Canario de Estadística",
+    "dataProviders": "Organización Nacional de Transplantes",
+    "dataProvidersAnnotations": null,
+    "dimension": {
+      "TIME_PERIOD": {
+        "temporalGranularity": {
+          "2023": "YEARLY",
+          "2012": "YEARLY",
+          "2022": "YEARLY",
+          "2011": "YEARLY",
+          "2021": "YEARLY",
+          "2010": "YEARLY",
+          "2020": "YEARLY",
+          "2009": "YEARLY",
+          "2019": "YEARLY",
+          "2008": "YEARLY",
+          "2018": "YEARLY",
+          "2007": "YEARLY",
+          "2017": "YEARLY",
+          "2006": "YEARLY",
+          "2016": "YEARLY",
+          "2005": "YEARLY",
+          "2015": "YEARLY",
+          "2004": "YEARLY",
+          "2025": "YEARLY",
+          "2014": "YEARLY",
+          "2024": "YEARLY",
+          "2013": "YEARLY"
+        }
+      }
+    }
+  },
+  "value": [
+    "35.5",
+    "45.7",
+    "39",
+    "44.3",
+    "44.7",
+    "33.3",
+    "35.4",
+    "34.3",
+    "26.4",
+    "32.6",
+    "33.7",
+    "41.4",
+    "46.7",
+    "43.8",
+    "49.5",
+    "50.7",
+    "51.6",
+    "44.7",
+    "54.8",
+    "53.6",
+    "58.6",
+    "50"
+  ],
+  "id": [
+    "TIME_PERIOD",
+    "MEDIDAS",
+    "TERRITORIO"
+  ],
+  "size": [
+    22,
+    1,
+    1
+  ],
+  "role": {
+    "geo": [
+      "TERRITORIO"
+    ],
+    "metric": [
+      "MEDIDAS"
+    ],
+    "time": [
+      "TIME_PERIOD"
+    ]
+  },
+  "dimension": {
+    "TERRITORIO": {
+      "label": "Territorio",
+      "category": {
+        "index": {
+          "ES70": 0
+        },
+        "label": {
+          "ES70": "Canarias"
+        }
+      }
+    },
+    "MEDIDAS": {
+      "label": "Indicador",
+      "category": {
+        "index": {
+          "DONACIONES_ORGANOS__INDICE": 0
+        },
+        "label": {
+          "DONACIONES_ORGANOS__INDICE": "Índice de donación anual de órganos por cada millón de habitantes"
+        }
+      }
+    },
+    "TIME_PERIOD": {
+      "label": "Periodo",
+      "category": {
+        "index": {
+          "2012": 8,
+          "2023": 19,
+          "2011": 7,
+          "2022": 18,
+          "2010": 6,
+          "2021": 17,
+          "2020": 16,
+          "2009": 5,
+          "2008": 4,
+          "2019": 15,
+          "2007": 3,
+          "2018": 14,
+          "2006": 2,
+          "2017": 13,
+          "2005": 1,
+          "2016": 12,
+          "2004": 0,
+          "2015": 11,
+          "2014": 10,
+          "2025": 21,
+          "2013": 9,
+          "2024": 20
+        },
+        "label": {
+          "2012": "2012",
+          "2023": "2023",
+          "2011": "2011",
+          "2022": "2022",
+          "2010": "2010",
+          "2021": "2021",
+          "2020": "2020",
+          "2009": "2009",
+          "2008": "2008",
+          "2019": "2019",
+          "2007": "2007",
+          "2018": "2018",
+          "2006": "2006",
+          "2017": "2017",
+          "2005": "2005",
+          "2016": "2016",
+          "2004": "2004",
+          "2015": "2015",
+          "2014": "2014",
+          "2025": "2025",
+          "2013": "2013",
+          "2024": "2024"
+        }
+      }
+    }
+  },
+  "class": "dataset"
+}

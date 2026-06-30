@@ -1,0 +1,5003 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+  <record>
+    <id>0</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>59.33</value>
+    <event_date>2018-03-01</event_date>
+    <created_at>2018-03-01T00:00:00</created_at>
+    <country>BEL</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>1</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>61.98</value>
+    <event_date>03/03/2018</event_date>
+    <created_at>2018-03-03T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>2</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>62.79</value>
+    <event_date>March 05, 2018</event_date>
+    <created_at>2018-03-05T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>3</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>90.01</value>
+    <event_date>2018-03-07</event_date>
+    <created_at>2018-03-07T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>4</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>8.55</value>
+    <event_date>09/03/2018</event_date>
+    <created_at>2018-03-09T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>5</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>66.08</value>
+    <event_date>March 11, 2018</event_date>
+    <created_at>2018-03-11T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>6</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>69.05</value>
+    <event_date>2018-03-13</event_date>
+    <created_at>2018-03-13T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>7</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>80.96</value>
+    <event_date>15/03/2018</event_date>
+    <created_at>2018-03-15T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>8</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>31.06</value>
+    <event_date>March 17, 2018</event_date>
+    <created_at>2018-03-17T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>9</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>40.6</value>
+    <event_date>2018-03-19</event_date>
+    <created_at>2018-03-19T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>10</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>96.04</value>
+    <event_date>21/03/2018</event_date>
+    <created_at>2018-03-21T00:00:00</created_at>
+    <country>Spain</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>11</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>70.28</value>
+    <event_date>March 23, 2018</event_date>
+    <created_at>2018-03-23T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>12</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>73.22</value>
+    <event_date>2018-03-25</event_date>
+    <created_at>2018-03-25T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>13</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>36.45</value>
+    <event_date>27/03/2018</event_date>
+    <created_at>2018-03-27T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>14</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>7.07</value>
+    <event_date>March 29, 2018</event_date>
+    <created_at>2018-03-29T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>15</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>16.3</value>
+    <event_date>2018-03-31</event_date>
+    <created_at>2018-03-31T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>16</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>26.17</value>
+    <event_date>02/04/2018</event_date>
+    <created_at>2018-04-02T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>17</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>22.28</value>
+    <event_date>April 04, 2018</event_date>
+    <created_at>2018-04-04T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>18</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>33.76</value>
+    <event_date>2018-04-06</event_date>
+    <created_at>2018-04-06T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>19</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>32.11</value>
+    <event_date>08/04/2018</event_date>
+    <created_at>2018-04-08T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>20</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>85.66</value>
+    <event_date>April 10, 2018</event_date>
+    <created_at>2018-04-10T00:00:00</created_at>
+    <country>France</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>21</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>67.78</value>
+    <event_date>2018-04-12</event_date>
+    <created_at>2018-04-12T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>22</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>68.16</value>
+    <event_date>14/04/2018</event_date>
+    <created_at>2018-04-14T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>23</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>21.81</value>
+    <event_date>April 16, 2018</event_date>
+    <created_at>2018-04-16T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>24</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>56.62</value>
+    <event_date>2018-04-18</event_date>
+    <created_at>2018-04-18T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>25</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>6.32</value>
+    <event_date>20/04/2018</event_date>
+    <created_at>2018-04-20T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>26</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>5.31</value>
+    <event_date>April 22, 2018</event_date>
+    <created_at>2018-04-22T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>27</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>79.71</value>
+    <event_date>2018-04-24</event_date>
+    <created_at>2018-04-24T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>28</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>87.23</value>
+    <event_date>26/04/2018</event_date>
+    <created_at>2018-04-26T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>29</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>24.39</value>
+    <event_date>April 28, 2018</event_date>
+    <created_at>2018-04-28T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>30</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>37.31</value>
+    <event_date>2018-04-30</event_date>
+    <created_at>2018-04-30T00:00:00</created_at>
+    <country>GBR</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>31</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>52.58</value>
+    <event_date>02/05/2018</event_date>
+    <created_at>2018-05-02T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>32</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>39.97</value>
+    <event_date>May 04, 2018</event_date>
+    <created_at>2018-05-04T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>33</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>76.45</value>
+    <event_date>2018-05-06</event_date>
+    <created_at>2018-05-06T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>34</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>7.88</value>
+    <event_date>08/05/2018</event_date>
+    <created_at>2018-05-08T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>35</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>1.72</value>
+    <event_date>May 10, 2018</event_date>
+    <created_at>2018-05-10T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>36</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>10.63</value>
+    <event_date>2018-05-12</event_date>
+    <created_at>2018-05-12T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>37</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>93.72</value>
+    <event_date>14/05/2018</event_date>
+    <created_at>2018-05-14T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>38</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>58.26</value>
+    <event_date>May 16, 2018</event_date>
+    <created_at>2018-05-16T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>39</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>74.18</value>
+    <event_date>2018-05-18</event_date>
+    <created_at>2018-05-18T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>40</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>54.0</value>
+    <event_date>20/05/2018</event_date>
+    <created_at>2018-05-20T00:00:00</created_at>
+    <country>GBR</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>41</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>61.24</value>
+    <event_date>May 22, 2018</event_date>
+    <created_at>2018-05-22T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>42</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>7.72</value>
+    <event_date>2018-05-24</event_date>
+    <created_at>2018-05-24T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>43</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>98.85</value>
+    <event_date>26/05/2018</event_date>
+    <created_at>2018-05-26T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>44</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>41.96</value>
+    <event_date>May 28, 2018</event_date>
+    <created_at>2018-05-28T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>45</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>95.35</value>
+    <event_date>2018-05-30</event_date>
+    <created_at>2018-05-30T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>46</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>8.96</value>
+    <event_date>01/06/2018</event_date>
+    <created_at>2018-06-01T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>47</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>11.54</value>
+    <event_date>June 03, 2018</event_date>
+    <created_at>2018-06-03T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>48</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>17.12</value>
+    <event_date>2018-06-05</event_date>
+    <created_at>2018-06-05T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>49</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>96.94</value>
+    <event_date>07/06/2018</event_date>
+    <created_at>2018-06-07T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>50</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>99.86</value>
+    <event_date>June 09, 2018</event_date>
+    <created_at>2018-06-09T00:00:00</created_at>
+    <country>France</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>51</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>85.17</value>
+    <event_date>2018-06-11</event_date>
+    <created_at>2018-06-11T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>52</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>48.72</value>
+    <event_date>13/06/2018</event_date>
+    <created_at>2018-06-13T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>53</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>20.46</value>
+    <event_date>June 15, 2018</event_date>
+    <created_at>2018-06-15T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>54</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>79.24</value>
+    <event_date>2018-06-17</event_date>
+    <created_at>2018-06-17T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>55</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>88.53</value>
+    <event_date>19/06/2018</event_date>
+    <created_at>2018-06-19T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>56</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>40.48</value>
+    <event_date>June 21, 2018</event_date>
+    <created_at>2018-06-21T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>57</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>83.6</value>
+    <event_date>2018-06-23</event_date>
+    <created_at>2018-06-23T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>58</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>35.4</value>
+    <event_date>25/06/2018</event_date>
+    <created_at>2018-06-25T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>59</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>30.8</value>
+    <event_date>June 27, 2018</event_date>
+    <created_at>2018-06-27T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>60</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>56.95</value>
+    <event_date>2018-06-29</event_date>
+    <created_at>2018-06-29T00:00:00</created_at>
+    <country>NLD</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>61</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>64.43</value>
+    <event_date>01/07/2018</event_date>
+    <created_at>2018-07-01T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>62</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>52.46</value>
+    <event_date>July 03, 2018</event_date>
+    <created_at>2018-07-03T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>63</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>76.94</value>
+    <event_date>2018-07-05</event_date>
+    <created_at>2018-07-05T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>64</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>60.63</value>
+    <event_date>07/07/2018</event_date>
+    <created_at>2018-07-07T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>65</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>60.11</value>
+    <event_date>July 09, 2018</event_date>
+    <created_at>2018-07-09T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>66</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>1.2</value>
+    <event_date>2018-07-11</event_date>
+    <created_at>2018-07-11T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>67</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>74.47</value>
+    <event_date>13/07/2018</event_date>
+    <created_at>2018-07-13T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>68</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>9.93</value>
+    <event_date>July 15, 2018</event_date>
+    <created_at>2018-07-15T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>69</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>1.08</value>
+    <event_date>2018-07-17</event_date>
+    <created_at>2018-07-17T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>70</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>66.38</value>
+    <event_date>19/07/2018</event_date>
+    <created_at>2018-07-19T00:00:00</created_at>
+    <country>DEU</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>71</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>18.74</value>
+    <event_date>July 21, 2018</event_date>
+    <created_at>2018-07-21T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>72</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>82.78</value>
+    <event_date>2018-07-23</event_date>
+    <created_at>2018-07-23T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>73</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>9.46</value>
+    <event_date>25/07/2018</event_date>
+    <created_at>2018-07-25T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>74</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>59.87</value>
+    <event_date>July 27, 2018</event_date>
+    <created_at>2018-07-27T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>75</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>94.52</value>
+    <event_date>2018-07-29</event_date>
+    <created_at>2018-07-29T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>76</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>65.25</value>
+    <event_date>31/07/2018</event_date>
+    <created_at>2018-07-31T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>77</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>89.95</value>
+    <event_date>August 02, 2018</event_date>
+    <created_at>2018-08-02T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>78</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>67.08</value>
+    <event_date>2018-08-04</event_date>
+    <created_at>2018-08-04T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>79</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>19.45</value>
+    <event_date>06/08/2018</event_date>
+    <created_at>2018-08-06T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>80</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>39.21</value>
+    <event_date>August 08, 2018</event_date>
+    <created_at>2018-08-08T00:00:00</created_at>
+    <country>NLD</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>81</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>93.04</value>
+    <event_date>2018-08-10</event_date>
+    <created_at>2018-08-10T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>82</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>46.65</value>
+    <event_date>12/08/2018</event_date>
+    <created_at>2018-08-12T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>83</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>78.51</value>
+    <event_date>August 14, 2018</event_date>
+    <created_at>2018-08-14T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>84</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>27.33</value>
+    <event_date>2018-08-16</event_date>
+    <created_at>2018-08-16T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>85</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>27.71</value>
+    <event_date>18/08/2018</event_date>
+    <created_at>2018-08-18T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>86</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>48.07</value>
+    <event_date>August 20, 2018</event_date>
+    <created_at>2018-08-20T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>87</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>91.69</value>
+    <event_date>2018-08-22</event_date>
+    <created_at>2018-08-22T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>88</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>15.9</value>
+    <event_date>24/08/2018</event_date>
+    <created_at>2018-08-24T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>89</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>84.69</value>
+    <event_date>August 26, 2018</event_date>
+    <created_at>2018-08-26T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>90</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>64.91</value>
+    <event_date>2018-08-28</event_date>
+    <created_at>2018-08-28T00:00:00</created_at>
+    <country>Germany</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>91</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>53.57</value>
+    <event_date>30/08/2018</event_date>
+    <created_at>2018-08-30T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>92</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>40.5</value>
+    <event_date>September 01, 2018</event_date>
+    <created_at>2018-09-01T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>93</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>42.38</value>
+    <event_date>2018-09-03</event_date>
+    <created_at>2018-09-03T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>94</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>46.69</value>
+    <event_date>05/09/2018</event_date>
+    <created_at>2018-09-05T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>95</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>43.46</value>
+    <event_date>September 07, 2018</event_date>
+    <created_at>2018-09-07T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>96</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>1.57</value>
+    <event_date>2018-09-09</event_date>
+    <created_at>2018-09-09T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>97</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>36.22</value>
+    <event_date>11/09/2018</event_date>
+    <created_at>2018-09-11T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>98</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>69.85</value>
+    <event_date>September 13, 2018</event_date>
+    <created_at>2018-09-13T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>99</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>42.62</value>
+    <event_date>2018-09-15</event_date>
+    <created_at>2018-09-15T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>100</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>9.1</value>
+    <event_date>17/09/2018</event_date>
+    <created_at>2018-09-17T00:00:00</created_at>
+    <country>POL</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>101</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>6.98</value>
+    <event_date>September 19, 2018</event_date>
+    <created_at>2018-09-19T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>102</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>12.29</value>
+    <event_date>2018-09-21</event_date>
+    <created_at>2018-09-21T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>103</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>64.79</value>
+    <event_date>23/09/2018</event_date>
+    <created_at>2018-09-23T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>104</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>23.22</value>
+    <event_date>September 25, 2018</event_date>
+    <created_at>2018-09-25T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>105</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>13.53</value>
+    <event_date>2018-09-27</event_date>
+    <created_at>2018-09-27T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>106</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>27.0</value>
+    <event_date>29/09/2018</event_date>
+    <created_at>2018-09-29T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>107</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>19.57</value>
+    <event_date>October 01, 2018</event_date>
+    <created_at>2018-10-01T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>108</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>83.0</value>
+    <event_date>2018-10-03</event_date>
+    <created_at>2018-10-03T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>109</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>79.59</value>
+    <event_date>05/10/2018</event_date>
+    <created_at>2018-10-05T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>110</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>26.33</value>
+    <event_date>October 07, 2018</event_date>
+    <created_at>2018-10-07T00:00:00</created_at>
+    <country>NLD</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>111</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>1.35</value>
+    <event_date>2018-10-09</event_date>
+    <created_at>2018-10-09T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>112</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>91.59</value>
+    <event_date>11/10/2018</event_date>
+    <created_at>2018-10-11T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>113</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>52.82</value>
+    <event_date>October 13, 2018</event_date>
+    <created_at>2018-10-13T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>114</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>11.9</value>
+    <event_date>2018-10-15</event_date>
+    <created_at>2018-10-15T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>115</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>74.38</value>
+    <event_date>17/10/2018</event_date>
+    <created_at>2018-10-17T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>116</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>7.04</value>
+    <event_date>October 19, 2018</event_date>
+    <created_at>2018-10-19T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>117</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>72.9</value>
+    <event_date>2018-10-21</event_date>
+    <created_at>2018-10-21T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>118</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>85.21</value>
+    <event_date>23/10/2018</event_date>
+    <created_at>2018-10-23T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>119</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>44.16</value>
+    <event_date>October 25, 2018</event_date>
+    <created_at>2018-10-25T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>120</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>95.61</value>
+    <event_date>2018-10-27</event_date>
+    <created_at>2018-10-27T00:00:00</created_at>
+    <country>SWE</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>121</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>18.46</value>
+    <event_date>29/10/2018</event_date>
+    <created_at>2018-10-29T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>122</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>32.31</value>
+    <event_date>October 31, 2018</event_date>
+    <created_at>2018-10-31T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>123</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>34.78</value>
+    <event_date>2018-11-02</event_date>
+    <created_at>2018-11-02T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>124</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>61.15</value>
+    <event_date>04/11/2018</event_date>
+    <created_at>2018-11-04T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>125</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>93.26</value>
+    <event_date>November 06, 2018</event_date>
+    <created_at>2018-11-06T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>126</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>26.2</value>
+    <event_date>2018-11-08</event_date>
+    <created_at>2018-11-08T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>127</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>24.13</value>
+    <event_date>10/11/2018</event_date>
+    <created_at>2018-11-10T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>128</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>26.56</value>
+    <event_date>November 12, 2018</event_date>
+    <created_at>2018-11-12T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>129</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>65.36</value>
+    <event_date>2018-11-14</event_date>
+    <created_at>2018-11-14T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>130</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>72.3</value>
+    <event_date>16/11/2018</event_date>
+    <created_at>2018-11-16T00:00:00</created_at>
+    <country>ITA</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>131</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>96.54</value>
+    <event_date>November 18, 2018</event_date>
+    <created_at>2018-11-18T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>132</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>88.72</value>
+    <event_date>2018-11-20</event_date>
+    <created_at>2018-11-20T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>133</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>3.53</value>
+    <event_date>22/11/2018</event_date>
+    <created_at>2018-11-22T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>134</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>69.47</value>
+    <event_date>November 24, 2018</event_date>
+    <created_at>2018-11-24T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>135</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>58.44</value>
+    <event_date>2018-11-26</event_date>
+    <created_at>2018-11-26T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>136</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>70.01</value>
+    <event_date>28/11/2018</event_date>
+    <created_at>2018-11-28T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>137</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>96.5</value>
+    <event_date>November 30, 2018</event_date>
+    <created_at>2018-11-30T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>138</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>44.33</value>
+    <event_date>2018-12-02</event_date>
+    <created_at>2018-12-02T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>139</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>24.65</value>
+    <event_date>04/12/2018</event_date>
+    <created_at>2018-12-04T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>140</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>83.49</value>
+    <event_date>December 06, 2018</event_date>
+    <created_at>2018-12-06T00:00:00</created_at>
+    <country>PRT</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>141</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>82.16</value>
+    <event_date>2018-12-08</event_date>
+    <created_at>2018-12-08T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>142</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>63.57</value>
+    <event_date>10/12/2018</event_date>
+    <created_at>2018-12-10T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>143</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>78.39</value>
+    <event_date>December 12, 2018</event_date>
+    <created_at>2018-12-12T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>144</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>10.09</value>
+    <event_date>2018-12-14</event_date>
+    <created_at>2018-12-14T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>145</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>42.33</value>
+    <event_date>16/12/2018</event_date>
+    <created_at>2018-12-16T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>146</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>68.97</value>
+    <event_date>December 18, 2018</event_date>
+    <created_at>2018-12-18T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>147</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>31.93</value>
+    <event_date>2018-12-20</event_date>
+    <created_at>2018-12-20T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>148</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>73.2</value>
+    <event_date>22/12/2018</event_date>
+    <created_at>2018-12-22T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>149</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>67.79</value>
+    <event_date>December 24, 2018</event_date>
+    <created_at>2018-12-24T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>150</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>97.79</value>
+    <event_date>2018-12-26</event_date>
+    <created_at>2018-12-26T00:00:00</created_at>
+    <country>France</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>151</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>98.7</value>
+    <event_date>28/12/2018</event_date>
+    <created_at>2018-12-28T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>152</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>33.84</value>
+    <event_date>December 30, 2018</event_date>
+    <created_at>2018-12-30T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>153</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>64.88</value>
+    <event_date>2019-01-01</event_date>
+    <created_at>2019-01-01T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>154</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>51.73</value>
+    <event_date>03/01/2019</event_date>
+    <created_at>2019-01-03T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>155</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>79.97</value>
+    <event_date>January 05, 2019</event_date>
+    <created_at>2019-01-05T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>156</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>77.45</value>
+    <event_date>2019-01-07</event_date>
+    <created_at>2019-01-07T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>157</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>36.6</value>
+    <event_date>09/01/2019</event_date>
+    <created_at>2019-01-09T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>158</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>68.4</value>
+    <event_date>January 11, 2019</event_date>
+    <created_at>2019-01-11T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>159</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>88.47</value>
+    <event_date>2019-01-13</event_date>
+    <created_at>2019-01-13T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>160</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>1.03</value>
+    <event_date>15/01/2019</event_date>
+    <created_at>2019-01-15T00:00:00</created_at>
+    <country>France</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>161</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>72.98</value>
+    <event_date>January 17, 2019</event_date>
+    <created_at>2019-01-17T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>162</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>22.55</value>
+    <event_date>2019-01-19</event_date>
+    <created_at>2019-01-19T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>163</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>53.12</value>
+    <event_date>21/01/2019</event_date>
+    <created_at>2019-01-21T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>164</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>57.28</value>
+    <event_date>January 23, 2019</event_date>
+    <created_at>2019-01-23T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>165</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>46.43</value>
+    <event_date>2019-01-25</event_date>
+    <created_at>2019-01-25T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>166</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>83.89</value>
+    <event_date>27/01/2019</event_date>
+    <created_at>2019-01-27T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>167</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>25.26</value>
+    <event_date>January 29, 2019</event_date>
+    <created_at>2019-01-29T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>168</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>77.19</value>
+    <event_date>2019-01-31</event_date>
+    <created_at>2019-01-31T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>169</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>95.74</value>
+    <event_date>02/02/2019</event_date>
+    <created_at>2019-02-02T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>170</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>29.17</value>
+    <event_date>February 04, 2019</event_date>
+    <created_at>2019-02-04T00:00:00</created_at>
+    <country>NLD</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>171</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>14.75</value>
+    <event_date>2019-02-06</event_date>
+    <created_at>2019-02-06T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>172</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>25.65</value>
+    <event_date>08/02/2019</event_date>
+    <created_at>2019-02-08T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>173</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>31.09</value>
+    <event_date>February 10, 2019</event_date>
+    <created_at>2019-02-10T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>174</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>45.14</value>
+    <event_date>2019-02-12</event_date>
+    <created_at>2019-02-12T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>175</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>42.24</value>
+    <event_date>14/02/2019</event_date>
+    <created_at>2019-02-14T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>176</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>50.76</value>
+    <event_date>February 16, 2019</event_date>
+    <created_at>2019-02-16T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>177</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>50.44</value>
+    <event_date>2019-02-18</event_date>
+    <created_at>2019-02-18T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>178</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>96.7</value>
+    <event_date>20/02/2019</event_date>
+    <created_at>2019-02-20T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>179</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>89.91</value>
+    <event_date>February 22, 2019</event_date>
+    <created_at>2019-02-22T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>180</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>58.82</value>
+    <event_date>2019-02-24</event_date>
+    <created_at>2019-02-24T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>181</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>55.04</value>
+    <event_date>26/02/2019</event_date>
+    <created_at>2019-02-26T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>182</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>75.13</value>
+    <event_date>February 28, 2019</event_date>
+    <created_at>2019-02-28T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>183</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>78.62</value>
+    <event_date>2019-03-02</event_date>
+    <created_at>2019-03-02T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>184</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>75.73</value>
+    <event_date>04/03/2019</event_date>
+    <created_at>2019-03-04T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>185</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>71.86</value>
+    <event_date>March 06, 2019</event_date>
+    <created_at>2019-03-06T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>186</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>11.1</value>
+    <event_date>2019-03-08</event_date>
+    <created_at>2019-03-08T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>187</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>66.82</value>
+    <event_date>10/03/2019</event_date>
+    <created_at>2019-03-10T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>188</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>69.88</value>
+    <event_date>March 12, 2019</event_date>
+    <created_at>2019-03-12T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>189</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>1.91</value>
+    <event_date>2019-03-14</event_date>
+    <created_at>2019-03-14T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>190</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>36.22</value>
+    <event_date>16/03/2019</event_date>
+    <created_at>2019-03-16T00:00:00</created_at>
+    <country>DEU</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>191</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>59.99</value>
+    <event_date>March 18, 2019</event_date>
+    <created_at>2019-03-18T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>192</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>26.25</value>
+    <event_date>2019-03-20</event_date>
+    <created_at>2019-03-20T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>193</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>60.38</value>
+    <event_date>22/03/2019</event_date>
+    <created_at>2019-03-22T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>194</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>14.57</value>
+    <event_date>March 24, 2019</event_date>
+    <created_at>2019-03-24T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>195</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>99.71</value>
+    <event_date>2019-03-26</event_date>
+    <created_at>2019-03-26T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>196</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>25.97</value>
+    <event_date>28/03/2019</event_date>
+    <created_at>2019-03-28T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>197</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>77.51</value>
+    <event_date>March 30, 2019</event_date>
+    <created_at>2019-03-30T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>198</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>89.1</value>
+    <event_date>2019-04-01</event_date>
+    <created_at>2019-04-01T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>199</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>69.93</value>
+    <event_date>03/04/2019</event_date>
+    <created_at>2019-04-03T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>200</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>2.86</value>
+    <event_date>April 05, 2019</event_date>
+    <created_at>2019-04-05T00:00:00</created_at>
+    <country>France</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>201</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>72.38</value>
+    <event_date>2019-04-07</event_date>
+    <created_at>2019-04-07T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>202</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>35.02</value>
+    <event_date>09/04/2019</event_date>
+    <created_at>2019-04-09T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>203</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>48.32</value>
+    <event_date>April 11, 2019</event_date>
+    <created_at>2019-04-11T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>204</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>33.15</value>
+    <event_date>2019-04-13</event_date>
+    <created_at>2019-04-13T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>205</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>30.74</value>
+    <event_date>15/04/2019</event_date>
+    <created_at>2019-04-15T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>206</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>53.41</value>
+    <event_date>April 17, 2019</event_date>
+    <created_at>2019-04-17T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>207</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>43.64</value>
+    <event_date>2019-04-19</event_date>
+    <created_at>2019-04-19T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>208</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>19.58</value>
+    <event_date>21/04/2019</event_date>
+    <created_at>2019-04-21T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>209</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>16.24</value>
+    <event_date>April 23, 2019</event_date>
+    <created_at>2019-04-23T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>210</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>67.51</value>
+    <event_date>2019-04-25</event_date>
+    <created_at>2019-04-25T00:00:00</created_at>
+    <country>SWE</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>211</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>36.34</value>
+    <event_date>27/04/2019</event_date>
+    <created_at>2019-04-27T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>212</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>49.96</value>
+    <event_date>April 29, 2019</event_date>
+    <created_at>2019-04-29T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>213</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>58.83</value>
+    <event_date>2019-05-01</event_date>
+    <created_at>2019-05-01T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>214</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>32.07</value>
+    <event_date>03/05/2019</event_date>
+    <created_at>2019-05-03T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>215</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>99.61</value>
+    <event_date>May 05, 2019</event_date>
+    <created_at>2019-05-05T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>216</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>97.18</value>
+    <event_date>2019-05-07</event_date>
+    <created_at>2019-05-07T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>217</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>59.5</value>
+    <event_date>09/05/2019</event_date>
+    <created_at>2019-05-09T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>218</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>34.5</value>
+    <event_date>May 11, 2019</event_date>
+    <created_at>2019-05-11T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>219</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>35.04</value>
+    <event_date>2019-05-13</event_date>
+    <created_at>2019-05-13T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>220</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>61.8</value>
+    <event_date>15/05/2019</event_date>
+    <created_at>2019-05-15T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>221</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>24.51</value>
+    <event_date>May 17, 2019</event_date>
+    <created_at>2019-05-17T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>222</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>5.41</value>
+    <event_date>2019-05-19</event_date>
+    <created_at>2019-05-19T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>223</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>63.6</value>
+    <event_date>21/05/2019</event_date>
+    <created_at>2019-05-21T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>224</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>76.15</value>
+    <event_date>May 23, 2019</event_date>
+    <created_at>2019-05-23T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>225</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>88.97</value>
+    <event_date>2019-05-25</event_date>
+    <created_at>2019-05-25T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>226</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>48.63</value>
+    <event_date>27/05/2019</event_date>
+    <created_at>2019-05-27T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>227</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>50.61</value>
+    <event_date>May 29, 2019</event_date>
+    <created_at>2019-05-29T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>228</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>86.8</value>
+    <event_date>2019-05-31</event_date>
+    <created_at>2019-05-31T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>229</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>75.11</value>
+    <event_date>02/06/2019</event_date>
+    <created_at>2019-06-02T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>230</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>67.32</value>
+    <event_date>June 04, 2019</event_date>
+    <created_at>2019-06-04T00:00:00</created_at>
+    <country>DEU</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>231</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>50.16</value>
+    <event_date>2019-06-06</event_date>
+    <created_at>2019-06-06T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>232</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>99.02</value>
+    <event_date>08/06/2019</event_date>
+    <created_at>2019-06-08T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>233</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>83.94</value>
+    <event_date>June 10, 2019</event_date>
+    <created_at>2019-06-10T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>234</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>98.64</value>
+    <event_date>2019-06-12</event_date>
+    <created_at>2019-06-12T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>235</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>67.62</value>
+    <event_date>14/06/2019</event_date>
+    <created_at>2019-06-14T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>236</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>8.32</value>
+    <event_date>June 16, 2019</event_date>
+    <created_at>2019-06-16T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>237</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>55.48</value>
+    <event_date>2019-06-18</event_date>
+    <created_at>2019-06-18T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>238</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>59.44</value>
+    <event_date>20/06/2019</event_date>
+    <created_at>2019-06-20T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>239</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>57.11</value>
+    <event_date>June 22, 2019</event_date>
+    <created_at>2019-06-22T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>240</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>7.75</value>
+    <event_date>2019-06-24</event_date>
+    <created_at>2019-06-24T00:00:00</created_at>
+    <country>ES</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>241</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>39.79</value>
+    <event_date>26/06/2019</event_date>
+    <created_at>2019-06-26T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>242</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>88.3</value>
+    <event_date>June 28, 2019</event_date>
+    <created_at>2019-06-28T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>243</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>34.55</value>
+    <event_date>2019-06-30</event_date>
+    <created_at>2019-06-30T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>244</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>14.33</value>
+    <event_date>02/07/2019</event_date>
+    <created_at>2019-07-02T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>245</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>43.5</value>
+    <event_date>July 04, 2019</event_date>
+    <created_at>2019-07-04T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>246</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>30.78</value>
+    <event_date>2019-07-06</event_date>
+    <created_at>2019-07-06T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>247</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>57.23</value>
+    <event_date>08/07/2019</event_date>
+    <created_at>2019-07-08T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>248</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>31.59</value>
+    <event_date>July 10, 2019</event_date>
+    <created_at>2019-07-10T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>249</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>5.8</value>
+    <event_date>2019-07-12</event_date>
+    <created_at>2019-07-12T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>250</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>59.39</value>
+    <event_date>14/07/2019</event_date>
+    <created_at>2019-07-14T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>251</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>37.19</value>
+    <event_date>July 16, 2019</event_date>
+    <created_at>2019-07-16T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>252</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>37.23</value>
+    <event_date>2019-07-18</event_date>
+    <created_at>2019-07-18T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>253</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>81.46</value>
+    <event_date>20/07/2019</event_date>
+    <created_at>2019-07-20T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>254</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>85.02</value>
+    <event_date>July 22, 2019</event_date>
+    <created_at>2019-07-22T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>255</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>20.37</value>
+    <event_date>2019-07-24</event_date>
+    <created_at>2019-07-24T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>256</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>9.84</value>
+    <event_date>26/07/2019</event_date>
+    <created_at>2019-07-26T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>257</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>78.1</value>
+    <event_date>July 28, 2019</event_date>
+    <created_at>2019-07-28T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>258</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>53.65</value>
+    <event_date>2019-07-30</event_date>
+    <created_at>2019-07-30T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>259</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>74.39</value>
+    <event_date>01/08/2019</event_date>
+    <created_at>2019-08-01T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>260</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>28.1</value>
+    <event_date>August 03, 2019</event_date>
+    <created_at>2019-08-03T00:00:00</created_at>
+    <country>ITA</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>261</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>57.23</value>
+    <event_date>2019-08-05</event_date>
+    <created_at>2019-08-05T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>262</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>19.35</value>
+    <event_date>07/08/2019</event_date>
+    <created_at>2019-08-07T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>263</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>21.97</value>
+    <event_date>August 09, 2019</event_date>
+    <created_at>2019-08-09T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>264</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>31.21</value>
+    <event_date>2019-08-11</event_date>
+    <created_at>2019-08-11T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>265</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>1.2</value>
+    <event_date>13/08/2019</event_date>
+    <created_at>2019-08-13T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>266</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>66.92</value>
+    <event_date>August 15, 2019</event_date>
+    <created_at>2019-08-15T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>267</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>41.9</value>
+    <event_date>2019-08-17</event_date>
+    <created_at>2019-08-17T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>268</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>76.0</value>
+    <event_date>19/08/2019</event_date>
+    <created_at>2019-08-19T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>269</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>64.48</value>
+    <event_date>August 21, 2019</event_date>
+    <created_at>2019-08-21T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>270</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>12.92</value>
+    <event_date>2019-08-23</event_date>
+    <created_at>2019-08-23T00:00:00</created_at>
+    <country>SWE</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>271</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>6.45</value>
+    <event_date>25/08/2019</event_date>
+    <created_at>2019-08-25T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>272</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>58.56</value>
+    <event_date>August 27, 2019</event_date>
+    <created_at>2019-08-27T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>273</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>94.57</value>
+    <event_date>2019-08-29</event_date>
+    <created_at>2019-08-29T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>274</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>83.17</value>
+    <event_date>31/08/2019</event_date>
+    <created_at>2019-08-31T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>275</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>32.85</value>
+    <event_date>September 02, 2019</event_date>
+    <created_at>2019-09-02T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>276</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>53.33</value>
+    <event_date>2019-09-04</event_date>
+    <created_at>2019-09-04T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>277</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>11.24</value>
+    <event_date>06/09/2019</event_date>
+    <created_at>2019-09-06T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>278</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>64.33</value>
+    <event_date>September 08, 2019</event_date>
+    <created_at>2019-09-08T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>279</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>71.42</value>
+    <event_date>2019-09-10</event_date>
+    <created_at>2019-09-10T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>280</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>62.85</value>
+    <event_date>12/09/2019</event_date>
+    <created_at>2019-09-12T00:00:00</created_at>
+    <country>Germany</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>281</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>17.1</value>
+    <event_date>September 14, 2019</event_date>
+    <created_at>2019-09-14T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>282</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>51.17</value>
+    <event_date>2019-09-16</event_date>
+    <created_at>2019-09-16T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>283</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>81.66</value>
+    <event_date>18/09/2019</event_date>
+    <created_at>2019-09-18T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>284</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>69.04</value>
+    <event_date>September 20, 2019</event_date>
+    <created_at>2019-09-20T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>285</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>47.61</value>
+    <event_date>2019-09-22</event_date>
+    <created_at>2019-09-22T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>286</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>48.04</value>
+    <event_date>24/09/2019</event_date>
+    <created_at>2019-09-24T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>287</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>33.56</value>
+    <event_date>September 26, 2019</event_date>
+    <created_at>2019-09-26T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>288</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>78.55</value>
+    <event_date>2019-09-28</event_date>
+    <created_at>2019-09-28T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>289</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>76.26</value>
+    <event_date>30/09/2019</event_date>
+    <created_at>2019-09-30T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>290</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>92.66</value>
+    <event_date>October 02, 2019</event_date>
+    <created_at>2019-10-02T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>291</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>56.69</value>
+    <event_date>2019-10-04</event_date>
+    <created_at>2019-10-04T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>292</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>30.17</value>
+    <event_date>06/10/2019</event_date>
+    <created_at>2019-10-06T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>293</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>89.63</value>
+    <event_date>October 08, 2019</event_date>
+    <created_at>2019-10-08T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>294</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>94.81</value>
+    <event_date>2019-10-10</event_date>
+    <created_at>2019-10-10T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>295</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>17.96</value>
+    <event_date>12/10/2019</event_date>
+    <created_at>2019-10-12T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>296</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>40.91</value>
+    <event_date>October 14, 2019</event_date>
+    <created_at>2019-10-14T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>297</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>99.15</value>
+    <event_date>2019-10-16</event_date>
+    <created_at>2019-10-16T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>298</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>4.02</value>
+    <event_date>18/10/2019</event_date>
+    <created_at>2019-10-18T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>299</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>23.01</value>
+    <event_date>October 20, 2019</event_date>
+    <created_at>2019-10-20T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>300</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>64.76</value>
+    <event_date>2019-10-22</event_date>
+    <created_at>2019-10-22T00:00:00</created_at>
+    <country>ITA</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>301</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>9.3</value>
+    <event_date>24/10/2019</event_date>
+    <created_at>2019-10-24T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>302</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>13.21</value>
+    <event_date>October 26, 2019</event_date>
+    <created_at>2019-10-26T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>303</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>90.79</value>
+    <event_date>2019-10-28</event_date>
+    <created_at>2019-10-28T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>304</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>47.7</value>
+    <event_date>30/10/2019</event_date>
+    <created_at>2019-10-30T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>305</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>67.38</value>
+    <event_date>November 01, 2019</event_date>
+    <created_at>2019-11-01T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>306</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>56.8</value>
+    <event_date>2019-11-03</event_date>
+    <created_at>2019-11-03T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>307</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>39.37</value>
+    <event_date>05/11/2019</event_date>
+    <created_at>2019-11-05T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>308</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>33.11</value>
+    <event_date>November 07, 2019</event_date>
+    <created_at>2019-11-07T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>309</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>90.48</value>
+    <event_date>2019-11-09</event_date>
+    <created_at>2019-11-09T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>310</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>71.34</value>
+    <event_date>11/11/2019</event_date>
+    <created_at>2019-11-11T00:00:00</created_at>
+    <country>DEU</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>311</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>49.03</value>
+    <event_date>November 13, 2019</event_date>
+    <created_at>2019-11-13T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>312</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>18.7</value>
+    <event_date>2019-11-15</event_date>
+    <created_at>2019-11-15T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>313</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>39.85</value>
+    <event_date>17/11/2019</event_date>
+    <created_at>2019-11-17T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>314</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>66.08</value>
+    <event_date>November 19, 2019</event_date>
+    <created_at>2019-11-19T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>315</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>95.59</value>
+    <event_date>2019-11-21</event_date>
+    <created_at>2019-11-21T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>316</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>60.88</value>
+    <event_date>23/11/2019</event_date>
+    <created_at>2019-11-23T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>317</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>95.46</value>
+    <event_date>November 25, 2019</event_date>
+    <created_at>2019-11-25T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>318</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>2.39</value>
+    <event_date>2019-11-27</event_date>
+    <created_at>2019-11-27T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>319</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>41.4</value>
+    <event_date>29/11/2019</event_date>
+    <created_at>2019-11-29T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>320</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>13.01</value>
+    <event_date>December 01, 2019</event_date>
+    <created_at>2019-12-01T00:00:00</created_at>
+    <country>Spain</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>321</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>44.3</value>
+    <event_date>2019-12-03</event_date>
+    <created_at>2019-12-03T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>322</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>2.03</value>
+    <event_date>05/12/2019</event_date>
+    <created_at>2019-12-05T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>323</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>14.09</value>
+    <event_date>December 07, 2019</event_date>
+    <created_at>2019-12-07T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>324</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>93.98</value>
+    <event_date>2019-12-09</event_date>
+    <created_at>2019-12-09T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>325</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>84.78</value>
+    <event_date>11/12/2019</event_date>
+    <created_at>2019-12-11T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>326</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>72.49</value>
+    <event_date>December 13, 2019</event_date>
+    <created_at>2019-12-13T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>327</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>30.05</value>
+    <event_date>2019-12-15</event_date>
+    <created_at>2019-12-15T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>328</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>78.79</value>
+    <event_date>17/12/2019</event_date>
+    <created_at>2019-12-17T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>329</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>28.76</value>
+    <event_date>December 19, 2019</event_date>
+    <created_at>2019-12-19T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>330</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>34.71</value>
+    <event_date>2019-12-21</event_date>
+    <created_at>2019-12-21T00:00:00</created_at>
+    <country>BEL</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>331</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>74.46</value>
+    <event_date>23/12/2019</event_date>
+    <created_at>2019-12-23T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>332</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>14.8</value>
+    <event_date>December 25, 2019</event_date>
+    <created_at>2019-12-25T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>333</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>14.31</value>
+    <event_date>2019-12-27</event_date>
+    <created_at>2019-12-27T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>334</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>57.11</value>
+    <event_date>29/12/2019</event_date>
+    <created_at>2019-12-29T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>335</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>91.72</value>
+    <event_date>December 31, 2019</event_date>
+    <created_at>2019-12-31T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>336</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>48.93</value>
+    <event_date>2020-01-02</event_date>
+    <created_at>2020-01-02T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>337</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>43.85</value>
+    <event_date>04/01/2020</event_date>
+    <created_at>2020-01-04T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>338</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>24.29</value>
+    <event_date>January 06, 2020</event_date>
+    <created_at>2020-01-06T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>339</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>71.13</value>
+    <event_date>2020-01-08</event_date>
+    <created_at>2020-01-08T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>340</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>72.06</value>
+    <event_date>10/01/2020</event_date>
+    <created_at>2020-01-10T00:00:00</created_at>
+    <country>FR</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>341</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>3.91</value>
+    <event_date>January 12, 2020</event_date>
+    <created_at>2020-01-12T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>342</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>51.51</value>
+    <event_date>2020-01-14</event_date>
+    <created_at>2020-01-14T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>343</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>16.89</value>
+    <event_date>16/01/2020</event_date>
+    <created_at>2020-01-16T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>344</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>15.32</value>
+    <event_date>January 18, 2020</event_date>
+    <created_at>2020-01-18T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>345</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>84.5</value>
+    <event_date>2020-01-20</event_date>
+    <created_at>2020-01-20T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>346</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>13.78</value>
+    <event_date>22/01/2020</event_date>
+    <created_at>2020-01-22T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>347</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>8.63</value>
+    <event_date>January 24, 2020</event_date>
+    <created_at>2020-01-24T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>348</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>73.33</value>
+    <event_date>2020-01-26</event_date>
+    <created_at>2020-01-26T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>349</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>46.84</value>
+    <event_date>28/01/2020</event_date>
+    <created_at>2020-01-28T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>350</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>96.18</value>
+    <event_date>January 30, 2020</event_date>
+    <created_at>2020-01-30T00:00:00</created_at>
+    <country>France</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>351</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>18.15</value>
+    <event_date>2020-02-01</event_date>
+    <created_at>2020-02-01T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>352</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>49.51</value>
+    <event_date>03/02/2020</event_date>
+    <created_at>2020-02-03T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>353</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>11.99</value>
+    <event_date>February 05, 2020</event_date>
+    <created_at>2020-02-05T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>354</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>76.3</value>
+    <event_date>2020-02-07</event_date>
+    <created_at>2020-02-07T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>355</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>26.3</value>
+    <event_date>09/02/2020</event_date>
+    <created_at>2020-02-09T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>356</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>88.55</value>
+    <event_date>February 11, 2020</event_date>
+    <created_at>2020-02-11T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>357</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>59.29</value>
+    <event_date>2020-02-13</event_date>
+    <created_at>2020-02-13T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>358</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>65.84</value>
+    <event_date>15/02/2020</event_date>
+    <created_at>2020-02-15T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>359</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>83.18</value>
+    <event_date>February 17, 2020</event_date>
+    <created_at>2020-02-17T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>360</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>93.61</value>
+    <event_date>2020-02-19</event_date>
+    <created_at>2020-02-19T00:00:00</created_at>
+    <country>FR</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>361</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>11.46</value>
+    <event_date>21/02/2020</event_date>
+    <created_at>2020-02-21T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>362</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>20.25</value>
+    <event_date>February 23, 2020</event_date>
+    <created_at>2020-02-23T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>363</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>31.84</value>
+    <event_date>2020-02-25</event_date>
+    <created_at>2020-02-25T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>364</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>92.18</value>
+    <event_date>27/02/2020</event_date>
+    <created_at>2020-02-27T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>365</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>49.47</value>
+    <event_date>February 29, 2020</event_date>
+    <created_at>2020-02-29T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>366</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>41.8</value>
+    <event_date>2020-03-02</event_date>
+    <created_at>2020-03-02T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>367</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>36.88</value>
+    <event_date>04/03/2020</event_date>
+    <created_at>2020-03-04T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>368</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>81.5</value>
+    <event_date>March 06, 2020</event_date>
+    <created_at>2020-03-06T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>369</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>13.76</value>
+    <event_date>2020-03-08</event_date>
+    <created_at>2020-03-08T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>370</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>47.57</value>
+    <event_date>10/03/2020</event_date>
+    <created_at>2020-03-10T00:00:00</created_at>
+    <country>DEU</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>371</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>29.86</value>
+    <event_date>March 12, 2020</event_date>
+    <created_at>2020-03-12T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>372</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>45.33</value>
+    <event_date>2020-03-14</event_date>
+    <created_at>2020-03-14T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>373</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>34.58</value>
+    <event_date>16/03/2020</event_date>
+    <created_at>2020-03-16T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>374</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>53.94</value>
+    <event_date>March 18, 2020</event_date>
+    <created_at>2020-03-18T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>375</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>3.73</value>
+    <event_date>2020-03-20</event_date>
+    <created_at>2020-03-20T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>376</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>58.93</value>
+    <event_date>22/03/2020</event_date>
+    <created_at>2020-03-22T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>377</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>99.61</value>
+    <event_date>March 24, 2020</event_date>
+    <created_at>2020-03-24T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>378</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>1.68</value>
+    <event_date>2020-03-26</event_date>
+    <created_at>2020-03-26T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>379</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>96.01</value>
+    <event_date>28/03/2020</event_date>
+    <created_at>2020-03-28T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>380</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>71.37</value>
+    <event_date>March 30, 2020</event_date>
+    <created_at>2020-03-30T00:00:00</created_at>
+    <country>BEL</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>381</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>32.14</value>
+    <event_date>2020-04-01</event_date>
+    <created_at>2020-04-01T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>382</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>44.57</value>
+    <event_date>03/04/2020</event_date>
+    <created_at>2020-04-03T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>383</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>49.28</value>
+    <event_date>April 05, 2020</event_date>
+    <created_at>2020-04-05T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>384</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>99.47</value>
+    <event_date>2020-04-07</event_date>
+    <created_at>2020-04-07T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>385</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>18.21</value>
+    <event_date>09/04/2020</event_date>
+    <created_at>2020-04-09T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>386</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>24.07</value>
+    <event_date>April 11, 2020</event_date>
+    <created_at>2020-04-11T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>387</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>17.3</value>
+    <event_date>2020-04-13</event_date>
+    <created_at>2020-04-13T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>388</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>23.16</value>
+    <event_date>15/04/2020</event_date>
+    <created_at>2020-04-15T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>389</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>67.64</value>
+    <event_date>April 17, 2020</event_date>
+    <created_at>2020-04-17T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>390</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>52.71</value>
+    <event_date>2020-04-19</event_date>
+    <created_at>2020-04-19T00:00:00</created_at>
+    <country>Germany</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>391</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>89.01</value>
+    <event_date>21/04/2020</event_date>
+    <created_at>2020-04-21T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>392</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>10.22</value>
+    <event_date>April 23, 2020</event_date>
+    <created_at>2020-04-23T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>393</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>45.16</value>
+    <event_date>2020-04-25</event_date>
+    <created_at>2020-04-25T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>394</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>40.1</value>
+    <event_date>27/04/2020</event_date>
+    <created_at>2020-04-27T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>395</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>7.45</value>
+    <event_date>April 29, 2020</event_date>
+    <created_at>2020-04-29T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>396</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>81.25</value>
+    <event_date>2020-05-01</event_date>
+    <created_at>2020-05-01T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>397</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>48.43</value>
+    <event_date>03/05/2020</event_date>
+    <created_at>2020-05-03T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>398</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>66.82</value>
+    <event_date>May 05, 2020</event_date>
+    <created_at>2020-05-05T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>399</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>93.79</value>
+    <event_date>2020-05-07</event_date>
+    <created_at>2020-05-07T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>400</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>19.15</value>
+    <event_date>09/05/2020</event_date>
+    <created_at>2020-05-09T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>401</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>19.5</value>
+    <event_date>May 11, 2020</event_date>
+    <created_at>2020-05-11T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>402</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>93.57</value>
+    <event_date>2020-05-13</event_date>
+    <created_at>2020-05-13T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>403</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>35.28</value>
+    <event_date>15/05/2020</event_date>
+    <created_at>2020-05-15T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>404</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>77.76</value>
+    <event_date>May 17, 2020</event_date>
+    <created_at>2020-05-17T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>405</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>70.47</value>
+    <event_date>2020-05-19</event_date>
+    <created_at>2020-05-19T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>406</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>29.03</value>
+    <event_date>21/05/2020</event_date>
+    <created_at>2020-05-21T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>407</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>99.91</value>
+    <event_date>May 23, 2020</event_date>
+    <created_at>2020-05-23T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>408</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>88.34</value>
+    <event_date>2020-05-25</event_date>
+    <created_at>2020-05-25T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>409</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>25.63</value>
+    <event_date>27/05/2020</event_date>
+    <created_at>2020-05-27T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>410</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>83.31</value>
+    <event_date>May 29, 2020</event_date>
+    <created_at>2020-05-29T00:00:00</created_at>
+    <country>PRT</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>411</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>88.03</value>
+    <event_date>2020-05-31</event_date>
+    <created_at>2020-05-31T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>412</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>60.4</value>
+    <event_date>02/06/2020</event_date>
+    <created_at>2020-06-02T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>413</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>40.19</value>
+    <event_date>June 04, 2020</event_date>
+    <created_at>2020-06-04T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>414</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>13.08</value>
+    <event_date>2020-06-06</event_date>
+    <created_at>2020-06-06T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>415</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>80.22</value>
+    <event_date>08/06/2020</event_date>
+    <created_at>2020-06-08T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>416</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>66.19</value>
+    <event_date>June 10, 2020</event_date>
+    <created_at>2020-06-10T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>417</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>35.49</value>
+    <event_date>2020-06-12</event_date>
+    <created_at>2020-06-12T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>418</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>13.37</value>
+    <event_date>14/06/2020</event_date>
+    <created_at>2020-06-14T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>419</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>39.5</value>
+    <event_date>June 16, 2020</event_date>
+    <created_at>2020-06-16T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>420</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>61.18</value>
+    <event_date>2020-06-18</event_date>
+    <created_at>2020-06-18T00:00:00</created_at>
+    <country>Spain</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>421</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>59.63</value>
+    <event_date>20/06/2020</event_date>
+    <created_at>2020-06-20T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>422</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>70.73</value>
+    <event_date>June 22, 2020</event_date>
+    <created_at>2020-06-22T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>423</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>59.7</value>
+    <event_date>2020-06-24</event_date>
+    <created_at>2020-06-24T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>424</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>8.24</value>
+    <event_date>26/06/2020</event_date>
+    <created_at>2020-06-26T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>425</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>2.21</value>
+    <event_date>June 28, 2020</event_date>
+    <created_at>2020-06-28T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>426</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>85.63</value>
+    <event_date>2020-06-30</event_date>
+    <created_at>2020-06-30T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>427</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>96.04</value>
+    <event_date>02/07/2020</event_date>
+    <created_at>2020-07-02T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>428</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>12.68</value>
+    <event_date>July 04, 2020</event_date>
+    <created_at>2020-07-04T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>429</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>93.53</value>
+    <event_date>2020-07-06</event_date>
+    <created_at>2020-07-06T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>430</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>48.88</value>
+    <event_date>08/07/2020</event_date>
+    <created_at>2020-07-08T00:00:00</created_at>
+    <country>BEL</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>431</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>91.16</value>
+    <event_date>July 10, 2020</event_date>
+    <created_at>2020-07-10T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>432</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>63.33</value>
+    <event_date>2020-07-12</event_date>
+    <created_at>2020-07-12T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>433</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>91.64</value>
+    <event_date>14/07/2020</event_date>
+    <created_at>2020-07-14T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>434</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>70.23</value>
+    <event_date>July 16, 2020</event_date>
+    <created_at>2020-07-16T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>435</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>41.29</value>
+    <event_date>2020-07-18</event_date>
+    <created_at>2020-07-18T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>436</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>93.67</value>
+    <event_date>20/07/2020</event_date>
+    <created_at>2020-07-20T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>437</id>
+    <name>Eve</name>
+    <category>B</category>
+    <value>92.84</value>
+    <event_date>July 22, 2020</event_date>
+    <created_at>2020-07-22T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>438</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>22.61</value>
+    <event_date>2020-07-24</event_date>
+    <created_at>2020-07-24T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>439</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>64.61</value>
+    <event_date>26/07/2020</event_date>
+    <created_at>2020-07-26T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>440</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>9.34</value>
+    <event_date>July 28, 2020</event_date>
+    <created_at>2020-07-28T00:00:00</created_at>
+    <country>GBR</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>441</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>28.77</value>
+    <event_date>2020-07-30</event_date>
+    <created_at>2020-07-30T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>442</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>44.71</value>
+    <event_date>01/08/2020</event_date>
+    <created_at>2020-08-01T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>443</id>
+    <name>Frank</name>
+    <category>B</category>
+    <value>29.86</value>
+    <event_date>August 03, 2020</event_date>
+    <created_at>2020-08-03T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>444</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>69.11</value>
+    <event_date>2020-08-05</event_date>
+    <created_at>2020-08-05T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>445</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>68.49</value>
+    <event_date>07/08/2020</event_date>
+    <created_at>2020-08-07T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>446</id>
+    <name>Diana</name>
+    <category>A</category>
+    <value>19.5</value>
+    <event_date>August 09, 2020</event_date>
+    <created_at>2020-08-09T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>447</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>9.82</value>
+    <event_date>2020-08-11</event_date>
+    <created_at>2020-08-11T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>448</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>94.92</value>
+    <event_date>13/08/2020</event_date>
+    <created_at>2020-08-13T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>449</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>70.09</value>
+    <event_date>August 15, 2020</event_date>
+    <created_at>2020-08-15T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>450</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>2.58</value>
+    <event_date>2020-08-17</event_date>
+    <created_at>2020-08-17T00:00:00</created_at>
+    <country>PRT</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>451</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>44.28</value>
+    <event_date>19/08/2020</event_date>
+    <created_at>2020-08-19T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>452</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>91.22</value>
+    <event_date>August 21, 2020</event_date>
+    <created_at>2020-08-21T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>453</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>93.95</value>
+    <event_date>2020-08-23</event_date>
+    <created_at>2020-08-23T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>454</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>70.25</value>
+    <event_date>25/08/2020</event_date>
+    <created_at>2020-08-25T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>455</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>60.7</value>
+    <event_date>August 27, 2020</event_date>
+    <created_at>2020-08-27T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>456</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>84.62</value>
+    <event_date>2020-08-29</event_date>
+    <created_at>2020-08-29T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>457</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>96.69</value>
+    <event_date>31/08/2020</event_date>
+    <created_at>2020-08-31T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>458</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>43.35</value>
+    <event_date>September 02, 2020</event_date>
+    <created_at>2020-09-02T00:00:00</created_at>
+    <country>POL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>459</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>58.55</value>
+    <event_date>2020-09-04</event_date>
+    <created_at>2020-09-04T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>460</id>
+    <name>Carlos</name>
+    <category>B</category>
+    <value>41.25</value>
+    <event_date>06/09/2020</event_date>
+    <created_at>2020-09-06T00:00:00</created_at>
+    <country>PRT</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>461</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>34.95</value>
+    <event_date>September 08, 2020</event_date>
+    <created_at>2020-09-08T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>462</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>34.91</value>
+    <event_date>2020-09-10</event_date>
+    <created_at>2020-09-10T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>463</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>58.63</value>
+    <event_date>12/09/2020</event_date>
+    <created_at>2020-09-12T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>464</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>76.45</value>
+    <event_date>September 14, 2020</event_date>
+    <created_at>2020-09-14T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>465</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>7.47</value>
+    <event_date>2020-09-16</event_date>
+    <created_at>2020-09-16T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>466</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>63.91</value>
+    <event_date>18/09/2020</event_date>
+    <created_at>2020-09-18T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>467</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>57.5</value>
+    <event_date>September 20, 2020</event_date>
+    <created_at>2020-09-20T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>468</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>33.68</value>
+    <event_date>2020-09-22</event_date>
+    <created_at>2020-09-22T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>469</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>62.29</value>
+    <event_date>24/09/2020</event_date>
+    <created_at>2020-09-24T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>470</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>34.73</value>
+    <event_date>September 26, 2020</event_date>
+    <created_at>2020-09-26T00:00:00</created_at>
+    <country>ES</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>471</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>46.39</value>
+    <event_date>2020-09-28</event_date>
+    <created_at>2020-09-28T00:00:00</created_at>
+    <country>United Kingdom</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>472</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>72.73</value>
+    <event_date>30/09/2020</event_date>
+    <created_at>2020-09-30T00:00:00</created_at>
+    <country>Spain</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>473</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>6.97</value>
+    <event_date>October 02, 2020</event_date>
+    <created_at>2020-10-02T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>474</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>32.3</value>
+    <event_date>2020-10-04</event_date>
+    <created_at>2020-10-04T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>475</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>49.12</value>
+    <event_date>06/10/2020</event_date>
+    <created_at>2020-10-06T00:00:00</created_at>
+    <country>BEL</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>476</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>94.62</value>
+    <event_date>October 08, 2020</event_date>
+    <created_at>2020-10-08T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>477</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>76.15</value>
+    <event_date>2020-10-10</event_date>
+    <created_at>2020-10-10T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>478</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>61.66</value>
+    <event_date>12/10/2020</event_date>
+    <created_at>2020-10-12T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>479</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>51.57</value>
+    <event_date>October 14, 2020</event_date>
+    <created_at>2020-10-14T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>480</id>
+    <name>Bob</name>
+    <category>A</category>
+    <value>6.88</value>
+    <event_date>2020-10-16</event_date>
+    <created_at>2020-10-16T00:00:00</created_at>
+    <country>SWE</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>481</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>18.61</value>
+    <event_date>18/10/2020</event_date>
+    <created_at>2020-10-18T00:00:00</created_at>
+    <country>NLD</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>482</id>
+    <name>Alice</name>
+    <category>A</category>
+    <value>84.87</value>
+    <event_date>October 20, 2020</event_date>
+    <created_at>2020-10-20T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>483</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>6.6</value>
+    <event_date>2020-10-22</event_date>
+    <created_at>2020-10-22T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>484</id>
+    <name>Eve</name>
+    <category>A</category>
+    <value>37.66</value>
+    <event_date>24/10/2020</event_date>
+    <created_at>2020-10-24T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>485</id>
+    <name>Alice</name>
+    <category>B</category>
+    <value>21.82</value>
+    <event_date>October 26, 2020</event_date>
+    <created_at>2020-10-26T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>486</id>
+    <name>Alice</name>
+    <category>C</category>
+    <value>89.42</value>
+    <event_date>2020-10-28</event_date>
+    <created_at>2020-10-28T00:00:00</created_at>
+    <country>ES</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>487</id>
+    <name>Diana</name>
+    <category>C</category>
+    <value>57.28</value>
+    <event_date>30/10/2020</event_date>
+    <created_at>2020-10-30T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>488</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>68.45</value>
+    <event_date>November 01, 2020</event_date>
+    <created_at>2020-11-01T00:00:00</created_at>
+    <country>GBR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>489</id>
+    <name>Carlos</name>
+    <category>C</category>
+    <value>12.27</value>
+    <event_date>2020-11-03</event_date>
+    <created_at>2020-11-03T00:00:00</created_at>
+    <country>ITA</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>490</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>67.47</value>
+    <event_date>05/11/2020</event_date>
+    <created_at>2020-11-05T00:00:00</created_at>
+    <country>ITA</country>
+    <notes></notes>
+  </record>
+  <record>
+    <id>491</id>
+    <name>Frank</name>
+    <category>C</category>
+    <value>21.53</value>
+    <event_date>November 07, 2020</event_date>
+    <created_at>2020-11-07T00:00:00</created_at>
+    <country>SWE</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>492</id>
+    <name>Bob</name>
+    <category>B</category>
+    <value>61.62</value>
+    <event_date>2020-11-09</event_date>
+    <created_at>2020-11-09T00:00:00</created_at>
+    <country>Germany</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>493</id>
+    <name>Bob</name>
+    <category>C</category>
+    <value>74.77</value>
+    <event_date>11/11/2020</event_date>
+    <created_at>2020-11-11T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>494</id>
+    <name>Carlos</name>
+    <category>A</category>
+    <value>47.3</value>
+    <event_date>November 13, 2020</event_date>
+    <created_at>2020-11-13T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>495</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>79.46</value>
+    <event_date>2020-11-15</event_date>
+    <created_at>2020-11-15T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>496</id>
+    <name>Eve</name>
+    <category>C</category>
+    <value>38.96</value>
+    <event_date>17/11/2020</event_date>
+    <created_at>2020-11-17T00:00:00</created_at>
+    <country>DEU</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>497</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>22.87</value>
+    <event_date>November 19, 2020</event_date>
+    <created_at>2020-11-19T00:00:00</created_at>
+    <country>FR</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>498</id>
+    <name>Frank</name>
+    <category>A</category>
+    <value>13.71</value>
+    <event_date>2020-11-21</event_date>
+    <created_at>2020-11-21T00:00:00</created_at>
+    <country>PRT</country>
+    <notes>no date here</notes>
+  </record>
+  <record>
+    <id>499</id>
+    <name>Diana</name>
+    <category>B</category>
+    <value>37.65</value>
+    <event_date>23/11/2020</event_date>
+    <created_at>2020-11-23T00:00:00</created_at>
+    <country>France</country>
+    <notes>no date here</notes>
+  </record>
+</dataset>

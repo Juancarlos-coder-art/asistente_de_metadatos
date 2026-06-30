@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entities>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Segunda {B y C - Subgrupo A2 y C1 o categoría laboral asimilable}</Categoria>
+  <Especialidad>Administrativo {personal laboral}</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Administrativo</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>31-08-2022 22:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>31-08-2022 22:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2021</Anyo>
+  <Categoria>Categoría Segunda {B y C - Subgrupo A2 y C1 o categoría laboral asimilable}</Categoria>
+  <Especialidad>Contratación Administrativo Funcionario Interino Bolsa Empleo Sustitución ILT Titular</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Administrativo</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>29-03-2022 22:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>29-03-2022 22:00:00</FechaFinPlazoPresentacion>
+  <Estado>En plazo</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Tercera {D y E - Subgrupo C2 y Agrupaciones Profesionales o categoría laboral asimilable}</Categoria>
+  <Especialidad>Limpiador/a</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Limpiador/a</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>28-03-2022 22:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>28-03-2022 22:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Tercera {D y E - Subgrupo C2 y Agrupaciones Profesionales o categoría laboral asimilable}</Categoria>
+  <Especialidad>Cocinero/a Escuela Infantil  Carmen Sillero Ruz </Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Cocinero/a</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>17-05-2022 22:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>17-05-2022 22:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Tercera {D y E - Subgrupo C2 y Agrupaciones Profesionales o categoría laboral asimilable}</Categoria>
+  <Especialidad>Limpiador/a {personal laboral}. Fecha de adscripción: 06/04/2015</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Limpiador/a</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>27-11-2022 23:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>27-11-2022 23:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Segunda {B y C - Subgrupo A2 y C1 o categoría laboral asimilable}</Categoria>
+  <Especialidad>Administrativo/a {personal laboral}. Fecha de adscripción: 17/02/2014</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Administrativo</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>27-11-2022 23:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>27-11-2022 23:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2023</Anyo>
+  <Categoria>Categoría Segunda (B y C - Subgrupo A2 y C1 o categoría laboral asimilable)</Categoria>
+  <Especialidad>Administrativo/a de Administración General (Funcionario/a de carrera)</Especialidad>
+  <Numero>3</Numero>
+  <TipoDePlaza>Administrativo</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>26-03-2024 23:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>26-03-2024 23:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Tercera {D y E - Subgrupo C2 y Agrupaciones Profesionales o categoría laboral asimilable}</Categoria>
+  <Especialidad>Monitor Deportivo {personal laboral}</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Montitor Deportivo</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>31-08-2022 22:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>31-08-2022 22:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Segunda {B y C - Subgrupo A2 y C1 o categoría laboral asimilable}</Categoria>
+  <Especialidad>Dinamizador/a Guadalinfo</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Dinamizador/a Guadalinfo</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>19-10-2022 22:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>19-10-2022 22:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Segunda {B y C - Subgrupo A2 y C1 o categoría laboral asimilable}</Categoria>
+  <Especialidad>Policía Local</Especialidad>
+  <Numero>3</Numero>
+  <TipoDePlaza>Policia</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>10-05-2022 22:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>10-05-2022 22:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Tercera {D y E - Subgrupo C2 y Agrupaciones Profesionales o categoría laboral asimilable}</Categoria>
+  <Especialidad>Auxiliar Administrativo/a {personal laboral}. Fecha de adscripción: 01/07/2010</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Auxiliar Administrativo/a</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>27-11-2022 23:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>27-11-2022 23:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2023</Anyo>
+  <Categoria>Categoría Tercera (D y E - Subgrupo C2 y Agrupaciones Profesionales o categoría laboral asimilable)</Categoria>
+  <Especialidad>Encargado de Cementerio</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Encargado de Cementerio Municipal</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>17-04-2023 22:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>17-04-2023 22:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2023</Anyo>
+  <Categoria>Categoría Tercera {D y E - Subgrupo C2 y Agrupaciones Profesionales o categoría laboral asimilable}</Categoria>
+  <Especialidad>Constitución Bolsa de Trabajo en la categoría de Auxiliar Administrativo</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Auxiliar Administrativo/a</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>17-05-2023 22:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>17-05-2023 22:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Segunda {B y C - Subgrupo A2 y C1 o categoría laboral asimilable}</Categoria>
+  <Especialidad>Policía Local</Especialidad>
+  <Numero>3</Numero>
+  <TipoDePlaza>Policia</TipoDePlaza>
+  <FechaInicioPlazoPresentacion/>
+  <FechaFinPlazoPresentacion/>
+  <Estado/>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Tercera {D y E - Subgrupo C2 y Agrupaciones Profesionales o categoría laboral asimilable}</Categoria>
+  <Especialidad>Peón de jardinería y fontanería {personal laboral}</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Peón de jardinería y fontanería</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>31-08-2022 22:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>31-08-2022 22:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Tercera {D y E - Subgrupo C2 y Agrupaciones Profesionales o categoría laboral asimilable}</Categoria>
+  <Especialidad>Auxiliar Administrativo/a {personal laboral}</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Auxiliar Administrativo/a</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>31-08-2022 22:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>31-08-2022 22:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Tercera {D y E - Subgrupo C2 y Agrupaciones Profesionales o categoría laboral asimilable}</Categoria>
+  <Especialidad>Monitor Deportivo {personal laboral}. Fecha de adscripción: 10/08/2007</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Montitor Deportivo</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>27-11-2022 23:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>27-11-2022 23:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+<entity>
+  <idClienteEprinsa>1040</idClienteEprinsa>
+  <Anyo>2022</Anyo>
+  <Categoria>Categoría Tercera {D y E - Subgrupo C2 y Agrupaciones Profesionales o categoría laboral asimilable}</Categoria>
+  <Especialidad>Responsable de Vías Públicas y Jardines</Especialidad>
+  <Numero>1</Numero>
+  <TipoDePlaza>Responsable Vías Públicas y Jardines</TipoDePlaza>
+  <FechaInicioPlazoPresentacion>10-11-2022 23:00:00</FechaInicioPlazoPresentacion>
+  <FechaFinPlazoPresentacion>10-11-2022 23:00:00</FechaFinPlazoPresentacion>
+  <Estado>Finalizado</Estado>
+</entity>
+</entities>

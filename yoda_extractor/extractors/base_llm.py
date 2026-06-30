@@ -6,7 +6,7 @@ define the prompt and parse the response.
 """
 
 import json
-import random
+import secrets
 from pathlib import Path
 
 from .base import BaseExtractor
@@ -21,8 +21,8 @@ MAX_CHARS = 30_000
 
 class BaseLLMExtractor(BaseExtractor):
 
-    def __init__(self, file_path: str = "") -> None:
-        super().__init__(file_path)
+    def __init__(self, file_path: str = "", input_json: dict | None = None) -> None:
+        super().__init__(file_path, input_json)
         self._reservoir: list[dict] = []
         self._count: int = 0
 
@@ -33,7 +33,7 @@ class BaseLLMExtractor(BaseExtractor):
         if self._count <= SAMPLE_SIZE:
             self._reservoir.append(record)
         else:
-            j = random.randrange(self._count)
+            j = secrets.SystemRandom().randrange(self._count)
             if j < SAMPLE_SIZE:
                 self._reservoir[j] = record
                 log.debug("[%s] reservoir slot %d replaced at record %d", self.name, j, self._count)
@@ -64,4 +64,32 @@ class BaseLLMExtractor(BaseExtractor):
         if cleaned.startswith("```"):
             parts = cleaned.split("```")
             cleaned = parts[1].lstrip("json").strip() if len(parts) > 1 else cleaned
-        return cleaned
+        
+        # Fix invalid backslash escapes within JSON string literals
+        import re
+        def fix_string(match):
+            s = match.group(0)
+            chars = []
+            i = 0
+            n = len(s)
+            while i < n:
+                if s[i] == "\\":
+                    if i + 1 < n:
+                        next_char = s[i + 1]
+                        if next_char in '"\\/bfnrt':
+                            chars.append("\\" + next_char)
+                            i += 2
+                            continue
+                        elif next_char == "u" and i + 5 < n:
+                            if all(c in "0123456789abcdefABCDEF" for c in s[i+2:i+6]):
+                                chars.append("\\" + s[i+1:i+6])
+                                i += 6
+                                continue
+                    chars.append("\\\\")
+                    i += 1
+                else:
+                    chars.append(s[i])
+                    i += 1
+            return "".join(chars)
+
+        return re.sub(r'"(?:\\.|[^"])*"', fix_string, cleaned)

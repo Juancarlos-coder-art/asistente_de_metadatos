@@ -1,0 +1,172 @@
+{
+  "ADMINISTRATIVE_PROCESSES": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/ADMINISTRATIVE_PROCESSES",
+    "prefLabel": "Administrative processes",
+    "definition": "Generation of data during healthcare system operations, e.g. appointments, coding, payments."
+  },
+  "ADMISSION_DISCHARGE": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/ADMISSION_DISCHARGE",
+    "prefLabel": "Patient admission, care and discharge",
+    "definition": "Process of hospitalizing, treating, and releasing a patient, generating clinical and administrative data."
+  },
+  "AUTOMATIC_GENERATION": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/AUTOMATIC_GENERATION",
+    "prefLabel": "Automatically generated",
+    "definition": "Data passively collected by sensors, apps, or devices without active input from users."
+  },
+  "BIOBANK_COLLECTION": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/BIOBANK_COLLECTION",
+    "prefLabel": "Biobank/sample collection",
+    "definition": "Acquisition and storage of biological samples from individuals for current or future research."
+  },
+  "CENSUS_DATA": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/CENSUS_DATA",
+    "prefLabel": "Census data",
+    "definition": "Large-scale demographic and socio-economic data collection conducted by public authorities."
+  },
+  "CLINICAL_TRIAL": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/CLINICAL_TRIAL",
+    "prefLabel": "Clinical trial",
+    "definition": "Structured, controlled investigation into medical treatments, interventions or technologies."
+  },
+  "COHORT": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/COHORT",
+    "prefLabel": "Cohort",
+    "definition": "Longitudinal tracking of a defined group over time to observe health outcomes."
+  },
+  "DISEASE_MONITORING": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/DISEASE_MONITORING",
+    "prefLabel": "Infectious disease monitoring",
+    "definition": "Surveillance and reporting of disease outbreaks and infections."
+  },
+  "EHEALTH_APPLICATION": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/EHEALTH_APPLICATION",
+    "prefLabel": "eHealth application",
+    "definition": "Data created through interaction with digital health apps by individuals."
+  },
+  "GEOSPATIAL_MONITORING": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/GEOSPATIAL_MONITORING",
+    "prefLabel": "Geospatial monitoring",
+    "definition": "Data collection using satellite or location-based systems to monitor environmental or health exposures."
+  },
+  "HEALTHCARE_VISIT": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/HEALTHCARE_VISIT",
+    "prefLabel": "Healthcare visit",
+    "definition": "Patient interaction with a healthcare professional for diagnosis, treatment, or consultation."
+  },
+  "HEALTH_REGISTRIES": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/HEALTH_REGISTRIES",
+    "prefLabel": "National Health Registries",
+    "definition": "Government-led databases tracking diseases, treatments, or health trends at national level."
+  },
+  "HEALTH_SURVEILLANCE": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/HEALTH_SURVEILLANCE",
+    "prefLabel": "Public Health Surveillance",
+    "definition": "Systematic collection and analysis of health data to inform public health action."
+  },
+  "HEALTH_SURVEY": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/HEALTH_SURVEY",
+    "prefLabel": "Health survey",
+    "definition": "Collection of structured self-reported data about health behaviours, symptoms, and determinants."
+  },
+  "HOSPITAL_RECORDS": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/HOSPITAL_RECORDS",
+    "prefLabel": "Hospital records database",
+    "definition": "Institutional system aggregating clinical and operational hospital data."
+  },
+  "INSURANCE_CLAIMS": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/INSURANCE_CLAIMS",
+    "prefLabel": "Claims, insurances and reimbursement",
+    "definition": "Data generated through processing health-related financial transactions and coverage validation."
+  },
+  "LABORATORY_TESTS": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/LABORATORY_TESTS",
+    "prefLabel": "Laboratory tests",
+    "definition": "Data produced by clinical or diagnostic testing in a lab setting."
+  },
+  "MEASUREMENTS": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/MEASUREMENTS",
+    "prefLabel": "Measurements",
+    "definition": "Collection of physiological, anthropometric, or other health indicators (e.g., blood pressure, BMI)."
+  },
+  "MEDICAL_DEVICES": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/MEDICAL_DEVICES",
+    "prefLabel": "Use of medical devices",
+    "definition": "Clinical or home use of health technologies that generate or record data during patient care."
+  },
+  "MEDICAL_REGISTRY": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/MEDICAL_REGISTRY",
+    "prefLabel": "Medical registry",
+    "definition": "Structured, ongoing data collection on a specific disease, procedure, or treatment population."
+  },
+  "MODELS_SIMULATIONS": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/MODELS_SIMULATIONS",
+    "prefLabel": "Models and simulations",
+    "definition": "Use of computational or statistical models to simulate clinical or population outcomes."
+  },
+  "MUNICIPAL_REPOSITORY": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/MUNICIPAL_REPOSITORY",
+    "prefLabel": "Municipal health data repository",
+    "definition": "Centralised local government data collection on public health and services."
+  },
+  "NONMEDICAL_APPLICATION": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/NONMEDICAL_APPLICATION",
+    "prefLabel": "Non-medical application",
+    "definition": "Data collected through platforms or tools not designed for medical use (e.g., fitness apps)."
+  },
+  "OBSERVATIONAL_DATA": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/OBSERVATIONAL_DATA",
+    "prefLabel": "Observational Data",
+    "definition": "Data generated by non-interventional observation of patients or populations."
+  },
+  "PATIENT_OUTCOMES": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/PATIENT_OUTCOMES",
+    "prefLabel": "PROM (Patient-Reported Outcome Measures)",
+    "definition": "Self-reported data provided by patients on their health status and quality of life."
+  },
+  "PRESCRIBING_DISPENSING": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/PRESCRIBING_DISPENSING",
+    "prefLabel": "Prescribing or dispensing medicines",
+    "definition": "Issuing or providing medication to patients by healthcare professionals or pharmacies."
+  },
+  "PROBABILITY_SURVEY": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/PROBABILITY_SURVEY",
+    "prefLabel": "Probability survey",
+    "definition": "Data collected through a statistically representative sampling process."
+  },
+  "QUALITY_REGISTRIES": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/QUALITY_REGISTRIES",
+    "prefLabel": "National Medical Quality Registries",
+    "definition": "Nationally coordinated registries collecting data on treatment quality, outcomes, and standards."
+  },
+  "QUALITY_REGISTRY": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/QUALITY_REGISTRY",
+    "prefLabel": "Quality Registry",
+    "definition": "Collection of healthcare quality indicators to monitor care delivery and outcomes."
+  },
+  "RESEARCH_DATABASE": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/RESEARCH_DATABASE",
+    "prefLabel": "Dedicated research database",
+    "definition": "Purpose-built repository developed as part of a research activity for future reuse."
+  },
+  "RESEARCH_PROJECT": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/RESEARCH_PROJECT",
+    "prefLabel": "Research project",
+    "definition": "Targeted scientific activity to answer specific health-related research questions."
+  },
+  "ROUTINE_RECORDS": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/ROUTINE_RECORDS",
+    "prefLabel": "Routine records (non-health)",
+    "definition": "Administrative or system-generated records not primarily intended for health, but used secondarily."
+  },
+  "SAMPLE_COLLECTIONS": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/SAMPLE_COLLECTIONS",
+    "prefLabel": "Sample collections",
+    "definition": "Systematic gathering of human material (e.g. blood, DNA) for storage and analysis."
+  },
+  "SURVEILLANCE": {
+    "uri": "https://hdeu-dcat.acceptance.data.health.europa.eu/resource/authority/health-activity/SURVEILLANCE",
+    "prefLabel": "Surveillance",
+    "definition": "Ongoing, systematic monitoring of public or population health indicators."
+  }
+}

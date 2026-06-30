@@ -26,33 +26,19 @@ log = get_logger(__name__)
 _MISSING = frozenset({"", "<na>", "nan", "none", "nat", "null"})
 
 
-def _derived_col_name(expr: str) -> str | None:
-    """Extract the assigned column name from a df['col'] = ... expression."""
-    m = re.match(r"df\['([^']+)'\]\s*=", expr.strip())
-    return m.group(1) if m else None
-
-
 def _resolve_part(df: pd.DataFrame, part: dict | None) -> pd.Series | None:
     """Run a date part's transform and return the cleaned Series (or the raw column)."""
     if not part:
         return None
 
     transforms = part.get("transform") or []
-    if isinstance(transforms, str):
-        transforms = [transforms]
-
     if transforms:
-        col_name = _derived_col_name(transforms[-1])
-        if not col_name:
-            return None
-        working = df.copy()
+        from utils.dsl_evaluator import evaluate_dsl
         try:
-            for expr in transforms:
-                exec(expr, {"df": working, "pd": pd})  # noqa: S102
+            return evaluate_dsl(df, part)
         except Exception as exc:
-            log.warning("Failed to clean date part '%s' — %s", col_name, exc)
+            log.warning("Failed to clean date part using DSL — %s", exc)
             return None
-        return working.get(col_name)
 
     column = part.get("column")
     if column and column in df.columns:

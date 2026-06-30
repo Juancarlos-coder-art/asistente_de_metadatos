@@ -13,10 +13,10 @@ Uses Gemini to infer high-level metadata from the filename and a random sample o
     "notes": "Dataset containing georeferenced records of Culex pipiens presence collected between 1995 and 2019 across Spanish provinces.",
     "keyword": "mosquito; Culex pipiens; Spain; species distribution; vector",
     "population_coverage": "Datos de presencia de mosquitos recopilados en todas las provincias españolas excepto las Islas Canarias, entre 1995 y 2019.",
-    "purpose_en": "To record and track mosquito presence across sampling points in Spain.",
-    "title_en": "Distribution of the mosquito Culex pipiens in peninsular Spain and the Balearic Islands",
-    "notes_en": "Dataset containing georeferenced records of Culex pipiens presence collected between 1995 and 2019 across Spanish provinces.",
-    "keyword_en": "mosquito; Culex pipiens; Spain; species distribution; vector",
+    "purpose_en_tmpt": "To record and track mosquito presence across sampling points in Spain.",
+    "title_en_tmpt": "Distribution of the mosquito Culex pipiens in peninsular Spain and the Balearic Islands",
+    "notes_en_tmpt": "Dataset containing georeferenced records of Culex pipiens presence collected between 1995 and 2019 across Spanish provinces.",
+    "keyword_en_tmpt": "mosquito; Culex pipiens; Spain; species distribution; vector",
     "errors": []
   }
 }
@@ -33,10 +33,10 @@ If a field cannot be determined it is set to `""` and an entry is added to `erro
     "notes": "...",
     "keyword": "...",
     "population_coverage": "",
-    "purpose_en": "",
-    "title_en": "",
-    "notes_en": "",
-    "keyword_en": "",
+    "purpose_en_tmpt": "",
+    "title_en_tmpt": "",
+    "notes_en_tmpt": "",
+    "keyword_en_tmpt": "",
     "errors": ["Could not determine purpose from the available sample"]
   }
 }
@@ -45,6 +45,10 @@ If a field cannot be determined it is set to `""` and an entry is added to `erro
 ---
 
 ## How it works
+
+### 0. Prefilled metadata bypass
+
+If all LLM-derived fields (`purpose`, `language`, `title`, etc.) are present and have content in the input JSON, the extractor bypasses the Gemini API call entirely. If only some fields are prefilled, the LLM call is made normally, but the prefilled values are restored over the LLM output to prioritize the user's manual settings.
 
 ### 1. Reservoir sampling (during streaming)
 

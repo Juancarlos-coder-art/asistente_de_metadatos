@@ -1,9 +1,9 @@
-import xml.etree.ElementTree as ET
+import defusedxml.ElementTree as ET
 from typing import Generator
 from .base import BaseReader
 
 
-def _element_to_dict(elem: ET.Element) -> dict:
+def _element_to_dict(elem: "xml.etree.ElementTree.Element") -> dict:
     """Convert an XML element and its children to a flat dict."""
     record: dict = {}
 
