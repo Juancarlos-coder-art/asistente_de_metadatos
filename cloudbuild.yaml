@@ -21,7 +21,7 @@ steps:
       - '--region=europe-west1'
       - '--platform=managed'
       - '--allow-unauthenticated'
-      - '--set-secrets=GROQ_API_KEY=GROQ_API_KEY:latest'
+      - '--set-secrets=GROQ_API_KEY=GROQ_API_KEY:latest,GEMINI_API_KEY=GEMINI_API_KEY:latest'
       - '--timeout=300'
       - '--memory=1Gi'
       - '--cpu=1'
